@@ -25,6 +25,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>M80AttributedLabel.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -66,6 +71,11 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>8</integer>
+		</dict>
+		<key>TZImagePickerController.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
 		</dict>
 		<key>YTKNetwork.xcscheme</key>
 		<dict>
