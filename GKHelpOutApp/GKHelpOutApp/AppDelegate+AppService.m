@@ -52,7 +52,7 @@
         //如果有本地数据，先展示TabBar 随后异步自动登录
         self.mainTabBar = [MainTabBarController new];
         self.window.rootViewController = self.mainTabBar;
-        
+        /*
         //自动登录
         [userManager autoLoginToServer:^(BOOL success, NSString *des) {
             if (success) {
@@ -63,8 +63,10 @@
                 [MBProgressHUD showErrorMessage:NSStringFormat(@"自动登录失败：%@",des)];
             }
         }];
+         */
         
     }else{
+        [MBProgressHUD showErrorMessage:@"没有登录过，展示登录页面"];
         //没有登录过，展示登录页面
         KPostNotification(KNotificationLoginStateChange, @NO)
 //        [MBProgressHUD showErrorMessage:@"需要登录"];

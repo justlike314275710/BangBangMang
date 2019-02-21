@@ -84,7 +84,7 @@
     skipBtn.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         //        [MBProgressHUD showTopTipMessage:NSStringFormat(@"%@马上开始",str) isWindow:YES];
         
-        [weakself skipAction];
+        [weakself LoginAction];
         
     };
     
@@ -155,6 +155,9 @@
 
     [self.scrollview addSubview:self.loginBtn];
     _loginBtn.frame = CGRectMake(15,self.getCodeBtn.bottom+25,KScreenWidth-30,45);
+    [_loginBtn addTapBlock:^(UIButton *btn) {
+        [weak_self UserAccoutLogin];
+    }];
  
     
 }
@@ -175,6 +178,7 @@
     }];
 }
 -(void)QQLogin{
+    
     [userManager login:kUserLoginTypeQQ completion:^(BOOL success, NSString *des) {
         if (success) {
             DLog(@"登录成功");
@@ -185,26 +189,48 @@
 }
 //用户账号登录
 -(void)UserAccoutLogin {
-    [userManager loginToServer:nil completion:^(BOOL success, NSString *des) {
-        
+
+    self.logic.phoneNumber = self.phoneNumberField.text;
+    self.logic.messageCode = self.codeField.text;
+    [_logic checkDataWithCallback:^(BOOL successful, NSString *tips) {
+        if (successful) {
+            NSDictionary *params = @{@"username":self.phoneNumberField.text,
+                                     @"password":self.codeField.text,
+                                     @"grant_type":@"password"
+                                     };
+            [userManager loginToServer:params completion:^(BOOL success, NSString *des) {
+                
+            }];
+        } else {
+            [MBProgressHUD showWarnMessage:tips];
+        }
     }];
 }
 
--(void)skipAction{
-//    KPostNotification(KNotificationLoginStateChange, @YES);
+//获取Ouath
+-(void)LoginAction{
+    
     [_logic getOauthTokenData:^(id data) {
         
     } failed:^(NSError *error) {
         
     }];
 }
-
+//MARK:获取验证码
 - (void)getCode {
     
+    self.getCodeBtn.enabled = NO;
+    _logic.phoneNumber = self.phoneNumberField.text;
     [_logic getVerificationCodeData:^(id data) {
         
     } failed:^(NSError *error) {
-        
+        NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSString*code=body[@"error"];
+        NSString*message = body[@"message"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD showWarnMessage:message];
+        });
     }];
 }
 

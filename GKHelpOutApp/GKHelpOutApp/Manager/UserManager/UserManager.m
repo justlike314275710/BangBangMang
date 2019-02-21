@@ -8,6 +8,7 @@
 
 #import "UserManager.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import <AFNetworking.h>
 
 @implementation UserManager
 
@@ -84,11 +85,95 @@ SINGLETON_FOR_CLASS(UserManager);
 }
 
 #pragma mark ————— 手动登录到服务器 —————
+
+
+
 -(void)loginToServer:(NSDictionary *)params completion:(loginBlock)completion{
+    
    
+//    NSDictionary*parmeters=@{
+//                             @"username":@"15526477756",
+//                             @"password":@"9619",
+//                             @"grant_type":@"password"
+//                             };
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD showActivityMessageInView:@"登录中..."];
+    });
+    NSString*uid=@"consumer.m.app";
+    NSString*cipherText=@"1688c4f69fc6404285aadbc996f5e429";
+    NSString * part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
+    NSData *data = [part1 dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *stringBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    NSString * authorization = [NSString stringWithFormat:@"Basic %@",stringBase64];
+    
+    NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_get_oauth_token];
+    
+    NSMutableURLRequest *formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:params error:nil];
+    
+    [formRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8"forHTTPHeaderField:@"Content-Type"];
+    
+    [formRequest setValue:authorization forHTTPHeaderField:@"Authorization"];
+    
+    AFHTTPSessionManager*manager = [AFHTTPSessionManager manager];
+    
+    AFJSONResponseSerializer* responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [responseSerializer setAcceptableContentTypes:[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/plain",nil]];
+    
+    manager.responseSerializer= responseSerializer;
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:formRequest uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (error) {
+            NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+            id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSString*code=body[@"error"];
+            NSString*error_description = body[@"error_description"];
+            if (error_description) {
+                [MBProgressHUD showInfoMessage:error_description];
+            } else {
+                [MBProgressHUD showInfoMessage:@"登录失败"];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUD];
+            });
+        }
+        else {
+            
+            if (responseStatusCode == 200) { //
+                //保存最新的Ouath认证信息
+                //登录成功
+                OauthInfo *oauthInfo = [OauthInfo modelWithJSON:responseObject];
+                self.oathInfo = oauthInfo;
+                @weakify(self);
+                [self removeUserOuathInfo:^{
+                    @strongify(self)
+                    [self saveUserOuathInfo];
+                    
+                    self.curUserInfo = [[UserInfo alloc] init];
+                    self.curUserInfo.username = [params valueForKey:@"username"];
+                    self.isLogined = YES;
+                    [self saveUserInfo];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //登录成功
+                        KPostNotification(KNotificationLoginStateChange, @YES);
+                        [MBProgressHUD hideHUD];
+                    });
+                    
+                }];
+            }
+        }
+    }];
+    
+    [dataTask resume];
+    
+    
+    /*
     OauthInfo *oauthInfo = [self loadOuathInfo];
     NSString *access_token = oauthInfo.access_token;
     NSString *token = NSStringFormat(@"Bearer %@",access_token);
+    
     [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
     dispatch_async(dispatch_get_main_queue(), ^{
        [MBProgressHUD showActivityMessageInView:@"登录中..."];
@@ -107,6 +192,8 @@ SINGLETON_FOR_CLASS(UserManager);
             completion(NO,error.localizedDescription);
         }
     }];
+     
+     */
 }
 
 #pragma mark ————— 自动登录到服务器 —————
@@ -181,6 +268,26 @@ SINGLETON_FOR_CLASS(UserManager);
     }
     return NO;
 }
+
+#pragma mark ————— 储存用户公共服务获取的信息 —————
+-(void)saveUserOuathInfo {
+    if (self.oathInfo) {
+        YYCache *cache = [[YYCache alloc]initWithName:KOauthModelCache];
+        NSDictionary *dic = [self.oathInfo modelToJSONObject];
+        [cache setObject:dic forKey:KOauthModelCache];
+    }
+}
+
+#pragma mark ————— 移除用户公共服务获取的信息 —————
+-(void)removeUserOuathInfo:(Complete)complete {
+    YYCache *cache = [[YYCache alloc]initWithName:KOauthModelCache];
+    [cache removeAllObjectsWithBlock:^{
+        if (complete) {
+            complete();
+        }
+    }];
+}
+
 
 #pragma mark ————— 获取oauthtoken
 - (OauthInfo *)loadOuathInfo {

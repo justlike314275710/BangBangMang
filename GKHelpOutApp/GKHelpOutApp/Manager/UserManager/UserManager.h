@@ -33,6 +33,7 @@ SINGLETON_FOR_HEADER(UserManager)
 //当前用户
 @property (nonatomic, strong) UserInfo *curUserInfo;
 @property (nonatomic, assign) UserLoginType loginType;
+@property (nonatomic, strong) OauthInfo *oathInfo;
 @property (nonatomic, assign) BOOL isLogined;
 
 #pragma mark - ——————— 登录相关 ————————

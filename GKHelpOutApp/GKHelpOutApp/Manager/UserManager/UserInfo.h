@@ -17,6 +17,8 @@ typedef NS_ENUM(NSInteger,UserGender){
 
 @interface UserInfo : NSObject
 
+@property (nonatomic,copy) NSString * username;//展示用的用户ID
+
 @property(nonatomic,assign)long long userid;//用户ID
 @property (nonatomic,copy) NSString * idcard;//展示用的用户ID
 @property (nonatomic,copy) NSString * photo;//头像

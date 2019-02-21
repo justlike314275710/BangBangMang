@@ -28,20 +28,17 @@
 
 - (void)getVerificationCodeData:(RequestDataCompleted)completed failed:(RequestDataFailed)failedCallback {
     
-    NSString *apiUrl = NSStringFormat(URL_get_verification_code,@"15526477756");
+    NSString *apiUrl = NSStringFormat(URL_get_verification_code,self.phoneNumber);
     NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,apiUrl];
     [PPNetworkHelper POST:url parameters:nil success:^(id responseObject) {
-        
         if (completed) {
             completed(responseObject);
         }
-        
     } failure:^(NSError *error) {
         if (failedCallback) {
             failedCallback(error);
         }
-        
-//        completion(NO,error.localizedDescription);
+//       completion(NO,error.localizedDescription);
     }];
 }
 
@@ -49,7 +46,7 @@
     
     NSDictionary*parmeters=@{
                              @"username":@"15526477756",
-                             @"password":@"5423",
+                             @"password":@"9619",
                              @"grant_type":@"password"
                              };
     NSString*uid=@"consumer.m.app";
@@ -136,4 +133,33 @@
         }
     }];
 }
+
+#pragma mark —————— Check Data
+- (void)checkDataWithCallback:(CheckDataCallback)callback {
+    
+    if (self.phoneNumber.length == 0) {
+        if (callback) {
+            NSString*please_enter_phone_number = @"请输入手机号码";
+            callback(NO,please_enter_phone_number);
+        }
+        return;
+    }
+    
+    if (self.messageCode.length == 0) {
+        if (callback) {
+            NSString*please_enter_verify_code = @"请输入短信验证码";
+            callback(NO,please_enter_verify_code);
+        }
+        return;
+    }
+    if (callback) {
+        callback(YES,nil);
+    }
+    
+}
+
+
+
+
+
 @end

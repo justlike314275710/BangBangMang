@@ -63,6 +63,7 @@
 #import "HpBaseLogic.h"
 #import "UIView+Frame.h"
 //第三方
+#import <AFNetworking.h>
 #import <YYKit.h>
 #import <MBProgressHUD.h>
 #import <Masonry.h>

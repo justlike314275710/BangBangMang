@@ -11,6 +11,8 @@
 
 @property (nonatomic,copy) NSString *phoneNumber;
 
+@property (nonatomic,copy) NSString *messageCode; //验证码
+
 @property (nonatomic,copy) Complete lgoinComplete; //登录
 
 //- (void)checkDataWithCallback:(CheckDataCallback)callback;
