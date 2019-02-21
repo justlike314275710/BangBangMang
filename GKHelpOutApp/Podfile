@@ -16,7 +16,7 @@ pod 'IQKeyboardManager'
 pod 'Bugly', '~> 2.4.8'
 pod 'AvoidCrash', '~> 2.5.2'
 pod 'M80AttributedLabel'
-
+pod 'libextobjc', '~> 0.4.1' 
 
 end
 

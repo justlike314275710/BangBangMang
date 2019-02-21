@@ -169,7 +169,7 @@
 }
 
 -(void)WXLogin{
-    [userManager login:kUserLoginTypeWeChat completion:^(BOOL success, NSString *des) {
+    [help_userManager login:kUserLoginTypeWeChat completion:^(BOOL success, NSString *des) {
         if (success) {
             DLog(@"登录成功");
         }else{
@@ -179,7 +179,7 @@
 }
 -(void)QQLogin{
     
-    [userManager login:kUserLoginTypeQQ completion:^(BOOL success, NSString *des) {
+    [help_userManager login:kUserLoginTypeQQ completion:^(BOOL success, NSString *des) {
         if (success) {
             DLog(@"登录成功");
         }else{
@@ -198,7 +198,7 @@
                                      @"password":self.codeField.text,
                                      @"grant_type":@"password"
                                      };
-            [userManager loginToServer:params completion:^(BOOL success, NSString *des) {
+            [help_userManager loginToServer:params completion:^(BOOL success, NSString *des) {
                 
             }];
         } else {
