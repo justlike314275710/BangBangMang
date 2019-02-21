@@ -10,10 +10,12 @@ pod 'MBProgressHUD', '~> 1.0.0'
 pod 'Masonry'
 #pod'NIMSDK', '~> 3.7.0'
 pod 'YTKNetwork'
-pod 'SDWebImage', '~>3.8'
+pod 'SDWebImage', '~> 4.2.3'
+pod 'TZImagePickerController', '~> 1.9.8'
 pod 'IQKeyboardManager'
 pod 'Bugly', '~> 2.4.8'
 pod 'AvoidCrash', '~> 2.5.2'
+pod 'M80AttributedLabel'
 
 
 end
