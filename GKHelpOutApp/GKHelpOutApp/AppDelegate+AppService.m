@@ -47,7 +47,7 @@
 #pragma mark ————— 初始化用户系统 —————
 -(void)initUserManager{
     DLog(@"设备IMEI ：%@",[OpenUDID value]);
-    if([userManager loadUserInfo]){
+    if([help_userManager loadUserInfo]){
         
         //如果有本地数据，先展示TabBar 随后异步自动登录
         self.mainTabBar = [MainTabBarController new];
@@ -127,8 +127,8 @@
     BOOL isNetWork = [notification.object boolValue];
     
     if (isNetWork) {//有网络
-        if ([userManager loadUserInfo] && !isLogin) {//有用户数据 并且 未登录成功 重新来一次自动登录
-            [userManager autoLoginToServer:^(BOOL success, NSString *des) {
+        if ([help_userManager loadUserInfo] && !isLogin) {//有用户数据 并且 未登录成功 重新来一次自动登录
+            [help_userManager autoLoginToServer:^(BOOL success, NSString *des) {
                 if (success) {
                     DLog(@"网络改变后，自动登录成功");
 //                    [MBProgressHUD showSuccessMessage:@"网络改变后，自动登录成功"];

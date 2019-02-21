@@ -5,11 +5,15 @@
 //  Created by calvin on 14-4-2.
 //  Copyright (c) 2014年 BuBuGao. All rights reserved.
 //
+#define UIColorFromHexadecimalRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define AppBaseTextColor1 (UIColorFromHexadecimalRGB(0x666666))//灰色
+#define FontOfSize(size) [UIFont systemFontOfSize:size]
 
 #import "PSViewController.h"
-#import "UINavigationController+FDFullscreenPopGesture.h"
+//#import "UINavigationController+FDFullscreenPopGesture.h"
 #import "PSTipsView.h"
-#import "UIImage+Color.h"
+//#import "UIImage+Color.h"
 #import "PSAlertView.h"
 
 #define TITLEFONT 17 //导航栏标题文字大小

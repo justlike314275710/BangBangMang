@@ -22,7 +22,7 @@ typedef void (^loginBlock)(BOOL success, NSString * des);
 
 #define isLogin [UserManager sharedUserManager].isLogined
 #define curUser [UserManager sharedUserManager].curUserInfo
-#define userManager [UserManager sharedUserManager]
+#define help_userManager [UserManager sharedUserManager]
 /**
  包含用户相关服务
  */

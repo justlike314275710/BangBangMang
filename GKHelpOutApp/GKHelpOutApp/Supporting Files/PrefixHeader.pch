@@ -68,7 +68,7 @@
 #import <MBProgressHUD.h>
 #import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "PSTipsView.h"
 
 
 #endif /* PrefixHeader_pch */
