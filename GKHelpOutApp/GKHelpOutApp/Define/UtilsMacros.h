@@ -29,6 +29,9 @@
 #define KScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define kScreen_Bounds [UIScreen mainScreen].bounds
 
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
 #define Iphone6ScaleWidth KScreenWidth/375.0
 #define Iphone6ScaleHeight KScreenHeight/667.0
 //根据ip6的屏幕来拉伸
@@ -113,6 +116,8 @@
 
 //发送通知
 #define KPostNotification(name,obj) [[NSNotificationCenter defaultCenter] postNotificationName:name object:obj];
+
+
 
 //单例化一个类
 #define SINGLETON_FOR_HEADER(className) \

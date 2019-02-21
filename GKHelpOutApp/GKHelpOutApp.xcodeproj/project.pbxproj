@@ -149,6 +149,7 @@
 		5557A671221D551A00743012 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66F221D551A00743012 /* UIView+Frame.m */; };
 		BBD7011BF8BDC4D81ACF6934 /* libPods-GKHelpOutApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7761B4905DA72DA5678F1635 /* libPods-GKHelpOutApp.a */; };
 		BF9A09A1C995AA2E60278218 /* libPods-GKHelpOutAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DC79C4E00767C1092FF64E /* libPods-GKHelpOutAppUITests.a */; };
+		EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */; };
 		EAB038B8221E817B00331569 /* NMCVideoFilter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03788221E817A00331569 /* NMCVideoFilter.bundle */; };
 		EAB038B9221E817B00331569 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
 		EAB038BA221E817B00331569 /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; };
@@ -314,11 +315,6 @@
 		EAB039C8221E8FF200331569 /* color.c in Sources */ = {isa = PBXBuildFile; fileRef = EAB03986221E8FF100331569 /* color.c */; };
 		EAB039C9221E8FF200331569 /* IJKSDLGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB03990221E8FF100331569 /* IJKSDLGLView.m */; };
 		EAB039CA221E8FF200331569 /* ijksdl_timer.c in Sources */ = {isa = PBXBuildFile; fileRef = EAB03998221E8FF100331569 /* ijksdl_timer.c */; };
-		EAB039CB221E8FF200331569 /* NTESCellLayoutConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB0399B221E8FF100331569 /* NTESCellLayoutConfig.m */; };
-		EAB039CC221E8FF200331569 /* NTESAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB0399D221E8FF100331569 /* NTESAttachment.m */; };
-		EAB039CD221E8FF200331569 /* NTESContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB0399E221E8FF100331569 /* NTESContentView.m */; };
-		EAB039CE221E8FF200331569 /* NTESSessionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB0399F221E8FF100331569 /* NTESSessionConfig.m */; };
-		EAB039CF221E8FF200331569 /* NTESAttachmentDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB039A1221E8FF100331569 /* NTESAttachmentDecoder.m */; };
 		EAB039D0221E8FF200331569 /* NTESNetChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB039A7221E8FF100331569 /* NTESNetChatViewController.m */; };
 		EAB039D1221E8FF200331569 /* PSSendShopGoodsAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB039A8221E8FF100331569 /* PSSendShopGoodsAttachment.m */; };
 		EAB039D2221E8FF200331569 /* NTESVideoChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAB039AA221E8FF100331569 /* NTESVideoChatViewController.xib */; };
@@ -587,6 +583,8 @@
 		7761B4905DA72DA5678F1635 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A5B6B1C34A852B2B8BC60F /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BE80DD9C3CB07E01EC968559 /* Pods-GKHelpOutAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EA21CA30221E9EB0007D3445 /* PSMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMacro.h; sourceTree = "<group>"; };
 		EAA9CA7C4131332FF846CAD9 /* Pods-GKHelpOutAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAB03788221E817A00331569 /* NMCVideoFilter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NMCVideoFilter.bundle; sourceTree = "<group>"; };
 		EAB03789221E817A00331569 /* NMC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMC.framework; sourceTree = "<group>"; };
@@ -929,16 +927,6 @@
 		EAB03996221E8FF100331569 /* ijksdl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ijksdl.h; sourceTree = "<group>"; };
 		EAB03997221E8FF100331569 /* ijksdl_error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ijksdl_error.h; sourceTree = "<group>"; };
 		EAB03998221E8FF100331569 /* ijksdl_timer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ijksdl_timer.c; sourceTree = "<group>"; };
-		EAB0399B221E8FF100331569 /* NTESCellLayoutConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESCellLayoutConfig.m; sourceTree = "<group>"; };
-		EAB0399C221E8FF100331569 /* NTESAttachmentDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESAttachmentDecoder.h; sourceTree = "<group>"; };
-		EAB0399D221E8FF100331569 /* NTESAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESAttachment.m; sourceTree = "<group>"; };
-		EAB0399E221E8FF100331569 /* NTESContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESContentView.m; sourceTree = "<group>"; };
-		EAB0399F221E8FF100331569 /* NTESSessionConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSessionConfig.m; sourceTree = "<group>"; };
-		EAB039A0221E8FF100331569 /* NTESAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESAttachment.h; sourceTree = "<group>"; };
-		EAB039A1221E8FF100331569 /* NTESAttachmentDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESAttachmentDecoder.m; sourceTree = "<group>"; };
-		EAB039A2221E8FF100331569 /* NTESCellLayoutConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESCellLayoutConfig.h; sourceTree = "<group>"; };
-		EAB039A3221E8FF100331569 /* NTESSessionConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSessionConfig.h; sourceTree = "<group>"; };
-		EAB039A4221E8FF100331569 /* NTESContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESContentView.h; sourceTree = "<group>"; };
 		EAB039A6221E8FF100331569 /* PSchatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSchatViewController.h; sourceTree = "<group>"; };
 		EAB039A7221E8FF100331569 /* NTESNetChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESNetChatViewController.m; sourceTree = "<group>"; };
 		EAB039A8221E8FF100331569 /* PSSendShopGoodsAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSSendShopGoodsAttachment.m; sourceTree = "<group>"; };
@@ -957,6 +945,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */,
 				5557A587221BD8DA00743012 /* libSocialQQ.a in Frameworks */,
 				5557A585221BD8DA00743012 /* UMSocialCore.framework in Frameworks */,
 				5557A586221BD8DA00743012 /* libSocialWeChat.a in Frameworks */,
@@ -1096,6 +1085,7 @@
 		5557A4CF221BD6A700743012 /* Define */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CA30221E9EB0007D3445 /* PSMacro.h */,
 				5557A4D1221BD6D100743012 /* CommonMacros.h */,
 				5557A4D2221BD6D100743012 /* FontAndColorMacros.h */,
 				5557A4D4221BD6D100743012 /* ThirdMacros.h */,
@@ -1814,6 +1804,7 @@
 		64C5C9D239E7F741EC473360 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */,
 				7761B4905DA72DA5678F1635 /* libPods-GKHelpOutApp.a */,
 				45DC79C4E00767C1092FF64E /* libPods-GKHelpOutAppUITests.a */,
 			);
@@ -2448,7 +2439,6 @@
 				EAB0395F221E8FF100331569 /* Util */,
 				EAB03966221E8FF100331569 /* Model */,
 				EAB03969221E8FF100331569 /* View */,
-				EAB03999221E8FF100331569 /* CustomChatCell */,
 				EAB039A5221E8FF100331569 /* Viewcontroller */,
 			);
 			path = chat;
@@ -2580,31 +2570,6 @@
 				EAB03992221E8FF100331569 /* IJKSDLGLView.h */,
 			);
 			path = ios;
-			sourceTree = "<group>";
-		};
-		EAB03999221E8FF100331569 /* CustomChatCell */ = {
-			isa = PBXGroup;
-			children = (
-				EAB0399A221E8FF100331569 /* Message */,
-			);
-			path = CustomChatCell;
-			sourceTree = "<group>";
-		};
-		EAB0399A221E8FF100331569 /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				EAB0399B221E8FF100331569 /* NTESCellLayoutConfig.m */,
-				EAB0399C221E8FF100331569 /* NTESAttachmentDecoder.h */,
-				EAB0399D221E8FF100331569 /* NTESAttachment.m */,
-				EAB0399E221E8FF100331569 /* NTESContentView.m */,
-				EAB0399F221E8FF100331569 /* NTESSessionConfig.m */,
-				EAB039A0221E8FF100331569 /* NTESAttachment.h */,
-				EAB039A1221E8FF100331569 /* NTESAttachmentDecoder.m */,
-				EAB039A2221E8FF100331569 /* NTESCellLayoutConfig.h */,
-				EAB039A3221E8FF100331569 /* NTESSessionConfig.h */,
-				EAB039A4221E8FF100331569 /* NTESContentView.h */,
-			);
-			path = Message;
 			sourceTree = "<group>";
 		};
 		EAB039A5221E8FF100331569 /* Viewcontroller */ = {
@@ -2894,10 +2859,8 @@
 				EAB039B8221E8FF200331569 /* UIView+NTES.m in Sources */,
 				5557A602221BD96500743012 /* TableViewCell.m in Sources */,
 				5557A4D9221BD6F700743012 /* AppDelegate+AppService.m in Sources */,
-				EAB039CF221E8FF200331569 /* NTESAttachmentDecoder.m in Sources */,
 				EAB039B5221E8FF200331569 /* NTESBundleSetting.m in Sources */,
 				5557A61E221BD96500743012 /* WaterFallListLogic.m in Sources */,
-				EAB039CC221E8FF200331569 /* NTESAttachment.m in Sources */,
 				EAB0391E221E817B00331569 /* NIMSessionAudioContentView.m in Sources */,
 				EAB039AF221E8FF200331569 /* NTESCellLayoutConfig.m in Sources */,
 				EAB038E7221E817B00331569 /* NIMKitNotificationFirer.m in Sources */,
@@ -2905,7 +2868,6 @@
 				EAB03918221E817B00331569 /* NIMKitMessageAtModel.m in Sources */,
 				EAB038E6221E817B00331569 /* NIMKitKeyboardInfo.m in Sources */,
 				EAB039D0221E8FF200331569 /* NTESNetChatViewController.m in Sources */,
-				EAB039CD221E8FF200331569 /* NTESContentView.m in Sources */,
 				EAB038DA221E817B00331569 /* NIMInputToolBar.m in Sources */,
 				EAB03937221E817C00331569 /* NIMKitConfig.m in Sources */,
 				5557A603221BD96500743012 /* YSLDraggableCardContainer.m in Sources */,
@@ -2971,7 +2933,6 @@
 				5557A54B221BD7F500743012 /* UIView+SDExtension.m in Sources */,
 				EAB038DD221E817B00331569 /* NIMGrowingTextView.m in Sources */,
 				EAB03907221E817B00331569 /* NIMAudioContentConfig.m in Sources */,
-				EAB039CB221E8FF200331569 /* NTESCellLayoutConfig.m in Sources */,
 				5557A671221D551A00743012 /* UIView+Frame.m in Sources */,
 				EAB038D0221E817B00331569 /* NIMKitUtil.m in Sources */,
 				5557A54C221BD7F500743012 /* SDCollectionViewCell.m in Sources */,
@@ -3090,7 +3051,6 @@
 				5557A547221BD7F500743012 /* YYFPSLabel.m in Sources */,
 				EAB039D3221E8FF200331569 /* PSchatViewController.m in Sources */,
 				5557A607221BD96500743012 /* MsgViewController.m in Sources */,
-				EAB039CE221E8FF200331569 /* NTESSessionConfig.m in Sources */,
 				EAB038CC221E817B00331569 /* NIMKitRobotTemplate.m in Sources */,
 				EAB039B7221E8FF200331569 /* NTESNetCallChatInfo.m in Sources */,
 				EAB038D1221E817B00331569 /* NIMPinyinConverter.m in Sources */,

@@ -165,7 +165,7 @@
     [self AlertWithTitle:nil message:@"确定要退出吗？" andOthers:@[@"取消",@"确定"] animated:YES action:^(NSInteger index) {
         NSLog(@"%ld",index);
         if (index == 1) {
-            [userManager logout:nil];
+            [help_userManager logout:nil];
         }
     }];
 }

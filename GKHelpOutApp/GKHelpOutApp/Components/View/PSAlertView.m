@@ -8,7 +8,9 @@
 
 #import "PSAlertView.h"
 #import "PSMacro.h"
-#import "YYText.h"
+#import <YYKit.h>
+#import <NSAttributedString+YYText.h>
+//#import "YYText.h"
 
 #define GAlertWidth MIN(SCREEN_WIDTH, SCREEN_HEIGHT) * 0.75
 #define GAlertHeightDefault 130.0
@@ -112,7 +114,9 @@
             [paragraphStyle setAlignment:alignment];
             NSDictionary *attributes = @{NSParagraphStyleAttributeName:paragraphStyle,NSFontAttributeName:contentFont,NSForegroundColorAttributeName:otherColor};
             NSMutableAttributedString *contentString = [[NSMutableAttributedString alloc] initWithString:message attributes:attributes];
-            contentString.yy_alignment = alignment;
+            #warning TODO 
+            //contentString.yy_alignment = alignment;
+            contentString.alignment = alignment;
             YYTextContainer *container = [YYTextContainer containerWithSize:CGSizeMake(contentWidth, MAXFLOAT) insets:UIEdgeInsetsZero];
             YYTextLayout *textLayout = [YYTextLayout layoutWithContainer:container text:contentString];
             _messagelabel = [[YYLabel alloc] initWithFrame:CGRectMake(horSideSpace, startY, contentWidth, textLayout.textBoundingSize.height)];
