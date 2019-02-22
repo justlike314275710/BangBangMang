@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, PSDataStatus) {
-    HPDataInitial = 0, //类刚刚初始化，还未获取数据
-    HPDataError,       //接口获取数据失败
-    HPDataEmpty,       //接口正常返回无数据
-    HPDataNormal       //接口返回有正常数据
+    PSDataInitial = 0, //类刚刚初始化，还未获取数据
+    PSDataError,       //接口获取数据失败
+    PSDataEmpty,       //接口正常返回无数据
+    PSDataNormal       //接口返回有正常数据
 };
 
 typedef void(^RequestDataCompleted)(id data);

@@ -33,7 +33,7 @@
 //用户公共服务信息Model缓存
 #define KOauthModelCache @"KOauthModelCache"
 
-
+#define AppScheme @"YuWuService"
 
 #pragma mark - ——————— 网络状态相关 ————————
 

@@ -16,6 +16,10 @@
 #import "ProfileViewController.h"
 #import "PersonModel.h"
 
+#import "PSMoreServiceViewController.h"
+#import "PSMoreServiceViewModel.h"
+
+
 #define itemWidthHeight ((kScreenWidth-30)/2)
 
 @interface PersonListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,WaterFlowLayoutDelegate,XYTransitionProtocol,PersonListLogicDelegate>
@@ -151,9 +155,15 @@
 
 -(void)naviBtnClick:(UIButton *)btn{
     DLog(@"点击了筛选按钮");
-    RootViewController *v = [RootViewController new];
-    v.isHidenNaviBar = YES;
-    [self.navigationController pushViewController:v animated:YES];
+//    RootViewController *v = [RootViewController new];
+//    v.isHidenNaviBar = YES;
+//    [self.navigationController pushViewController:v animated:YES];
+    [self p_insertMoreServiceVC];
+}
+
+- (void)p_insertMoreServiceVC {
+    PSMoreServiceViewController *PSMoreServiceVC = [[PSMoreServiceViewController alloc] initWithViewModel:[PSMoreServiceViewModel new]];
+    [self.navigationController pushViewController:PSMoreServiceVC animated:YES];
 }
 
 #pragma mark -  上下滑动隐藏/显示导航栏

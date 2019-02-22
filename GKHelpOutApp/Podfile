@@ -17,8 +17,18 @@ pod 'Bugly', '~> 2.4.8'
 pod 'AvoidCrash', '~> 2.5.2'
 pod 'M80AttributedLabel'
 pod 'libextobjc', '~> 0.4.1'
+pod 'WechatOpenSDK'
+pod 'MJExtension'
+pod 'PYPhotoBrowser'
+pod 'CDZStarsControl'
+pod 'JSONModel', '~> 1.7.0'
+pod 'UITextView+Placeholder', '~> 1.2.0'
+pod 'BlocksKit', '~> 2.2.5'
+pod 'DZNEmptyDataSet'
+pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
+pod 'DGActivityIndicatorView'
 
-
+pod 'AlipaySDK-iOS'
 end
 
 target 'GKHelpOutAppUITests' do
