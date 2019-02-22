@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5518F4D5221EA6E200040448 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
+		5518F4D6221EA6E200040448 /* NMC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5518F4D8221EA6E700040448 /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; };
+		5518F4D9221EA6E700040448 /* NIMAVChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5518F4DA221EA6EC00040448 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
+		5518F4DB221EA6EC00040448 /* NIMSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5557A48E221BB46C00743012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A48D221BB46C00743012 /* AppDelegate.m */; };
 		5557A491221BB46C00743012 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A490221BB46C00743012 /* ViewController.m */; };
 		5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */; };
@@ -60,7 +66,7 @@
 		5557A56F221BD87100743012 /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A56C221BD87100743012 /* GameInfo.m */; };
 		5557A581221BD8DA00743012 /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5557A572221BD8DA00743012 /* UMSocialSDKResources.bundle */; };
 		5557A582221BD8DA00743012 /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5557A573221BD8DA00743012 /* UShareUI.framework */; };
-		5557A583221BD8DA00743012 /* UMSocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5557A575221BD8DA00743012 /* UMSocialNetwork.framework */; };
+		5557A583221BD8DA00743012 /* UMSocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5557A575221BD8DA00743012 /* UMSocialNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		5557A584221BD8DA00743012 /* UMSocialSDKPromptResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5557A576221BD8DA00743012 /* UMSocialSDKPromptResources.bundle */; };
 		5557A585221BD8DA00743012 /* UMSocialCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5557A577221BD8DA00743012 /* UMSocialCore.framework */; };
 		5557A586221BD8DA00743012 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5557A57A221BD8DA00743012 /* libSocialWeChat.a */; };
@@ -152,8 +158,8 @@
 		EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */; };
 		EAB038B8221E817B00331569 /* NMCVideoFilter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03788221E817A00331569 /* NMCVideoFilter.bundle */; };
 		EAB038B9221E817B00331569 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
-		EAB038BA221E817B00331569 /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; };
-		EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
+		EAB038BA221E817B00331569 /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EAB038BC221E817B00331569 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EAB0378E221E817B00331569 /* LICENSE */; };
 		EAB038BD221E817B00331569 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EAB0378F221E817B00331569 /* README.md */; };
 		EAB038BE221E817B00331569 /* NIMKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03792221E817B00331569 /* NIMKitResource.bundle */; };
@@ -339,6 +345,22 @@
 			remoteInfo = GKHelpOutApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5518F4D7221EA6E200040448 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5518F4DB221EA6EC00040448 /* NIMSDK.framework in Embed Frameworks */,
+				5518F4D9221EA6E700040448 /* NIMAVChat.framework in Embed Frameworks */,
+				5518F4D6221EA6E200040448 /* NMC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		45DC79C4E00767C1092FF64E /* libPods-GKHelpOutAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -947,11 +969,14 @@
 			files = (
 				EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */,
 				5557A587221BD8DA00743012 /* libSocialQQ.a in Frameworks */,
+				5518F4DA221EA6EC00040448 /* NIMSDK.framework in Frameworks */,
 				5557A585221BD8DA00743012 /* UMSocialCore.framework in Frameworks */,
+				5518F4D8221EA6E700040448 /* NIMAVChat.framework in Frameworks */,
 				5557A586221BD8DA00743012 /* libSocialWeChat.a in Frameworks */,
 				5557A582221BD8DA00743012 /* UShareUI.framework in Frameworks */,
 				5557A588221BD8DA00743012 /* libUMSocialLog.a in Frameworks */,
 				BBD7011BF8BDC4D81ACF6934 /* libPods-GKHelpOutApp.a in Frameworks */,
+				5518F4D5221EA6E200040448 /* NMC.framework in Frameworks */,
 				5557A583221BD8DA00743012 /* UMSocialNetwork.framework in Frameworks */,
 				EAB038BA221E817B00331569 /* NIMAVChat.framework in Frameworks */,
 				EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */,
@@ -1085,12 +1110,12 @@
 		5557A4CF221BD6A700743012 /* Define */ = {
 			isa = PBXGroup;
 			children = (
-				EA21CA30221E9EB0007D3445 /* PSMacro.h */,
 				5557A4D1221BD6D100743012 /* CommonMacros.h */,
 				5557A4D2221BD6D100743012 /* FontAndColorMacros.h */,
 				5557A4D4221BD6D100743012 /* ThirdMacros.h */,
 				5557A4D3221BD6D100743012 /* URLMacros.h */,
 				5557A4D0221BD6D100743012 /* UtilsMacros.h */,
+				EA21CA30221E9EB0007D3445 /* PSMacro.h */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -2600,6 +2625,7 @@
 				5557A486221BB46C00743012 /* Frameworks */,
 				5557A487221BB46C00743012 /* Resources */,
 				B98BF45394335A9758F0647A /* [CP] Copy Pods Resources */,
+				5518F4D7221EA6E200040448 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -158,6 +158,19 @@
     
 }
 
+- (void)checkDataWithPhoneCallback:(CheckDataCallback)callback {
+    if (self.phoneNumber.length == 0) {
+        if (callback) {
+            NSString*please_enter_phone_number = @"请输入手机号码";
+            callback(NO,please_enter_phone_number);
+        }
+        return;
+    }
+    if (callback) {
+        callback(YES,nil);
+    }
+}
+
 
 
 

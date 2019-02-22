@@ -10,14 +10,17 @@
 #import "LoginLogic.h"
 
 @interface LoginViewController ()
-@property(nonatomic,strong) LoginLogic *logic;//逻辑层
 
+@property(nonatomic,strong) LoginLogic *logic;//逻辑层
 @property(nonatomic,strong) UIScrollView *scrollview;
 @property(nonatomic,strong) UITextField *phoneNumberField;
 @property(nonatomic,strong) UITextField *codeField;
 @property(nonatomic,strong) UIButton *getCodeBtn;
 @property(nonatomic,strong) UIButton *loginBtn;
 @property(nonatomic,assign) NSInteger seconds;
+
+@property (nonatomic, weak) NSTimer *timer; //倒计时
+
 
 @end
 
@@ -29,14 +32,15 @@
     [super viewDidLoad];
     
     self.isHidenNaviBar = YES;
-    
-    
     _logic = [LoginLogic new];
     @weakify(self)
     _logic.lgoinComplete = ^{
         [weak_self UserAccoutLogin];
     };
     
+    [self setupUI];
+    
+    /*
     YYLabel *snowBtn = [[YYLabel alloc] initWithFrame:CGRectMake(0, 200, 150, 60)];
     snowBtn.text = @"微信登录";
     snowBtn.font = SYSTEMFONT(20);
@@ -107,8 +111,9 @@
     };
     
     [self.view addSubview:getCodeBtn];
-    
-    [self setupUI];
+     
+     */
+
     
 }
 
@@ -159,16 +164,37 @@
         [weak_self UserAccoutLogin];
     }];
  
+}
+
+//开启定时器
+- (void)startTimer {
     
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    
+}
+
+- (void)handleTimer {
+    
+    if (_seconds > 0) {
+        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_seconds] forState:UIControlStateDisabled];
+        _seconds --;
+        if (self.seconds==0)
+        {
+            self.getCodeBtn.enabled = YES;
+            [self.timer invalidate];
+            self.timer = nil;
+        }
+    }
 }
 
 //MARK:获取验证码
 - (void)codeClicks {
-//    self.getCodeBtn.enabled = NO;
     [self getCode];
 }
 
 -(void)WXLogin{
+    
     [help_userManager login:kUserLoginTypeWeChat completion:^(BOOL success, NSString *des) {
         if (success) {
             DLog(@"登录成功");
@@ -189,7 +215,7 @@
 }
 //用户账号登录
 -(void)UserAccoutLogin {
-
+    
     self.logic.phoneNumber = self.phoneNumberField.text;
     self.logic.messageCode = self.codeField.text;
     [_logic checkDataWithCallback:^(BOOL successful, NSString *tips) {
@@ -221,16 +247,28 @@
     
     self.getCodeBtn.enabled = NO;
     _logic.phoneNumber = self.phoneNumberField.text;
-    [_logic getVerificationCodeData:^(id data) {
-        
-    } failed:^(NSError *error) {
-        NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-        id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSString*code=body[@"error"];
-        NSString*message = body[@"message"];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD showWarnMessage:message];
-        });
+    [_logic checkDataWithPhoneCallback:^(BOOL successful, NSString *tips) {
+        if (successful) {
+            [self.logic getVerificationCodeData:^(id data) {
+                [PSTipsView showTips:@"已发送"];
+                self.seconds=60;
+                [self startTimer];
+                
+            } failed:^(NSError *error) {
+                NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+                id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//                NSString*code=body[@"error"];
+                NSString*message = body[@"message"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD showWarnMessage:message];
+                    self.getCodeBtn.enabled=YES;
+                });
+            }];
+            
+        } else {
+            self.getCodeBtn.enabled = YES;
+            [MBProgressHUD showWarnMessage:tips];
+        }
     }];
 }
 

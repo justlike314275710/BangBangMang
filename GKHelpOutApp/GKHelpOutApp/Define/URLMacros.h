@@ -78,6 +78,8 @@
 //获取认证授权token
 #define URL_get_oauth_token @"/oauth/token"
 
+//获取当前IM用户
+#define URL_get_im_info @"/im/users/me"
 
 #pragma mark - ——————— 用户相关 ————————
 
