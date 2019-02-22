@@ -14,9 +14,31 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - AlipaySDK-iOS (15.5.5)
   - AvoidCrash (2.5.2)
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - Bugly (2.4.8)
+  - CDZStarsControl (1.0.1)
+  - DACircularProgress (2.3.1)
+  - DGActivityIndicatorView (2.1.1)
+  - DZNEmptyDataSet (1.8.1)
+  - FLAnimatedImage (1.0.12)
   - IQKeyboardManager (6.2.0)
+  - JSONModel (1.7.0)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
     - libextobjc/EXTConcreteProtocol (= 0.4.1)
@@ -55,11 +77,22 @@ PODS:
   - M80AttributedLabel (1.7.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.0.0)
+  - MJExtension (3.0.15.1)
   - MJRefresh (3.1.15.7)
+  - PYPhotoBrowser (1.5.6):
+    - DACircularProgress
+    - MBProgressHUD
+    - SDWebImage/GIF (~> 4.2.1)
   - SDWebImage (4.2.3):
     - SDWebImage/Core (= 4.2.3)
   - SDWebImage/Core (4.2.3)
+  - SDWebImage/GIF (4.2.3):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
   - TZImagePickerController (1.9.8)
+  - "UITableView+FDTemplateLayoutCell (1.6)"
+  - "UITextView+Placeholder (1.2.1)"
+  - WechatOpenSDK (1.8.3)
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
   - YYKit (1.0.9):
@@ -68,50 +101,87 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - AlipaySDK-iOS
   - AvoidCrash (~> 2.5.2)
+  - BlocksKit (~> 2.2.5)
   - Bugly (~> 2.4.8)
+  - CDZStarsControl
+  - DGActivityIndicatorView
+  - DZNEmptyDataSet
   - IQKeyboardManager
+  - JSONModel (~> 1.7.0)
   - libextobjc (~> 0.4.1)
   - M80AttributedLabel
   - Masonry
   - MBProgressHUD (~> 1.0.0)
+  - MJExtension
   - MJRefresh
+  - PYPhotoBrowser
   - SDWebImage (~> 4.2.3)
   - TZImagePickerController (~> 1.9.8)
+  - "UITableView+FDTemplateLayoutCell (~> 1.6)"
+  - "UITextView+Placeholder (~> 1.2.0)"
+  - WechatOpenSDK
   - YTKNetwork
   - YYKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - AlipaySDK-iOS
     - AvoidCrash
+    - BlocksKit
     - Bugly
+    - CDZStarsControl
+    - DACircularProgress
+    - DGActivityIndicatorView
+    - DZNEmptyDataSet
+    - FLAnimatedImage
     - IQKeyboardManager
+    - JSONModel
     - libextobjc
     - M80AttributedLabel
     - Masonry
     - MBProgressHUD
+    - MJExtension
     - MJRefresh
+    - PYPhotoBrowser
     - SDWebImage
     - TZImagePickerController
+    - "UITableView+FDTemplateLayoutCell"
+    - "UITextView+Placeholder"
+    - WechatOpenSDK
     - YTKNetwork
     - YYKit
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AlipaySDK-iOS: 7b700342e71cb3b626603ce96f9d2fb158acbcfb
   AvoidCrash: 28c6916fe19bd2b84126b8dec7cbe61c9a12741d
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Bugly: da3c02408c14838d498429320545a8e439392978
+  CDZStarsControl: c2c9a9fae443924cdbadca93db96b3c433d0479d
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   M80AttributedLabel: 7cb5064930533719b706c1c8febee32442da7cf3
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  PYPhotoBrowser: 74f6526b290069a55943ed92e5a21f84c6d90ecf
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   TZImagePickerController: 3b9413ae5d049b1fdc5b0c720ad283f35b679a50
+  "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
+  WechatOpenSDK: 3117412f8aafde4758cac1e8d20b93c67cafcfef
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 05bbeb90a5807af0d58acbbecc43b3a14b89a38a
+PODFILE CHECKSUM: 66d8b07fea8c0ad487eee62c901dabdca2a59181
 
 COCOAPODS: 1.5.2

@@ -143,23 +143,78 @@
 		5557A660221BD99E00743012 /* stepPk_win_colour3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5557A64E221BD99E00743012 /* stepPk_win_colour3@2x.png */; };
 		5557A661221BD99E00743012 /* stepPk_win_colour7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5557A64F221BD99E00743012 /* stepPk_win_colour7@2x.png */; };
 		5557A662221BD99E00743012 /* stepPk_win_colour5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5557A650221BD99E00743012 /* stepPk_win_colour5@2x.png */; };
-		5557A665221BE07F00743012 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5557A664221BE07F00743012 /* Media.xcassets */; };
 		5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A669221CE1A000743012 /* HpBaseLogic.m */; };
 		5557A66E221D027200743012 /* OauthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66D221D027200743012 /* OauthInfo.m */; };
 		5557A671221D551A00743012 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66F221D551A00743012 /* UIView+Frame.m */; };
-		55626581221FEAFC00500DD3 /* UploadAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55626580221FEAFC00500DD3 /* UploadAvatarViewController.m */; };
-		BBD7011BF8BDC4D81ACF6934 /* libPods-GKHelpOutApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7761B4905DA72DA5678F1635 /* libPods-GKHelpOutApp.a */; };
-		BF9A09A1C995AA2E60278218 /* libPods-GKHelpOutAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DC79C4E00767C1092FF64E /* libPods-GKHelpOutAppUITests.a */; };
+		A2630C1CA890D20F200E6E6E /* libPods-GKHelpOutAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */; };
+		A56ED927F1CE79562534A4C9 /* libPods-GKHelpOutApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */; };
+		EA13D0E6221FDA5600A40EE9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA13D0E5221FDA5600A40EE9 /* Media.xcassets */; };
 		EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */; };
 		EA21CA31221EA694007D3445 /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; };
 		EA21CA32221EA694007D3445 /* NIMAVChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EA21CA34221EA699007D3445 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
 		EA21CA35221EA699007D3445 /* NMC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EA21CA36221EA69F007D3445 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
 		EA21CA37221EA69F007D3445 /* NIMSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EA21CA49221F9386007D3445 /* PSPayCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA3F221F9386007D3445 /* PSPayCenter.m */; };
+		EA21CA4A221F9386007D3445 /* PSWechatHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA42221F9386007D3445 /* PSWechatHandler.m */; };
+		EA21CA4B221F9386007D3445 /* PSAliHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA43221F9386007D3445 /* PSAliHandler.m */; };
+		EA21CA4C221F9386007D3445 /* PSPayInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA48221F9386007D3445 /* PSPayInfo.m */; };
+		EA21CA78221F9980007D3445 /* PSConsultationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA52221F9980007D3445 /* PSConsultationViewModel.m */; };
+		EA21CA79221F9980007D3445 /* PSEvaluateViewmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA54221F9980007D3445 /* PSEvaluateViewmodel.m */; };
+		EA21CA7A221F9980007D3445 /* PSLawerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA55221F9980007D3445 /* PSLawerViewModel.m */; };
+		EA21CA7B221F9980007D3445 /* PSMyAdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */; };
+		EA21CA7C221F9980007D3445 /* PSScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5B221F9980007D3445 /* PSScoreViewController.m */; };
+		EA21CA7D221F9980007D3445 /* PSConsultationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */; };
+		EA21CA7E221F9980007D3445 /* PSConsultingCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5D221F9980007D3445 /* PSConsultingCategoryViewController.m */; };
+		EA21CA7F221F9980007D3445 /* PSConsultationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5F221F9980007D3445 /* PSConsultationTableViewCell.m */; };
+		EA21CA80221F9980007D3445 /* PSAdviceDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA61221F9980007D3445 /* PSAdviceDetailsView.m */; };
+		EA21CA81221F9980007D3445 /* PSConsultationOtherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA63221F9980007D3445 /* PSConsultationOtherTableViewCell.m */; };
+		EA21CA82221F9980007D3445 /* PSAdviceComments.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA68221F9980007D3445 /* PSAdviceComments.m */; };
+		EA21CA83221F9980007D3445 /* PSLawersDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA6A221F9980007D3445 /* PSLawersDetails.m */; };
+		EA21CA84221F9980007D3445 /* PSConsultation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA6C221F9980007D3445 /* PSConsultation.m */; };
+		EA21CA85221F9980007D3445 /* PSLawer.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA6F221F9980007D3445 /* PSLawer.m */; };
+		EA21CA86221F9980007D3445 /* PSCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA70221F9980007D3445 /* PSCustomer.m */; };
+		EA21CA87221F9980007D3445 /* PSAttachments.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA71221F9980007D3445 /* PSAttachments.m */; };
+		EA21CA88221F9980007D3445 /* PSLawyerComments.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA73221F9980007D3445 /* PSLawyerComments.m */; };
+		EA21CA89221F9980007D3445 /* PSLawyers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA75221F9980007D3445 /* PSLawyers.m */; };
+		EA21CA8A221F9980007D3445 /* PSAdviceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA76221F9980007D3445 /* PSAdviceDetailsViewController.m */; };
+		EA21CAA2221F9A21007D3445 /* PSMoreServiceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA8D221F9A21007D3445 /* PSMoreServiceViewModel.m */; };
+		EA21CAA3221F9A21007D3445 /* PSLawyerDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA90221F9A21007D3445 /* PSLawyerDetailsViewController.m */; };
+		EA21CAA4221F9A21007D3445 /* PSMoreRoleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA92221F9A21007D3445 /* PSMoreRoleDetailViewController.m */; };
+		EA21CAA5221F9A21007D3445 /* PSMoreServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA93221F9A21007D3445 /* PSMoreServiceViewController.m */; };
+		EA21CAA6221F9A21007D3445 /* PSMoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA97221F9A21007D3445 /* PSMoreModel.m */; };
+		EA21CAA7221F9A21007D3445 /* PSLawyerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA9A221F9A21007D3445 /* PSLawyerView.m */; };
+		EA21CAA8221F9A21007D3445 /* MoreRoloCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA9B221F9A21007D3445 /* MoreRoloCell.m */; };
+		EA21CAA9221F9A21007D3445 /* PSEvaluateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA9C221F9A21007D3445 /* PSEvaluateTableViewCell.m */; };
+		EA21CAAA221F9A21007D3445 /* serciceIiem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA9D221F9A21007D3445 /* serciceIiem.m */; };
+		EA21CAAD221F9D5E007D3445 /* PSBusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CAAC221F9D5E007D3445 /* PSBusinessViewController.m */; };
+		EA21CAB4221F9DCC007D3445 /* PSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CAAF221F9DCC007D3445 /* PSViewModel.m */; };
+		EA21CAB5221F9DCC007D3445 /* PSBasePrisonerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CAB1221F9DCC007D3445 /* PSBasePrisonerViewModel.m */; };
+		EA21CAB8221F9E6D007D3445 /* PSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CAB6221F9E6C007D3445 /* PSResponse.m */; };
+		EA21CABB221F9EFD007D3445 /* PSLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CABA221F9EFD007D3445 /* PSLoadingView.m */; };
+		EA21CAC0221FA04F007D3445 /* PSPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CABF221FA04F007D3445 /* PSPayView.m */; };
+		EA21CB15221FA205007D3445 /* UIImage+Stretch.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB13221FA204007D3445 /* UIImage+Stretch.m */; };
+		EA21CB1D221FA2C9007D3445 /* PSPhoneCardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB17221FA2C8007D3445 /* PSPhoneCardViewModel.m */; };
+		EA21CB1E221FA2C9007D3445 /* PSPrisonerFamliesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB18221FA2C9007D3445 /* PSPrisonerFamliesViewModel.m */; };
+		EA21CB1F221FA2CA007D3445 /* PSAppointmentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB19221FA2C9007D3445 /* PSAppointmentViewModel.m */; };
+		EA21CB22221FA36C007D3445 /* PSAppointmentBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB20221FA36C007D3445 /* PSAppointmentBaseViewModel.m */; };
+		EA21CB28221FA444007D3445 /* PSPayOngoingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB25221FA444007D3445 /* PSPayOngoingViewController.m */; };
+		EA21CB29221FA444007D3445 /* PSPaySuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB27221FA444007D3445 /* PSPaySuccessViewController.m */; };
+		EA21CB2D221FA78C007D3445 /* PSProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB2C221FA78C007D3445 /* PSProduct.m */; };
+		EA21CB36221FA88E007D3445 /* PSWechatInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB2E221FA88D007D3445 /* PSWechatInfo.m */; };
+		EA21CB37221FA88E007D3445 /* PSAlipayInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB31221FA88E007D3445 /* PSAlipayInfo.m */; };
+		EA21CB38221FA88E007D3445 /* PSPhoneCard.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB34221FA88E007D3445 /* PSPhoneCard.m */; };
+		EA21CB39221FA88E007D3445 /* PSPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB35221FA88E007D3445 /* PSPayment.m */; };
+		EA21CB3C221FA99A007D3445 /* PSServiceLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB3A221FA99A007D3445 /* PSServiceLinkView.m */; };
+		EA21CB3F221FC5EA007D3445 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB3E221FC5EA007D3445 /* NSString+Utils.m */; };
+		EA21CB42221FC68F007D3445 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB41221FC68E007D3445 /* GTMBase64.m */; };
+		EA21CB46221FCA1E007D3445 /* UIImage+WLCompress.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB44221FCA1D007D3445 /* UIImage+WLCompress.m */; };
+		EA21CB4C221FCD2B007D3445 /* PSMyAdviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB48221FCD2B007D3445 /* PSMyAdviceTableViewCell.m */; };
+		EA21CB4D221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB49221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m */; };
+		EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB4F221FCEE2007D3445 /* NSObject+version.m */; };
+		EA21CB54221FD337007D3445 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CB53221FD337007D3445 /* CoreMotion.framework */; };
 		EAB038B8221E817B00331569 /* NMCVideoFilter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03788221E817A00331569 /* NMCVideoFilter.bundle */; };
 		EAB038B9221E817B00331569 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
-		EAB038BA221E817B00331569 /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; };
 		EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
 		EAB038BC221E817B00331569 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EAB0378E221E817B00331569 /* LICENSE */; };
 		EAB038BD221E817B00331569 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EAB0378F221E817B00331569 /* README.md */; };
@@ -364,8 +419,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		45DC79C4E00767C1092FF64E /* libPods-GKHelpOutAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4669FBBAF16B4542978B5C1B /* Pods-GKHelpOutApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.release.xcconfig"; sourceTree = "<group>"; };
+		489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A489221BB46C00743012 /* GKHelpOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKHelpOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A48C221BB46C00743012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5557A48D221BB46C00743012 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -596,21 +650,146 @@
 		5557A64E221BD99E00743012 /* stepPk_win_colour3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepPk_win_colour3@2x.png"; sourceTree = "<group>"; };
 		5557A64F221BD99E00743012 /* stepPk_win_colour7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepPk_win_colour7@2x.png"; sourceTree = "<group>"; };
 		5557A650221BD99E00743012 /* stepPk_win_colour5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stepPk_win_colour5@2x.png"; sourceTree = "<group>"; };
-		5557A664221BE07F00743012 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		5557A668221CE1A000743012 /* HpBaseLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HpBaseLogic.h; sourceTree = "<group>"; };
 		5557A669221CE1A000743012 /* HpBaseLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HpBaseLogic.m; sourceTree = "<group>"; };
 		5557A66C221D027200743012 /* OauthInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OauthInfo.h; sourceTree = "<group>"; };
 		5557A66D221D027200743012 /* OauthInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OauthInfo.m; sourceTree = "<group>"; };
 		5557A66F221D551A00743012 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		5557A670221D551A00743012 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
-		5562657F221FEAFC00500DD3 /* UploadAvatarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadAvatarViewController.h; sourceTree = "<group>"; };
-		55626580221FEAFC00500DD3 /* UploadAvatarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadAvatarViewController.m; sourceTree = "<group>"; };
-		7761B4905DA72DA5678F1635 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81A5B6B1C34A852B2B8BC60F /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
-		BE80DD9C3CB07E01EC968559 /* Pods-GKHelpOutAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7C10B3AC074F1C870E18701F /* Pods-GKHelpOutApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.release.xcconfig"; sourceTree = "<group>"; };
+		7C2548D35314A27746458142 /* Pods-GKHelpOutAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E7404FC029C5B013F6E316EC /* Pods-GKHelpOutAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EA13D0E5221FDA5600A40EE9 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EA21CA30221E9EB0007D3445 /* PSMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMacro.h; sourceTree = "<group>"; };
-		EAA9CA7C4131332FF846CAD9 /* Pods-GKHelpOutAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA21CA3F221F9386007D3445 /* PSPayCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPayCenter.m; sourceTree = "<group>"; };
+		EA21CA40221F9386007D3445 /* PSPayHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPayHandler.h; sourceTree = "<group>"; };
+		EA21CA42221F9386007D3445 /* PSWechatHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSWechatHandler.m; sourceTree = "<group>"; };
+		EA21CA43221F9386007D3445 /* PSAliHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAliHandler.m; sourceTree = "<group>"; };
+		EA21CA44221F9386007D3445 /* PSWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSWechatHandler.h; sourceTree = "<group>"; };
+		EA21CA45221F9386007D3445 /* PSAliHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAliHandler.h; sourceTree = "<group>"; };
+		EA21CA46221F9386007D3445 /* PSPayInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPayInfo.h; sourceTree = "<group>"; };
+		EA21CA47221F9386007D3445 /* PSPayCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPayCenter.h; sourceTree = "<group>"; };
+		EA21CA48221F9386007D3445 /* PSPayInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPayInfo.m; sourceTree = "<group>"; };
+		EA21CA4F221F9980007D3445 /* PSScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSScoreViewController.h; sourceTree = "<group>"; };
+		EA21CA50221F9980007D3445 /* PSConsultationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultationViewController.h; sourceTree = "<group>"; };
+		EA21CA52221F9980007D3445 /* PSConsultationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationViewModel.m; sourceTree = "<group>"; };
+		EA21CA53221F9980007D3445 /* PSLawerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLawerViewModel.h; sourceTree = "<group>"; };
+		EA21CA54221F9980007D3445 /* PSEvaluateViewmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSEvaluateViewmodel.m; sourceTree = "<group>"; };
+		EA21CA55221F9980007D3445 /* PSLawerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLawerViewModel.m; sourceTree = "<group>"; };
+		EA21CA56221F9980007D3445 /* PSConsultationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultationViewModel.h; sourceTree = "<group>"; };
+		EA21CA57221F9980007D3445 /* PSEvaluateViewmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSEvaluateViewmodel.h; sourceTree = "<group>"; };
+		EA21CA58221F9980007D3445 /* PSAdviceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAdviceDetailsViewController.h; sourceTree = "<group>"; };
+		EA21CA59221F9980007D3445 /* PSConsultingCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultingCategoryViewController.h; sourceTree = "<group>"; };
+		EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMyAdviceViewController.m; sourceTree = "<group>"; };
+		EA21CA5B221F9980007D3445 /* PSScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSScoreViewController.m; sourceTree = "<group>"; };
+		EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationViewController.m; sourceTree = "<group>"; };
+		EA21CA5D221F9980007D3445 /* PSConsultingCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultingCategoryViewController.m; sourceTree = "<group>"; };
+		EA21CA5F221F9980007D3445 /* PSConsultationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationTableViewCell.m; sourceTree = "<group>"; };
+		EA21CA60221F9980007D3445 /* PSConsultationOtherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultationOtherTableViewCell.h; sourceTree = "<group>"; };
+		EA21CA61221F9980007D3445 /* PSAdviceDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAdviceDetailsView.m; sourceTree = "<group>"; };
+		EA21CA62221F9980007D3445 /* PSConsultationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultationTableViewCell.h; sourceTree = "<group>"; };
+		EA21CA63221F9980007D3445 /* PSConsultationOtherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationOtherTableViewCell.m; sourceTree = "<group>"; };
+		EA21CA64221F9980007D3445 /* PSAdviceDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAdviceDetailsView.h; sourceTree = "<group>"; };
+		EA21CA66221F9980007D3445 /* PSCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCustomer.h; sourceTree = "<group>"; };
+		EA21CA67221F9980007D3445 /* PSLawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLawer.h; sourceTree = "<group>"; };
+		EA21CA68221F9980007D3445 /* PSAdviceComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAdviceComments.m; sourceTree = "<group>"; };
+		EA21CA69221F9980007D3445 /* PSLawyerComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLawyerComments.h; sourceTree = "<group>"; };
+		EA21CA6A221F9980007D3445 /* PSLawersDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLawersDetails.m; sourceTree = "<group>"; };
+		EA21CA6B221F9980007D3445 /* PSAttachments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAttachments.h; sourceTree = "<group>"; };
+		EA21CA6C221F9980007D3445 /* PSConsultation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultation.m; sourceTree = "<group>"; };
+		EA21CA6D221F9980007D3445 /* PSLawyers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLawyers.h; sourceTree = "<group>"; };
+		EA21CA6E221F9980007D3445 /* PSAdviceComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAdviceComments.h; sourceTree = "<group>"; };
+		EA21CA6F221F9980007D3445 /* PSLawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLawer.m; sourceTree = "<group>"; };
+		EA21CA70221F9980007D3445 /* PSCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCustomer.m; sourceTree = "<group>"; };
+		EA21CA71221F9980007D3445 /* PSAttachments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAttachments.m; sourceTree = "<group>"; };
+		EA21CA72221F9980007D3445 /* PSLawersDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLawersDetails.h; sourceTree = "<group>"; };
+		EA21CA73221F9980007D3445 /* PSLawyerComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLawyerComments.m; sourceTree = "<group>"; };
+		EA21CA74221F9980007D3445 /* PSConsultation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultation.h; sourceTree = "<group>"; };
+		EA21CA75221F9980007D3445 /* PSLawyers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLawyers.m; sourceTree = "<group>"; };
+		EA21CA76221F9980007D3445 /* PSAdviceDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAdviceDetailsViewController.m; sourceTree = "<group>"; };
+		EA21CA77221F9980007D3445 /* PSMyAdviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMyAdviceViewController.h; sourceTree = "<group>"; };
+		EA21CA8D221F9A21007D3445 /* PSMoreServiceViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMoreServiceViewModel.m; sourceTree = "<group>"; };
+		EA21CA8E221F9A21007D3445 /* PSMoreServiceViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMoreServiceViewModel.h; sourceTree = "<group>"; };
+		EA21CA90221F9A21007D3445 /* PSLawyerDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLawyerDetailsViewController.m; sourceTree = "<group>"; };
+		EA21CA91221F9A21007D3445 /* PSMoreServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMoreServiceViewController.h; sourceTree = "<group>"; };
+		EA21CA92221F9A21007D3445 /* PSMoreRoleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMoreRoleDetailViewController.m; sourceTree = "<group>"; };
+		EA21CA93221F9A21007D3445 /* PSMoreServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMoreServiceViewController.m; sourceTree = "<group>"; };
+		EA21CA94221F9A21007D3445 /* PSLawyerDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLawyerDetailsViewController.h; sourceTree = "<group>"; };
+		EA21CA95221F9A21007D3445 /* PSMoreRoleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMoreRoleDetailViewController.h; sourceTree = "<group>"; };
+		EA21CA97221F9A21007D3445 /* PSMoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMoreModel.m; sourceTree = "<group>"; };
+		EA21CA98221F9A21007D3445 /* PSMoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMoreModel.h; sourceTree = "<group>"; };
+		EA21CA9A221F9A21007D3445 /* PSLawyerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLawyerView.m; sourceTree = "<group>"; };
+		EA21CA9B221F9A21007D3445 /* MoreRoloCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreRoloCell.m; sourceTree = "<group>"; };
+		EA21CA9C221F9A21007D3445 /* PSEvaluateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSEvaluateTableViewCell.m; sourceTree = "<group>"; };
+		EA21CA9D221F9A21007D3445 /* serciceIiem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serciceIiem.m; sourceTree = "<group>"; };
+		EA21CA9E221F9A21007D3445 /* PSLawyerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLawyerView.h; sourceTree = "<group>"; };
+		EA21CA9F221F9A21007D3445 /* MoreRoloCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreRoloCell.h; sourceTree = "<group>"; };
+		EA21CAA0221F9A21007D3445 /* serciceIiem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serciceIiem.h; sourceTree = "<group>"; };
+		EA21CAA1221F9A21007D3445 /* PSEvaluateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSEvaluateTableViewCell.h; sourceTree = "<group>"; };
+		EA21CAAB221F9D5E007D3445 /* PSBusinessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSBusinessViewController.h; sourceTree = "<group>"; };
+		EA21CAAC221F9D5E007D3445 /* PSBusinessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSBusinessViewController.m; sourceTree = "<group>"; };
+		EA21CAAF221F9DCC007D3445 /* PSViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSViewModel.m; sourceTree = "<group>"; };
+		EA21CAB0221F9DCC007D3445 /* PSViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSViewModel.h; sourceTree = "<group>"; };
+		EA21CAB1221F9DCC007D3445 /* PSBasePrisonerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSBasePrisonerViewModel.m; sourceTree = "<group>"; };
+		EA21CAB2221F9DCC007D3445 /* PSBasePrisonerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSBasePrisonerViewModel.h; sourceTree = "<group>"; };
+		EA21CAB3221F9DCC007D3445 /* PSViewModelService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSViewModelService.h; sourceTree = "<group>"; };
+		EA21CAB6221F9E6C007D3445 /* PSResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSResponse.m; sourceTree = "<group>"; };
+		EA21CAB7221F9E6C007D3445 /* PSResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSResponse.h; sourceTree = "<group>"; };
+		EA21CAB9221F9EFD007D3445 /* PSLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLoadingView.h; sourceTree = "<group>"; };
+		EA21CABA221F9EFD007D3445 /* PSLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLoadingView.m; sourceTree = "<group>"; };
+		EA21CABD221FA04E007D3445 /* PSPayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPayView.h; sourceTree = "<group>"; };
+		EA21CABE221FA04F007D3445 /* PSPaymentBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPaymentBlock.h; sourceTree = "<group>"; };
+		EA21CABF221FA04F007D3445 /* PSPayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPayView.m; sourceTree = "<group>"; };
+		EA21CB13221FA204007D3445 /* UIImage+Stretch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Stretch.m"; sourceTree = "<group>"; };
+		EA21CB14221FA205007D3445 /* UIImage+Stretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Stretch.h"; sourceTree = "<group>"; };
+		EA21CB17221FA2C8007D3445 /* PSPhoneCardViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPhoneCardViewModel.m; sourceTree = "<group>"; };
+		EA21CB18221FA2C9007D3445 /* PSPrisonerFamliesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPrisonerFamliesViewModel.m; sourceTree = "<group>"; };
+		EA21CB19221FA2C9007D3445 /* PSAppointmentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAppointmentViewModel.m; sourceTree = "<group>"; };
+		EA21CB1A221FA2C9007D3445 /* PSAppointmentViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAppointmentViewModel.h; sourceTree = "<group>"; };
+		EA21CB1B221FA2C9007D3445 /* PSPrisonerFamliesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPrisonerFamliesViewModel.h; sourceTree = "<group>"; };
+		EA21CB1C221FA2C9007D3445 /* PSPhoneCardViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPhoneCardViewModel.h; sourceTree = "<group>"; };
+		EA21CB20221FA36C007D3445 /* PSAppointmentBaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAppointmentBaseViewModel.m; sourceTree = "<group>"; };
+		EA21CB21221FA36C007D3445 /* PSAppointmentBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAppointmentBaseViewModel.h; sourceTree = "<group>"; };
+		EA21CB24221FA444007D3445 /* PSPayOngoingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPayOngoingViewController.h; sourceTree = "<group>"; };
+		EA21CB25221FA444007D3445 /* PSPayOngoingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPayOngoingViewController.m; sourceTree = "<group>"; };
+		EA21CB26221FA444007D3445 /* PSPaySuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPaySuccessViewController.h; sourceTree = "<group>"; };
+		EA21CB27221FA444007D3445 /* PSPaySuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPaySuccessViewController.m; sourceTree = "<group>"; };
+		EA21CB2B221FA78B007D3445 /* PSProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSProduct.h; sourceTree = "<group>"; };
+		EA21CB2C221FA78C007D3445 /* PSProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSProduct.m; sourceTree = "<group>"; };
+		EA21CB2E221FA88D007D3445 /* PSWechatInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSWechatInfo.m; sourceTree = "<group>"; };
+		EA21CB2F221FA88D007D3445 /* PSPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPayment.h; sourceTree = "<group>"; };
+		EA21CB30221FA88D007D3445 /* PSAlipayInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAlipayInfo.h; sourceTree = "<group>"; };
+		EA21CB31221FA88E007D3445 /* PSAlipayInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAlipayInfo.m; sourceTree = "<group>"; };
+		EA21CB32221FA88E007D3445 /* PSPhoneCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPhoneCard.h; sourceTree = "<group>"; };
+		EA21CB33221FA88E007D3445 /* PSWechatInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSWechatInfo.h; sourceTree = "<group>"; };
+		EA21CB34221FA88E007D3445 /* PSPhoneCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPhoneCard.m; sourceTree = "<group>"; };
+		EA21CB35221FA88E007D3445 /* PSPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPayment.m; sourceTree = "<group>"; };
+		EA21CB3A221FA99A007D3445 /* PSServiceLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSServiceLinkView.m; sourceTree = "<group>"; };
+		EA21CB3B221FA99A007D3445 /* PSServiceLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSServiceLinkView.h; sourceTree = "<group>"; };
+		EA21CB3D221FC5E9007D3445 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
+		EA21CB3E221FC5EA007D3445 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
+		EA21CB40221FC68E007D3445 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		EA21CB41221FC68E007D3445 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		EA21CB43221FC6BC007D3445 /* GTMDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		EA21CB44221FCA1D007D3445 /* UIImage+WLCompress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WLCompress.m"; sourceTree = "<group>"; };
+		EA21CB45221FCA1D007D3445 /* UIImage+WLCompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WLCompress.h"; sourceTree = "<group>"; };
+		EA21CB47221FCCC8007D3445 /* PSTipsConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSTipsConstants.h; sourceTree = "<group>"; };
+		EA21CB48221FCD2B007D3445 /* PSMyAdviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMyAdviceTableViewCell.m; sourceTree = "<group>"; };
+		EA21CB49221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLawerAdviceTableViewCell.m; sourceTree = "<group>"; };
+		EA21CB4A221FCD2B007D3445 /* PSLawerAdviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLawerAdviceTableViewCell.h; sourceTree = "<group>"; };
+		EA21CB4B221FCD2B007D3445 /* PSMyAdviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMyAdviceTableViewCell.h; sourceTree = "<group>"; };
+		EA21CB4E221FCEE2007D3445 /* NSObject+version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+version.h"; sourceTree = "<group>"; };
+		EA21CB4F221FCEE2007D3445 /* NSObject+version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+version.m"; sourceTree = "<group>"; };
+		EA21CB53221FD337007D3445 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		EA3E7CEE221FE70400D60C6A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EA3E7CF0221FE71000D60C6A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		EA3E7CF2221FE72A00D60C6A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		EA3E7CF4221FE73700D60C6A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		EA3E7CF6221FE74100D60C6A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EA3E7CF8221FE74F00D60C6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EA3E7CFA221FE75C00D60C6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EA3E7CFC221FE76700D60C6A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EAB03788221E817A00331569 /* NMCVideoFilter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NMCVideoFilter.bundle; sourceTree = "<group>"; };
 		EAB03789221E817A00331569 /* NMC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMC.framework; sourceTree = "<group>"; };
 		EAB0378A221E817A00331569 /* NIMAVChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NIMAVChat.framework; sourceTree = "<group>"; };
@@ -963,6 +1142,8 @@
 		EAB039AE221E8FF100331569 /* NTESVideoChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESVideoChatViewController.m; sourceTree = "<group>"; };
 		EAB039D5221E907400331569 /* UIImage+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Image.h"; sourceTree = "<group>"; };
 		EAB039D6221E907400331569 /* UIImage+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Image.m"; sourceTree = "<group>"; };
+		F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -970,20 +1151,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA21CB54221FD337007D3445 /* CoreMotion.framework in Frameworks */,
 				EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */,
-				EA21CA34221EA699007D3445 /* NMC.framework in Frameworks */,
 				EA21CA36221EA69F007D3445 /* NIMSDK.framework in Frameworks */,
 				5557A587221BD8DA00743012 /* libSocialQQ.a in Frameworks */,
 				5557A585221BD8DA00743012 /* UMSocialCore.framework in Frameworks */,
 				5557A586221BD8DA00743012 /* libSocialWeChat.a in Frameworks */,
 				5557A582221BD8DA00743012 /* UShareUI.framework in Frameworks */,
 				5557A588221BD8DA00743012 /* libUMSocialLog.a in Frameworks */,
-				BBD7011BF8BDC4D81ACF6934 /* libPods-GKHelpOutApp.a in Frameworks */,
 				5557A583221BD8DA00743012 /* UMSocialNetwork.framework in Frameworks */,
-				EAB038BA221E817B00331569 /* NIMAVChat.framework in Frameworks */,
 				EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */,
 				EA21CA31221EA694007D3445 /* NIMAVChat.framework in Frameworks */,
 				EAB038B9221E817B00331569 /* NMC.framework in Frameworks */,
+				A56ED927F1CE79562534A4C9 /* libPods-GKHelpOutApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,20 +1178,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF9A09A1C995AA2E60278218 /* libPods-GKHelpOutAppUITests.a in Frameworks */,
+				A2630C1CA890D20F200E6E6E /* libPods-GKHelpOutAppUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1221F28F837DEC197486DA3F /* Pods */ = {
+		4CC86C1565178EF912E7D893 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				81A5B6B1C34A852B2B8BC60F /* Pods-GKHelpOutApp.debug.xcconfig */,
-				4669FBBAF16B4542978B5C1B /* Pods-GKHelpOutApp.release.xcconfig */,
-				EAA9CA7C4131332FF846CAD9 /* Pods-GKHelpOutAppUITests.debug.xcconfig */,
-				BE80DD9C3CB07E01EC968559 /* Pods-GKHelpOutAppUITests.release.xcconfig */,
+				F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */,
+				7C10B3AC074F1C870E18701F /* Pods-GKHelpOutApp.release.xcconfig */,
+				7C2548D35314A27746458142 /* Pods-GKHelpOutAppUITests.debug.xcconfig */,
+				E7404FC029C5B013F6E316EC /* Pods-GKHelpOutAppUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1023,8 +1203,8 @@
 				5557A4A4221BB46E00743012 /* GKHelpOutAppTests */,
 				5557A4AF221BB46E00743012 /* GKHelpOutAppUITests */,
 				5557A48A221BB46C00743012 /* Products */,
-				1221F28F837DEC197486DA3F /* Pods */,
 				64C5C9D239E7F741EC473360 /* Frameworks */,
+				4CC86C1565178EF912E7D893 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1041,6 +1221,7 @@
 		5557A48B221BB46C00743012 /* GKHelpOutApp */ = {
 			isa = PBXGroup;
 			children = (
+				EA13D0E4221FDA5600A40EE9 /* GKResource */,
 				EAB0393B221E87D700331569 /* Components */,
 				5557A48C221BB46C00743012 /* AppDelegate.h */,
 				5557A48D221BB46C00743012 /* AppDelegate.m */,
@@ -1054,7 +1235,6 @@
 				5557A4DB221BD75300743012 /* Base */,
 				5557A4CF221BD6A700743012 /* Define */,
 				5557A4BE221BCFAA00743012 /* ThridParty */,
-				5557A663221BE02200743012 /* Resource */,
 				5557A4BF221BD04100743012 /* Supporting Files */,
 				5557A48F221BB46C00743012 /* ViewController.h */,
 				5557A490221BB46C00743012 /* ViewController.m */,
@@ -1113,6 +1293,7 @@
 		5557A4CF221BD6A700743012 /* Define */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CB47221FCCC8007D3445 /* PSTipsConstants.h */,
 				EA21CA30221E9EB0007D3445 /* PSMacro.h */,
 				5557A4D1221BD6D100743012 /* CommonMacros.h */,
 				5557A4D2221BD6D100743012 /* FontAndColorMacros.h */,
@@ -1224,6 +1405,17 @@
 		5557A506221BD7F500743012 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CB4E221FCEE2007D3445 /* NSObject+version.h */,
+				EA21CB4F221FCEE2007D3445 /* NSObject+version.m */,
+				EA21CB45221FCA1D007D3445 /* UIImage+WLCompress.h */,
+				EA21CB44221FCA1D007D3445 /* UIImage+WLCompress.m */,
+				EA21CB43221FC6BC007D3445 /* GTMDefines.h */,
+				EA21CB40221FC68E007D3445 /* GTMBase64.h */,
+				EA21CB41221FC68E007D3445 /* GTMBase64.m */,
+				EA21CB3D221FC5E9007D3445 /* NSString+Utils.h */,
+				EA21CB3E221FC5EA007D3445 /* NSString+Utils.m */,
+				EA21CB14221FA205007D3445 /* UIImage+Stretch.h */,
+				EA21CB13221FA204007D3445 /* UIImage+Stretch.m */,
 				EAB039D5221E907400331569 /* UIImage+Image.h */,
 				EAB039D6221E907400331569 /* UIImage+Image.m */,
 				5557A670221D551A00743012 /* UIView+Frame.h */,
@@ -1367,6 +1559,7 @@
 		5557A559221BD82800743012 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CA3D221F935E007D3445 /* PayManager */,
 				5557A566221BD85E00743012 /* UserManager */,
 				5557A560221BD84000743012 /* AppManager.h */,
 				5557A561221BD84000743012 /* AppManager.m */,
@@ -1498,8 +1691,6 @@
 			children = (
 				5557A590221BD96500743012 /* LoginViewController.h */,
 				5557A58F221BD96500743012 /* LoginViewController.m */,
-				5562657F221FEAFC00500DD3 /* UploadAvatarViewController.h */,
-				55626580221FEAFC00500DD3 /* UploadAvatarViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1673,6 +1864,7 @@
 		5557A5D1221BD96500743012 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CA4D221F995C007D3445 /* Home_Consultation */,
 				5557A5D2221BD96500743012 /* Logic */,
 				5557A5D7221BD96500743012 /* Controller */,
 				5557A5E0221BD96500743012 /* Model */,
@@ -1807,14 +1999,6 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		5557A663221BE02200743012 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				5557A664221BE07F00743012 /* Media.xcassets */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
 		5557A667221CE10300743012 /* BaseLogic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1834,11 +2018,272 @@
 		64C5C9D239E7F741EC473360 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA3E7CFC221FE76700D60C6A /* CFNetwork.framework */,
+				EA3E7CFA221FE75C00D60C6A /* Foundation.framework */,
+				EA3E7CF8221FE74F00D60C6A /* UIKit.framework */,
+				EA3E7CF6221FE74100D60C6A /* CoreGraphics.framework */,
+				EA3E7CF4221FE73700D60C6A /* CoreText.framework */,
+				EA3E7CF2221FE72A00D60C6A /* QuartzCore.framework */,
+				EA3E7CF0221FE71000D60C6A /* CoreTelephony.framework */,
+				EA3E7CEE221FE70400D60C6A /* SystemConfiguration.framework */,
+				EA21CB53221FD337007D3445 /* CoreMotion.framework */,
 				EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */,
-				7761B4905DA72DA5678F1635 /* libPods-GKHelpOutApp.a */,
-				45DC79C4E00767C1092FF64E /* libPods-GKHelpOutAppUITests.a */,
+				F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */,
+				489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA13D0E4221FDA5600A40EE9 /* GKResource */ = {
+			isa = PBXGroup;
+			children = (
+				EA13D0E5221FDA5600A40EE9 /* Media.xcassets */,
+			);
+			path = GKResource;
+			sourceTree = "<group>";
+		};
+		EA21CA3D221F935E007D3445 /* PayManager */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CB2A221FA752007D3445 /* PayModel */,
+				EA21CB23221FA409007D3445 /* PayViewController */,
+				EA21CB16221FA29E007D3445 /* PayViewModel */,
+				EA21CABC221FA040007D3445 /* PayView */,
+				EA21CA3E221F9386007D3445 /* Pay */,
+			);
+			path = PayManager;
+			sourceTree = "<group>";
+		};
+		EA21CA3E221F9386007D3445 /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA3F221F9386007D3445 /* PSPayCenter.m */,
+				EA21CA40221F9386007D3445 /* PSPayHandler.h */,
+				EA21CA41221F9386007D3445 /* PayHandler */,
+				EA21CA46221F9386007D3445 /* PSPayInfo.h */,
+				EA21CA47221F9386007D3445 /* PSPayCenter.h */,
+				EA21CA48221F9386007D3445 /* PSPayInfo.m */,
+			);
+			path = Pay;
+			sourceTree = "<group>";
+		};
+		EA21CA41221F9386007D3445 /* PayHandler */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA42221F9386007D3445 /* PSWechatHandler.m */,
+				EA21CA43221F9386007D3445 /* PSAliHandler.m */,
+				EA21CA44221F9386007D3445 /* PSWechatHandler.h */,
+				EA21CA45221F9386007D3445 /* PSAliHandler.h */,
+			);
+			path = PayHandler;
+			sourceTree = "<group>";
+		};
+		EA21CA4D221F995C007D3445 /* Home_Consultation */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA8B221F9A21007D3445 /* more */,
+				EA21CA4E221F9980007D3445 /* Consultation */,
+			);
+			path = Home_Consultation;
+			sourceTree = "<group>";
+		};
+		EA21CA4E221F9980007D3445 /* Consultation */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA4F221F9980007D3445 /* PSScoreViewController.h */,
+				EA21CA50221F9980007D3445 /* PSConsultationViewController.h */,
+				EA21CA51221F9980007D3445 /* ConsultationViewModel */,
+				EA21CA58221F9980007D3445 /* PSAdviceDetailsViewController.h */,
+				EA21CA59221F9980007D3445 /* PSConsultingCategoryViewController.h */,
+				EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */,
+				EA21CA5B221F9980007D3445 /* PSScoreViewController.m */,
+				EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */,
+				EA21CA5D221F9980007D3445 /* PSConsultingCategoryViewController.m */,
+				EA21CA5E221F9980007D3445 /* ConsultationView */,
+				EA21CA65221F9980007D3445 /* ConsultationModel */,
+				EA21CA76221F9980007D3445 /* PSAdviceDetailsViewController.m */,
+				EA21CA77221F9980007D3445 /* PSMyAdviceViewController.h */,
+			);
+			path = Consultation;
+			sourceTree = "<group>";
+		};
+		EA21CA51221F9980007D3445 /* ConsultationViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA52221F9980007D3445 /* PSConsultationViewModel.m */,
+				EA21CA53221F9980007D3445 /* PSLawerViewModel.h */,
+				EA21CA54221F9980007D3445 /* PSEvaluateViewmodel.m */,
+				EA21CA55221F9980007D3445 /* PSLawerViewModel.m */,
+				EA21CA56221F9980007D3445 /* PSConsultationViewModel.h */,
+				EA21CA57221F9980007D3445 /* PSEvaluateViewmodel.h */,
+			);
+			path = ConsultationViewModel;
+			sourceTree = "<group>";
+		};
+		EA21CA5E221F9980007D3445 /* ConsultationView */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CB4A221FCD2B007D3445 /* PSLawerAdviceTableViewCell.h */,
+				EA21CB49221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m */,
+				EA21CB4B221FCD2B007D3445 /* PSMyAdviceTableViewCell.h */,
+				EA21CB48221FCD2B007D3445 /* PSMyAdviceTableViewCell.m */,
+				EA21CB3B221FA99A007D3445 /* PSServiceLinkView.h */,
+				EA21CB3A221FA99A007D3445 /* PSServiceLinkView.m */,
+				EA21CA5F221F9980007D3445 /* PSConsultationTableViewCell.m */,
+				EA21CA60221F9980007D3445 /* PSConsultationOtherTableViewCell.h */,
+				EA21CA61221F9980007D3445 /* PSAdviceDetailsView.m */,
+				EA21CA62221F9980007D3445 /* PSConsultationTableViewCell.h */,
+				EA21CA63221F9980007D3445 /* PSConsultationOtherTableViewCell.m */,
+				EA21CA64221F9980007D3445 /* PSAdviceDetailsView.h */,
+			);
+			path = ConsultationView;
+			sourceTree = "<group>";
+		};
+		EA21CA65221F9980007D3445 /* ConsultationModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA66221F9980007D3445 /* PSCustomer.h */,
+				EA21CA67221F9980007D3445 /* PSLawer.h */,
+				EA21CA68221F9980007D3445 /* PSAdviceComments.m */,
+				EA21CA69221F9980007D3445 /* PSLawyerComments.h */,
+				EA21CA6A221F9980007D3445 /* PSLawersDetails.m */,
+				EA21CA6B221F9980007D3445 /* PSAttachments.h */,
+				EA21CA6C221F9980007D3445 /* PSConsultation.m */,
+				EA21CA6D221F9980007D3445 /* PSLawyers.h */,
+				EA21CA6E221F9980007D3445 /* PSAdviceComments.h */,
+				EA21CA6F221F9980007D3445 /* PSLawer.m */,
+				EA21CA70221F9980007D3445 /* PSCustomer.m */,
+				EA21CA71221F9980007D3445 /* PSAttachments.m */,
+				EA21CA72221F9980007D3445 /* PSLawersDetails.h */,
+				EA21CA73221F9980007D3445 /* PSLawyerComments.m */,
+				EA21CA74221F9980007D3445 /* PSConsultation.h */,
+				EA21CA75221F9980007D3445 /* PSLawyers.m */,
+			);
+			path = ConsultationModel;
+			sourceTree = "<group>";
+		};
+		EA21CA8B221F9A21007D3445 /* more */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA8C221F9A21007D3445 /* ViewModel */,
+				EA21CA8F221F9A21007D3445 /* Viewcontoller */,
+				EA21CA96221F9A21007D3445 /* Model */,
+				EA21CA99221F9A21007D3445 /* View */,
+			);
+			path = more;
+			sourceTree = "<group>";
+		};
+		EA21CA8C221F9A21007D3445 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA8D221F9A21007D3445 /* PSMoreServiceViewModel.m */,
+				EA21CA8E221F9A21007D3445 /* PSMoreServiceViewModel.h */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EA21CA8F221F9A21007D3445 /* Viewcontoller */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA90221F9A21007D3445 /* PSLawyerDetailsViewController.m */,
+				EA21CA91221F9A21007D3445 /* PSMoreServiceViewController.h */,
+				EA21CA92221F9A21007D3445 /* PSMoreRoleDetailViewController.m */,
+				EA21CA93221F9A21007D3445 /* PSMoreServiceViewController.m */,
+				EA21CA94221F9A21007D3445 /* PSLawyerDetailsViewController.h */,
+				EA21CA95221F9A21007D3445 /* PSMoreRoleDetailViewController.h */,
+			);
+			path = Viewcontoller;
+			sourceTree = "<group>";
+		};
+		EA21CA96221F9A21007D3445 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA97221F9A21007D3445 /* PSMoreModel.m */,
+				EA21CA98221F9A21007D3445 /* PSMoreModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EA21CA99221F9A21007D3445 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA9A221F9A21007D3445 /* PSLawyerView.m */,
+				EA21CA9B221F9A21007D3445 /* MoreRoloCell.m */,
+				EA21CA9C221F9A21007D3445 /* PSEvaluateTableViewCell.m */,
+				EA21CA9D221F9A21007D3445 /* serciceIiem.m */,
+				EA21CA9E221F9A21007D3445 /* PSLawyerView.h */,
+				EA21CA9F221F9A21007D3445 /* MoreRoloCell.h */,
+				EA21CAA0221F9A21007D3445 /* serciceIiem.h */,
+				EA21CAA1221F9A21007D3445 /* PSEvaluateTableViewCell.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EA21CAAE221F9DA9007D3445 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CAB7221F9E6C007D3445 /* PSResponse.h */,
+				EA21CAB6221F9E6C007D3445 /* PSResponse.m */,
+				EA21CAB2221F9DCC007D3445 /* PSBasePrisonerViewModel.h */,
+				EA21CAB1221F9DCC007D3445 /* PSBasePrisonerViewModel.m */,
+				EA21CAB0221F9DCC007D3445 /* PSViewModel.h */,
+				EA21CAAF221F9DCC007D3445 /* PSViewModel.m */,
+				EA21CAB3221F9DCC007D3445 /* PSViewModelService.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EA21CABC221FA040007D3445 /* PayView */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CABE221FA04F007D3445 /* PSPaymentBlock.h */,
+				EA21CABD221FA04E007D3445 /* PSPayView.h */,
+				EA21CABF221FA04F007D3445 /* PSPayView.m */,
+			);
+			path = PayView;
+			sourceTree = "<group>";
+		};
+		EA21CB16221FA29E007D3445 /* PayViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CB21221FA36C007D3445 /* PSAppointmentBaseViewModel.h */,
+				EA21CB20221FA36C007D3445 /* PSAppointmentBaseViewModel.m */,
+				EA21CB1A221FA2C9007D3445 /* PSAppointmentViewModel.h */,
+				EA21CB19221FA2C9007D3445 /* PSAppointmentViewModel.m */,
+				EA21CB1C221FA2C9007D3445 /* PSPhoneCardViewModel.h */,
+				EA21CB17221FA2C8007D3445 /* PSPhoneCardViewModel.m */,
+				EA21CB1B221FA2C9007D3445 /* PSPrisonerFamliesViewModel.h */,
+				EA21CB18221FA2C9007D3445 /* PSPrisonerFamliesViewModel.m */,
+			);
+			path = PayViewModel;
+			sourceTree = "<group>";
+		};
+		EA21CB23221FA409007D3445 /* PayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CB24221FA444007D3445 /* PSPayOngoingViewController.h */,
+				EA21CB25221FA444007D3445 /* PSPayOngoingViewController.m */,
+				EA21CB26221FA444007D3445 /* PSPaySuccessViewController.h */,
+				EA21CB27221FA444007D3445 /* PSPaySuccessViewController.m */,
+			);
+			path = PayViewController;
+			sourceTree = "<group>";
+		};
+		EA21CB2A221FA752007D3445 /* PayModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CB30221FA88D007D3445 /* PSAlipayInfo.h */,
+				EA21CB31221FA88E007D3445 /* PSAlipayInfo.m */,
+				EA21CB2F221FA88D007D3445 /* PSPayment.h */,
+				EA21CB35221FA88E007D3445 /* PSPayment.m */,
+				EA21CB32221FA88E007D3445 /* PSPhoneCard.h */,
+				EA21CB34221FA88E007D3445 /* PSPhoneCard.m */,
+				EA21CB33221FA88E007D3445 /* PSWechatInfo.h */,
+				EA21CB2E221FA88D007D3445 /* PSWechatInfo.m */,
+				EA21CB2B221FA78B007D3445 /* PSProduct.h */,
+				EA21CB2C221FA78C007D3445 /* PSProduct.m */,
+			);
+			path = PayModel;
 			sourceTree = "<group>";
 		};
 		EAB03786221E817A00331569 /* NIMAVChat */ = {
@@ -2392,6 +2837,7 @@
 		EAB0393B221E87D700331569 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CAAE221F9DA9007D3445 /* Model */,
 				EAB03947221E887000331569 /* ViewController */,
 				EAB0393C221E880400331569 /* View */,
 			);
@@ -2401,6 +2847,8 @@
 		EAB0393C221E880400331569 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CAB9221F9EFD007D3445 /* PSLoadingView.h */,
+				EA21CABA221F9EFD007D3445 /* PSLoadingView.m */,
 				EAB0394F221E8EDF00331569 /* PSAlertView.h */,
 				EAB03950221E8EDF00331569 /* PSAlertView.m */,
 				EAB0394C221E8BB700331569 /* PSTipsView.h */,
@@ -2448,6 +2896,8 @@
 		EAB03948221E889100331569 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CAAB221F9D5E007D3445 /* PSBusinessViewController.h */,
+				EA21CAAC221F9D5E007D3445 /* PSBusinessViewController.m */,
 				EAB03949221E88BE00331569 /* PSViewController.h */,
 				EAB0394A221E88BE00331569 /* PSViewController.m */,
 			);
@@ -2625,12 +3075,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5557A4B5221BB46E00743012 /* Build configuration list for PBXNativeTarget "GKHelpOutApp" */;
 			buildPhases = (
-				5EB8B4F1F9F8458AA2C17B0F /* [CP] Check Pods Manifest.lock */,
+				0DDDFA08436AF72AF04D362B /* [CP] Check Pods Manifest.lock */,
 				5557A485221BB46C00743012 /* Sources */,
 				5557A486221BB46C00743012 /* Frameworks */,
 				5557A487221BB46C00743012 /* Resources */,
-				B98BF45394335A9758F0647A /* [CP] Copy Pods Resources */,
 				EA21CA33221EA694007D3445 /* Embed Frameworks */,
+				BA1A31B7CF04254FEE98A7F2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2663,7 +3113,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5557A4BB221BB46E00743012 /* Build configuration list for PBXNativeTarget "GKHelpOutAppUITests" */;
 			buildPhases = (
-				4E71E660EF14F9A31588662A /* [CP] Check Pods Manifest.lock */,
+				D56208EF19FFD2704C57C808 /* [CP] Check Pods Manifest.lock */,
 				5557A4A8221BB46E00743012 /* Sources */,
 				5557A4A9221BB46E00743012 /* Frameworks */,
 				5557A4AA221BB46E00743012 /* Resources */,
@@ -2732,12 +3182,12 @@
 				5557A618221BD96500743012 /* dengji@2x.png in Resources */,
 				5557A633221BD96500743012 /* 2.jpg in Resources */,
 				5557A62C221BD96500743012 /* 13.jpg in Resources */,
+				EA13D0E6221FDA5600A40EE9 /* Media.xcassets in Resources */,
 				5557A61A221BD96500743012 /* qianb@2x.png in Resources */,
 				5557A65F221BD99E00743012 /* pageControlDot@2x.png in Resources */,
 				5557A661221BD99E00743012 /* stepPk_win_colour7@2x.png in Resources */,
 				5557A584221BD8DA00743012 /* UMSocialSDKPromptResources.bundle in Resources */,
 				EAB03946221E883C00331569 /* README.markdown in Resources */,
-				5557A665221BE07F00743012 /* Media.xcassets in Resources */,
 				EAB03944221E883C00331569 /* license in Resources */,
 				5557A62B221BD96500743012 /* 12.jpg in Resources */,
 				5557A65B221BD99E00743012 /* stepPk_win_colour4@2x.png in Resources */,
@@ -2801,25 +3251,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4E71E660EF14F9A31588662A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GKHelpOutAppUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5EB8B4F1F9F8458AA2C17B0F /* [CP] Check Pods Manifest.lock */ = {
+		0DDDFA08436AF72AF04D362B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2837,26 +3269,48 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B98BF45394335A9758F0647A /* [CP] Copy Pods Resources */ = {
+		BA1A31B7CF04254FEE98A7F2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp-resources.sh",
+				"${PODS_ROOT}/AlipaySDK-iOS/AlipaySDK.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/PYPhotoBrowser/PYPhotoBrowser/PYPhotosView.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AlipaySDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PYPhotosView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D56208EF19FFD2704C57C808 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GKHelpOutAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2871,22 +3325,25 @@
 				5557A623221BD96500743012 /* WaterFallListViewController.m in Sources */,
 				EAB038D4221E817B00331569 /* NIMInputAudioRecordIndicatorView.m in Sources */,
 				EAB039C0221E8FF200331569 /* renderer_yuv420p.c in Sources */,
+				EA21CAA3221F9A21007D3445 /* PSLawyerDetailsViewController.m in Sources */,
 				EAB038EA221E817B00331569 /* NIMNormalTeamCardViewController.m in Sources */,
+				EA21CA88221F9980007D3445 /* PSLawyerComments.m in Sources */,
 				EAB03917221E817B00331569 /* NIMMessageMaker.m in Sources */,
 				EAB039B1221E8FF200331569 /* NTESContentView.m in Sources */,
 				EAB03934221E817C00331569 /* NIMCommonTableDelegate.m in Sources */,
 				EAB039D7221E907400331569 /* UIImage+Image.m in Sources */,
 				5557A542221BD7F500743012 /* UICollectionView+IndexPath.m in Sources */,
+				EA21CA84221F9980007D3445 /* PSConsultation.m in Sources */,
 				EAB03945221E883C00331569 /* UIView+Toast.m in Sources */,
 				5557A54D221BD7F500743012 /* TADotView.m in Sources */,
 				EAB039BC221E8FF200331569 /* renderer_yuv444p10le.c in Sources */,
 				EAB039C5221E8FF200331569 /* yuv420p.fsh.c in Sources */,
 				EAB038E3221E817B00331569 /* NIMKitTitleView.m in Sources */,
 				EAB038E9221E817B00331569 /* NIMTeamMemberCardViewController.m in Sources */,
+				EA21CB28221FA444007D3445 /* PSPayOngoingViewController.m in Sources */,
 				EAB03936221E817C00331569 /* NIMKitSwitcherCell.m in Sources */,
 				EAB038C0221E817B00331569 /* NIMContactDataItem.m in Sources */,
 				EAB038C7221E817B00331569 /* NIMContactSelectConfig.m in Sources */,
-				55626581221FEAFC00500DD3 /* UploadAvatarViewController.m in Sources */,
 				EAB039BA221E8FF200331569 /* NTESGLView.m in Sources */,
 				EAB039B8221E8FF200331569 /* UIView+NTES.m in Sources */,
 				5557A602221BD96500743012 /* TableViewCell.m in Sources */,
@@ -2898,6 +3355,8 @@
 				EAB038E7221E817B00331569 /* NIMKitNotificationFirer.m in Sources */,
 				5557A491221BB46C00743012 /* ViewController.m in Sources */,
 				EAB03918221E817B00331569 /* NIMKitMessageAtModel.m in Sources */,
+				EA21CB1E221FA2C9007D3445 /* PSPrisonerFamliesViewModel.m in Sources */,
+				EA21CAB5221F9DCC007D3445 /* PSBasePrisonerViewModel.m in Sources */,
 				EAB038E6221E817B00331569 /* NIMKitKeyboardInfo.m in Sources */,
 				EAB039D0221E8FF200331569 /* NTESNetChatViewController.m in Sources */,
 				EAB038DA221E817B00331569 /* NIMInputToolBar.m in Sources */,
@@ -2908,7 +3367,10 @@
 				EAB0392F221E817C00331569 /* UIView+NIM.m in Sources */,
 				5557A504221BD76300743012 /* XYTabBar.m in Sources */,
 				EAB03927221E817C00331569 /* NIMMessageCell.m in Sources */,
+				EA21CB3F221FC5EA007D3445 /* NSString+Utils.m in Sources */,
 				EAB03903221E817B00331569 /* NIMRobotContentConfig.m in Sources */,
+				EA21CA7D221F9980007D3445 /* PSConsultationViewController.m in Sources */,
+				EA21CAAD221F9D5E007D3445 /* PSBusinessViewController.m in Sources */,
 				5557A622221BD96500743012 /* SecondViewController.m in Sources */,
 				EAB038C8221E817B00331569 /* NIMKitFileLocationHelper.m in Sources */,
 				EAB03915221E817B00331569 /* NIMSessionInteractorImpl.m in Sources */,
@@ -2916,43 +3378,58 @@
 				EAB039D1221E8FF200331569 /* PSSendShopGoodsAttachment.m in Sources */,
 				EAB03911221E817B00331569 /* NIMSessionMsgDatasource.m in Sources */,
 				EAB03913221E817B00331569 /* NIMSessionLayoutImpl.m in Sources */,
+				EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */,
 				EAB039BF221E8FF200331569 /* renderer_rgb.c in Sources */,
+				EA21CAC0221FA04F007D3445 /* PSPayView.m in Sources */,
+				EA21CB4D221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m in Sources */,
+				EA21CA85221F9980007D3445 /* PSLawer.m in Sources */,
 				EAB03924221E817C00331569 /* NIMSessionUnknowContentView.m in Sources */,
 				EAB038E2221E817B00331569 /* NIMAvatarImageView.m in Sources */,
 				EAB0394E221E8BBB00331569 /* PSTipsView.m in Sources */,
 				EAB039BB221E8FF200331569 /* NTESVideoChatNetStatusView.m in Sources */,
 				EAB038F3221E817B00331569 /* NIMTeamSwitchTableViewCell.m in Sources */,
+				EA21CAA5221F9A21007D3445 /* PSMoreServiceViewController.m in Sources */,
 				5557A551221BD7F500743012 /* XYTransition.m in Sources */,
 				EAB0392B221E817C00331569 /* UIImage+NIMKit.m in Sources */,
+				EA21CAA4221F9A21007D3445 /* PSMoreRoleDetailViewController.m in Sources */,
 				EAB038FC221E817B00331569 /* NIMKitInfoFetchOption.m in Sources */,
 				EAB038D6221E817B00331569 /* NIMInputView.m in Sources */,
 				EAB03905221E817B00331569 /* NIMLocationContentConfig.m in Sources */,
+				EA21CA8A221F9980007D3445 /* PSAdviceDetailsViewController.m in Sources */,
 				5557A5FD221BD96500743012 /* LoginViewController.m in Sources */,
 				EAB0392E221E817C00331569 /* NIMExtensionHelper.m in Sources */,
 				5557A56D221BD87100743012 /* UserInfo.m in Sources */,
 				EAB03932221E817C00331569 /* NIMKitDataProviderImpl.m in Sources */,
 				EAB038F9221E817B00331569 /* NIMTeamNotifyUpdateViewController.m in Sources */,
+				EA21CB42221FC68F007D3445 /* GTMBase64.m in Sources */,
+				EA21CA86221F9980007D3445 /* PSCustomer.m in Sources */,
 				EAB03912221E817B00331569 /* NIMKitAudioCenter.m in Sources */,
 				EAB03914221E817B00331569 /* NIMSessionConfigurator.m in Sources */,
 				EAB03923221E817B00331569 /* NIMSessionTextContentView.m in Sources */,
+				EA21CA79221F9980007D3445 /* PSEvaluateViewmodel.m in Sources */,
 				EAB039C2221E8FF200331569 /* shader.c in Sources */,
 				EAB038D3221E817B00331569 /* NIMInputEmoticonParser.m in Sources */,
 				EAB038D9221E817B00331569 /* NIMInputAtCache.m in Sources */,
 				EAB038DF221E817B00331569 /* NIMBadgeView.m in Sources */,
 				EAB038FA221E817B00331569 /* NIMAdvancedTeamCardViewController.m in Sources */,
 				EAB038FF221E817B00331569 /* NIMMessageModel.m in Sources */,
+				EA21CB38221FA88E007D3445 /* PSPhoneCard.m in Sources */,
 				EAB038DC221E817B00331569 /* NIMInputEmoticonButton.m in Sources */,
 				5557A4F9221BD76300743012 /* RootViewController.m in Sources */,
 				EAB03938221E817C00331569 /* NIMKitColorButtonCell.m in Sources */,
+				EA21CB29221FA444007D3445 /* PSPaySuccessViewController.m in Sources */,
 				EAB0392A221E817C00331569 /* NSDictionary+NIMKit.m in Sources */,
 				EAB038F5221E817B00331569 /* NIMAdvancedTeamMemberCell.m in Sources */,
 				EAB03939221E817C00331569 /* NIMKitIndependentModeExtraInfo.m in Sources */,
 				5557A544221BD7F500743012 /* UIButton+XYButton.m in Sources */,
 				5557A556221BD7F500743012 /* MBProgressHUD+XY.m in Sources */,
+				EA21CAA7221F9A21007D3445 /* PSLawyerView.m in Sources */,
 				EAB0390B221E817B00331569 /* NIMTextContentConfig.m in Sources */,
+				EA21CA49221F9386007D3445 /* PSPayCenter.m in Sources */,
 				EAB038F0221E817B00331569 /* NIMCardMemberItem.m in Sources */,
 				5557A604221BD96500743012 /* YSLCardView.m in Sources */,
 				EAB038FE221E817B00331569 /* NIMMediaItem.m in Sources */,
+				EA21CA4C221F9386007D3445 /* PSPayInfo.m in Sources */,
 				EAB038C4221E817B00331569 /* NIMContactDataCell.m in Sources */,
 				EAB03928221E817C00331569 /* NIMLocationViewController.m in Sources */,
 				EAB0391C221E817B00331569 /* NIMSessionLocationContentView.m in Sources */,
@@ -2960,6 +3437,8 @@
 				5557A627221BD96500743012 /* WaterFlowLayout.m in Sources */,
 				5557A500221BD76300743012 /* RootWebViewController.m in Sources */,
 				5557A66E221D027200743012 /* OauthInfo.m in Sources */,
+				EA21CAA8221F9A21007D3445 /* MoreRoloCell.m in Sources */,
+				EA21CA7F221F9980007D3445 /* PSConsultationTableViewCell.m in Sources */,
 				EAB039C9221E8FF200331569 /* IJKSDLGLView.m in Sources */,
 				5557A54F221BD7F500743012 /* TAAnimatedDotView.m in Sources */,
 				5557A54B221BD7F500743012 /* UIView+SDExtension.m in Sources */,
@@ -2968,6 +3447,7 @@
 				5557A671221D551A00743012 /* UIView+Frame.m in Sources */,
 				EAB038D0221E817B00331569 /* NIMKitUtil.m in Sources */,
 				5557A54C221BD7F500743012 /* SDCollectionViewCell.m in Sources */,
+				EA21CB36221FA88E007D3445 /* PSWechatInfo.m in Sources */,
 				5557A651221BD99E00743012 /* TagsViewController.m in Sources */,
 				EAB039BD221E8FF200331569 /* common.c in Sources */,
 				EAB0393A221E817C00331569 /* NIMKit.m in Sources */,
@@ -2981,6 +3461,7 @@
 				EAB039B9221E8FF200331569 /* NTESRecordSelectView.m in Sources */,
 				5557A543221BD7F500743012 /* UIViewController+AlertViewAndActionSheet.m in Sources */,
 				EAB0390A221E817B00331569 /* NIMUnsupportContentConfig.m in Sources */,
+				EA21CB37221FA88E007D3445 /* PSAlipayInfo.m in Sources */,
 				5557A565221BD84000743012 /* AppManager.m in Sources */,
 				EAB039BE221E8FF200331569 /* mvp.vsh.c in Sources */,
 				EAB03900221E817B00331569 /* NIMKitInfo.m in Sources */,
@@ -2989,9 +3470,12 @@
 				5557A653221BD99E00743012 /* EmitterViewController.m in Sources */,
 				EAB03930221E817C00331569 /* M80AttributedLabel+NIMKit.m in Sources */,
 				EAB03935221E817C00331569 /* NIMCommonTableData.m in Sources */,
+				EA21CB46221FCA1E007D3445 /* UIImage+WLCompress.m in Sources */,
 				5557A564221BD84000743012 /* IAPManager.m in Sources */,
+				EA21CA7E221F9980007D3445 /* PSConsultingCategoryViewController.m in Sources */,
 				5557A54A221BD7F500743012 /* SDCycleScrollView.m in Sources */,
 				EAB03919221E817B00331569 /* NIMMessageCellFactory.m in Sources */,
+				EA21CB4C221FCD2B007D3445 /* PSMyAdviceTableViewCell.m in Sources */,
 				5557A621221BD96500743012 /* PersonListViewController.m in Sources */,
 				5557A61F221BD96500743012 /* PersonListLogic.m in Sources */,
 				EAB039B6221E8FF200331569 /* NTESTimerHolder.m in Sources */,
@@ -3004,13 +3488,17 @@
 				EAB0391A221E817B00331569 /* NIMSessionTimestampCell.m in Sources */,
 				5557A4FB221BD76300743012 /* HSBaseCellModel.m in Sources */,
 				EAB038CA221E817B00331569 /* NIMKitResourceResizer.m in Sources */,
+				EA21CA7A221F9980007D3445 /* PSLawerViewModel.m in Sources */,
 				EAB0394B221E88BE00331569 /* PSViewController.m in Sources */,
 				EAB038D5221E817B00331569 /* NIMInputMoreContainerView.m in Sources */,
+				EA21CA78221F9980007D3445 /* PSConsultationViewModel.m in Sources */,
 				5557A548221BD7F500743012 /* XZPickView.m in Sources */,
 				EAB03920221E817B00331569 /* NIMSessionNetChatNotifyContentView.m in Sources */,
 				EAB039CA221E8FF200331569 /* ijksdl_timer.c in Sources */,
 				EAB038EE221E817B00331569 /* NIMTeamCardRowItem.m in Sources */,
+				EA21CAA6221F9A21007D3445 /* PSMoreModel.m in Sources */,
 				EAB039C4221E8FF200331569 /* yuv444p10le.fsh.c in Sources */,
+				EA21CB1F221FA2CA007D3445 /* PSAppointmentViewModel.m in Sources */,
 				5557A601221BD96500743012 /* CellModel.m in Sources */,
 				EAB038C6221E817B00331569 /* NIMContactSelectTabView.m in Sources */,
 				EAB038DB221E817B00331569 /* NIMInputEmoticonContainerView.m in Sources */,
@@ -3019,6 +3507,7 @@
 				5557A4FC221BD76300743012 /* BaseRequestAPI.m in Sources */,
 				EAB038EC221E817B00331569 /* NIMTeamMemberListViewController.m in Sources */,
 				EAB038F4221E817B00331569 /* NIMTimePickerView.m in Sources */,
+				EA21CB2D221FA78C007D3445 /* PSProduct.m in Sources */,
 				EAB03933221E817C00331569 /* NIMKitSetting.m in Sources */,
 				5557A554221BD7F500743012 /* PPNetworkCache.m in Sources */,
 				5557A610221BD96500743012 /* ProfileViewController.m in Sources */,
@@ -3036,17 +3525,24 @@
 				EAB03926221E817C00331569 /* NIMSessionRobotContentView.m in Sources */,
 				5557A4FD221BD76300743012 /* XLJSHandler.m in Sources */,
 				5557A56F221BD87100743012 /* GameInfo.m in Sources */,
+				EA21CAA2221F9A21007D3445 /* PSMoreServiceViewModel.m in Sources */,
 				EAB03909221E817B00331569 /* NIMTipContentConfig.m in Sources */,
 				EAB039B2221E8FF200331569 /* NTESSessionConfig.m in Sources */,
 				5557A557221BD7F500743012 /* FFTagsView.m in Sources */,
 				EAB038D8221E817B00331569 /* NIMInputEmoticonManager.m in Sources */,
+				EA21CB15221FA205007D3445 /* UIImage+Stretch.m in Sources */,
 				EAB03929221E817C00331569 /* NIMSessionViewController.m in Sources */,
 				5557A611221BD96500743012 /* MineViewController.m in Sources */,
+				EA21CA83221F9980007D3445 /* PSLawersDetails.m in Sources */,
+				EA21CB1D221FA2C9007D3445 /* PSPhoneCardViewModel.m in Sources */,
 				EAB038C1221E817B00331569 /* NIMContactSelectViewController.m in Sources */,
 				EAB03906221E817B00331569 /* NIMVideoContentConfig.m in Sources */,
+				EA21CA4B221F9386007D3445 /* PSAliHandler.m in Sources */,
 				EAB038E8221E817B00331569 /* NIMLoadProgressView.m in Sources */,
 				EAB039B3221E8FF200331569 /* NTESAttachmentDecoder.m in Sources */,
 				EAB03901221E817B00331569 /* NIMSessionListViewController.m in Sources */,
+				EA21CA89221F9980007D3445 /* PSLawyers.m in Sources */,
+				EA21CAA9221F9A21007D3445 /* PSEvaluateTableViewCell.m in Sources */,
 				EAB0392C221E817C00331569 /* NSString+NIMKit.m in Sources */,
 				EAB038C5221E817B00331569 /* NIMContactPickedView.m in Sources */,
 				5557A626221BD96500743012 /* PersonListCollectionViewCell.m in Sources */,
@@ -3054,6 +3550,8 @@
 				EAB03904221E817B00331569 /* NIMFileContentConfig.m in Sources */,
 				EAB03921221E817B00331569 /* NIMSessionImageContentView.m in Sources */,
 				EAB038C2221E817B00331569 /* NIMGroupedData.m in Sources */,
+				EA21CA7B221F9980007D3445 /* PSMyAdviceViewController.m in Sources */,
+				EA21CA87221F9980007D3445 /* PSAttachments.m in Sources */,
 				EAB038C9221E817B00331569 /* NIMKitAuthorizationTool.m in Sources */,
 				EAB038E0221E817B00331569 /* NIMMemberGroupView.m in Sources */,
 				EAB03925221E817C00331569 /* NIMSessionMessageContentView.m in Sources */,
@@ -3061,7 +3559,9 @@
 				5557A4C8221BD09200743012 /* main.m in Sources */,
 				EAB03951221E8EE000331569 /* PSAlertView.m in Sources */,
 				EAB038E4221E817B00331569 /* NIMPageView.m in Sources */,
+				EA21CB39221FA88E007D3445 /* PSPayment.m in Sources */,
 				EAB038EF221E817B00331569 /* NIMUsrInfoData.m in Sources */,
+				EA21CA7C221F9980007D3445 /* PSScoreViewController.m in Sources */,
 				EAB038F2221E817B00331569 /* NIMTeamAnnouncementListViewController.m in Sources */,
 				EAB0391F221E817B00331569 /* NIMSessionNotificationContentView.m in Sources */,
 				EAB038EB221E817B00331569 /* NIMCreateTeamAnnouncement.m in Sources */,
@@ -3075,16 +3575,19 @@
 				EAB039C3221E8FF200331569 /* renderer.c in Sources */,
 				EAB038F1221E817B00331569 /* NIMTeamInfoData.m in Sources */,
 				EAB038CE221E817B00331569 /* NIMKitRobotTemplateLayout.m in Sources */,
+				EA21CA82221F9980007D3445 /* PSAdviceComments.m in Sources */,
 				5557A613221BD96500743012 /* MineHeaderView.m in Sources */,
 				EAB038F7221E817B00331569 /* NIMTeamMemberCardHeaderCell.m in Sources */,
 				EAB038F6221E817B00331569 /* NIMTeamAnnouncementListCell.m in Sources */,
 				EAB038FD221E817B00331569 /* NIMKitEvent.m in Sources */,
 				EAB038C3221E817B00331569 /* NIMGroupedUsrInfo.m in Sources */,
 				5557A547221BD7F500743012 /* YYFPSLabel.m in Sources */,
+				EA21CAB4221F9DCC007D3445 /* PSViewModel.m in Sources */,
 				EAB039D3221E8FF200331569 /* PSchatViewController.m in Sources */,
 				5557A607221BD96500743012 /* MsgViewController.m in Sources */,
 				EAB038CC221E817B00331569 /* NIMKitRobotTemplate.m in Sources */,
 				EAB039B7221E8FF200331569 /* NTESNetCallChatInfo.m in Sources */,
+				EA21CB22221FA36C007D3445 /* PSAppointmentBaseViewModel.m in Sources */,
 				EAB038D1221E817B00331569 /* NIMPinyinConverter.m in Sources */,
 				5557A545221BD7F500743012 /* AESCipher.m in Sources */,
 				EAB03916221E817B00331569 /* NIMKitLocationPoint.m in Sources */,
@@ -3092,11 +3595,15 @@
 				5557A628221BD96500743012 /* GetWaterFallListAPI.m in Sources */,
 				5557A502221BD76300743012 /* UITabBar+CustomBadge.m in Sources */,
 				EAB0391B221E817B00331569 /* NIMLoadMoreView.m in Sources */,
+				EA21CB3C221FA99A007D3445 /* PSServiceLinkView.m in Sources */,
 				5557A503221BD76300743012 /* MainTabBarController.m in Sources */,
+				EA21CAB8221F9E6D007D3445 /* PSResponse.m in Sources */,
 				5557A620221BD96500743012 /* HomeViewController.m in Sources */,
 				5557A552221BD7F500743012 /* PPNetworkHelper.m in Sources */,
+				EA21CA80221F9980007D3445 /* PSAdviceDetailsView.m in Sources */,
 				5557A614221BD96500743012 /* MineTableViewCell.m in Sources */,
 				5557A501221BD76300743012 /* RootNavigationController.m in Sources */,
+				EA21CA4A221F9386007D3445 /* PSWechatHandler.m in Sources */,
 				EAB038CD221E817B00331569 /* NIMKitRobotDefaultTemplateParser.m in Sources */,
 				EAB038CF221E817B00331569 /* NIMKitDevice.m in Sources */,
 				EAB038FB221E817B00331569 /* NIMTimestampModel.m in Sources */,
@@ -3104,12 +3611,15 @@
 				EAB03922221E817B00331569 /* NIMSessionFileTransContentView.m in Sources */,
 				5557A4FA221BD76300743012 /* BaseTableViewCell.m in Sources */,
 				EAB038E1221E817B00331569 /* NIMKitMediaFetcher.m in Sources */,
+				EA21CA81221F9980007D3445 /* PSConsultationOtherTableViewCell.m in Sources */,
 				5557A615221BD96500743012 /* NickNameLbel.m in Sources */,
 				5557A652221BD99E00743012 /* NativeCallJSVC.m in Sources */,
 				EAB0392D221E817C00331569 /* UITableView+NIMScrollToBottom.m in Sources */,
 				EAB03910221E817B00331569 /* NIMSessionTableAdapter.m in Sources */,
 				5557A4DA221BD6F700743012 /* AppDelegate+PushService.m in Sources */,
 				5557A60F221BD96500743012 /* MineLogic.m in Sources */,
+				EA21CAAA221F9A21007D3445 /* serciceIiem.m in Sources */,
+				EA21CABB221F9EFD007D3445 /* PSLoadingView.m in Sources */,
 				5557A546221BD7F500743012 /* AdPageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3262,7 +3772,7 @@
 		};
 		5557A4B6221BB46E00743012 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81A5B6B1C34A852B2B8BC60F /* Pods-GKHelpOutApp.debug.xcconfig */;
+			baseConfigurationReference = F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -3273,6 +3783,7 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMAVChat",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMSDK",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GKHelpOutApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -3294,7 +3805,7 @@
 		};
 		5557A4B7221BB46E00743012 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4669FBBAF16B4542978B5C1B /* Pods-GKHelpOutApp.release.xcconfig */;
+			baseConfigurationReference = 7C10B3AC074F1C870E18701F /* Pods-GKHelpOutApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -3305,6 +3816,7 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMAVChat",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMSDK",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GKHelpOutApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -3364,7 +3876,7 @@
 		};
 		5557A4BC221BB46E00743012 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAA9CA7C4131332FF846CAD9 /* Pods-GKHelpOutAppUITests.debug.xcconfig */;
+			baseConfigurationReference = 7C2548D35314A27746458142 /* Pods-GKHelpOutAppUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35NTC834XG;
@@ -3383,7 +3895,7 @@
 		};
 		5557A4BD221BB46E00743012 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE80DD9C3CB07E01EC968559 /* Pods-GKHelpOutAppUITests.release.xcconfig */;
+			baseConfigurationReference = E7404FC029C5B013F6E316EC /* Pods-GKHelpOutAppUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35NTC834XG;

@@ -48,6 +48,7 @@
 #import "ThirdMacros.h"
 #import "CommonMacros.h"
 #import "PSMacro.h"
+#import "PSTipsConstants.h"
 
 //基础类
 #import "AppDelegate.h"
@@ -63,6 +64,7 @@
 #import "UIButton+XYButton.h"
 #import "HpBaseLogic.h"
 #import "UIView+Frame.h"
+#import "NSObject+version.h"
 //第三方
 #import <AFNetworking.h>
 #import <YYKit.h>
@@ -70,11 +72,16 @@
 #import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PSTipsView.h"
+#import "UIImage+Stretch.h"
+#import "BlocksKit+UIKit.h"
 
 //IM
 #import "NIMKit.h"
 #import <NIMSDK/NIMSDK.h>
 #import <NIMAVChat/NIMAVChat.h>
 
+//tableView
+#import "UIScrollView+EmptyDataSet.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 #endif /* PrefixHeader_pch */
 #endif

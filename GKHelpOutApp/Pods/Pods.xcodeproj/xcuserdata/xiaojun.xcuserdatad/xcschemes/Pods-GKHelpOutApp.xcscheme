@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8A626F97F27F434039E6B8CCD03A321B"
+               BlueprintIdentifier = "F0CAC456938B266050571757E57B7713"
                BlueprintName = "Pods-GKHelpOutApp"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-GKHelpOutApp.a">
