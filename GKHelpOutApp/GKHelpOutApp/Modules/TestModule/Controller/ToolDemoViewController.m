@@ -43,6 +43,7 @@
     NSDictionary *scrollBanner = @{@"titleText":@"12 - 轮播图",@"clickSelector":@"scrollBanner"};
     
     self.dataArray =@[tags,webView,emitterView,IAPPay,tabarBadge,share,alert,action,status,NavColor,JSCore,scrollBanner].mutableCopy;
+    self.dataArray = [NSMutableArray array];
     
     [self initUI];
     

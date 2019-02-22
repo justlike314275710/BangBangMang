@@ -94,9 +94,6 @@ SINGLETON_FOR_CLASS(UserManager);
 //                             @"password":@"9619",
 //                             @"grant_type":@"password"
 //                             };
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [MBProgressHUD showActivityMessageInView:@"登录中..."];
-    });
     NSString*uid=@"consumer.m.app";
     NSString*cipherText=@"1688c4f69fc6404285aadbc996f5e429";
     NSString * part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
@@ -150,13 +147,8 @@ SINGLETON_FOR_CLASS(UserManager);
                     [self saveUserOuathInfo];
                     self.curUserInfo = [[UserInfo alloc] init];
                     self.curUserInfo.username = [params valueForKey:@"username"];
-                    self.isLogined = YES;
-                    [self saveUserInfo];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        //登录成功
-                        KPostNotification(KNotificationLoginStateChange, @YES);
-                        [MBProgressHUD hideHUD];
-                    });
+                    //获取云信账号信息
+                    [self getIMMinfo];
                     
                 }];
             }
@@ -194,12 +186,36 @@ SINGLETON_FOR_CLASS(UserManager);
 }
 #pragma mark ————— 获取网易云账号密码   ————
 - (void)getIMMinfo {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD showActivityMessageInView:@"登录中..."];
+    });
     NSString *access_token = self.oathInfo.access_token;
     NSString *token = NSStringFormat(@"Bearer %@",access_token);
-    [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
-    [PPNetworkHelper GET:NSStringFormat(@"%@,%@",EmallHostUrl,URL_get_im_info) parameters:nil success:^(id responseObject) {
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSString *url = NSStringFormat(@"%@%@",EmallHostUrl,URL_get_im_info);
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         
-    } failure:^(NSError *error) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *data = responseObject;
+        UserInfo *userInfo = [UserInfo modelWithDictionary:data];
+        userInfo.username = self.curUserInfo.username;
+        self.curUserInfo = userInfo;
+         NSLog(@"%@",self.curUserInfo);
+        //登录成功储存用户信息
+        [self saveUserInfo];
+        //登录云信
+        [self LoginSuccess:data completion:^(BOOL success, NSString *des) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUD];
+            });
+        
+        }];
+       
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
 }
@@ -207,47 +223,44 @@ SINGLETON_FOR_CLASS(UserManager);
 #pragma mark ————— 自动登录到服务器 —————
 -(void)autoLoginToServer:(loginBlock)completion{
 
-    [PPNetworkHelper POST:NSStringFormat(@"%@%@",URL_main,URL_user_auto_login) parameters:nil success:^(id responseObject) {
-        [self LoginSuccess:responseObject completion:completion];
-        
-    } failure:^(NSError *error) {
-        if (completion) {
-            completion(NO,error.localizedDescription);
-        }
-    }];
+    [self getIMMinfo];
+//    [PPNetworkHelper POST:NSStringFormat(@"%@%@",URL_main,URL_user_auto_login) parameters:nil success:^(id responseObject) {
+//        [self LoginSuccess:responseObject completion:completion];
+//
+//    } failure:^(NSError *error) {
+//        if (completion) {
+//            completion(NO,error.localizedDescription);
+//        }
+//    }];
 }
 
 #pragma mark ————— 登录成功处理 —————
 -(void)LoginSuccess:(id )responseObject completion:(loginBlock)completion{
+    
     if (ValidDict(responseObject)) {
-        if (ValidDict(responseObject[@"data"])) {
-            NSDictionary *data = responseObject[@"data"];
-            if (ValidStr(data[@"imId"]) && ValidStr(data[@"imPass"])) {
-                //登录IM
-                [[IMManager sharedIMManager] IMLogin:data[@"imId"] IMPwd:data[@"imPass"] completion:^(BOOL success, NSString *des) {
-                    [MBProgressHUD hideHUD];
-                    if (success) {
-                        self.curUserInfo = [UserInfo modelWithDictionary:data];
-                        [self saveUserInfo];
-                        self.isLogined = YES;
-                        if (completion) {
-                            completion(YES,nil);
-                        }
-                        KPostNotification(KNotificationLoginStateChange, @YES);
-                    }else{
-                        if (completion) {
-                            completion(NO,@"IM登录失败");
-                        }
-                        KPostNotification(KNotificationLoginStateChange, @NO);
+        NSDictionary *data = responseObject;
+        if (ValidStr(data[@"account"]) && ValidStr(data[@"token"])) {
+            //登录IM
+            [[IMManager sharedIMManager] IMLogin:data[@"account"] IMPwd:data[@"token"] completion:^(BOOL success, NSString *des) {
+                if (success) {
+                    self.isLogined = YES;
+                    
+                    if (completion) {
+                        completion(YES,nil);
                     }
-                }];
-            }else{
-                if (completion) {
-                    completion(NO,@"登录返回数据异常");
+                    KPostNotification(KNotificationLoginStateChange, @YES);
+                }else{
+                    if (completion) {
+                        completion(NO,@"IM登录失败");
+                    }
+                    KPostNotification(KNotificationLoginStateChange, @NO);
                 }
-                KPostNotification(KNotificationLoginStateChange, @NO);
+            }];
+        }else{
+            if (completion) {
+                completion(NO,@"登录返回数据异常");
             }
-            
+            KPostNotification(KNotificationLoginStateChange, @NO);
         }
     }else{
         if (completion) {
@@ -277,10 +290,20 @@ SINGLETON_FOR_CLASS(UserManager);
     return NO;
 }
 
+#pragma mark ————— 加载公共服务token信息 —————
+-(BOOL)loadUserOuathInfo{
+    YYCache *cache = [[YYCache alloc]initWithName:KOauthCacheName];
+    NSDictionary * userDic = (NSDictionary *)[cache objectForKey:KOauthModelCache];
+    if (userDic) {
+        self.oathInfo = [OauthInfo modelWithJSON:userDic];
+        return YES;
+    }
+    return NO;
+}
 #pragma mark ————— 储存用户公共服务获取的信息 —————
 -(void)saveUserOuathInfo {
     if (self.oathInfo) {
-        YYCache *cache = [[YYCache alloc]initWithName:KOauthModelCache];
+        YYCache *cache = [[YYCache alloc]initWithName:KOauthCacheName];
         NSDictionary *dic = [self.oathInfo modelToJSONObject];
         [cache setObject:dic forKey:KOauthModelCache];
     }
@@ -295,7 +318,6 @@ SINGLETON_FOR_CLASS(UserManager);
         }
     }];
 }
-
 
 #pragma mark ————— 获取oauthtoken
 - (OauthInfo *)loadOuathInfo {
@@ -323,11 +345,18 @@ SINGLETON_FOR_CLASS(UserManager);
     [[IMManager sharedIMManager] IMLogout];
     
     self.curUserInfo = nil;
+    self.oathInfo = nil;
     self.isLogined = NO;
 
 //    //移除缓存
     YYCache *cache = [[YYCache alloc]initWithName:KUserCacheName];
     [cache removeAllObjectsWithBlock:^{
+        if (completion) {
+            completion(YES,nil);
+        }
+    }];
+    YYCache *cache1 = [[YYCache alloc] initWithName:KOauthCacheName];
+    [cache1 removeAllObjectsWithBlock:^{
         if (completion) {
             completion(YES,nil);
         }

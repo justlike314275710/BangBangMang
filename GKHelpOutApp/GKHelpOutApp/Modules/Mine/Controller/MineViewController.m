@@ -12,6 +12,7 @@
 #import "ProfileViewController.h"
 #import "SettingViewController.h"
 #import "XYTransitionProtocol.h"
+#import "UploadAvatarViewController.h"
 
 #define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 
@@ -55,11 +56,11 @@
 }
 
 #pragma mark ————— 头像被点击 —————
--(void)headerViewClick{
-    //    [self ysl_addTransitionDelegate:self];
+-(void)fheaderViewClick{
+//        [self ysl_addTransitionDelegate:self];
     ProfileViewController *profileVC = [ProfileViewController new];
     profileVC.headerImage = _headerView.headImgView.image;
-    [self.navigationController pushViewController:profileVC animated:YES];
+
 }
 
 #pragma mark ————— 昵称被点击 —————
@@ -189,7 +190,6 @@
 -(void)changeUser{
     SettingViewController *settingVC = [SettingViewController new];
     [self.navigationController pushViewController:settingVC animated:YES];
-    
 }
 
 - (void)didReceiveMemoryWarning {
