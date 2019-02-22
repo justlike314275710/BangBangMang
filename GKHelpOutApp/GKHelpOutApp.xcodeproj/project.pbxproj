@@ -153,6 +153,7 @@
 		5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A669221CE1A000743012 /* HpBaseLogic.m */; };
 		5557A66E221D027200743012 /* OauthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66D221D027200743012 /* OauthInfo.m */; };
 		5557A671221D551A00743012 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66F221D551A00743012 /* UIView+Frame.m */; };
+		55626581221FEAFC00500DD3 /* UploadAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55626580221FEAFC00500DD3 /* UploadAvatarViewController.m */; };
 		BBD7011BF8BDC4D81ACF6934 /* libPods-GKHelpOutApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7761B4905DA72DA5678F1635 /* libPods-GKHelpOutApp.a */; };
 		BF9A09A1C995AA2E60278218 /* libPods-GKHelpOutAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DC79C4E00767C1092FF64E /* libPods-GKHelpOutAppUITests.a */; };
 		EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */; };
@@ -602,6 +603,8 @@
 		5557A66D221D027200743012 /* OauthInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OauthInfo.m; sourceTree = "<group>"; };
 		5557A66F221D551A00743012 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		5557A670221D551A00743012 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		5562657F221FEAFC00500DD3 /* UploadAvatarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadAvatarViewController.h; sourceTree = "<group>"; };
+		55626580221FEAFC00500DD3 /* UploadAvatarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadAvatarViewController.m; sourceTree = "<group>"; };
 		7761B4905DA72DA5678F1635 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A5B6B1C34A852B2B8BC60F /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BE80DD9C3CB07E01EC968559 /* Pods-GKHelpOutAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1495,6 +1498,8 @@
 			children = (
 				5557A590221BD96500743012 /* LoginViewController.h */,
 				5557A58F221BD96500743012 /* LoginViewController.m */,
+				5562657F221FEAFC00500DD3 /* UploadAvatarViewController.h */,
+				55626580221FEAFC00500DD3 /* UploadAvatarViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2881,6 +2886,7 @@
 				EAB03936221E817C00331569 /* NIMKitSwitcherCell.m in Sources */,
 				EAB038C0221E817B00331569 /* NIMContactDataItem.m in Sources */,
 				EAB038C7221E817B00331569 /* NIMContactSelectConfig.m in Sources */,
+				55626581221FEAFC00500DD3 /* UploadAvatarViewController.m in Sources */,
 				EAB039BA221E8FF200331569 /* NTESGLView.m in Sources */,
 				EAB039B8221E8FF200331569 /* UIView+NTES.m in Sources */,
 				5557A602221BD96500743012 /* TableViewCell.m in Sources */,

@@ -15,6 +15,7 @@
 #import "HomeViewController.h"
 #import "ProfileViewController.h"
 #import "PersonModel.h"
+#import "UploadAvatarViewController.h"
 
 #define itemWidthHeight ((kScreenWidth-30)/2)
 
@@ -37,7 +38,7 @@
     
     [self setupUI];
     //开始第一次数据拉取
-    [self.collectionView.mj_header beginRefreshing];
+//    [self.collectionView.mj_header beginRefreshing];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -151,9 +152,13 @@
 
 -(void)naviBtnClick:(UIButton *)btn{
     DLog(@"点击了筛选按钮");
-    RootViewController *v = [RootViewController new];
-    v.isHidenNaviBar = YES;
-    [self.navigationController pushViewController:v animated:YES];
+    UploadAvatarViewController *profileVC = [UploadAvatarViewController new];
+    [self.navigationController pushViewController:profileVC animated:YES];
+    
+    
+//    RootViewController *v = [RootViewController new];
+//    v.isHidenNaviBar = YES;
+//    [self.navigationController pushViewController:v animated:YES];
 }
 
 #pragma mark -  上下滑动隐藏/显示导航栏

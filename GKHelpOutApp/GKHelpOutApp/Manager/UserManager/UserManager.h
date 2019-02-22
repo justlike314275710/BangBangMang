@@ -83,4 +83,11 @@ SINGLETON_FOR_HEADER(UserManager)
  */
 -(BOOL)loadUserInfo;
 
+/**
+ 加载公共服务数据
+
+ @return 是否成功
+ */
+-(BOOL)loadUserOuathInfo;
+
 @end

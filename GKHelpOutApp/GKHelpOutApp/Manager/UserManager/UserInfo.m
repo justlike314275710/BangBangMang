@@ -10,5 +10,11 @@
 
 @implementation UserInfo
 
+// UserInfo.m
++ (NSDictionary *)modelCustomPropertyMapper {
+    // 将im_username映射到key为username的数据字段
+    return @{@"im_username":@"username"};
+}
+
 
 @end

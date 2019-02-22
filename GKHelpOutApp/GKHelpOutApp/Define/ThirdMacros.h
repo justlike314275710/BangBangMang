@@ -23,7 +23,7 @@
 
 
 //网易云信
-#define kIMAppKey @"afc7265de3857bbaa7404b4ea92b191e"
+#define kIMAppKey @"87dae6933488de4bab789054a3a5c720"
 #define kIMAppSecret @"c34bd403b29a"
 #define kIMPushCerName @""
 

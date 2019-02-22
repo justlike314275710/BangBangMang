@@ -9,6 +9,8 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import "LoginLogic.h"
 
+
+
 @interface LoginViewController ()
 
 @property(nonatomic,strong) LoginLogic *logic;//逻辑层
@@ -39,82 +41,7 @@
     };
     
     [self setupUI];
-    
-    /*
-    YYLabel *snowBtn = [[YYLabel alloc] initWithFrame:CGRectMake(0, 200, 150, 60)];
-    snowBtn.text = @"微信登录";
-    snowBtn.font = SYSTEMFONT(20);
-    snowBtn.textColor = KWhiteColor;
-    snowBtn.backgroundColor = CNavBgColor;
-    snowBtn.textAlignment = NSTextAlignmentCenter;
-    snowBtn.textVerticalAlignment = YYTextVerticalAlignmentCenter;
-    snowBtn.centerX = KScreenWidth/2;
-    
-    kWeakSelf(self);
-    snowBtn.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
-        //        [MBProgressHUD showTopTipMessage:NSStringFormat(@"%@马上开始",str) isWindow:YES];
-        
-        [weakself WXLogin];
-    };
-    
-    [self.view addSubview:snowBtn];
-    
-    YYLabel *snowBtn2 = [[YYLabel alloc] initWithFrame:CGRectMake(0, 300, 150, 60)];
-    snowBtn2.text = @"QQ登录";
-    snowBtn2.font = SYSTEMFONT(20);
-    snowBtn2.textColor = KWhiteColor;
-    snowBtn2.backgroundColor = KRedColor;
-    snowBtn2.textAlignment = NSTextAlignmentCenter;
-    snowBtn2.textVerticalAlignment = YYTextVerticalAlignmentCenter;
-    snowBtn2.centerX = KScreenWidth/2;
-    
-    snowBtn2.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
-        //        [MBProgressHUD showTopTipMessage:NSStringFormat(@"%@马上开始",str) isWindow:YES];
-        
-        [weakself QQLogin];
-    };
-    
-    [self.view addSubview:snowBtn2];
-    
-    YYLabel *skipBtn = [[YYLabel alloc] initWithFrame:CGRectMake(0, 400, 150, 60)];
-    skipBtn.text = @"跳过登录";
-    skipBtn.font = SYSTEMFONT(20);
-    skipBtn.textColor = KBlueColor;
-    skipBtn.backgroundColor = KClearColor;
-    skipBtn.textAlignment = NSTextAlignmentCenter;
-    skipBtn.textVerticalAlignment = YYTextVerticalAlignmentCenter;
-    skipBtn.centerX = KScreenWidth/2;
-    
-    skipBtn.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
-        //        [MBProgressHUD showTopTipMessage:NSStringFormat(@"%@马上开始",str) isWindow:YES];
-        
-        [weakself LoginAction];
-        
-    };
-    
-    [self.view addSubview:skipBtn];
-    
-    
-    YYLabel *getCodeBtn = [[YYLabel alloc] initWithFrame:CGRectMake(0,500, 150, 60)];
-    getCodeBtn.text = @"获取验证码";
-    getCodeBtn.font = SYSTEMFONT(20);
-    getCodeBtn.textColor = KBlueColor;
-    getCodeBtn.backgroundColor = KClearColor;
-    getCodeBtn.textAlignment = NSTextAlignmentCenter;
-    getCodeBtn.textVerticalAlignment = YYTextVerticalAlignmentCenter;
-    getCodeBtn.centerX = KScreenWidth/2;
-    
-    getCodeBtn.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
-        //        [MBProgressHUD showTopTipMessage:NSStringFormat(@"%@马上开始",str) isWindow:YES];
-        
-        [weakself getCode];
-    };
-    
-    [self.view addSubview:getCodeBtn];
-     
-     */
 
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -125,41 +52,73 @@
 -(void)setupUI {
     
     [self.view addSubview:self.scrollview];
-    
     UIImageView *headImg = [UIImageView new];
-    headImg.frame = CGRectMake(0,0,KScreenWidth,200);
-    headImg.backgroundColor = [UIColor redColor];
-    headImg.image = IMAGE_NAMED(@"me");
+    headImg.frame = CGRectMake(0,0,KScreenWidth,KScreenHeight);
+    headImg.image = IMAGE_NAMED(@"loginbgIcon");
+    headImg.userInteractionEnabled = YES;
     [self.scrollview addSubview:headImg];
     
-    UILabel *k_phoneNumber = [[UILabel alloc] init];
-    k_phoneNumber.frame = CGRectMake(20,headImg.bottom+20,70,21);
-    k_phoneNumber.text = @"手机号:";
-    [self.scrollview addSubview:k_phoneNumber];
+    UIImageView *mideleBgImg = [UIImageView new];
+    mideleBgImg.userInteractionEnabled = YES;
+    mideleBgImg.frame = CGRectMake(KNormalSpaceX,(KScreenHeight-260)/2-20,KScreenWidth-2*KNormalSpaceX,260);
+    mideleBgImg.image = IMAGE_NAMED(@"loginmidbgicon");
+    [self.scrollview addSubview:mideleBgImg];
     
-    [self.scrollview addSubview:self.phoneNumberField];
-    self.phoneNumberField.frame = CGRectMake(k_phoneNumber.right+10, headImg.bottom+20, KScreenWidth-k_phoneNumber.right-10-15, 21);
-    self.phoneNumberField.backgroundColor = [UIColor grayColor];
+    UIImageView *circleImg = [UIImageView new];
+    circleImg.frame = CGRectMake((KScreenWidth-100)/2, mideleBgImg.y-50,100,100);
+    circleImg.image = [UIImage imageNamed:@"loginciricom"];
+    [self.scrollview addSubview:circleImg];
+    
+    UIImageView *logoImg = [UIImageView new];
+    logoImg.frame = CGRectMake(30,27,40,46);
+    logoImg.image = [UIImage imageNamed:@"logo"];
+    [circleImg addSubview:logoImg];
+    
+
+    UILabel *k_phoneNumber = [[UILabel alloc] init];
+    k_phoneNumber.frame = CGRectMake(44,81,50,21);
+    k_phoneNumber.text = @"手机号:";
+    k_phoneNumber.font = FFont1;
+    k_phoneNumber.textColor = CFontColor1;
+    [mideleBgImg addSubview:k_phoneNumber];
+    
+    [mideleBgImg addSubview:self.phoneNumberField];
+    self.phoneNumberField.frame = CGRectMake(k_phoneNumber.right,k_phoneNumber.y, mideleBgImg.width-k_phoneNumber.right-10-15, 21);
+
     
     
     UILabel *k_codeLabel = [[UILabel alloc] init];
-    k_codeLabel.frame = CGRectMake(20,k_phoneNumber.bottom + 20,70,21);
+    k_codeLabel.frame = CGRectMake(44,k_phoneNumber.bottom + 30,50,21);
     k_codeLabel.text = @"验证码:";
-    [self.scrollview addSubview:k_codeLabel];
+    k_codeLabel.font = FFont1;
+    k_codeLabel.textColor = CFontColor1;
+    [mideleBgImg addSubview:k_codeLabel];
     
-    self.getCodeBtn.frame = CGRectMake(KScreenWidth-135,k_codeLabel.y,120,21);
-    [self.scrollview addSubview:self.getCodeBtn];
+    self.getCodeBtn.frame = CGRectMake(mideleBgImg.width-125,k_codeLabel.y,100,21);
+    [mideleBgImg addSubview:self.getCodeBtn];
     
-    self.codeField.frame = CGRectMake(k_codeLabel.right+10,k_codeLabel.y,KScreenWidth-k_codeLabel.right-_getCodeBtn.width-30, 21);
-    self.codeField.backgroundColor = [UIColor grayColor];
-    [self.scrollview addSubview:self.codeField];
+    UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(45,k_phoneNumber.bottom+5, mideleBgImg.width-90, 1)];
+    line1.backgroundColor = CLineColor;
+    [mideleBgImg addSubview:line1];
+    
+    self.codeField.frame = CGRectMake(k_codeLabel.right,k_codeLabel.y,mideleBgImg.width-k_codeLabel.right-_getCodeBtn.width, 21);
+    [mideleBgImg addSubview: self.codeField];
+    
+    UIView *v_line = [[UIView alloc] initWithFrame:CGRectMake(self.codeField.right-10, k_codeLabel.y+3, 1,15)];
+    v_line.backgroundColor = CFontColor3;
+    [mideleBgImg addSubview:v_line];
+    
     @weakify(self)
     [_getCodeBtn addTapBlock:^(UIButton *btn) {
         [weak_self codeClicks];
     }];
+    
+    UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(45,k_codeLabel.bottom+5, mideleBgImg.width-90, 1)];
+    line2.backgroundColor = CLineColor;
+    [mideleBgImg addSubview:line2];
 
-    [self.scrollview addSubview:self.loginBtn];
-    _loginBtn.frame = CGRectMake(15,self.getCodeBtn.bottom+25,KScreenWidth-30,45);
+    [mideleBgImg addSubview:self.loginBtn];
+    _loginBtn.frame = CGRectMake(45,186,mideleBgImg.width-90,KNormalBBtnHeight);
     [_loginBtn addTapBlock:^(UIButton *btn) {
         [weak_self UserAccoutLogin];
     }];
@@ -263,6 +222,7 @@
                     [MBProgressHUD showWarnMessage:message];
                     self.getCodeBtn.enabled=YES;
                 });
+                
             }];
             
         } else {
@@ -275,7 +235,7 @@
 #pragma mark --- Setting&&Getting
 - (UIScrollView *)scrollview {
     if (!_scrollview) {
-        _scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0,20, KScreenWidth, KScreenHeight)];
+        _scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0, KScreenWidth, KScreenHeight)];
         _scrollview.backgroundColor = CViewBgColor;
     }
     return _scrollview;
@@ -286,6 +246,8 @@
         _phoneNumberField = [[UITextField alloc] init];
         _phoneNumberField.placeholder = @"请输入手机号码";
         _phoneNumberField.textAlignment = NSTextAlignmentLeft;
+        _phoneNumberField.textColor = CFontColor2;
+        _phoneNumberField.font = FFont1;
     }
     return _phoneNumberField;
 }
@@ -294,6 +256,9 @@
         _codeField = [[UITextField alloc] init];
         _codeField.placeholder = @"请输入验证码";
         _codeField.textAlignment = NSTextAlignmentLeft;
+        _codeField.textColor = CFontColor2;
+        _codeField.font = FFont1;
+        
     }
     return _codeField;
 }
@@ -302,8 +267,8 @@
     if (!_getCodeBtn) {
         _getCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_getCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        [_getCodeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        _getCodeBtn.backgroundColor = [UIColor whiteColor];
+        [_getCodeBtn setTitleColor:CFontColor3 forState:UIControlStateNormal];
+        _getCodeBtn.titleLabel.font = FFont1;
     }
     return _getCodeBtn;
 }
@@ -313,8 +278,9 @@
     if (!_loginBtn) {
         _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_loginBtn setTitle:@"登录" forState:UIControlStateNormal];
-        [_loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        _loginBtn.backgroundColor = [UIColor whiteColor];
+        [_loginBtn setTitleColor:CFontColor_BtnTitle forState:UIControlStateNormal];
+        [_loginBtn setBackgroundImage:IMAGE_NAMED(@"loginbtnbgicon") forState:UIControlStateNormal];
+
     }
     return _loginBtn;
 }
