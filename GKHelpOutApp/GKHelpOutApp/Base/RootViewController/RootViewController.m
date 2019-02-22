@@ -69,6 +69,7 @@
             [obj addSubview:_noDataView];
         }
     }];
+
 }
 
 -(void)removeNoDataImage{

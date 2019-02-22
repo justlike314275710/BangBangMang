@@ -15,7 +15,10 @@
 
 @property (nonatomic,copy) Complete lgoinComplete; //登录
 
-//- (void)checkDataWithCallback:(CheckDataCallback)callback;
+
+//判断电话号码
+- (void)checkDataWithPhoneCallback:(CheckDataCallback)callback;
+
 //获取验证码
 - (void)getVerificationCodeData:(RequestDataCompleted)completed failed:(RequestDataFailed)failedCallback;
 

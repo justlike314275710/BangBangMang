@@ -118,7 +118,7 @@
         
     }
     //展示FPS
-    [AppManager showFPS];
+//    [AppManager showFPS];
 }
 
 

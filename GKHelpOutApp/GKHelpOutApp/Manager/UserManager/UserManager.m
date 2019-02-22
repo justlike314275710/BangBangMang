@@ -86,8 +86,6 @@ SINGLETON_FOR_CLASS(UserManager);
 
 #pragma mark ————— 手动登录到服务器 —————
 
-
-
 -(void)loginToServer:(NSDictionary *)params completion:(loginBlock)completion{
     
    
@@ -150,7 +148,6 @@ SINGLETON_FOR_CLASS(UserManager);
                 [self removeUserOuathInfo:^{
                     @strongify(self)
                     [self saveUserOuathInfo];
-                    
                     self.curUserInfo = [[UserInfo alloc] init];
                     self.curUserInfo.username = [params valueForKey:@"username"];
                     self.isLogined = YES;
@@ -194,6 +191,17 @@ SINGLETON_FOR_CLASS(UserManager);
     }];
      
      */
+}
+#pragma mark ————— 获取网易云账号密码   ————
+- (void)getIMMinfo {
+    NSString *access_token = self.oathInfo.access_token;
+    NSString *token = NSStringFormat(@"Bearer %@",access_token);
+    [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
+    [PPNetworkHelper GET:NSStringFormat(@"%@,%@",EmallHostUrl,URL_get_im_info) parameters:nil success:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark ————— 自动登录到服务器 —————
