@@ -150,6 +150,12 @@
 		BBD7011BF8BDC4D81ACF6934 /* libPods-GKHelpOutApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7761B4905DA72DA5678F1635 /* libPods-GKHelpOutApp.a */; };
 		BF9A09A1C995AA2E60278218 /* libPods-GKHelpOutAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DC79C4E00767C1092FF64E /* libPods-GKHelpOutAppUITests.a */; };
 		EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */; };
+		EA21CA31221EA694007D3445 /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; };
+		EA21CA32221EA694007D3445 /* NIMAVChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EA21CA34221EA699007D3445 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
+		EA21CA35221EA699007D3445 /* NMC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EA21CA36221EA69F007D3445 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
+		EA21CA37221EA69F007D3445 /* NIMSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAB038B8221E817B00331569 /* NMCVideoFilter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03788221E817A00331569 /* NMCVideoFilter.bundle */; };
 		EAB038B9221E817B00331569 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
 		EAB038BA221E817B00331569 /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; };
@@ -339,6 +345,22 @@
 			remoteInfo = GKHelpOutApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EA21CA33221EA694007D3445 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EA21CA37221EA69F007D3445 /* NIMSDK.framework in Embed Frameworks */,
+				EA21CA32221EA694007D3445 /* NIMAVChat.framework in Embed Frameworks */,
+				EA21CA35221EA699007D3445 /* NMC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		45DC79C4E00767C1092FF64E /* libPods-GKHelpOutAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -946,6 +968,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */,
+				EA21CA34221EA699007D3445 /* NMC.framework in Frameworks */,
+				EA21CA36221EA69F007D3445 /* NIMSDK.framework in Frameworks */,
 				5557A587221BD8DA00743012 /* libSocialQQ.a in Frameworks */,
 				5557A585221BD8DA00743012 /* UMSocialCore.framework in Frameworks */,
 				5557A586221BD8DA00743012 /* libSocialWeChat.a in Frameworks */,
@@ -955,6 +979,7 @@
 				5557A583221BD8DA00743012 /* UMSocialNetwork.framework in Frameworks */,
 				EAB038BA221E817B00331569 /* NIMAVChat.framework in Frameworks */,
 				EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */,
+				EA21CA31221EA694007D3445 /* NIMAVChat.framework in Frameworks */,
 				EAB038B9221E817B00331569 /* NMC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2600,6 +2625,7 @@
 				5557A486221BB46C00743012 /* Frameworks */,
 				5557A487221BB46C00743012 /* Resources */,
 				B98BF45394335A9758F0647A /* [CP] Copy Pods Resources */,
+				EA21CA33221EA694007D3445 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
