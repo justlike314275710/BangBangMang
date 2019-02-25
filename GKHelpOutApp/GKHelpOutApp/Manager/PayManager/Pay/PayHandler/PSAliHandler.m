@@ -49,7 +49,7 @@
 -(void)goOrderPay{
     NSLog(@"支付宝支付");
     manager=[AFHTTPSessionManager manager];
-    NSString*token=help_userManager.oathInfo.access_token;
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString *url = [NSString stringWithFormat:@"%@/legal-advice/%@/alipay",ConsultationHostUrl,self.payInfo.productID];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {

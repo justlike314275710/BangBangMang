@@ -146,8 +146,6 @@
 		5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A669221CE1A000743012 /* HpBaseLogic.m */; };
 		5557A66E221D027200743012 /* OauthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66D221D027200743012 /* OauthInfo.m */; };
 		5557A671221D551A00743012 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66F221D551A00743012 /* UIView+Frame.m */; };
-		55626584221FFDF000500DD3 /* UploadAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55626583221FFDF000500DD3 /* UploadAvatarViewController.m */; };
-		55B4F67622239731002B1536 /* PSAuthorizationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4F67422239731002B1536 /* PSAuthorizationTool.m */; };
 		A2630C1CA890D20F200E6E6E /* libPods-GKHelpOutAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */; };
 		A56ED927F1CE79562534A4C9 /* libPods-GKHelpOutApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */; };
 		EA13D0E6221FDA5600A40EE9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA13D0E5221FDA5600A40EE9 /* Media.xcassets */; };
@@ -215,6 +213,8 @@
 		EA21CB4D221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB49221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m */; };
 		EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB4F221FCEE2007D3445 /* NSObject+version.m */; };
 		EA21CB54221FD337007D3445 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CB53221FD337007D3445 /* CoreMotion.framework */; };
+		EA78F6CD221FFECB002D788A /* UploadAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */; };
+		EA78F6D12223D34C002D788A /* LawyerCertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */; };
 		EAB038B8221E817B00331569 /* NMCVideoFilter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03788221E817A00331569 /* NMCVideoFilter.bundle */; };
 		EAB038B9221E817B00331569 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
 		EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
@@ -658,10 +658,6 @@
 		5557A66D221D027200743012 /* OauthInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OauthInfo.m; sourceTree = "<group>"; };
 		5557A66F221D551A00743012 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		5557A670221D551A00743012 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
-		55626582221FFDF000500DD3 /* UploadAvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAvatarViewController.h; sourceTree = "<group>"; };
-		55626583221FFDF000500DD3 /* UploadAvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAvatarViewController.m; sourceTree = "<group>"; };
-		55B4F67422239731002B1536 /* PSAuthorizationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAuthorizationTool.m; sourceTree = "<group>"; };
-		55B4F67522239731002B1536 /* PSAuthorizationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAuthorizationTool.h; sourceTree = "<group>"; };
 		7C10B3AC074F1C870E18701F /* Pods-GKHelpOutApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.release.xcconfig"; sourceTree = "<group>"; };
 		7C2548D35314A27746458142 /* Pods-GKHelpOutAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7404FC029C5B013F6E316EC /* Pods-GKHelpOutAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -796,6 +792,10 @@
 		EA3E7CF8221FE74F00D60C6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA3E7CFA221FE75C00D60C6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA3E7CFC221FE76700D60C6A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		EA78F6CB221FFECA002D788A /* UploadAvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAvatarViewController.h; sourceTree = "<group>"; };
+		EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAvatarViewController.m; sourceTree = "<group>"; };
+		EA78F6CF2223D34C002D788A /* LawyerCertificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerCertificationViewController.h; sourceTree = "<group>"; };
+		EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerCertificationViewController.m; sourceTree = "<group>"; };
 		EAB03788221E817A00331569 /* NMCVideoFilter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NMCVideoFilter.bundle; sourceTree = "<group>"; };
 		EAB03789221E817A00331569 /* NMC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMC.framework; sourceTree = "<group>"; };
 		EAB0378A221E817A00331569 /* NIMAVChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NIMAVChat.framework; sourceTree = "<group>"; };
@@ -1392,7 +1392,6 @@
 		5557A505221BD7BD00743012 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				55B4F673222396FF002B1536 /* AuthorizationTool */,
 				5557A510221BD7F500743012 /* AdPage */,
 				5557A50D221BD7F500743012 /* AES */,
 				5557A506221BD7F500743012 /* Category */,
@@ -1696,8 +1695,8 @@
 		5557A58E221BD96500743012 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				55626582221FFDF000500DD3 /* UploadAvatarViewController.h */,
-				55626583221FFDF000500DD3 /* UploadAvatarViewController.m */,
+				EA78F6CB221FFECA002D788A /* UploadAvatarViewController.h */,
+				EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */,
 				5557A590221BD96500743012 /* LoginViewController.h */,
 				5557A58F221BD96500743012 /* LoginViewController.m */,
 			);
@@ -1873,6 +1872,7 @@
 		5557A5D1221BD96500743012 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EA78F6CE2223D2B4002D788A /* Home_Lawyer */,
 				EA21CA4D221F995C007D3445 /* Home_Consultation */,
 				5557A5D2221BD96500743012 /* Logic */,
 				5557A5D7221BD96500743012 /* Controller */,
@@ -2022,15 +2022,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		55B4F673222396FF002B1536 /* AuthorizationTool */ = {
-			isa = PBXGroup;
-			children = (
-				55B4F67522239731002B1536 /* PSAuthorizationTool.h */,
-				55B4F67422239731002B1536 /* PSAuthorizationTool.m */,
-			);
-			path = AuthorizationTool;
 			sourceTree = "<group>";
 		};
 		64C5C9D239E7F741EC473360 /* Frameworks */ = {
@@ -2302,6 +2293,15 @@
 				EA21CB2C221FA78C007D3445 /* PSProduct.m */,
 			);
 			path = PayModel;
+			sourceTree = "<group>";
+		};
+		EA78F6CE2223D2B4002D788A /* Home_Lawyer */ = {
+			isa = PBXGroup;
+			children = (
+				EA78F6CF2223D34C002D788A /* LawyerCertificationViewController.h */,
+				EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */,
+			);
+			path = Home_Lawyer;
 			sourceTree = "<group>";
 		};
 		EAB03786221E817A00331569 /* NIMAVChat */ = {
@@ -3357,7 +3357,6 @@
 				EAB039BC221E8FF200331569 /* renderer_yuv444p10le.c in Sources */,
 				EAB039C5221E8FF200331569 /* yuv420p.fsh.c in Sources */,
 				EAB038E3221E817B00331569 /* NIMKitTitleView.m in Sources */,
-				55B4F67622239731002B1536 /* PSAuthorizationTool.m in Sources */,
 				EAB038E9221E817B00331569 /* NIMTeamMemberCardViewController.m in Sources */,
 				EA21CB28221FA444007D3445 /* PSPayOngoingViewController.m in Sources */,
 				EAB03936221E817C00331569 /* NIMKitSwitcherCell.m in Sources */,
@@ -3543,7 +3542,7 @@
 				EAB038F8221E817B00331569 /* NIMTeamCardHeaderCell.m in Sources */,
 				EAB03926221E817C00331569 /* NIMSessionRobotContentView.m in Sources */,
 				5557A4FD221BD76300743012 /* XLJSHandler.m in Sources */,
-				55626584221FFDF000500DD3 /* UploadAvatarViewController.m in Sources */,
+				EA78F6CD221FFECB002D788A /* UploadAvatarViewController.m in Sources */,
 				5557A56F221BD87100743012 /* GameInfo.m in Sources */,
 				EA21CAA2221F9A21007D3445 /* PSMoreServiceViewModel.m in Sources */,
 				EAB03909221E817B00331569 /* NIMTipContentConfig.m in Sources */,
@@ -3623,6 +3622,7 @@
 				EA21CA80221F9980007D3445 /* PSAdviceDetailsView.m in Sources */,
 				5557A614221BD96500743012 /* MineTableViewCell.m in Sources */,
 				5557A501221BD76300743012 /* RootNavigationController.m in Sources */,
+				EA78F6D12223D34C002D788A /* LawyerCertificationViewController.m in Sources */,
 				EA21CA4A221F9386007D3445 /* PSWechatHandler.m in Sources */,
 				EAB038CD221E817B00331569 /* NIMKitRobotDefaultTemplateParser.m in Sources */,
 				EAB038CF221E817B00331569 /* NIMKitDevice.m in Sources */,
@@ -3728,7 +3728,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3782,7 +3782,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -3796,7 +3796,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 35NTC834XG;
+				DEVELOPMENT_TEAM = UZLE4JHZYZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",
@@ -3829,7 +3829,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 35NTC834XG;
+				DEVELOPMENT_TEAM = UZLE4JHZYZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",

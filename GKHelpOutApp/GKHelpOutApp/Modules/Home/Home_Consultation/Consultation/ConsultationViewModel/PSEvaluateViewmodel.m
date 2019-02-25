@@ -68,7 +68,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    NSString*token=help_userManager.oathInfo.access_token;
+     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString*url=[NSString stringWithFormat:@"%@/customer/comments",ConsultationHostUrl];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
 
@@ -114,7 +114,7 @@
 
 - (void)requestEvaluateCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     manager=[AFHTTPSessionManager manager];
-    NSString*token=help_userManager.oathInfo.access_token;
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString*url=[NSString stringWithFormat:@"%@/customer/comments?lawyerId=%@",ConsultationHostUrl,self.lawyerId];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     NSDictionary*parmeters=@{
