@@ -96,8 +96,8 @@ SINGLETON_FOR_CLASS(UserManager);
 //                             };
     NSString*uid=@"consumer.m.app";
     NSString*cipherText=@"1688c4f69fc6404285aadbc996f5e429";
-    NSString * part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
-    NSData *data = [part1 dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
+    NSData   *data = [part1 dataUsingEncoding:NSUTF8StringEncoding];
     NSString *stringBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     NSString * authorization = [NSString stringWithFormat:@"Basic %@",stringBase64];
     
@@ -116,6 +116,7 @@ SINGLETON_FOR_CLASS(UserManager);
     [responseSerializer setAcceptableContentTypes:[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/plain",nil]];
     
     manager.responseSerializer= responseSerializer;
+    
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:formRequest uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
@@ -185,7 +186,7 @@ SINGLETON_FOR_CLASS(UserManager);
      */
 }
 #pragma mark ————— 获取网易云账号密码   ————
-- (void)getIMMinfo{
+- (void)getIMMinfo {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD showActivityMessageInView:@"登录中..."];
@@ -207,7 +208,6 @@ SINGLETON_FOR_CLASS(UserManager);
          NSLog(@"%@",self.curUserInfo);
         //登录成功储存用户信息
         [self saveUserInfo];
-        
         //登录云信
         [self LoginSuccess:data completion:^(BOOL success, NSString *des) {
             dispatch_async(dispatch_get_main_queue(), ^{

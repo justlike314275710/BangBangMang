@@ -180,6 +180,14 @@
 - (void)modifyAccountNickname {
     
     NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_modify_nickname];
+    
+    NSString*uid=@"consumer.m.app";
+    NSString*cipherText=@"1688c4f69fc6404285aadbc996f5e429";
+    NSString * part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
+    NSData *data = [part1 dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *stringBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    NSString * authorization = [NSString stringWithFormat:@"Basic %@",stringBase64];
+    
     NSDictionary*parmeters=@{
                              @"phoneNumber":help_userManager.curUserInfo.username,
                              @"nickname":self.nickField.text
@@ -188,9 +196,10 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:authorization forHTTPHeaderField:@"Authorization"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSString*token=[NSString stringWithFormat:@"Bearer %@",help_userManager.oathInfo.access_token];
-    [ manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager PUT:url parameters:parmeters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"改手机%@",responseObject);
 
