@@ -75,8 +75,17 @@
 //获取验证码
 #define URL_get_verification_code @"/users/%@/verification-codes/login"
 
-//获取认证授权token
+//获取认证授权token // 刷新认证授权token
 #define URL_get_oauth_token @"/oauth/token"
+
+//上传头像
+#define URL_upload_avatar @"/users/me/avatar"
+
+//修改用户资料
+#define URL_modify_nickname @"/users/me"
+
+
+
 
 //获取当前IM用户
 #define URL_get_im_info @"/im/users/me"
