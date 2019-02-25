@@ -185,7 +185,7 @@ SINGLETON_FOR_CLASS(UserManager);
      */
 }
 #pragma mark ————— 获取网易云账号密码   ————
-- (void)getIMMinfo {
+- (void)getIMMinfo{
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD showActivityMessageInView:@"登录中..."];
@@ -207,6 +207,7 @@ SINGLETON_FOR_CLASS(UserManager);
          NSLog(@"%@",self.curUserInfo);
         //登录成功储存用户信息
         [self saveUserInfo];
+        
         //登录云信
         [self LoginSuccess:data completion:^(BOOL success, NSString *des) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -216,8 +217,28 @@ SINGLETON_FOR_CLASS(UserManager);
         }];
        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //token 过期重新获取token
+        NSString *errorInfo = error.userInfo[@"NSLocalizedDescription"];
+        if ([errorInfo isEqualToString:@"Request failed: unauthorized (401)"]) {
+            [self refreshOuathToken];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUD];
+        });
         
+
     }];
+}
+
+#pragma mark ————— 重新刷新获取Token —————
+- (void)refreshOuathToken {
+    NSString *refresh_token = self.oathInfo.refresh_token?self.oathInfo.refresh_token:@"";
+    NSDictionary*parmeters=@{
+                             @"refresh_token":refresh_token,
+                             @"grant_type":@"refresh_token"
+                             };
+    [self loginToServer:parmeters completion:nil];
+    
 }
 
 #pragma mark ————— 自动登录到服务器 —————
