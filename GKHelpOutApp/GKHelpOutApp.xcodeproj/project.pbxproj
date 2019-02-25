@@ -213,6 +213,8 @@
 		EA21CB4D221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB49221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m */; };
 		EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB4F221FCEE2007D3445 /* NSObject+version.m */; };
 		EA21CB54221FD337007D3445 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CB53221FD337007D3445 /* CoreMotion.framework */; };
+		EA78F6CD221FFECB002D788A /* UploadAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */; };
+		EA78F6D12223D34C002D788A /* LawyerCertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */; };
 		EAB038B8221E817B00331569 /* NMCVideoFilter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03788221E817A00331569 /* NMCVideoFilter.bundle */; };
 		EAB038B9221E817B00331569 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
 		EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
@@ -790,6 +792,10 @@
 		EA3E7CF8221FE74F00D60C6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA3E7CFA221FE75C00D60C6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA3E7CFC221FE76700D60C6A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		EA78F6CB221FFECA002D788A /* UploadAvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAvatarViewController.h; sourceTree = "<group>"; };
+		EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAvatarViewController.m; sourceTree = "<group>"; };
+		EA78F6CF2223D34C002D788A /* LawyerCertificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerCertificationViewController.h; sourceTree = "<group>"; };
+		EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerCertificationViewController.m; sourceTree = "<group>"; };
 		EAB03788221E817A00331569 /* NMCVideoFilter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NMCVideoFilter.bundle; sourceTree = "<group>"; };
 		EAB03789221E817A00331569 /* NMC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMC.framework; sourceTree = "<group>"; };
 		EAB0378A221E817A00331569 /* NIMAVChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NIMAVChat.framework; sourceTree = "<group>"; };
@@ -1689,6 +1695,8 @@
 		5557A58E221BD96500743012 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EA78F6CB221FFECA002D788A /* UploadAvatarViewController.h */,
+				EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */,
 				5557A590221BD96500743012 /* LoginViewController.h */,
 				5557A58F221BD96500743012 /* LoginViewController.m */,
 			);
@@ -1864,6 +1872,7 @@
 		5557A5D1221BD96500743012 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EA78F6CE2223D2B4002D788A /* Home_Lawyer */,
 				EA21CA4D221F995C007D3445 /* Home_Consultation */,
 				5557A5D2221BD96500743012 /* Logic */,
 				5557A5D7221BD96500743012 /* Controller */,
@@ -2284,6 +2293,15 @@
 				EA21CB2C221FA78C007D3445 /* PSProduct.m */,
 			);
 			path = PayModel;
+			sourceTree = "<group>";
+		};
+		EA78F6CE2223D2B4002D788A /* Home_Lawyer */ = {
+			isa = PBXGroup;
+			children = (
+				EA78F6CF2223D34C002D788A /* LawyerCertificationViewController.h */,
+				EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */,
+			);
+			path = Home_Lawyer;
 			sourceTree = "<group>";
 		};
 		EAB03786221E817A00331569 /* NIMAVChat */ = {
@@ -3524,6 +3542,7 @@
 				EAB038F8221E817B00331569 /* NIMTeamCardHeaderCell.m in Sources */,
 				EAB03926221E817C00331569 /* NIMSessionRobotContentView.m in Sources */,
 				5557A4FD221BD76300743012 /* XLJSHandler.m in Sources */,
+				EA78F6CD221FFECB002D788A /* UploadAvatarViewController.m in Sources */,
 				5557A56F221BD87100743012 /* GameInfo.m in Sources */,
 				EA21CAA2221F9A21007D3445 /* PSMoreServiceViewModel.m in Sources */,
 				EAB03909221E817B00331569 /* NIMTipContentConfig.m in Sources */,
@@ -3603,6 +3622,7 @@
 				EA21CA80221F9980007D3445 /* PSAdviceDetailsView.m in Sources */,
 				5557A614221BD96500743012 /* MineTableViewCell.m in Sources */,
 				5557A501221BD76300743012 /* RootNavigationController.m in Sources */,
+				EA78F6D12223D34C002D788A /* LawyerCertificationViewController.m in Sources */,
 				EA21CA4A221F9386007D3445 /* PSWechatHandler.m in Sources */,
 				EAB038CD221E817B00331569 /* NIMKitRobotDefaultTemplateParser.m in Sources */,
 				EAB038CF221E817B00331569 /* NIMKitDevice.m in Sources */,

@@ -50,7 +50,7 @@
 
 -(void)goOrderPay{
     manager=[AFHTTPSessionManager manager];
-    NSString*token=help_userManager.oathInfo.access_token;
+     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString *url = [NSString stringWithFormat:@"%@/legal-advice/%@/we-chat-pay",ConsultationHostUrl,self.payInfo.productID];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {

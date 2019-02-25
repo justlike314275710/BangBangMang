@@ -55,11 +55,12 @@
     
     //actionItem
     PSMoreServiceViewModel *PSMoreViewModel = (PSMoreServiceViewModel *)self.viewModel;
+    CGFloat h=(SCREEN_HEIGHT-64)/4;
     for (int i = 0; i<8; i++) {
         int x = i%2 == 0 ? 0 : self.view.mj_w/2;
-        int y = (i/2) * 140;
+        int y = (i/2) *h;
         PSMoreModel *model = PSMoreViewModel.functions[i];
-        serciceIiem *actionItem = [[serciceIiem alloc] initWithFrame:CGRectMake(x, y,self.view.mj_w/2,140) logoImage:model.logoIcon title:model.title  message:model.message];
+        serciceIiem *actionItem = [[serciceIiem alloc] initWithFrame:CGRectMake(x, y,self.view.mj_w/2,h) logoImage:model.logoIcon title:model.title  message:model.message];
         actionItem.tag = i + 100;
         @weakify(self)
         [actionItem bk_whenTapped:^{
@@ -76,37 +77,27 @@
     [v_line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.myScrollview).offset(20);
         make.width.mas_equalTo(1);
-        make.height.mas_equalTo(540);
+        make.height.mas_equalTo(h*4-20);
         make.centerX.mas_equalTo(self.myScrollview);
-
+        
     }];
     
     for (int i = 0;i < 3; i++ ) {
         UIView *w_line =  [UIView new];
+        CGFloat h=(SCREEN_HEIGHT-64)/4;
         w_line.backgroundColor = UIColorFromRGB(217, 217, 217);
         [self.myScrollview addSubview:w_line];
         [w_line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(140*(i+1));
+            make.top.mas_equalTo(h*(i+1));
             make.left.mas_equalTo(20);
             make.width.mas_equalTo(self.myScrollview.contentSize.width-40);
             make.height.mas_equalTo(1);
         }];
     }
-    //发布抢单
-    [self.myScrollview addSubview:self.releaseBtn];
-    [self.releaseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(140*4+25);
-        make.width.mas_equalTo(100);
-        make.height.mas_equalTo(40);
-        make.centerX.mas_equalTo(self.myScrollview);
-    }];
-    @weakify(self);
-    [self.releaseBtn bk_whenTapped:^{
-        @strongify(self);
-        [self p_pushReleaseViewController];
-    }];
     
+  
 }
+
 
 - (void)p_pushReleaseViewController {
 
@@ -118,16 +109,79 @@
 -(void)p_pushRoleDetailViewController:(serciceIiem *)item {
     NSInteger actionIndex = item.tag - 100;
     if (actionIndex==0) {
-        PSLawerViewModel*viewModel=[[PSLawerViewModel alloc]init];
-        viewModel.category=@"PROPERTY_DISPUTES";
-        PSMoreRoleDetailViewController *RoloDetailVC = [[PSMoreRoleDetailViewController alloc] initWithViewModel:viewModel];
-        [self.navigationController pushViewController:RoloDetailVC animated:YES];
+        PSConsultationViewModel*viewModel=[[PSConsultationViewModel alloc]init];
+        PSConsultationViewController*consultationViewController
+        =[[PSConsultationViewController alloc]initWithViewModel:viewModel];
+        viewModel.category=@"财产纠纷";
+        consultationViewController.title=@"发布抢单";
+        [self.navigationController pushViewController:consultationViewController animated:YES];
+        
+        
+        
     }
     else if (actionIndex==1){
         
+        PSConsultationViewModel*viewModel=[[PSConsultationViewModel alloc]init];
+        PSConsultationViewController*consultationViewController
+        =[[PSConsultationViewController alloc]initWithViewModel:viewModel];
+        viewModel.category=@"婚姻家庭";
+        consultationViewController.title=@"发布抢单";
+        [self.navigationController pushViewController:consultationViewController animated:YES];
+        
+    }
+    else if (actionIndex==2){
+        PSConsultationViewModel*viewModel=[[PSConsultationViewModel alloc]init];
+        PSConsultationViewController*consultationViewController
+        =[[PSConsultationViewController alloc]initWithViewModel:viewModel];
+        viewModel.category=@"交通事故";
+        consultationViewController.title=@"发布抢单";
+        [self.navigationController pushViewController:consultationViewController animated:YES];
+    }
+    else if (actionIndex==3){
+        PSConsultationViewModel*viewModel=[[PSConsultationViewModel alloc]init];
+        PSConsultationViewController*consultationViewController
+        =[[PSConsultationViewController alloc]initWithViewModel:viewModel];
+        viewModel.category=@"工伤赔偿";
+        consultationViewController.title=@"发布抢单";
+        [self.navigationController pushViewController:consultationViewController animated:YES];
+    }
+    else if (actionIndex==4){
+        PSConsultationViewModel*viewModel=[[PSConsultationViewModel alloc]init];
+        PSConsultationViewController*consultationViewController
+        =[[PSConsultationViewController alloc]initWithViewModel:viewModel];
+        viewModel.category=@"合同纠纷";
+        consultationViewController.title=@"发布抢单";
+        [self.navigationController pushViewController:consultationViewController animated:YES];
+        
+    }
+    else if (actionIndex==5){
+        PSConsultationViewModel*viewModel=[[PSConsultationViewModel alloc]init];
+        PSConsultationViewController*consultationViewController
+        =[[PSConsultationViewController alloc]initWithViewModel:viewModel];
+        viewModel.category=@"刑事辩护";
+        consultationViewController.title=@"发布抢单";
+        [self.navigationController pushViewController:consultationViewController animated:YES];
+        
+    }
+    else if (actionIndex==6){
+        PSConsultationViewModel*viewModel=[[PSConsultationViewModel alloc]init];
+        PSConsultationViewController*consultationViewController
+        =[[PSConsultationViewController alloc]initWithViewModel:viewModel];
+        viewModel.category=@"房产纠纷";
+        consultationViewController.title=@"发布抢单";
+        [self.navigationController pushViewController:consultationViewController animated:YES];
+    }
+    else if (actionIndex==7){
+        PSConsultationViewModel*viewModel=[[PSConsultationViewModel alloc]init];
+        PSConsultationViewController*consultationViewController
+        =[[PSConsultationViewController alloc]initWithViewModel:viewModel];
+        viewModel.category=@"劳动就业";
+        consultationViewController.title=@"发布抢单";
+        [self.navigationController pushViewController:consultationViewController animated:YES];
     }
     
 }
+
 
 #pragma mark - setting&&getting
 - (UIScrollView *)myScrollview {

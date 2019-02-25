@@ -53,7 +53,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    NSString*token=help_userManager.oathInfo.access_token;
+     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString*url=[NSString stringWithFormat:@"%@/customer/comments",ConsultationHostUrl];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     
@@ -85,17 +85,11 @@
          NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
          request.HTTPMethod = @"POST";
          [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-          NSString*token=help_userManager.oathInfo.access_token;
+          NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
           [request addValue:token forHTTPHeaderField:@"Authorization"];
     NSDictionary*dict=[[NSDictionary alloc]init];
     dict=[NSDictionary dictionaryWithObjectsAndKeys:self.reward,@"reward",self.category,@"category", nil];
-//        if (!self.attachments) {
-//            dict=[NSDictionary dictionaryWithObjectsAndKeys:self.reward,@"reward",self.category,@"category",self.describe,@"description",self.attachments,@"attachments",self.lawyerId,@"lawyerId", nil];
-//        }
-//        else{
-//           dict=  [NSDictionary dictionaryWithObjectsAndKeys:self.reward,@"reward",self.category,@"category",self.describe,@"description",self.attachments,@"attachments",self.lawyerId,@"lawyerId", nil];
-//        }
-   
+
          NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
          request.HTTPBody = data;
          // 4.发送请求
@@ -148,7 +142,7 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"POST";
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-   NSString*token=help_userManager.oathInfo.access_token;
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     [request addValue:token forHTTPHeaderField:@"Authorization"];
     NSDictionary*dict=[[NSDictionary alloc]init];
     self.customerAvatarURL=@"";
@@ -296,7 +290,7 @@
     NSData *compressData = [self.consultaionImage compressWithLengthLimit:500.0f * 500.0f];
     request.HTTPBody = [self makeBody:@"file" fileName:@"file" data:compressData];
     //UIImageJPEGRepresentation(self.consultaionImage, 0.1)
-    NSString*token=help_userManager.oathInfo.access_token;
+     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     [request addValue:token forHTTPHeaderField:@"Authorization"];
 
 
@@ -358,7 +352,7 @@
 
 -(void)requestMyAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
      manager=[AFHTTPSessionManager manager];
-   NSString*token=help_userManager.oathInfo.access_token;
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
         NSString*url=[NSString stringWithFormat:@"%@/customer/legal-advice",ConsultationHostUrl];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     NSDictionary*parmeters=@{
@@ -412,7 +406,7 @@
 - (void)getChatUsernameCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     manager=[AFHTTPSessionManager manager];
     
-    NSString*token=help_userManager.oathInfo.access_token;
+     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString *url =[NSString stringWithFormat:@"%@/im/users/%@/account",EmallHostUrl,self.userName];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -431,7 +425,7 @@
 
 - (void)refreshMyAdviceDetailsCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     manager=[AFHTTPSessionManager manager];
-   NSString*token=help_userManager.oathInfo.access_token;
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString *url =[NSString stringWithFormat:@"%@/customer/legal-advice/%@",ConsultationHostUrl,self.adviceId];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -456,7 +450,7 @@
 
 -(void)deleteConsultationCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     manager=[AFHTTPSessionManager manager];
-    NSString*token=help_userManager.oathInfo.access_token;
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString *url =[NSString stringWithFormat:@"%@/customer/legal-advice/%@",ConsultationHostUrl,self.adviceId];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager DELETE:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -477,7 +471,7 @@
 
 -(void)cancelConsultationCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     manager=[AFHTTPSessionManager manager];
-    NSString*token=help_userManager.oathInfo.access_token;
+     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString *url =[NSString stringWithFormat:@"%@/customer/legal-advice/%@/cancelled",ConsultationHostUrl,self.adviceId];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -497,7 +491,7 @@
 }
 -(void)requestCommentsCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
 
-    NSString*token=help_userManager.oathInfo.access_token;
+     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString *url =[NSString stringWithFormat:@"%@/customer/legal-advice/%@/comment",ConsultationHostUrl,self.adviceId];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {

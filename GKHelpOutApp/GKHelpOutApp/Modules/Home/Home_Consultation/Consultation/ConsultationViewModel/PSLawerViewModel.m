@@ -39,7 +39,7 @@
 
 -(void)requestMyAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     manager=[AFHTTPSessionManager manager];
-    NSString*token=help_userManager.oathInfo.access_token;
+   NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     NSString *url = @"http://10.10.10.17:8086/customer/lawyers";
     manager.requestSerializer.timeoutInterval = 10.f;
 

@@ -175,7 +175,7 @@
 //        UIImage*image=[self stringToImage:lawyer.avatarThumb];
 //        [self.headImg setImage:image];
         [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
-        NSString*token=help_userManager.oathInfo.access_token;
+         NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
         [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
        NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,lawyer.username];
         [self.headImg sd_setImageWithURL:[NSURL URLWithString:imageUrl]];

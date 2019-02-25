@@ -24,8 +24,10 @@
 
 //主题色 导航栏颜色
 #define CNavBgColor  [UIColor colorWithHexString:@"00AE68"]
-//#define CNavBgColor  [Ulor colorWithHexString:@"ffffff"]
+////#define CNavBgColor  [Ulor colorWithHexString:@"ffffff"]
 #define CNavBgFontColor  [UIColor colorWithHexString:@"ffffff"]
+
+
 
 
 //默认页面背景色

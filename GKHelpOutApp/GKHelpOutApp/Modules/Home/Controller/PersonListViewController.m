@@ -156,7 +156,7 @@
 
 -(void)naviBtnClick:(UIButton *)btn{
     DLog(@"点击了筛选按钮");
-<<<<<<< HEAD
+
 //    RootViewController *v = [RootViewController new];
 //    v.isHidenNaviBar = YES;
 //    [self.navigationController pushViewController:v animated:YES];
@@ -166,15 +166,15 @@
 - (void)p_insertMoreServiceVC {
     PSMoreServiceViewController *PSMoreServiceVC = [[PSMoreServiceViewController alloc] initWithViewModel:[PSMoreServiceViewModel new]];
     [self.navigationController pushViewController:PSMoreServiceVC animated:YES];
-=======
-    UploadAvatarViewController *profileVC = [UploadAvatarViewController new];
-    [self.navigationController pushViewController:profileVC animated:YES];
+//
+//    UploadAvatarViewController *profileVC = [UploadAvatarViewController new];
+//    [self.navigationController pushViewController:profileVC animated:YES];
     
     
 //    RootViewController *v = [RootViewController new];
 //    v.isHidenNaviBar = YES;
 //    [self.navigationController pushViewController:v animated:YES];
->>>>>>> 772179880e09c8d08b5bd4f0ed306fb37cde5876
+
 }
 
 #pragma mark -  上下滑动隐藏/显示导航栏

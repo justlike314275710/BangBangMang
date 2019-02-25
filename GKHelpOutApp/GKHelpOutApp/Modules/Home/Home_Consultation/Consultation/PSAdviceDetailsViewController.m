@@ -280,7 +280,7 @@
 #pragma mark -- UI
 - (void)renderContents {
     [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
-    NSString*token= help_userManager.oathInfo.access_token;
+     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
     [self.view addSubview:self.myScrollview];
     [self.myScrollview mas_makeConstraints:^(MASConstraintMaker *make) {
