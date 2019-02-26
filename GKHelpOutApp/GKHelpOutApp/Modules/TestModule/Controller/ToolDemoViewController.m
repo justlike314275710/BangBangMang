@@ -15,18 +15,43 @@
 #import "XZPickView.h"
 #import "ScrollBannerVC.h"
 #import "NativeCallJSVC.h"
+#import "LegaladviceViewController.h"
+#import "CounselingViewController.h"
+#import "ZWTopSelectButton.h"
+#import "ZWTopSelectVcView.h"
 
-@interface ToolDemoViewController ()<UITableViewDelegate,UITableViewDataSource,IApRequestResultsDelegate,XZPickViewDelegate,XZPickViewDataSource>
+@interface ToolDemoViewController ()<UITableViewDelegate,UITableViewDataSource,IApRequestResultsDelegate,XZPickViewDelegate,XZPickViewDataSource,ZWTopSelectVcViewDataSource,ZWTopSelectVcViewDelegate> {
+    BOOL              isChangeChildVc;
+    int               selectIndex;
+    UIViewController *selectViewController;
+}
 @property (nonatomic,strong) NSMutableArray * dataArray;
 @property (nonatomic,strong) XZPickView *emitterPickView;
 @property (nonatomic,copy) NSArray * emitterArray;
+@property(nonatomic, strong) NSArray *controllers;
+
+@property (nonatomic, weak) ZWTopSelectVcView *topSelectVcView;
+
+
 @end
 
 @implementation ToolDemoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"心理咨询";
+    self.title = @"我的咨询";
+    
+    ZWTopSelectVcView *topSelectVcView=[[ZWTopSelectVcView alloc]init];
+    topSelectVcView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:topSelectVcView];
+    self.topSelectVcView=topSelectVcView;
+    self.topSelectVcView.dataSource=self;
+    self.topSelectVcView.delegate=self;
+    [self.topSelectVcView setupZWTopSelectVcViewUI];
+    self.topSelectVcView.animationType=5;
+    
+    
+    
     self.emitterArray = @[@"彩带",@"下雪",@"下雨",@"烟花"];
     
     NSDictionary *tags = @{@"titleText":@"01 - 标签选择",@"clickSelector":@"tagsView"};
@@ -43,15 +68,44 @@
     NSDictionary *scrollBanner = @{@"titleText":@"12 - 轮播图",@"clickSelector":@"scrollBanner"};
     
     self.dataArray =@[tags,webView,emitterView,IAPPay,tabarBadge,share,alert,action,status,NavColor,JSCore,scrollBanner].mutableCopy;
-//    self.dataArray = [NSMutableArray array];
+    self.dataArray = [NSMutableArray array];
     
     [self initUI];
+    
+}
+
+#pragma mark - ZWTopSelectVcViewDelegate
+- (void)topSelectVcView:(ZWTopSelectVcView *)topSelectVcView didSelectVc:(UIViewController *)selectVc atIndex:(int)index
+{
+    NSLog(@"\n当前选中Vc %@ \n index为%d  222",selectVc,index);
+    selectIndex = index;
+    selectViewController = selectVc;
+    
+}
+
+#pragma mark - ZWTopSelectVcViewDataSource
+//初始化设置
+-(NSMutableArray *)totalControllerInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcView
+{
+    
+    NSMutableArray *controllerMutableArr=[NSMutableArray array];
+    
+    LegaladviceViewController *showoneVc= [[LegaladviceViewController alloc]init];
+    showoneVc.title=@"法律咨询";
+    [controllerMutableArr addObject:showoneVc];
+    
+    CounselingViewController *showtwoVc= [[ CounselingViewController alloc]init];
+    showtwoVc.title=@"心理咨询";
+    [controllerMutableArr addObject:showtwoVc];
+    
+    return controllerMutableArr;
     
 }
 
 
 #pragma mark -  初始化页面
 -(void)initUI{
+
     self.tableView.mj_header.hidden = YES;
 //    self.tableView.mj_footer.hidden = YES;
     [self.tableView registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
@@ -74,7 +128,8 @@
     
 }
 
-#pragma mark ————— tableview 代理 —————
+#pragma mark ——————————————————————————————————————————————————————————————————————————————————————————————————
+#pragma mark ————— tableview 代理 ———————————————————————————————————————————————————————————————————————————-—
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _dataArray.count;
 }
