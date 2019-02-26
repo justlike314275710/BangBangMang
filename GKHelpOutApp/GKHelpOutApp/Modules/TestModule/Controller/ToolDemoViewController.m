@@ -20,7 +20,11 @@
 #import "ZWTopSelectButton.h"
 #import "ZWTopSelectVcView.h"
 
-@interface ToolDemoViewController ()<UITableViewDelegate,UITableViewDataSource,IApRequestResultsDelegate,XZPickViewDelegate,XZPickViewDataSource,ZWTopSelectVcViewDataSource,ZWTopSelectVcViewDelegate>
+@interface ToolDemoViewController ()<UITableViewDelegate,UITableViewDataSource,IApRequestResultsDelegate,XZPickViewDelegate,XZPickViewDataSource,ZWTopSelectVcViewDataSource,ZWTopSelectVcViewDelegate> {
+    BOOL              isChangeChildVc;
+    int               selectIndex;
+    UIViewController *selectViewController;
+}
 @property (nonatomic,strong) NSMutableArray * dataArray;
 @property (nonatomic,strong) XZPickView *emitterPickView;
 @property (nonatomic,copy) NSArray * emitterArray;
@@ -64,9 +68,37 @@
     NSDictionary *scrollBanner = @{@"titleText":@"12 - 轮播图",@"clickSelector":@"scrollBanner"};
     
     self.dataArray =@[tags,webView,emitterView,IAPPay,tabarBadge,share,alert,action,status,NavColor,JSCore,scrollBanner].mutableCopy;
-//    self.dataArray = [NSMutableArray array];
+    self.dataArray = [NSMutableArray array];
     
     [self initUI];
+    
+}
+
+#pragma mark - ZWTopSelectVcViewDelegate
+- (void)topSelectVcView:(ZWTopSelectVcView *)topSelectVcView didSelectVc:(UIViewController *)selectVc atIndex:(int)index
+{
+    NSLog(@"\n当前选中Vc %@ \n index为%d  222",selectVc,index);
+    selectIndex = index;
+    selectViewController = selectVc;
+    
+}
+
+#pragma mark - ZWTopSelectVcViewDataSource
+//初始化设置
+-(NSMutableArray *)totalControllerInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcView
+{
+    
+    NSMutableArray *controllerMutableArr=[NSMutableArray array];
+    
+    LegaladviceViewController *showoneVc= [[LegaladviceViewController alloc]init];
+    showoneVc.title=@"法律咨询";
+    [controllerMutableArr addObject:showoneVc];
+    
+    CounselingViewController *showtwoVc= [[ CounselingViewController alloc]init];
+    showtwoVc.title=@"心理咨询";
+    [controllerMutableArr addObject:showtwoVc];
+    
+    return controllerMutableArr;
     
 }
 
@@ -96,7 +128,8 @@
     
 }
 
-#pragma mark ————— tableview 代理 —————
+#pragma mark ——————————————————————————————————————————————————————————————————————————————————————————————————
+#pragma mark ————— tableview 代理 ———————————————————————————————————————————————————————————————————————————-—
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _dataArray.count;
 }
