@@ -8,8 +8,7 @@
 
 #import "UploadAvatarViewController.h"
 #import "UIImage+WLCompress.h"
-
-@interface UploadAvatarViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UINavigationControllerDelegate>
+@interface UploadAvatarViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate>
 @property(nonatomic, strong) YYAnimatedImageView *headImgView; //头像
 @property(nonatomic, strong) UITextField *nickField;  //昵称
 @property(nonatomic, strong) UIButton *compleBtn; //完成
@@ -149,7 +148,7 @@
     request.HTTPBody = [self makeBody:@"file" fileName:@"fileName" data:compressData];
     //UIImageJPEGRepresentation(self.consultaionImage, 0.1)
     NSString*token=[NSString stringWithFormat:@"Bearer %@",help_userManager.oathInfo.access_token];
-    NSLog(@"token:%@",token);
+    
     [request addValue:token forHTTPHeaderField:@"Authorization"];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -188,21 +187,29 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSString*token=[NSString stringWithFormat:@"Bearer %@",help_userManager.oathInfo.access_token];
-    [ manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager PUT:url parameters:parmeters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"改手机%@",responseObject);
-
+        
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        [[PSLoadingView sharedInstance]dismiss];
+        //        [[PSLoadingView sharedInstance]dismiss];
         NSLog(@"%@",error);
         NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
         id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSString*code=body[@"code"];
         
     }];
+}
+
+-(NSString *)base64EncodeString:(NSString *)string{
+    //1、先转换成二进制数据
+    NSData *data =[string dataUsingEncoding:NSUTF8StringEncoding];
+    //2、对二进制数据进行base64编码，完成后返回字符串
+    return [data base64EncodedStringWithOptions:0];
 }
 
 - (NSData *)makeBody:(NSString *)fieldName fileName:(NSString *)fileName data:(NSData *)fileData{

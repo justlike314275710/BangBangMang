@@ -215,6 +215,7 @@
 		EA21CB54221FD337007D3445 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CB53221FD337007D3445 /* CoreMotion.framework */; };
 		EA78F6CD221FFECB002D788A /* UploadAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */; };
 		EA78F6D12223D34C002D788A /* LawyerCertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */; };
+		EA78F6D52223EA68002D788A /* PSAuthorizationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6D42223EA68002D788A /* PSAuthorizationTool.m */; };
 		EAB038B8221E817B00331569 /* NMCVideoFilter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03788221E817A00331569 /* NMCVideoFilter.bundle */; };
 		EAB038B9221E817B00331569 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
 		EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
@@ -796,6 +797,8 @@
 		EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAvatarViewController.m; sourceTree = "<group>"; };
 		EA78F6CF2223D34C002D788A /* LawyerCertificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerCertificationViewController.h; sourceTree = "<group>"; };
 		EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerCertificationViewController.m; sourceTree = "<group>"; };
+		EA78F6D32223EA68002D788A /* PSAuthorizationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAuthorizationTool.h; sourceTree = "<group>"; };
+		EA78F6D42223EA68002D788A /* PSAuthorizationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAuthorizationTool.m; sourceTree = "<group>"; };
 		EAB03788221E817A00331569 /* NMCVideoFilter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NMCVideoFilter.bundle; sourceTree = "<group>"; };
 		EAB03789221E817A00331569 /* NMC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMC.framework; sourceTree = "<group>"; };
 		EAB0378A221E817A00331569 /* NIMAVChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NIMAVChat.framework; sourceTree = "<group>"; };
@@ -1392,6 +1395,7 @@
 		5557A505221BD7BD00743012 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EA78F6D22223EA68002D788A /* AuthorizationTool */,
 				5557A510221BD7F500743012 /* AdPage */,
 				5557A50D221BD7F500743012 /* AES */,
 				5557A506221BD7F500743012 /* Category */,
@@ -2302,6 +2306,15 @@
 				EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */,
 			);
 			path = Home_Lawyer;
+			sourceTree = "<group>";
+		};
+		EA78F6D22223EA68002D788A /* AuthorizationTool */ = {
+			isa = PBXGroup;
+			children = (
+				EA78F6D32223EA68002D788A /* PSAuthorizationTool.h */,
+				EA78F6D42223EA68002D788A /* PSAuthorizationTool.m */,
+			);
+			path = AuthorizationTool;
 			sourceTree = "<group>";
 		};
 		EAB03786221E817A00331569 /* NIMAVChat */ = {
@@ -3564,6 +3577,7 @@
 				EA21CAA9221F9A21007D3445 /* PSEvaluateTableViewCell.m in Sources */,
 				EAB0392C221E817C00331569 /* NSString+NIMKit.m in Sources */,
 				EAB038C5221E817B00331569 /* NIMContactPickedView.m in Sources */,
+				EA78F6D52223EA68002D788A /* PSAuthorizationTool.m in Sources */,
 				5557A626221BD96500743012 /* PersonListCollectionViewCell.m in Sources */,
 				5557A612221BD96500743012 /* SettingViewController.m in Sources */,
 				EAB03904221E817B00331569 /* NIMFileContentConfig.m in Sources */,
@@ -3795,6 +3809,7 @@
 			baseConfigurationReference = F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UZLE4JHZYZ;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3806,7 +3821,7 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GKHelpOutApp/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3819,6 +3834,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkzxhn.HelpOut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3828,6 +3844,7 @@
 			baseConfigurationReference = 7C10B3AC074F1C870E18701F /* Pods-GKHelpOutApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UZLE4JHZYZ;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3839,7 +3856,7 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GKHelpOutApp/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3852,6 +3869,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkzxhn.HelpOut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

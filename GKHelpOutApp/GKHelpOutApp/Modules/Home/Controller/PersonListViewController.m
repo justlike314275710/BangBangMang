@@ -164,28 +164,17 @@
 
 -(void)naviBtnClick:(UIButton *)btn{
     DLog(@"点击了筛选按钮");
-<<<<<<< HEAD
 
-=======
->>>>>>> 5d06f4f496d4bbc77debafc05ff5f34059d7321b
 //    RootViewController *v = [RootViewController new];
 //    v.isHidenNaviBar = YES;
 //    [self.navigationController pushViewController:v animated:YES];
-    [self p_insertMoreServiceVC];
+      [self p_insertMoreServiceVC];
 }
 
 - (void)p_insertMoreServiceVC {
     PSMoreServiceViewController *PSMoreServiceVC = [[PSMoreServiceViewController alloc] initWithViewModel:[PSMoreServiceViewModel new]];
     [self.navigationController pushViewController:PSMoreServiceVC animated:YES];
-<<<<<<< HEAD
-//
-//    UploadAvatarViewController *profileVC = [UploadAvatarViewController new];
-//    [self.navigationController pushViewController:profileVC animated:YES];
-=======
-    UploadAvatarViewController *profileVC = [UploadAvatarViewController new];
-    [self.navigationController pushViewController:profileVC animated:YES];
->>>>>>> 5d06f4f496d4bbc77debafc05ff5f34059d7321b
-    
+
     
 //    RootViewController *v = [RootViewController new];
 //    v.isHidenNaviBar = YES;
