@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5524C68922250F380067F437 /* LegaladviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68822250F380067F437 /* LegaladviceViewController.m */; };
+		5524C68C22250F6E0067F437 /* CounselingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68B22250F6E0067F437 /* CounselingViewController.m */; };
+		5524C6922225106B0067F437 /* ZWTopSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68F2225106B0067F437 /* ZWTopSelectButton.m */; };
+		5524C6932225106B0067F437 /* ZWTopSelectVcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C6902225106B0067F437 /* ZWTopSelectVcView.m */; };
 		5557A48E221BB46C00743012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A48D221BB46C00743012 /* AppDelegate.m */; };
 		5557A491221BB46C00743012 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A490221BB46C00743012 /* ViewController.m */; };
 		5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */; };
@@ -146,6 +150,7 @@
 		5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A669221CE1A000743012 /* HpBaseLogic.m */; };
 		5557A66E221D027200743012 /* OauthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66D221D027200743012 /* OauthInfo.m */; };
 		5557A671221D551A00743012 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66F221D551A00743012 /* UIView+Frame.m */; };
+		55B4F67A2223EFFC002B1536 /* PSAuthorizationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */; };
 		A2630C1CA890D20F200E6E6E /* libPods-GKHelpOutAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */; };
 		A56ED927F1CE79562534A4C9 /* libPods-GKHelpOutApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */; };
 		EA13D0E6221FDA5600A40EE9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA13D0E5221FDA5600A40EE9 /* Media.xcassets */; };
@@ -422,6 +427,14 @@
 
 /* Begin PBXFileReference section */
 		489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5524C68722250F380067F437 /* LegaladviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LegaladviceViewController.h; sourceTree = "<group>"; };
+		5524C68822250F380067F437 /* LegaladviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegaladviceViewController.m; sourceTree = "<group>"; };
+		5524C68A22250F6E0067F437 /* CounselingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CounselingViewController.h; sourceTree = "<group>"; };
+		5524C68B22250F6E0067F437 /* CounselingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CounselingViewController.m; sourceTree = "<group>"; };
+		5524C68E2225106B0067F437 /* ZWTopSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWTopSelectButton.h; sourceTree = "<group>"; };
+		5524C68F2225106B0067F437 /* ZWTopSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWTopSelectButton.m; sourceTree = "<group>"; };
+		5524C6902225106B0067F437 /* ZWTopSelectVcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWTopSelectVcView.m; sourceTree = "<group>"; };
+		5524C6912225106B0067F437 /* ZWTopSelectVcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWTopSelectVcView.h; sourceTree = "<group>"; };
 		5557A489221BB46C00743012 /* GKHelpOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKHelpOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A48C221BB46C00743012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5557A48D221BB46C00743012 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -658,6 +671,8 @@
 		5557A66D221D027200743012 /* OauthInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OauthInfo.m; sourceTree = "<group>"; };
 		5557A66F221D551A00743012 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		5557A670221D551A00743012 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		55B4F6782223EFFC002B1536 /* PSAuthorizationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAuthorizationTool.h; sourceTree = "<group>"; };
+		55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAuthorizationTool.m; sourceTree = "<group>"; };
 		7C10B3AC074F1C870E18701F /* Pods-GKHelpOutApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.release.xcconfig"; sourceTree = "<group>"; };
 		7C2548D35314A27746458142 /* Pods-GKHelpOutAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7404FC029C5B013F6E316EC /* Pods-GKHelpOutAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1202,6 +1217,35 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5524C68522250EF60067F437 /* 心理咨询 */ = {
+			isa = PBXGroup;
+			children = (
+				5524C68A22250F6E0067F437 /* CounselingViewController.h */,
+				5524C68B22250F6E0067F437 /* CounselingViewController.m */,
+			);
+			path = "心理咨询";
+			sourceTree = "<group>";
+		};
+		5524C68622250F090067F437 /* 法律咨询 */ = {
+			isa = PBXGroup;
+			children = (
+				5524C68722250F380067F437 /* LegaladviceViewController.h */,
+				5524C68822250F380067F437 /* LegaladviceViewController.m */,
+			);
+			path = "法律咨询";
+			sourceTree = "<group>";
+		};
+		5524C68D2225103B0067F437 /* ZWTopSelectVcView */ = {
+			isa = PBXGroup;
+			children = (
+				5524C68E2225106B0067F437 /* ZWTopSelectButton.h */,
+				5524C68F2225106B0067F437 /* ZWTopSelectButton.m */,
+				5524C6912225106B0067F437 /* ZWTopSelectVcView.h */,
+				5524C6902225106B0067F437 /* ZWTopSelectVcView.m */,
+			);
+			path = ZWTopSelectVcView;
+			sourceTree = "<group>";
+		};
 		5557A480221BB46C00743012 = {
 			isa = PBXGroup;
 			children = (
@@ -1392,6 +1436,8 @@
 		5557A505221BD7BD00743012 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5524C68D2225103B0067F437 /* ZWTopSelectVcView */,
+				55B4F6772223EFFC002B1536 /* AuthorizationTool */,
 				5557A510221BD7F500743012 /* AdPage */,
 				5557A50D221BD7F500743012 /* AES */,
 				5557A506221BD7F500743012 /* Category */,
@@ -1898,14 +1944,14 @@
 		5557A5D7221BD96500743012 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5557A5D8221BD96500743012 /* HomeViewController.m */,
-				5557A5D9221BD96500743012 /* SecondViewController.h */,
-				5557A5DA221BD96500743012 /* WaterFallListViewController.h */,
-				5557A5DB221BD96500743012 /* PersonListViewController.m */,
-				5557A5DC221BD96500743012 /* HomeViewController.h */,
-				5557A5DD221BD96500743012 /* SecondViewController.m */,
 				5557A5DE221BD96500743012 /* PersonListViewController.h */,
+				5557A5DB221BD96500743012 /* PersonListViewController.m */,
+				5557A5D9221BD96500743012 /* SecondViewController.h */,
+				5557A5DD221BD96500743012 /* SecondViewController.m */,
+				5557A5DA221BD96500743012 /* WaterFallListViewController.h */,
 				5557A5DF221BD96500743012 /* WaterFallListViewController.m */,
+				5557A5DC221BD96500743012 /* HomeViewController.h */,
+				5557A5D8221BD96500743012 /* HomeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1974,6 +2020,8 @@
 		5557A638221BD99E00743012 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5524C68622250F090067F437 /* 法律咨询 */,
+				5524C68522250EF60067F437 /* 心理咨询 */,
 				5557A63E221BD99E00743012 /* TagsViewController.h */,
 				5557A639221BD99E00743012 /* TagsViewController.m */,
 				5557A63A221BD99E00743012 /* ScrollBannerVC.h */,
@@ -2022,6 +2070,15 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		55B4F6772223EFFC002B1536 /* AuthorizationTool */ = {
+			isa = PBXGroup;
+			children = (
+				55B4F6782223EFFC002B1536 /* PSAuthorizationTool.h */,
+				55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */,
+			);
+			path = AuthorizationTool;
 			sourceTree = "<group>";
 		};
 		64C5C9D239E7F741EC473360 /* Frameworks */ = {
@@ -3345,6 +3402,7 @@
 				EAB039C0221E8FF200331569 /* renderer_yuv420p.c in Sources */,
 				EA21CAA3221F9A21007D3445 /* PSLawyerDetailsViewController.m in Sources */,
 				EAB038EA221E817B00331569 /* NIMNormalTeamCardViewController.m in Sources */,
+				5524C68C22250F6E0067F437 /* CounselingViewController.m in Sources */,
 				EA21CA88221F9980007D3445 /* PSLawyerComments.m in Sources */,
 				EAB03917221E817B00331569 /* NIMMessageMaker.m in Sources */,
 				EAB039B1221E8FF200331569 /* NTESContentView.m in Sources */,
@@ -3395,6 +3453,7 @@
 				EAB039B4221E8FF200331569 /* UIAlertView+NTESBlock.m in Sources */,
 				EAB039D1221E8FF200331569 /* PSSendShopGoodsAttachment.m in Sources */,
 				EAB03911221E817B00331569 /* NIMSessionMsgDatasource.m in Sources */,
+				5524C6932225106B0067F437 /* ZWTopSelectVcView.m in Sources */,
 				EAB03913221E817B00331569 /* NIMSessionLayoutImpl.m in Sources */,
 				EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */,
 				EAB039BF221E8FF200331569 /* renderer_rgb.c in Sources */,
@@ -3438,6 +3497,7 @@
 				EA21CB29221FA444007D3445 /* PSPaySuccessViewController.m in Sources */,
 				EAB0392A221E817C00331569 /* NSDictionary+NIMKit.m in Sources */,
 				EAB038F5221E817B00331569 /* NIMAdvancedTeamMemberCell.m in Sources */,
+				5524C6922225106B0067F437 /* ZWTopSelectButton.m in Sources */,
 				EAB03939221E817C00331569 /* NIMKitIndependentModeExtraInfo.m in Sources */,
 				5557A544221BD7F500743012 /* UIButton+XYButton.m in Sources */,
 				5557A556221BD7F500743012 /* MBProgressHUD+XY.m in Sources */,
@@ -3499,6 +3559,7 @@
 				EAB039B6221E8FF200331569 /* NTESTimerHolder.m in Sources */,
 				5557A549221BD7F500743012 /* SandBoxHelper.m in Sources */,
 				EAB03908221E817B00331569 /* NIMNotificationContentConfig.m in Sources */,
+				5524C68922250F380067F437 /* LegaladviceViewController.m in Sources */,
 				5557A606221BD96500743012 /* MsgLogic.m in Sources */,
 				EAB0390D221E817B00331569 /* NIMBaseSessionContentConfig.m in Sources */,
 				EAB038ED221E817B00331569 /* NIMTeamCardOperationItem.m in Sources */,
@@ -3564,6 +3625,7 @@
 				EA21CAA9221F9A21007D3445 /* PSEvaluateTableViewCell.m in Sources */,
 				EAB0392C221E817C00331569 /* NSString+NIMKit.m in Sources */,
 				EAB038C5221E817B00331569 /* NIMContactPickedView.m in Sources */,
+				55B4F67A2223EFFC002B1536 /* PSAuthorizationTool.m in Sources */,
 				5557A626221BD96500743012 /* PersonListCollectionViewCell.m in Sources */,
 				5557A612221BD96500743012 /* SettingViewController.m in Sources */,
 				EAB03904221E817B00331569 /* NIMFileContentConfig.m in Sources */,
@@ -3796,7 +3858,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UZLE4JHZYZ;
+				DEVELOPMENT_TEAM = 35NTC834XG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",
@@ -3829,7 +3891,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UZLE4JHZYZ;
+				DEVELOPMENT_TEAM = 35NTC834XG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",

@@ -15,18 +15,39 @@
 #import "XZPickView.h"
 #import "ScrollBannerVC.h"
 #import "NativeCallJSVC.h"
+#import "LegaladviceViewController.h"
+#import "CounselingViewController.h"
+#import "ZWTopSelectButton.h"
+#import "ZWTopSelectVcView.h"
 
-@interface ToolDemoViewController ()<UITableViewDelegate,UITableViewDataSource,IApRequestResultsDelegate,XZPickViewDelegate,XZPickViewDataSource>
+@interface ToolDemoViewController ()<UITableViewDelegate,UITableViewDataSource,IApRequestResultsDelegate,XZPickViewDelegate,XZPickViewDataSource,ZWTopSelectVcViewDataSource,ZWTopSelectVcViewDelegate>
 @property (nonatomic,strong) NSMutableArray * dataArray;
 @property (nonatomic,strong) XZPickView *emitterPickView;
 @property (nonatomic,copy) NSArray * emitterArray;
+@property(nonatomic, strong) NSArray *controllers;
+
+@property (nonatomic, weak) ZWTopSelectVcView *topSelectVcView;
+
+
 @end
 
 @implementation ToolDemoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"心理咨询";
+    self.title = @"我的咨询";
+    
+    ZWTopSelectVcView *topSelectVcView=[[ZWTopSelectVcView alloc]init];
+    topSelectVcView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:topSelectVcView];
+    self.topSelectVcView=topSelectVcView;
+    self.topSelectVcView.dataSource=self;
+    self.topSelectVcView.delegate=self;
+    [self.topSelectVcView setupZWTopSelectVcViewUI];
+    self.topSelectVcView.animationType=5;
+    
+    
+    
     self.emitterArray = @[@"彩带",@"下雪",@"下雨",@"烟花"];
     
     NSDictionary *tags = @{@"titleText":@"01 - 标签选择",@"clickSelector":@"tagsView"};
@@ -52,6 +73,7 @@
 
 #pragma mark -  初始化页面
 -(void)initUI{
+
     self.tableView.mj_header.hidden = YES;
 //    self.tableView.mj_footer.hidden = YES;
     [self.tableView registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];

@@ -64,7 +64,7 @@
     
 //    MakeFriendsViewController *makeFriendVC = [[MakeFriendsViewController alloc]init];
     ToolDemoViewController *makeFriendVC = [[ToolDemoViewController alloc]init];
-    [self setupChildViewController:makeFriendVC title:@"心理咨询" imageName:@"我的咨询icon－未选中" seleceImageName:@"我的咨询icon－选中"];
+    [self setupChildViewController:makeFriendVC title:@"我的咨询" imageName:@"我的咨询icon－未选中" seleceImageName:@"我的咨询icon－选中"];
     
 //    MsgViewController *msgVC = [[MsgViewController alloc]init];
 //    DraggingCardViewController *msgVC = [DraggingCardViewController new];
