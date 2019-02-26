@@ -70,7 +70,7 @@
     self.dataArray =@[tags,webView,emitterView,IAPPay,tabarBadge,share,alert,action,status,NavColor,JSCore,scrollBanner].mutableCopy;
     self.dataArray = [NSMutableArray array];
     
-    [self initUI];
+//    [self initUI];
     
 }
 
