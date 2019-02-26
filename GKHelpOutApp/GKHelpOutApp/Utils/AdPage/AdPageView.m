@@ -63,7 +63,7 @@ static int const showtime = 5;
         [self addSubview:_adView];
         [self addSubview:_countBtn];
         
-        // 1.判断沙盒中是否存在广告图片，如果存在，直接显示
+        // 1.判断沙盒中是否存在片，如果存在，直接显示
         NSString *filePath = [self getFilePathWithImageName:[kUserDefaults valueForKey:adImageName]];
         
         BOOL isExist = [self isFileExistWithFilePath:filePath];

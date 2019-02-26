@@ -23,15 +23,15 @@
 
 
 //主题色 导航栏颜色
-#define CNavBgColor  [UIColor colorWithHexString:@"00AE68"]
+#define CNavBgColor  [UIColor colorWithHexString:@"ffffff"]
 ////#define CNavBgColor  [Ulor colorWithHexString:@"ffffff"]
-#define CNavBgFontColor  [UIColor colorWithHexString:@"ffffff"]
+#define CNavBgFontColor  [UIColor colorWithHexString:@"333333"]
 
 
 
 
 //默认页面背景色
-#define CViewBgColor [UIColor colorWithHexString:@"f2f2f2"]
+#define CViewBgColor [UIColor colorWithHexString:@"F9F8FE"]
 
 //分割线颜色
 #define CLineColor [UIColor colorWithHexString:@"EBEBEB"]
