@@ -60,11 +60,11 @@
 //    HomeViewController *homeVC = [[HomeViewController alloc]init];
 //    WaterFallListViewController *homeVC = [WaterFallListViewController new];
     PersonListViewController *homeVC = [[PersonListViewController alloc]init];
-    [self setupChildViewController:homeVC title:@"首页" imageName:@"icon_tabbar_homepage" seleceImageName:@"icon_tabbar_homepage_selected"];
+    [self setupChildViewController:homeVC title:@"首页" imageName:@"首页icon－未选中" seleceImageName:@"首页icon－选中"];
     
 //    MakeFriendsViewController *makeFriendVC = [[MakeFriendsViewController alloc]init];
     ToolDemoViewController *makeFriendVC = [[ToolDemoViewController alloc]init];
-    [self setupChildViewController:makeFriendVC title:@"心里咨询" imageName:@"icon_tabbar_onsite" seleceImageName:@"icon_tabbar_onsite_selected"];
+    [self setupChildViewController:makeFriendVC title:@"心理咨询" imageName:@"我的咨询icon－未选中" seleceImageName:@"我的咨询icon－选中"];
     
 //    MsgViewController *msgVC = [[MsgViewController alloc]init];
 //    DraggingCardViewController *msgVC = [DraggingCardViewController new];
@@ -72,7 +72,7 @@
     
     
     MineViewController *mineVC = [[MineViewController alloc]init];
-    [self setupChildViewController:mineVC title:@"个人中心" imageName:@"icon_tabbar_mine" seleceImageName:@"icon_tabbar_mine_selected"];
+    [self setupChildViewController:mineVC title:@"个人中心" imageName:@"我的icon－未选中" seleceImageName:@"我的icon－选中"];
     
     self.viewControllers = _VCS;
 }
@@ -83,10 +83,10 @@
     controller.tabBarItem.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     controller.tabBarItem.selectedImage = [[UIImage imageNamed:selectImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     //未选中字体颜色
-    [controller.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:KBlackColor,NSFontAttributeName:SYSTEMFONT(10.0f)} forState:UIControlStateNormal];
+    [controller.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:CFontColor1,NSFontAttributeName:SYSTEMFONT(10.0f)} forState:UIControlStateNormal];
     
     //选中字体颜色
-    [controller.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:CNavBgColor,NSFontAttributeName:SYSTEMFONT(10.0f)} forState:UIControlStateSelected];
+    [controller.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:CFontColor3,NSFontAttributeName:SYSTEMFONT(10.0f)} forState:UIControlStateSelected];
     //包装导航控制器
     RootNavigationController *nav = [[RootNavigationController alloc]initWithRootViewController:controller];
     
