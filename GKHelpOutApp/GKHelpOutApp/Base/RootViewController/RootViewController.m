@@ -34,11 +34,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor =KWhiteColor;
+    self.view.backgroundColor =CViewBgColor;
     //是否显示返回按钮
     self.isShowLiftBack = YES;
-    //默认导航栏样式：黑字
-    self.StatusBarStyle = UIStatusBarStyleLightContent;
+    //默认导航栏样式：黑字 //UIStatusBarStyleLightContent
+    self.StatusBarStyle = UIStatusBarStyleDefault;
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 -(void)viewWillAppear:(BOOL)animated{

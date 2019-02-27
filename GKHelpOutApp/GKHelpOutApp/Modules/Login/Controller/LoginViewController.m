@@ -280,7 +280,6 @@
         [_loginBtn setTitle:@"登录" forState:UIControlStateNormal];
         [_loginBtn setTitleColor:CFontColor_BtnTitle forState:UIControlStateNormal];
         [_loginBtn setBackgroundImage:IMAGE_NAMED(@"loginbtnbgicon") forState:UIControlStateNormal];
-
     }
     return _loginBtn;
 }
