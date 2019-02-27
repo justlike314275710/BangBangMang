@@ -30,7 +30,7 @@
     self.title=@"专家入驻——法律咨询师";
     [super viewDidLoad];
     _array = [[NSMutableArray alloc] init];
-    [self setData];
+    //[self setData];
     [self setupUI];
     // Do any additional setup after loading the view.
 }
@@ -39,6 +39,7 @@
 #pragma mark  - Event
 
 #pragma mark  - Data
+/*
 - (void)setData {
     {
         DSSettingGroup *group = [[DSSettingGroup alloc] init];
@@ -145,6 +146,7 @@
     
     
 }
+ */
 #pragma mark  - UITableViewDelegate
 
 

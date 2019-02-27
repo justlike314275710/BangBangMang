@@ -15,10 +15,12 @@ typedef void(^SwitchClickBlock)(BOOL on);
 typedef void(^DidSelectBlock)(void);
 
 typedef NS_ENUM(NSInteger, DSSettingItemType) {
-    DSSettingItemTypeNone,    // 不显示任何在右边
-    DSSettingItemTypeCustom,  // 自定义Cell
-    DSSettingItemTypeDetial,  // 显示详情在右边
-    DSSettingItemTypeSwitch   // 显示Switch在右边
+    DSSettingItemTypeDetial,    // 不显示任何在右边
+    DSSettingItemTypeTextView,
+    DSSettingItemTypeIDCard,
+    DSSettingItemTypeAlbum,
+    DSSettingItemTypeProtocol
+    
 };
 
 //每个Cell的数据模型
