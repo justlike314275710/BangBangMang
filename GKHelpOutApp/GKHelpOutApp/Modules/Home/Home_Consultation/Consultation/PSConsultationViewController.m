@@ -57,6 +57,7 @@
     [super viewDidLoad];
     [self renderContents];
     _images=[[NSMutableArray alloc]init];
+    self.isShowLiftBack = YES;
     // Do any additional setup after loading the view.
 }
 

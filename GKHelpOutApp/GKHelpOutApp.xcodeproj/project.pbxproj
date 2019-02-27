@@ -3655,11 +3655,8 @@
 				5557A651221BD99E00743012 /* TagsViewController.m in Sources */,
 				EAB039BD221E8FF200331569 /* common.c in Sources */,
 				EAB0393A221E817C00331569 /* NIMKit.m in Sources */,
-
 				EA78F6E72225161F002D788A /* DSSettingDataSource.m in Sources */,
-
 				5524C697222515DC0067F437 /* MyConsultationViewController.m in Sources */,
-
 				5557A562221BD84000743012 /* ShareManager.m in Sources */,
 				5557A655221BD99E00743012 /* ToolDemoViewController.m in Sources */,
 				5557A624221BD96500743012 /* PersonModel.m in Sources */,
@@ -3995,7 +3992,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UZLE4JHZYZ;
+				DEVELOPMENT_TEAM = 35NTC834XG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",
@@ -4028,7 +4025,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UZLE4JHZYZ;
+				DEVELOPMENT_TEAM = 35NTC834XG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",

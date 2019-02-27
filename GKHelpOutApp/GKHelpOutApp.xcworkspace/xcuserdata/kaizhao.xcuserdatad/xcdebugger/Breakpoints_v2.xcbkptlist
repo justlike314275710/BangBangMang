@@ -106,12 +106,12 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Login/Controller/LoginViewController.m"
-                  timestampString = "572928871.528726"
+                  timestampString = "572930540.358736"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "221"
                   endingLineNumber = "221"
-                  offsetFromSymbolStart = "241">
+                  offsetFromSymbolStart = "268">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,12 +121,12 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Login/Controller/LoginViewController.m"
-                  timestampString = "572928871.5305589"
+                  timestampString = "572930540.360761"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "221"
                   endingLineNumber = "221"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "32">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -136,12 +136,12 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Login/Controller/LoginViewController.m"
-                  timestampString = "572928871.532374"
+                  timestampString = "572930540.362511"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "221"
                   endingLineNumber = "221"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -344,13 +344,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Mine/Controller/MineViewController.m"
-            timestampString = "572928871.275032"
+            filePath = "GKHelpOutApp/Modules/Mine/View/MineHeaderView.m"
+            timestampString = "572930539.8130161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "-nickNameViewClick"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-cerImg"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
