@@ -234,6 +234,7 @@
 		EA78F6FF22261D2E002D788A /* LawyerAuthenticationCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6FE22261D2D002D788A /* LawyerAuthenticationCViewController.m */; };
 		EA78F703222629C1002D788A /* AuthItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F702222629C1002D788A /* AuthItem.m */; };
 		EA78F70622262BC0002D788A /* AuthGroupItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F70522262BC0002D788A /* AuthGroupItem.m */; };
+		EA78F70A22263761002D788A /* Mine_AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F70922263761002D788A /* Mine_AuthViewController.m */; };
 		EAB038B8221E817B00331569 /* NMCVideoFilter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03788221E817A00331569 /* NMCVideoFilter.bundle */; };
 		EAB038B9221E817B00331569 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
 		EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
@@ -854,6 +855,8 @@
 		EA78F702222629C1002D788A /* AuthItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthItem.m; sourceTree = "<group>"; };
 		EA78F70422262BC0002D788A /* AuthGroupItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthGroupItem.h; sourceTree = "<group>"; };
 		EA78F70522262BC0002D788A /* AuthGroupItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthGroupItem.m; sourceTree = "<group>"; };
+		EA78F70822263761002D788A /* Mine_AuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_AuthViewController.h; sourceTree = "<group>"; };
+		EA78F70922263761002D788A /* Mine_AuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_AuthViewController.m; sourceTree = "<group>"; };
 		EAB03788221E817A00331569 /* NMCVideoFilter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NMCVideoFilter.bundle; sourceTree = "<group>"; };
 		EAB03789221E817A00331569 /* NMC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMC.framework; sourceTree = "<group>"; };
 		EAB0378A221E817A00331569 /* NIMAVChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NIMAVChat.framework; sourceTree = "<group>"; };
@@ -1926,6 +1929,7 @@
 		5557A5B6221BD96500743012 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				EA78F70722263719002D788A /* Mine_Auth(律师认证) */,
 				5557A5B7221BD96500743012 /* Logic */,
 				5557A5BA221BD96500743012 /* Controller */,
 				5557A5C1221BD96500743012 /* View */,
@@ -2479,6 +2483,15 @@
 				EA78F70522262BC0002D788A /* AuthGroupItem.m */,
 			);
 			path = "Authentication(律师认证)";
+			sourceTree = "<group>";
+		};
+		EA78F70722263719002D788A /* Mine_Auth(律师认证) */ = {
+			isa = PBXGroup;
+			children = (
+				EA78F70822263761002D788A /* Mine_AuthViewController.h */,
+				EA78F70922263761002D788A /* Mine_AuthViewController.m */,
+			);
+			path = "Mine_Auth(律师认证)";
 			sourceTree = "<group>";
 		};
 		EAB03786221E817A00331569 /* NIMAVChat */ = {
@@ -3655,11 +3668,8 @@
 				5557A651221BD99E00743012 /* TagsViewController.m in Sources */,
 				EAB039BD221E8FF200331569 /* common.c in Sources */,
 				EAB0393A221E817C00331569 /* NIMKit.m in Sources */,
-
 				EA78F6E72225161F002D788A /* DSSettingDataSource.m in Sources */,
-
 				5524C697222515DC0067F437 /* MyConsultationViewController.m in Sources */,
-
 				5557A562221BD84000743012 /* ShareManager.m in Sources */,
 				5557A655221BD99E00743012 /* ToolDemoViewController.m in Sources */,
 				5557A624221BD96500743012 /* PersonModel.m in Sources */,
@@ -3809,6 +3819,7 @@
 				EAB038D1221E817B00331569 /* NIMPinyinConverter.m in Sources */,
 				5557A545221BD7F500743012 /* AESCipher.m in Sources */,
 				EAB03916221E817B00331569 /* NIMKitLocationPoint.m in Sources */,
+				EA78F70A22263761002D788A /* Mine_AuthViewController.m in Sources */,
 				5557A56E221BD87100743012 /* UserManager.m in Sources */,
 				5557A628221BD96500743012 /* GetWaterFallListAPI.m in Sources */,
 				5557A502221BD76300743012 /* UITabBar+CustomBadge.m in Sources */,

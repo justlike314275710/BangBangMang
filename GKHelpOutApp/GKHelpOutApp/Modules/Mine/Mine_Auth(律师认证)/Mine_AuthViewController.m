@@ -6,19 +6,19 @@
 //  Copyright © 2017年 徐阳. All rights reserved.
 //
 
-#import "MineViewController.h"
+#import "Mine_AuthViewController.h"
 #import "MineTableViewCell.h"
 #import "MineHeaderView.h"
 #import "ProfileViewController.h"
 #import "SettingViewController.h"
 #import "XYTransitionProtocol.h"
 #import "UploadAvatarViewController.h"
-#import "Mine_AuthViewController.h"
+
 
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
-@interface MineViewController ()<UITableViewDelegate,UITableViewDataSource,headerViewDelegate,XYTransitionProtocol>
+@interface Mine_AuthViewController ()<UITableViewDelegate,UITableViewDataSource,headerViewDelegate,XYTransitionProtocol>
 {
     UILabel * lbl;
     NSArray *_dataSource;
@@ -27,10 +27,11 @@
 }
 @end
 
-@implementation MineViewController
+@implementation Mine_AuthViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=@"专家入驻——法律咨询师";
     self.isHidenNaviBar = NO;
     self.StatusBarStyle = UIStatusBarStyleLightContent;
     self.isShowLiftBack = NO;//每个根视图需要设置该属性为NO，否则会出现导航栏异常
@@ -41,34 +42,23 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self getRequset];
+    //[self getRequset];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    //    self.navigationController.delegate = self.navigationController;
+
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    //    [self ysl_removeTransitionDelegate];
+    
 }
 
-#pragma mark ————— 拉取数据 —————
--(void)getRequset{
-    _headerView.userInfo = curUser;
-}
 
-#pragma mark ————— 头像被点击 —————
--(void)headerViewClick{
-//        [self ysl_addTransitionDelegate:self];
-    ProfileViewController *profileVC = [ProfileViewController new];
-    profileVC.headerImage = _headerView.headImgView.image;
 
-}
 
-#pragma mark ————— 昵称被点击 —————
--(void)nickNameViewClick{
-    [self.navigationController pushViewController:[RootViewController new] animated:YES];
-}
+
+
+
 
 #pragma mark -- YSLTransitionAnimatorDataSource
 //-(UIImageView *)pushTransitionImageView{
@@ -79,9 +69,7 @@
 //{
 //    return nil;
 //}
--(UIView *)targetTransitionView{
-    return _headerView.headImgView;
-}
+
 -(BOOL)isNeedTransition{
     return YES;
 }
@@ -97,19 +85,22 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-
-    _headerView = [[MineHeaderView alloc] initWithFrame:CGRectMake(0, -KHeaderHeight, KScreenWidth, KHeaderHeight)];
-    _headerView.delegate = self;
-    self.tableView.contentInset = UIEdgeInsetsMake(_headerView.height, 0, 0, 0);
-    [self.tableView addSubview:_headerView];
+    UILabel *headView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+    headView.backgroundColor = [UIColor colorWithRed:255/255.0 green:246/255.0 blue:233/255.0 alpha:1.0];
+    headView.text = @"未认证，请填写资料申请认证.\n此认证信息仅用于平台审核，我们将对你填写对内容严格保密";
+    headView.textColor=[UIColor colorWithRed:182/255.0 green:114/255.0 blue:52/255.0 alpha:1.0];
+    headView.numberOfLines=0;
+    headView.font = [UIFont boldSystemFontOfSize:11.0f];
+    headView.textAlignment = NSTextAlignmentCenter;
+    self.tableView.tableHeaderView = headView;
     
     
     [self.view addSubview:self.tableView];
     
     [self createNav];
     
-
-
+    
+    
     NSDictionary *Modifydata = @{@"titleText":@"修改资料",@"clickSelector":@"",@"title_icon":@"修改资料icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     
     NSDictionary *myMission = @{@"titleText":@"账户余额",@"clickSelector":@"",@"title_icon":@"账户余额icon",@"detailText":@"666¥",@"arrow_icon":@"arrow_icon"};
@@ -118,9 +109,9 @@
     NSDictionary *myLevel = @{@"titleText":@"专家入驻",@"clickSelector":@"",@"title_icon":@"专家入驻icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     NSDictionary *myAdvice = @{@"titleText":@"意见反馈",@"clickSelector":@"",@"title_icon":@"意见反馈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     NSDictionary *mySet = @{@"titleText":@"设置",@"clickSelector":@"",@"title_icon":@"设置icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
-
     
- 
+    
+    
     NSMutableArray *section1 = [NSMutableArray array];
     [section1 addObject:Modifydata];
     NSMutableArray *section2 = [NSMutableArray array];
@@ -132,7 +123,7 @@
     NSMutableArray *section4 = [NSMutableArray array];
     [section4 addObject:myAdvice];
     [section4 addObject:mySet];
-
+    
     _dataSource = @[section1,section2,section3,section4];
     [self.tableView reloadData];
 }
@@ -158,9 +149,9 @@
     [btn setTitleColor:KWhiteColor forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(changeUser) forControlEvents:UIControlEventTouchUpInside];
     
-//    [_NavView addSubview:btn];
+    //    [_NavView addSubview:btn];
     
-//    [self.view addSubview:_NavView];
+    //    [self.view addSubview:_NavView];
 }
 
 #pragma mark ————— tableview 代理 ————
@@ -198,22 +189,24 @@
     NSInteger section = indexPath.section;
     switch (section) {
         case 0:
+            //<<<<<<< HEAD
+            //            [self.navigationController pushViewController:[[LawyerAuthenticationCViewController alloc]init] animated:YES];
+            //=======
         {
-              NSLog(@"点击了 修改资料");
+            NSLog(@"点击了 修改资料");
         }
             break;
         case 1:
         {
             if (indexPath.row==0) {
-                 NSLog(@"点击了 账户余额");
+                NSLog(@"点击了 账户余额");
             } else {
-                 NSLog(@"点击了 账单");
+                NSLog(@"点击了 账单");
             }
         }
-              break;
+            break;
         case 2:
         {
-        [self.navigationController pushViewController:[[Mine_AuthViewController alloc]init] animated:YES];
             NSLog(@"点击了 专家入驻");
         }
             break;
@@ -231,7 +224,7 @@
             break;
     }
     
-  
+    
 }
 
 #pragma mark ————— scrollView 代理 —————
