@@ -38,10 +38,11 @@
     UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, 69)];
     
     UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    logoutBtn.frame = CGRectMake(0, 20, footView.width, 49);
+    logoutBtn.frame = CGRectMake(15, 20, footView.width-30, 49);
     logoutBtn.titleLabel.font = SYSTEMFONT(16);
     [logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
     [logoutBtn setTitleColor:KBlackColor forState:UIControlStateNormal];
+    [logoutBtn setBackgroundImage:IMAGE_NAMED(@"提交按钮底框") forState:UIControlStateNormal];
     logoutBtn.backgroundColor = KWhiteColor;
     [logoutBtn addTarget:self action:@selector(logoutAction:) forControlEvents:UIControlEventTouchUpInside];
     

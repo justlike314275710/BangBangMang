@@ -15,6 +15,7 @@
 
 -(void)headerViewClick;
 -(void)nickNameViewClick;
+-(void)cerLawViewClick;
 
 @end
 

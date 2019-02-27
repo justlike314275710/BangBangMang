@@ -56,9 +56,18 @@
         [self.delegate nickNameViewClick];
     }
 }
+
+#pragma mark ————— 认证律师 ——————
+-(void)clicLawView {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cerLawViewClick)]) {
+        [self.delegate cerLawViewClick];
+    }
+}
+
 -(UIImageView *)bgImgView{
     if (!_bgImgView) {
         _bgImgView = [UIImageView new];
+        _bgImgView.userInteractionEnabled = YES;
         [self addSubview:_bgImgView];
         [_bgImgView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(13);
@@ -129,6 +138,12 @@
 - (UIImageView *)cerImg {
     if (!_cerImg) {
         _cerImg = [UIImageView new];
+        _cerImg.userInteractionEnabled = YES;
+        @weakify(self);
+        [_cerImg bk_whenTapped:^{
+            @strongify(self);
+            [self clicLawView];
+        }];
         _cerImg.image = IMAGE_NAMED(@"认证律师底");
          [self.bgImgView addSubview:_cerImg];
         [_cerImg mas_makeConstraints:^(MASConstraintMaker *make) {

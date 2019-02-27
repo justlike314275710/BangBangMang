@@ -69,6 +69,10 @@
 -(void)nickNameViewClick{
     [self.navigationController pushViewController:[RootViewController new] animated:YES];
 }
+#pragma mark ————— 律师认证被点击 —————
+-(void)cerLawViewClick {
+    
+}
 
 #pragma mark -- YSLTransitionAnimatorDataSource
 //-(UIImageView *)pushTransitionImageView{
@@ -199,6 +203,7 @@
     switch (section) {
         case 0:
         {
+
               NSLog(@"点击了 修改资料");
         }
             break;
@@ -223,6 +228,7 @@
                 NSLog(@"意见反馈");
             } else {
                 NSLog(@"设置");
+                [self changeUser];
             }
         }
             break;
