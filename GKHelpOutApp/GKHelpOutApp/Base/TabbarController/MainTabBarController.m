@@ -19,6 +19,7 @@
 #import "DraggingCardViewController.h"
 #import "UITabBar+CustomBadge.h"
 #import "XYTabBar.h"
+#import "MyConsultationViewController.h"
 
 @interface MainTabBarController ()<UITabBarControllerDelegate>
 
@@ -63,7 +64,7 @@
     [self setupChildViewController:homeVC title:@"首页" imageName:@"首页icon－未选中" seleceImageName:@"首页icon－选中"];
     
 //    MakeFriendsViewController *makeFriendVC = [[MakeFriendsViewController alloc]init];
-    ToolDemoViewController *makeFriendVC = [[ToolDemoViewController alloc]init];
+    MyConsultationViewController *makeFriendVC = [[MyConsultationViewController alloc]init];
     [self setupChildViewController:makeFriendVC title:@"我的咨询" imageName:@"我的咨询icon－未选中" seleceImageName:@"我的咨询icon－选中"];
     
 //    MsgViewController *msgVC = [[MsgViewController alloc]init];

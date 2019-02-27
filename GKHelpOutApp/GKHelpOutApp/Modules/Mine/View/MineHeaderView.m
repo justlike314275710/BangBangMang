@@ -12,9 +12,12 @@
 @interface MineHeaderView()
 
 @property(nonatomic, strong) UIImageView *bgImgView; //背景图
-@property(nonatomic, strong) NickNameLbel *nickNameView; //昵称容器 包含昵称 性别 等级
-@property(nonatomic, strong) UILabel *showIDLabel; //展示的ID
-@property(nonatomic, strong) UILabel *signatureLabel; //展示的ID
+@property(nonatomic, strong) UILabel *nickNameLab;   //展示昵称
+@property(nonatomic, strong) UILabel *phoneNuberLab; //展示的电话号码
+@property(nonatomic, strong) UIImageView *cerImg; //认证视图
+@property(nonatomic, strong) UIImageView *cerIconImg;
+@property(nonatomic, strong) UILabel *cerLab;
+
 
 @end
 
@@ -23,30 +26,21 @@
 -(void)setUserInfo:(UserInfo *)userInfo{
     _userInfo = userInfo;
     
-    UIImage *bgImg = [[UIImage imageNamed:@"my_back_img"] imageByBlurRadius:15 tintColor:nil tintMode:0 saturation:1 maskImage:nil];
-    
+    UIImage *bgImg = IMAGE_NAMED(@"个人信息底");
     [self.bgImgView setImage:bgImg];
-    
-    self.signatureLabel.text = userInfo.signature;
-    if (!userInfo.signature) {
-        [self.signatureLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(0);
-        }];
-    }else{
-        [self.signatureLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(0);
-        }];
-    }
+    [self nickNameLab];
+    [self phoneNuberLab];
+    [self cerImg];
+    [self cerIconImg];
+    [self cerLab];
+
     
 //未登录状态展示
     if (userInfo) {
-        self.showIDLabel.text = NSStringFormat(@"ID: %@",userInfo.idcard);
-        [self.nickNameView setNickName:userInfo.nickname sex:userInfo.sex age:26 level:userInfo.degreeId];
-//        [self.headImgView setImageWithURL:[NSURL URLWithString:userInfo.photo] placeholder:[UIImage imageWithColor:KGrayColor]];
-        [self.headImgView sd_setImageWithURL:[NSURL URLWithString:userInfo.photo] placeholderImage:[UIImage imageWithColor:KGrayColor]];
+        [self.headImgView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar] placeholderImage:[UIImage imageWithColor:KGrayColor]];
+    
     }else{
-        self.showIDLabel.text = @"";
-        [self.nickNameView setNickName:@"未登录" sex:0 age:0 level:0];
+    
         [self.headImgView setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503377311744&di=a784e64d1cce362c663f3480b8465961&imgtype=0&src=http%3A%2F%2Fww2.sinaimg.cn%2Flarge%2F85cccab3gw1etdit7s3nzg2074074twy.jpg"] placeholder:[UIImage imageWithColor:KGrayColor]];
     }
 }
@@ -67,7 +61,11 @@
         _bgImgView = [UIImageView new];
         [self addSubview:_bgImgView];
         [_bgImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.bottom.mas_equalTo(0);
+            make.left.mas_equalTo(13);
+            make.right.mas_equalTo(-13);
+            make.top.mas_equalTo(16);
+            make.height.mas_equalTo(112);
+            
         }];
     }
     return _bgImgView;
@@ -81,57 +79,107 @@
         _headImgView.userInteractionEnabled = YES;
         [_headImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headViewClick)]];
         
-        ViewRadius(_headImgView, (90*Iphone6ScaleWidth)/2);
-        [self addSubview:_headImgView];
+        ViewRadius(_headImgView, 25);
+        [self.bgImgView addSubview:_headImgView];
         [_headImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.height.mas_equalTo(90*Iphone6ScaleWidth);
-            make.bottom.mas_equalTo(_nickNameView.mas_top).offset(-12);
-            make.centerX.mas_equalTo(self);
+            make.width.height.mas_equalTo(50);
+            make.centerY.mas_equalTo(self.bgImgView);
+            make.left.mas_equalTo(17);
         }];
     }
     return _headImgView;
 }
 
--(NickNameLbel *)nickNameView{
-    if (!_nickNameView) {
-        _nickNameView = [NickNameLbel new];
-        [self addSubview:_nickNameView];
-        [_nickNameView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nickNameViewClick)]];
-        [_nickNameView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(_showIDLabel.mas_top).offset(-6);
-            
-            make.centerX.mas_equalTo(self);
+-(UILabel *)phoneNuberLab {
+    if (!_phoneNuberLab) {
+        _phoneNuberLab = [UILabel new];
+        _phoneNuberLab.text = help_userManager.curUserInfo.username;
+        _phoneNuberLab.font = FFont2;
+        _phoneNuberLab.textAlignment = NSTextAlignmentLeft;
+        _phoneNuberLab.textColor = CFontColor4;
+        [self.bgImgView addSubview:_phoneNuberLab];
+        [_phoneNuberLab mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(200);
+            make.height.mas_equalTo(22);
+            make.left.mas_equalTo(self.headImgView.mas_right).offset(10);
+            make.top.mas_equalTo(self.nickNameLab.mas_bottom).offset(5);
         }];
     }
-    return _nickNameView;
+    return _phoneNuberLab;
 }
 
--(UILabel *)showIDLabel{
-    if (!_showIDLabel) {
-        _showIDLabel = [UILabel new];
-        _showIDLabel.font = SYSTEMFONT(12);
-        _showIDLabel.textColor = KWhiteColor;
-        [self addSubview:_showIDLabel];
-        [_showIDLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(_signatureLabel.mas_top).offset(-4);
-            make.centerX.mas_equalTo(self);
+-(UILabel *)nickNameLab {
+    if (!_nickNameLab) {
+        _nickNameLab = [UILabel new];
+        _nickNameLab.text = help_userManager.curUserInfo.nickname;
+        _nickNameLab.font = FontOfSize(18);
+        _nickNameLab.textAlignment = NSTextAlignmentLeft;
+        _nickNameLab.textColor = CFontColor1;
+        [self.bgImgView addSubview:_nickNameLab];
+        [_nickNameLab mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(200);
+            make.height.mas_equalTo(22);
+            make.left.mas_equalTo(self.headImgView.mas_right).offset(10);
+            make.top.mas_equalTo(self.headImgView);
         }];
     }
-    return _showIDLabel;
+    return _nickNameLab;
 }
 
--(UILabel *)signatureLabel{
-    if (!_signatureLabel) {
-        _signatureLabel = [UILabel new];
-        _signatureLabel.font = SYSTEMFONT(14);
-        _signatureLabel.textColor = KWhiteColor;
-        [self addSubview:_signatureLabel];
-        [_signatureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(self).offset(-16);
-            make.height.mas_equalTo(15);
-            make.centerX.mas_equalTo(self);
+- (UIImageView *)cerImg {
+    if (!_cerImg) {
+        _cerImg = [UIImageView new];
+        _cerImg.image = IMAGE_NAMED(@"认证律师底");
+         [self.bgImgView addSubview:_cerImg];
+        [_cerImg mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(77);
+            make.height.mas_equalTo(25);
+            make.top.mas_equalTo(29);
+            make.right.mas_equalTo(0);
         }];
+        
+        [_cerImg addSubview:self.cerIconImg];
+        [_cerIconImg mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(12);
+            make.height.mas_equalTo(14);
+            make.left.mas_equalTo(10);
+            make.centerY.mas_equalTo(_cerImg);
+        }];
+        
+        [_cerImg addSubview:self.cerLab];
+        [_cerLab mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(50);
+            make.height.mas_equalTo(20);
+            make.left.mas_equalTo(28);
+            make.centerY.mas_equalTo(_cerImg);
+        }];
+        
     }
-    return _signatureLabel;
+    return _cerImg;
 }
+
+-(UIImageView *)cerIconImg {
+    if (!_cerIconImg) {
+        _cerIconImg = [UIImageView new];
+        _cerIconImg.image = IMAGE_NAMED(@"已认证icon");
+    }
+    return _cerIconImg;
+}
+
+-(UILabel *)cerLab {
+    if (!_cerLab) {
+        _cerLab = [UILabel new];
+        _cerLab.font = SFFont;
+        _cerLab.textColor = KWhiteColor;
+        _cerLab.textAlignment = NSTextAlignmentLeft;
+        _cerLab.text = @"认证律师";
+    }
+    return _cerLab;
+}
+
+
+
+
+
+
 @end

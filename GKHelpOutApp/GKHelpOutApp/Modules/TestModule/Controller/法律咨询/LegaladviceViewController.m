@@ -7,8 +7,9 @@
 //
 
 #import "LegaladviceViewController.h"
+#import "LegalAdviceCell.h"
 
-@interface LegaladviceViewController ()
+@interface LegaladviceViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -18,7 +19,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"法律咨询";
+    [self setupUI];
 }
+
+#pragma mark - PrivateMethosd
+- (void)setupUI {
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerClass:[LegalAdviceCell class] forCellReuseIdentifier:@"LegalAdviceCellID"];
+}
+
+#pragma mark - Delegate Methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 15;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LegalAdviceCell *cell = [[LegalAdviceCell alloc] init];
+    if (indexPath.row== 0) {
+        cell.noRead = YES;
+    } else {
+        cell.noRead = NO;
+    }
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120;
+}
+
 
 /*
 #pragma mark - Navigation

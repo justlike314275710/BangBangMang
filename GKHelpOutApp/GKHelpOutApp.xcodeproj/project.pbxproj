@@ -11,6 +11,8 @@
 		5524C68C22250F6E0067F437 /* CounselingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68B22250F6E0067F437 /* CounselingViewController.m */; };
 		5524C6922225106B0067F437 /* ZWTopSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68F2225106B0067F437 /* ZWTopSelectButton.m */; };
 		5524C6932225106B0067F437 /* ZWTopSelectVcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C6902225106B0067F437 /* ZWTopSelectVcView.m */; };
+		5524C697222515DC0067F437 /* MyConsultationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C696222515DC0067F437 /* MyConsultationViewController.m */; };
+		5524C69F22251DC90067F437 /* LegalAdviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C69E22251DC90067F437 /* LegalAdviceCell.m */; };
 		5557A48E221BB46C00743012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A48D221BB46C00743012 /* AppDelegate.m */; };
 		5557A491221BB46C00743012 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A490221BB46C00743012 /* ViewController.m */; };
 		5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */; };
@@ -447,6 +449,10 @@
 		5524C68F2225106B0067F437 /* ZWTopSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWTopSelectButton.m; sourceTree = "<group>"; };
 		5524C6902225106B0067F437 /* ZWTopSelectVcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWTopSelectVcView.m; sourceTree = "<group>"; };
 		5524C6912225106B0067F437 /* ZWTopSelectVcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWTopSelectVcView.h; sourceTree = "<group>"; };
+		5524C695222515DC0067F437 /* MyConsultationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyConsultationViewController.h; sourceTree = "<group>"; };
+		5524C696222515DC0067F437 /* MyConsultationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyConsultationViewController.m; sourceTree = "<group>"; };
+		5524C69D22251DC90067F437 /* LegalAdviceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LegalAdviceCell.h; sourceTree = "<group>"; };
+		5524C69E22251DC90067F437 /* LegalAdviceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegalAdviceCell.m; sourceTree = "<group>"; };
 		5557A489221BB46C00743012 /* GKHelpOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKHelpOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A48C221BB46C00743012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5557A48D221BB46C00743012 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1266,6 +1272,9 @@
 		5524C68622250F090067F437 /* 法律咨询 */ = {
 			isa = PBXGroup;
 			children = (
+				5524C69C22251D910067F437 /* view */,
+				5524C69A22251D750067F437 /* logic */,
+				5524C69922251D6A0067F437 /* model */,
 				5524C68722250F380067F437 /* LegaladviceViewController.h */,
 				5524C68822250F380067F437 /* LegaladviceViewController.m */,
 			);
@@ -1281,6 +1290,29 @@
 				5524C6902225106B0067F437 /* ZWTopSelectVcView.m */,
 			);
 			path = ZWTopSelectVcView;
+			sourceTree = "<group>";
+		};
+		5524C69922251D6A0067F437 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		5524C69A22251D750067F437 /* logic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = logic;
+			sourceTree = "<group>";
+		};
+		5524C69C22251D910067F437 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5524C69D22251DC90067F437 /* LegalAdviceCell.h */,
+				5524C69E22251DC90067F437 /* LegalAdviceCell.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		5557A480221BB46C00743012 = {
@@ -2057,6 +2089,10 @@
 		5557A638221BD99E00743012 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5557A63D221BD99E00743012 /* ToolDemoViewController.h */,
+				5557A642221BD99E00743012 /* ToolDemoViewController.m */,
+				5524C695222515DC0067F437 /* MyConsultationViewController.h */,
+				5524C696222515DC0067F437 /* MyConsultationViewController.m */,
 				5524C68622250F090067F437 /* 法律咨询 */,
 				5524C68522250EF60067F437 /* 心理咨询 */,
 				5557A63E221BD99E00743012 /* TagsViewController.h */,
@@ -2067,8 +2103,6 @@
 				5557A63B221BD99E00743012 /* NativeCallJSVC.m */,
 				5557A63C221BD99E00743012 /* EmitterViewController.h */,
 				5557A63F221BD99E00743012 /* EmitterViewController.m */,
-				5557A63D221BD99E00743012 /* ToolDemoViewController.h */,
-				5557A642221BD99E00743012 /* ToolDemoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3603,6 +3637,7 @@
 				EAB03928221E817C00331569 /* NIMLocationViewController.m in Sources */,
 				EAB0391C221E817B00331569 /* NIMSessionLocationContentView.m in Sources */,
 				EAB0391D221E817B00331569 /* NIMSessionVideoContentView.m in Sources */,
+				5524C69F22251DC90067F437 /* LegalAdviceCell.m in Sources */,
 				5557A627221BD96500743012 /* WaterFlowLayout.m in Sources */,
 				5557A500221BD76300743012 /* RootWebViewController.m in Sources */,
 				5557A66E221D027200743012 /* OauthInfo.m in Sources */,
@@ -3620,7 +3655,11 @@
 				5557A651221BD99E00743012 /* TagsViewController.m in Sources */,
 				EAB039BD221E8FF200331569 /* common.c in Sources */,
 				EAB0393A221E817C00331569 /* NIMKit.m in Sources */,
+
 				EA78F6E72225161F002D788A /* DSSettingDataSource.m in Sources */,
+
+				5524C697222515DC0067F437 /* MyConsultationViewController.m in Sources */,
+
 				5557A562221BD84000743012 /* ShareManager.m in Sources */,
 				5557A655221BD99E00743012 /* ToolDemoViewController.m in Sources */,
 				5557A624221BD96500743012 /* PersonModel.m in Sources */,

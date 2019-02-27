@@ -39,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的咨询";
+    self.title = @"示例 demo";
     
     ZWTopSelectVcView *topSelectVcView=[[ZWTopSelectVcView alloc]init];
     topSelectVcView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);

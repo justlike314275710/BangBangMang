@@ -347,6 +347,10 @@ typedef enum{
     
     UIView *viewTop=[[UIView alloc]initWithFrame:CGRectMake(_topViewX, _topViewY, _topViewWidth, _topViewHeight)];
     viewTop.backgroundColor=[self setupTopViewBackGourndColor];
+    viewTop.layer.shadowColor = [UIColor colorWithRed:14/255.0 green:39/255.0 blue:85/255.0 alpha:0.28].CGColor;
+    viewTop.layer.shadowOffset = CGSizeMake(0,1);
+    viewTop.layer.shadowOpacity = 1;
+    viewTop.layer.shadowRadius = 3;
     [self addSubview:viewTop];
     viewTop.layer.cornerRadius=self.topViewCornerRadius?self.topViewCornerRadius:0;
     self.viewTop=viewTop;
