@@ -18,6 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"心理咨询";
+    [self.view addSubview:self.tableView];
+    [self showNoDataImage];
 }
 
 /*

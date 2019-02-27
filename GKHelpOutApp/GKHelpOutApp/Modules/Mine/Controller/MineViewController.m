@@ -14,7 +14,8 @@
 #import "XYTransitionProtocol.h"
 #import "UploadAvatarViewController.h"
 
-#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
+//#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
+#define KHeaderHeight 140
 
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource,headerViewDelegate,XYTransitionProtocol>
 {
@@ -29,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.isHidenNaviBar = YES;
+    self.isHidenNaviBar = NO;
     self.StatusBarStyle = UIStatusBarStyleLightContent;
     self.isShowLiftBack = NO;//每个根视图需要设置该属性为NO，否则会出现导航栏异常
     
@@ -56,7 +57,7 @@
 }
 
 #pragma mark ————— 头像被点击 —————
--(void)fheaderViewClick{
+-(void)headerViewClick{
 //        [self ysl_addTransitionDelegate:self];
     ProfileViewController *profileVC = [ProfileViewController new];
     profileVC.headerImage = _headerView.headImgView.image;
@@ -87,6 +88,7 @@
 
 #pragma mark ————— 创建页面 —————
 -(void)createUI{
+    
     self.tableView.height = KScreenHeight - kTabBarHeight;
     self.tableView.mj_header.hidden = YES;
     self.tableView.mj_footer.hidden = YES;
@@ -94,6 +96,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+
     _headerView = [[MineHeaderView alloc] initWithFrame:CGRectMake(0, -KHeaderHeight, KScreenWidth, KHeaderHeight)];
     _headerView.delegate = self;
     self.tableView.contentInset = UIEdgeInsetsMake(_headerView.height, 0, 0, 0);
@@ -104,12 +107,30 @@
     
     [self createNav];
     
-    NSDictionary *myWallet = @{@"titleText":@"我的钱包",@"clickSelector":@"",@"title_icon":@"qianb",@"detailText":@"10.00",@"arrow_icon":@"arrow_icon"};
-    NSDictionary *myMission = @{@"titleText":@"我的任务",@"clickSelector":@"",@"title_icon":@"renw",@"arrow_icon":@"arrow_icon"};
-    NSDictionary *myFriends = @{@"titleText":@"我的好友",@"clickSelector":@"",@"title_icon":@"haoy",@"arrow_icon":@"arrow_icon"};
-    NSDictionary *myLevel = @{@"titleText":@"我的等级",@"clickSelector":@"",@"title_icon":@"dengji",@"detailText":@"LV10",@"arrow_icon":@"arrow_icon"};
+
+    NSDictionary *Modifydata = @{@"titleText":@"修改资料",@"clickSelector":@"",@"title_icon":@"修改资料icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     
-    _dataSource = @[myWallet,myMission,myFriends,myLevel];
+    NSDictionary *myMission = @{@"titleText":@"账户余额",@"clickSelector":@"",@"title_icon":@"账户余额icon",@"detailText":@"666¥",@"arrow_icon":@"arrow_icon"};
+    
+    NSDictionary *myFriends = @{@"titleText":@"账单",@"clickSelector":@"",@"title_icon":@"账单icon",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *myLevel = @{@"titleText":@"专家入驻",@"clickSelector":@"",@"title_icon":@"专家入驻icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *myAdvice = @{@"titleText":@"意见反馈",@"clickSelector":@"",@"title_icon":@"意见反馈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *mySet = @{@"titleText":@"设置",@"clickSelector":@"",@"title_icon":@"设置icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    
+ 
+    NSMutableArray *section1 = [NSMutableArray array];
+    [section1 addObject:Modifydata];
+    NSMutableArray *section2 = [NSMutableArray array];
+    
+    [section2 addObject:myMission];
+    [section2 addObject:myFriends];
+    NSMutableArray *section3 = [NSMutableArray array];
+    [section3 addObject:myLevel];
+    NSMutableArray *section4 = [NSMutableArray array];
+    [section4 addObject:myAdvice];
+    [section4 addObject:mySet];
+
+    _dataSource = @[section1,section2,section3,section4];
     [self.tableView reloadData];
 }
 #pragma mark ————— 创建自定义导航栏 —————
@@ -134,44 +155,79 @@
     [btn setTitleColor:KWhiteColor forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(changeUser) forControlEvents:UIControlEventTouchUpInside];
     
-    [_NavView addSubview:btn];
+//    [_NavView addSubview:btn];
     
-    [self.view addSubview:_NavView];
+//    [self.view addSubview:_NavView];
 }
 
-#pragma mark ————— tableview 代理 —————
+#pragma mark ————— tableview 代理 ————
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 4;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _dataSource.count;
+    NSMutableArray *sectionAry = _dataSource[section];
+    return sectionAry.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50.0f;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [UIView new];
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MineTableViewCell" forIndexPath:indexPath];
-    cell.cellData = _dataSource[indexPath.row];
+    NSMutableArray *sectionAry = _dataSource[indexPath.section];
+    cell.cellData = sectionAry[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    switch (indexPath.row) {
+    
+    NSInteger section = indexPath.section;
+    switch (section) {
         case 0:
-            NSLog(@"点击了 我的钱包");
+        {
+              NSLog(@"点击了 修改资料");
+        }
             break;
         case 1:
-            NSLog(@"点击了 我的任务");
-            break;
+        {
+            if (indexPath.row==0) {
+                 NSLog(@"点击了 账户余额");
+            } else {
+                 NSLog(@"点击了 账单");
+            }
+        }
+              break;
         case 2:
-            NSLog(@"点击了 我的好友");
+        {
+            NSLog(@"点击了 专家入驻");
+        }
             break;
         case 3:
-            NSLog(@"点击了 我的等级");
+        {
+            if (indexPath.row==0) {
+                NSLog(@"意见反馈");
+            } else {
+                NSLog(@"设置");
+            }
+        }
             break;
+            
         default:
             break;
     }
+    
+  
 }
 
 #pragma mark ————— scrollView 代理 —————
@@ -197,14 +253,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

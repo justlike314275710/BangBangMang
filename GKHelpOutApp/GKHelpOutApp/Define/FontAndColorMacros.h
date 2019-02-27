@@ -45,12 +45,20 @@
 //验证码字体颜色
 #define CFontColor3 [UIColor colorWithHexString:@"264C90"] //Field pla
 
+//
+#define CFontColor4 [UIColor colorWithHexString:@"666666"] //Field pla
+
 //按钮字体颜色
 #define CFontColor_BtnTitle [UIColor colorWithHexString:@"ffffff"] //Field pla
+
+//法律咨询部分label字体
+#define CFontColor_LawTitle [UIColor colorWithHexString:@"F34800"] //Field pla
+
 
 
 #pragma mark -  字体区
 
+#define SFFont  [UIFont systemFontOfSize:10.f]
 
 #define FFont1 [UIFont systemFontOfSize:12.0f]
 

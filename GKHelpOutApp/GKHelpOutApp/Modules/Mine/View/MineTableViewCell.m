@@ -32,7 +32,7 @@
     _cellData = cellData;
     if (cellData) {
         if (cellData[@"title_icon"]) {
-            [self.titleIcon setImage:ImageWithFile(cellData[@"title_icon"])];
+            [self.titleIcon setImage:IMAGE_NAMED(cellData[@"title_icon"])];
             [_titleIcon mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.left.mas_equalTo(KNormalSpace);
                 make.centerY.mas_equalTo(self);
