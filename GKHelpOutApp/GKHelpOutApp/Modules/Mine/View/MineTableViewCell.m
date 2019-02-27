@@ -40,7 +40,7 @@
             }];
         }else{
             [self.titleIcon mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.left.mas_equalTo(0);
+                make.left.top.mas_equalTo(0);
                 make.width.height.mas_equalTo(0);
             }];
         }

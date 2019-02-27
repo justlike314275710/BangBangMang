@@ -34,7 +34,7 @@
     self.textLabel.font=[UIFont systemFontOfSize:12];
     
     switch (item.type) {
-        case DSSettingItemTypeNone: {
+        case DSSettingItemTypeAlbum: {
             self.detailTextLabel.text = @"";
             self.accessoryView = nil;
         }
@@ -48,14 +48,14 @@
         }
             break;
             
-        case DSSettingItemTypeCustom: {
+        case DSSettingItemTypeIDCard: {
 
             self.detailTextLabel.text = item.details;
             self.accessoryView = nil;
         }
             break;
             
-        case DSSettingItemTypeSwitch: {
+        case DSSettingItemTypeTextView: {
             if (!_switchBtn) {
                 _switchBtn = [[UISwitch alloc] init];
                 _switchBtn.on = item.isSwitchOn;
@@ -72,12 +72,12 @@
 }
 
 #pragma mark --- Switch 响应事件 ---
-
-- (void)switchClickEvent:(UISwitch *)switchBtn {
-    
-    if (self.item.switchClick && self.item.type == DSSettingItemTypeSwitch) {
-        self.item.switchClick(switchBtn.on);
-    }
-}
+//
+//- (void)switchClickEvent:(UISwitch *)switchBtn {
+//
+//    if (self.item.switchClick && self.item.type == DSSettingItemTypeSwitch) {
+//        self.item.switchClick(switchBtn.on);
+//    }
+//}
 
 @end
