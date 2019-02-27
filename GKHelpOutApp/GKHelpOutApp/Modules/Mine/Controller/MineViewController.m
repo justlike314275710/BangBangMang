@@ -219,6 +219,7 @@
                 NSLog(@"意见反馈");
             } else {
                 NSLog(@"设置");
+                [self changeUser];
             }
         }
             break;
