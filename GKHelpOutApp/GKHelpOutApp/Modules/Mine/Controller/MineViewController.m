@@ -13,6 +13,8 @@
 #import "SettingViewController.h"
 #import "XYTransitionProtocol.h"
 #import "UploadAvatarViewController.h"
+#import "LawyerCertificationViewController.h"
+#import "LawyerAuthenticationCViewController.h"
 
 #define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 
@@ -104,7 +106,7 @@
     
     [self createNav];
     
-    NSDictionary *myWallet = @{@"titleText":@"我的钱包",@"clickSelector":@"",@"title_icon":@"qianb",@"detailText":@"10.00",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *myWallet = @{@"titleText":@"律师认证",@"clickSelector":@"",@"title_icon":@"qianb",@"detailText":@"10.00",@"arrow_icon":@"arrow_icon"};
     NSDictionary *myMission = @{@"titleText":@"我的任务",@"clickSelector":@"",@"title_icon":@"renw",@"arrow_icon":@"arrow_icon"};
     NSDictionary *myFriends = @{@"titleText":@"我的好友",@"clickSelector":@"",@"title_icon":@"haoy",@"arrow_icon":@"arrow_icon"};
     NSDictionary *myLevel = @{@"titleText":@"我的等级",@"clickSelector":@"",@"title_icon":@"dengji",@"detailText":@"LV10",@"arrow_icon":@"arrow_icon"};
@@ -158,7 +160,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
         case 0:
-            NSLog(@"点击了 我的钱包");
+            [self.navigationController pushViewController:[[LawyerAuthenticationCViewController alloc]init] animated:YES];
             break;
         case 1:
             NSLog(@"点击了 我的任务");

@@ -27,8 +27,8 @@ pod 'BlocksKit', '~> 2.2.5'
 pod 'DZNEmptyDataSet'
 pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
 pod 'DGActivityIndicatorView'
-
 pod 'AlipaySDK-iOS'
+pod 'UITextView+Placeholder', '~> 1.2.0'
 end
 
 target 'GKHelpOutAppUITests' do

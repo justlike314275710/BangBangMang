@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface PSViewController : UIViewController
+#import "RootViewController.h"
+@interface PSViewController : RootViewController;
 @property(nonatomic ,strong) UILabel*dotLab;
 @property (nonatomic, assign) UIInterfaceOrientationMask orientationMask;
 

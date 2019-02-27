@@ -25,7 +25,7 @@
     if (_isShowCloseBtn) {
         if (self.webView.canGoBack) {
             self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-            [self addNavigationItemWithImageNames:@[@"back_icon",@"close_icon"] isLeft:YES target:self action:@selector(leftBtnClick:) tags:@[@2000,@2001]];
+            [self addNavigationItemWithImageNames:@[@"返回",@"close_icon"] isLeft:YES target:self action:@selector(leftBtnClick:) tags:@[@2000,@2001]];
             
         }else{
             self.navigationController.interactivePopGestureRecognizer.enabled = YES;
@@ -36,7 +36,7 @@
             
             if (kiOS9Later) {
                 //            [self addNavigationItemWithTitles:@[@"返回"] isLeft:YES target:self action:@selector(leftBtnClick:) tags:@[@2001]];
-                [self addNavigationItemWithImageNames:@[@"back_icon"] isLeft:YES target:self action:@selector(leftBtnClick:) tags:@[@2001]];
+                [self addNavigationItemWithImageNames:@[@"返回"] isLeft:YES target:self action:@selector(leftBtnClick:) tags:@[@2001]];
             }
         }
     }
