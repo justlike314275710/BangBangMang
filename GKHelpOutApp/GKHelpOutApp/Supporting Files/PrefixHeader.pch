@@ -75,6 +75,7 @@
 #import "PSTipsView.h"
 #import "UIImage+Stretch.h"
 #import "BlocksKit+UIKit.h"
+#import "UITextView+Placeholder.h"
 
 //IM
 #import "NIMKit.h"

@@ -13,6 +13,8 @@
 #import "SettingViewController.h"
 #import "XYTransitionProtocol.h"
 #import "UploadAvatarViewController.h"
+#import "LawyerCertificationViewController.h"
+#import "LawyerAuthenticationCViewController.h"
 
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
@@ -107,6 +109,12 @@
     
     [self createNav];
     
+<<<<<<< HEAD
+    NSDictionary *myWallet = @{@"titleText":@"律师认证",@"clickSelector":@"",@"title_icon":@"qianb",@"detailText":@"10.00",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *myMission = @{@"titleText":@"我的任务",@"clickSelector":@"",@"title_icon":@"renw",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *myFriends = @{@"titleText":@"我的好友",@"clickSelector":@"",@"title_icon":@"haoy",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *myLevel = @{@"titleText":@"我的等级",@"clickSelector":@"",@"title_icon":@"dengji",@"detailText":@"LV10",@"arrow_icon":@"arrow_icon"};
+=======
 
     NSDictionary *Modifydata = @{@"titleText":@"修改资料",@"clickSelector":@"",@"title_icon":@"修改资料icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     
@@ -116,6 +124,7 @@
     NSDictionary *myLevel = @{@"titleText":@"专家入驻",@"clickSelector":@"",@"title_icon":@"专家入驻icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     NSDictionary *myAdvice = @{@"titleText":@"意见反馈",@"clickSelector":@"",@"title_icon":@"意见反馈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     NSDictionary *mySet = @{@"titleText":@"设置",@"clickSelector":@"",@"title_icon":@"设置icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+>>>>>>> 340934b597e4940351a44428618ae8d922d04816
     
  
     NSMutableArray *section1 = [NSMutableArray array];
@@ -195,9 +204,13 @@
     NSInteger section = indexPath.section;
     switch (section) {
         case 0:
+<<<<<<< HEAD
+            [self.navigationController pushViewController:[[LawyerAuthenticationCViewController alloc]init] animated:YES];
+=======
         {
               NSLog(@"点击了 修改资料");
         }
+>>>>>>> 340934b597e4940351a44428618ae8d922d04816
             break;
         case 1:
         {

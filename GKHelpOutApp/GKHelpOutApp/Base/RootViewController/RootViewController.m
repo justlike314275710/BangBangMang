@@ -19,6 +19,10 @@
 
 @implementation RootViewController
 
+
+
+
+
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return _StatusBarStyle;
 }
@@ -163,7 +167,7 @@
     NSInteger VCCount = self.navigationController.viewControllers.count;
     //下面判断的意义是 当VC所在的导航控制器中的VC个数大于1 或者 是present出来的VC时，才展示返回按钮，其他情况不展示
     if (isShowLiftBack && ( VCCount > 1 || self.navigationController.presentingViewController != nil)) {
-        [self addNavigationItemWithImageNames:@[@"back_icon"] isLeft:YES target:self action:@selector(backBtnClicked) tags:nil];
+        [self addNavigationItemWithImageNames:@[@"返回"] isLeft:YES target:self action:@selector(backBtnClicked) tags:nil];
         
     } else {
         self.navigationItem.hidesBackButton = YES;

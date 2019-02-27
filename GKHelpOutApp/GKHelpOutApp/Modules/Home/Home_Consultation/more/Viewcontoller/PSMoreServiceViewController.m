@@ -43,6 +43,7 @@
     [super viewDidLoad];
      self.view.backgroundColor=UIColorFromRGBA(248, 247, 254, 1);
     [self p_setUI];
+    [self setIsShowLiftBack:YES];
 }
 
 #pragma mark - PrivateMethod
@@ -181,6 +182,7 @@
     }
     
 }
+
 
 
 #pragma mark - setting&&getting

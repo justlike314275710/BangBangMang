@@ -25,7 +25,8 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 #define AppBaseTextColor2 (UIColorFromHexadecimalRGB(0x999999))
 
-#define AppBaseTextColor3 (UIColorFromHexadecimalRGB(0x264c90))//蓝色 主题色
+//#define AppBaseTextColor3 (UIColorFromHexadecimalRGB(0x264c90))//蓝色 主题色
+#define AppBaseTextColor3 UIColorFromRGB(100,140,214)
 
 #define AppBaseTextColor4 (UIColorFromHexadecimalRGB(0x7d8da2))
 

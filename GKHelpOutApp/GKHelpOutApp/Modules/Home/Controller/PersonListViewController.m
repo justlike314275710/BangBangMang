@@ -204,7 +204,8 @@
 }
 //MARK:点击法律咨询
 -(void)clickLegalAdvice {
-    
+    PSMoreServiceViewController *PSMoreServiceVC = [[PSMoreServiceViewController alloc] initWithViewModel:[PSMoreServiceViewModel new]];
+    [self.navigationController pushViewController:PSMoreServiceVC animated:YES];
 }
 //MARK:点击心理咨询
 -(void)clickPsyAdvice {
