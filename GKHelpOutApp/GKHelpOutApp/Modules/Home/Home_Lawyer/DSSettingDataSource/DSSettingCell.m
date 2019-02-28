@@ -34,7 +34,7 @@
     self.textLabel.font=[UIFont systemFontOfSize:12];
     
     switch (item.type) {
-        case DSSettingItemTypeAlbum: {
+        case DSSettingItemTypeCer: {
             self.detailTextLabel.text = @"";
             self.accessoryView = nil;
         }

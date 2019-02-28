@@ -21,7 +21,7 @@
 
 #import "PSMoreServiceViewController.h"
 #import "PSMoreServiceViewModel.h"
-
+#import "WWWaterWaveView.h"
 
 #define itemWidthHeight ((kScreenWidth-30)/2)
 #define homespaceX  16
@@ -33,6 +33,7 @@
 @property(nonatomic,strong) UIScrollView *scrollview;
 @property(nonatomic,strong) SDCycleScrollView *cycleScrollview; //轮播图
 @property(nonatomic,strong) UIImageView *waveImageView; //轮播图
+@property (nonatomic , strong)  WWWaterWaveView *waterWaveView;//波浪
 @property(nonatomic,strong) UIButton *appleTreeBtn; //苹果树
 @property(nonatomic,strong) UIButton *legalAdviceBtn;  //法律咨询
 @property(nonatomic,strong) UIButton *psyAdviceBtn;  //心理咨询
@@ -73,16 +74,17 @@
     //添加导航栏按钮
     [self.view addSubview:self.scrollview];
     [self.scrollview addSubview:self.cycleScrollview];
-    [self.scrollview addSubview:self.waveImageView];
-    
+    //[self.scrollview addSubview:self.waveImageView];
+    [self.scrollview addSubview:self.waterWaveView];
+   // self.waveImageView.frame = CGRectMake(0, self.cycleScrollview.bottom-41, KScreenWidth,44);
     //系统消息
     [self.scrollview addSubview:self.sysMsgBtn];
     self.sysMsgBtn.frame = CGRectMake(kScreenWidth-homespaceX-14,20,14, 14);
     
-    self.waveImageView.frame = CGRectMake(0, self.cycleScrollview.bottom-41, KScreenWidth,44);
+    
     //苹果树
     [self.scrollview addSubview:self.appleTreeBtn];
-    self.appleTreeBtn.frame = CGRectMake(homespaceX,self.waveImageView.bottom+14,KScreenWidth-2*homespaceX, 113);
+    self.appleTreeBtn.frame = CGRectMake(homespaceX,self.waterWaveView.bottom+14,KScreenWidth-2*homespaceX, 113);
     //法律咨询
     [self.scrollview addSubview:self.legalAdviceBtn];
     //心理咨询
@@ -295,6 +297,20 @@
         _waveImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _waveImageView;
+}
+
+- (WWWaterWaveView *)waterWaveView{
+    if (!_waterWaveView) {
+       _waterWaveView=[[WWWaterWaveView alloc]initWithFrame:CGRectMake(0, self.cycleScrollview.bottom-41, KScreenWidth,44)];
+        _waterWaveView.firstWaveColor =AppBaseTextColor3;
+        //[UIColor colorWithRed:0.87 green:0.87 blue:0.87 alpha:0.30];
+        //第二个波浪颜色
+        _waterWaveView.secondWaveColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:0.30];
+        // 百分比
+        _waterWaveView.percent = 0.5;
+        [_waterWaveView startWave];
+    }
+    return _waterWaveView;
 }
 
 - (UIButton *)appleTreeBtn {

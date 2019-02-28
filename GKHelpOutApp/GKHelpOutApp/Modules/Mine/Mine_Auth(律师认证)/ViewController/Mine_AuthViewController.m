@@ -19,7 +19,9 @@
 #import "AssessmentTableViewCell.h"
 #import "IdCardTableViewCell.h"
 #import "LawyerAuthenticationTableViewCell.h"
+#import "CertificateTableViewCell.h"
 #import "UploadManager.h"
+
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
@@ -32,6 +34,10 @@
 //@property (nonatomic , strong) NSMutableArray *dataSource;
 
 @property (nonatomic, strong) NSMutableArray *array;
+@property (nonatomic , strong) CertificateTableViewCell*cerCell ;
+@property (nonatomic , strong) AssessmentTableViewCell*assessCell;
+@property (nonatomic , strong) IdCardTableViewCell *idCardCell;
+@property (nonatomic , assign) int Btntager;
 
 @end
 
@@ -137,14 +143,14 @@
             
         }
         {
-            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeAlbum title:nil icon:nil];
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeCer title:nil icon:nil];
             item.rowHeight=94.0f;
             item.isShowAccessory=NO;
             item.title=@"律师职业证书照片";
             [group.items addObject:item];
         }
         {
-            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeAlbum title:nil icon:nil];
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeAss title:nil icon:nil];
             
             item.rowHeight=94.0f;
             item.isShowAccessory=NO;
@@ -184,6 +190,7 @@
     self.tableView.mj_footer.hidden = YES;
     [self.tableView registerClass:[PersonTableViewCell class] forCellReuseIdentifier:@"PersonTableViewCell"];
     [self.tableView registerClass:[AssessmentTableViewCell class] forCellReuseIdentifier:@"AssessmentTableViewCell"];
+    [self.tableView registerClass:[CertificateTableViewCell class] forCellReuseIdentifier:@"CertificateTableViewCell"];
     [self.tableView registerClass:[IdCardTableViewCell class] forCellReuseIdentifier:@"IdCardTableViewCell"];
     [self.tableView registerClass:[LawyerAuthenticationTableViewCell class] forCellReuseIdentifier:@"LawyerAuthenticationTableViewCell"];
     [self.tableView registerClass:[authBaseTableViewCell class] forCellReuseIdentifier:@"authBaseTableViewCell"];
@@ -203,11 +210,7 @@
     [self.view addSubview:self.tableView];
     
    [self setData];
-  [self.tableView reloadData];
-    
-
-    
-
+   [self.tableView reloadData];
 }
 
 
@@ -276,19 +279,42 @@
             break;
             
             
-        case DSSettingItemTypeAlbum:{
-            cell=[tableView dequeueReusableCellWithIdentifier:@"AssessmentTableViewCell"];
-            AssessmentTableViewCell*assessCell=(AssessmentTableViewCell*)cell;
-            assessCell.titleLable.text=item.title;
-            [assessCell.cameraButton bk_whenTapped:^{
+        case DSSettingItemTypeCer:{
+            cell=[tableView dequeueReusableCellWithIdentifier:@"CertificateTableViewCell"];
+            self.cerCell=(CertificateTableViewCell*)cell;
+            self.cerCell.titleLable.text=item.title;
+      
+            [self.cerCell.cameraButton bk_whenTapped:^{
+                  self.Btntager=defultTager+1;
                   [self ImagePickerClick];
+            }];
+        }
+            break;
+            
+            
+        case DSSettingItemTypeAss:{
+            cell=[tableView dequeueReusableCellWithIdentifier:@"AssessmentTableViewCell"];
+            self.assessCell=(AssessmentTableViewCell*)cell;
+            self. assessCell.titleLable.text=item.title;
+            
+            [self.assessCell.cameraButton bk_whenTapped:^{
+                self.Btntager=defultTager+2;
+                [self ImagePickerClick];
             }];
         }
             break;
             
         case DSSettingItemTypeIDCard:{
             cell=[tableView dequeueReusableCellWithIdentifier:@"IdCardTableViewCell"];
-            IdCardTableViewCell*IdcardCell=(IdCardTableViewCell*)cell;
+            self.idCardCell=(IdCardTableViewCell*)cell;
+            [self.idCardCell.frontCardButton bk_whenTapped:^{
+                self.Btntager=defultTager+3;
+                [self ImagePickerClick];
+            }];
+            [self.idCardCell.backCardButton bk_whenTapped:^{
+                self.Btntager=defultTager+4;
+                [self ImagePickerClick];
+            }];
             //assessCell.titleLable.text=item.title;
         }
             break;
@@ -405,12 +431,48 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissViewControllerAnimated:YES completion:^() {
         UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        [self uploadImage:portraitImg];
+        if (self.Btntager==defultTager+1) {
+             [self uploadCerImage:portraitImg];
+        }
+        else if (self.Btntager==defultTager+2){
+             [self uploadAssImage:portraitImg];
+        }
+        else if (self.Btntager==defultTager+3){
+            [self uploadFrontCardImage:portraitImg];
+        }
+        else if (self.Btntager==defultTager+4){
+            [self uploadBlackCardImageImage:portraitImg];
+        }
+        else {
+           
+        }
+       
     }];
 }
-- (void)uploadImage:(UIImage *)image {
+#pragma mark ————— 律师执业证书照片上传 —————
+- (void)uploadCerImage:(UIImage *)image {
     [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
-        
+         [self.cerCell.cameraButton setImage:image forState:0];
+    }];
+}
+#pragma mark ————— 律师年度考核备案照片上传 —————
+- (void)uploadAssImage:(UIImage *)image {
+    [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
+        [self.assessCell.cameraButton setImage:image forState:0];
+    }];
+}
+
+#pragma mark ————— 身份证照片正面上传 —————
+- (void)uploadFrontCardImage:(UIImage *)image {
+    [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
+        [self.idCardCell.frontCardButton setImage:image forState:0];
+    }];
+}
+
+#pragma mark ————— 身份证照片反面上传 —————
+- (void)uploadBlackCardImageImage:(UIImage *)image {
+    [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
+        [self.idCardCell.backCardButton setImage:image forState:0];
     }];
 }
 
