@@ -32,6 +32,7 @@
 
 /**开发服务器*/
 #define URL_main @"http://192.168.20.31:20000/shark-miai-service"
+
 #define ServerDomain @"http://120.78.190.101:8086"
 #define ServerUrl [NSString stringWithFormat:@"%@/ywgk-app-auth",ServerDomain]
 #define EmallUrl @"http://10.10.10.16:805"
