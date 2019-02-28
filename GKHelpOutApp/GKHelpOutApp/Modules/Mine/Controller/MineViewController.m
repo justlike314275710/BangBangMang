@@ -14,6 +14,8 @@
 #import "XYTransitionProtocol.h"
 #import "UploadAvatarViewController.h"
 #import "Mine_AuthViewController.h"
+#import "PSWriteFeedbackListViewController.h"
+#import "ModifyDataViewController.h"
 
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
@@ -32,9 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isHidenNaviBar = NO;
-    self.StatusBarStyle = UIStatusBarStyleLightContent;
     self.isShowLiftBack = NO;//每个根视图需要设置该属性为NO，否则会出现导航栏异常
-    
     [self createUI];
     
 }
@@ -112,8 +112,6 @@
     
     [self createNav];
     
-
-
     NSDictionary *Modifydata = @{@"titleText":@"修改资料",@"clickSelector":@"",@"title_icon":@"修改资料icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     
     NSDictionary *myMission = @{@"titleText":@"账户余额",@"clickSelector":@"",@"title_icon":@"账户余额icon",@"detailText":@"666¥",@"arrow_icon":@"arrow_icon"};
@@ -136,7 +134,7 @@
     NSMutableArray *section4 = [NSMutableArray array];
     [section4 addObject:myAdvice];
     [section4 addObject:mySet];
-
+    
     _dataSource = @[section1,section2,section3,section4];
     [self.tableView reloadData];
 }
@@ -203,8 +201,8 @@
     switch (section) {
         case 0:
         {
-
               NSLog(@"点击了 修改资料");
+            [self modifyData];
         }
             break;
         case 1:
@@ -218,7 +216,7 @@
               break;
         case 2:
         {
-        [self.navigationController pushViewController:[[Mine_AuthViewController alloc]init] animated:YES];
+            [self.navigationController pushViewController:[[Mine_AuthViewController alloc]init] animated:YES];
             NSLog(@"点击了 专家入驻");
         }
             break;
@@ -226,6 +224,7 @@
         {
             if (indexPath.row==0) {
                 NSLog(@"意见反馈");
+                [self feedback];
             } else {
                 NSLog(@"设置");
                 [self changeUser];
@@ -252,10 +251,21 @@
     
 }
 
-#pragma mark ————— 切换账号 —————
+#pragma mark ————— 设置 —————
 -(void)changeUser{
     SettingViewController *settingVC = [SettingViewController new];
     [self.navigationController pushViewController:settingVC animated:YES];
+}
+#pragma mark ————— 意见反馈 —————
+-(void)feedback{
+    PSWriteFeedbackListViewController *feedBackListVC = [[PSWriteFeedbackListViewController alloc] init];
+    [self.navigationController pushViewController:feedBackListVC animated:YES];
+}
+
+#pragma mark ————— 修改资料 —————
+-(void)modifyData{
+    ModifyDataViewController *modifyDataVC = [[ModifyDataViewController alloc] init];
+    [self.navigationController pushViewController:modifyDataVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

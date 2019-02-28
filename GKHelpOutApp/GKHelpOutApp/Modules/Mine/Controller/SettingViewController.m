@@ -9,6 +9,8 @@
 #import "SettingViewController.h"
 #import "BaseTableViewCell.h"
 #import "HSBaseCellModel.h"
+#import "MineTableViewCell.h"
+#import "PSStorageViewController.h"
 
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -26,22 +28,24 @@
 }
 #pragma mark ————— 初始化页面 —————
 -(void)setupUI{
+    self.view.backgroundColor = CViewBgColor;
+    self.tableView.height = KScreenHeight;
+    self.tableView.y = self.tableView.y+20;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.mj_header.hidden = YES;
     self.tableView.mj_footer.hidden = YES;
-    [self.tableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:@"BaseTableViewCell"];
+    [self.tableView registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
     [self.view addSubview:self.tableView];
     
-    
-    
-    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, 69)];
-    
+
+
+    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth,200)];
     UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    logoutBtn.frame = CGRectMake(15, 20, footView.width-30, 49);
+    logoutBtn.frame = CGRectMake(15,150, footView.width-30, 49);
     logoutBtn.titleLabel.font = SYSTEMFONT(16);
     [logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-    [logoutBtn setTitleColor:KBlackColor forState:UIControlStateNormal];
+    [logoutBtn setTitleColor:KWhiteColor forState:UIControlStateNormal];
     [logoutBtn setBackgroundImage:IMAGE_NAMED(@"提交按钮底框") forState:UIControlStateNormal];
     logoutBtn.backgroundColor = KWhiteColor;
     [logoutBtn addTarget:self action:@selector(logoutAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -53,36 +57,19 @@
 
 #pragma mark ————— 数据源 —————
 -(void)getData{
-    HSBaseCellModel *pushCofigModel = [HSBaseCellModel new];
-    pushCofigModel.title = @"推送消息设置";
-    pushCofigModel.identifier = 9000;
-    pushCofigModel.selectionStyle = UITableViewCellSelectionStyleNone;
-    pushCofigModel.isShowArrow = YES;
-
     
-    HSBaseCellModel *soundsCofigModel = [HSBaseCellModel new];
-    soundsCofigModel.title = @"声音";
-    soundsCofigModel.identifier = 9001;
-    soundsCofigModel.selectionStyle = UITableViewCellSelectionStyleNone;
-    soundsCofigModel.detailText = @"关";
-    soundsCofigModel.isShowArrow = NO;
+    NSString *cacheData = [NSString stringWithFormat:@"%.1fM",[self fileSizeWithIntergeWithM]+58.2];
     
-    HSBaseCellModel *cleanCofigModel = [HSBaseCellModel new];
-    cleanCofigModel.title = @"清除缓存";
-    cleanCofigModel.identifier = 9002;
-    cleanCofigModel.selectionStyle = UITableViewCellSelectionStyleNone;
-    cleanCofigModel.detailText = NSStringFormat(@"%.2fM",[self filePath]);
-    cleanCofigModel.isShowArrow = NO;
+    NSString *localVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleShortVersionString"];
+    localVersion = [NSString stringWithFormat:@"v%@",localVersion];
     
-    HSBaseCellModel *aboutCofigModel = [HSBaseCellModel new];
-    aboutCofigModel.title = @"关于我们";
-    aboutCofigModel.identifier = 9003;
-    aboutCofigModel.selectionStyle = UITableViewCellSelectionStyleNone;
-    aboutCofigModel.isShowArrow = YES;
+    NSDictionary *Modifydata = @{@"titleText":@"存储空间",@"clickSelector":@"",@"title_icon":@"清除缓存icon",@"detailText":cacheData,@"arrow_icon":@"arrow_icon"};
     
-    NSArray *one = @[pushCofigModel];
-    NSArray *two = @[soundsCofigModel,cleanCofigModel,aboutCofigModel];
-    _dataArray = @[one,two];
+    NSDictionary *myMission = @{@"titleText":@"版本更新",@"clickSelector":@"",@"title_icon":@"设置-版本更新icon",@"detailText":localVersion,@"arrow_icon":@"arrow_icon"};
+    
+//    NSArray *one = @[pushCofigModel];
+    NSArray *two = @[Modifydata,myMission];
+    _dataArray = @[two];
     [self.tableView reloadData];
     
 }
@@ -118,28 +105,30 @@
     return view;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BaseTableViewCell" forIndexPath:indexPath];
-    HSBaseCellModel *model = _dataArray[indexPath.section][indexPath.row];
-    cell.selectionStyle = model.selectionStyle;
-    cell.textLabel.text = model.title;
-    cell.customDetailText = model.detailText;
-    cell.accessoryType = model.isShowArrow ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
+    MineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MineTableViewCell" forIndexPath:indexPath];
+    NSMutableArray *sectionAry = _dataArray[indexPath.section];
+    cell.cellData = sectionAry[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    HSBaseCellModel *model = _dataArray[indexPath.section][indexPath.row];
-    NSLog(@"点击了 %@",model.title);
-//    switch (indexPath.row) {
-//        case 9000:
-//        {
-//            NSLog(@"点击了 %@",model.title);
-//        }
-//            break;
-//            
-//        default:
-//            break;
-//    }
+    if (indexPath.row==0) {
+        [self clearCache];
+    }
 }
+#pragma mark ———————————— 清除缓存
+- (void)clearCache {
+    PSStorageViewController *PSStorageVC = [[PSStorageViewController alloc] init];
+    [self.navigationController pushViewController:PSStorageVC animated:YES];
+}
+
+- (CGFloat)fileSizeWithIntergeWithM {
+    NSUInteger size = [[SDImageCache sharedImageCache] getSize];
+    return size/(1024 * 1024);
+}
+
+
 -(void)viewDidLayoutSubviews
 {
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {

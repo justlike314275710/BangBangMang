@@ -10,6 +10,7 @@
 #import "CellModel.h"
 #import "TableViewCell.h"
 #import "MakeFriendsLogic.h"
+#import "MineTableViewCell.h"
 
 @interface MakeFriendsViewController ()<UITableViewDelegate,UITableViewDataSource,MakeFriendsDelegate>
 
@@ -30,6 +31,9 @@
 #pragma mark -  初始化UI
 -(void)initUI{
     self.tableView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - kTopHeight - kTabBarHeight);
+    self.tableView.mj_header.hidden = YES;
+    self.tableView.mj_footer.hidden = YES;
+    [self.tableView registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[TableViewCell class] forCellReuseIdentifier:NSStringFromClass([TableViewCell class])];
     self.tableView.delegate = self;
