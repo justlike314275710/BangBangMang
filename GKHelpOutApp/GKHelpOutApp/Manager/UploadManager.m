@@ -28,7 +28,7 @@
 - (void)uploadConsultationImagesCompleted:(CheckDataCallback)callback{
     [[PSLoadingView sharedInstance]show];
     //1 创建请求
-    NSString*urlSting=[NSString stringWithFormat:@"%@/files",EmallHostUrl];
+    NSString*urlSting=[NSString stringWithFormat:@"%@/files?type=PROTECTED",EmallHostUrl];
     NSURL *url = [NSURL URLWithString:urlSting];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"post";
@@ -37,7 +37,7 @@
                                     };
     NSData *compressData = [self.consultaionImage compressWithLengthLimit:500.0f * 500.0f];
     request.HTTPBody = [self makeBody:@"file" fileName:@"file" data:compressData];
-    NSString*token=help_userManager.oathInfo.access_token;
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     [request addValue:token forHTTPHeaderField:@"Authorization"];
     
     

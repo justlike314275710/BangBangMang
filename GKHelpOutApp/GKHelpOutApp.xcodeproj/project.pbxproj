@@ -234,6 +234,9 @@
 		EA78F72622263DA8002D788A /* IdCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F72022263DA7002D788A /* IdCardTableViewCell.m */; };
 		EA78F72922264BD8002D788A /* authBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F72822264BD8002D788A /* authBaseTableViewCell.m */; };
 		EA78F72F22268E46002D788A /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F72E22268E46002D788A /* UploadManager.m */; };
+		EA78F733222770AF002D788A /* Mine_AuthLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F732222770AF002D788A /* Mine_AuthLogic.m */; };
+		EA78F739222783F3002D788A /* WWWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F735222783F3002D788A /* WWWaterWaveView.m */; };
+		EA78F73A222783F3002D788A /* WWWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F738222783F3002D788A /* WWWaveProgressView.m */; };
 		EAB038B8221E817B00331569 /* NMCVideoFilter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03788221E817A00331569 /* NMCVideoFilter.bundle */; };
 		EAB038B9221E817B00331569 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
 		EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
@@ -854,6 +857,12 @@
 		EA78F72822264BD8002D788A /* authBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = authBaseTableViewCell.m; sourceTree = "<group>"; };
 		EA78F72D22268E46002D788A /* UploadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
 		EA78F72E22268E46002D788A /* UploadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
+		EA78F731222770AF002D788A /* Mine_AuthLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_AuthLogic.h; sourceTree = "<group>"; };
+		EA78F732222770AF002D788A /* Mine_AuthLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_AuthLogic.m; sourceTree = "<group>"; };
+		EA78F735222783F3002D788A /* WWWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWaterWaveView.m; sourceTree = "<group>"; };
+		EA78F736222783F3002D788A /* WWWaveProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWaveProgressView.h; sourceTree = "<group>"; };
+		EA78F737222783F3002D788A /* WWWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWaterWaveView.h; sourceTree = "<group>"; };
+		EA78F738222783F3002D788A /* WWWaveProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWaveProgressView.m; sourceTree = "<group>"; };
 		EAB03788221E817A00331569 /* NMCVideoFilter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NMCVideoFilter.bundle; sourceTree = "<group>"; };
 		EAB03789221E817A00331569 /* NMC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMC.framework; sourceTree = "<group>"; };
 		EAB0378A221E817A00331569 /* NIMAVChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NIMAVChat.framework; sourceTree = "<group>"; };
@@ -2040,6 +2049,7 @@
 		5557A5E3221BD96500743012 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EA78F734222783F3002D788A /* Waves */,
 				5557A5E4221BD96500743012 /* PersonListCollectionViewCell.h */,
 				5557A5E5221BD96500743012 /* WaterFallCollectionViewCell.m */,
 				5557A5E6221BD96500743012 /* WaterFlowLayout.h */,
@@ -2453,6 +2463,7 @@
 		EA78F70722263719002D788A /* Mine_Auth(律师认证) */ = {
 			isa = PBXGroup;
 			children = (
+				EA78F73022277083002D788A /* Logic */,
 				EA78F72C22265B49002D788A /* ViewController */,
 				EA78F72B22265B3F002D788A /* Model */,
 				EA78F72A22265B37002D788A /* View */,
@@ -2503,6 +2514,26 @@
 				EA78F70922263761002D788A /* Mine_AuthViewController.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EA78F73022277083002D788A /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				EA78F731222770AF002D788A /* Mine_AuthLogic.h */,
+				EA78F732222770AF002D788A /* Mine_AuthLogic.m */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		EA78F734222783F3002D788A /* Waves */ = {
+			isa = PBXGroup;
+			children = (
+				EA78F735222783F3002D788A /* WWWaterWaveView.m */,
+				EA78F736222783F3002D788A /* WWWaveProgressView.h */,
+				EA78F737222783F3002D788A /* WWWaterWaveView.h */,
+				EA78F738222783F3002D788A /* WWWaveProgressView.m */,
+			);
+			path = Waves;
 			sourceTree = "<group>";
 		};
 		EAB03786221E817A00331569 /* NIMAVChat */ = {
@@ -3769,6 +3800,7 @@
 				5557A611221BD96500743012 /* MineViewController.m in Sources */,
 				EA21CA83221F9980007D3445 /* PSLawersDetails.m in Sources */,
 				EA21CB1D221FA2C9007D3445 /* PSPhoneCardViewModel.m in Sources */,
+				EA78F73A222783F3002D788A /* WWWaveProgressView.m in Sources */,
 				EAB038C1221E817B00331569 /* NIMContactSelectViewController.m in Sources */,
 				EAB03906221E817B00331569 /* NIMVideoContentConfig.m in Sources */,
 				EA21CA4B221F9386007D3445 /* PSAliHandler.m in Sources */,
@@ -3842,9 +3874,11 @@
 				5557A614221BD96500743012 /* MineTableViewCell.m in Sources */,
 				5557A501221BD76300743012 /* RootNavigationController.m in Sources */,
 				EA78F6D12223D34C002D788A /* LawyerCertificationViewController.m in Sources */,
+				EA78F733222770AF002D788A /* Mine_AuthLogic.m in Sources */,
 				EA21CA4A221F9386007D3445 /* PSWechatHandler.m in Sources */,
 				EAB038CD221E817B00331569 /* NIMKitRobotDefaultTemplateParser.m in Sources */,
 				EAB038CF221E817B00331569 /* NIMKitDevice.m in Sources */,
+				EA78F739222783F3002D788A /* WWWaterWaveView.m in Sources */,
 				EAB038FB221E817B00331569 /* NIMTimestampModel.m in Sources */,
 				EAB038D2221E817B00331569 /* NIMSpellingCenter.m in Sources */,
 				EAB03922221E817B00331569 /* NIMSessionFileTransContentView.m in Sources */,

@@ -40,4 +40,5 @@
 //网络状态变化
 #define KNotificationNetWorkStateChange @"KNotificationNetWorkStateChange"
 
+#define defultTager  999
 #endif /* CommonMacros_h */
