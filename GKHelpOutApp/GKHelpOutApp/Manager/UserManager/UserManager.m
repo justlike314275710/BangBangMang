@@ -166,17 +166,7 @@ SINGLETON_FOR_CLASS(UserManager);
 
 #pragma mark ————— 手动登录到服务器 —————
 -(void)loginToServer:(NSDictionary *)params completion:(loginBlock)completion{
-//    NSDictionary*parmeters=@{
-//                             @"username":@"15526477756",
-//                             @"password":@"9619",
-//                             @"grant_type":@"password"
-//                             };
-<<<<<<< HEAD
-//    NSString*uid=@"consumer.m.app";
-//    NSString*cipherText=@"1688c4f69fc6404285aadbc996f5e429";
-    NSString*uid=@"assistant.app";
-    NSString*cipherText=@"506a7b6dfc5d42fe857ea9494bb24014";
-=======
+
     NSString *username = [params valueForKey:@"name"];
     NSString *password = [params valueForKey:@"verificationCode"];
     NSDictionary *paames = @{
@@ -185,16 +175,14 @@ SINGLETON_FOR_CLASS(UserManager);
                           @"grant_type":@"password"
                           };
     
-    
     NSString*uid=@"assistant.app";
     NSString*cipherText=@"506a7b6dfc5d42fe857ea9494bb24014";
 //    NSString*uid=@"consumer.m.app";
 //    NSString*cipherText=@"1688c4f69fc6404285aadbc996f5e429";
->>>>>>> 1c6b88ee5eec4c869388b38a48cfc23099958e23
     NSString *part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
     NSData   *data = [part1 dataUsingEncoding:NSUTF8StringEncoding];
     NSString *stringBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSString * authorization = [NSString stringWithFormat:@"Basic %@",stringBase64];
+    NSString *authorization = [NSString stringWithFormat:@"Basic %@",stringBase64];
     
     NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_get_oauth_token];
     
