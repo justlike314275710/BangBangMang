@@ -6,6 +6,7 @@
 //  Created by 狂生烈徒 on 2018/6/4.
 //  Copyright © 2018年 calvin. All rights reserved.
 //
+#import "UIViewController+Tool.h"
 #import "PSMyAdviceViewController.h"
 #import "PSConsultationViewModel.h"
 //#import "PSRefundViewController.h"
@@ -145,7 +146,9 @@
     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
     PSConsultation*Model=viewModel.myAdviceArray[indexPath.row];
     viewModel.adviceId=Model.cid;
-    [self.navigationController pushViewController:[[PSAdviceDetailsViewController alloc]initWithViewModel:viewModel] animated:YES];
+    UIViewController *vc = [UIViewController jsd_getCurrentViewController];
+    [vc.navigationController pushViewController:[[PSAdviceDetailsViewController alloc]initWithViewModel:viewModel] animated:YES];
+    
     
     
 }

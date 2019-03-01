@@ -254,6 +254,10 @@
 		EA78F733222770AF002D788A /* Mine_AuthLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F732222770AF002D788A /* Mine_AuthLogic.m */; };
 		EA78F739222783F3002D788A /* WWWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F735222783F3002D788A /* WWWaterWaveView.m */; };
 		EA78F73A222783F3002D788A /* WWWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F738222783F3002D788A /* WWWaveProgressView.m */; };
+		EA78F73D2227AEEA002D788A /* Mine_ExpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F73C2227AEEA002D788A /* Mine_ExpViewController.m */; };
+		EA78F7402227CDE6002D788A /* BRInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F73E2227CDE5002D788A /* BRInfoModel.m */; };
+		EA78F7422227D44B002D788A /* BRCity.json in Resources */ = {isa = PBXBuildFile; fileRef = EA78F7412227D44A002D788A /* BRCity.json */; };
+		EA78F7452227E0EF002D788A /* PSFamilyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F7442227E0EF002D788A /* PSFamilyTableViewCell.m */; };
 		EAB038B8221E817B00331569 /* NMCVideoFilter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAB03788221E817A00331569 /* NMCVideoFilter.bundle */; };
 		EAB038B9221E817B00331569 /* NMC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB03789221E817A00331569 /* NMC.framework */; };
 		EAB038BB221E817B00331569 /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378C221E817A00331569 /* NIMSDK.framework */; };
@@ -914,6 +918,13 @@
 		EA78F736222783F3002D788A /* WWWaveProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWaveProgressView.h; sourceTree = "<group>"; };
 		EA78F737222783F3002D788A /* WWWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWaterWaveView.h; sourceTree = "<group>"; };
 		EA78F738222783F3002D788A /* WWWaveProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWaveProgressView.m; sourceTree = "<group>"; };
+		EA78F73B2227AEEA002D788A /* Mine_ExpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_ExpViewController.h; sourceTree = "<group>"; };
+		EA78F73C2227AEEA002D788A /* Mine_ExpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_ExpViewController.m; sourceTree = "<group>"; };
+		EA78F73E2227CDE5002D788A /* BRInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRInfoModel.m; sourceTree = "<group>"; };
+		EA78F73F2227CDE6002D788A /* BRInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRInfoModel.h; sourceTree = "<group>"; };
+		EA78F7412227D44A002D788A /* BRCity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BRCity.json; sourceTree = "<group>"; };
+		EA78F7432227E0EE002D788A /* PSFamilyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFamilyTableViewCell.h; sourceTree = "<group>"; };
+		EA78F7442227E0EF002D788A /* PSFamilyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFamilyTableViewCell.m; sourceTree = "<group>"; };
 		EAB03788221E817A00331569 /* NMCVideoFilter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NMCVideoFilter.bundle; sourceTree = "<group>"; };
 		EAB03789221E817A00331569 /* NMC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMC.framework; sourceTree = "<group>"; };
 		EAB0378A221E817A00331569 /* NIMAVChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NIMAVChat.framework; sourceTree = "<group>"; };
@@ -1453,6 +1464,7 @@
 		5557A4BF221BD04100743012 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EA78F7412227D44A002D788A /* BRCity.json */,
 				5557A4CE221BD60500743012 /* PrefixHeader.pch */,
 				5557A4C2221BD09200743012 /* Assets.xcassets */,
 				5557A4C3221BD09200743012 /* Base.lproj */,
@@ -2361,11 +2373,9 @@
 				EA21CA50221F9980007D3445 /* PSConsultationViewController.h */,
 				EA21CA51221F9980007D3445 /* ConsultationViewModel */,
 				EA21CA58221F9980007D3445 /* PSAdviceDetailsViewController.h */,
-				EA21CA59221F9980007D3445 /* PSConsultingCategoryViewController.h */,
 				EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */,
 				EA21CA5B221F9980007D3445 /* PSScoreViewController.m */,
 				EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */,
-				EA21CA5D221F9980007D3445 /* PSConsultingCategoryViewController.m */,
 				EA21CA5E221F9980007D3445 /* ConsultationView */,
 				EA21CA65221F9980007D3445 /* ConsultationModel */,
 				EA21CA76221F9980007D3445 /* PSAdviceDetailsViewController.m */,
@@ -2612,6 +2622,8 @@
 		EA78F72A22265B37002D788A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EA78F7432227E0EE002D788A /* PSFamilyTableViewCell.h */,
+				EA78F7442227E0EF002D788A /* PSFamilyTableViewCell.m */,
 				EA78F71422263DA7002D788A /* CertificationView */,
 			);
 			path = View;
@@ -2620,6 +2632,8 @@
 		EA78F72B22265B3F002D788A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EA78F73F2227CDE6002D788A /* BRInfoModel.h */,
+				EA78F73E2227CDE5002D788A /* BRInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2627,8 +2641,12 @@
 		EA78F72C22265B49002D788A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CA59221F9980007D3445 /* PSConsultingCategoryViewController.h */,
+				EA21CA5D221F9980007D3445 /* PSConsultingCategoryViewController.m */,
 				EA78F70822263761002D788A /* Mine_AuthViewController.h */,
 				EA78F70922263761002D788A /* Mine_AuthViewController.m */,
+				EA78F73B2227AEEA002D788A /* Mine_ExpViewController.h */,
+				EA78F73C2227AEEA002D788A /* Mine_ExpViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3587,6 +3605,7 @@
 				5557A60C221BD96500743012 /* photo_sample_05.png in Resources */,
 				5557A4FE221BD76300743012 /* JSToOC.html in Resources */,
 				5557A616221BD96500743012 /* my_back_img@2x.png in Resources */,
+				EA78F7422227D44B002D788A /* BRCity.json in Resources */,
 				5557A608221BD96500743012 /* photo_sample_02.png in Resources */,
 				5557A581221BD8DA00743012 /* UMSocialSDKResources.bundle in Resources */,
 				5557A632221BD96500743012 /* 6.jpg in Resources */,
@@ -3644,6 +3663,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp-resources.sh",
 				"${PODS_ROOT}/AlipaySDK-iOS/AlipaySDK.bundle",
+				"${PODS_ROOT}/BRPickerView/BRPickerView/AddressPickerView/BRPickerView.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/PYPhotoBrowser/PYPhotoBrowser/PYPhotosView.bundle",
@@ -3652,6 +3672,7 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AlipaySDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BRPickerView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PYPhotosView.bundle",
@@ -3705,6 +3726,7 @@
 				5557A542221BD7F500743012 /* UICollectionView+IndexPath.m in Sources */,
 				EA21CA84221F9980007D3445 /* PSConsultation.m in Sources */,
 				EAB03945221E883C00331569 /* UIView+Toast.m in Sources */,
+				EA78F73D2227AEEA002D788A /* Mine_ExpViewController.m in Sources */,
 				5557A54D221BD7F500743012 /* TADotView.m in Sources */,
 				EAB039BC221E8FF200331569 /* renderer_yuv444p10le.c in Sources */,
 				EAB039C5221E8FF200331569 /* yuv420p.fsh.c in Sources */,
@@ -3860,6 +3882,7 @@
 				5557A564221BD84000743012 /* IAPManager.m in Sources */,
 				EA21CA7E221F9980007D3445 /* PSConsultingCategoryViewController.m in Sources */,
 				5557A54A221BD7F500743012 /* SDCycleScrollView.m in Sources */,
+				EA78F7452227E0EF002D788A /* PSFamilyTableViewCell.m in Sources */,
 				EAB03919221E817B00331569 /* NIMMessageCellFactory.m in Sources */,
 				EA21CB4C221FCD2B007D3445 /* PSMyAdviceTableViewCell.m in Sources */,
 				5557A621221BD96500743012 /* PersonListViewController.m in Sources */,
@@ -3871,6 +3894,7 @@
 				5557A606221BD96500743012 /* MsgLogic.m in Sources */,
 				EAB0390D221E817B00331569 /* NIMBaseSessionContentConfig.m in Sources */,
 				EAB038ED221E817B00331569 /* NIMTeamCardOperationItem.m in Sources */,
+				EA78F7402227CDE6002D788A /* BRInfoModel.m in Sources */,
 				5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */,
 				559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */,
 				EAB0391A221E817B00331569 /* NIMSessionTimestampCell.m in Sources */,
@@ -4011,11 +4035,8 @@
 				EA21CA4A221F9386007D3445 /* PSWechatHandler.m in Sources */,
 				EAB038CD221E817B00331569 /* NIMKitRobotDefaultTemplateParser.m in Sources */,
 				EAB038CF221E817B00331569 /* NIMKitDevice.m in Sources */,
-
 				EA78F739222783F3002D788A /* WWWaterWaveView.m in Sources */,
-
 				5597855E22265CF6007BBCC2 /* PSFeedbackListViewModel.m in Sources */,
-
 				EAB038FB221E817B00331569 /* NIMTimestampModel.m in Sources */,
 				EAB038D2221E817B00331569 /* NIMSpellingCenter.m in Sources */,
 				EAB03922221E817B00331569 /* NIMSessionFileTransContentView.m in Sources */,

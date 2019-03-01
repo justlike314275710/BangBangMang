@@ -248,6 +248,7 @@
         _phoneNumberField.textAlignment = NSTextAlignmentLeft;
         _phoneNumberField.textColor = CFontColor2;
         _phoneNumberField.font = FFont1;
+        _phoneNumberField.keyboardType = UIKeyboardTypeNumberPad;
     }
     return _phoneNumberField;
 }
@@ -258,6 +259,7 @@
         _codeField.textAlignment = NSTextAlignmentLeft;
         _codeField.textColor = CFontColor2;
         _codeField.font = FFont1;
+        _codeField.keyboardType = UIKeyboardTypeNumberPad;
         
     }
     return _codeField;

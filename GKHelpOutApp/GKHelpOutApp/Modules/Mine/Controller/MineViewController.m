@@ -16,7 +16,7 @@
 #import "Mine_AuthViewController.h"
 #import "PSWriteFeedbackListViewController.h"
 #import "ModifyDataViewController.h"
-
+#import "Mine_ExpViewController.h"
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
@@ -216,7 +216,8 @@
               break;
         case 2:
         {
-            [self.navigationController pushViewController:[[Mine_AuthViewController alloc]init] animated:YES];
+            //[self.navigationController pushViewController:[[Mine_AuthViewController alloc]init] animated:YES];
+            [self.navigationController pushViewController:[[Mine_ExpViewController alloc]init] animated:YES];
             NSLog(@"点击了 专家入驻");
         }
             break;

@@ -11,6 +11,8 @@
 #import "CounselingViewController.h"
 #import "ZWTopSelectButton.h"
 #import "ZWTopSelectVcView.h"
+#import "PSMyAdviceViewController.h"
+#import "PSConsultationViewModel.h"
 
 @interface MyConsultationViewController ()<ZWTopSelectVcViewDataSource,ZWTopSelectVcViewDelegate> {
     BOOL              isChangeChildVc;
@@ -93,7 +95,7 @@
     showoneVc.title=@"法律咨询";
     [controllerMutableArr addObject:showoneVc];
     
-    CounselingViewController *showtwoVc= [[ CounselingViewController alloc]init];
+    PSMyAdviceViewController *showtwoVc= [[ PSMyAdviceViewController alloc]initWithViewModel:[[PSConsultationViewModel alloc] init]];
     showtwoVc.title=@"心理咨询";
     [controllerMutableArr addObject:showtwoVc];
     return controllerMutableArr;

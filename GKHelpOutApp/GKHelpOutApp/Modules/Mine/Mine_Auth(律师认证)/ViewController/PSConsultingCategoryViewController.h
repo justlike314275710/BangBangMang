@@ -12,4 +12,5 @@ typedef void(^addCategoryCompletion)(BOOL successful);
 @interface PSConsultingCategoryViewController : PSBusinessViewController
 @property(nonatomic, copy) ReturnValueBlock returnValueBlock;
 @property (nonatomic, copy) addCategoryCompletion completion;
+@property (nonatomic , strong) NSArray *categoryArr;
 @end
