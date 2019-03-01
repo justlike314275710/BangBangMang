@@ -31,6 +31,7 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - BRPickerView (2.2.1)
   - Bugly (2.4.8)
   - CDZStarsControl (1.0.1)
   - DACircularProgress (2.3.1)
@@ -104,6 +105,7 @@ DEPENDENCIES:
   - AlipaySDK-iOS
   - AvoidCrash (~> 2.5.2)
   - BlocksKit (~> 2.2.5)
+  - BRPickerView
   - Bugly (~> 2.4.8)
   - CDZStarsControl
   - DGActivityIndicatorView
@@ -131,6 +133,7 @@ SPEC REPOS:
     - AlipaySDK-iOS
     - AvoidCrash
     - BlocksKit
+    - BRPickerView
     - Bugly
     - CDZStarsControl
     - DACircularProgress
@@ -159,6 +162,7 @@ SPEC CHECKSUMS:
   AlipaySDK-iOS: 7b700342e71cb3b626603ce96f9d2fb158acbcfb
   AvoidCrash: 28c6916fe19bd2b84126b8dec7cbe61c9a12741d
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  BRPickerView: 0590a8c5de9bd98c6b4e4f117a3dff6de287d5b2
   Bugly: da3c02408c14838d498429320545a8e439392978
   CDZStarsControl: c2c9a9fae443924cdbadca93db96b3c433d0479d
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
@@ -182,6 +186,6 @@ SPEC CHECKSUMS:
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 57af1559f1af86aa9fc42df1db8fc6b106705188
+PODFILE CHECKSUM: 9baf6a6d7a9d35ebae5a5071bc7eeb66a3e2501d
 
 COCOAPODS: 1.5.2

@@ -45,9 +45,9 @@
     return _titleLbl;
 }
 
--(UILabel *)detaileLbl{
+-(UITextField *)detaileLbl{
     if (!_detaileLbl) {
-        _detaileLbl = [UILabel new];
+        _detaileLbl = [UITextField new];
         _detaileLbl.font = SYSTEMFONT(12);
         _detaileLbl.textColor = KGrayColor;
         _detaileLbl.textAlignment =NSTextAlignmentRight;
