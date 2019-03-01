@@ -45,6 +45,7 @@
 @property (nonatomic, strong) BRInfoModel *infoModel;
 @property (nonatomic , strong) Mine_AuthLogic *authLogic;
 
+
 @end
 
 @implementation Mine_AuthViewController
@@ -423,7 +424,7 @@
             break;
         case 104://律师年限
         {
-            self.authLogic.workExperience=textField.text;
+            self.authLogic.workExperience=[textField.text intValue];
         }
             break;
             
@@ -532,6 +533,7 @@
         self.authLogic.certificatePictures=array;
     }];
 }
+
 #pragma mark ————— 律师年度考核备案照片上传 —————
 - (void)uploadAssImage:(UIImage *)image {
     [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
@@ -547,6 +549,10 @@
 - (void)uploadFrontCardImage:(UIImage *)image {
     [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
         [self.idCardCell.frontCardButton setImage:image forState:0];
+         NSDictionary*FrontCardImageDict=@{@"fileId":tips,@"thumbFileId":tips};
+        NSMutableArray*array=[[NSMutableArray alloc]init];
+        [array addObject:FrontCardImageDict];
+        self.authLogic.fontCardPictures=array;
     }];
 }
 
@@ -554,6 +560,10 @@
 - (void)uploadBlackCardImageImage:(UIImage *)image {
     [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
         [self.idCardCell.backCardButton setImage:image forState:0];
+        NSDictionary*FrontCardImageDict=@{@"fileId":tips,@"thumbFileId":tips};
+        NSMutableArray*array=[[NSMutableArray alloc]init];
+        [array addObject:FrontCardImageDict];
+        self.authLogic.backCardPictures=array;
     }];
 }
 
@@ -667,7 +677,7 @@
         
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeProtocol title:nil icon:nil];
-            item.rowHeight=94.0f;
+            item.rowHeight=124.0f;
             item.isShowAccessory=NO;
             [group.items addObject:item];
         }
