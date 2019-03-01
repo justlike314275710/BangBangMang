@@ -9,6 +9,7 @@
 #import "ModifyDataViewController.h"
 #import "MineTableViewCell.h"
 #import "ModifyoldPhoneNumberViewController.h"
+#import "ModifyNicknameViewController.h"
 
 @interface ModifyDataViewController ()<UITableViewDelegate,UITableViewDataSource> {
      NSArray *_dataSource;
@@ -43,12 +44,12 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
-    NSDictionary *Modifydata = @{@"titleText":@"昵称",@"clickSelector":@"",@"detailText":@"张三三"};
+    NSDictionary *Modifydata = @{@"titleText":@"昵称",@"clickSelector":@"",@"detailText":@"张三三",@"arrow_icon":@"myarrow_icon"};
     
-    NSDictionary *myMission = @{@"titleText":@"手机号码",@"clickSelector":@"",@"detailText":@"1378726999",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *myMission = @{@"titleText":@"手机号码",@"clickSelector":@"",@"detailText":@"1378726999",@"arrow_icon":@"myarrow_icon"};
     
-    NSDictionary *myFriends = @{@"titleText":@"家庭住址",@"clickSelector":@"",@"arrow_icon":@"arrow_icon",@"detailText":@"天安门广场"};
-    NSDictionary *myLevel = @{@"titleText":@"邮政编码",@"clickSelector":@"",@"detailText":@"410000",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *myFriends = @{@"titleText":@"家庭住址",@"clickSelector":@"",@"arrow_icon":@"myarrow_icon",@"detailText":@"天安门广场"};
+    NSDictionary *myLevel = @{@"titleText":@"邮政编码",@"clickSelector":@"",@"detailText":@"410000",@"arrow_icon":@"myarrow_icon"};
     
     _dataSource = @[Modifydata,myMission,myFriends,myLevel];
     [self.tableView reloadData];
@@ -67,6 +68,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
+        case 0:
+        {
+            [self modifyNickName];
+        }
+            break;
         case 1:
         {
             [self modifyPhoneNumber];
@@ -87,7 +93,12 @@
             break;
     }
 }
-
+#pragma mark - 修改昵称
+-(void)modifyNickName {
+    ModifyNicknameViewController *ModifyNickname = [[ModifyNicknameViewController alloc] init];
+    ModifyNickname.modifyType=ModifyNickName;
+    [self.navigationController pushViewController:ModifyNickname animated:nil];
+}
 #pragma mark - 修改手机号码
 -(void)modifyPhoneNumber{
     ModifyoldPhoneNumberViewController *ModifyPhoneNumber = [[ModifyoldPhoneNumberViewController alloc] init];
@@ -95,11 +106,15 @@
 }
 #pragma mark - 修改家庭主址
 -(void)modifyAddress{
-    
+    ModifyNicknameViewController *ModifyNickname = [[ModifyNicknameViewController alloc] init];
+    ModifyNickname.modifyType=ModifyNickZipCode;
+    [self.navigationController pushViewController:ModifyNickname animated:nil];
 }
 #pragma mark - 修改邮政编码
 -(void)modifyPostalcode{
-    
+    ModifyNicknameViewController *ModifyNickname = [[ModifyNicknameViewController alloc] init];
+    ModifyNickname.modifyType=ModifyAddress;
+    [self.navigationController pushViewController:ModifyNickname animated:nil];
 }
 
 

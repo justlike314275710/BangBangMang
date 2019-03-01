@@ -80,13 +80,15 @@
                 failedCallback(error);
             }
             NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-            id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSString*code=body[@"error"];
-            NSString*error_description = body[@"error_description"];
-            if (error_description) {
-                [MBProgressHUD showInfoMessage:error_description];
-            } else {
-                [MBProgressHUD showInfoMessage:@"服务器异常"];
+            if (data) {
+                id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSString*code=body[@"error"];
+                NSString*error_description = body[@"error_description"];
+                if (error_description) {
+                    [MBProgressHUD showInfoMessage:error_description];
+                } else {
+                    [MBProgressHUD showInfoMessage:@"服务器异常"];
+                }
             }
         }
         else {

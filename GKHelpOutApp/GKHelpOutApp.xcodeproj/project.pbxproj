@@ -152,6 +152,7 @@
 		5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A669221CE1A000743012 /* HpBaseLogic.m */; };
 		5557A66E221D027200743012 /* OauthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66D221D027200743012 /* OauthInfo.m */; };
 		5557A671221D551A00743012 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66F221D551A00743012 /* UIView+Frame.m */; };
+		555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 555A564B2228E58300451044 /* ModifyNicknameViewController.m */; };
 		559218DD2226813F00A5C655 /* ModifyDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218DC2226813F00A5C655 /* ModifyDataViewController.m */; };
 		559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218E022268F5900A5C655 /* ModifyoldPhoneNumberViewController.m */; };
 		559218E422268F7600A5C655 /* ModifyNewPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218E322268F7600A5C655 /* ModifyNewPhoneNumberViewController.m */; };
@@ -713,6 +714,8 @@
 		5557A66D221D027200743012 /* OauthInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OauthInfo.m; sourceTree = "<group>"; };
 		5557A66F221D551A00743012 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		5557A670221D551A00743012 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		555A564A2228E58300451044 /* ModifyNicknameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModifyNicknameViewController.h; sourceTree = "<group>"; };
+		555A564B2228E58300451044 /* ModifyNicknameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModifyNicknameViewController.m; sourceTree = "<group>"; };
 		559218DB2226813F00A5C655 /* ModifyDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModifyDataViewController.h; sourceTree = "<group>"; };
 		559218DC2226813F00A5C655 /* ModifyDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModifyDataViewController.m; sourceTree = "<group>"; };
 		559218DF22268F5900A5C655 /* ModifyoldPhoneNumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModifyoldPhoneNumberViewController.h; sourceTree = "<group>"; };
@@ -2243,6 +2246,8 @@
 				559218E022268F5900A5C655 /* ModifyoldPhoneNumberViewController.m */,
 				559218E222268F7600A5C655 /* ModifyNewPhoneNumberViewController.h */,
 				559218E322268F7600A5C655 /* ModifyNewPhoneNumberViewController.m */,
+				555A564A2228E58300451044 /* ModifyNicknameViewController.h */,
+				555A564B2228E58300451044 /* ModifyNicknameViewController.m */,
 			);
 			path = "修改资料";
 			sourceTree = "<group>";
@@ -3894,7 +3899,11 @@
 				5557A606221BD96500743012 /* MsgLogic.m in Sources */,
 				EAB0390D221E817B00331569 /* NIMBaseSessionContentConfig.m in Sources */,
 				EAB038ED221E817B00331569 /* NIMTeamCardOperationItem.m in Sources */,
+
 				EA78F7402227CDE6002D788A /* BRInfoModel.m in Sources */,
+
+				555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */,
+
 				5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */,
 				559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */,
 				EAB0391A221E817B00331569 /* NIMSessionTimestampCell.m in Sources */,

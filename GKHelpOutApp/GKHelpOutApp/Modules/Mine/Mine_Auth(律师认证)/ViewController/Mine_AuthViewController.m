@@ -54,7 +54,6 @@
     [super viewDidLoad];
     self.title=@"专家入驻——法律咨询师";
     self.isHidenNaviBar = NO;
-    self.StatusBarStyle = UIStatusBarStyleLightContent;
     self.isShowLiftBack = YES;//每个根视图需要设置该属性为NO，否则会出现导航栏异常
     _array = [[NSMutableArray alloc] init];
     self.authLogic=[Mine_AuthLogic new];

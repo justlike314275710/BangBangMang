@@ -64,7 +64,7 @@
             }];
         }
         if (cellData[@"arrow_icon"]) {
-            [self.arrowIcon setImage:ImageWithFile(cellData[@"arrow_icon"])];
+            [self.arrowIcon setImage:IMAGE_NAMED(@"arrow_icon")];
             [_arrowIcon mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(-KNormalSpace);
                 make.top.mas_equalTo(KNormalSpace);

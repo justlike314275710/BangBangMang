@@ -94,7 +94,7 @@
 #pragma mark ————— 创建页面 —————
 -(void)createUI{
     
-    self.tableView.height = KScreenHeight - kTabBarHeight;
+    self.tableView.height = KScreenHeight - kTopHeight-kTabBarHeight;
     self.tableView.mj_header.hidden = YES;
     self.tableView.mj_footer.hidden = YES;
     [self.tableView registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];

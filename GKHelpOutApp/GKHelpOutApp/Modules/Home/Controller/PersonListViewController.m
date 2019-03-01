@@ -84,39 +84,14 @@
     
     //苹果树
     [self.scrollview addSubview:self.appleTreeBtn];
-    self.appleTreeBtn.frame = CGRectMake(homespaceX,self.waterWaveView.bottom+14,KScreenWidth-2*homespaceX, 113);
+    self.appleTreeBtn.frame = CGRectMake(homespaceX,self.waterWaveView.bottom+14,KScreenWidth-2*homespaceX, 113*Iphone6ScaleHeight);
     //法律咨询
     [self.scrollview addSubview:self.legalAdviceBtn];
     //心理咨询
     [self.scrollview addSubview:self.psyAdviceBtn];
     //电子商务
     [self.scrollview addSubview:self.eleCommerceBtn];
-  
-                                 
-    
-    /*
-    [self addNavigationItemWithTitles
-     :@[@"筛选"] isLeft:NO target:self action:@selector(naviBtnClick:) tags:@[@1000]];
-    
-    //设置瀑布流布局
-    WaterFlowLayout *layout = [WaterFlowLayout new];
-    layout.columnCount = 2;
-    layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);;
-    layout.rowMargin = 10;
-    layout.columnMargin = 10;
-    layout.delegate = self;
-    
 
-    self.collectionView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - kTopHeight - kTabBarHeight);
-    [self.collectionView setCollectionViewLayout:layout];
-    self.collectionView.backgroundColor = CViewBgColor;
-    [self.collectionView registerClass:[PersonListCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([PersonListCollectionViewCell class])];
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    [self.view addSubview:self.collectionView];
-     
-     */
-    
 }
 
 #pragma mark ————— 下拉刷新 —————
@@ -158,37 +133,6 @@
     return cell;
 }
 
-#pragma mark ————— layout 代理 —————
--(CGFloat)waterFlowLayout:(WaterFlowLayout *)WaterFlowLayout heightForWidth:(CGFloat)width andIndexPath:(NSIndexPath *)indexPath{
-    PersonModel *personModel = _logic.dataArray[indexPath.row];
-    if (personModel.hobbys && personModel.hobbysHeight == 0) {
-        //计算hobby的高度 并缓存
-        CGFloat hobbyH=[personModel.hobbys heightForFont:FFont1 width:(KScreenWidth-30)/2-20];
-        if (hobbyH>43) {
-            hobbyH=43;
-        }
-        personModel.hobbysHeight = hobbyH;
-    }
-    CGFloat imgH = personModel.height * itemWidthHeight / personModel.width;
-    
-    return imgH + 110 + personModel.hobbysHeight;
-    
-}
-
-//*******重写的时候需要走一句话
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    //标记cell
-    [self.collectionView setCurrentIndexPath:indexPath];
-    
-    PersonListCollectionViewCell *cell =(PersonListCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    
-    ProfileViewController *profileVC = [ProfileViewController new];
-    profileVC.headerImage = cell.imgView.image;
-    profileVC.isTransition = YES;
-    [self.navigationController pushViewController:profileVC animated:YES];
-    
-}
 #pragma mark ————— 转场动画起始View —————
 -(UIView *)targetTransitionView{
     NSIndexPath * indexPath = [self.collectionView currentIndexPath];
@@ -235,42 +179,11 @@
 //    [self.navigationController pushViewController:profileVC animated:YES];
 }
 
-#pragma mark -  上下滑动隐藏/显示导航栏
-
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    //scrollView已经有拖拽手势，直接拿到scrollView的拖拽手势
-//    UIPanGestureRecognizer *pan = scrollView.panGestureRecognizer;
-//    //获取到拖拽的速度 >0 向下拖动 <0 向上拖动
-//    CGFloat velocity = [pan velocityInView:scrollView].y;
-//    NSLog(@"滑动速度 %.f",velocity);
-//    if (velocity <- 50) {
-//        //向上拖动，隐藏导航栏
-//        [self.navigationController setNavigationBarHidden:YES animated:YES];
-//        [UIView animateWithDuration:0.2 animations:^{
-//            self.topView.bottom = 0;
-//        }];
-//    }else if (velocity > 50) {
-//        //向下拖动，显示导航栏
-//        [self.navigationController setNavigationBarHidden:NO animated:YES];
-//        [UIView animateWithDuration:0.2 animations:^{
-//            self.topView.top = 64+10;
-//        }];
-//    }else if(velocity == 0){
-//        //停止拖拽
-//    }
-//}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Setting&&Getting
 - (UIScrollView *)scrollview {
     if (!_scrollview) {
         _scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0,kStatusBarHeight,KScreenWidth,KScreenHeight-kTabBarHeight-kStatusBarHeight)];
+        _scrollview.contentSize = CGSizeMake(KScreenWidth,550);
         _scrollview.backgroundColor = CViewBgColor;
     }
     return _scrollview;
@@ -278,7 +191,7 @@
 //轮播图
 -(SDCycleScrollView *)cycleScrollview {
     if (!_cycleScrollview) {
-         _cycleScrollview = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0,0,KScreenWidth,200) delegate:self placeholderImage:IMAGE_NAMED(@"广告图")];
+         _cycleScrollview = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0,0,KScreenWidth,200*Iphone6ScaleHeight) delegate:self placeholderImage:IMAGE_NAMED(@"广告图")];
 //        NSArray *imagesURLStrings = @[
 //                                      @"https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
 //                                      @"https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
@@ -299,19 +212,19 @@
     return _waveImageView;
 }
 
-- (WWWaterWaveView *)waterWaveView{
-    if (!_waterWaveView) {
-       _waterWaveView=[[WWWaterWaveView alloc]initWithFrame:CGRectMake(0, self.cycleScrollview.bottom-41, KScreenWidth,44)];
-        _waterWaveView.firstWaveColor =AppBaseTextColor3;
-        //[UIColor colorWithRed:0.87 green:0.87 blue:0.87 alpha:0.30];
-        //第二个波浪颜色
-        _waterWaveView.secondWaveColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:0.30];
-        // 百分比
-        _waterWaveView.percent = 0.5;
-        [_waterWaveView startWave];
-    }
-    return _waterWaveView;
-}
+        - (WWWaterWaveView *)waterWaveView{
+            if (!_waterWaveView) {
+               _waterWaveView=[[WWWaterWaveView alloc]initWithFrame:CGRectMake(0, self.cycleScrollview.bottom-41*Iphone6ScaleHeight, KScreenWidth,44*Iphone6ScaleHeight)];
+                _waterWaveView.firstWaveColor =AppBaseTextColor3;
+                //[UIColor colorWithRed:0.87 green:0.87 blue:0.87 alpha:0.30];
+                //第二个波浪颜色
+                _waterWaveView.secondWaveColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:0.30];
+                // 百分比
+                _waterWaveView.percent = 0.5;
+                [_waterWaveView startWave];
+            }
+            return _waterWaveView;
+        }
 
 - (UIButton *)appleTreeBtn {
     if (!_appleTreeBtn) {
@@ -329,7 +242,7 @@
     if (!_legalAdviceBtn) {
         _legalAdviceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_legalAdviceBtn setBackgroundImage:IMAGE_NAMED(@"法律咨询底") forState:UIControlStateNormal];
-        _legalAdviceBtn.frame = CGRectMake(homespaceX,self.appleTreeBtn.bottom+5,(KScreenWidth-homespaceX*2-6)/2, 206);
+        _legalAdviceBtn.frame = CGRectMake(homespaceX,self.appleTreeBtn.bottom+5,(KScreenWidth-homespaceX*2-6)/2, 206*Iphone6ScaleHeight);
         
         UIImageView *lawImg = [UIImageView new];
         lawImg.userInteractionEnabled = YES;
@@ -338,7 +251,7 @@
         [_legalAdviceBtn addSubview:lawImg];
         
         UILabel *titleLab = [UILabel new];
-        titleLab.frame = CGRectMake((_legalAdviceBtn.width-100)/2,lawImg.bottom+20,100, 22);
+        titleLab.frame = CGRectMake((_legalAdviceBtn.width-100)/2,lawImg.bottom+10,100, 22);
         titleLab.text = @"法律咨询";
         titleLab.textAlignment = NSTextAlignmentCenter;
         titleLab.textColor = CFontColor1;
@@ -346,8 +259,9 @@
         [_legalAdviceBtn addSubview:titleLab];
         
         UILabel *msglab = [UILabel new];
-        msglab.frame = CGRectMake((_legalAdviceBtn.width-150)/2,titleLab.bottom+6,150, 22);
+        msglab.frame = CGRectMake((_legalAdviceBtn.width-150)/2,titleLab.bottom,150,20);
         msglab.text = @"律师即时通话，物超所值";
+        msglab.numberOfLines = 0;
         msglab.textAlignment = NSTextAlignmentCenter;
         msglab.textColor = CFontColor2;
         msglab.font = FFont1;
@@ -382,13 +296,13 @@
         [_psyAdviceBtn addSubview:titleLab];
         
         UILabel *msglab = [UILabel new];
-        msglab.frame = CGRectMake(titleLab.x,titleLab.bottom,150,18);
+        msglab.frame = CGRectMake(titleLab.x,titleLab.bottom,_psyAdviceBtn.width-titleLab.x-1,35);
         msglab.text = @"优质服务资质保证";
+        msglab.numberOfLines = 0;
         msglab.textAlignment = NSTextAlignmentLeft;
         msglab.textColor = CFontColor2;
         msglab.font = FFont1;
         [_psyAdviceBtn addSubview:msglab];
-        
         @weakify(self)
         [_psyAdviceBtn addTapBlock:^(UIButton *btn) {
             @strongify(self)
@@ -419,8 +333,9 @@
         [_eleCommerceBtn addSubview:titleLab];
         
         UILabel *msglab = [UILabel new];
-        msglab.frame = CGRectMake(titleLab.x,titleLab.bottom,150,18);
+        msglab.frame = CGRectMake(titleLab.x,titleLab.bottom,_eleCommerceBtn.width-titleLab.x-2,35);
         msglab.text = @"一站式购物平台";
+        msglab.numberOfLines = 0;
         msglab.textAlignment = NSTextAlignmentLeft;
         msglab.textColor = CFontColor2;
         msglab.font = FFont1;
