@@ -38,8 +38,6 @@
     [self.tableView registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
     [self.view addSubview:self.tableView];
     
-
-
     UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth,200)];
     UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     logoutBtn.frame = CGRectMake(15,150, footView.width-30, 49);

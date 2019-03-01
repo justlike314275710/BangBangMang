@@ -117,8 +117,6 @@
     [self.navigationController pushViewController:ModifyNickname animated:nil];
 }
 
-
-
 -(YYAnimatedImageView *)headImgView{
     if (!_headImgView) {
         _headImgView = [YYAnimatedImageView new];

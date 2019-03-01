@@ -294,7 +294,6 @@ SINGLETON_FOR_CLASS(UserManager);
 }
 #pragma mark ————— 获取网易云账号密码   ————
 - (void)getIMMinfo {
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD showActivityMessageInView:@"登录中..."];
     });
@@ -336,7 +335,6 @@ SINGLETON_FOR_CLASS(UserManager);
 
     }];
 }
-
 #pragma mark ————— 重新刷新获取Token —————
 - (void)refreshOuathToken {
     NSString *refresh_token = self.oathInfo.refresh_token?self.oathInfo.refresh_token:@"";
@@ -345,7 +343,6 @@ SINGLETON_FOR_CLASS(UserManager);
                              @"grant_type":@"refresh_token"
                              };
     [self loginToServer:parmeters completion:nil];
-    
 }
 
 #pragma mark ————— 自动登录到服务器 —————
