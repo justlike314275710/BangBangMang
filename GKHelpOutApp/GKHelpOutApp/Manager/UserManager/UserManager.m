@@ -83,9 +83,101 @@ SINGLETON_FOR_CLASS(UserManager);
         
     }
 }
+#pragma mark ————— 注册账号或者判断账号是否存在 —————
+-(void)requestEcomRegister:(NSDictionary *)parmeters {
+    NSString *url = NSStringFormat(@"%@%@",EmallHostUrl,URL_post_registe);
+    AFHTTPSessionManager* manager=[AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.requestSerializer.timeoutInterval = 10.f;
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//
+//    NSDictionary*parmeters=@{
+//                             @"phoneNumber":self.phoneNumber,
+//                             @"verificationCode":self.verificationCode,
+//                             @"name":self.phoneNumber,//姓名是手机号码
+//                             @"group":@"CUSTOMER"
+//                             };
+    [manager POST:url parameters:parmeters progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+//        self.statusCode=responses.statusCode;
+//        if (completedCallback) {
+//            completedCallback(responseObject);
+//        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        if (failedCallback) {
+//            failedCallback(error);
+//        }
+        
+        NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        
+        id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        NSString*code=body[@"code"];
+        if ([code isEqualToString:@"user.Existed"]) {
+//            [self EcommerceOfLogin];
+            [self loginToServer:parmeters completion:nil];
+        }
+        else if ([code isEqualToString:@"user.password.NotMatched"]){
+            NSString*account_error=NSLocalizedString(@"account_error", nil);
+            [PSTipsView showTips:account_error];
+        }
+        else if ([code isEqualToString:@"sms.verification-code.NotMatched"]){
+            [PSTipsView showTips:@"验证码错误"];
+        }
+        else if ([code isEqualToString:@"unauthorized"]){
+            [PSTipsView showTips:@"账号不存在"];
+        }
+        else if ([code isEqualToString:@"user.group.NotMatched"]){
+            [PSTipsView showTips:@"账号不属于该群组"];
+        }
+        else if ([code isEqualToString:@"invalid_grant"]){
+            [PSTipsView showTips:@"账号已禁用"];
+        }
+        else {
+//            [self showNetError:error];
+        }
+//        
+    }];
+    
+    [PPNetworkHelper POST:url parameters:parmeters success:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        
+        id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        NSString*code=body[@"code"];
+        if ([code isEqualToString:@"user.Existed"]) {
+            //            [self EcommerceOfLogin];
+         
+        }
+        else if ([code isEqualToString:@"user.password.NotMatched"]){
+            NSString*account_error=NSLocalizedString(@"account_error", nil);
+            [PSTipsView showTips:account_error];
+        }
+        else if ([code isEqualToString:@"sms.verification-code.NotMatched"]){
+            [PSTipsView showTips:@"验证码错误"];
+        }
+        else if ([code isEqualToString:@"unauthorized"]){
+            [PSTipsView showTips:@"账号不存在"];
+        }
+        else if ([code isEqualToString:@"user.group.NotMatched"]){
+            [PSTipsView showTips:@"账号不属于该群组"];
+        }
+        else if ([code isEqualToString:@"invalid_grant"]){
+            [PSTipsView showTips:@"账号已禁用"];
+        }
+        else {
+            //            [self showNetError:error];
+        }
+        
+    }];
+}
 
 #pragma mark ————— 手动登录到服务器 —————
-
 -(void)loginToServer:(NSDictionary *)params completion:(loginBlock)completion{
     
    
@@ -94,8 +186,19 @@ SINGLETON_FOR_CLASS(UserManager);
 //                             @"password":@"9619",
 //                             @"grant_type":@"password"
 //                             };
-    NSString*uid=@"consumer.m.app";
-    NSString*cipherText=@"1688c4f69fc6404285aadbc996f5e429";
+    NSString *username = [params valueForKey:@"name"];
+    NSString *password = [params valueForKey:@"verificationCode"];
+    NSDictionary *paames = @{
+                          @"username":username,
+                          @"password":password,
+                          @"grant_type":@"password"
+                          };
+    
+    
+    NSString*uid=@"assistant.app";
+    NSString*cipherText=@"506a7b6dfc5d42fe857ea9494bb24014";
+//    NSString*uid=@"consumer.m.app";
+//    NSString*cipherText=@"1688c4f69fc6404285aadbc996f5e429";
     NSString *part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
     NSData   *data = [part1 dataUsingEncoding:NSUTF8StringEncoding];
     NSString *stringBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
@@ -103,7 +206,7 @@ SINGLETON_FOR_CLASS(UserManager);
     
     NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_get_oauth_token];
     
-    NSMutableURLRequest *formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:params error:nil];
+    NSMutableURLRequest *formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:paames error:nil];
     
     [formRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8"forHTTPHeaderField:@"Content-Type"];
     
@@ -123,17 +226,21 @@ SINGLETON_FOR_CLASS(UserManager);
         NSInteger responseStatusCode = [httpResponse statusCode];
         if (error) {
             NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-            id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSString*code=body[@"error"];
-            NSString*error_description = body[@"error_description"];
-            if (error_description) {
-                [MBProgressHUD showInfoMessage:error_description];
+            if (data) {
+                id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSString*code=body[@"error"];
+                NSString*error_description = body[@"error_description"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (error_description) {
+                        [MBProgressHUD showInfoMessage:error_description];
+                    } else {
+                        [MBProgressHUD showInfoMessage:@"登录失败"];
+                    }
+                    [MBProgressHUD hideHUD];
+                });
             } else {
-                [MBProgressHUD showInfoMessage:@"登录失败"];
+                    [MBProgressHUD showInfoMessage:@"登录失败"];
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUD];
-            });
         }
         else {
             

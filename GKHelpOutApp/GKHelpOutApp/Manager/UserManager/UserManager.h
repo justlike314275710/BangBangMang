@@ -35,6 +35,8 @@ SINGLETON_FOR_HEADER(UserManager)
 @property (nonatomic, assign) UserLoginType loginType;
 @property (nonatomic, strong) OauthInfo *oathInfo;
 @property (nonatomic, assign) BOOL isLogined;
+#pragma mark - ——————— 注册账号 ————————
+-(void)requestEcomRegister:(NSDictionary *)parmeters;
 
 #pragma mark - ——————— 登录相关 ————————
 

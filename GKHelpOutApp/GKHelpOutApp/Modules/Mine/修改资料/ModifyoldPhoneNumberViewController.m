@@ -141,9 +141,11 @@
         NSInteger responseStatusCode = [httpResponse statusCode];
         if (error) {
             NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-            id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSString*code=body[@"error"];
-            NSString*error_description = body[@"error_description"];
+            if (data) {
+                id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSString*code=body[@"error"];
+                NSString*error_description = body[@"error_description"];
+            }
         }
         else {
             
@@ -175,13 +177,14 @@
                 
             } failed:^(NSError *error) {
                 NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-                id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                NSString*message = body[@"message"];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD showWarnMessage:message];
-                    self.getCodeBtn.enabled=YES;
-                });
-                
+                if (data) {
+                    id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                    NSString*message = body[@"message"];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [MBProgressHUD showWarnMessage:message];
+                        self.getCodeBtn.enabled=YES;
+                    });
+                }
             }];
             
         } else {

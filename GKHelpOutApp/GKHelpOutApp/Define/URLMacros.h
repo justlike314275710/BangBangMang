@@ -73,6 +73,8 @@
 #define URL_Test @"/api/cast/home/start"
 
 #pragma mark - ——————— 公共服务 ————————
+//注册接口
+#define URL_post_registe @"/users/of-mobile"
 //获取验证码
 #define URL_get_verification_code @"/users/%@/verification-codes/login"
 

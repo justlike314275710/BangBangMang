@@ -35,11 +35,11 @@
     
     self.isHidenNaviBar = YES;
     _logic = [LoginLogic new];
-    @weakify(self)
-    _logic.lgoinComplete = ^{
-        [weak_self UserAccoutLogin];
-    };
-    
+//    @weakify(self)
+//    _logic.lgoinComplete = ^{
+//        [weak_self UserAccoutLogin];
+//    };
+//    
     [self setupUI];
 
 }
@@ -120,7 +120,8 @@
     [mideleBgImg addSubview:self.loginBtn];
     _loginBtn.frame = CGRectMake(45,186,mideleBgImg.width-90,KNormalBBtnHeight);
     [_loginBtn addTapBlock:^(UIButton *btn) {
-        [weak_self UserAccoutLogin];
+//        [weak_self UserAccoutLogin];
+        [weak_self EcommerceOfRegister];
     }];
  
 }
@@ -173,6 +174,24 @@
     }];
 }
 //用户账号登录
+-(void)EcommerceOfRegister{
+    self.logic.phoneNumber = self.phoneNumberField.text;
+    self.logic.messageCode = self.codeField.text;
+    [_logic checkDataWithPhoneCallback:^(BOOL successful, NSString *tips) {
+        if (successful) {
+                NSDictionary*parmeters=@{
+                                         @"phoneNumber":self.phoneNumberField.text,
+                                         @"verificationCode":self.codeField.text,
+                                         @"name":self.phoneNumberField.text,//姓名是手机号码
+                                         @"group":@"CUSTOMER"
+                                         };
+            [help_userManager requestEcomRegister:parmeters];
+        } else {
+            [MBProgressHUD showWarnMessage:tips];
+        }
+        
+    }];
+}
 -(void)UserAccoutLogin {
     
     self.logic.phoneNumber = self.phoneNumberField.text;
@@ -215,13 +234,14 @@
                 
             } failed:^(NSError *error) {
                 NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-                id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//                NSString*code=body[@"error"];
-                NSString*message = body[@"message"];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD showWarnMessage:message];
-                    self.getCodeBtn.enabled=YES;
-                });
+                if (data) {
+                    id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                    NSString*message = body[@"message"];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [MBProgressHUD showWarnMessage:message];
+                        self.getCodeBtn.enabled=YES;
+                    });
+                }
                 
             }];
             
