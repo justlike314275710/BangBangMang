@@ -58,7 +58,6 @@
         self.mainTabBar = [MainTabBarController new];
         self.window.rootViewController = self.mainTabBar;
         
-       
 //        自动登录
         [help_userManager autoLoginToServer:^(BOOL success, NSString *des) {
             if (success) {

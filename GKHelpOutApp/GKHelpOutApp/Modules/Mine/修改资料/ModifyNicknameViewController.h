@@ -10,7 +10,6 @@
 typedef NS_ENUM(NSInteger, HMModifyType) {
     ModifyNickName = 0,    //设置昵称
     ModifyNickZipCode,     //设置邮编
-    ModifyAddress,         //设置住址
 };
 
 NS_ASSUME_NONNULL_BEGIN

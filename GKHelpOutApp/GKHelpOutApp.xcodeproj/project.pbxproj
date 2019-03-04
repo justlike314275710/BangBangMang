@@ -171,6 +171,7 @@
 		559785AC222661ED007BBCC2 /* FeedbackListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559785AA222661ED007BBCC2 /* FeedbackListCell.m */; };
 		559785AF22266219007BBCC2 /* UIViewController+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 559785AD22266219007BBCC2 /* UIViewController+Tool.m */; };
 		55B4F67A2223EFFC002B1536 /* PSAuthorizationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */; };
+		55C0C76A222CD23C00CD2459 /* HMAccountBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0C769222CD23C00CD2459 /* HMAccountBalanceViewController.m */; };
 		A2630C1CA890D20F200E6E6E /* libPods-GKHelpOutAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */; };
 		A56ED927F1CE79562534A4C9 /* libPods-GKHelpOutApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */; };
 		EA13D0E6221FDA5600A40EE9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA13D0E5221FDA5600A40EE9 /* Media.xcassets */; };
@@ -752,6 +753,8 @@
 		559785AE22266219007BBCC2 /* UIViewController+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Tool.h"; sourceTree = "<group>"; };
 		55B4F6782223EFFC002B1536 /* PSAuthorizationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAuthorizationTool.h; sourceTree = "<group>"; };
 		55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAuthorizationTool.m; sourceTree = "<group>"; };
+		55C0C768222CD23C00CD2459 /* HMAccountBalanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMAccountBalanceViewController.h; sourceTree = "<group>"; };
+		55C0C769222CD23C00CD2459 /* HMAccountBalanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMAccountBalanceViewController.m; sourceTree = "<group>"; };
 		7C10B3AC074F1C870E18701F /* Pods-GKHelpOutApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.release.xcconfig"; sourceTree = "<group>"; };
 		7C2548D35314A27746458142 /* Pods-GKHelpOutAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7404FC029C5B013F6E316EC /* Pods-GKHelpOutAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -2005,6 +2008,7 @@
 		5557A5B6221BD96500743012 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				55C0C767222CD20100CD2459 /* 账号余额 */,
 				559218DA2226810F00A5C655 /* 修改资料 */,
 				5597854C22265C6D007BBCC2 /* 意见反馈 */,
 				5597857822265E2C007BBCC2 /* model */,
@@ -2297,6 +2301,15 @@
 				55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */,
 			);
 			path = AuthorizationTool;
+			sourceTree = "<group>";
+		};
+		55C0C767222CD20100CD2459 /* 账号余额 */ = {
+			isa = PBXGroup;
+			children = (
+				55C0C768222CD23C00CD2459 /* HMAccountBalanceViewController.h */,
+				55C0C769222CD23C00CD2459 /* HMAccountBalanceViewController.m */,
+			);
+			path = "账号余额";
 			sourceTree = "<group>";
 		};
 		64C5C9D239E7F741EC473360 /* Frameworks */ = {
@@ -3736,6 +3749,7 @@
 				EAB039BC221E8FF200331569 /* renderer_yuv444p10le.c in Sources */,
 				EAB039C5221E8FF200331569 /* yuv420p.fsh.c in Sources */,
 				EAB038E3221E817B00331569 /* NIMKitTitleView.m in Sources */,
+				55C0C76A222CD23C00CD2459 /* HMAccountBalanceViewController.m in Sources */,
 				EAB038E9221E817B00331569 /* NIMTeamMemberCardViewController.m in Sources */,
 				EA21CB28221FA444007D3445 /* PSPayOngoingViewController.m in Sources */,
 				EAB03936221E817C00331569 /* NIMKitSwitcherCell.m in Sources */,
@@ -3899,11 +3913,8 @@
 				5557A606221BD96500743012 /* MsgLogic.m in Sources */,
 				EAB0390D221E817B00331569 /* NIMBaseSessionContentConfig.m in Sources */,
 				EAB038ED221E817B00331569 /* NIMTeamCardOperationItem.m in Sources */,
-
 				EA78F7402227CDE6002D788A /* BRInfoModel.m in Sources */,
-
 				555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */,
-
 				5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */,
 				559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */,
 				EAB0391A221E817B00331569 /* NIMSessionTimestampCell.m in Sources */,

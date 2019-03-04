@@ -24,8 +24,8 @@
  这样做切换方便,不用来回每个网络请求修改请求域名,降低出错事件
  */
 
-#define DevelopSever    1
-#define TestSever       0
+#define DevelopSever    0
+#define TestSever       1
 #define ProductSever    0
 
 #if DevelopSever

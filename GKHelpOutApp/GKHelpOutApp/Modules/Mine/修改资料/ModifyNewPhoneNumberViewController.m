@@ -80,7 +80,7 @@
     
     @weakify(self)
     [_getCodeBtn addTapBlock:^(UIButton *btn) {
-        [weak_self codeClicks];
+        [weak_self getCode];
     }];
     
     UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(0,BgView.bottom, self.scrollview.width, 1)];
@@ -152,11 +152,6 @@
     }];
     
     [dataTask resume];
-}
-
-//MARK:获取验证码
-- (void)codeClicks {
-    [self getCode];
 }
 
 //MARK:获取验证码

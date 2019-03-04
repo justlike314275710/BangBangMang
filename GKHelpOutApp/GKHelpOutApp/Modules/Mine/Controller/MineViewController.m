@@ -17,6 +17,7 @@
 #import "PSWriteFeedbackListViewController.h"
 #import "ModifyDataViewController.h"
 #import "Mine_ExpViewController.h"
+#import "HMAccountBalanceViewController.h"
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
@@ -209,6 +210,7 @@
         {
             if (indexPath.row==0) {
                  NSLog(@"点击了 账户余额");
+                [self accountBalance];
             } else {
                  NSLog(@"点击了 账单");
             }
@@ -267,6 +269,11 @@
 -(void)modifyData{
     ModifyDataViewController *modifyDataVC = [[ModifyDataViewController alloc] init];
     [self.navigationController pushViewController:modifyDataVC animated:YES];
+}
+#pragma mark ————— 账户余额 —————
+-(void)accountBalance{
+    HMAccountBalanceViewController *accounBalanceVC = [[HMAccountBalanceViewController alloc] init];
+    [self.navigationController pushViewController:accounBalanceVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

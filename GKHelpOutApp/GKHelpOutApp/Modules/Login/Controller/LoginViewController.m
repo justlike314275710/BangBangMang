@@ -35,11 +35,6 @@
     
     self.isHidenNaviBar = YES;
     _logic = [LoginLogic new];
-//    @weakify(self)
-//    _logic.lgoinComplete = ^{
-//        [weak_self UserAccoutLogin];
-//    };
-//
     [self setupUI];
 
 }
@@ -110,7 +105,7 @@
     
     @weakify(self)
     [_getCodeBtn addTapBlock:^(UIButton *btn) {
-        [weak_self codeClicks];
+        [weak_self getCode];
     }];
     
     UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(45,k_codeLabel.bottom+5, mideleBgImg.width-90, 1)];
@@ -120,7 +115,6 @@
     [mideleBgImg addSubview:self.loginBtn];
     _loginBtn.frame = CGRectMake(45,186,mideleBgImg.width-90,KNormalBBtnHeight);
     [_loginBtn addTapBlock:^(UIButton *btn) {
-//        [weak_self UserAccoutLogin];
         [weak_self EcommerceOfRegister];
     }];
  
@@ -143,10 +137,6 @@
 - (void)startTimer {
     _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-}
-//MARK:获取验证码
-- (void)codeClicks {
-    [self getCode];
 }
 
 -(void)WXLogin{
@@ -188,34 +178,8 @@
         
     }];
 }
--(void)UserAccoutLogin {
-    
-    self.logic.phoneNumber = self.phoneNumberField.text;
-    self.logic.messageCode = self.codeField.text;
-    [_logic checkDataWithCallback:^(BOOL successful, NSString *tips) {
-        if (successful) {
-            NSDictionary *params = @{@"username":self.phoneNumberField.text,
-                                     @"password":self.codeField.text,
-                                     @"grant_type":@"password"
-                                     };
-            [help_userManager loginToServer:params completion:^(BOOL success, NSString *des) {
-                
-            }];
-        } else {
-            [MBProgressHUD showWarnMessage:tips];
-        }
-    }];
-}
 
-//获取Ouath
--(void)LoginAction{
-    
-    [_logic getOauthTokenData:^(id data) {
-        
-    } failed:^(NSError *error) {
-        
-    }];
-}
+
 //MARK:获取验证码
 - (void)getCode {
     

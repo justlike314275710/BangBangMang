@@ -1,38 +1,36 @@
 //
-//  ModifyDataViewController.m
+//  HMAccountBalanceViewController.m
 //  GKHelpOutApp
 //
-//  Created by kky on 2019/2/27.
+//  Created by kky on 2019/3/4.
 //  Copyright © 2019年 kky. All rights reserved.
 //
 
-#import "ModifyDataViewController.h"
+#import "HMAccountBalanceViewController.h"
 #import "MineTableViewCell.h"
-#import "ModifyoldPhoneNumberViewController.h"
-#import "ModifyNicknameViewController.h"
 
-@interface ModifyDataViewController ()<UITableViewDelegate,UITableViewDataSource> {
-     NSArray *_dataSource;
+@interface HMAccountBalanceViewController ()<UITableViewDataSource,UITableViewDelegate>{
+    NSArray *_dataSource;
 }
 @property(nonatomic, strong) YYAnimatedImageView *headImgView; //头像
+@property(nonatomic, strong) UIView *headView;
 
 @end
 
-@implementation ModifyDataViewController
+@implementation HMAccountBalanceViewController
 
+#pragma mark -lifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.title = @"修改资料";
-    self.isShowLiftBack = YES;
-    
-    [self intData];
+    self.title = @"账户余额";
+    [self setupData];
     [self setupUI];
 }
-- (void)intData{
 
+#pragma mark -PravateMethods
+-(void)setupData{
+    
 }
-
 -(void)setupUI{
     
     [self.view addSubview:self.headImgView];
@@ -53,7 +51,14 @@
     
     _dataSource = @[Modifydata,myMission,myFriends,myLevel];
     [self.tableView reloadData];
+    
 }
+
+#pragma mark - Delegate&Datalist
+//-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+////    self.headView.frame = CGRectMake(0, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+////    return self.headView;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _dataSource.count;
@@ -70,22 +75,18 @@
     switch (indexPath.row) {
         case 0:
         {
-            [self modifyNickName];
         }
             break;
         case 1:
         {
-            [self modifyPhoneNumber];
         }
             break;
         case 2:
         {
-            [self modifyAddress];
         }
             break;
         case 3:
         {
-            [self modifyPostalcode];
         }
             break;
             
@@ -94,27 +95,7 @@
     }
 }
 #pragma mark - 修改昵称
--(void)modifyNickName {
-    ModifyNicknameViewController *ModifyNickname = [[ModifyNicknameViewController alloc] init];
-    ModifyNickname.modifyType=ModifyNickName;
-    [self.navigationController pushViewController:ModifyNickname animated:nil];
-}
-#pragma mark - 修改手机号码
--(void)modifyPhoneNumber{
-    ModifyoldPhoneNumberViewController *ModifyPhoneNumber = [[ModifyoldPhoneNumberViewController alloc] init];
-    [self.navigationController pushViewController:ModifyPhoneNumber animated:YES];
-}
-#pragma mark - 修改家庭主址
--(void)modifyAddress{
-
-}
-#pragma mark - 修改邮政编码
--(void)modifyPostalcode{
-    ModifyNicknameViewController *ModifyNickname = [[ModifyNicknameViewController alloc] init];
-    ModifyNickname.modifyType=ModifyNickZipCode;
-    [self.navigationController pushViewController:ModifyNickname animated:nil];
-}
-
+#pragma mark -Setting&Getting
 -(YYAnimatedImageView *)headImgView{
     if (!_headImgView) {
         _headImgView = [YYAnimatedImageView new];
@@ -131,6 +112,12 @@
 }
 
 #pragma mark - TouchEvent
+-(UIView*)headView{
+    if (!_headView) {
+        _headView = [UIView new];
+    }
+    return _headView;
+}
 -(void)headViewClick {
     
 }
