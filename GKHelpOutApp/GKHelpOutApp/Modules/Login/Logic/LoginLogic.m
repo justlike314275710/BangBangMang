@@ -38,7 +38,6 @@
         if (failedCallback) {
             failedCallback(error);
         }
-//       completion(NO,error.localizedDescription);
     }];
 }
 

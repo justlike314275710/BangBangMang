@@ -11,7 +11,7 @@
 #import "PSConsultationTableViewCell.h"
 #import "PSConsultationOtherTableViewCell.h"
 #import "PSConsultationViewModel.h"
-#import "PSConsultingCategoryViewController.h"
+#import "Mine_CategoryViewController.h"
 #import "PSConsultationViewModel.h"
 #import <AFNetworking/AFNetworking.h>
 #import "PSPayView.h"

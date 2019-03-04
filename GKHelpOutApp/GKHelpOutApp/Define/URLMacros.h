@@ -109,5 +109,6 @@
 //注释
 #define URL_user_info_change @"/api/user/info/change"
 
-
+#pragma mark - ——————— 律师相关 ————————
+#define URL_Lawyer_certification @"/lawyer/certification"
 #endif /* URLMacros_h */

@@ -12,18 +12,18 @@
 #import "PSAlertView.h"
 #import "PSAppointmentViewModel.h"
 #import <AFNetworking/AFNetworking.h>
-#import "PSConsultingCategoryViewController.h"
+#import "Mine_CategoryViewController.h"
 
 
 
-@interface PSConsultingCategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface Mine_CategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *consultingCategoryTableView;
 @property (nonatomic , strong) NSMutableArray *selectArray;
 @property (nonatomic , strong) NSArray *categoryArray;
 @property (nonatomic, assign) NSInteger btnTag;
 @end
 
-@implementation PSConsultingCategoryViewController
+@implementation Mine_CategoryViewController
 - (instancetype)initWithViewModel:(PSViewModel *)viewModel {
     self = [super initWithViewModel:viewModel];
     if (self) {

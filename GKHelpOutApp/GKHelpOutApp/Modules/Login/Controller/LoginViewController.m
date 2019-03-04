@@ -39,7 +39,7 @@
 //    _logic.lgoinComplete = ^{
 //        [weak_self UserAccoutLogin];
 //    };
-//    
+//
     [self setupUI];
 
 }
@@ -126,16 +126,8 @@
  
 }
 
-//开启定时器
-- (void)startTimer {
-    
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-    
-}
-
+#pragma mark - 定时器方法
 - (void)handleTimer {
-    
     if (_seconds > 0) {
         [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_seconds] forState:UIControlStateDisabled];
         _seconds --;
@@ -147,7 +139,11 @@
         }
     }
 }
-
+//开启定时器
+- (void)startTimer {
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
 //MARK:获取验证码
 - (void)codeClicks {
     [self getCode];

@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger,UserGender){
 @property (nonatomic,copy) NSString * token;  //网易云登录token
 
 
+
 #pragma mark ——————————————————————————————————————————————————————
 @property(nonatomic,assign)long long userid;//用户ID
 @property (nonatomic,copy) NSString * idcard;//展示用的用户ID

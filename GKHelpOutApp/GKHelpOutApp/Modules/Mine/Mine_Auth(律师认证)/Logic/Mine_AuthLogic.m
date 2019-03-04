@@ -21,7 +21,7 @@
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         manager.responseSerializer = [AFJSONResponseSerializer serializer];
-        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [manager.requestSerializer setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     }
     return self;
 }
@@ -107,12 +107,11 @@
 
 - (void)getCertificationData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     [self initParmeters];
-    
     NSDictionary*parmeters=@{
                              @"name":self.name,
                              @"gender":self.gender,
                              @"description":self.lawDescription,
-                             @"categories":self.categories,
+                             @"categories":self.LawyerCategories,
                              @"level":self.level,
                              @"workExperience":[NSNumber numberWithInt:self.workExperience],
                              @"lawOffice":self.lawOffice,
@@ -122,6 +121,15 @@
                              @"identificationPictures":self.identificationPictures
                              };
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    NSString*url=NSStringFormat(@"%@%@",ConsultationHostUrl,URL_Lawyer_certification);
+    [manager POST:url parameters:parmeters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
 }
 
 -(void)initParmeters{

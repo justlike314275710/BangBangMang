@@ -166,10 +166,6 @@ SINGLETON_FOR_CLASS(UserManager);
 
 #pragma mark ————— 手动登录到服务器 —————
 -(void)loginToServer:(NSDictionary *)params completion:(loginBlock)completion{
-
-    NSString*uid=@"assistant.app";
-    NSString*cipherText=@"506a7b6dfc5d42fe857ea9494bb24014";
-
     NSString *username = [params valueForKey:@"name"];
     NSString *password = [params valueForKey:@"verificationCode"];
     NSDictionary *paames = @{
@@ -177,11 +173,13 @@ SINGLETON_FOR_CLASS(UserManager);
                           @"password":password,
                           @"grant_type":@"password"
                           };
-    
+    NSString*uid=@"assistant.app";
+    NSString*cipherText=@"506a7b6dfc5d42fe857ea9494bb24014";
+
     NSString *part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
     NSData   *data = [part1 dataUsingEncoding:NSUTF8StringEncoding];
     NSString *stringBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSString * authorization = [NSString stringWithFormat:@"Basic %@",stringBase64];
+    NSString *authorization = [NSString stringWithFormat:@"Basic %@",stringBase64];
     
     NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_get_oauth_token];
     
@@ -272,7 +270,6 @@ SINGLETON_FOR_CLASS(UserManager);
 }
 #pragma mark ————— 获取网易云账号密码   ————
 - (void)getIMMinfo {
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD showActivityMessageInView:@"登录中..."];
     });
@@ -314,7 +311,6 @@ SINGLETON_FOR_CLASS(UserManager);
 
     }];
 }
-
 #pragma mark ————— 重新刷新获取Token —————
 - (void)refreshOuathToken {
     NSString *refresh_token = self.oathInfo.refresh_token?self.oathInfo.refresh_token:@"";
@@ -323,7 +319,6 @@ SINGLETON_FOR_CLASS(UserManager);
                              @"grant_type":@"refresh_token"
                              };
     [self loginToServer:parmeters completion:nil];
-    
 }
 
 #pragma mark ————— 自动登录到服务器 —————
