@@ -394,13 +394,14 @@ static AFHTTPSessionManager *_sessionManager;
     _sessionManager.requestSerializer.timeoutInterval = 30.f;
     
     // 设置服务器返回结果的类型:JSON (AFJSONResponseSerializer,AFHTTPResponseSerializer)
-//    _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    _sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
     _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/plain", @"text/javascript", @"text/xml", @"image/*",@"text/encode", nil];
+    [_sessionManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     // 打开状态栏的等待菊花
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     //开启加密模式
-    [self openAES];
+    [self closeAES];
 }
 
 #pragma mark - 重置AFHTTPSessionManager相关属性

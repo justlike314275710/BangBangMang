@@ -146,7 +146,7 @@
 #pragma mark - TouchEvent
 //MARK:点击苹果树
 - (void)clickAppleTree {
-    [PSTipsView showTips:HMComingsoon];
+    [PSTipsView showTips:Hmsg_Comingsoon];
 }
 //MARK:点击法律咨询
 -(void)clickLegalAdvice {
@@ -155,22 +155,21 @@
 }
 //MARK:点击心理咨询
 -(void)clickPsyAdvice {
-    [PSTipsView showTips:HMComingsoon];
+    [PSTipsView showTips:Hmsg_Comingsoon];
 }
 //MARK:点击电子商务
 -(void)clickEleCommerce {
-    [PSTipsView showTips:HMComingsoon];
+    [PSTipsView showTips:Hmsg_Comingsoon];
 }
 //MARK:点击系统消息
 -(void)clickSysMessage {
-    [PSTipsView showTips:HMComingsoon];
+    [PSTipsView showTips:Hmsg_Comingsoon];
 }
 
 -(void)naviBtnClick:(UIButton *)btn{
     DLog(@"点击了筛选按钮");
     [self p_insertMoreServiceVC];
 }
-
 - (void)p_insertMoreServiceVC {
     PSMoreServiceViewController *PSMoreServiceVC = [[PSMoreServiceViewController alloc] initWithViewModel:[PSMoreServiceViewModel new]];
     [self.navigationController pushViewController:PSMoreServiceVC animated:YES];

@@ -36,7 +36,7 @@ SINGLETON_FOR_HEADER(UserManager)
 @property (nonatomic, strong) OauthInfo *oathInfo;
 @property (nonatomic, assign) BOOL isLogined;
 
-#pragma mark - ——————— 注册账号 ————————
+#pragma mark - ——————— 注册账号判断账号状态   ————————
 -(void)requestEcomRegister:(NSDictionary *)parmeters;
 
 
@@ -51,10 +51,13 @@ SINGLETON_FOR_HEADER(UserManager)
 
 /**
 手动登录到服务器
- @param loginType 登录方式
+ @param params 登录方式
  @param completion 回调
+@param refresh 是否刷新token
  */
--(void)loginToServer:(NSDictionary *)params completion:(loginBlock)completion;
+-(void)loginToServer:(NSDictionary *)params
+             refresh:(BOOL)refresh
+          completion:(loginBlock)completion;
 
 /**
  带参登录

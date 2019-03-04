@@ -64,10 +64,8 @@
 
 #pragma mark - TouchEvent
 -(void)rightAction {
-    [PSTipsView showTips:HMComingsoon];
+    [PSTipsView showTips:Hmsg_Comingsoon];
 }
-
-
 
 #pragma mark - ZWTopSelectVcViewDelegate
 - (void)topSelectVcView:(ZWTopSelectVcView *)topSelectVcView didSelectVc:(UIViewController *)selectVc atIndex:(int)index

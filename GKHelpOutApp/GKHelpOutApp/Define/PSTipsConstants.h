@@ -51,5 +51,23 @@
 #define VLocalMeetingIntroduceThree @"3. Khi bạn gặp tại chỗ, bạn phải mang theo chứng minh nhân dân và các chứng chỉ hợp lệ khác (sổ hukou, chứng chỉ đồn cảnh sát, thư giới thiệu đơn vị, v.v.) có thể chứng minh mối quan hệ của bạn với bọn tội phạm và bạn có thể gặp cảnh sát phụ trách cuộc họp."
 
 #pragma mark —————————————————— 提示语
-#define HMComingsoon @"敬请期待!"
+#define Hmsg_Comingsoon @"敬请期待!"
+//注册认证模块
+#define Hmsg_user_existed          @"用户已存在";
+#define Hmsg_user_pwd_notMatched   @"账号密码不匹配";
+#define Hmsg_user_code_notMatched  @"验证码错误";
+#define Hmsg_unauthorized          @"账号不存在";
+#define Hmsg_user_group_NotMatched @"账号不属于该群组";
+#define Hmsg_user_invalid_grant    @"账号已禁用";
+
+
+#pragma mark ———————————————————————————————————————— 认证授权平台返回错误码
+#define user_existed          @"user.Existed";                     //用户已存在
+#define user_pwd_notMatched   @"user.password.NotMatched";         //账号密码不匹配
+#define user_code_notMatched  @"sms.verification-code.NotMatched"; //验证码错误
+#define user_unauthorized     @"unauthorized";                     //账号不存在
+#define user_group_NotMatched @"user.group.NotMatched";            //账号不属于该群组
+#define user_invalid_grant    @"invalid_grant";                    //账号已禁用
+
+
 
