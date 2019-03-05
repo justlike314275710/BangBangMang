@@ -9,6 +9,23 @@
 #import "Mine_AuthLogic.h"
 
 @implementation Mine_AuthLogic
+{
+    AFHTTPSessionManager *manager;
+    
+}
+
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        manager=[AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        [manager.requestSerializer setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    }
+    return self;
+}
+
 - (void)checkDataWithLawyerBasicCallback:(CheckDataCallback)callback{
     if (self.name.length == 0) {
         if (callback) {
@@ -71,9 +88,15 @@
         }
         return;
     }
-    if (self.identificationPictures.count==0||self.identificationPictures.count==1) {
+    if (self.fontCardPictures.count==0) {
         if (callback) {
-            callback(NO,@"请上传身份证正反面照片");
+            callback(NO,@"请上传身份证正面照片");
+        }
+        return;
+    }
+    if (self.backCardPictures.count==0) {
+        if (callback) {
+            callback(NO,@"请上传身份证反面照片");
         }
         return;
     }
@@ -84,12 +107,39 @@
 
 - (void)getCertificationData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     [self initParmeters];
+    NSDictionary*parmeters=@{
+                             @"name":self.name,
+                             @"gender":self.gender,
+                             @"description":self.lawDescription,
+                             @"categories":self.LawyerCategories,
+                             @"level":self.level,
+                             @"workExperience":[NSNumber numberWithInt:self.workExperience],
+                             @"lawOffice":self.lawOffice,
+                             @"lawOfficeAddress":self.lawOfficeAddress,
+                             @"certificatePictures":self.certificatePictures,
+                             @"assessmentPictures":self.assessmentPictures,
+                             @"identificationPictures":self.identificationPictures
+                             };
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    NSString*url=NSStringFormat(@"%@%@",ConsultationHostUrl,URL_Lawyer_certification);
+    [manager POST:url parameters:parmeters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
 }
 
 -(void)initParmeters{
     [self initGender];
     [self initLevel];
     [self initCateory];
+    NSMutableArray*array=[[NSMutableArray alloc]init];
+    [array addObjectsFromArray:self.fontCardPictures];
+    [array addObjectsFromArray:self.backCardPictures];
+    self.identificationPictures=array;
 }
 
 

@@ -8,6 +8,7 @@
 
 #import "UploadAvatarViewController.h"
 #import "UIImage+WLCompress.h"
+#import "LLActionSheetView.h"
 @interface UploadAvatarViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate>
 @property(nonatomic, strong) YYAnimatedImageView *headImgView; //头像
 @property(nonatomic, strong) UITextField *nickField;  //昵称
@@ -34,6 +35,11 @@
 
 -(void)setupUI {
     
+    UIImageView *bgImage = [UIImageView new];
+    bgImage.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight);
+    bgImage.image = IMAGE_NAMED(@"底图");
+    [self.view addSubview:bgImage];
+    
     [self headImgView];
     
     UILabel *uploadLabel = [[UILabel alloc] initWithFrame:CGRectMake((KScreenWidth-100)/2, self.headImgView.bottom+4, 100, KNormalLabeLHeight)];
@@ -46,7 +52,7 @@
     
     UIView *FieldBgView = [[UIView alloc] initWithFrame:CGRectMake(45, uploadLabel.bottom+50, KScreenWidth-90, KNormalBBtnHeight)];
     ViewRadius(FieldBgView, KNormalBBtnHeight/2);
-    FieldBgView.layer.borderWidth = 1;
+    FieldBgView.backgroundColor = KWhiteColor;
     FieldBgView.layer.borderColor = CLineColor.CGColor;
     [self.view addSubview:FieldBgView];
     
@@ -56,13 +62,12 @@
     label.textColor = CFontColor2;
     [FieldBgView addSubview:label];
     
-    self.nickField.frame = CGRectMake(label.right+120,(FieldBgView.height-KNormalLabeLHeight)/2,100, KNormalLabeLHeight);
+    self.nickField.frame = CGRectMake(label.right+100,(FieldBgView.height-KNormalLabeLHeight)/2,120, KNormalLabeLHeight);
     self.nickField.right = FieldBgView.right-15;
     [FieldBgView addSubview:self.nickField];
     
     self.compleBtn.frame = CGRectMake(KNormalBBtnHeight,KScreenHeight-200,KScreenWidth-KNormalBBtnHeight*2, KNormalBBtnHeight);
     [self.view addSubview:self.compleBtn];
-
     
 }
 
@@ -71,51 +76,51 @@
     [PSAuthorizationTool checkAndRedirectCameraAuthorizationWithBlock:^(BOOL result) {
         if (result) {
             
-            UIActionSheet *choiceSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                                     delegate:self
-                                                            cancelButtonTitle:@"取消"
-                                                       destructiveButtonTitle:nil
-                                                            otherButtonTitles:@"拍照", @"从相册中选取", nil];
-            [choiceSheet showInView:self.view];
+            LLActionSheetView *alert = [[LLActionSheetView alloc]initWithTitleArray:@[@"拍照",@"从相册中选取"] andShowCancel:YES];
+            alert.ClickIndex = ^(NSInteger index) {
+                if (index == 1){
+                    [self openCamera];
+                }else if (index == 2){
+                    [self openAlbum];
+                }
+            };
+            [alert show];
         }
     }];
 }
-
-#pragma mark UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+//打开相册
+-(void)openAlbum{
     
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.navigationBar.tintColor = [UIColor whiteColor];
+    controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+    [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+    controller.mediaTypes = mediaTypes;
+    controller.delegate = self;
+    [self presentViewController:controller
+                       animated:YES
+                     completion:^(void){
+                         NSLog(@"Picker View Controller is presented");
+                     }];
     
-        if (buttonIndex == 0) {
-            // 拍照
-            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-            controller.sourceType = UIImagePickerControllerSourceTypeCamera;
-            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
-            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
-            controller.mediaTypes = mediaTypes;
-            controller.delegate = self;
-            [self presentViewController:controller
-                               animated:YES
-                             completion:^(void){
-                                 NSLog(@"Picker View Controller is presented");
-                             }];
-
-            
-        } else if (buttonIndex == 1) {
-            // 从相册中选取
-            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-            controller.navigationBar.tintColor = [UIColor whiteColor];
-            controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
-            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
-            controller.mediaTypes = mediaTypes;
-            controller.delegate = self;
-            [self presentViewController:controller
-                               animated:YES
-                             completion:^(void){
-                                 NSLog(@"Picker View Controller is presented");
-                             }];
-            }
 }
+//拍照
+-(void)openCamera{
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+    NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+    [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+    controller.mediaTypes = mediaTypes;
+    controller.delegate = self;
+    [self presentViewController:controller
+                       animated:YES
+                     completion:^(void){
+                         NSLog(@"Picker View Controller is presented");
+                     }];
+
+}
+
 
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -237,7 +242,7 @@
         _headImgView.frame = CGRectMake((self.view.width-90*Iphone6ScaleWidth)/2, 100, 100*Iphone6ScaleWidth, 100*Iphone6ScaleWidth);
         ViewRadius(_headImgView, (100*Iphone6ScaleWidth)/2);
         [self.view addSubview:_headImgView];
-        [_headImgView setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] options:YYWebImageOptionRefreshImageCache];
+        [_headImgView setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] placeholder:IMAGE_NAMED(@"登录－头像") options:YYWebImageOptionRefreshImageCache completion:nil];
     }
     return _headImgView;
 }
@@ -248,7 +253,7 @@
         _compleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_compleBtn setTitle:@"完成" forState:UIControlStateNormal];
         [_compleBtn setTitleColor:CFontColor_BtnTitle forState:UIControlStateNormal];
-        [_compleBtn setBackgroundImage:IMAGE_NAMED(@"loginbtnbgicon") forState:UIControlStateNormal];
+        [_compleBtn setBackgroundImage:IMAGE_NAMED(@"登录底") forState:UIControlStateNormal];
         @weakify(self)
         [_compleBtn addTapBlock:^(UIButton *btn) {
             @strongify(self)
@@ -269,6 +274,8 @@
     }
     return _nickField;
 }
+
+
 
 
 

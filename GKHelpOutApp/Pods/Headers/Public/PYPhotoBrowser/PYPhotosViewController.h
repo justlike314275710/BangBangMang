@@ -1,1 +1,0 @@
-../../../PYPhotoBrowser/PYPhotoBrowser/Controller/PYPhotosViewController.h
