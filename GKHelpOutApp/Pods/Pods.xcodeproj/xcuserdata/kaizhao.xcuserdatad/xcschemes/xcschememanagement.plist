@@ -11,11 +11,6 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>AFNetworking.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 		<key>AvoidCrash.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -23,167 +18,157 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>AvoidCrash.xcscheme_^#shared#^_</key>
+		<key>BRPickerView.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>BRPickerView.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
-		<key>BlocksKit.xcscheme_^#shared#^_</key>
-		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>CDZStarsControl.xcscheme_^#shared#^_</key>
+		<key>BlocksKit.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>CDZStarsControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>DACircularProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>DACircularProgress.xcscheme_^#shared#^_</key>
+		<key>DGActivityIndicatorView.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>DGActivityIndicatorView.xcscheme_^#shared#^_</key>
+		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>DZNEmptyDataSet.xcscheme_^#shared#^_</key>
+		<key>FLAnimatedImage.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>8</integer>
-		</dict>
-		<key>FLAnimatedImage.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>9</integer>
 		</dict>
-		<key>IQKeyboardManager.xcscheme_^#shared#^_</key>
+		<key>JSONModel.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>JSONModel.xcscheme_^#shared#^_</key>
+		<key>M80AttributedLabel.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>11</integer>
-		</dict>
-		<key>M80AttributedLabel.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>12</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>14</integer>
 		</dict>
-		<key>MBProgressHUD.xcscheme_^#shared#^_</key>
+		<key>MJExtension.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>15</integer>
-		</dict>
-		<key>MJExtension.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>16</integer>
 		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-		<key>MJRefresh.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>16</integer>
 		</dict>
 		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>13</integer>
 		</dict>
-		<key>Masonry.xcscheme_^#shared#^_</key>
+		<key>PYPhotoBrowser.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>14</integer>
-		</dict>
-		<key>PYPhotoBrowser.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>20</integer>
+			<integer>19</integer>
 		</dict>
 		<key>Pods-GKHelpOutApp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
-		</dict>
-		<key>Pods-GKHelpOutApp.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>18</integer>
+			<integer>17</integer>
 		</dict>
 		<key>Pods-GKHelpOutAppUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>18</integer>
 		</dict>
-		<key>Pods-GKHelpOutAppUITests.xcscheme_^#shared#^_</key>
+		<key>ReactiveObjC.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>19</integer>
-		</dict>
-		<key>ReactiveObjC.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>20</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>8</integer>
-		</dict>
-		<key>SDWebImage.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
 			<integer>21</integer>
 		</dict>
-		<key>TZImagePickerController.xcscheme_^#shared#^_</key>
+		<key>TZImagePickerController.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>22</integer>
 		</dict>
-		<key>UITableView+FDTemplateLayoutCell.xcscheme_^#shared#^_</key>
+		<key>UITableView+FDTemplateLayoutCell.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>23</integer>
 		</dict>
-		<key>UITextView+Placeholder.xcscheme_^#shared#^_</key>
+		<key>UITextView+Placeholder.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>24</integer>
 		</dict>
@@ -192,11 +177,6 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>9</integer>
-		</dict>
-		<key>YTKNetwork.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
 			<integer>25</integer>
 		</dict>
 		<key>YYKit.xcscheme</key>
@@ -204,17 +184,14 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>10</integer>
-		</dict>
-		<key>YYKit.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
 			<integer>26</integer>
 		</dict>
-		<key>libextobjc.xcscheme_^#shared#^_</key>
+		<key>libextobjc.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>11</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
