@@ -1,5 +1,5 @@
 //
-//  HMAccountBalanceViewController.h
+//  HMBillViewController.h
 //  GKHelpOutApp
 //
 //  Created by kky on 2019/3/4.
@@ -8,7 +8,10 @@
 
 #import "RootViewController.h"
 
-@interface HMAccountBalanceViewController : RootViewController
+NS_ASSUME_NONNULL_BEGIN
+
+@interface HMBillViewController : RootViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

@@ -18,7 +18,7 @@
 #import "PersonModel.h"
 #import "UploadAvatarViewController.h"
 #import "SDCycleScrollView.h"
-
+#import "HMMessageViewController.h"
 #import "PSMoreServiceViewController.h"
 #import "PSMoreServiceViewModel.h"
 #import "WWWaterWaveView.h"
@@ -163,7 +163,8 @@
 }
 //MARK:点击系统消息
 -(void)clickSysMessage {
-    [PSTipsView showTips:Hmsg_Comingsoon];
+    HMMessageViewController *HMMessageVC = [[HMMessageViewController alloc]init];
+    [self.navigationController pushViewController:HMMessageVC animated:YES];
 }
 
 -(void)naviBtnClick:(UIButton *)btn{

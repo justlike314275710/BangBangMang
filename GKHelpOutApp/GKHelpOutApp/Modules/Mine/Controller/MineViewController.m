@@ -18,6 +18,7 @@
 #import "ModifyDataViewController.h"
 #import "Mine_ExpViewController.h"
 #import "HMAccountBalanceViewController.h"
+#import "HMBillViewController.h"
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
@@ -213,6 +214,7 @@
                 [self accountBalance];
             } else {
                  NSLog(@"点击了 账单");
+                [self accountbill];
             }
         }
               break;
@@ -274,6 +276,11 @@
 -(void)accountBalance{
     HMAccountBalanceViewController *accounBalanceVC = [[HMAccountBalanceViewController alloc] init];
     [self.navigationController pushViewController:accounBalanceVC animated:YES];
+}
+#pragma mark ————— 账单 —————
+-(void)accountbill{
+    HMBillViewController *BillVC = [[HMBillViewController alloc]init];
+    [self.navigationController pushViewController:BillVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
