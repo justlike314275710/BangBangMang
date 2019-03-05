@@ -1891,7 +1891,7 @@
 			isa = PBXGroup;
 			children = (
 				EAB03952221E8FB600331569 /* Chatting */,
-				5557A637221BD99E00743012 /* TestModule */,
+				5557A637221BD99E00743012 /* Myadvice */,
 				5557A5D1221BD96500743012 /* Home */,
 				5557A58A221BD96500743012 /* Login */,
 				5557A591221BD96500743012 /* MakeFriends */,
@@ -2038,20 +2038,10 @@
 		5557A5B6221BD96500743012 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-
-				55C0C767222CD20100CD2459 /* 账号余额 */,
-				559218DA2226810F00A5C655 /* Mine_EditProfile(修改资料) */,
-				5597854C22265C6D007BBCC2 /* Mine_Feedback(意见反馈) */,
-
 				55C0C776222D12BE00CD2459 /* 账单 */,
-
+				55C0C767222CD20100CD2459 /* 账号余额 */,
 				559218DA2226810F00A5C655 /* Mine_EditProfile(修改资料) */,
 				5597854C22265C6D007BBCC2 /* Mine_Feedback(意见反馈) */,
-				55C0C767222CD20100CD2459 /* 账号余额 */,
-				559218DA2226810F00A5C655 /* 修改资料 */,
-				5597854C22265C6D007BBCC2 /* 意见反馈 */,
-
-
 				5597857822265E2C007BBCC2 /* model */,
 				EA78F70722263719002D788A /* Mine_Auth(律师认证) */,
 				5557A5B7221BD96500743012 /* Logic */,
@@ -2228,13 +2218,13 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		5557A637221BD99E00743012 /* TestModule */ = {
+		5557A637221BD99E00743012 /* Myadvice */ = {
 			isa = PBXGroup;
 			children = (
 				5557A638221BD99E00743012 /* Controller */,
 				5557A643221BD99E00743012 /* Resource */,
 			);
-			path = TestModule;
+			path = Myadvice;
 			sourceTree = "<group>";
 		};
 		5557A638221BD99E00743012 /* Controller */ = {

@@ -88,13 +88,16 @@
 -(NSMutableArray *)totalControllerInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcView
 {
     NSMutableArray *controllerMutableArr=[NSMutableArray array];
-    LegaladviceViewController *showoneVc= [[LegaladviceViewController alloc]init];
-    showoneVc.title=@"法律咨询";
-    [controllerMutableArr addObject:showoneVc];
     
     PSMyAdviceViewController *showtwoVc= [[ PSMyAdviceViewController alloc]initWithViewModel:[[PSConsultationViewModel alloc] init]];
-    showtwoVc.title=@"心理咨询";
+    showtwoVc.title=@"法律咨询";
     [controllerMutableArr addObject:showtwoVc];
+    
+    LegaladviceViewController *showoneVc= [[LegaladviceViewController alloc]initWithViewModel:[[PSConsultationViewModel alloc] init]];
+    showoneVc.title=@"心理咨询";
+    [controllerMutableArr addObject:showoneVc];
+    
+
     return controllerMutableArr;
 }
 
