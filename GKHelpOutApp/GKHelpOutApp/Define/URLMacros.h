@@ -111,4 +111,5 @@
 
 #pragma mark - ——————— 律师相关 ————————
 #define URL_Lawyer_certification @"/lawyer/certification"
+#define URL_Lawyer_profiles @"/lawyer/profiles"
 #endif /* URLMacros_h */

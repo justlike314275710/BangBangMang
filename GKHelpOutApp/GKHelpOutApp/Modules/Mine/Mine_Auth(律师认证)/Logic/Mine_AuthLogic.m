@@ -152,12 +152,12 @@
 - (void)getCertificationData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
- NSString*url=NSStringFormat(@"%@%@",ConsultationHostUrl,URL_Lawyer_certification);
+    NSString*url=NSStringFormat(@"%@%@",ConsultationHostUrl,URL_Lawyer_profiles);
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
-        if (responses.statusCode==201) {
+        if (responses.statusCode==201||responses.statusCode==200) {
             if (completedCallback) {
                 completedCallback(responseObject);
             }

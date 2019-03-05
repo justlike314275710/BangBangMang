@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
-            timestampString = "573443759.088886"
+            timestampString = "573450218.108127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "-login:completion:"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Utils/NetWork/PPNetworkHelper.m"
-            timestampString = "573127382.728258"
+            timestampString = "573446652.984149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "418"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Controller/UploadAvatarViewController.m"
-            timestampString = "573445651.493663"
+            timestampString = "573450218.108716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Controller/UploadAvatarViewController.m"
-            timestampString = "573445651.493745"
+            timestampString = "573450218.108781"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Controller/UploadAvatarViewController.m"
-            timestampString = "573445651.493807"
+            timestampString = "573450218.108835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "177"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Controller/UploadAvatarViewController.m"
-            timestampString = "573445651.493875"
+            timestampString = "573450218.108887"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "164"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Controller/UploadAvatarViewController.m"
-            timestampString = "573445651.493927"
+            timestampString = "573450218.108936"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
-            timestampString = "573443759.0897731"
+            timestampString = "573450218.109081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-loginToServer:refresh:completion:"
             landmarkType = "7">
             <Locations>
@@ -298,12 +298,12 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Manager/UserManager/UserManager.m"
-                  timestampString = "573445651.837224"
+                  timestampString = "573450218.312351"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "199"
-                  endingLineNumber = "199"
-                  offsetFromSymbolStart = "729">
+                  startingLineNumber = "200"
+                  endingLineNumber = "200"
+                  offsetFromSymbolStart = "724">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -313,12 +313,12 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Manager/UserManager/UserManager.m"
-                  timestampString = "573445651.839058"
+                  timestampString = "573450218.314152"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "199"
-                  endingLineNumber = "199"
-                  offsetFromSymbolStart = "737">
+                  startingLineNumber = "200"
+                  endingLineNumber = "200"
+                  offsetFromSymbolStart = "736">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
-            timestampString = "573443759.090034"
+            timestampString = "573450218.109537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-requestEcomRegister:"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
-            timestampString = "573443759.090421"
+            timestampString = "573450218.1099271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "-requestEcomRegister:"
             landmarkType = "7">
          </BreakpointContent>
@@ -457,24 +457,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Utils/NetWork/PPNetworkHelper.m"
-            timestampString = "573127382.731238"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "+POST:parameters:responseCache:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Controller/LoginViewController.m"
-            timestampString = "573445603.006606"
+            timestampString = "573447391.123275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
@@ -490,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
-            timestampString = "573443759.090956"
+            timestampString = "573450218.110286"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "-loginToServer:refresh:completion:"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,12 +490,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
-            timestampString = "573443759.0911"
+            timestampString = "573450218.110629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "-requestEcomRegister:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
+            timestampString = "573450218.11094"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "-loginToServer:refresh:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
+            timestampString = "573450218.111254"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "-loginToServer:refresh:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
+            timestampString = "573450218.11163"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-requestEcomRegister:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
+            timestampString = "573450218.112219"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "-JudgeIdentity"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

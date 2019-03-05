@@ -17,6 +17,13 @@ typedef NS_ENUM(NSInteger, UserLoginType){
     kUserLoginTypeQQ,///QQ登录
     kUserLoginTypePwd,///账号登录
 };
+//用户身份
+typedef NS_ENUM(NSInteger, UserCertificationStatus){
+    PENDING_CERTIFIED = 0,//待认证 普通用户
+    PENDING_APPROVAL,//待审核
+    APPROVAL_FAILURE,//审核失败
+    CERTIFIED,//已认证
+};
 
 typedef void (^loginBlock)(BOOL success, NSString * des);
 
@@ -35,6 +42,9 @@ SINGLETON_FOR_HEADER(UserManager)
 @property (nonatomic, assign) UserLoginType loginType;
 @property (nonatomic, strong) OauthInfo *oathInfo;
 @property (nonatomic, assign) BOOL isLogined;
+@property (nonatomic, assign) UserCertificationStatus userStatus;
+
+
 
 #pragma mark - ——————— 注册账号判断账号状态   ————————
 -(void)requestEcomRegister:(NSDictionary *)parmeters;

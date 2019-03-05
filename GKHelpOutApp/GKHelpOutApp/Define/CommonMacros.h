@@ -27,6 +27,9 @@
 //用户model缓存
 #define KUserModelCache @"KUserModelCache"
 
+//用户类型名称
+#define KUserStateName @"KUserStateName"
+
 //用户公共服务信息缓存
 #define KOauthCacheName @"KOauthCacheName"
 

@@ -9,7 +9,8 @@
 #import "UserManager.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import <AFNetworking.h>
-
+#import "Mine_AuthLogic.h"
+#import "lawyerInfo.h"
 @implementation UserManager
 
 SINGLETON_FOR_CLASS(UserManager);
@@ -229,14 +230,35 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
     [self loginToServer:parmeters refresh:YES  completion:nil];
 }
 
-#pragma mark ————— 自动登录到服务器 —————
+#pragma mark ————— 判断是否是用户还是律师  —————
 //判断是否是用户还是律师
 -(void)JudgeIdentity{
-    
+    Mine_AuthLogic *authLogin = [Mine_AuthLogic new];
+    [authLogin getCertificationData:^(id data) {
+        if (ValidDict(data)) {
+            NSString *userStaus = [data valueForKey:@"certificationStatus"];
+            if ([userStaus isEqualToString:@"PENDING_CERTIFIED"]) {
+                self.userStatus = PENDING_CERTIFIED;
+            } else if ([userStaus isEqualToString:@"PENDING_APPROVA"]){
+                self.userStatus = PENDING_APPROVAL;
+            } else if ([userStaus isEqualToString:@"APPROVAL_FAILURE"]){
+                self.userStatus = APPROVAL_FAILURE;
+            } else if ([userStaus isEqualToString:@"CERTIFIED"]){
+                self.userStatus = CERTIFIED;
+            }
+            [self saveUserState];
+        }
+    } failed:^(NSError *error) {
+        if (![self loadUserState]) {
+            self.userStatus = PENDING_CERTIFIED;
+        }
+    }];
 }
+#pragma mark ————— 自动登录到服务器 —————
 //获取IM信息
 -(void)autoLoginToServer:(loginBlock)completion{
 
+    [self JudgeIdentity];
 
 //    [self requestEcomRegister:@{ @"phoneNumber":@"15526477756",
 //                                 @"verificationCode":@"5422",
@@ -251,6 +273,7 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
     [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
     NSString *url = NSStringFormat(@"%@%@",EmallHostUrl,URL_get_im_info);
     [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
+        
         if (ValidDict(responseObject)) {
             UserInfo *userInfo = [UserInfo modelWithDictionary:responseObject];
             userInfo.username = self.curUserInfo.username;
@@ -259,11 +282,11 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
             //登录成功储存用户信息
             [self saveUserInfo];
             //登录云信
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUD];
+            });
             [self LoginSuccess:responseObject completion:^(BOOL success, NSString *des) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD hideHUD];
-                });
-                
+    
             }];
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -325,11 +348,25 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
         NSDictionary *dic = [self.curUserInfo modelToJSONObject];
         [cache setObject:dic forKey:KUserModelCache];
     }
-    
 }
+-(void)saveUserState {
+        YYCache *cache = [[YYCache alloc] initWithName:KUserCacheName];
+        NSString *state = NSStringFormat(@"%ld",self.userStatus);
+        [cache setObject:state forKey:KUserStateName];
+}
+
+-(BOOL)loadUserState {
+    YYCache *cache = [[YYCache alloc]initWithName:KUserCacheName];
+    NSString *stateStr = (NSString *)[cache objectForKey:KUserStateName];
+    if (stateStr) {
+        self.userStatus = [stateStr integerValue];
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark ————— 加载缓存的用户信息 —————
 -(BOOL)loadUserInfo{
- 
     YYCache *cache = [[YYCache alloc]initWithName:KUserCacheName];
     NSDictionary * userDic = (NSDictionary *)[cache objectForKey:KUserModelCache];
     if (userDic) {
