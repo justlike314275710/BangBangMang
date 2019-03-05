@@ -73,8 +73,7 @@ typedef enum{
     
     [self setupChildViewController];
     
-    
-    
+
     
 }
 //顶部按钮文字选中背景色设置

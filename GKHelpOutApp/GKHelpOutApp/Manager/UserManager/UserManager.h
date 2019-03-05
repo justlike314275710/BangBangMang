@@ -43,6 +43,7 @@ SINGLETON_FOR_HEADER(UserManager)
 @property (nonatomic, strong) OauthInfo *oathInfo;
 @property (nonatomic, assign) BOOL isLogined;
 @property (nonatomic, assign) UserCertificationStatus userStatus;
+@property (nonatomic, strong) UIImage *avatarImage; //及时修改的头像
 
 
 
@@ -105,9 +106,15 @@ SINGLETON_FOR_HEADER(UserManager)
 
 /**
  加载公共服务数据
-
  @return 是否成功
  */
 -(BOOL)loadUserOuathInfo;
+
+/**
+保存用户信息
+ */
+-(void)saveUserInfo;
+
+
 
 @end

@@ -30,7 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的咨询";
-    
     [self addNavigationItemWithImageNames:@[@"会话icon－红点"] isLeft:NO target:self action:@selector(rightAction) tags:@[@2000]];
     
     [self setupUI];
@@ -46,6 +45,7 @@
     self.topSelectVcView=topSelectVcView;
     self.topSelectVcView.dataSource=self;
     self.topSelectVcView.delegate=self;
+    
     [self.topSelectVcView setupZWTopSelectVcViewUI];
     self.topSelectVcView.animationType=PageCurl;
     
@@ -54,11 +54,6 @@
     
     [self.topSelectVcView addSubview:self.iconImg2];
     self.iconImg2.frame = CGRectMake(40+KScreenWidth/2,(50-13)/2, 13, 13);
-
-    
-
-    
-    
 
 }
 
@@ -97,8 +92,13 @@
     showoneVc.title=@"心理咨询";
     [controllerMutableArr addObject:showoneVc];
     
-
     return controllerMutableArr;
+}
+//（可选）初始化展示第几个控制器（默认第一个，以UIViewController查找，优先级高）
+-(UIViewController *)showChildViewVcNameInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcView
+{
+    
+    return selectViewController;
 }
 
 //顶部按钮间隔线颜色

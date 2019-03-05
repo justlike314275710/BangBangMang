@@ -121,7 +121,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self renderContents];
-    // [self refreshData];
+    [self refreshData];
 }
 
 #pragma mark - UITableViewDataSource
