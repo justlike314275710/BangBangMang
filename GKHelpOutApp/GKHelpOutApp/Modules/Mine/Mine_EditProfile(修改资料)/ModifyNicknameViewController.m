@@ -7,6 +7,7 @@
 //
 
 #import "ModifyNicknameViewController.h"
+#import "PSLoadingView.h"
 
 @interface ModifyNicknameViewController ()
 @property(nonatomic,strong)UITextField *textField;
@@ -40,8 +41,61 @@
 
 #pragma mark - TouchEvent
 -(void)saveAction{
-    
+    if (self.modifyType == ModifyNickName) {
+        [self modifyAccountNickname];
+    } else {
+        self.title = @"修改邮编";
+    }
 }
+
+
+#pragma mark - 修改用户昵称
+- (void)modifyAccountNickname {
+    
+    if (self.textField.text.length==0) {
+        [PSTipsView showTips:@"请输入昵称！"];
+        return;
+    } else if(self.textField.text.length>6) {
+        [PSTipsView showTips:@"昵称不能超过6位数！"];
+        return;
+    }
+    UserInfo *user = help_userManager.curUserInfo;
+    NSLog(@"%@",user);
+    [[PSLoadingView sharedInstance]show];
+    NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_modify_nickname];
+    NSDictionary*parmeters=@{
+                             @"phoneNumber":help_userManager.curUserInfo.username,
+                             @"nickname":self.textField.text
+                             };
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSString*token=[NSString stringWithFormat:@"Bearer %@",help_userManager.oathInfo.access_token];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager PUT:url parameters:parmeters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==204) {
+            [PSTipsView showTips:@"昵称修改成功"];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            help_userManager.curUserInfo.nickname = self.textField.text;
+            [help_userManager saveUserInfo];
+            [[PSLoadingView sharedInstance]dismiss];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[PSLoadingView sharedInstance]dismiss];
+        NSLog(@"%@",error);
+        NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        if (ValidData(data)) {
+            id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSString*code=body[@"code"];
+//            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
+}
+
+
 #pragma mark - Setting&Getting
 -(UITextField*)textField{
     CGFloat spaceX = 15;

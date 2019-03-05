@@ -103,9 +103,10 @@
     v_line.backgroundColor = CFontColor3;
     [mideleBgImg addSubview:v_line];
     
-    @weakify(self)
+    @weakify(self);
     [_getCodeBtn addTapBlock:^(UIButton *btn) {
-        [weak_self getCode];
+        @strongify(self);
+        [self getCode];
     }];
     
     UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(45,k_codeLabel.bottom+5, mideleBgImg.width-90, 1)];
@@ -115,7 +116,8 @@
     [mideleBgImg addSubview:self.loginBtn];
     _loginBtn.frame = CGRectMake(45,186,mideleBgImg.width-90,KNormalBBtnHeight);
     [_loginBtn addTapBlock:^(UIButton *btn) {
-        [weak_self EcommerceOfRegister];
+         @strongify(self);
+        [self EcommerceOfRegister];
     }];
  
 }

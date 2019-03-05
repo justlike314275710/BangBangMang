@@ -80,7 +80,8 @@
     
     @weakify(self)
     [_getCodeBtn addTapBlock:^(UIButton *btn) {
-        [weak_self getCode];
+        @strongify(self);
+        [self getCode];
     }];
     
     UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(0,BgView.bottom, self.scrollview.width, 1)];

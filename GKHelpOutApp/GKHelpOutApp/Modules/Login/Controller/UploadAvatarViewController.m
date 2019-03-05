@@ -9,6 +9,7 @@
 #import "UploadAvatarViewController.h"
 #import "UIImage+WLCompress.h"
 #import "LLActionSheetView.h"
+#import "ReactiveObjC.h"
 @interface UploadAvatarViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate>
 @property(nonatomic, strong) YYAnimatedImageView *headImgView; //头像
 @property(nonatomic, strong) UITextField *nickField;  //昵称
@@ -65,7 +66,6 @@
     self.nickField.frame = CGRectMake(label.right+100,(FieldBgView.height-KNormalLabeLHeight)/2,120, KNormalLabeLHeight);
     self.nickField.right = FieldBgView.right-15;
     [FieldBgView addSubview:self.nickField];
-    
     self.compleBtn.frame = CGRectMake(KNormalBBtnHeight,KScreenHeight-200,KScreenWidth-KNormalBBtnHeight*2, KNormalBBtnHeight);
     [self.view addSubview:self.compleBtn];
     
@@ -102,7 +102,6 @@
                      completion:^(void){
                          NSLog(@"Picker View Controller is presented");
                      }];
-    
 }
 //拍照
 -(void)openCamera{
@@ -181,6 +180,14 @@
 
 #pragma mark - 修改用户昵称
 - (void)modifyAccountNickname {
+    
+    if (self.nickField.text.length==0) {
+        [PSTipsView showTips:@"请输入昵称！"];
+        return;
+    } else if(self.nickField.text.length>6) {
+        [PSTipsView showTips:@"昵称不能超过6位数！"];
+        return;
+    }
     UserInfo *user = help_userManager.curUserInfo;
     NSLog(@"%@",user);
     NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_modify_nickname];
