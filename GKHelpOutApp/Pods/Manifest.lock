@@ -75,7 +75,7 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
-  - M80AttributedLabel (1.7.1)
+  - M80AttributedLabel (1.7.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.0.0)
   - MJExtension (3.0.15.1)
@@ -175,7 +175,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
-  M80AttributedLabel: 7cb5064930533719b706c1c8febee32442da7cf3
+  M80AttributedLabel: 7dd017588f524b13149d4cf5c7b1eaf02b0f06a4
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
@@ -192,4 +192,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c4c46d0119f6a4ec8df87327dd863b540e822a25
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3

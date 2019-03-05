@@ -230,6 +230,10 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
 }
 
 #pragma mark ————— 自动登录到服务器 —————
+//判断是否是用户还是律师
+-(void)JudgeIdentity{
+    
+}
 //获取IM信息
 -(void)autoLoginToServer:(loginBlock)completion{
 

@@ -86,7 +86,6 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
     _autoDetectLinks        = YES;
     _lineSpacing            = 0.0;
     _paragraphSpacing       = 0.0;
-    _maxSyncDetectLength    = 100;
 
     if (self.backgroundColor == nil)
     {
@@ -1056,7 +1055,7 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
     {
         return;
     }
-    BOOL sync = length <= self.maxSyncDetectLength;
+    BOOL sync = length <= M80MinAsyncDetectLinkLength;
     [self computeLink:text
                  sync:sync];
 }
@@ -1065,8 +1064,8 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
                sync:(BOOL)sync
 {
     __weak typeof(self) weakSelf = self;
-    typedef void (^M80LinkBlock) (NSArray *);
-    M80LinkBlock block = ^(NSArray *links)
+    typedef void (^LinkBlock) (NSArray *);
+    LinkBlock block = ^(NSArray *links)
     {
         weakSelf.linkDetected = YES;
         if ([links count])

@@ -2038,19 +2038,10 @@
 		5557A5B6221BD96500743012 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-
-				55C0C767222CD20100CD2459 /* 账号余额 */,
-				559218DA2226810F00A5C655 /* Mine_EditProfile(修改资料) */,
-				5597854C22265C6D007BBCC2 /* Mine_Feedback(意见反馈) */,
-
 				55C0C776222D12BE00CD2459 /* 账单 */,
-
+				55C0C767222CD20100CD2459 /* 账号余额 */,
 				559218DA2226810F00A5C655 /* Mine_EditProfile(修改资料) */,
 				5597854C22265C6D007BBCC2 /* Mine_Feedback(意见反馈) */,
-				55C0C767222CD20100CD2459 /* 账号余额 */,
-				559218DA2226810F00A5C655 /* 修改资料 */,
-				5597854C22265C6D007BBCC2 /* 意见反馈 */,
-
 				5597857822265E2C007BBCC2 /* model */,
 				EA78F70722263719002D788A /* Mine_Auth(律师认证) */,
 				5557A5B7221BD96500743012 /* Logic */,
@@ -4323,6 +4314,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/FLAnimatedImage/FLAnimatedImage",
+				);
 			};
 			name = Debug;
 		};
@@ -4358,6 +4353,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/FLAnimatedImage/FLAnimatedImage",
+				);
 			};
 			name = Release;
 		};
