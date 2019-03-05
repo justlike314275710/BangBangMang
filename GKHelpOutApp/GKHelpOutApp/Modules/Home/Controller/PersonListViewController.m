@@ -59,15 +59,13 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    /*
+    //是否设置头像昵称
     if (help_userManager.curUserInfo.avatar||!help_userManager.curUserInfo.nickname) {
         UploadAvatarViewController *UploadVC = [[UploadAvatarViewController alloc] init];
         UserInfo *info = help_userManager.curUserInfo;
         NSLog(@"%@",help_userManager.curUserInfo);
         [self presentViewController:UploadVC animated:YES completion:nil];
     }
-     */
 }
 #pragma mark ————— 初始化页面 —————
 -(void)setupUI{
@@ -245,7 +243,6 @@
         _legalAdviceBtn.frame = CGRectMake(homespaceX,self.appleTreeBtn.bottom+5,(KScreenWidth-homespaceX*2-6)/2, 206*Iphone6ScaleHeight);
         
         UIImageView *lawImg = [UIImageView new];
-        lawImg.userInteractionEnabled = YES;
         lawImg.image = IMAGE_NAMED(@"法律咨询icon");
         lawImg.frame = CGRectMake((_legalAdviceBtn.width-60)/2,45,60,60);
         [_legalAdviceBtn addSubview:lawImg];
@@ -282,7 +279,6 @@
         _psyAdviceBtn.frame = CGRectMake(self.legalAdviceBtn.right+6,self.legalAdviceBtn.y,self.legalAdviceBtn.width, (self.legalAdviceBtn.height-6)/2);
         
         UIImageView *psyImg = [UIImageView new];
-        psyImg.userInteractionEnabled = YES;
         psyImg.image = IMAGE_NAMED(@"心理咨询icon");
         psyImg.frame = CGRectMake(17,(_psyAdviceBtn.height-36)/2,36,36);
         [_psyAdviceBtn addSubview:psyImg];
@@ -319,7 +315,6 @@
         _eleCommerceBtn.frame = CGRectMake(_legalAdviceBtn.right+6,_psyAdviceBtn.bottom+6,_legalAdviceBtn.width, (_legalAdviceBtn.height-6)/2);
         
         UIImageView *psyImg = [UIImageView new];
-        psyImg.userInteractionEnabled = YES;
         psyImg.image = IMAGE_NAMED(@"电子商务icon");
         psyImg.frame = CGRectMake(17,(_eleCommerceBtn.height-36)/2,36,36);
         [_eleCommerceBtn addSubview:psyImg];

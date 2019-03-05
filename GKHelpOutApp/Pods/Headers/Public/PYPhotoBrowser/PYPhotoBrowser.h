@@ -1,1 +1,0 @@
-../../../PYPhotoBrowser/PYPhotoBrowser/PYPhotoBrowser.h
