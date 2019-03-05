@@ -21,11 +21,12 @@
 #import "LawyerAuthenticationTableViewCell.h"
 #import "CertificateTableViewCell.h"
 #import "UploadManager.h"
-#import "PSConsultingCategoryViewController.h"
+#import "Mine_CategoryViewController.h"
 #import "PSConsultationViewModel.h"
 #import "BRInfoModel.h"
 #import "BRPickerView.h"
 #import "Mine_AuthLogic.h"
+
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
@@ -44,6 +45,7 @@
 @property (nonatomic , assign) int Btntager;
 @property (nonatomic, strong) BRInfoModel *infoModel;
 @property (nonatomic , strong) Mine_AuthLogic *authLogic;
+
 
 @end
 
@@ -187,9 +189,9 @@
                 if (indexPath.row==0) {
                     baseCell.arrowIcon.hidden=YES;
                 }
-                else if (indexPath.row==1){
-                    baseCell.arrowIcon.hidden=YES;
-                }
+//                else if (indexPath.row==1){
+//                    baseCell.arrowIcon.hidden=YES;
+//                }
                 else if (indexPath.row==4){
                      baseCell.arrowIcon.hidden=YES;
                 }
@@ -297,10 +299,18 @@
 -(void)checkLawyerBasicData{
     [self.authLogic checkDataWithLawyerBasicCallback:^(BOOL successful, NSString *tips) {
         if (successful) {
-            
+            [self postLawyerCertification];
         } else {
             [PSTipsView showTips:tips];
         }
+    }];
+}
+
+-(void)postLawyerCertification{
+    [self.authLogic getCertificationData:^(id data) {
+        
+    } failed:^(NSError *error) {
+        
     }];
 }
 
@@ -386,7 +396,7 @@
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if (textField.tag == 0 || textField.tag == 100||textField.tag == 101||textField.tag == 104) {
+    if (textField.tag == 0 || textField.tag == 100||textField.tag == 104) {
         [textField addTarget:self action:@selector(handlerTextFieldEndEdit:) forControlEvents:UIControlEventEditingDidEnd];
         return YES; // 当前 textField 可以编辑
     } else {
@@ -413,17 +423,13 @@
         case 100://执业机构
         {
             self.authLogic.lawOffice=textField.text;
+           
         }
             break;
             
-        case 101://律师会所
-        {
-            self.authLogic.lawOfficeAddress=@{@"countryCode":@"1",@"countryName":@"countryName",@"provinceCode":@"1",@"provinceName":@"ProvinceName",@"cityCode":@"1",@"cityName":@"CityName",@"countyCode":@"1",@"countyName":@"CountyName",@"streetDetail":@"StreetDetail"};
-        }
-            break;
         case 104://律师年限
         {
-            self.authLogic.workExperience=textField.text;
+            self.authLogic.workExperience=[textField.text intValue];
         }
             break;
             
@@ -443,9 +449,17 @@
             }];
         }
             break;
+            
+        case 101://律师会所
+        {
+//            Mine_addressViewController*addressVc=[[Mine_addressViewController alloc]init];
+//            [self.navigationController pushViewController:addressVc animated:YES];
+            self.authLogic.lawOfficeAddress=@{@"countyCode":@"86",@"countyName":@"中国",@"countryCode":@"430105",@"countryName":@"开福区",@"provinceCode":@"430000",@"provinceName":@"湖南省",@"cityCode":@"430100",@"cityName":@"长沙市",@"streetDetail":@"开福寺路71号"};
+        }
+            break;
         case 102:
         {
-            PSConsultingCategoryViewController*consutingVc=[[PSConsultingCategoryViewController alloc]initWithViewModel:[PSConsultationViewModel new]];
+            Mine_CategoryViewController*consutingVc=[[Mine_CategoryViewController alloc]initWithViewModel:[PSConsultationViewModel new]];
              [self.navigationController pushViewController:consutingVc animated:YES];
             consutingVc.returnValueBlock = ^(NSArray *arrayValue) {
                 NSString*category=[arrayValue componentsJoinedByString:@"、"];
@@ -532,6 +546,7 @@
         self.authLogic.certificatePictures=array;
     }];
 }
+
 #pragma mark ————— 律师年度考核备案照片上传 —————
 - (void)uploadAssImage:(UIImage *)image {
     [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
@@ -547,6 +562,10 @@
 - (void)uploadFrontCardImage:(UIImage *)image {
     [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
         [self.idCardCell.frontCardButton setImage:image forState:0];
+         NSDictionary*FrontCardImageDict=@{@"fileId":tips,@"thumbFileId":tips};
+        NSMutableArray*array=[[NSMutableArray alloc]init];
+        [array addObject:FrontCardImageDict];
+        self.authLogic.fontCardPictures=array;
     }];
 }
 
@@ -554,6 +573,10 @@
 - (void)uploadBlackCardImageImage:(UIImage *)image {
     [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
         [self.idCardCell.backCardButton setImage:image forState:0];
+        NSDictionary*FrontCardImageDict=@{@"fileId":tips,@"thumbFileId":tips};
+        NSMutableArray*array=[[NSMutableArray alloc]init];
+        [array addObject:FrontCardImageDict];
+        self.authLogic.backCardPictures=array;
     }];
 }
 
@@ -667,7 +690,7 @@
         
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeProtocol title:nil icon:nil];
-            item.rowHeight=94.0f;
+            item.rowHeight=124.0f;
             item.isShowAccessory=NO;
             [group.items addObject:item];
         }

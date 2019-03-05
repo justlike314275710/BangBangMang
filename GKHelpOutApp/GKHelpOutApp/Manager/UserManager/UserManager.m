@@ -135,6 +135,19 @@ SINGLETON_FOR_CLASS(UserManager);
 }
 
 #pragma mark ————— 手动登录到服务器 —————
+<<<<<<< HEAD
+-(void)loginToServer:(NSDictionary *)params completion:(loginBlock)completion{
+    NSString *username = [params valueForKey:@"name"];
+    NSString *password = [params valueForKey:@"verificationCode"];
+    NSDictionary *paames = @{
+                          @"username":username,
+                          @"password":password,
+                          @"grant_type":@"password"
+                          };
+    NSString*uid=@"assistant.app";
+    NSString*cipherText=@"506a7b6dfc5d42fe857ea9494bb24014";
+
+=======
 //获取公共服务token  //refresh 是否是刷新token
 static const NSString *uid =  @"assistant.app";
 static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
@@ -158,6 +171,7 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
                  @"grant_type":@"refresh_token"
                 };
     }
+>>>>>>> 23f6fc71506721b878ef49ef4c17cf21646538e5
     NSString *part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
     NSData   *data = [part1 dataUsingEncoding:NSUTF8StringEncoding];
     NSString *stringBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];

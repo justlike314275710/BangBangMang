@@ -51,6 +51,7 @@
         _detaileLbl.font = SYSTEMFONT(12);
         _detaileLbl.textColor = KGrayColor;
         _detaileLbl.textAlignment =NSTextAlignmentRight;
+        _detaileLbl.keyboardType = UIKeyboardTypeDefault;
         _detaileLbl.frame=CGRectMake(KNormalSpace+80, 11, SCREEN_WIDTH-80-22-2*KNormalSpace, 20);
         
 

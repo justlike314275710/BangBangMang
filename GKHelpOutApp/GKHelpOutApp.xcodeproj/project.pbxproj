@@ -198,7 +198,7 @@
 		EA21CA7B221F9980007D3445 /* PSMyAdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */; };
 		EA21CA7C221F9980007D3445 /* PSScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5B221F9980007D3445 /* PSScoreViewController.m */; };
 		EA21CA7D221F9980007D3445 /* PSConsultationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */; };
-		EA21CA7E221F9980007D3445 /* PSConsultingCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5D221F9980007D3445 /* PSConsultingCategoryViewController.m */; };
+		EA21CA7E221F9980007D3445 /* Mine_CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5D221F9980007D3445 /* Mine_CategoryViewController.m */; };
 		EA21CA7F221F9980007D3445 /* PSConsultationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5F221F9980007D3445 /* PSConsultationTableViewCell.m */; };
 		EA21CA80221F9980007D3445 /* PSAdviceDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA61221F9980007D3445 /* PSAdviceDetailsView.m */; };
 		EA21CA81221F9980007D3445 /* PSConsultationOtherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA63221F9980007D3445 /* PSConsultationOtherTableViewCell.m */; };
@@ -437,6 +437,7 @@
 		EAB039D3221E8FF200331569 /* PSchatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB039AB221E8FF100331569 /* PSchatViewController.m */; };
 		EAB039D4221E8FF200331569 /* NTESVideoChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB039AE221E8FF100331569 /* NTESVideoChatViewController.m */; };
 		EAB039D7221E907400331569 /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB039D6221E907400331569 /* UIImage+Image.m */; };
+		EAE19E69222CC83D0080B0F5 /* Mine_addressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E68222CC83D0080B0F5 /* Mine_addressViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -800,11 +801,11 @@
 		EA21CA56221F9980007D3445 /* PSConsultationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultationViewModel.h; sourceTree = "<group>"; };
 		EA21CA57221F9980007D3445 /* PSEvaluateViewmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSEvaluateViewmodel.h; sourceTree = "<group>"; };
 		EA21CA58221F9980007D3445 /* PSAdviceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAdviceDetailsViewController.h; sourceTree = "<group>"; };
-		EA21CA59221F9980007D3445 /* PSConsultingCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultingCategoryViewController.h; sourceTree = "<group>"; };
+		EA21CA59221F9980007D3445 /* Mine_CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mine_CategoryViewController.h; sourceTree = "<group>"; };
 		EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMyAdviceViewController.m; sourceTree = "<group>"; };
 		EA21CA5B221F9980007D3445 /* PSScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSScoreViewController.m; sourceTree = "<group>"; };
 		EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationViewController.m; sourceTree = "<group>"; };
-		EA21CA5D221F9980007D3445 /* PSConsultingCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultingCategoryViewController.m; sourceTree = "<group>"; };
+		EA21CA5D221F9980007D3445 /* Mine_CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mine_CategoryViewController.m; sourceTree = "<group>"; };
 		EA21CA5F221F9980007D3445 /* PSConsultationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationTableViewCell.m; sourceTree = "<group>"; };
 		EA21CA60221F9980007D3445 /* PSConsultationOtherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultationOtherTableViewCell.h; sourceTree = "<group>"; };
 		EA21CA61221F9980007D3445 /* PSAdviceDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAdviceDetailsView.m; sourceTree = "<group>"; };
@@ -1304,6 +1305,8 @@
 		EAB039AE221E8FF100331569 /* NTESVideoChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESVideoChatViewController.m; sourceTree = "<group>"; };
 		EAB039D5221E907400331569 /* UIImage+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Image.h"; sourceTree = "<group>"; };
 		EAB039D6221E907400331569 /* UIImage+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Image.m"; sourceTree = "<group>"; };
+		EAE19E67222CC83D0080B0F5 /* Mine_addressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_addressViewController.h; sourceTree = "<group>"; };
+		EAE19E68222CC83D0080B0F5 /* Mine_addressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_addressViewController.m; sourceTree = "<group>"; };
 		F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1895,7 +1898,6 @@
 		5557A58A221BD96500743012 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				559218DE2226830000A5C655 /* Model */,
 				5557A58B221BD96500743012 /* Logic */,
 				5557A58E221BD96500743012 /* Controller */,
 			);
@@ -2031,11 +2033,14 @@
 			isa = PBXGroup;
 			children = (
 				55C0C776222D12BE00CD2459 /* 账单 */,
+
+				559218DA2226810F00A5C655 /* Mine_EditProfile(修改资料) */,
+				5597854C22265C6D007BBCC2 /* Mine_Feedback(意见反馈) */,
 				55C0C767222CD20100CD2459 /* 账号余额 */,
 				559218DA2226810F00A5C655 /* 修改资料 */,
 				5597854C22265C6D007BBCC2 /* 意见反馈 */,
+
 				5597857822265E2C007BBCC2 /* model */,
-				5597855F22265D80007BBCC2 /* service */,
 				EA78F70722263719002D788A /* Mine_Auth(律师认证) */,
 				5557A5B7221BD96500743012 /* Logic */,
 				5557A5BA221BD96500743012 /* Controller */,
@@ -2270,7 +2275,7 @@
 			path = BaseLogic;
 			sourceTree = "<group>";
 		};
-		559218DA2226810F00A5C655 /* 修改资料 */ = {
+		559218DA2226810F00A5C655 /* Mine_EditProfile(修改资料) */ = {
 			isa = PBXGroup;
 			children = (
 				559218DB2226813F00A5C655 /* ModifyDataViewController.h */,
@@ -2282,17 +2287,10 @@
 				555A564A2228E58300451044 /* ModifyNicknameViewController.h */,
 				555A564B2228E58300451044 /* ModifyNicknameViewController.m */,
 			);
-			path = "修改资料";
+			path = "Mine_EditProfile(修改资料)";
 			sourceTree = "<group>";
 		};
-		559218DE2226830000A5C655 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5597854C22265C6D007BBCC2 /* 意见反馈 */ = {
+		5597854C22265C6D007BBCC2 /* Mine_Feedback(意见反馈) */ = {
 			isa = PBXGroup;
 			children = (
 				5597855422265CB2007BBCC2 /* PSFWriteFeedSuccessViewController.h */,
@@ -2304,14 +2302,7 @@
 				5597855022265CB2007BBCC2 /* PSWriteFeedbackViewController.h */,
 				5597854F22265CB2007BBCC2 /* PSWriteFeedbackViewController.m */,
 			);
-			path = "意见反馈";
-			sourceTree = "<group>";
-		};
-		5597855F22265D80007BBCC2 /* service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = service;
+			path = "Mine_Feedback(意见反馈)";
 			sourceTree = "<group>";
 		};
 		5597857822265E2C007BBCC2 /* model */ = {
@@ -2710,12 +2701,14 @@
 		EA78F72C22265B49002D788A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EA21CA59221F9980007D3445 /* PSConsultingCategoryViewController.h */,
-				EA21CA5D221F9980007D3445 /* PSConsultingCategoryViewController.m */,
+				EA21CA59221F9980007D3445 /* Mine_CategoryViewController.h */,
+				EA21CA5D221F9980007D3445 /* Mine_CategoryViewController.m */,
 				EA78F70822263761002D788A /* Mine_AuthViewController.h */,
 				EA78F70922263761002D788A /* Mine_AuthViewController.m */,
 				EA78F73B2227AEEA002D788A /* Mine_ExpViewController.h */,
 				EA78F73C2227AEEA002D788A /* Mine_ExpViewController.m */,
+				EAE19E67222CC83D0080B0F5 /* Mine_addressViewController.h */,
+				EAE19E68222CC83D0080B0F5 /* Mine_addressViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3887,6 +3880,7 @@
 				EA21CB38221FA88E007D3445 /* PSPhoneCard.m in Sources */,
 				EAB038DC221E817B00331569 /* NIMInputEmoticonButton.m in Sources */,
 				5557A4F9221BD76300743012 /* RootViewController.m in Sources */,
+				EAE19E69222CC83D0080B0F5 /* Mine_addressViewController.m in Sources */,
 				EAB03938221E817C00331569 /* NIMKitColorButtonCell.m in Sources */,
 				EA21CB29221FA444007D3445 /* PSPaySuccessViewController.m in Sources */,
 				EAB0392A221E817C00331569 /* NSDictionary+NIMKit.m in Sources */,
@@ -3954,7 +3948,7 @@
 				EAB03935221E817C00331569 /* NIMCommonTableData.m in Sources */,
 				EA21CB46221FCA1E007D3445 /* UIImage+WLCompress.m in Sources */,
 				5557A564221BD84000743012 /* IAPManager.m in Sources */,
-				EA21CA7E221F9980007D3445 /* PSConsultingCategoryViewController.m in Sources */,
+				EA21CA7E221F9980007D3445 /* Mine_CategoryViewController.m in Sources */,
 				5557A54A221BD7F500743012 /* SDCycleScrollView.m in Sources */,
 				EA78F7452227E0EF002D788A /* PSFamilyTableViewCell.m in Sources */,
 				EAB03919221E817B00331569 /* NIMMessageCellFactory.m in Sources */,

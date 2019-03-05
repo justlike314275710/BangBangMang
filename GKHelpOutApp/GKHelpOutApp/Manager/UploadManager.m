@@ -50,7 +50,7 @@
                 id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
                 //self.consultaionId=result[@"id"];
                 if (callback) {
-                    callback(YES,result[@"id"]);
+                    callback(YES,result[@"filename"]);
                 }
                 [[PSLoadingView sharedInstance]dismiss];
                 

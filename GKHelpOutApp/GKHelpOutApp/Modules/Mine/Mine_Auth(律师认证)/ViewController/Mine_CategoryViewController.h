@@ -9,7 +9,7 @@
 #import "PSBusinessViewController.h"
 typedef void (^ReturnValueBlock) (NSArray *arrayValue);
 typedef void(^addCategoryCompletion)(BOOL successful);
-@interface PSConsultingCategoryViewController : PSBusinessViewController
+@interface Mine_CategoryViewController : PSBusinessViewController
 @property(nonatomic, copy) ReturnValueBlock returnValueBlock;
 @property (nonatomic, copy) addCategoryCompletion completion;
 @property (nonatomic , strong) NSArray *categoryArr;
