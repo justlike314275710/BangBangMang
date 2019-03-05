@@ -440,6 +440,7 @@
 		EAE19E69222CC83D0080B0F5 /* Mine_addressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E68222CC83D0080B0F5 /* Mine_addressViewController.m */; };
 		EAE19E6C222D03190080B0F5 /* lawyerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E6B222D03190080B0F5 /* lawyerInfo.m */; };
 		EAE19E6F222E0E770080B0F5 /* dashedTextview.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E6E222E0E770080B0F5 /* dashedTextview.m */; };
+		EAE19E72222E4B430080B0F5 /* Mine_StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E71222E4B430080B0F5 /* Mine_StatusViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1313,6 +1314,8 @@
 		EAE19E6B222D03190080B0F5 /* lawyerInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawyerInfo.m; sourceTree = "<group>"; };
 		EAE19E6D222E0E770080B0F5 /* dashedTextview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dashedTextview.h; sourceTree = "<group>"; };
 		EAE19E6E222E0E770080B0F5 /* dashedTextview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dashedTextview.m; sourceTree = "<group>"; };
+		EAE19E70222E4B430080B0F5 /* Mine_StatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_StatusViewController.h; sourceTree = "<group>"; };
+		EAE19E71222E4B430080B0F5 /* Mine_StatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_StatusViewController.m; sourceTree = "<group>"; };
 		F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2042,11 +2045,6 @@
 				55C0C767222CD20100CD2459 /* 账号余额 */,
 				559218DA2226810F00A5C655 /* Mine_EditProfile(修改资料) */,
 				5597854C22265C6D007BBCC2 /* Mine_Feedback(意见反馈) */,
-
-				55C0C767222CD20100CD2459 /* 账号余额 */,
-				559218DA2226810F00A5C655 /* 修改资料 */,
-				5597854C22265C6D007BBCC2 /* 意见反馈 */,
-
 				5597857822265E2C007BBCC2 /* model */,
 				EA78F70722263719002D788A /* Mine_Auth(律师认证) */,
 				5557A5B7221BD96500743012 /* Logic */,
@@ -2720,6 +2718,8 @@
 				EA78F73C2227AEEA002D788A /* Mine_ExpViewController.m */,
 				EAE19E67222CC83D0080B0F5 /* Mine_addressViewController.h */,
 				EAE19E68222CC83D0080B0F5 /* Mine_addressViewController.m */,
+				EAE19E70222E4B430080B0F5 /* Mine_StatusViewController.h */,
+				EAE19E71222E4B430080B0F5 /* Mine_StatusViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -4112,6 +4112,7 @@
 				EA21CAB8221F9E6D007D3445 /* PSResponse.m in Sources */,
 				5557A620221BD96500743012 /* HomeViewController.m in Sources */,
 				5557A552221BD7F500743012 /* PPNetworkHelper.m in Sources */,
+				EAE19E72222E4B430080B0F5 /* Mine_StatusViewController.m in Sources */,
 				EA21CA80221F9980007D3445 /* PSAdviceDetailsView.m in Sources */,
 				5557A614221BD96500743012 /* MineTableViewCell.m in Sources */,
 				5557A501221BD76300743012 /* RootNavigationController.m in Sources */,
