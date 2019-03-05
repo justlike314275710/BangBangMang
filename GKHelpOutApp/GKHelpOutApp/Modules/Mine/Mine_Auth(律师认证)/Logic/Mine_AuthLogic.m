@@ -162,6 +162,7 @@
                 completedCallback(responseObject);
             }
         }
+        NSLog(@"%@",responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (error) {
             failedCallback(error);

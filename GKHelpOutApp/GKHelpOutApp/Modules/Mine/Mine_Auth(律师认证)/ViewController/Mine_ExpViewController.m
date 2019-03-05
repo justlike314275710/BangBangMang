@@ -75,6 +75,27 @@
     
     
 }
+
+
+-(void)judgeLoginStatus{
+    switch (help_userManager.userStatus) {
+        case PENDING_CERTIFIED:
+            [self lawClick];
+            break;
+        case PENDING_APPROVAL:
+            
+            break;
+        case APPROVAL_FAILURE:
+            
+            break;
+        case CERTIFIED:
+            
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark  - setter & getter
 
 - (UIImageView *)backView{
