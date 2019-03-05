@@ -33,6 +33,9 @@
 //用户公共服务信息Model缓存
 #define KOauthModelCache @"KOauthModelCache"
 
+//用户律师认证信息存储
+#define KLawyerModelCache @"KLawyerModelCache"
+
 #define AppScheme @"YuWuService"
 
 #pragma mark - ——————— 网络状态相关 ————————

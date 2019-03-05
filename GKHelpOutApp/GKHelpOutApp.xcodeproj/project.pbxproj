@@ -431,6 +431,8 @@
 		EAB039D4221E8FF200331569 /* NTESVideoChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB039AE221E8FF100331569 /* NTESVideoChatViewController.m */; };
 		EAB039D7221E907400331569 /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB039D6221E907400331569 /* UIImage+Image.m */; };
 		EAE19E69222CC83D0080B0F5 /* Mine_addressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E68222CC83D0080B0F5 /* Mine_addressViewController.m */; };
+		EAE19E6C222D03190080B0F5 /* lawyerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E6B222D03190080B0F5 /* lawyerInfo.m */; };
+		EAE19E6F222E0E770080B0F5 /* dashedTextview.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E6E222E0E770080B0F5 /* dashedTextview.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1286,6 +1288,10 @@
 		EAB039D6221E907400331569 /* UIImage+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Image.m"; sourceTree = "<group>"; };
 		EAE19E67222CC83D0080B0F5 /* Mine_addressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_addressViewController.h; sourceTree = "<group>"; };
 		EAE19E68222CC83D0080B0F5 /* Mine_addressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_addressViewController.m; sourceTree = "<group>"; };
+		EAE19E6A222D03190080B0F5 /* lawyerInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawyerInfo.h; sourceTree = "<group>"; };
+		EAE19E6B222D03190080B0F5 /* lawyerInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawyerInfo.m; sourceTree = "<group>"; };
+		EAE19E6D222E0E770080B0F5 /* dashedTextview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dashedTextview.h; sourceTree = "<group>"; };
+		EAE19E6E222E0E770080B0F5 /* dashedTextview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dashedTextview.m; sourceTree = "<group>"; };
 		F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2010,14 +2016,9 @@
 		5557A5B6221BD96500743012 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-
+				55C0C767222CD20100CD2459 /* 账号余额 */,
 				559218DA2226810F00A5C655 /* Mine_EditProfile(修改资料) */,
 				5597854C22265C6D007BBCC2 /* Mine_Feedback(意见反馈) */,
-
-				55C0C767222CD20100CD2459 /* 账号余额 */,
-				559218DA2226810F00A5C655 /* 修改资料 */,
-				5597854C22265C6D007BBCC2 /* 意见反馈 */,
-
 				5597857822265E2C007BBCC2 /* model */,
 				EA78F70722263719002D788A /* Mine_Auth(律师认证) */,
 				5557A5B7221BD96500743012 /* Logic */,
@@ -2632,6 +2633,8 @@
 		EA78F72A22265B37002D788A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EAE19E6D222E0E770080B0F5 /* dashedTextview.h */,
+				EAE19E6E222E0E770080B0F5 /* dashedTextview.m */,
 				EA78F7432227E0EE002D788A /* PSFamilyTableViewCell.h */,
 				EA78F7442227E0EF002D788A /* PSFamilyTableViewCell.m */,
 				EA78F71422263DA7002D788A /* CertificationView */,
@@ -2644,6 +2647,8 @@
 			children = (
 				EA78F73F2227CDE6002D788A /* BRInfoModel.h */,
 				EA78F73E2227CDE5002D788A /* BRInfoModel.m */,
+				EAE19E6A222D03190080B0F5 /* lawyerInfo.h */,
+				EAE19E6B222D03190080B0F5 /* lawyerInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3790,6 +3795,7 @@
 				5524C6932225106B0067F437 /* ZWTopSelectVcView.m in Sources */,
 				EAB03913221E817B00331569 /* NIMSessionLayoutImpl.m in Sources */,
 				EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */,
+				EAE19E6F222E0E770080B0F5 /* dashedTextview.m in Sources */,
 				EAB039BF221E8FF200331569 /* renderer_rgb.c in Sources */,
 				EA21CAC0221FA04F007D3445 /* PSPayView.m in Sources */,
 				EA21CB4D221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m in Sources */,
@@ -3934,6 +3940,7 @@
 				EAB039C8221E8FF200331569 /* color.c in Sources */,
 				5557A654221BD99E00743012 /* ScrollBannerVC.m in Sources */,
 				5557A4FC221BD76300743012 /* BaseRequestAPI.m in Sources */,
+				EAE19E6C222D03190080B0F5 /* lawyerInfo.m in Sources */,
 				EAB038EC221E817B00331569 /* NIMTeamMemberListViewController.m in Sources */,
 				EAB038F4221E817B00331569 /* NIMTimePickerView.m in Sources */,
 				EA21CB2D221FA78C007D3445 /* PSProduct.m in Sources */,

@@ -65,6 +65,7 @@ typedef NS_ENUM(NSInteger, DSSettingItemType) {
 //详情 只有在DSSettingItemTypeDetial类型才有效
 @property (nonatomic, copy) NSString *details;
 
+@property (nonatomic, copy) NSString *Textdetails;
 //点击Switch事件
 @property (nonatomic, copy) SwitchClickBlock switchClick;
 

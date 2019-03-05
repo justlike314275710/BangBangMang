@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
+typedef void (^ReturnBlock) (NSDictionary *dictionaryValue);
 
 @interface Mine_addressViewController : RootViewController
-
+@property(nonatomic, copy) ReturnBlock returnValueBlock;
 @end

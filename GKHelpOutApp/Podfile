@@ -30,6 +30,7 @@ pod 'DGActivityIndicatorView'
 pod 'AlipaySDK-iOS'
 pod 'UITextView+Placeholder', '~> 1.2.0'
 pod 'BRPickerView'
+pod 'ReactiveObjC'
 end
 
 target 'GKHelpOutAppUITests' do
