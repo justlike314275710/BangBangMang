@@ -240,7 +240,7 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
             NSString *userStaus = [data valueForKey:@"certificationStatus"];
             if ([userStaus isEqualToString:@"PENDING_CERTIFIED"]) {
                 self.userStatus = PENDING_CERTIFIED;
-            } else if ([userStaus isEqualToString:@"PENDING_APPROVA"]){
+            } else if ([userStaus isEqualToString:@"PENDING_APPROVAL"]){
                 self.userStatus = PENDING_APPROVAL;
             } else if ([userStaus isEqualToString:@"APPROVAL_FAILURE"]){
                 self.userStatus = APPROVAL_FAILURE;

@@ -107,7 +107,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
-    
+    NSLog(@"%ld",(long)help_userManager.userStatus);
     UILabel *headView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
     headView.backgroundColor = [UIColor colorWithRed:255/255.0 green:246/255.0 blue:233/255.0 alpha:1.0];
     headView.text = @"未认证，请填写资料申请认证.\n此认证信息仅用于平台审核，我们将对你填写对内容严格保密";
