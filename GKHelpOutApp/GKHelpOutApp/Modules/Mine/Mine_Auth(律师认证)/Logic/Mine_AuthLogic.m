@@ -126,10 +126,46 @@
     [manager POST:url parameters:parmeters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==201) {
+            
+            if (ValidDict(responseObject)) {
+                lawyerInfo*lawyerinfo=[lawyerInfo modelWithDictionary:parmeters];
+                self.infoModel=lawyerinfo; //认证成功储存律师信息
+                [self saveUserInfo];
+            }
+            
+            
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        if (error) {
+            failedCallback(error);
+        }
     }];
+}
+
+
+-(void)saveUserInfo{
+    if (self.infoModel) {
+        YYCache *cache = [[YYCache alloc]initWithName:KLawyerModelCache];
+        NSDictionary *dic = [self.infoModel modelToJSONObject];
+        [cache setObject:dic forKey:KLawyerModelCache];
+    }
+    
+}
+
+#pragma mark ————— 获取律师信息
+- (lawyerInfo *)loadLawyerInfo {
+    YYCache *cache = [[YYCache alloc] initWithName:KLawyerModelCache];
+    NSDictionary * lawyerInfoDic = (NSDictionary *)[cache objectForKey:KLawyerModelCache];
+    if (lawyerInfoDic) {
+        lawyerInfo *lawyerModel = [lawyerInfo modelWithJSON:lawyerInfoDic];
+        return lawyerModel;
+    }
+    return nil;
 }
 
 -(void)initParmeters{

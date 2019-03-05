@@ -15,7 +15,7 @@ pod 'TZImagePickerController', '~> 1.9.8'
 pod 'IQKeyboardManager'
 pod 'Bugly', '~> 2.4.8'
 pod 'AvoidCrash', '~> 2.5.2'
-pod 'M80AttributedLabel' , '~> 1.7.1' 
+pod 'M80AttributedLabel'
 pod 'libextobjc', '~> 0.4.1'
 pod 'WechatOpenSDK'
 pod 'MJExtension'
@@ -31,7 +31,6 @@ pod 'AlipaySDK-iOS'
 pod 'UITextView+Placeholder', '~> 1.2.0'
 pod 'BRPickerView'
 pod 'ReactiveObjC'
-
 end
 
 target 'GKHelpOutAppUITests' do

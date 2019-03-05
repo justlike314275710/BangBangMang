@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "dashedTextview.h"
 @interface PersonTableViewCell : UITableViewCell
-@property (nonatomic , strong) UITextView *personText;
+@property (nonatomic , strong) dashedTextview *personText;
 @end

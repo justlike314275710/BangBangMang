@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "lawyerInfo.h"
 @interface Mine_AuthLogic : HpBaseLogic
+
+
+
 @property (nonatomic , strong) NSString *gender;
 @property (nonatomic , strong) NSString *name;
 @property (nonatomic , assign) int workExperience;//工作经验
@@ -25,7 +28,8 @@
 @property (nonatomic , strong) NSArray *fontCardPictures;//身份证正面照
 @property (nonatomic , strong) NSArray *backCardPictures;//身份证反面照
 
-
+@property (nonatomic , strong) lawyerInfo *infoModel;
+- (lawyerInfo *)loadLawyerInfo;
 - (void)checkDataWithLawyerBasicCallback:(CheckDataCallback)callback;
 - (void)getCertificationData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 

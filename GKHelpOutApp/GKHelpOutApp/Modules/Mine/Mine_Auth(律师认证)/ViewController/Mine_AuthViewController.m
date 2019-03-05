@@ -26,6 +26,7 @@
 #import "BRInfoModel.h"
 #import "BRPickerView.h"
 #import "Mine_AuthLogic.h"
+#import "Mine_addressViewController.h"
 
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
@@ -43,10 +44,10 @@
 @property (nonatomic , strong) AssessmentTableViewCell*assessCell;
 @property (nonatomic , strong) IdCardTableViewCell *idCardCell;
 @property (nonatomic , assign) int Btntager;
-@property (nonatomic, strong) BRInfoModel *infoModel;
 @property (nonatomic , strong) Mine_AuthLogic *authLogic;
 
-
+@property (nonatomic , strong) lawyerInfo *lawyerModel;
+@property (nonatomic , strong) NSMutableArray *LawyerCategories;//提交后的类型数组
 @end
 
 @implementation Mine_AuthViewController
@@ -59,7 +60,8 @@
     self.isShowLiftBack = YES;//每个根视图需要设置该属性为NO，否则会出现导航栏异常
     _array = [[NSMutableArray alloc] init];
     self.authLogic=[Mine_AuthLogic new];
-    [self createUI];
+   // [self createUI];
+    [self loadLawyerInfo];
     
 }
 
@@ -76,7 +78,19 @@
     
 }
 
-
+- (void)loadLawyerInfo {
+    YYCache *cache = [[YYCache alloc] initWithName:KLawyerModelCache];
+    NSDictionary * lawyerInfoDic = (NSDictionary *)[cache objectForKey:KLawyerModelCache];
+    if (lawyerInfoDic) {
+        self.lawyerModel = [lawyerInfo modelWithJSON:lawyerInfoDic];
+        [self bulidLawyerModel];
+        [self createUI];
+    }
+    else{
+        
+    }
+ 
+}
 #pragma mark ————— 创建页面 —————
 -(void)createUI{
     
@@ -171,8 +185,12 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"authBaseTableViewCell"];
             authBaseTableViewCell*baseCell=(authBaseTableViewCell*)cell;
             baseCell.titleLbl.text=item.title;
-            baseCell.detaileLbl.placeholder=item.details;
-            // baseCell.detaileLbl.text=item.details;
+            if (item.Textdetails) {
+                baseCell.detaileLbl.text=item.Textdetails;
+            }
+            else{
+                baseCell.detaileLbl.placeholder=item.details;
+            }
             baseCell.selectionStyle = UITableViewCellSelectionStyleNone;
             [baseCell setSeparatorInset:UIEdgeInsetsMake(0, 14, 0, 14)];
             baseCell.detaileLbl.delegate = self;
@@ -308,9 +326,9 @@
 
 -(void)postLawyerCertification{
     [self.authLogic getCertificationData:^(id data) {
-        
+        [PSTipsView showTips:@"提交律师认证成功!"];
     } failed:^(NSError *error) {
-        
+        [PSTipsView showTips:@"提交律师认证失败!"];
     }];
 }
 
@@ -417,7 +435,6 @@
         case 0://姓名
         {
             self.authLogic.name=textField.text;
-            self.infoModel.nameStr = textField.text;
         }
             break;
         case 100://执业机构
@@ -444,7 +461,7 @@
         case 1://性别
         {
             [BRStringPickerView showStringPickerWithTitle:@"请选择性别" dataSource:@[@"男", @"女", @"其他"] defaultSelValue:textField.text resultBlock:^(id selectValue) {
-                textField.text = self.infoModel.genderStr = selectValue;
+                textField.text = selectValue;
                 self.authLogic.gender=selectValue;
             }];
         }
@@ -452,9 +469,13 @@
             
         case 101://律师会所
         {
-//            Mine_addressViewController*addressVc=[[Mine_addressViewController alloc]init];
-//            [self.navigationController pushViewController:addressVc animated:YES];
-            self.authLogic.lawOfficeAddress=@{@"countyCode":@"86",@"countyName":@"中国",@"countryCode":@"430105",@"countryName":@"开福区",@"provinceCode":@"430000",@"provinceName":@"湖南省",@"cityCode":@"430100",@"cityName":@"长沙市",@"streetDetail":@"开福寺路71号"};
+            Mine_addressViewController*addressVc=[[Mine_addressViewController alloc]init];
+            [self.navigationController pushViewController:addressVc animated:YES];
+            [addressVc setReturnValueBlock:^(NSDictionary *dictionaryValue) {
+                self.authLogic.lawOfficeAddress=dictionaryValue;
+                textField.text=dictionaryValue[@"streetDetail"];
+            }];
+//            self.authLogic.lawOfficeAddress=@{@"countyCode":@"86",@"countyName":@"中国",@"countryCode":@"430105",@"countryName":@"开福区",@"provinceCode":@"430000",@"provinceName":@"湖南省",@"cityCode":@"430100",@"cityName":@"长沙市",@"streetDetail":@"开福寺路71号"};
         }
             break;
         case 102:
@@ -483,7 +504,7 @@
         {
              NSArray *dataSource = @[@"一级律师(高级律师)", @"二级律师(副高级律师)", @"三级律师(中级律师)", @"四级律师(初级律师)"];
             [BRStringPickerView showStringPickerWithTitle:@"选择律师等级" dataSource:dataSource defaultSelValue:textField.text isAutoSelect:YES themeColor:nil resultBlock:^(id selectValue) {
-                textField.text = self.infoModel.educationStr = selectValue;
+                textField.text = selectValue;
                 self.authLogic.level=textField.text;
             } cancelBlock:^{
                 NSLog(@"点击了背景视图或取消按钮");
@@ -497,7 +518,7 @@
             // NSArray *dataSource = [weakSelf getAddressDataSource];  //从外部传入地区数据源
             NSArray *dataSource = nil; // dataSource 为空时，就默认使用框架内部提供的数据源（即 BRCity.plist）
             [BRAddressPickerView showAddressPickerWithShowType:BRAddressPickerModeArea dataSource:dataSource defaultSelected:defaultSelArr isAutoSelect:YES themeColor:nil resultBlock:^(BRProvinceModel *province, BRCityModel *city, BRAreaModel *area) {
-                textField.text = self.infoModel.addressStr = [NSString stringWithFormat:@"%@ %@ %@", province.name, city.name, area.name];
+                textField.text =  [NSString stringWithFormat:@"%@ %@ %@", province.name, city.name, area.name];
                 NSLog(@"省[%@]：%@，%@", @(province.index), province.code, province.name);
                 NSLog(@"市[%@]：%@，%@", @(city.index), city.code, city.name);
                 NSLog(@"区[%@]：%@，%@", @(area.index), area.code, area.name);
@@ -509,10 +530,10 @@
             break;
         case 6:
         {
-            // NSArray *dataSource = @[@"大专以下", @"大专", @"本科", @"硕士", @"博士", @"博士后"];
+           
             NSString *dataSource = @"testData1.plist"; // 可以将数据源（上面的数组）放到plist文件中
             [BRStringPickerView showStringPickerWithTitle:@"学历" dataSource:dataSource defaultSelValue:textField.text isAutoSelect:YES themeColor:nil resultBlock:^(id selectValue) {
-                textField.text = self.infoModel.educationStr = selectValue;
+                textField.text = selectValue;
             } cancelBlock:^{
                 NSLog(@"点击了背景视图或取消按钮");
             }];
@@ -592,7 +613,58 @@
 }
 
 #pragma mark ————— Setting —————
-
+- (void)bulidLawyerModel{
+    if (_lawyerModel.level) {
+        if ([_lawyerModel.level isEqualToString:@"FIRST"]) {
+            _lawyerModel.level=@"一级律师(高级律师)";
+        }
+        else if ([_lawyerModel.level isEqualToString:@"SECOND"]){
+            _lawyerModel.level=@"二级律师(副高级律师)";
+        }
+        else if ([_lawyerModel.level isEqualToString:@"THIRD"]){
+            _lawyerModel.level=@"三级律师(中级律师)";
+        }
+        else if ([_lawyerModel.level isEqualToString:@"FOURTH"]){
+            _lawyerModel.level=@"四级律师(初级律师)";
+        }
+    }
+    if (_lawyerModel.gender) {
+        if ([_lawyerModel.gender isEqualToString:@"MALE"]) {
+            _lawyerModel.gender=@"男";
+        }
+        else{
+            _lawyerModel.gender=@"女";
+        }
+    }
+    if (_lawyerModel.categories) {
+         self.LawyerCategories=[[NSMutableArray alloc]init];
+        for (int i=0; i<_lawyerModel.categories.count; i++) {
+            if ([_lawyerModel.categories[i] isEqualToString:@"PROPERTY_DISPUTES"]) {
+                [self.LawyerCategories addObject:@"财产纠纷"];
+            }
+            else if ([_lawyerModel.categories[i] isEqualToString:@"MARRIAGE_FAMILY"]){
+                [self.LawyerCategories addObject:@"婚姻家庭"];
+            }
+            else if ([_lawyerModel.categories[i] isEqualToString:@"TRAFFIC_ACCIDENT"]){
+                 [self.LawyerCategories addObject:@"交通事故"];
+            }
+            else if ([_lawyerModel.categories[i] isEqualToString:@"WORK_COMPENSATION"]){
+                 [self.LawyerCategories addObject:@"工伤赔偿"];
+            }
+            else if ([_lawyerModel.categories[i] isEqualToString:@"CONTRACT_DISPUTE"]){
+                 [self.LawyerCategories addObject:@"合同纠纷"];
+            }
+            else if ([_lawyerModel.categories[i] isEqualToString:@"CRIMINAL_DEFENSE"]){
+                 [self.LawyerCategories addObject:@"刑事辩护"];
+            }
+            else if ([_lawyerModel.categories[i] isEqualToString:@"HOUSING_DISPUTES"]){
+                 [self.LawyerCategories addObject:@"房产纠纷"];
+            }
+            else if ([_lawyerModel.categories[i] isEqualToString:@"LABOR_EMPLOYMENT"]){
+                 [self.LawyerCategories addObject:@"劳动就业"];
+            }}
+    }
+}
 
 #pragma mark ————— 设置tableview数据 —————
 - (void)setData {
@@ -602,6 +674,7 @@
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"真实姓名" icon:nil];
             item.details = @"请填入真实姓名";
+            item.Textdetails=self.lawyerModel.name;
             item.didSelectBlock = ^{
                 
                 
@@ -613,6 +686,7 @@
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"性别" icon:nil];
             item.details = @"性别";
+            item.Textdetails=self.lawyerModel.gender;
             [group.items addObject:item];
             
         }
@@ -636,18 +710,22 @@
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"执业机构" icon:nil];
             item.details=@"请输入职业机构";
+            item.Textdetails=self.lawyerModel.lawOffice;
             [group.items addObject:item];
             
         }
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"律师会所" icon:nil];
             item.details=@"请填写";
+            item.Textdetails=self.lawyerModel.lawOfficeAddress[@"streetDetail"];
             [group.items addObject:item];
             
         }
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"专业领域" icon:nil];
             item.details = @"请选择";
+             NSString*category=[self.LawyerCategories componentsJoinedByString:@"、"];
+            item.Textdetails=category;
             item.isForbidSelect = YES; //禁止点击
             [group.items addObject:item];
             
@@ -655,6 +733,7 @@
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"律师等级" icon:nil];
             item.details = @"请选择";
+            item.Textdetails=self.lawyerModel.level;
             item.isForbidSelect = YES; //禁止点击
             [group.items addObject:item];
             
