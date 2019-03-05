@@ -105,7 +105,7 @@
     }
 }
 
-- (void)getCertificationData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+- (void)postCertificationData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     [self initParmeters];
     NSDictionary*parmeters=@{
                              @"name":self.name,
@@ -146,6 +146,29 @@
         }
     }];
 }
+
+
+
+- (void)getCertificationData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+ NSString*url=NSStringFormat(@"%@%@",ConsultationHostUrl,URL_Lawyer_certification);
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==201) {
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (error) {
+            failedCallback(error);
+        }
+    }];
+}
+
 
 
 -(void)saveUserInfo{

@@ -325,7 +325,7 @@
 }
 
 -(void)postLawyerCertification{
-    [self.authLogic getCertificationData:^(id data) {
+    [self.authLogic postCertificationData:^(id data) {
         [PSTipsView showTips:@"提交律师认证成功!"];
     } failed:^(NSError *error) {
         [PSTipsView showTips:@"提交律师认证失败!"];
