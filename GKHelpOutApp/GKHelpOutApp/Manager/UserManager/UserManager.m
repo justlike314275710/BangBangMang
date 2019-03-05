@@ -209,9 +209,10 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
                     @strongify(self)
                     [self saveUserOuathInfo];
                     self.curUserInfo = [[UserInfo alloc] init];
-                    self.curUserInfo.username = [params valueForKey:@"username"];
+                    self.curUserInfo.username = [params valueForKey:@"name"];
+                    [self saveUserInfo];
                     //获取云信账号信息
-                     [self autoLoginToServer:nil];
+                    [self autoLoginToServer:nil];
                 }];
             }
         }
@@ -276,8 +277,10 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
         
         if (ValidDict(responseObject)) {
             UserInfo *userInfo = [UserInfo modelWithDictionary:responseObject];
-            userInfo.username = self.curUserInfo.username;
-            self.curUserInfo = userInfo;
+            if ([self loadUserInfo]) {
+                userInfo.username = self.curUserInfo.username;
+                self.curUserInfo = userInfo;
+            }
             NSLog(@"%@",self.curUserInfo);
             //登录成功储存用户信息
             [self saveUserInfo];

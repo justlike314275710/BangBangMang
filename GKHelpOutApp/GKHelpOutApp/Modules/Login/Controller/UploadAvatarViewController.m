@@ -92,7 +92,7 @@
 -(void)openAlbum{
     
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-    controller.navigationBar.tintColor = [UIColor whiteColor];
+    controller.navigationBar.tintColor = [UIColor grayColor];
     controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
     [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
@@ -109,6 +109,7 @@
 -(void)openCamera{
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+    controller.navigationBar.tintColor = [UIColor grayColor];
     NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
     [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
     controller.mediaTypes = mediaTypes;
@@ -182,7 +183,8 @@
 
 #pragma mark - 修改用户昵称
 - (void)modifyAccountNickname {
-    
+    UserInfo *user = help_userManager.curUserInfo;
+    NSLog(@"%@",user);
     NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_modify_nickname];
     NSDictionary*parmeters=@{
                              @"phoneNumber":help_userManager.curUserInfo.username,
@@ -192,21 +194,23 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSString*token=[NSString stringWithFormat:@"Bearer %@",help_userManager.oathInfo.access_token];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager PUT:url parameters:parmeters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==201||responses.statusCode==200) {
+            [PSTipsView showTips:@"修改成功"];
+        }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //        [[PSLoadingView sharedInstance]dismiss];
         NSLog(@"%@",error);
         NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-        id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSString*code=body[@"code"];
-        
+        if (ValidData(data)) {
+            id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSString*code=body[@"code"];
+        }
     }];
 }
 
@@ -257,7 +261,6 @@
         @weakify(self)
         [_compleBtn addTapBlock:^(UIButton *btn) {
             @strongify(self)
-//            [self dismissViewControllerAnimated:YES completion:nil];
             [self modifyAccountNickname];
         }];
     }
