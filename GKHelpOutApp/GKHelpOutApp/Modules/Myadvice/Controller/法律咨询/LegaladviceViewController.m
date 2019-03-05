@@ -31,7 +31,7 @@
    [self renderContents];
     // Do any additional setup after loading the view.
     self.title = @"法律咨询";
-   // [self setupUI];
+//    [self setupUI];
 }
 
 - (void)loadMore {

@@ -75,7 +75,6 @@
 -(void)headViewClick {
     [PSAuthorizationTool checkAndRedirectCameraAuthorizationWithBlock:^(BOOL result) {
         if (result) {
-            
             LLActionSheetView *alert = [[LLActionSheetView alloc]initWithTitleArray:@[@"拍照",@"从相册中选取"] andShowCancel:YES];
             alert.ClickIndex = ^(NSInteger index) {
                 if (index == 1){
@@ -167,16 +166,15 @@
                 id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
 //                self.consultaionId=result[@"id"];
                 self.headImgView.image = image;
+                help_userManager.avatarImage = image;
+                 [PSTipsView showTips:@"头像修改成功"];
             } else {
-                
-                [PSTipsView showTips:@"昵称修改成功"];
+                [PSTipsView showTips:@"头像修改失败"];
             }
         }
         else{
-            
-            [PSTipsView showTips:@"昵称修改失败"];
+             [PSTipsView showTips:@"头像修改失败"];
         }
-        
     }];
 
 }
@@ -199,10 +197,12 @@
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager PUT:url parameters:parmeters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
-        if (responses.statusCode==201||responses.statusCode==200) {
-            [PSTipsView showTips:@"修改成功"];
+        if (responses.statusCode==204) {
+            [PSTipsView showTips:@"昵称修改成功"];
+            [self dismissViewControllerAnimated:YES completion:nil];
+             help_userManager.curUserInfo.nickname = self.nickField.text;
+             [help_userManager saveUserInfo];
         }
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //        [[PSLoadingView sharedInstance]dismiss];
         NSLog(@"%@",error);
@@ -210,6 +210,7 @@
         if (ValidData(data)) {
             id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSString*code=body[@"code"];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
 }
@@ -252,7 +253,6 @@
 }
 
 - (UIButton *)compleBtn {
-    
     if (!_compleBtn) {
         _compleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_compleBtn setTitle:@"完成" forState:UIControlStateNormal];
@@ -277,12 +277,5 @@
     }
     return _nickField;
 }
-
-
-
-
-
-
-
 
 @end
