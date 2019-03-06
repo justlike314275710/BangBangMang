@@ -32,7 +32,11 @@
     [super viewDidLoad];
     self.title = @"账户余额";
      _Logic = [[HMAccontBalaceLogic alloc] init];
-    
+    //绑定支付宝结果回调
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(gobingAlipy:)
+                                                 name:KNotificationBingAliPay
+                                               object:nil];
     [self setupUI];
     [self setupData];
 }
@@ -100,7 +104,7 @@
             LLActionSheetView *alert = [[LLActionSheetView alloc]initWithTitleArray:@[@"解绑"] andShowCancel:YES];
             alert.ClickIndex = ^(NSInteger index) {
                 if (index == 1){
-//                    [weakSelf openAlbum];
+                    [self unbingAlipy];
                 }else if (index == 2){
 //                    [weakSelf openCamera];
                 }
@@ -122,7 +126,34 @@
             break;
     }
 }
+#pragma mark - 获取绑定人信息
+
+#pragma mark - 解绑支付宝
+-(void)unbingAlipy {
+    [[PSLoadingView sharedInstance] show];
+    [_Logic postUnBingLawyerAlipayData:^(id data) {
+        
+        [[PSLoadingView sharedInstance] dismiss];
+    } failed:^(NSError *error) {
+        [[PSLoadingView sharedInstance] dismiss];
+    }];
+}
 #pragma mark - 绑定支付宝
+-(void)gobingAlipy:(NSNotification *)notification{
+    NSString *result = notification.object;
+    if (ValidStr(result)) {
+        if (result.length<=0)  return;
+         [[PSLoadingView sharedInstance] show];
+        [_Logic postBingLawyerAlipayData:result completed:^(id data) {
+            [[PSLoadingView sharedInstance] dismiss];
+            [PSTipsView showTips:@"支付宝绑定成功"];
+        } failed:^(NSError *error) {
+            [[PSLoadingView sharedInstance] dismiss];
+            [PSTipsView showTips:@"支付宝绑定失败"];
+            
+        }];
+    }
+}
 //认证授权
 -(void)bingAlipy{
     [[PSLoadingView sharedInstance] show];
@@ -131,7 +162,20 @@
             [[PSLoadingView sharedInstance] dismiss];
             NSString *sign = data[@"sign"];
             [[AlipaySDK defaultService] auth_V2WithInfo:sign fromScheme:AppScheme callback:^(NSDictionary *resultDic) {
-                
+                NSLog(@"result = %@",resultDic);
+                // 解析 auth code
+                NSString *result = resultDic[@"result"];
+                NSString *authCode = nil;
+                if (result.length>0) {
+                    NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+                    for (NSString *subResult in resultArr) {
+                        if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+                            authCode = [subResult substringFromIndex:10];
+                            break;
+                        }
+                    }
+                }
+                NSLog(@"授权结果 authCode = %@", authCode?:@"");
             }];
         }
     } failed:^(NSError *error) {

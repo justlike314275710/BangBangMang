@@ -190,6 +190,27 @@
                 break;
         }
     }];
+    
+    // 授权跳转支付宝钱包进行支付，处理支付结果
+    [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+        NSLog(@"result = %@",resultDic);
+        // 解析 auth code
+        NSString *result = resultDic[@"result"];
+        NSString *authCode = nil;
+        if (result.length>0) {
+            NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+            for (NSString *subResult in resultArr) {
+                if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+                    authCode = [subResult substringFromIndex:10];
+                    if (ValidStr(authCode)) {
+                        KPostNotification(KNotificationBingAliPay,authCode);
+                    }
+                    break;
+                }
+            }
+        }
+        NSLog(@"授权结果 authCode = %@", authCode?:@"");
+    }];
 }
 
 #pragma mark - WXApiDelegate

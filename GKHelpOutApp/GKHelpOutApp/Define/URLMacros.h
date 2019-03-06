@@ -115,6 +115,10 @@
 #pragma mark - ——————— 律师相关 ————————
 #define URL_Lawyer_certification @"/lawyer/certification"
 #define URL_Lawyer_profiles @"/lawyer/profiles"
+//获取支付宝签名sign
 #define URL_Lawyer_aliPayAuthSign @"/lawyer/alipay/auth/sign"
-
+//绑定支付宝
+#define URL_Lawyer_aliPayBind @"/lawyer/alipay/bind"
+//解绑支付宝
+#define URL_Lawyer_aliPayUnBind   @"/lawyer/alipay/unbind"
 #endif /* URLMacros_h */
