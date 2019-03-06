@@ -53,6 +53,8 @@
         
         //加载用户token
         [help_userManager loadUserOuathInfo];
+        //加载律师用户资料
+        [help_userManager loadLawUserInfo];
         
         //如果有本地数据，先展示TabBar 随后异步自动登录
         self.mainTabBar = [MainTabBarController new];
@@ -135,7 +137,7 @@
 - (void)netWorkStateChange:(NSNotification *)notification
 {
     BOOL isNetWork = [notification.object boolValue];
-    
+    /*
     if (isNetWork) {//有网络
         if ([help_userManager loadUserInfo] && !isLogin) {//有用户数据 并且 未登录成功 重新来一次自动登录
             [help_userManager autoLoginToServer:^(BOOL success, NSString *des) {
@@ -152,6 +154,7 @@
     }else {//登陆失败加载登陆页面控制器
         [MBProgressHUD showTopTipMessage:@"网络状态不佳" isWindow:YES];
     }
+     */
 }
 
 

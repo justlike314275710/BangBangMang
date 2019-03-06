@@ -9,6 +9,7 @@
 #import "ModifyoldPhoneNumberViewController.h"
 #import "ModifyNewPhoneNumberViewController.h"
 #import "LoginLogic.h"
+#import "ReactiveObjC.h"
 
 @interface ModifyoldPhoneNumberViewController ()
 @property(nonatomic,strong)  UIScrollView *scrollview;
@@ -43,8 +44,8 @@
     
     [self.scrollview addSubview:self.msglab];
     _msglab.frame = CGRectMake(16,16,KScreenWidth-32,45);
-    _msglab.text = @"＊更换手机号，下次登录可使用新手机号登录。当前手机号:17688713788";
-
+    _msglab.text = NSStringFormat(@"＊更换手机号，下次登录可使用新手机号登录。当前手机号:%@",help_userManager.curUserInfo.username);
+    
     UIView *line0 = [[UIView alloc] initWithFrame:CGRectMake(0,_msglab.bottom+5, self.scrollview.width, 1)];
     line0.backgroundColor = CLineColor;
     [self.scrollview addSubview:line0];
@@ -79,13 +80,24 @@
     self.codeField.frame = CGRectMake(k_codeLabel.right,k_codeLabel.y,self.scrollview.width-k_codeLabel.right-_getCodeBtn.width, 21);
     [BgView addSubview: self.codeField];
     
+    [self.codeField.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+        if (x.length>0) {
+            self.nextStep.enabled = YES;
+            [self.nextStep setBackgroundImage:IMAGE_NAMED(@"提交按钮底框") forState:UIControlStateNormal];
+        } else {
+            self.nextStep.enabled = NO;
+            [self.nextStep setBackgroundImage:IMAGE_NAMED(@"n提交按钮底框") forState:UIControlStateNormal];
+        }
+    }];
+    
     UIView *v_line = [[UIView alloc] initWithFrame:CGRectMake(self.codeField.right-10, k_codeLabel.y+3, 1,15)];
     v_line.backgroundColor = CFontColor3;
     [BgView addSubview:v_line];
     
     @weakify(self)
     [_getCodeBtn addTapBlock:^(UIButton *btn) {
-        [weak_self codeClicks];
+        @strongify(self);
+        [self codeClicks];
     }];
     
     UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(0,BgView.bottom, self.scrollview.width, 1)];
@@ -96,8 +108,7 @@
     _nextStep.frame = CGRectMake(15,186,self.scrollview.width-30,KNormalBBtnHeight);
     [_nextStep addTapBlock:^(UIButton *btn) {
         ModifyNewPhoneNumberViewController *ModfiyNewVC = [[ModifyNewPhoneNumberViewController alloc] init];
-        [self.navigationController pushViewController:ModfiyNewVC animated:YES];
-//        [weak_self UserAccoutLogin];
+        [self_weak_ UserAccoutLogin];
     }];
     
 }
@@ -145,6 +156,7 @@
                 id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                 NSString*code=body[@"error"];
                 NSString*error_description = body[@"error_description"];
+        
             }
         }
         else {
@@ -225,6 +237,8 @@
         _phoneField = [[UITextField alloc] init];
         _phoneField.placeholder = @"请输入旧的手机号码";
         _phoneField.textAlignment = NSTextAlignmentLeft;
+        _phoneField.keyboardType = UIKeyboardTypeNumberPad;
+        _phoneField.text = help_userManager.curUserInfo.username;
         _phoneField.textColor = CFontColor2;
         _phoneField.font = FFont1;
     }
@@ -236,6 +250,7 @@
         _codeField.placeholder = @"请输入验证码";
         _codeField.textAlignment = NSTextAlignmentLeft;
         _codeField.textColor = CFontColor2;
+        _codeField.keyboardType = UIKeyboardTypeNumberPad;
         _codeField.font = FFont1;
     }
     return _codeField;
@@ -253,6 +268,7 @@
     if (!_nextStep) {
         _nextStep = [UIButton buttonWithType:UIButtonTypeCustom];
         [_nextStep setTitle:@"下一步" forState:UIControlStateNormal];
+        _nextStep.enabled = NO;
         [_nextStep setTitleColor:CFontColor_BtnTitle forState:UIControlStateNormal];
         [_nextStep setBackgroundImage:IMAGE_NAMED(@"n提交按钮底框") forState:UIControlStateNormal];
     }

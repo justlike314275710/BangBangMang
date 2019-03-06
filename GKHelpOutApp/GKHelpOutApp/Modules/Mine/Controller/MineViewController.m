@@ -38,6 +38,12 @@
     self.isHidenNaviBar = NO;
     self.isShowLiftBack = NO;//每个根视图需要设置该属性为NO，否则会出现导航栏异常
     [self createUI];
+    [self initData];
+    //个人中心资料变化
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(initData)
+                                                 name:KNotificationMineDataChange
+                                               object:nil];
     
 }
 
@@ -94,42 +100,37 @@
 
 
 #pragma mark ————— 创建页面 —————
--(void)createUI{
+-(void)initData{
     
-    self.tableView.height = KScreenHeight - kTopHeight-kTabBarHeight;
-    self.tableView.mj_header.hidden = YES;
-    self.tableView.mj_footer.hidden = YES;
-    [self.tableView registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-
-    _headerView = [[MineHeaderView alloc] initWithFrame:CGRectMake(0, -KHeaderHeight, KScreenWidth, KHeaderHeight)];
-    _headerView.delegate = self;
-    self.tableView.contentInset = UIEdgeInsetsMake(_headerView.height, 0, 0, 0);
-    [self.tableView addSubview:_headerView];
-    
-    
-    [self.view addSubview:self.tableView];
-    
-    [self createNav];
-    
+    if (help_userManager.avatarImage) {
+        _headerView.headImgView.image = help_userManager.avatarImage;
+    } else {
+        [_headerView.headImgView sd_setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] placeholderImage:[UIImage imageWithColor:KGrayColor]];
+    }
+    _headerView.nickNameLab.text = help_userManager.curUserInfo.nickname;
+    _headerView.phoneNuberLab.text = help_userManager.curUserInfo.username;
+  
     NSDictionary *Modifydata = @{@"titleText":@"修改资料",@"clickSelector":@"",@"title_icon":@"修改资料icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     
-    NSDictionary *myMission = @{@"titleText":@"账户余额",@"clickSelector":@"",@"title_icon":@"账户余额icon",@"detailText":@"666¥",@"arrow_icon":@"arrow_icon"};
-    
+    NSString *accont = help_userManager.lawUserInfo.rewardAmount?help_userManager.lawUserInfo.rewardAmount:@"";
+    if (accont.length>0) {
+        accont = NSStringFormat(@"%@¥",accont);
+    } else {
+        accont = @"0.00";
+    }
+    NSDictionary *myMission = @{@"titleText":@"账户余额",@"clickSelector":@"",@"title_icon":@"账户余额icon",@"detailText":accont,@"arrow_icon":@"arrow_icon"};
     NSDictionary *myFriends = @{@"titleText":@"账单",@"clickSelector":@"",@"title_icon":@"账单icon",@"arrow_icon":@"arrow_icon"};
     NSDictionary *myLevel = @{@"titleText":@"专家入驻",@"clickSelector":@"",@"title_icon":@"专家入驻icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     NSDictionary *myAdvice = @{@"titleText":@"意见反馈",@"clickSelector":@"",@"title_icon":@"意见反馈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     NSDictionary *mySet = @{@"titleText":@"设置",@"clickSelector":@"",@"title_icon":@"设置icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
-
     
- 
     NSMutableArray *section1 = [NSMutableArray array];
     [section1 addObject:Modifydata];
     NSMutableArray *section2 = [NSMutableArray array];
-    
-    [section2 addObject:myMission];
+    //认证律师才有账户余额
+    if (help_userManager.userStatus == CERTIFIED) {
+        [section2 addObject:myMission];
+    }
     [section2 addObject:myFriends];
     NSMutableArray *section3 = [NSMutableArray array];
     [section3 addObject:myLevel];
@@ -139,6 +140,24 @@
     
     _dataSource = @[section1,section2,section3,section4];
     [self.tableView reloadData];
+}
+
+-(void)createUI{
+    
+    self.tableView.height = KScreenHeight - kTopHeight-kTabBarHeight;
+    self.tableView.mj_header.hidden = YES;
+    self.tableView.mj_footer.hidden = YES;
+    [self.tableView registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    _headerView = [[MineHeaderView alloc] initWithFrame:CGRectMake(0, -KHeaderHeight, KScreenWidth, KHeaderHeight)];
+    _headerView.delegate = self;
+    self.tableView.contentInset = UIEdgeInsetsMake(_headerView.height, 0, 0, 0);
+    [self.tableView addSubview:_headerView];
+    [self.view addSubview:self.tableView];
+    
+    [self createNav];
 }
 #pragma mark ————— 创建自定义导航栏 —————
 -(void)createNav{
@@ -209,11 +228,16 @@
             break;
         case 1:
         {
-            if (indexPath.row==0) {
-                 NSLog(@"点击了 账户余额");
-                [self accountBalance];
+            //认证律师
+            if (help_userManager.userStatus==CERTIFIED) {
+                if (indexPath.row==0) {
+                     NSLog(@"点击了 账户余额");
+                    [self accountBalance];
+                } else {
+                     NSLog(@"点击了 账单");
+                    [self accountbill];
+                }
             } else {
-                 NSLog(@"点击了 账单");
                 [self accountbill];
             }
         }

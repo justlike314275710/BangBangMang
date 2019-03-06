@@ -12,8 +12,6 @@
 @interface MineHeaderView()
 
 @property(nonatomic, strong) UIImageView *bgImgView; //背景图
-@property(nonatomic, strong) UILabel *nickNameLab;   //展示昵称
-@property(nonatomic, strong) UILabel *phoneNuberLab; //展示的电话号码
 @property(nonatomic, strong) UIImageView *cerImg; //认证视图
 @property(nonatomic, strong) UIImageView *cerIconImg;
 @property(nonatomic, strong) UILabel *cerLab;
@@ -30,9 +28,13 @@
     [self.bgImgView setImage:bgImg];
     [self nickNameLab];
     [self phoneNuberLab];
-    [self cerImg];
-    [self cerIconImg];
-    [self cerLab];
+    //已认证
+    if (help_userManager.userStatus == CERTIFIED) {
+        [self cerImg];
+        [self cerIconImg];
+        [self cerLab];
+    }
+
 
 //未登录状态展示
     if (userInfo) {

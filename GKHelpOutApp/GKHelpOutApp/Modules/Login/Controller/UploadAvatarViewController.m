@@ -10,7 +10,8 @@
 #import "UIImage+WLCompress.h"
 #import "LLActionSheetView.h"
 #import "ReactiveObjC.h"
-@interface UploadAvatarViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate>
+
+@interface UploadAvatarViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate>
 @property(nonatomic, strong) YYAnimatedImageView *headImgView; //头像
 @property(nonatomic, strong) UITextField *nickField;  //昵称
 @property(nonatomic, strong) UIButton *compleBtn; //完成
@@ -137,7 +138,6 @@
 #pragma mark - UploadImage
 #define boundary @"6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm"
 - (void)uploadImage:(UIImage *)image {
-    
     //1 创建请求
     //NSString*urlSting=[NSString stringWithFormat:@"%@/files?type=PUBLIC",EmallHostUrl];
     NSString*urlSting=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_upload_avatar];
@@ -175,12 +175,14 @@
              [PSTipsView showTips:@"头像修改失败"];
         }
     }];
-
 }
 
 #pragma mark - 修改用户昵称
 - (void)modifyAccountNickname {
-    
+    if (help_userManager.avatarImage==nil&&help_userManager.curUserInfo.avatar.length<=0) {
+       [PSTipsView showTips:@"请先设置头像！"];
+        return;
+    }
     if (self.nickField.text.length==0) {
         [PSTipsView showTips:@"请输入昵称！"];
         return;
