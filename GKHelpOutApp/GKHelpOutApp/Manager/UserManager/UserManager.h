@@ -55,7 +55,7 @@ SINGLETON_FOR_HEADER(UserManager)
 
 
 
-
+-(void)JudgeIdentity;
 /**
  三方登录
 

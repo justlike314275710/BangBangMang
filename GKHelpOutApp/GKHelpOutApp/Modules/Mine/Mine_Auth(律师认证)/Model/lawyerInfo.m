@@ -10,4 +10,7 @@
 
 @implementation lawyerInfo
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return@{@"lawDescription":@"description"};
+}
 @end

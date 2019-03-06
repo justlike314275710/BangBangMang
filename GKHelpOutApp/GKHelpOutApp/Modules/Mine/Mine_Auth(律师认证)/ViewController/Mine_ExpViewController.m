@@ -84,18 +84,19 @@
 
 
 -(void)judgeLoginStatus{
+    [[UserManager sharedUserManager]JudgeIdentity];
     switch (help_userManager.userStatus) {
         case PENDING_CERTIFIED:
             [self push_statusViewController];
             break;
         case PENDING_APPROVAL:
-            [self push_MineAuthViewController];
+            [self push_statusViewController];
             break;
         case APPROVAL_FAILURE:
-             [self push_MineAuthViewController];
+            [self push_statusViewController];
             break;
         case CERTIFIED:
-             [self push_MineAuthViewController];
+            [self push_MineAuthViewController];
             break;
         default:
             break;

@@ -134,6 +134,7 @@
 #pragma mark ————— 网络状态变化 —————
 - (void)netWorkStateChange:(NSNotification *)notification
 {
+    /*
     BOOL isNetWork = [notification.object boolValue];
     
     if (isNetWork) {//有网络
@@ -152,6 +153,7 @@
     }else {//登陆失败加载登陆页面控制器
         [MBProgressHUD showTopTipMessage:@"网络状态不佳" isWindow:YES];
     }
+     */
 }
 
 

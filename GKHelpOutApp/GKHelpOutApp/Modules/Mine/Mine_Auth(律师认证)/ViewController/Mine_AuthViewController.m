@@ -5,7 +5,7 @@
 //  Created by 徐阳 on 2017/5/18.
 //  Copyright © 2017年 徐阳. All rights reserved.
 //
-
+#import "fileModel.h"
 #import "Mine_AuthViewController.h"
 #import "MineTableViewCell.h"
 #import "MineHeaderView.h"
@@ -48,6 +48,8 @@
 
 @property (nonatomic , strong) lawyerInfo *lawyerModel;
 @property (nonatomic , strong) NSMutableArray *LawyerCategories;//提交后的类型数组
+@property (nonatomic , strong) UIView *headView;
+@property (nonatomic , strong) UILabel*headLable;
 @end
 
 @implementation Mine_AuthViewController
@@ -62,6 +64,7 @@
     self.authLogic=[Mine_AuthLogic new];
    // [self createUI];
     [self loadLawyerInfo];
+    [self SDWebImageAuth];
     
 }
 
@@ -87,7 +90,7 @@
         [self createUI];
     }
     else{
-        
+        [self createUI];
     }
  
 }
@@ -107,20 +110,24 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
-    NSLog(@"%ld",(long)help_userManager.userStatus);
-    UILabel *headView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
-    headView.backgroundColor = [UIColor colorWithRed:255/255.0 green:246/255.0 blue:233/255.0 alpha:1.0];
-    headView.text = @"未认证，请填写资料申请认证.\n此认证信息仅用于平台审核，我们将对你填写对内容严格保密";
-    headView.textColor=[UIColor colorWithRed:182/255.0 green:114/255.0 blue:52/255.0 alpha:1.0];
-    headView.numberOfLines=0;
-    headView.font = [UIFont boldSystemFontOfSize:11.0f];
-    headView.textAlignment = NSTextAlignmentCenter;
-    self.tableView.tableHeaderView = headView;
-    [self.view addSubview:self.tableView];
+    switch (help_userManager.userStatus) {
+        case PENDING_CERTIFIED:
+            self.tableView.tableHeaderView =self.headLable ;
+            break;
+        case CERTIFIED:
+            self.tableView.tableHeaderView =self.headView;
+            break;
+        default:
+            break;
+    }
     
+    
+    
+      [self.view addSubview:self.tableView];
    [self setData];
    [self.tableView reloadData];
 }
+
 
 
 #pragma mark ————— tableview 代理 ————
@@ -177,11 +184,12 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"PersonTableViewCell"];
             PersonTableViewCell*personCell=(PersonTableViewCell*)cell;
             personCell.personText.delegate=self;
+            if (item.Textdetails) {
+                personCell.personText.text=item.Textdetails;
+            }
         }
             break;
-            
         case  DSSettingItemTypeDetial:{
-            
             cell=[tableView dequeueReusableCellWithIdentifier:@"authBaseTableViewCell"];
             authBaseTableViewCell*baseCell=(authBaseTableViewCell*)cell;
             baseCell.titleLbl.text=item.title;
@@ -207,14 +215,11 @@
                 if (indexPath.row==0) {
                     baseCell.arrowIcon.hidden=YES;
                 }
-//                else if (indexPath.row==1){
-//                    baseCell.arrowIcon.hidden=YES;
-//                }
                 else if (indexPath.row==4){
                      baseCell.arrowIcon.hidden=YES;
                 }
                 else{
-                    //baseCell.detaileLbl.enabled=NO;
+
                 }
             }
           
@@ -226,11 +231,15 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"CertificateTableViewCell"];
             self.cerCell=(CertificateTableViewCell*)cell;
             self.cerCell.titleLable.text=item.title;
-      
+    
             [self.cerCell.cameraButton bk_whenTapped:^{
                   self.Btntager=defultTager+1;
                   [self ImagePickerClick];
             }];
+            
+            fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.certificatePictures[0]];
+            NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,filemodel.fileId);
+            [self.cerCell.cameraButton sd_setImageWithURL:[NSURL URLWithString:url] forState:0];
         }
             break;
             
@@ -239,11 +248,13 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"AssessmentTableViewCell"];
             self.assessCell=(AssessmentTableViewCell*)cell;
             self. assessCell.titleLable.text=item.title;
-            
             [self.assessCell.cameraButton bk_whenTapped:^{
                 self.Btntager=defultTager+2;
                 [self ImagePickerClick];
             }];
+            fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.assessmentPictures[0]];
+            NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,filemodel.fileId);
+            [self.assessCell.cameraButton sd_setImageWithURL:[NSURL URLWithString:url] forState:0];
         }
             break;
             
@@ -254,10 +265,18 @@
                 self.Btntager=defultTager+3;
                 [self ImagePickerClick];
             }];
+//            fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.identificationPictures[0]];
+//            NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,filemodel.fileId);
+//            [self.idCardCell.frontCardButton sd_setImageWithURL:[NSURL URLWithString:url] forState:0];
+            
             [self.idCardCell.backCardButton bk_whenTapped:^{
                 self.Btntager=defultTager+4;
                 [self ImagePickerClick];
             }];
+            
+//            fileModel*backmodel=[fileModel modelWithJSON:self.lawyerModel.identificationPictures[1]];
+//            NSString*backUrl=NSStringFormat(@"%@/files/%@",EmallHostUrl,backmodel.fileId);
+//            [self.idCardCell.backCardButton sd_setImageWithURL:[NSURL URLWithString:backUrl] forState:0];
             //assessCell.titleLable.text=item.title;
         }
             break;
@@ -475,7 +494,7 @@
                 self.authLogic.lawOfficeAddress=dictionaryValue;
                 textField.text=dictionaryValue[@"streetDetail"];
             }];
-//            self.authLogic.lawOfficeAddress=@{@"countyCode":@"86",@"countyName":@"中国",@"countryCode":@"430105",@"countryName":@"开福区",@"provinceCode":@"430000",@"provinceName":@"湖南省",@"cityCode":@"430100",@"cityName":@"长沙市",@"streetDetail":@"开福寺路71号"};
+
         }
             break;
         case 102:
@@ -487,16 +506,6 @@
                 textField.text=category;
                 self.authLogic.categories=arrayValue;
             };
-//
-//            NSArray *defaultSelArr = [textField.text componentsSeparatedByString:@" "];
-//            // NSArray *dataSource = [weakSelf getAddressDataSource];  //从外部传入地区数据源
-//            NSArray *dataSource = nil; // dataSource 为空时，就默认使用框架内部提供的数据源（即 BRCity.plist）
-//            [BRAddressPickerView showAddressPickerWithShowType:BRAddressPickerModeArea dataSource:dataSource defaultSelected:defaultSelArr isAutoSelect:YES themeColor:nil resultBlock:^(BRProvinceModel *province, BRCityModel *city, BRAreaModel *area) {
-//                textField.text = self.infoModel.addressStr = [NSString stringWithFormat:@"%@ %@ %@", province.name, city.name, area.name];
-//
-//            } cancelBlock:^{
-//                NSLog(@"点击了背景视图或取消按钮");
-//            }];
             
         }
             break;
@@ -513,10 +522,8 @@
             break;
         case 5:
         {
-            // 【转换】：以@" "自字符串为基准将字符串分离成数组，如：@"浙江省 杭州市 西湖区" ——》@[@"浙江省", @"杭州市", @"西湖区"]
             NSArray *defaultSelArr = [textField.text componentsSeparatedByString:@" "];
-            // NSArray *dataSource = [weakSelf getAddressDataSource];  //从外部传入地区数据源
-            NSArray *dataSource = nil; // dataSource 为空时，就默认使用框架内部提供的数据源（即 BRCity.plist）
+            NSArray *dataSource = nil;
             [BRAddressPickerView showAddressPickerWithShowType:BRAddressPickerModeArea dataSource:dataSource defaultSelected:defaultSelArr isAutoSelect:YES themeColor:nil resultBlock:^(BRProvinceModel *province, BRCityModel *city, BRAreaModel *area) {
                 textField.text =  [NSString stringWithFormat:@"%@ %@ %@", province.name, city.name, area.name];
                 NSLog(@"省[%@]：%@，%@", @(province.index), province.code, province.name);
@@ -539,18 +546,7 @@
             }];
         }
             break;
-        case 7:
-        {
-//            NSArray *dataSource = @[@[@"第1周", @"第2周", @"第3周", @"第4周", @"第5周", @"第6周", @"第7周"], @[@"第1天", @"第2天", @"第3天", @"第4天", @"第5天", @"第6天", @"第7天"]];
-//            // NSString *dataSource = @"testData3.plist"; // 可以将数据源（上面的数组）放到plist文件中
-//            NSArray *defaultSelArr = [textField.text componentsSeparatedByString:@"，"];
-//            [BRStringPickerView showStringPickerWithTitle:@"自定义多列字符串" dataSource:dataSource defaultSelValue:defaultSelArr isAutoSelect:YES themeColor:BR_RGB_HEX(0xff7998, 1.0f) resultBlock:^(id selectValue) {
-//                textField.text = self.infoModel.otherStr = [NSString stringWithFormat:@"%@，%@", selectValue[0], selectValue[1]];
-//            } cancelBlock:^{
-//                NSLog(@"点击了背景视图或取消按钮");
-//            }];
-        }
-            break;
+
             
         default:
             break;
@@ -559,18 +555,20 @@
 
 #pragma mark ————— 律师执业证书照片上传 —————
 - (void)uploadCerImage:(UIImage *)image {
-    [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
-         [self.cerCell.cameraButton setImage:image forState:0];
+    [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
+        [self.cerCell.cameraButton setImage:image forState:0];
+        NSLog(@"%@",tips);
         NSDictionary*CerImageDict=@{@"fileId":tips,@"thumbFileId":tips};
         NSMutableArray*array=[[NSMutableArray alloc]init];
         [array addObject:CerImageDict];
+        
         self.authLogic.certificatePictures=array;
     }];
 }
 
 #pragma mark ————— 律师年度考核备案照片上传 —————
 - (void)uploadAssImage:(UIImage *)image {
-    [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
+    [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
         NSDictionary*AssImageDict=@{@"fileId":tips,@"thumbFileId":tips};
         NSMutableArray*array=[[NSMutableArray alloc]init];
         [array addObject:AssImageDict];
@@ -581,7 +579,7 @@
 
 #pragma mark ————— 身份证照片正面上传 —————
 - (void)uploadFrontCardImage:(UIImage *)image {
-    [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
+    [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
         [self.idCardCell.frontCardButton setImage:image forState:0];
          NSDictionary*FrontCardImageDict=@{@"fileId":tips,@"thumbFileId":tips};
         NSMutableArray*array=[[NSMutableArray alloc]init];
@@ -592,7 +590,7 @@
 
 #pragma mark ————— 身份证照片反面上传 —————
 - (void)uploadBlackCardImageImage:(UIImage *)image {
-    [[UploadManager uploadManager]uploadConsultationImagesCompleted:^(BOOL successful, NSString *tips) {
+    [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
         [self.idCardCell.backCardButton setImage:image forState:0];
         NSDictionary*FrontCardImageDict=@{@"fileId":tips,@"thumbFileId":tips};
         NSMutableArray*array=[[NSMutableArray alloc]init];
@@ -613,6 +611,41 @@
 }
 
 #pragma mark ————— Setting —————
+
+- (UIView *)headView{
+    if (!_headView) {
+        
+        CGFloat width=71.0f;
+        CGFloat height=63.0f;
+        _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 125)];
+        _headView.backgroundColor = [UIColor whiteColor];
+        UIImageView*statusImage=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"已认证图"]];
+        statusImage.frame=CGRectMake((SCREEN_WIDTH-width)/2, 19, width, height);
+        [_headView addSubview:statusImage];
+        
+        UILabel*titleLable=[UILabel new];
+        titleLable.text=@"您已经通过认证";
+        titleLable.textAlignment=NSTextAlignmentCenter;
+        titleLable.frame=CGRectMake(30, statusImage.bottom+15, SCREEN_WIDTH-60, 13);
+        titleLable.font=FontOfSize(11);
+        [_headView addSubview:titleLable];
+    }
+    return _headView;
+}
+
+- (UILabel *)headLable{
+    if (!_headLable) {
+        _headLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+        _headLable.backgroundColor = [UIColor colorWithRed:255/255.0 green:246/255.0 blue:233/255.0 alpha:1.0];
+        _headLable.text = @"未认证，请填写资料申请认证.\n此认证信息仅用于平台审核，我们将对你填写对内容严格保密";
+        _headLable.textColor=[UIColor colorWithRed:182/255.0 green:114/255.0 blue:52/255.0 alpha:1.0];
+        _headLable.numberOfLines=0;
+        _headLable.font = [UIFont boldSystemFontOfSize:11.0f];
+        _headLable.textAlignment = NSTextAlignmentCenter;
+    }
+    return _headLable;
+}
+
 - (void)bulidLawyerModel{
     if (_lawyerModel.level) {
         if ([_lawyerModel.level isEqualToString:@"FIRST"]) {
@@ -693,6 +726,8 @@
         {
             
             DSSettingItem*item=[DSSettingItem itemWithtype:DSSettingItemTypeTextView cellClassName:@"PersonTableViewCell"];
+            item.Textdetails=self.lawyerModel.lawDescription;
+            NSLog(@"%@",self.lawyerModel.lawDescription);
             item.isShowAccessory=NO;
             item.rowHeight=104.0f;
             [group.items addObject:item];
@@ -741,6 +776,7 @@
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"律师年限" icon:nil];
             item.details = @"请填写职业年限";
+            item.Textdetails=[NSString stringWithFormat:@"%d年",self.lawyerModel.workExperience];
             item.isForbidSelect = YES; //禁止点击
             [group.items addObject:item];
             
@@ -779,6 +815,13 @@
     
     
     
+}
+#pragma mark ————— 设置SDWebImage认证token —————
+-(void)SDWebImageAuth{
+    [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    NSLog(@"%@",help_userManager.oathInfo.access_token);
+    [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
 }
 
 - (void)didReceiveMemoryWarning {
