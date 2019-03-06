@@ -442,6 +442,7 @@
 		EAE19E6F222E0E770080B0F5 /* dashedTextview.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E6E222E0E770080B0F5 /* dashedTextview.m */; };
 		EAE19E72222E4B430080B0F5 /* Mine_StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E71222E4B430080B0F5 /* Mine_StatusViewController.m */; };
 		EAE19E75222E78250080B0F5 /* fileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E74222E78250080B0F5 /* fileModel.m */; };
+		EAE19E78222F64DA0080B0F5 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E77222F64DA0080B0F5 /* CustomButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1319,6 +1320,8 @@
 		EAE19E71222E4B430080B0F5 /* Mine_StatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_StatusViewController.m; sourceTree = "<group>"; };
 		EAE19E73222E78250080B0F5 /* fileModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fileModel.h; sourceTree = "<group>"; };
 		EAE19E74222E78250080B0F5 /* fileModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fileModel.m; sourceTree = "<group>"; };
+		EAE19E76222F64DA0080B0F5 /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		EAE19E77222F64DA0080B0F5 /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1691,6 +1694,8 @@
 			children = (
 				5557A514221BD7F500743012 /* YYFPSLabel.h */,
 				5557A515221BD7F500743012 /* YYFPSLabel.m */,
+				EAE19E76222F64DA0080B0F5 /* CustomButton.h */,
+				EAE19E77222F64DA0080B0F5 /* CustomButton.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -3742,6 +3747,9 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp-resources.sh",
 				"${PODS_ROOT}/AlipaySDK-iOS/AlipaySDK.bundle",
 				"${PODS_ROOT}/BRPickerView/BRPickerView/AddressPickerView/BRPickerView.bundle",
+				"${PODS_ROOT}/EBBannerView/EBBannerView/Classes/EBBannerView.xib",
+				"${PODS_ROOT}/EBBannerView/EBBannerView/Classes/EBBannerViewController.xib",
+				"${PODS_ROOT}/EBBannerView/EBBannerView/Classes/EBMuteDetector.mp3",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/PYPhotoBrowser/PYPhotoBrowser/PYPhotosView.bundle",
@@ -3751,6 +3759,9 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AlipaySDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BRPickerView.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBBannerView.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBBannerViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBMuteDetector.mp3",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PYPhotosView.bundle",
@@ -4122,6 +4133,7 @@
 				EA21CA80221F9980007D3445 /* PSAdviceDetailsView.m in Sources */,
 				5557A614221BD96500743012 /* MineTableViewCell.m in Sources */,
 				5557A501221BD76300743012 /* RootNavigationController.m in Sources */,
+				EAE19E78222F64DA0080B0F5 /* CustomButton.m in Sources */,
 				EA78F6D12223D34C002D788A /* LawyerCertificationViewController.m in Sources */,
 				EA78F733222770AF002D788A /* Mine_AuthLogic.m in Sources */,
 				EA21CA4A221F9386007D3445 /* PSWechatHandler.m in Sources */,

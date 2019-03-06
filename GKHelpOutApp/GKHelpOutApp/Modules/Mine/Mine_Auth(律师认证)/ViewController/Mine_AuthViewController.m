@@ -43,6 +43,7 @@
 @property (nonatomic , strong) CertificateTableViewCell*cerCell ;
 @property (nonatomic , strong) AssessmentTableViewCell*assessCell;
 @property (nonatomic , strong) IdCardTableViewCell *idCardCell;
+@property (nonatomic , strong) LawyerAuthenticationTableViewCell*authCell;
 @property (nonatomic , assign) int Btntager;
 @property (nonatomic , strong) Mine_AuthLogic *authLogic;
 
@@ -82,16 +83,38 @@
 }
 
 - (void)loadLawyerInfo {
-    YYCache *cache = [[YYCache alloc] initWithName:KLawyerModelCache];
-    NSDictionary * lawyerInfoDic = (NSDictionary *)[cache objectForKey:KLawyerModelCache];
-    if (lawyerInfoDic) {
-        self.lawyerModel = [lawyerInfo modelWithJSON:lawyerInfoDic];
-        [self bulidLawyerModel];
+    [[PSLoadingView sharedInstance]show];
+    [self.authLogic GETCertificationData:^(id data) {
+        YYCache *cache = [[YYCache alloc] initWithName:KLawyerModelCache];
+        NSDictionary * lawyerInfoDic = (NSDictionary *)[cache objectForKey:KLawyerModelCache];
+        [[PSLoadingView sharedInstance]dismiss];
+        if (lawyerInfoDic) {
+            self.lawyerModel = [lawyerInfo modelWithJSON:lawyerInfoDic];
+            [self bulidLawyerModel];
+            [self setData];
+            [self createUI];
+        }
+        else{
+            [self setData];
+            [self createUI];
+        }
+    } failed:^(NSError *error) {
+         [[PSLoadingView sharedInstance]dismiss];
+        [self setData];
         [self createUI];
-    }
-    else{
-        [self createUI];
-    }
+        [PSTipsView showTips:@"获取律师认证详情"];
+    }];
+    
+//    YYCache *cache = [[YYCache alloc] initWithName:KLawyerModelCache];
+//    NSDictionary * lawyerInfoDic = (NSDictionary *)[cache objectForKey:KLawyerModelCache];
+//    if (lawyerInfoDic) {
+//        self.lawyerModel = [lawyerInfo modelWithJSON:lawyerInfoDic];
+//        [self bulidLawyerModel];
+//        [self createUI];
+//    }
+//    else{
+//        [self createUI];
+//    }
  
 }
 #pragma mark ————— 创建页面 —————
@@ -109,7 +132,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-
+    NSLog(@"%ld",(long)help_userManager.userStatus);
     switch (help_userManager.userStatus) {
         case PENDING_CERTIFIED:
             self.tableView.tableHeaderView =self.headLable ;
@@ -118,13 +141,11 @@
             self.tableView.tableHeaderView =self.headView;
             break;
         default:
+            self.tableView.tableHeaderView =self.headLable ;
             break;
     }
-    
-    
-    
-      [self.view addSubview:self.tableView];
-   [self setData];
+   [self.view addSubview:self.tableView];
+   //[self setData];
    [self.tableView reloadData];
 }
 
@@ -239,7 +260,7 @@
             
             fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.certificatePictures[0]];
             NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,filemodel.fileId);
-            [self.cerCell.cameraButton sd_setImageWithURL:[NSURL URLWithString:url] forState:0];
+            [self.cerCell.cameraButton sd_setImageWithURL:[NSURL URLWithString:url] forState:0 placeholderImage:[UIImage imageNamed:@"上传图片"]];
         }
             break;
             
@@ -252,9 +273,10 @@
                 self.Btntager=defultTager+2;
                 [self ImagePickerClick];
             }];
-            fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.assessmentPictures[0]];
+        fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.assessmentPictures[0]];
             NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,filemodel.fileId);
-            [self.assessCell.cameraButton sd_setImageWithURL:[NSURL URLWithString:url] forState:0];
+            NSLog(@"%@",url);
+            [self.assessCell.cameraButton sd_setImageWithURL:[NSURL URLWithString:url] forState:0 placeholderImage:[UIImage imageNamed:@"上传图片"]];
         }
             break;
             
@@ -265,18 +287,18 @@
                 self.Btntager=defultTager+3;
                 [self ImagePickerClick];
             }];
-//            fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.identificationPictures[0]];
-//            NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,filemodel.fileId);
-//            [self.idCardCell.frontCardButton sd_setImageWithURL:[NSURL URLWithString:url] forState:0];
+            fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.identificationPictures[0]];
+            NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,filemodel.fileId);
+            [self.idCardCell.frontCardButton sd_setImageWithURL:[NSURL URLWithString:url] forState:0 placeholderImage:[UIImage imageNamed:@"上传正面身份证底"]];
             
             [self.idCardCell.backCardButton bk_whenTapped:^{
                 self.Btntager=defultTager+4;
                 [self ImagePickerClick];
             }];
             
-//            fileModel*backmodel=[fileModel modelWithJSON:self.lawyerModel.identificationPictures[1]];
-//            NSString*backUrl=NSStringFormat(@"%@/files/%@",EmallHostUrl,backmodel.fileId);
-//            [self.idCardCell.backCardButton sd_setImageWithURL:[NSURL URLWithString:backUrl] forState:0];
+            fileModel*backmodel=[fileModel modelWithJSON:self.lawyerModel.identificationPictures[1]];
+            NSString*backUrl=NSStringFormat(@"%@/files/%@",EmallHostUrl,backmodel.fileId);
+            [self.idCardCell.backCardButton sd_setImageWithURL:[NSURL URLWithString:backUrl] forState:0 placeholderImage:[UIImage imageNamed:@"上传背面身份证底"]];
             //assessCell.titleLable.text=item.title;
         }
             break;
@@ -284,9 +306,9 @@
         case DSSettingItemTypeProtocol:{
             cell=
             [tableView dequeueReusableCellWithIdentifier:@"LawyerAuthenticationTableViewCell"];
-            LawyerAuthenticationTableViewCell*authCell
+            self.authCell
             =(LawyerAuthenticationTableViewCell*)cell;
-            [authCell.SubmissionButton bk_whenTapped:^{
+            [self.authCell.SubmissionButton bk_whenTapped:^{
                 [self checkLawyerBasicData];
             }];
         }
@@ -334,13 +356,128 @@
 
 #pragma mark ————— Event —————
 -(void)checkLawyerBasicData{
-    [self.authLogic checkDataWithLawyerBasicCallback:^(BOOL successful, NSString *tips) {
-        if (successful) {
-            [self postLawyerCertification];
+    NSLog(@"%@",self.lawyerModel.identificationPictures[0]);
+    if (self.authLogic.name.length == 0) {
+        if (self.lawyerModel.name.length!=0) {
+            self.authLogic.name=self.lawyerModel.name;
         } else {
-            [PSTipsView showTips:tips];
+            [PSTipsView showTips:@"请输入真实姓名"];
+            return;
         }
-    }];
+    }
+    
+    if (self.authLogic.gender.length == 0) {
+        if (self.lawyerModel.gender.length!=0) {
+            self.authLogic.gender=self.lawyerModel.gender;
+        } else {
+            [PSTipsView showTips:@"请选择性别"];
+            return;
+        }
+        
+    }
+    if (self.authLogic.lawDescription.length == 0) {
+        if (self.lawyerModel.lawDescription.length!=0) {
+            self.authLogic.lawDescription=self.lawyerModel.lawDescription;
+        } else {
+            [PSTipsView showTips:@"请输入个人简介"];
+            return;
+        }
+       
+    }
+    if (self.authLogic.lawOffice.length == 0) {
+        if (self.lawyerModel.lawOffice.length!=0) {
+            self.authLogic.lawOffice=self.lawyerModel.lawOffice;
+        } else {
+            [PSTipsView showTips:@"请输入职业机构"];
+            return;
+        }
+    }
+    NSString*streetDetail=self.authLogic.lawOfficeAddress[@"streetDetail"];
+    if (streetDetail.length==0) {
+         NSString*streetDetail=self.lawyerModel.lawOfficeAddress[@"streetDetail"];
+        if (streetDetail.length==0) {
+            [PSTipsView showTips:@"请输入职业机构"];
+            return;
+        } else {
+              self.authLogic.lawOfficeAddress=self.lawyerModel.lawOfficeAddress;
+            NSLog(@"%@",self.lawyerModel.lawOfficeAddress);
+        }
+    }
+    if (self.authLogic.categories.count==0) {
+        if (self.lawyerModel.categories.count!=0) {
+            self.authLogic.categories=self.LawyerCategories;
+        } else {
+            [PSTipsView showTips:@"请选择专业领域"];
+            return;
+        }
+       
+    }
+    if (self.authLogic.level.length==0) {
+        if (self.lawyerModel.level.length!=0) {
+            self.authLogic.level=self.lawyerModel.level;
+        } else {
+            [PSTipsView showTips:@"请选择律师等级"];
+            return;
+        }
+    }
+    if (self.authLogic.workExperience==0) {
+        if (self.lawyerModel.workExperience!=0) {
+            self.authLogic.workExperience=self.lawyerModel.workExperience;
+        } else {
+            [PSTipsView showTips:@"请选择律师年限"];
+            return;
+        }
+    }
+    if (self.authLogic.certificatePictures.count==0) {
+        if (self.lawyerModel.certificatePictures.count!=0) {
+            self.authLogic.certificatePictures=self.lawyerModel.certificatePictures;
+        } else {
+            [PSTipsView showTips:@"请上传律师职业证书照片"];
+            return;
+        }
+    }
+    if (self.authLogic.assessmentPictures.count==0) {
+        if (self.lawyerModel.assessmentPictures.count!=0) {
+            self.authLogic.assessmentPictures=self.lawyerModel.assessmentPictures;
+        } else {
+            [PSTipsView showTips:@"请上传律师年度考核备案照片"];
+            return;
+        }
+    }
+    if (self.authLogic.fontCardPictures.count==0) {
+        if (self.lawyerModel.identificationPictures.count!=0) {
+            NSDictionary*dic=[[NSDictionary alloc]init];
+            dic=self.lawyerModel.identificationPictures[0];
+            NSMutableArray*fontCardPictures=[[NSMutableArray alloc]init];
+            [fontCardPictures addObject:dic];
+            self.authLogic.fontCardPictures=fontCardPictures;
+        } else {
+            [PSTipsView showTips:@"请上传身份证正面照片"];
+            return;
+        }
+        
+    }
+    if (self.authLogic.backCardPictures.count==0) {
+        if (self.lawyerModel.identificationPictures.count!=0) {
+            NSDictionary*dic=[[NSDictionary alloc]init];
+            dic=self.lawyerModel.identificationPictures[1];
+            NSMutableArray*backCardPictures=[[NSMutableArray alloc]init];
+            [backCardPictures addObject:dic];
+            self.authLogic.backCardPictures=backCardPictures;
+        } else {
+            [PSTipsView showTips:@"请上传身份证反面照片"];
+            return;
+        }
+       
+    }
+   [self postLawyerCertification];
+//    [self.authLogic checkDataWithLawyerBasicCallback:^(BOOL successful, NSString *tips) {
+//        if (successful) {
+//            [self postLawyerCertification];
+//        } else {
+//            [PSTipsView showTips:tips];
+//        }
+//    }];
 }
 
 -(void)postLawyerCertification{
@@ -708,11 +845,6 @@
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"真实姓名" icon:nil];
             item.details = @"请填入真实姓名";
             item.Textdetails=self.lawyerModel.name;
-            item.didSelectBlock = ^{
-                
-                
-                
-            };
             [group.items addObject:item];
             
         }
@@ -727,7 +859,6 @@
             
             DSSettingItem*item=[DSSettingItem itemWithtype:DSSettingItemTypeTextView cellClassName:@"PersonTableViewCell"];
             item.Textdetails=self.lawyerModel.lawDescription;
-            NSLog(@"%@",self.lawyerModel.lawDescription);
             item.isShowAccessory=NO;
             item.rowHeight=104.0f;
             [group.items addObject:item];

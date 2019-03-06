@@ -37,6 +37,7 @@ PODS:
   - DACircularProgress (2.3.1)
   - DGActivityIndicatorView (2.1.1)
   - DZNEmptyDataSet (1.8.1)
+  - EBBannerView (1.0.8)
   - FLAnimatedImage (1.0.12)
   - IQKeyboardManager (6.2.0)
   - JSONModel (1.7.0)
@@ -111,6 +112,7 @@ DEPENDENCIES:
   - CDZStarsControl
   - DGActivityIndicatorView
   - DZNEmptyDataSet
+  - EBBannerView
   - IQKeyboardManager
   - JSONModel (~> 1.7.0)
   - libextobjc (~> 0.4.1)
@@ -141,6 +143,7 @@ SPEC REPOS:
     - DACircularProgress
     - DGActivityIndicatorView
     - DZNEmptyDataSet
+    - EBBannerView
     - FLAnimatedImage
     - IQKeyboardManager
     - JSONModel
@@ -171,6 +174,7 @@ SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  EBBannerView: 148153c26663a8a1319b3deefc3016db7d801087
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
@@ -190,6 +194,6 @@ SPEC CHECKSUMS:
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: c4c46d0119f6a4ec8df87327dd863b540e822a25
+PODFILE CHECKSUM: f7c0eaa91361475761c4fdaa1f43008ab8ec5a7b
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.2

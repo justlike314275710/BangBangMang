@@ -7,7 +7,7 @@
 //
 
 #import "CertificateTableViewCell.h"
-
+#import "CustomButton.h"
 @implementation CertificateTableViewCell
 
 - (void)awakeFromNib {
@@ -47,8 +47,8 @@
 
 - (UIButton *)cameraButton{
     if (!_cameraButton) {
-        _cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_cameraButton setImage:[UIImage imageNamed:@"上传图片"] forState:UIControlStateNormal];
+        _cameraButton = [[CustomButton alloc]init];
+        [_cameraButton setBackgroundImage:[UIImage imageNamed:@"上传图片"] forState:0];
         _cameraButton.frame=CGRectMake(SCREEN_WIDTH-64-15, 15, 64, 64);
     }
     return _cameraButton;

@@ -12,7 +12,7 @@
 
 @interface IMManager()<NIMLoginManagerDelegate,NIMChatManagerDelegate,NIMSystemNotificationManagerDelegate,NIMNetCallManagerDelegate>
 //@interface IMManager()
-
+@property (nonatomic, strong) NIMSession *session;
 @end
 
 @implementation IMManager
@@ -90,4 +90,34 @@ SINGLETON_FOR_CLASS(IMManager);
 }
 
 
+-(void)onReceiveCustomSystemNotification:(NIMCustomSystemNotification *)notification{
+    NSData *jsonData = [notification.content dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary*dic=[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+    NSLog(@"***%@",dic);
+    EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+        make.style = 11;
+        make.content = dic[@"content"];
+    }];
+    [banner show];
+   
+}
+
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
+{
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err)
+    {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
 @end

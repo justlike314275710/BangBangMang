@@ -20,16 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[UserManager sharedUserManager]JudgeIdentity];
-    [self renderContents];
-    //[self refreshData];
+//    [[UserManager sharedUserManager]JudgeIdentityCallback:^(BOOL success, NSString *des) {
+//         [self renderContents];
+//    }];
+   [self renderContents];
     self.title=@"资格认证";
     // Do any additional setup after loading the view.
 }
-
+/*
 -(void)refreshData{
     Mine_AuthLogic *authLogic = [Mine_AuthLogic new];
-    [authLogic getCertificationData:^(id data) {
+    [authLogic getLawyerProfilesData:^(id data) {
         if (ValidDict(data)) {
             NSString *userStaus = [data valueForKey:@"certificationStatus"];
             if ([userStaus isEqualToString:@"PENDING_CERTIFIED"]) {
@@ -66,7 +67,7 @@
     }
     return NO;
 }
-
+*/
 - (void)renderContents{
     
     CGFloat horSpace = 20;
@@ -152,30 +153,6 @@
 }
 
 
-//- (UIImageView *)backImageView{
-//    //资格认证背景图
-//    if (!_backImageView) {
-//        CGFloat width=164.0f;
-//        _backImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"资格认证背景图"]];
-//        _backImageView.frame=CGRectMake((SCREEN_WIDTH-width)/2, 147, width, width);
-//    }
-//    return _backImageView;
-//}
-//
-//- (UILabel *)titleLable{
-//    if (!_titleLable) {
-//        _titleLable=[UILabel alloc]initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
-//    }
-//}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -32,7 +32,8 @@
 - (lawyerInfo *)loadLawyerInfo;
 - (void)checkDataWithLawyerBasicCallback:(CheckDataCallback)callback;
 - (void)postCertificationData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
-- (void)getCertificationData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+- (void)GETCertificationData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+- (void)getLawyerProfilesData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 
 
 @end

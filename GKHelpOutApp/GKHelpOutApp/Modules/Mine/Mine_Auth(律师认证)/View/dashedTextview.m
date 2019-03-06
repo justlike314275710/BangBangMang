@@ -28,10 +28,10 @@
     Point[3] = CGPointMake(CGRectGetMaxX(rect), CGRectGetMinY(rect));
     CGContextAddLines(content, Point, 4);
     CGContextClosePath(content);
-    [[UIColor groupTableViewBackgroundColor] setStroke];
-    CGContextSetLineWidth(content, 2);
-    CGFloat dashArray[] = {4,2};
-    CGContextSetLineDash(content, 0, dashArray, 2);
+    [[UIColor colorWithRed:0.329 green: 0.329 blue:0.329 alpha:0.5] setStroke];
+    CGContextSetLineWidth(content, 1);//1宽度
+    CGFloat dashArray[] = {2,2};//表示先绘制2个点，再跳过2个点
+    CGContextSetLineDash(content, 0, dashArray, 1);
     CGContextStrokePath(content);
 }
 

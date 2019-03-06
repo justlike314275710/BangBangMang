@@ -70,9 +70,9 @@
         _personText=[[dashedTextview alloc]initWithFrame:CGRectMake(15, 30,  SCREEN_WIDTH-30, 60)];
         _personText.placeholder=@"请简单介绍下自己,一百字以内";
         _personText.textColor=[UIColor blackColor];
-        _personText.layer.borderColor=[UIColor colorWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1.0].CGColor;
-        _personText.layer.borderWidth = 0.5f;
-        _personText.layer.masksToBounds=YES;
+//        _personText.layer.borderColor=[UIColor colorWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1.0].CGColor;
+//        _personText.layer.borderWidth = 0.5f;
+//        _personText.layer.masksToBounds=YES;
         
         
     }

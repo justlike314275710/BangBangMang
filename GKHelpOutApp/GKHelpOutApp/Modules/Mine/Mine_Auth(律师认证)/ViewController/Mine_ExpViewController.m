@@ -84,23 +84,29 @@
 
 
 -(void)judgeLoginStatus{
-    [[UserManager sharedUserManager]JudgeIdentity];
-    switch (help_userManager.userStatus) {
-        case PENDING_CERTIFIED:
-            [self push_statusViewController];
-            break;
-        case PENDING_APPROVAL:
-            [self push_statusViewController];
-            break;
-        case APPROVAL_FAILURE:
-            [self push_statusViewController];
-            break;
-        case CERTIFIED:
-            [self push_MineAuthViewController];
-            break;
-        default:
-            break;
-    }
+    [[UserManager sharedUserManager]JudgeIdentityCallback:^(BOOL success, NSString *des) {
+        if (success) {
+            switch (help_userManager.userStatus) {
+                case PENDING_CERTIFIED:
+                    [self push_statusViewController];
+                    break;
+                case PENDING_APPROVAL:
+                    [self push_statusViewController];
+                    break;
+                case APPROVAL_FAILURE:
+                    [self push_statusViewController];
+                    break;
+                case CERTIFIED:
+                    [self push_MineAuthViewController];
+                    break;
+                default:
+                    break;
+            }
+        }
+        else{
+            [PSTipsView showTips:@"服务器异常"];
+        }
+    }];
 }
 
 #pragma mark  - setter & getter
