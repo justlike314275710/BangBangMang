@@ -78,7 +78,7 @@
 #import "UIImage+Stretch.h"
 #import "BlocksKit+UIKit.h"
 #import "UITextView+Placeholder.h"
-
+#import <EBBannerView/EBBannerView.h>
 
 //IM
 #import "NIMKit.h"

@@ -27,7 +27,6 @@ typedef NS_ENUM(NSInteger, UserCertificationStatus){
 };
 
 typedef void (^loginBlock)(BOOL success, NSString * des);
-
 #define isLogin [UserManager sharedUserManager].isLogined
 #define curUser [UserManager sharedUserManager].curUserInfo
 #define help_userManager [UserManager sharedUserManager]
@@ -59,7 +58,7 @@ SINGLETON_FOR_HEADER(UserManager)
 
 
 
--(void)JudgeIdentity;
+-(void)JudgeIdentityCallback:(loginBlock)callback;
 /**
  三方登录
 

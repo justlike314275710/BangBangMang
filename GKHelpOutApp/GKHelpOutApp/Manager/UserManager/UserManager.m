@@ -234,9 +234,9 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
 
 #pragma mark ————— 判断是否是用户还是律师  —————
 //判断是否是用户还是律师
--(void)JudgeIdentity{
+-(void)JudgeIdentityCallback:(loginBlock)callback{
     Mine_AuthLogic *authLogin = [Mine_AuthLogic new];
-    [authLogin getCertificationData:^(id data) {
+    [authLogin getLawyerProfilesData:^(id data) {
         if (ValidDict(data)) {
             NSString *userStaus = [data valueForKey:@"certificationStatus"];
             if ([userStaus isEqualToString:@"PENDING_CERTIFIED"]) {
@@ -253,6 +253,9 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
             self.lawUserInfo = lawUserInfo;
             [self saveLawUserInfo];
         }
+        if (callback) {
+            callback(YES,nil);
+        }
     } failed:^(NSError *error) {
         if (![self loadUserState]) {
             self.userStatus = PENDING_CERTIFIED;
@@ -263,7 +266,9 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
 //获取IM信息
 -(void)autoLoginToServer:(loginBlock)completion{
 
-    [self JudgeIdentity];
+    [self JudgeIdentityCallback:^(BOOL success, NSString *des) {
+        
+    }];
 
 //    [self requestEcomRegister:@{ @"phoneNumber":@"15526477756",
 //                                 @"verificationCode":@"5422",
@@ -431,6 +436,17 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
     }];
 }
 
+
+-(void)removeLawyerInfo:(Complete)complete {
+    YYCache *cache = [[YYCache alloc]initWithName:KLawyerModelCache];
+    [cache removeAllObjectsWithBlock:^{
+        if (complete) {
+            complete();
+        }
+    }];
+}
+
+
 #pragma mark ————— 获取oauthtoken
 - (OauthInfo *)loadOuathInfo {
     YYCache *cache = [[YYCache alloc] initWithName:KOauthModelCache];
@@ -469,6 +485,13 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
     }];
     YYCache *cache1 = [[YYCache alloc] initWithName:KOauthCacheName];
     [cache1 removeAllObjectsWithBlock:^{
+        if (completion) {
+            completion(YES,nil);
+        }
+    }];
+    
+    YYCache*LawyerCache=[[YYCache alloc]initWithName:KLawyerModelCache];
+    [LawyerCache removeAllObjectsWithBlock:^{
         if (completion) {
             completion(YES,nil);
         }

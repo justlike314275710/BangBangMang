@@ -7,7 +7,7 @@
 //
 
 #import "IdCardTableViewCell.h"
-
+#import "CustomButton.h"
 @implementation IdCardTableViewCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -52,7 +52,7 @@
         CGFloat width=129.0f;
         CGFloat height=90.0f;
         CGFloat sidding=(SCREEN_WIDTH-width*2)/3;
-        _frontCardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _frontCardButton = [[CustomButton alloc]init];
         [_frontCardButton setBackgroundImage:[UIImage imageNamed:@"上传正面身份证底"] forState:UIControlStateNormal];
         [_frontCardButton setImage:[UIImage imageNamed:@"注册个人信息-上传照片"] forState:UIControlStateNormal];
         _frontCardButton.frame=CGRectMake(sidding, 30, width, height);
@@ -65,7 +65,7 @@
         CGFloat width=129.0f;
         CGFloat height=90.0f;
         CGFloat sidding=(SCREEN_WIDTH-width*2)/3;
-        _backCardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _backCardButton = [[CustomButton alloc]init];;
         [_backCardButton setBackgroundImage:[UIImage imageNamed:@"上传背面身份证底"] forState:UIControlStateNormal];
         [_backCardButton setImage:[UIImage imageNamed:@"注册个人信息-上传照片"] forState:UIControlStateNormal];
         _backCardButton.frame=CGRectMake(sidding*2+129, 30, width, height);
