@@ -130,7 +130,8 @@
         if (responses.statusCode==201) {
             
             if (ValidDict(responseObject)) {
-                lawyerInfo*lawyerinfo=[lawyerInfo modelWithDictionary:parmeters];
+                //lawyerInfo*lawyerinfo=[lawyerInfo modelWithDictionary:parmeters];
+                lawyerInfo*lawyerinfo=[lawyerInfo modelWithJSON:responseObject];
                 self.infoModel=lawyerinfo; //认证成功储存律师信息
                 [self saveUserInfo];
             }

@@ -136,6 +136,7 @@
 #pragma mark ————— 网络状态变化 —————
 - (void)netWorkStateChange:(NSNotification *)notification
 {
+    /*
     BOOL isNetWork = [notification.object boolValue];
     /*
     if (isNetWork) {//有网络

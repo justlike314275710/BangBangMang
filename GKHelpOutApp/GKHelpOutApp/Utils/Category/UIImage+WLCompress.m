@@ -10,6 +10,9 @@
 
 @implementation UIImage (WLCompress)
 -(NSData *)compressWithLengthLimit:(NSUInteger)maxLength{
+    
+
+    
     // Compress by quality
     CGFloat compression = 1;
     NSData *data = UIImageJPEGRepresentation(self, compression);

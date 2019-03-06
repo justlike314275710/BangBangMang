@@ -73,6 +73,7 @@
 #import <MBProgressHUD.h>
 #import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
 #import "PSTipsView.h"
 #import "UIImage+Stretch.h"
 #import "BlocksKit+UIKit.h"

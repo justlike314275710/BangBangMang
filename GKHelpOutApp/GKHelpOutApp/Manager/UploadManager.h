@@ -10,8 +10,9 @@
 
 @interface UploadManager : NSObject
 @property (nonatomic , assign) NSInteger code;
-@property (nonatomic , strong) UIImage* consultaionImage;
+
 + (UploadManager *)uploadManager;
 
-- (void)uploadConsultationImagesCompleted:(CheckDataCallback)callback;
+//- (void)uploadConsultationImagesCompleted:(CheckDataCallback)callback;
+-(void)uploadConsultationImages:(UIImage*)images completed:(CheckDataCallback)callback;
 @end

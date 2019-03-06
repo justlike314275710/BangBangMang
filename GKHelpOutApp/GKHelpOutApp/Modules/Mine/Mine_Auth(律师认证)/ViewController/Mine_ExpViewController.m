@@ -8,6 +8,7 @@
 
 #import "Mine_ExpViewController.h"
 #import "Mine_AuthViewController.h"
+#import "Mine_StatusViewController.h"
 @interface Mine_ExpViewController ()
 @property (nonatomic , strong) UIImageView *backView;
 @property (nonatomic , strong) UIImageView *one_titleImageView;
@@ -37,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self SetUI];
+   
     // Do any additional setup after loading the view.
 }
 #pragma mark  - Notification
@@ -45,8 +47,12 @@
 -(void)PsychologyClick{
     NSLog(@"心理咨询");
 }
--(void)lawClick{
+-(void)push_MineAuthViewController{
     [self.navigationController pushViewController:[[Mine_AuthViewController alloc]init] animated:YES];
+}
+
+-(void)push_statusViewController{
+    [self.navigationController pushViewController:[[Mine_StatusViewController alloc]init] animated:YES];
 }
 #pragma mark  - Data
 
@@ -78,18 +84,19 @@
 
 
 -(void)judgeLoginStatus{
+    [[UserManager sharedUserManager]JudgeIdentity];
     switch (help_userManager.userStatus) {
         case PENDING_CERTIFIED:
-            [self lawClick];
+            [self push_statusViewController];
             break;
         case PENDING_APPROVAL:
-            
+            [self push_statusViewController];
             break;
         case APPROVAL_FAILURE:
-            
+            [self push_statusViewController];
             break;
         case CERTIFIED:
-            
+            [self push_MineAuthViewController];
             break;
         default:
             break;
@@ -160,7 +167,7 @@
         _greenView.frame=CGRectMake(siding, _orangeView.bottom+36, _whiteView.width-2*siding, 120);
         _greenView.backgroundColor=[UIColor colorWithRed:143/255.0 green:210/255.0 blue:124/255.0 alpha:1.0];
         ViewRadius(_greenView, 10.0f);
-        UITapGestureRecognizer * lawyerTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lawClick)];
+        UITapGestureRecognizer * lawyerTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(judgeLoginStatus)];
         [_greenView addGestureRecognizer:lawyerTapGesture];
     }
     return _greenView;
