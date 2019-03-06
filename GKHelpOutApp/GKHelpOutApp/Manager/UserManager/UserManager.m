@@ -11,6 +11,7 @@
 #import <AFNetworking.h>
 #import "Mine_AuthLogic.h"
 #import "lawyerInfo.h"
+#import "LawUserInfo.h"
 @implementation UserManager
 
 SINGLETON_FOR_CLASS(UserManager);
@@ -248,6 +249,9 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
                 self.userStatus = CERTIFIED;
             }
             [self saveUserState];
+            LawUserInfo *lawUserInfo = [LawUserInfo modelWithJSON:data];
+            self.lawUserInfo = lawUserInfo;
+            [self saveLawUserInfo];
         }
         if (callback) {
             callback(YES,nil);
@@ -357,6 +361,25 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
         [cache setObject:dic forKey:KUserModelCache];
     }
 }
+
+-(void)saveLawUserInfo{
+    if (self.lawUserInfo) {
+        YYCache *cache = [[YYCache alloc]initWithName:KUserCacheName];
+        NSDictionary *dic = [self.lawUserInfo modelToJSONObject];
+        [cache setObject:dic forKey:KUserLawModel];
+    }
+}
+
+-(BOOL)loadLawUserInfo {
+    YYCache *cache = [[YYCache alloc]initWithName:KUserCacheName];
+    NSDictionary * LawUserDic = (NSDictionary *)[cache objectForKey:KUserLawModel];
+    if (LawUserDic) {
+        self.lawUserInfo = [LawUserInfo modelWithJSON:LawUserDic];
+        return YES;
+    }
+    return NO;
+}
+
 -(void)saveUserState {
         YYCache *cache = [[YYCache alloc] initWithName:KUserCacheName];
         NSString *state = NSStringFormat(@"%ld",self.userStatus);

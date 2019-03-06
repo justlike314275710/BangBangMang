@@ -81,11 +81,14 @@
 //获取认证授权token // 刷新认证授权token
 #define URL_get_oauth_token @"/oauth/token"
 
-//上传头像
+//修改头像
 #define URL_upload_avatar @"/users/me/avatar"
 
-//修改用户资料
+//修改昵称
 #define URL_modify_nickname @"/users/me"
+
+//修改手机号码
+#define URL_modify_PhoneNumber @"/users/me/phone-number"
 
 
 
@@ -112,4 +115,6 @@
 #pragma mark - ——————— 律师相关 ————————
 #define URL_Lawyer_certification @"/lawyer/certification"
 #define URL_Lawyer_profiles @"/lawyer/profiles"
+#define URL_Lawyer_aliPayAuthSign @"/lawyer/alipay/auth/sign"
+
 #endif /* URLMacros_h */

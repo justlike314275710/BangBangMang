@@ -66,6 +66,7 @@
 #import "UIView+Frame.h"
 #import "NSObject+version.h"
 #import "PSAuthorizationTool.h"
+#import "PSLoadingView.h"
 //第三方
 #import <AFNetworking.h>
 #import <YYKit.h>

@@ -78,10 +78,13 @@
         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
         if (responses.statusCode==204) {
             [PSTipsView showTips:@"昵称修改成功"];
-            [self dismissViewControllerAnimated:YES completion:nil];
             help_userManager.curUserInfo.nickname = self.textField.text;
             [help_userManager saveUserInfo];
             [[PSLoadingView sharedInstance]dismiss];
+            //发送通知
+            KPostNotification(KNotificationModifyDataChange,nil);
+            KPostNotification(KNotificationMineDataChange, nil);
+            [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [[PSLoadingView sharedInstance]dismiss];
@@ -94,7 +97,6 @@
         }
     }];
 }
-
 
 #pragma mark - Setting&Getting
 -(UITextField*)textField{

@@ -27,8 +27,10 @@
 //用户model缓存
 #define KUserModelCache @"KUserModelCache"
 
-//用户类型名称
+//用户类型名称(是否是律师)
 #define KUserStateName @"KUserStateName"
+#define KUserLawModel @"KUserLawModel"
+
 
 //用户公共服务信息缓存
 #define KOauthCacheName @"KOauthCacheName"
@@ -45,6 +47,10 @@
 
 //网络状态变化
 #define KNotificationNetWorkStateChange @"KNotificationNetWorkStateChange"
+//修改资料
+#define KNotificationModifyDataChange    @"KNotificationModifyDataChange"
+//个人中心界面变化
+#define KNotificationMineDataChange    @"KNotificationMineDataDataChange"
 
 #define defultTager  999
 #endif /* CommonMacros_h */

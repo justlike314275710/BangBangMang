@@ -10,6 +10,7 @@
 #import "UserInfo.h"
 #import "IMManager.h"
 #import "OauthInfo.h"
+#import "LawUserInfo.h"
 
 typedef NS_ENUM(NSInteger, UserLoginType){
     kUserLoginTypeUnKnow = 0,//未知
@@ -36,12 +37,15 @@ typedef void (^loginBlock)(BOOL success, NSString * des);
 //单例
 SINGLETON_FOR_HEADER(UserManager)
 
-//当前用户
+///<当前用户信息
 @property (nonatomic, strong) UserInfo *curUserInfo;
 @property (nonatomic, assign) UserLoginType loginType;
+///<当前认证信息Token 信息
 @property (nonatomic, strong) OauthInfo *oathInfo;
 @property (nonatomic, assign) BOOL isLogined;
 @property (nonatomic, assign) UserCertificationStatus userStatus;
+///<律师用户的信息
+@property (nonatomic, strong) LawUserInfo *lawUserInfo;
 @property (nonatomic, strong) UIImage *avatarImage; //及时修改的头像
 
 
@@ -113,6 +117,8 @@ SINGLETON_FOR_HEADER(UserManager)
 保存用户信息
  */
 -(void)saveUserInfo;
+
+-(void)loadLawUserInfo;
 
 
 

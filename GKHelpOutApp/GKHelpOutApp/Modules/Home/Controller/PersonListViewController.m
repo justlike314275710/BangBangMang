@@ -56,16 +56,17 @@
     [self setupUI];
     //开始第一次数据拉取
 //    [self.collectionView.mj_header beginRefreshing];
-    //是否设置头像昵称
-//    if (!help_userManager.curUserInfo.avatar||!help_userManager.curUserInfo.nickname) {
-//        UploadAvatarViewController *UploadVC = [[UploadAvatarViewController alloc] init];
-//        UserInfo *info = help_userManager.curUserInfo;
-//        NSLog(@"%@",help_userManager.curUserInfo);
-//        [self presentViewController:UploadVC animated:YES completion:nil];
-//    }
+
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    //是否设置头像昵称
+    if ((!help_userManager.curUserInfo.avatar&&!help_userManager.avatarImage)||!help_userManager.curUserInfo.nickname) {
+        UploadAvatarViewController *UploadVC = [[UploadAvatarViewController alloc] init];
+        UserInfo *info = help_userManager.curUserInfo;
+        NSLog(@"%@",help_userManager.curUserInfo);
+        [self presentViewController:UploadVC animated:YES completion:nil];
+    }
 }
 #pragma mark ————— 初始化页面 —————
 -(void)setupUI{

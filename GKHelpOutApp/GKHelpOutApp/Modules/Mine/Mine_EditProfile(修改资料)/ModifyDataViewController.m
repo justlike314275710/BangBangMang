@@ -10,8 +10,9 @@
 #import "MineTableViewCell.h"
 #import "ModifyoldPhoneNumberViewController.h"
 #import "ModifyNicknameViewController.h"
-
-@interface ModifyDataViewController ()<UITableViewDelegate,UITableViewDataSource> {
+#import "LLActionSheetView.h"
+#import "UIImage+WLCompress.h"
+@interface ModifyDataViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate> {
      NSArray *_dataSource;
 }
 @property(nonatomic, strong) YYAnimatedImageView *headImgView; //头像
@@ -26,11 +27,27 @@
     self.title = @"修改资料";
     self.isShowLiftBack = YES;
     
-    [self intData];
     [self setupUI];
+    [self intData];
+    //网络状态监听
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(intData)
+                                                 name:KNotificationModifyDataChange
+                                               object:nil];
 }
-- (void)intData{
 
+- (void)intData{
+    
+    NSString *nickName = help_userManager.curUserInfo.nickname?help_userManager.curUserInfo.nickname:@"";
+    NSDictionary *Modifydata = @{@"titleText":@"昵称",@"clickSelector":@"",@"detailText":nickName,@"arrow_icon":@"myarrow_icon"};
+    
+    NSString *phoneNumber = help_userManager.curUserInfo.username?help_userManager.curUserInfo.username:@"";
+    NSDictionary *myMission = @{@"titleText":@"手机号码",@"clickSelector":@"",@"detailText":phoneNumber,@"arrow_icon":@"myarrow_icon"};
+//    NSDictionary *myFriends = @{@"titleText":@"家庭住址",@"clickSelector":@"",@"arrow_icon":@"myarrow_icon",@"detailText":@"天安门广场"};
+//    NSDictionary *myLevel = @{@"titleText":@"邮政编码",@"clickSelector":@"",@"detailText":@"410000",@"arrow_icon":@"myarrow_icon"};
+    _dataSource = @[Modifydata,myMission];
+    
+    [self.tableView reloadData];
 }
 
 -(void)setupUI{
@@ -43,16 +60,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    
-    NSDictionary *Modifydata = @{@"titleText":@"昵称",@"clickSelector":@"",@"detailText":@"张三三",@"arrow_icon":@"myarrow_icon"};
-    
-    NSDictionary *myMission = @{@"titleText":@"手机号码",@"clickSelector":@"",@"detailText":@"1378726999",@"arrow_icon":@"myarrow_icon"};
-    
-    NSDictionary *myFriends = @{@"titleText":@"家庭住址",@"clickSelector":@"",@"arrow_icon":@"myarrow_icon",@"detailText":@"天安门广场"};
-    NSDictionary *myLevel = @{@"titleText":@"邮政编码",@"clickSelector":@"",@"detailText":@"410000",@"arrow_icon":@"myarrow_icon"};
-    
-    _dataSource = @[Modifydata,myMission,myFriends,myLevel];
-    [self.tableView reloadData];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -132,8 +140,123 @@
 
 #pragma mark - TouchEvent
 -(void)headViewClick {
+    [PSAuthorizationTool checkAndRedirectCameraAuthorizationWithBlock:^(BOOL result) {
+        if (result) {
+            LLActionSheetView *alert = [[LLActionSheetView alloc]initWithTitleArray:@[@"拍照",@"从相册中选取"] andShowCancel:YES];
+            alert.ClickIndex = ^(NSInteger index) {
+                if (index == 1){
+                    [self openCamera];
+                }else if (index == 2){
+                    [self openAlbum];
+                }
+            };
+            [alert show];
+        }
+    }];
+}
+//打开相册
+-(void)openAlbum{
+    
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.navigationBar.tintColor = [UIColor grayColor];
+    controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+    [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+    controller.mediaTypes = mediaTypes;
+    controller.delegate = self;
+    [self presentViewController:controller
+                       animated:YES
+                     completion:^(void){
+                         NSLog(@"Picker View Controller is presented");
+                     }];
+}
+//拍照
+-(void)openCamera{
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+    controller.navigationBar.tintColor = [UIColor grayColor];
+    NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+    [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+    controller.mediaTypes = mediaTypes;
+    controller.delegate = self;
+    [self presentViewController:controller
+                       animated:YES
+                     completion:^(void){
+                         NSLog(@"Picker View Controller is presented");
+                     }];
     
 }
+
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:^() {
+        UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        [self uploadImage:portraitImg];
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:^(){
+    }];
+}
+
+#pragma mark - UploadImage
+#define boundary @"6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm"
+- (void)uploadImage:(UIImage *)image {
+    //1 创建请求
+    //NSString*urlSting=[NSString stringWithFormat:@"%@/files?type=PUBLIC",EmallHostUrl];
+    NSString*urlSting=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_upload_avatar];
+    NSURL *url = [NSURL URLWithString:urlSting];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    //    request.HTTPMethod = @"post";
+    request.HTTPMethod = @"put";
+    request.allHTTPHeaderFields = @{
+                                    @"Content-Type":[NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary]
+                                    };
+    NSData *compressData = [image compressWithLengthLimit:500.0f * 1024.0f];
+    request.HTTPBody = [self makeBody:@"file" fileName:@"fileName" data:compressData];
+    //UIImageJPEGRepresentation(self.consultaionImage, 0.1)
+    NSString*token=[NSString stringWithFormat:@"Bearer %@",help_userManager.oathInfo.access_token];
+    
+    [request addValue:token forHTTPHeaderField:@"Authorization"];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger code =httpResponse.statusCode;
+        NSLog(@"平台%ld",code);
+        id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+        if (data) {
+            if (code==201||code==204) {
+                id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+                //                self.consultaionId=result[@"id"];
+                self.headImgView.image = image;
+                help_userManager.avatarImage = image;
+                [PSTipsView showTips:@"头像修改成功"];
+                KPostNotification(KNotificationMineDataChange, nil);
+            } else {
+                [PSTipsView showTips:@"头像修改失败"];
+            }
+        }
+        else{
+            [PSTipsView showTips:@"头像修改失败"];
+        }
+    }];
+}
+
+- (NSData *)makeBody:(NSString *)fieldName fileName:(NSString *)fileName data:(NSData *)fileData{
+    NSMutableData *data = [NSMutableData data];
+    NSMutableString *str = [NSMutableString string];
+    [str appendFormat:@"--%@\r\n",boundary];
+    [str appendFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n",fieldName,fileName];
+    [str appendString:@"Content-Type: image/jpeg\r\n\r\n"];
+    [data appendData:[str dataUsingEncoding:NSUTF8StringEncoding]];
+    [data appendData:fileData];
+    NSString *tail = [NSString stringWithFormat:@"\r\n--%@--",boundary];
+    [data appendData:[tail dataUsingEncoding:NSUTF8StringEncoding]];
+    return [data copy];
+}
+
 
 
 

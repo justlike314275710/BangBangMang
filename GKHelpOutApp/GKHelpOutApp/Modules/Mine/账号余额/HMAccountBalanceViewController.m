@@ -10,14 +10,18 @@
 #import "MineTableViewCell.h"
 #import "LLActionSheetView.h"
 #import "HMGetCashViewController.h"
+#import "HMAccontBalaceLogic.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface HMAccountBalanceViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>{
     NSArray *_dataSource;
+    BOOL _isBind;
 }
 @property(nonatomic, strong) UIView *headView;
 @property(nonatomic, strong) UIImageView *HeadBgImg;
 @property(nonatomic, strong) UILabel *balanceLab;
 @property(nonatomic, strong) UILabel *k_balanceLab;
+@property(nonatomic, strong) HMAccontBalaceLogic *Logic; //逻辑层
 
 @end
 
@@ -27,16 +31,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"账户余额";
-    [self setupData];
+     _Logic = [[HMAccontBalaceLogic alloc] init];
+    
     [self setupUI];
+    [self setupData];
 }
 
 #pragma mark -PravateMethods
 -(void)setupData{
+    NSString*alipayBind = help_userManager.lawUserInfo.alipayBind;
+    if (!alipayBind||[alipayBind integerValue]==0) {
+        alipayBind = @"未绑定";
+        _isBind = NO;
+    } else {
+        alipayBind = @"王二";
+        _isBind = YES;
+    }
+    NSDictionary *Modifydata = @{@"titleText":@"支付宝账户",@"title_icon":@"支付宝账号icon",@"clickSelector":@"",@"detailText":alipayBind,@"arrow_icon":@"myarrow_icon"};
     
+    NSDictionary *myMission = @{@"titleText":@"申请提现",@"title_icon":@"申请提现icon",@"clickSelector":@"",@"arrow_icon":@"myarrow_icon"};
+    
+    _dataSource = @[Modifydata,myMission];
+    [self.tableView reloadData];
 }
+
 -(void)setupUI{
-    
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, KScreenWidth, KScreenHeight - kTabBarHeight) style:UITableViewStyleGrouped];
     [self.tableView registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
@@ -45,14 +64,6 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    
-    NSDictionary *Modifydata = @{@"titleText":@"支付宝账户",@"title_icon":@"支付宝账号icon",@"clickSelector":@"",@"detailText":@"未绑定",@"arrow_icon":@"myarrow_icon"};
-    
-    NSDictionary *myMission = @{@"titleText":@"申请提现",@"title_icon":@"申请提现icon",@"clickSelector":@"",@"arrow_icon":@"myarrow_icon"};
-    
-    _dataSource = @[Modifydata,myMission];
-    [self.tableView reloadData];
-    
 }
 
 #pragma mark - TouchEvent
@@ -85,6 +96,7 @@
     switch (indexPath.row) {
         case 0:
         {
+            if (_isBind) {
             LLActionSheetView *alert = [[LLActionSheetView alloc]initWithTitleArray:@[@"解绑"] andShowCancel:YES];
             alert.ClickIndex = ^(NSInteger index) {
                 if (index == 1){
@@ -94,6 +106,10 @@
                 }
             };
             [alert show];
+            } else {
+                NSLog(@"绑定");
+                [self bingAlipy];
+            }
         }
             break;
         case 1:
@@ -106,7 +122,22 @@
             break;
     }
 }
-
+#pragma mark - 绑定支付宝
+//认证授权
+-(void)bingAlipy{
+    [[PSLoadingView sharedInstance] show];
+    [_Logic getBingLawyerAuthSignData:^(id data) {
+        if (ValidDict(data)) {
+            [[PSLoadingView sharedInstance] dismiss];
+            NSString *sign = data[@"sign"];
+            [[AlipaySDK defaultService] auth_V2WithInfo:sign fromScheme:AppScheme callback:^(NSDictionary *resultDic) {
+                
+            }];
+        }
+    } failed:^(NSError *error) {
+        [[PSLoadingView sharedInstance] dismiss];
+    }];
+}
 #pragma mark - 修改昵称
 #pragma mark -Setting&Getting
 -(UIView*)headView{
@@ -130,6 +161,13 @@
     if (!_balanceLab) {
         _balanceLab=[UILabel new];
         _balanceLab.text = @"666.00";
+        NSString *accont = help_userManager.lawUserInfo.rewardAmount?help_userManager.lawUserInfo.rewardAmount:@"";
+        if (accont.length>0) {
+            accont = NSStringFormat(@"%@¥",accont);
+        } else {
+            accont = @"0.00";
+        }
+        _balanceLab.text = accont;
         _balanceLab.textAlignment = NSTextAlignmentCenter;
         _balanceLab.font = FontOfSize(38);
         _balanceLab.textColor=KWhiteColor;

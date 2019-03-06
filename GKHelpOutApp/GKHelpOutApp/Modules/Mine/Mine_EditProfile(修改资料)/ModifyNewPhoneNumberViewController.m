@@ -8,6 +8,8 @@
 
 #import "ModifyNewPhoneNumberViewController.h"
 #import "LoginLogic.h"
+#import "ReactiveObjC.h"
+#import "ModifyDataViewController.h"
 
 @interface ModifyNewPhoneNumberViewController ()
 
@@ -39,7 +41,6 @@
     
     [self.view addSubview:self.scrollview];
     
-
     UIView *line0 = [[UIView alloc] initWithFrame:CGRectMake(0,20, self.scrollview.width, 1)];
     line0.backgroundColor = CLineColor;
     [self.scrollview addSubview:line0];
@@ -74,13 +75,25 @@
     self.codeField.frame = CGRectMake(k_codeLabel.right,k_codeLabel.y,self.scrollview.width-k_codeLabel.right-_getCodeBtn.width, 21);
     [BgView addSubview: self.codeField];
     
+    [self.codeField.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+        if (x.length>0) {
+            self.nextStep.enabled = YES;
+            [self.nextStep setBackgroundImage:IMAGE_NAMED(@"提交按钮底框") forState:UIControlStateNormal];
+        } else {
+            self.nextStep.enabled = NO;
+            [self.nextStep setBackgroundImage:IMAGE_NAMED(@"n提交按钮底框") forState:UIControlStateNormal];
+        }
+    }];
+    
+    
+    
     UIView *v_line = [[UIView alloc] initWithFrame:CGRectMake(self.codeField.right-10, k_codeLabel.y+3, 1,15)];
     v_line.backgroundColor = CFontColor3;
     [BgView addSubview:v_line];
     
     @weakify(self)
     [_getCodeBtn addTapBlock:^(UIButton *btn) {
-        @strongify(self);
+       @strongify(self)
         [self getCode];
     }];
     
@@ -91,11 +104,65 @@
     [self.scrollview addSubview:self.nextStep];
     _nextStep.frame = CGRectMake(15,160,self.scrollview.width-30,KNormalBBtnHeight);
     [_nextStep addTapBlock:^(UIButton *btn) {
-        ModifyNewPhoneNumberViewController *ModfiyNewVC = [[ModifyNewPhoneNumberViewController alloc] init];
-        [self.navigationController pushViewController:ModfiyNewVC animated:YES];
-        //        [weak_self UserAccoutLogin];
+        @strongify(self)
+        [self changePhoneNumber];
     }];
     
+}
+-(void)changePhoneNumber{
+
+    if (self.phoneField.text.length<11) {
+        [PSTipsView showTips:@"请输入正确额手机号码！"];
+        return;
+    }
+    if (self.codeField.text.length<4) {
+        [PSTipsView showTips:@"请输入正确的验证码！"];
+        return;
+    }
+    UserInfo *user = help_userManager.curUserInfo;
+    NSLog(@"%@",user);
+    [[PSLoadingView sharedInstance]show];
+    NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_modify_PhoneNumber];
+    NSDictionary*parmeters=@{
+                             @"phoneNumber":self.phoneField.text,
+                             @"verificationCode":self.codeField.text
+                             };
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSString*token=[NSString stringWithFormat:@"Bearer %@",help_userManager.oathInfo.access_token];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager PUT:url parameters:parmeters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==204) {
+            [PSTipsView showTips:@"修改号码成功"];
+            help_userManager.curUserInfo.username = self.phoneField.text;
+            [help_userManager saveUserInfo];
+            [[PSLoadingView sharedInstance]dismiss];
+            //发送通知
+            KPostNotification(KNotificationModifyDataChange,nil);
+            KPostNotification(KNotificationMineDataChange, nil);
+            [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj isKindOfClass:[ModifyDataViewController class]]) {
+                    [self.navigationController popToViewController:obj animated:YES];
+                    *stop = YES;
+                }
+            }];
+            
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[PSLoadingView sharedInstance]dismiss];
+        NSLog(@"%@",error);
+        NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        if (ValidData(data)) {
+            id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSString*code=body[@"code"];
+            NSString*message=body[@"message"];
+            [PSTipsView showTips:message];
+        }
+    }];
 }
 
 -(void)UserAccoutLogin {
@@ -217,6 +284,7 @@
         _phoneField.placeholder = @"请输入新的手机号码";
         _phoneField.textAlignment = NSTextAlignmentLeft;
         _phoneField.textColor = CFontColor2;
+        _phoneField.keyboardType = UIKeyboardTypeNumberPad;
         _phoneField.font = FFont1;
     }
     return _phoneField;
@@ -226,6 +294,7 @@
         _codeField = [[UITextField alloc] init];
         _codeField.placeholder = @"请输入验证码";
         _codeField.textAlignment = NSTextAlignmentLeft;
+        _codeField.keyboardType = UIKeyboardTypeNumberPad;
         _codeField.textColor = CFontColor2;
         _codeField.font = FFont1;
     }
@@ -244,6 +313,7 @@
     if (!_nextStep) {
         _nextStep = [UIButton buttonWithType:UIButtonTypeCustom];
         [_nextStep setTitle:@"确认" forState:UIControlStateNormal];
+        _nextStep.enabled = NO;
         [_nextStep setTitleColor:CFontColor_BtnTitle forState:UIControlStateNormal];
         [_nextStep setBackgroundImage:IMAGE_NAMED(@"n提交按钮底框") forState:UIControlStateNormal];
     }

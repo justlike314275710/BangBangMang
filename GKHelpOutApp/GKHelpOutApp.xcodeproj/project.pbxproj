@@ -153,6 +153,8 @@
 		5557A66E221D027200743012 /* OauthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66D221D027200743012 /* OauthInfo.m */; };
 		5557A671221D551A00743012 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A66F221D551A00743012 /* UIView+Frame.m */; };
 		555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 555A564B2228E58300451044 /* ModifyNicknameViewController.m */; };
+		555C118F222E702E00132E4F /* LawUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C118E222E702E00132E4F /* LawUserInfo.m */; };
+		555C1193222E771500132E4F /* HMAccontBalaceLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C1192222E771500132E4F /* HMAccontBalaceLogic.m */; };
 		559218DD2226813F00A5C655 /* ModifyDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218DC2226813F00A5C655 /* ModifyDataViewController.m */; };
 		559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218E022268F5900A5C655 /* ModifyoldPhoneNumberViewController.m */; };
 		559218E422268F7600A5C655 /* ModifyNewPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218E322268F7600A5C655 /* ModifyNewPhoneNumberViewController.m */; };
@@ -730,6 +732,10 @@
 		5557A670221D551A00743012 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		555A564A2228E58300451044 /* ModifyNicknameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModifyNicknameViewController.h; sourceTree = "<group>"; };
 		555A564B2228E58300451044 /* ModifyNicknameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModifyNicknameViewController.m; sourceTree = "<group>"; };
+		555C118D222E702E00132E4F /* LawUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawUserInfo.h; sourceTree = "<group>"; };
+		555C118E222E702E00132E4F /* LawUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawUserInfo.m; sourceTree = "<group>"; };
+		555C1191222E771500132E4F /* HMAccontBalaceLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMAccontBalaceLogic.h; sourceTree = "<group>"; };
+		555C1192222E771500132E4F /* HMAccontBalaceLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMAccontBalaceLogic.m; sourceTree = "<group>"; };
 		559218DB2226813F00A5C655 /* ModifyDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModifyDataViewController.h; sourceTree = "<group>"; };
 		559218DC2226813F00A5C655 /* ModifyDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModifyDataViewController.m; sourceTree = "<group>"; };
 		559218DF22268F5900A5C655 /* ModifyoldPhoneNumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModifyoldPhoneNumberViewController.h; sourceTree = "<group>"; };
@@ -1829,6 +1835,8 @@
 				5557A56A221BD87100743012 /* UserInfo.m */,
 				5557A567221BD87100743012 /* UserManager.h */,
 				5557A56B221BD87100743012 /* UserManager.m */,
+				555C118D222E702E00132E4F /* LawUserInfo.h */,
+				555C118E222E702E00132E4F /* LawUserInfo.m */,
 			);
 			path = UserManager;
 			sourceTree = "<group>";
@@ -2288,6 +2296,15 @@
 			path = BaseLogic;
 			sourceTree = "<group>";
 		};
+		555C1190222E76EE00132E4F /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				555C1191222E771500132E4F /* HMAccontBalaceLogic.h */,
+				555C1192222E771500132E4F /* HMAccontBalaceLogic.m */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
 		559218DA2226810F00A5C655 /* Mine_EditProfile(修改资料) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2339,6 +2356,7 @@
 		55C0C767222CD20100CD2459 /* 账号余额 */ = {
 			isa = PBXGroup;
 			children = (
+				555C1190222E76EE00132E4F /* Logic */,
 				55C0C768222CD23C00CD2459 /* HMAccountBalanceViewController.h */,
 				55C0C769222CD23C00CD2459 /* HMAccountBalanceViewController.m */,
 				55C0C770222CFBFF00CD2459 /* HMGetCashViewController.h */,
@@ -4018,6 +4036,7 @@
 				EAB039C8221E8FF200331569 /* color.c in Sources */,
 				5557A654221BD99E00743012 /* ScrollBannerVC.m in Sources */,
 				5557A4FC221BD76300743012 /* BaseRequestAPI.m in Sources */,
+				555C1193222E771500132E4F /* HMAccontBalaceLogic.m in Sources */,
 				EAE19E6C222D03190080B0F5 /* lawyerInfo.m in Sources */,
 				EAB038EC221E817B00331569 /* NIMTeamMemberListViewController.m in Sources */,
 				EAB038F4221E817B00331569 /* NIMTimePickerView.m in Sources */,
@@ -4081,6 +4100,7 @@
 				EAB0390F221E817B00331569 /* NIMSessionDataSourceImpl.m in Sources */,
 				559218DD2226813F00A5C655 /* ModifyDataViewController.m in Sources */,
 				5557A4C8221BD09200743012 /* main.m in Sources */,
+				555C118F222E702E00132E4F /* LawUserInfo.m in Sources */,
 				EA78F6E82225161F002D788A /* DSSettingItem.m in Sources */,
 				559785A922266158007BBCC2 /* FeedLoadItemView.m in Sources */,
 				EAB03951221E8EE000331569 /* PSAlertView.m in Sources */,
