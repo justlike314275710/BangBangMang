@@ -22,6 +22,7 @@
 #import "PSMoreServiceViewController.h"
 #import "PSMoreServiceViewModel.h"
 #import "WWWaterWaveView.h"
+#import "LawyerGrabViewController.h"
 
 #define itemWidthHeight ((kScreenWidth-30)/2)
 #define homespaceX  16
@@ -63,8 +64,6 @@
     //是否设置头像昵称
     if ((!help_userManager.curUserInfo.avatar&&!help_userManager.avatarImage)||!help_userManager.curUserInfo.nickname) {
         UploadAvatarViewController *UploadVC = [[UploadAvatarViewController alloc] init];
-        UserInfo *info = help_userManager.curUserInfo;
-        NSLog(@"%@",help_userManager.curUserInfo);
         [self presentViewController:UploadVC animated:YES completion:nil];
     }
 }
@@ -149,9 +148,25 @@
 }
 //MARK:点击法律咨询
 -(void)clickLegalAdvice {
+    switch (help_userManager.userStatus) {
+        case PENDING_CERTIFIED:
+            [self p_pushMoreService];
+            break;
+        default:
+            [self p_pushLawyerGrab];
+            break;
+    }
+    
+}
+
+-(void)p_pushMoreService{
     PSMoreServiceViewController *PSMoreServiceVC = [[PSMoreServiceViewController alloc] initWithViewModel:[PSMoreServiceViewModel new]];
     [self.navigationController pushViewController:PSMoreServiceVC animated:YES];
 }
+-(void)p_pushLawyerGrab{
+    [self.navigationController pushViewController:[[LawyerGrabViewController alloc]init] animated:YES];
+}
+
 //MARK:点击心理咨询
 -(void)clickPsyAdvice {
     [PSTipsView showTips:Hmsg_Comingsoon];

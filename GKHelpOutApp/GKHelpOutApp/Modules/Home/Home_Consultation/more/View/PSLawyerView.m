@@ -19,6 +19,95 @@
 -(void)renderContents{
     self.backgroundColor = [UIColor clearColor];
     
+    UIImageView*backImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"律师信息底"]];
+    [self addSubview:backImageView];
+    [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.mas_equalTo(0);
+    }];
+    
+    CGFloat radius = 30;
+    CGFloat sidePidding=15;
+    CGFloat topPidding=23;
+    
+    UIImageView*avatarBackView=[UIImageView new];
+    [avatarBackView setImage:[UIImage imageNamed:@"头像底"]];
+    [backImageView addSubview:avatarBackView];
+    [avatarBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(sidePidding);
+        make.top.mas_equalTo(topPidding);
+        make.width.height.mas_equalTo(2*radius+1);
+    }];
+    
+    _avatarView=[UIImageView new];
+    [_avatarView setImage:[UIImage imageNamed:@"律师详情－头像"]];
+    [avatarBackView addSubview:_avatarView];
+    [_avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.mas_equalTo(1);
+        make.right.bottom.mas_equalTo(-1);
+    }];
+
+    _nicknameLabel = [UILabel new];
+    _nicknameLabel.font = FontOfSize(14);
+    _nicknameLabel.textColor = AppBaseTextColor1;
+    _nicknameLabel.textAlignment = NSTextAlignmentLeft;
+    [backImageView addSubview:_nicknameLabel];
+    [_nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.avatarView.mas_right).offset(10);
+        make.top.mas_equalTo(topPidding);
+        make.width.mas_equalTo(50);
+        make.height.mas_equalTo(16);
+    }];
+    _nicknameLabel.text=@"张三";
+
+
+    _addressLable = [UILabel new];
+    _addressLable.font = FontOfSize(12);
+    _addressLable.textColor = AppBaseTextColor1;
+    _addressLable.textAlignment = NSTextAlignmentLeft;
+    [backImageView addSubview:_addressLable];
+    [_addressLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.avatarView.mas_right).offset(10);
+        make.top.mas_equalTo(self.nicknameLabel.mas_bottom);
+        make.width.mas_equalTo(180);
+        make.height.mas_equalTo(16);
+    }];
+    _addressLable.text=@"执业律所：红黄蓝律师事务所";
+
+    NSArray *arr = @[@"财务纠纷",@"婚姻家庭"];
+    CGFloat btnW = 60;
+    for (int i = 0; i < arr.count; i ++) {
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(80+i * (btnW+10), _addressLable.bottom + 60, btnW, 20)];
+        [button setTitleColor:UIColorFromRGB(255, 138, 7) forState:UIControlStateNormal];
+        [button setTitle:arr[i] forState:UIControlStateNormal];
+        button.titleLabel.textAlignment =NSTextAlignmentLeft;
+        //NSTextAlignmentCenter;
+        button.titleLabel.font = FontOfSize(12);
+        button.titleLabel.numberOfLines=0;
+        [button.layer setCornerRadius:10.0];
+        [button.layer setBorderWidth:1.0];
+        button.layer.borderColor=(UIColorFromRGB(255, 138, 7)).CGColor;
+        [backImageView addSubview:button];
+    }
+    
+    UIButton*lawyerButton=[UIButton new];
+    [backImageView addSubview:lawyerButton];
+    [lawyerButton setTitle:@"认证律师" forState:0];
+    [lawyerButton setImage:[UIImage imageNamed:@"认证icon"] forState:0];
+    lawyerButton.titleLabel.font=FontOfSize(12);
+    [lawyerButton setTitleColor:AppBaseTextColor3 forState:0];
+    [lawyerButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-18);
+        make.width.mas_equalTo(70);
+        make.height.mas_equalTo(15);
+        make.top.mas_equalTo(topPidding);
+    }];
+    
+}
+
+/*
+-(void)renderContents{
+    self.backgroundColor = [UIColor clearColor];
+    
     CGFloat radius = 27;
     CGFloat sidePidding=15;
     _avatarView = [UIImageView new];
@@ -201,5 +290,5 @@
     
  
 }
-
+*/
 @end
