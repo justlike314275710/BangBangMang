@@ -445,6 +445,11 @@
 		EAE19E72222E4B430080B0F5 /* Mine_StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E71222E4B430080B0F5 /* Mine_StatusViewController.m */; };
 		EAE19E75222E78250080B0F5 /* fileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E74222E78250080B0F5 /* fileModel.m */; };
 		EAE19E78222F64DA0080B0F5 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E77222F64DA0080B0F5 /* CustomButton.m */; };
+		EAE19E7F2230AE910080B0F5 /* LawyerGrabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E7E2230AE910080B0F5 /* LawyerGrabViewController.m */; };
+		EAE19E862230B0DC0080B0F5 /* Lawyer_headView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E852230B0DC0080B0F5 /* Lawyer_headView.m */; };
+		EAE19E8A2230C55E0080B0F5 /* lawyerGrab_Logic.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E892230C55E0080B0F5 /* lawyerGrab_Logic.m */; };
+		EAE19E8E2230EE140080B0F5 /* lawyerGrab.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E8D2230EE140080B0F5 /* lawyerGrab.m */; };
+		EAE19E912230EF3B0080B0F5 /* Grab_customer.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E902230EF3B0080B0F5 /* Grab_customer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1328,6 +1333,16 @@
 		EAE19E74222E78250080B0F5 /* fileModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fileModel.m; sourceTree = "<group>"; };
 		EAE19E76222F64DA0080B0F5 /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		EAE19E77222F64DA0080B0F5 /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		EAE19E7D2230AE910080B0F5 /* LawyerGrabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerGrabViewController.h; sourceTree = "<group>"; };
+		EAE19E7E2230AE910080B0F5 /* LawyerGrabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerGrabViewController.m; sourceTree = "<group>"; };
+		EAE19E842230B0DC0080B0F5 /* Lawyer_headView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lawyer_headView.h; sourceTree = "<group>"; };
+		EAE19E852230B0DC0080B0F5 /* Lawyer_headView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Lawyer_headView.m; sourceTree = "<group>"; };
+		EAE19E882230C55E0080B0F5 /* lawyerGrab_Logic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawyerGrab_Logic.h; sourceTree = "<group>"; };
+		EAE19E892230C55E0080B0F5 /* lawyerGrab_Logic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawyerGrab_Logic.m; sourceTree = "<group>"; };
+		EAE19E8C2230EE140080B0F5 /* lawyerGrab.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lawyerGrab.h; sourceTree = "<group>"; };
+		EAE19E8D2230EE140080B0F5 /* lawyerGrab.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawyerGrab.m; sourceTree = "<group>"; };
+		EAE19E8F2230EF3B0080B0F5 /* Grab_customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Grab_customer.h; sourceTree = "<group>"; };
+		EAE19E902230EF3B0080B0F5 /* Grab_customer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Grab_customer.m; sourceTree = "<group>"; };
 		F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2657,9 +2672,8 @@
 		EA78F6CE2223D2B4002D788A /* Home_Lawyer */ = {
 			isa = PBXGroup;
 			children = (
-				EA78F6DF2225161E002D788A /* DSSettingDataSource */,
-				EA78F6CF2223D34C002D788A /* LawyerCertificationViewController.h */,
-				EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */,
+				EAE19E812230B06F0080B0F5 /* LawyerGra b(律师抢单) */,
+				EAE19E802230B0490080B0F5 /* LawyerCer(律师认证) */,
 			);
 			path = Home_Lawyer;
 			sourceTree = "<group>";
@@ -3554,6 +3568,65 @@
 			path = Viewcontroller;
 			sourceTree = "<group>";
 		};
+		EAE19E802230B0490080B0F5 /* LawyerCer(律师认证) */ = {
+			isa = PBXGroup;
+			children = (
+				EA78F6CF2223D34C002D788A /* LawyerCertificationViewController.h */,
+				EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */,
+				EA78F6DF2225161E002D788A /* DSSettingDataSource */,
+			);
+			path = "LawyerCer(律师认证)";
+			sourceTree = "<group>";
+		};
+		EAE19E812230B06F0080B0F5 /* LawyerGra b(律师抢单) */ = {
+			isa = PBXGroup;
+			children = (
+				EAE19E8B2230EDE40080B0F5 /* Model */,
+				EAE19E872230C5390080B0F5 /* Logic */,
+				EAE19E832230B0B60080B0F5 /* View */,
+				EAE19E822230B0990080B0F5 /* Controller */,
+			);
+			path = "LawyerGra b(律师抢单)";
+			sourceTree = "<group>";
+		};
+		EAE19E822230B0990080B0F5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EAE19E7D2230AE910080B0F5 /* LawyerGrabViewController.h */,
+				EAE19E7E2230AE910080B0F5 /* LawyerGrabViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EAE19E832230B0B60080B0F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EAE19E842230B0DC0080B0F5 /* Lawyer_headView.h */,
+				EAE19E852230B0DC0080B0F5 /* Lawyer_headView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EAE19E872230C5390080B0F5 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				EAE19E882230C55E0080B0F5 /* lawyerGrab_Logic.h */,
+				EAE19E892230C55E0080B0F5 /* lawyerGrab_Logic.m */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		EAE19E8B2230EDE40080B0F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EAE19E8C2230EE140080B0F5 /* lawyerGrab.h */,
+				EAE19E8D2230EE140080B0F5 /* lawyerGrab.m */,
+				EAE19E8F2230EF3B0080B0F5 /* Grab_customer.h */,
+				EAE19E902230EF3B0080B0F5 /* Grab_customer.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3863,6 +3936,7 @@
 				EA21CAB5221F9DCC007D3445 /* PSBasePrisonerViewModel.m in Sources */,
 				EAB038E6221E817B00331569 /* NIMKitKeyboardInfo.m in Sources */,
 				559785A622266138007BBCC2 /* FeedloadImgView.m in Sources */,
+				EAE19E7F2230AE910080B0F5 /* LawyerGrabViewController.m in Sources */,
 				EAB039D0221E8FF200331569 /* NTESNetChatViewController.m in Sources */,
 				EAB038DA221E817B00331569 /* NIMInputToolBar.m in Sources */,
 				EAB03937221E817C00331569 /* NIMKitConfig.m in Sources */,
@@ -4010,6 +4084,8 @@
 				EAB0390D221E817B00331569 /* NIMBaseSessionContentConfig.m in Sources */,
 				EAB038ED221E817B00331569 /* NIMTeamCardOperationItem.m in Sources */,
 				EA78F7402227CDE6002D788A /* BRInfoModel.m in Sources */,
+				EAE19E862230B0DC0080B0F5 /* Lawyer_headView.m in Sources */,
+				EAE19E912230EF3B0080B0F5 /* Grab_customer.m in Sources */,
 				555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */,
 				5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */,
 				559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */,
@@ -4020,6 +4096,7 @@
 				EA21CA7A221F9980007D3445 /* PSLawerViewModel.m in Sources */,
 				EA78F72122263DA8002D788A /* PersonTableViewCell.m in Sources */,
 				EAB0394B221E88BE00331569 /* PSViewController.m in Sources */,
+				EAE19E8E2230EE140080B0F5 /* lawyerGrab.m in Sources */,
 				EAB038D5221E817B00331569 /* NIMInputMoreContainerView.m in Sources */,
 				5597855522265CB2007BBCC2 /* PSWriteFeedbackListViewController.m in Sources */,
 				EA21CA78221F9980007D3445 /* PSConsultationViewModel.m in Sources */,
@@ -4075,6 +4152,7 @@
 				EAB03906221E817B00331569 /* NIMVideoContentConfig.m in Sources */,
 				EA21CA4B221F9386007D3445 /* PSAliHandler.m in Sources */,
 				EAB038E8221E817B00331569 /* NIMLoadProgressView.m in Sources */,
+				EAE19E8A2230C55E0080B0F5 /* lawyerGrab_Logic.m in Sources */,
 				EAB039B3221E8FF200331569 /* NTESAttachmentDecoder.m in Sources */,
 				EAB03901221E817B00331569 /* NIMSessionListViewController.m in Sources */,
 				EA21CA89221F9980007D3445 /* PSLawyers.m in Sources */,
@@ -4331,6 +4409,7 @@
 			baseConfigurationReference = F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35NTC834XG;
@@ -4354,7 +4433,7 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDKPlugin",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gkzxhn.HelpOut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gkzxhn.helpout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4370,6 +4449,7 @@
 			baseConfigurationReference = 7C10B3AC074F1C870E18701F /* Pods-GKHelpOutApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35NTC834XG;
@@ -4393,7 +4473,7 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDKPlugin",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gkzxhn.HelpOut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gkzxhn.helpout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

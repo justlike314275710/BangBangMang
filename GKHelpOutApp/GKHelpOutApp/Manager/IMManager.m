@@ -94,12 +94,20 @@ SINGLETON_FOR_CLASS(IMManager);
     NSData *jsonData = [notification.content dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary*dic=[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
     NSLog(@"***%@",dic);
-    EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
-        make.style = 11;
-        make.content = dic[@"content"];
-    }];
-    [banner show];
-   
+    if ([dic[@"type"] isEqualToString:@"RUSH_PAGE_REFRESH"]) {
+        KPostNotification(@"RUSH_PAGE_REFRESH", nil);
+        EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+            make.style = 11;
+            make.content = @"您有一笔新的订单!";
+        }];
+        [banner show];
+    } else {
+        EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+            make.style = 11;
+            make.content = dic[@"content"];
+        }];
+        [banner show];
+    }
 }
 
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString

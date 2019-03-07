@@ -112,8 +112,6 @@
     if ([model.status isEqualToString:@"PENDING_PAYMENT"]) {
         [_stateImg setImage:[UIImage imageNamed:@"待支付"]];//待支付
         self.noRead = NO;
-        //[self setdetailButtonUI];
-        //[_bgview addSubview:self.detailButton];
     }
     else if ([model.status isEqualToString:@"PENDING_APPROVAL"]){
         self.noRead = NO;
