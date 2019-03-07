@@ -26,20 +26,20 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>weixin</string>
+			<string>HelpApp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx4973a8b575999262</string>
+				<string>gkytHelpApp</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>AppScheme</string>
+			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>YuWuService</string>
+				<string>wx4973a8b575999262</string>
 			</array>
 		</dict>
 	</array>

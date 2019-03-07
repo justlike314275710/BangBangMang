@@ -41,7 +41,7 @@
 //用户律师认证信息存储
 #define KLawyerModelCache @"KLawyerModelCache"
 
-#define AppScheme @"YuWuService"
+#define AppScheme @"gkytHelpApp"
 
 #pragma mark - ——————— 网络状态相关 ————————
 
@@ -51,6 +51,8 @@
 #define KNotificationModifyDataChange    @"KNotificationModifyDataChange"
 //个人中心界面变化
 #define KNotificationMineDataChange    @"KNotificationMineDataDataChange"
+//支付宝绑定结果通知
+#define KNotificationBingAliPay         @"KNotificationBingAliPay"
 
 #define defultTager  999
 #endif /* CommonMacros_h */
