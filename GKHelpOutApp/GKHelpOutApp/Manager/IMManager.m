@@ -96,7 +96,7 @@ SINGLETON_FOR_CLASS(IMManager);
     NSLog(@"***%@",dic);
     EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
         make.style = 11;
-        make.content = dic[@"content"];
+        make.content = ValidStr(dic[@"content"])?dic[@"content"]:@"";
     }];
     [banner show];
    

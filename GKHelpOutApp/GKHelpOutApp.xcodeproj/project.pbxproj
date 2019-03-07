@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551AF6AD2230C57F006AB1A0 /* HMBillLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */; };
 		5524C68922250F380067F437 /* LegaladviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68822250F380067F437 /* LegaladviceViewController.m */; };
 		5524C68C22250F6E0067F437 /* CounselingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68B22250F6E0067F437 /* CounselingViewController.m */; };
 		5524C6922225106B0067F437 /* ZWTopSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68F2225106B0067F437 /* ZWTopSelectButton.m */; };
@@ -482,6 +483,8 @@
 
 /* Begin PBXFileReference section */
 		489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		551AF6AB2230C57F006AB1A0 /* HMBillLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillLogic.h; sourceTree = "<group>"; };
+		551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMBillLogic.m; sourceTree = "<group>"; };
 		5524C68722250F380067F437 /* LegaladviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LegaladviceViewController.h; sourceTree = "<group>"; };
 		5524C68822250F380067F437 /* LegaladviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegaladviceViewController.m; sourceTree = "<group>"; };
 		5524C68A22250F6E0067F437 /* CounselingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CounselingViewController.h; sourceTree = "<group>"; };
@@ -1380,6 +1383,15 @@
 				E7404FC029C5B013F6E316EC /* Pods-GKHelpOutAppUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		551AF6AA2230C55C006AB1A0 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				551AF6AB2230C57F006AB1A0 /* HMBillLogic.h */,
+				551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 		5524C68522250EF60067F437 /* 心理咨询 */ = {
@@ -2379,6 +2391,7 @@
 		55C0C776222D12BE00CD2459 /* 账单 */ = {
 			isa = PBXGroup;
 			children = (
+				551AF6AA2230C55C006AB1A0 /* Logic */,
 				55C0C777222D130000CD2459 /* HMBillViewController.h */,
 				55C0C778222D130000CD2459 /* HMBillViewController.m */,
 			);
@@ -4138,6 +4151,7 @@
 				EA21CB22221FA36C007D3445 /* PSAppointmentBaseViewModel.m in Sources */,
 				EAB038D1221E817B00331569 /* NIMPinyinConverter.m in Sources */,
 				5557A545221BD7F500743012 /* AESCipher.m in Sources */,
+				551AF6AD2230C57F006AB1A0 /* HMBillLogic.m in Sources */,
 				EAB03916221E817B00331569 /* NIMKitLocationPoint.m in Sources */,
 				EA78F70A22263761002D788A /* Mine_AuthViewController.m in Sources */,
 				5557A56E221BD87100743012 /* UserManager.m in Sources */,

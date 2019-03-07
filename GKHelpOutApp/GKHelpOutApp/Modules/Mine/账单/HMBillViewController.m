@@ -7,11 +7,13 @@
 //
 
 #import "HMBillViewController.h"
+#import "HMBillLogic.h"
 #import "HMBillCell.h"
 
 @interface HMBillViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UIView *headView;
 @property(nonatomic,strong)UILabel *headLab;
+@property(nonatomic,strong)HMBillLogic *logic;
 
 
 @end
@@ -21,20 +23,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"账单";
+    _logic = [[HMBillLogic alloc] init];
     [self setupUI];
+
+    
 }
 #pragma mark - PrivateMethods
 
 -(void)setupUI{
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth,KScreenHeight-kTabBarHeight-kStatusBarHeight) style:UITableViewStyleGrouped];
     [self.tableView registerClass:[HMBillCell class] forCellReuseIdentifier:@"HMBillCell"];
-    self.tableView.mj_header.hidden = YES;
-    self.tableView.mj_footer.hidden = YES;
+    [self.view addSubview:self.tableView];
+//    self.tableView.mj_header.hidden = YES;
+//    self.tableView.mj_footer.hidden = YES;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.view addSubview:self.tableView];
+    @weakify(self);
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self)
+        [self refreshData];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+
 }
 
+-(void)refreshData {
+    [_logic refreshMyAdviceCompleted:^(id data) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView.mj_header endRefreshing];
+        });
+    } failed:^(NSError *error) {
+        
+    }];
+}
 #pragma mark - Delegate
 //MARK:UITableViewDataSource&UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

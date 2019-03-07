@@ -99,4 +99,30 @@
     }];
 }
 
+///<查询支付宝
+- (void)getBingLawyerAlipayInfo:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    NSString*url=NSStringFormat(@"%@%@",ConsultationHostUrl,URL_Lawyer_aliPayinfo);
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==201||responses.statusCode==200||responses.statusCode==204) {
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
+        }
+        NSLog(@"%@",responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (error) {
+            failedCallback(error);
+        }
+    }];
+    
+}
+
 @end

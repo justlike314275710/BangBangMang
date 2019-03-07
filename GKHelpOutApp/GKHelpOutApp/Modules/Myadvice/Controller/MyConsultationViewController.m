@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的咨询";
-    [self addNavigationItemWithImageNames:@[@"会话icon－红点"] isLeft:NO target:self action:@selector(rightAction) tags:@[@2000]];
+//    [self addNavigationItemWithImageNames:@[@"会话icon－红点"] isLeft:NO target:self action:@selector(rightAction) tags:@[@2000]];
     
     [self setupUI];
     
@@ -47,13 +47,21 @@
     self.topSelectVcView.delegate=self;
     
     [self.topSelectVcView setupZWTopSelectVcViewUI];
-    self.topSelectVcView.animationType=PageCurl;
+    self.topSelectVcView.animationType=Push;
     
     [self.topSelectVcView addSubview:self.iconImg1];
     self.iconImg1.frame = CGRectMake(40,(50-13)/2, 13, 13);
     
     [self.topSelectVcView addSubview:self.iconImg2];
     self.iconImg2.frame = CGRectMake(40+KScreenWidth/2,(50-13)/2, 13, 13);
+    //fix
+    UIButton *btn = [UIButton new];
+    btn.frame = CGRectMake(KScreenWidth/2,14,KScreenHeight/2,50);
+    [self.view addSubview:btn];
+    btn.backgroundColor= KClearColor;
+    [btn addTapBlock:^(UIButton *btn) {
+         [PSTipsView showTips:Hmsg_Comingsoon];
+    }];
 
 }
 
