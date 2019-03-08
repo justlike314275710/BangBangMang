@@ -9,6 +9,7 @@
 #import "HMGetCashViewController.h"
 #import "HMGetCashResultViewController.h"
 #import "LoginLogic.h"
+#import "NSString+JsonString.h"
 
 @interface HMGetCashViewController (){
     
@@ -118,7 +119,6 @@
     _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
-
 #pragma mark - 定时器方法
 - (void)handleTimer {
     if (_seconds > 0) {
@@ -132,7 +132,6 @@
         }
     }
 }
-
 -(void)getCode{
     self.getCodeBtn.enabled = NO;
     _logic.phoneNumber = help_userManager.curUserInfo.username;
@@ -155,7 +154,6 @@
                 }
                 
             }];
-            
         } else {
             self.getCodeBtn.enabled = YES;
             [MBProgressHUD showWarnMessage:tips];
@@ -165,7 +163,7 @@
 
 -(void)lawyerWithdrawal {
     
-    NSString *amount = @"0.1";
+    NSString *amount = @"1";
     NSString *verificationCode = self.codeField.text;
     NSDictionary *params = @{@"amount":amount,@"verificationCode":verificationCode};
     AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
@@ -222,7 +220,7 @@
 //        [_headImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headViewClick)]];
         ViewRadius(_headImgView,40);
         [self.bgView addSubview:_headImgView];
-        [_headImgView setImageWithURL:[NSURL URLWithString:help_userManager.lawUserInfo.avatar] options:YYWebImageOptionRefreshImageCache];
+        [_headImgView setImageWithURL:[NSURL URLWithString:help_userManager.lawUserInfo.avatar] placeholder:IMAGE_NAMED(@"登录－头像") options:YYWebImageOptionRefreshImageCache completion:nil];
     }
     return _headImgView;
 }
@@ -255,7 +253,11 @@
     if (!_msgCodeLab) {
         _msgCodeLab=[UILabel new];
 //        _msgCodeLab.text = @"提现需要短信确认，验证码已发送至手机：138****6768，请按提示操作。";
-        _msgCodeLab.text = NSStringFormat(@"提现需要短信确认，验证码已发送至手机%@，请按提示操作。",help_userManager.curUserInfo.username);
+        NSString *phoneNumber = help_userManager.curUserInfo.username;
+        if (phoneNumber.length>10) {
+            phoneNumber = [NSString changeTelephone:phoneNumber];
+        }
+        _msgCodeLab.text = NSStringFormat(@"提现需要短信确认，验证码已发送至手机%@，请按提示操作。",phoneNumber);
         _msgCodeLab.numberOfLines = 0;
         _msgCodeLab.textColor = CFontColor2;
         _msgCodeLab.textAlignment = NSTextAlignmentLeft;

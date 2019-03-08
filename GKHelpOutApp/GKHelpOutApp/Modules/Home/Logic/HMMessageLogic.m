@@ -1,23 +1,21 @@
 //
-//  HMBillLogin.m
+//  HMMessageLogic.m
 //  GKHelpOutApp
 //
 //  Created by kky on 2019/3/7.
 //  Copyright © 2019年 kky. All rights reserved.
 //
 
-#import "HMBillLogic.h"
-#import "HMBillModel.h"
-@interface HMBillLogic()
+#import "HMMessageLogic.h"
+#import "HMMessageModel.h"
+@interface HMMessageLogic(){
+    AFHTTPSessionManager *manager;
+}
 @property (nonatomic,strong)NSMutableArray *items;
-
 @end
 
-@implementation HMBillLogic
-{
-    AFHTTPSessionManager *manager;
-    
-}
+@implementation HMMessageLogic
+
 @synthesize dataStatus = _dataStatus;
 -(instancetype)init{
     self = [super init];
@@ -34,7 +32,7 @@
 }
 
 //获取账单详情
-- (void)refreshMyAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback {
+- (void)refreshMesagaeListCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback {
     self.page = 0;
     self.items = nil;
     self.hasNextPage = NO;
@@ -42,20 +40,19 @@
     [self requestMyAdviceCompleted:completedCallback failed:failedCallback];
     
 }
-- (void)loadMyAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+- (void)loadMyMessageListCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     self.page ++;
     [self requestMyAdviceCompleted:completedCallback failed:failedCallback];
 }
-
-
 -(void)requestMyAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     manager=[AFHTTPSessionManager manager];
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
-    NSString*url=[NSString stringWithFormat:@"%@/bill?",ConsultationHostUrl];
+    NSString*url=[NSString stringWithFormat:@"%@/im/notifications/my?",EmallHostUrl];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     NSDictionary*parmeters=@{
-                             @"page":[NSString stringWithFormat:@"%ld",(long)self.page],
-                             @"size":[NSString stringWithFormat:@"%ld",(long)self.pageSize]
+                              @"page":[NSString stringWithFormat:@"%ld",(long)self.page],
+                              @"size":[NSString stringWithFormat:@"%ld",(long)self.pageSize],
+                              @"sort":@"createdTime,desc",
                              };
     [manager GET:url parameters:parmeters progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -69,8 +66,8 @@
             }else{
                 self.dataStatus = PSDataNormal;
             }
-            [self.items addObjectsFromArray:[HMBillModel mj_objectArrayWithKeyValuesArray:responseObject[@"content"]]];
-            NSArray*hasNextPageArray=[HMBillModel mj_objectArrayWithKeyValuesArray:responseObject[@"content"]];
+            [self.items addObjectsFromArray:[HMMessageModel mj_objectArrayWithKeyValuesArray:responseObject[@"content"]]];
+            NSArray*hasNextPageArray=[HMMessageModel mj_objectArrayWithKeyValuesArray:responseObject[@"content"]];
             self.hasNextPage = hasNextPageArray.count >= self.pageSize;
             if (completedCallback) {
                 completedCallback(responseObject);
@@ -101,5 +98,6 @@
 -(NSMutableArray *)datalist {
     return _items;
 }
+
 
 @end

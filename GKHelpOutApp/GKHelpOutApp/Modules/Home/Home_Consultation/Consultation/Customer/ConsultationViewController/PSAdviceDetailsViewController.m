@@ -65,12 +65,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
-     [self refreshData];
+    [self refreshData];
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.isShowLiftBack = YES;
    
 }
 #pragma mark -- 网络请求

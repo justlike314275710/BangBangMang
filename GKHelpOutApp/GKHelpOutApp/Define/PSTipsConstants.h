@@ -11,6 +11,9 @@
 //    PSLoginPending=2, //待审核
 //    PSLoginPassed=3   //已认证
 //};
+
+
+
 #define CopyRight @"国科政信科技（北京）股份有限公司\ncopyright@2006-2015.All right reserved"
 
 #define ContactDetails @"地址：北京市海淀区西三旗昌临813号11号楼\n邮编：100086\n客服电话：010-82911287-5032"
@@ -68,6 +71,5 @@
 #define user_unauthorized     @"unauthorized";                     //账号不存在
 #define user_group_NotMatched @"user.group.NotMatched";            //账号不属于该群组
 #define user_invalid_grant    @"invalid_grant";                    //账号已禁用
-
 
 

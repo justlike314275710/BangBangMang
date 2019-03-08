@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HMMessageModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) UILabel *dataLab;
 @property(nonatomic, strong) UILabel *detailLab;
 @property(nonatomic, strong) UIImageView *arrowImg;
+
+@property(nonatomic, strong) HMMessageModel *model;
 
 @end
 

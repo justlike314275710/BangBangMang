@@ -7,6 +7,7 @@
 //
 
 #import "HMBillCell.h"
+#import "NSString+Utils.h"
 
 @implementation HMBillCell
 
@@ -37,6 +38,29 @@
     
     [self addSubview:self.orderLab];
     self.orderLab.frame = CGRectMake(spacex,self.payWayLab.bottom+2,300,20);
+    
+}
+
+-(void)setModel:(HMBillModel *)model {
+    _model = model;
+    if ([model.type isEqualToString:@"SERVICE_CHARGE"]) {
+        self.titleLab.text = @"提现平台使用费";
+    } else if([model.type isEqualToString:@"PAYMENT"]) {
+        self.titleLab.text = @"法律咨询费用";
+    } else if([model.type isEqualToString:@"REFUND"]) {
+        self.titleLab.text = @"法律咨询退费";
+    } else if([model.type isEqualToString:@"WITHDRAW"]) {
+        self.titleLab.text = @"账户提现";
+    }
+    self.moneylab.text = model.amount;
+//    self.dataLab.text = model.successTime;
+    self.dataLab.text = [NSString timeChange:model.successTime];
+    if ([_model.source isEqualToString:@"ALIPAY"]) {
+        self.payWayLab.text = @"支付方式:支付宝";
+    } else {
+        self.payWayLab.text = @"支付方式:微信";
+    }
+    self.orderLab.text = NSStringFormat(@"订单编号:%@",model.orderNumber);
     
 }
 
@@ -92,9 +116,6 @@
     }
     return _orderLab;
 }
-
-
-
 
 - (void)awakeFromNib {
     [super awakeFromNib];

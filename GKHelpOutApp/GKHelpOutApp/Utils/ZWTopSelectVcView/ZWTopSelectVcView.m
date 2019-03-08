@@ -696,6 +696,7 @@ typedef enum{
 //手势初始化
 -(void)setupShowVcRecognizer
 {
+    self.isCloseSwipeGesture = YES;
     if (self.isCloseSwipeGesture) {
         
     }else{

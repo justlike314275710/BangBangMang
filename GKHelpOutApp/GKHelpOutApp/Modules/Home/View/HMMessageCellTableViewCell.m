@@ -7,6 +7,8 @@
 //
 
 #import "HMMessageCellTableViewCell.h"
+#import "NSString+JsonString.h"
+#import "NSString+Utils.h"
 
 @implementation HMMessageCellTableViewCell
 
@@ -29,7 +31,7 @@
     
 //    [self addSubview:self.arrowImg];
     self.arrowImg.frame = CGRectMake(KScreenWidth-26,36,10,18);
-    
+    self.arrowImg.hidden = YES;
     
     [self addSubview:self.titleLab];
     self.titleLab.frame = CGRectMake(self.iconImg.right+10,_iconImg.y-10,150,30);
@@ -39,9 +41,27 @@
     
     [self addSubview:self.dataLab];
     self.dataLab.frame = CGRectMake(KScreenWidth-190,_iconImg.y-10,150,30);
-    
 }
 
+
+-(void)setModel:(HMMessageModel *)model {
+    _model = model;
+    //{"content":"您于2019-03-06 07:17发布的财产纠纷咨询已有律师接单，请前往咨询。","ext":"07e6d788-dc23-4579-af50-01ed842a80d6","type":"NOTIFICATION_LEGAL_ADVICE"}
+    if (ValidStr(model.content)) {
+        NSDictionary *dic = [NSString dictionaryWithJsonString:model.content];
+        if (ValidDict(dic)) {
+            NSString *content = [dic valueForKey:@"content"];
+            if (ValidStr(content)) {
+                self.detailLab.text = content;
+            } else {
+                self.detailLab.text = @"有新的可接订单,快去接单吧";
+            }
+        }
+    }
+//    self.dataLab.text = model.lastUpdatedTime;
+    self.dataLab.text = [NSString timeChange:model.lastUpdatedTime];
+    
+}
 
 #pragma mark - Setting&Getting
 -(UIImageView *)iconImg{
