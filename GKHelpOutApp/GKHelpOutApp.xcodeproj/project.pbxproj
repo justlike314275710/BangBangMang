@@ -455,6 +455,8 @@
 		EAE19E8A2230C55E0080B0F5 /* lawyerGrab_Logic.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E892230C55E0080B0F5 /* lawyerGrab_Logic.m */; };
 		EAE19E8E2230EE140080B0F5 /* lawyerGrab.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E8D2230EE140080B0F5 /* lawyerGrab.m */; };
 		EAE19E912230EF3B0080B0F5 /* Grab_customer.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E902230EF3B0080B0F5 /* Grab_customer.m */; };
+		EAE19E94223110920080B0F5 /* LawyerAdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */; };
+		EAE19E9B223114320080B0F5 /* LawyerAdviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E9A223114320080B0F5 /* LawyerAdviceTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1358,6 +1360,10 @@
 		EAE19E8D2230EE140080B0F5 /* lawyerGrab.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawyerGrab.m; sourceTree = "<group>"; };
 		EAE19E8F2230EF3B0080B0F5 /* Grab_customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Grab_customer.h; sourceTree = "<group>"; };
 		EAE19E902230EF3B0080B0F5 /* Grab_customer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Grab_customer.m; sourceTree = "<group>"; };
+		EAE19E92223110920080B0F5 /* LawyerAdviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerAdviceViewController.h; sourceTree = "<group>"; };
+		EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceViewController.m; sourceTree = "<group>"; };
+		EAE19E99223114320080B0F5 /* LawyerAdviceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerAdviceTableViewCell.h; sourceTree = "<group>"; };
+		EAE19E9A223114320080B0F5 /* LawyerAdviceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceTableViewCell.m; sourceTree = "<group>"; };
 		F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2508,17 +2514,8 @@
 		EA21CA4E221F9980007D3445 /* Consultation */ = {
 			isa = PBXGroup;
 			children = (
-				EA21CA4F221F9980007D3445 /* PSScoreViewController.h */,
-				EA21CA50221F9980007D3445 /* PSConsultationViewController.h */,
-				EA21CA51221F9980007D3445 /* ConsultationViewModel */,
-				EA21CA58221F9980007D3445 /* PSAdviceDetailsViewController.h */,
-				EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */,
-				EA21CA5B221F9980007D3445 /* PSScoreViewController.m */,
-				EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */,
-				EA21CA5E221F9980007D3445 /* ConsultationView */,
-				EA21CA65221F9980007D3445 /* ConsultationModel */,
-				EA21CA76221F9980007D3445 /* PSAdviceDetailsViewController.m */,
-				EA21CA77221F9980007D3445 /* PSMyAdviceViewController.h */,
+				EAE19E97223112D50080B0F5 /* Lawyer */,
+				EAE19E952231127C0080B0F5 /* Customer */,
 			);
 			path = Consultation;
 			sourceTree = "<group>";
@@ -2705,7 +2702,7 @@
 		EA78F6CE2223D2B4002D788A /* Home_Lawyer */ = {
 			isa = PBXGroup;
 			children = (
-				EAE19E812230B06F0080B0F5 /* LawyerGra b(律师抢单) */,
+				EAE19E812230B06F0080B0F5 /* LawyerGrab(律师抢单) */,
 				EAE19E802230B0490080B0F5 /* LawyerCer(律师认证) */,
 			);
 			path = Home_Lawyer;
@@ -3611,7 +3608,7 @@
 			path = "LawyerCer(律师认证)";
 			sourceTree = "<group>";
 		};
-		EAE19E812230B06F0080B0F5 /* LawyerGra b(律师抢单) */ = {
+		EAE19E812230B06F0080B0F5 /* LawyerGrab(律师抢单) */ = {
 			isa = PBXGroup;
 			children = (
 				EAE19E8B2230EDE40080B0F5 /* Model */,
@@ -3619,7 +3616,7 @@
 				EAE19E832230B0B60080B0F5 /* View */,
 				EAE19E822230B0990080B0F5 /* Controller */,
 			);
-			path = "LawyerGra b(律师抢单)";
+			path = "LawyerGrab(律师抢单)";
 			sourceTree = "<group>";
 		};
 		EAE19E822230B0990080B0F5 /* Controller */ = {
@@ -3658,6 +3655,51 @@
 				EAE19E902230EF3B0080B0F5 /* Grab_customer.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EAE19E952231127C0080B0F5 /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				EAE19E96223112AD0080B0F5 /* ConsultationViewController */,
+				EA21CA65221F9980007D3445 /* ConsultationModel */,
+				EA21CA5E221F9980007D3445 /* ConsultationView */,
+				EA21CA51221F9980007D3445 /* ConsultationViewModel */,
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
+		EAE19E96223112AD0080B0F5 /* ConsultationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA21CA4F221F9980007D3445 /* PSScoreViewController.h */,
+				EA21CA50221F9980007D3445 /* PSConsultationViewController.h */,
+				EA21CA58221F9980007D3445 /* PSAdviceDetailsViewController.h */,
+				EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */,
+				EA21CA5B221F9980007D3445 /* PSScoreViewController.m */,
+				EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */,
+				EA21CA76221F9980007D3445 /* PSAdviceDetailsViewController.m */,
+				EA21CA77221F9980007D3445 /* PSMyAdviceViewController.h */,
+			);
+			path = ConsultationViewController;
+			sourceTree = "<group>";
+		};
+		EAE19E97223112D50080B0F5 /* Lawyer */ = {
+			isa = PBXGroup;
+			children = (
+				EAE19E98223114050080B0F5 /* View */,
+				EAE19E92223110920080B0F5 /* LawyerAdviceViewController.h */,
+				EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */,
+			);
+			path = Lawyer;
+			sourceTree = "<group>";
+		};
+		EAE19E98223114050080B0F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EAE19E99223114320080B0F5 /* LawyerAdviceTableViewCell.h */,
+				EAE19E9A223114320080B0F5 /* LawyerAdviceTableViewCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3990,6 +4032,7 @@
 				EAB038C8221E817B00331569 /* NIMKitFileLocationHelper.m in Sources */,
 				EAB03915221E817B00331569 /* NIMSessionInteractorImpl.m in Sources */,
 				5597855722265CB2007BBCC2 /* PSWriteFeedbackViewController.m in Sources */,
+				EAE19E94223110920080B0F5 /* LawyerAdviceViewController.m in Sources */,
 				EAB039B4221E8FF200331569 /* UIAlertView+NTESBlock.m in Sources */,
 				EAB039D1221E8FF200331569 /* PSSendShopGoodsAttachment.m in Sources */,
 				EAB03911221E817B00331569 /* NIMSessionMsgDatasource.m in Sources */,
@@ -4035,6 +4078,7 @@
 				EA21CB38221FA88E007D3445 /* PSPhoneCard.m in Sources */,
 				EAB038DC221E817B00331569 /* NIMInputEmoticonButton.m in Sources */,
 				5557A4F9221BD76300743012 /* RootViewController.m in Sources */,
+				EAE19E9B223114320080B0F5 /* LawyerAdviceTableViewCell.m in Sources */,
 				EAE19E69222CC83D0080B0F5 /* Mine_addressViewController.m in Sources */,
 				EAB03938221E817C00331569 /* NIMKitColorButtonCell.m in Sources */,
 				EA21CB29221FA444007D3445 /* PSPaySuccessViewController.m in Sources */,

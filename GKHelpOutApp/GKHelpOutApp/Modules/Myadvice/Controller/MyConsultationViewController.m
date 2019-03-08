@@ -13,6 +13,7 @@
 #import "ZWTopSelectVcView.h"
 #import "PSMyAdviceViewController.h"
 #import "PSConsultationViewModel.h"
+#import "LawyerAdviceViewController.h"
 
 @interface MyConsultationViewController ()<ZWTopSelectVcViewDataSource,ZWTopSelectVcViewDelegate> {
     BOOL              isChangeChildVc;
@@ -93,7 +94,13 @@
 {
     NSMutableArray *controllerMutableArr=[NSMutableArray array];
     
-    PSMyAdviceViewController *showtwoVc= [[ PSMyAdviceViewController alloc]initWithViewModel:[[PSConsultationViewModel alloc] init]];
+//    PSMyAdviceViewController *showtwoVc= [[ PSMyAdviceViewController alloc]initWithViewModel:[[PSConsultationViewModel alloc] init]];
+//    showtwoVc.title=@"法律咨询";
+//    [controllerMutableArr addObject:showtwoVc];
+    
+    
+
+    LawyerAdviceViewController *showtwoVc= [[ LawyerAdviceViewController alloc]init];
     showtwoVc.title=@"法律咨询";
     [controllerMutableArr addObject:showtwoVc];
     
