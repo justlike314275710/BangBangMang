@@ -195,15 +195,18 @@
                 [self startTimer];
                 
             } failed:^(NSError *error) {
+                NSString *message = @"";
                 NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
                 if (data) {
                     id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                    NSString*message = body[@"message"];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD showWarnMessage:message];
-                        self.getCodeBtn.enabled=YES;
-                    });
+                    message = body[@"message"];
+                } else {
+                     message = @"无法连接到服务器！";
                 }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD showWarnMessage:message];
+                    self.getCodeBtn.enabled=YES;
+                });
                 
             }];
             

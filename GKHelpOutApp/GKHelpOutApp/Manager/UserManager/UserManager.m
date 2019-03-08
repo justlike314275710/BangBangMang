@@ -266,6 +266,7 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
 //获取IM信息
 -(void)autoLoginToServer:(loginBlock)completion{
 
+    //判断律师身份
     [self JudgeIdentityCallback:^(BOOL success, NSString *des) {
         
     }];

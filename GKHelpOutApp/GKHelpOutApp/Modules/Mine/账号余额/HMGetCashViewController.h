@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HMGetCashViewController : RootViewController
 
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 #import "HMGetCashResultViewController.h"
 #import "LoginLogic.h"
 #import "NSString+JsonString.h"
+#import "HMGetCashLogic.h"
+#import "ReactiveObjC.h"
 
 @interface HMGetCashViewController (){
     
@@ -23,10 +25,13 @@
 @property(nonatomic,strong)UIButton*getCodeBtn;
 @property(nonatomic,strong)UITextField *codeField;
 @property(nonatomic,strong)UIButton *submitBtn;
+@property(nonatomic,strong)UILabel *cashRightLab;
 
 @property(nonatomic,strong)LoginLogic *logic;
 @property(nonatomic,assign)NSInteger seconds;
-@property (nonatomic, weak) NSTimer *timer; //倒计时
+@property(nonatomic,weak)NSTimer *timer; //倒计时
+@property(nonatomic,strong)HMGetCashLogic *getCashLogic;
+
 
 
 @end
@@ -38,6 +43,7 @@
     // Do any additional setup after loading the view.
     self.title=@"提现";
      _logic = [LoginLogic new];
+    _getCashLogic = [HMGetCashLogic new];
     [self setupUI];
 }
 
@@ -61,6 +67,19 @@
     
     self.cashTextField.frame=CGRectMake(tqcashLab.left,tqcashLab.bottom+10,self.bgView.width-38,40);
     [self.bgView addSubview:self.cashTextField];
+    [self.cashTextField.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+        if ([x floatValue]>[help_userManager.lawUserInfo.rewardAmount floatValue]) {
+             [PSTipsView showTips:@"提现金额不能大于账户总余额"];
+            return;
+        }
+        float actual = [x floatValue]*0.75;
+        if ([x floatValue]>=1) {
+            NSString *actualMoney = [NSString stringWithFormat:@"实际到账¥%.1f",actual];
+            self.cashRightLab.text = actualMoney;
+        } else{
+            self.cashRightLab.text = @"";
+        }
+    }];
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(tqcashLab.left,self.cashTextField.bottom+1, self.bgView.width-38, 1)];
     line.backgroundColor = CLineColor;
@@ -163,30 +182,22 @@
 
 -(void)lawyerWithdrawal {
     
-    NSString *amount = @"1";
-    NSString *verificationCode = self.codeField.text;
-    NSDictionary *params = @{@"amount":amount,@"verificationCode":verificationCode};
-    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager.requestSerializer setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
-    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
-    NSString*url=NSStringFormat(@"%@%@",ConsultationHostUrl,URL_Lawyer_aliPaywithdrawal);
-    [manager POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
-        if (responses.statusCode==201||responses.statusCode==200||responses.statusCode==204) {
-//            if (completedCallback) {
-//                completedCallback(responseObject);
-//            }
+    _getCashLogic.amount = self.cashTextField.text;
+    _getCashLogic.verificationCode = self.codeField.text;
+    [_getCashLogic checkDataWithCallback:^(BOOL successful, NSString *tips) {
+        if (successful) {
+            //提现
+            [self->_getCashLogic postGetCashDatacompleted:^(id data) {
+                [PSTipsView showTips:@"提现成功"];
+                //发送通知余额变化
+                KPostNotification(KNotificationGetCashSuccess, nil);
+                
+            } failed:^(NSError *error) {
+                [PSTipsView showTips:@"提现失败"];
+            }];
+        } else {
+            [PSTipsView showTips:tips];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        if (error) {
-//            failedCallback(error);
-//        }
     }];
 }
 #pragma makr - TouchEvent
@@ -239,13 +250,16 @@
         _cashTextField=[UITextField new];
         _cashTextField.textColor = CFontColor1;
         _cashTextField.textAlignment = NSTextAlignmentLeft;
-        _cashTextField.font = FFont1;
+        _cashTextField.font = FontOfSize(18);
         _cashTextField.placeholder = @"请输入提现金额";
         _cashTextField.leftViewMode = UITextFieldViewModeAlways;
         UILabel*label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 20,40)];
         label.text=@"¥";
         _cashTextField.leftView = label;
         _cashTextField.keyboardType = UIKeyboardTypeNumberPad;
+        _cashTextField.rightViewMode = UITextFieldViewModeAlways;
+        self.cashRightLab.frame = CGRectMake(0,0,150,40);
+        _cashTextField.rightView = _cashRightLab;
     }
     return _cashTextField;
 }
@@ -297,6 +311,18 @@
     }
     return _submitBtn;
 }
+
+-(UILabel *)cashRightLab{
+    if (!_cashRightLab) {
+        _cashRightLab = [UILabel new];
+        _cashRightLab.font = FontOfSize(14);
+        _cashRightLab.textColor = KRedColor;
+    }
+    return _cashRightLab;
+}
+
+
+
 
 
 

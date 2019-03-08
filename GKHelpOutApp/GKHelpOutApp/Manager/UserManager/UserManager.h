@@ -118,7 +118,13 @@ SINGLETON_FOR_HEADER(UserManager)
  */
 -(void)saveUserInfo;
 
--(void)loadLawUserInfo;
+-(void)saveLawUserInfo;
+-(BOOL)loadLawUserInfo;
+
+-(void)saveUserState;
+-(BOOL)loadUserState;
+
+
 
 
 
