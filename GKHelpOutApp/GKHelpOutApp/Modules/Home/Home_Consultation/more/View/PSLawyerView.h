@@ -14,5 +14,6 @@
 @property (nonatomic, strong, readonly) UILabel *nicknameLabel;
 @property (nonatomic , strong) UILabel* addressLable;//执教律所
 @property (nonatomic,strong) CDZStarsControl *starsControl;
+@property (nonatomic , strong) NSMutableArray *categories;
 
 @end

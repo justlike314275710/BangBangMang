@@ -11,6 +11,7 @@
 #import "lawyerGrab.h"
 @interface lawyerGrab_Logic ()
 @property (nonatomic , strong) NSMutableArray *items;
+@property (nonatomic , strong) NSMutableArray *grabItems;
 @end
 
 @implementation lawyerGrab_Logic
@@ -45,7 +46,7 @@
     self.page ++;
     [self requestMyAdviceCompleted:completedCallback failed:failedCallback];
 }
-
+//可抢定单
 -(void)requestMyAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     manager=[AFHTTPSessionManager manager];
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
@@ -101,7 +102,6 @@
 
 
 
-
 -(void)POSTLawyergrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     manager=[AFHTTPSessionManager manager];
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
@@ -120,6 +120,21 @@
     }];
 }
 
+
+
+- (void)refreshMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    self.page = 0;
+    self.items = nil;
+    self.hasNextPage = NO;
+    self.dataStatus = PSDataInitial;
+    [self GETMygrabCompleted:completedCallback failed:failedCallback];
+}
+- (void)loadMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    self.page ++;
+     [self GETMygrabCompleted:completedCallback failed:failedCallback];
+}
+
+
 -(void)GETMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     manager=[AFHTTPSessionManager manager];
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
@@ -134,14 +149,14 @@
         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
         if (responses.statusCode==200) {
             if (self.page == 0) {
-                self.items = [NSMutableArray array];
+                self.grabItems = [NSMutableArray array];
             }
-            if (self.items.count == 0) {
+            if (self.grabItems.count == 0) {
                 self.dataStatus = PSDataEmpty;
             }else{
                 self.dataStatus = PSDataNormal;
             }
-            [self.items addObjectsFromArray:[lawyerGrab mj_objectArrayWithKeyValuesArray:responseObject[@"content"]]];
+            [self.grabItems addObjectsFromArray:[lawyerGrab mj_objectArrayWithKeyValuesArray:responseObject[@"content"]]];
             NSArray*hasNextPageArray=[lawyerGrab mj_objectArrayWithKeyValuesArray:responseObject[@"content"]];
             self.hasNextPage = hasNextPageArray.count >= self.pageSize;
             if (completedCallback) {
@@ -172,7 +187,9 @@
 }
 
 
-
+-(NSArray *)myAdviceArray{
+    return _grabItems;
+}
 - (NSArray *)rushAdviceArray{
     return _items;
 }

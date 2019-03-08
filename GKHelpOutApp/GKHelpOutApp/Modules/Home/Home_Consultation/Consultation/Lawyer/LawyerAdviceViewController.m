@@ -35,7 +35,15 @@
 - (void)loadMore {
     // lawyerGrab_Logic*logic=[[lawyerGrab_Logic alloc]init];
     @weakify(self)
-    [self.logic loadLawyerAdviceCompleted:^(id data) {
+//    [self.logic loadLawyerAdviceCompleted:^(id data) {
+//        @strongify(self)
+//        [self reloadContents];
+//    } failed:^(NSError *error) {
+//        @strongify(self)
+//        [self reloadContents];
+//    }];
+    
+    [self.logic loadMygrabCompleted:^(id data) {
         @strongify(self)
         [self reloadContents];
     } failed:^(NSError *error) {
@@ -47,32 +55,28 @@
 - (void)refreshData {
     //lawyerGrab_Logic*logic=[[lawyerGrab_Logic alloc]init];
     [[PSLoadingView sharedInstance] show];
-    [self.logic refreshLawyerAdviceCompleted:^(id data) {
-        NSLog(@"%lu",(unsigned long)self.logic.rushAdviceArray.count);
+    [self.logic GETMygrabCompleted:^(id data) {
         [[PSLoadingView sharedInstance] dismiss];
         [self reloadContents];
     } failed:^(NSError *error) {
         [[PSLoadingView sharedInstance] dismiss];
         [self reloadContents];
     }];
+    
+//    [self.logic refreshLawyerAdviceCompleted:^(id data) {
+//        [[PSLoadingView sharedInstance] dismiss];
+//        [self reloadContents];
+//    } failed:^(NSError *error) {
+//        [[PSLoadingView sharedInstance] dismiss];
+//        [self reloadContents];
+//    }];
 }
 
--(void)Grap_Order:(NSString*)orderID{
-    [[PSLoadingView sharedInstance]show];
-    self.logic.cid=orderID;
-    [self.logic POSTLawyergrabCompleted:^(id data) {
-        [[PSLoadingView sharedInstance]dismiss];
-        [PSTipsView showTips:@"抢单成功"];
-    } failed:^(NSError *error) {
-        [[PSLoadingView sharedInstance]dismiss];
-    }];
-}
+
 
 -(void)renderContents{
     self.view.backgroundColor=UIColorFromRGBA(248, 247, 254, 1);
 
-    
-    
     self.LawyersTableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.LawyersTableview.showsVerticalScrollIndicator=NO;
     self.LawyersTableview.dataSource = self;
@@ -114,7 +118,7 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.logic.rushAdviceArray.count;
+    return self.logic.myAdviceArray.count;
     //logic.rushAdviceArray.count ;
 }
 
@@ -123,7 +127,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    lawyerGrab*grabModel=self.logic.rushAdviceArray[indexPath.row];
+    lawyerGrab*grabModel=self.logic.myAdviceArray[indexPath.row];
     Grab_customer*customer=[Grab_customer mj_objectWithKeyValues:grabModel.customer];
     LawyerAdviceTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:@"LawyerAdviceTableViewCell"];
     cell.moneyLab.text=customer.name;
@@ -138,10 +142,9 @@
     cell.detailLab.hidden = YES;
     cell.chatBtn.hidden=NO;
     cell.lawyerMoneyLab.hidden=NO;
-    
-    [cell.chatBtn setTitle:@"抢单" forState:0];
+    [cell fillWithModel:grabModel];
     [cell.chatBtn bk_whenTapped:^{
-        [self Grap_Order:grabModel.cid];
+       
     }];
     return cell;
     

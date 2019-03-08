@@ -152,6 +152,12 @@
         case PENDING_CERTIFIED:
             [self p_pushMoreService];
             break;
+        case PENDING_APPROVAL:
+            [self p_pushMoreService];
+            break;
+        case APPROVAL_FAILURE:
+            [self p_pushMoreService];
+            break;
         default:
             [self p_pushLawyerGrab];
             break;

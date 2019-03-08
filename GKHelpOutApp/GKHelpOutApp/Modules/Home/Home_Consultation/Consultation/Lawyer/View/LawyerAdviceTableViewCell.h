@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "lawyerGrab.h"
 @interface LawyerAdviceTableViewCell : UITableViewCell
 @property (nonatomic,strong) UIImageView *noReadDotImg;   //未读
 @property (nonatomic,strong) UIImageView *avatarImg;      //头像
@@ -19,5 +19,5 @@
 @property (nonatomic,strong) UIButton *chatBtn;           //立即沟通
 @property (nonatomic,assign)BOOL noRead;
 @property (nonatomic , strong) UILabel *lawyerMoneyLab;
-
+-(void)fillWithModel:(lawyerGrab*)model;
 @end

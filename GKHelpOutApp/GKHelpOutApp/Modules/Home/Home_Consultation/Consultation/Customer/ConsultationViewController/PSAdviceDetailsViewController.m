@@ -146,6 +146,12 @@
 
 
 -(void)chatAtion{
+     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
+    [viewModel GETProcessedCompleted:^(id data) {
+        [PSTipsView showTips:@"通话完成!"];
+    } failed:^(NSError *error) {
+         [PSTipsView showTips:@"通话失败!"];
+    }];
     /*
     //viewModel.chatMessageAccount
     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;

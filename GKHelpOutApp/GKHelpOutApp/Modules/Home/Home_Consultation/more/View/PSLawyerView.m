@@ -48,13 +48,13 @@
 
     _nicknameLabel = [UILabel new];
     _nicknameLabel.font = FontOfSize(14);
-    _nicknameLabel.textColor = AppBaseTextColor1;
+    _nicknameLabel.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1.0];
     _nicknameLabel.textAlignment = NSTextAlignmentLeft;
     [backImageView addSubview:_nicknameLabel];
     [_nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.avatarView.mas_right).offset(10);
         make.top.mas_equalTo(topPidding);
-        make.width.mas_equalTo(50);
+        make.width.mas_equalTo(100);
         make.height.mas_equalTo(16);
     }];
     _nicknameLabel.text=@"张三";
@@ -73,12 +73,14 @@
     }];
     _addressLable.text=@"执业律所：红黄蓝律师事务所";
 
-    NSArray *arr = @[@"财务纠纷",@"婚姻家庭"];
+    //self.categories=help_userManager.lawUserInfo.categories;
+    [self bulidLawyerModel];
+   // NSArray *arr = @[@"财务纠纷",@"婚姻家庭"];
     CGFloat btnW = 60;
-    for (int i = 0; i < arr.count; i ++) {
+    for (int i = 0; i < self.categories.count; i ++) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(80+i * (btnW+10), _addressLable.bottom + 60, btnW, 20)];
         [button setTitleColor:UIColorFromRGB(255, 138, 7) forState:UIControlStateNormal];
-        [button setTitle:arr[i] forState:UIControlStateNormal];
+        [button setTitle:self.categories[i] forState:UIControlStateNormal];
         button.titleLabel.textAlignment =NSTextAlignmentLeft;
         //NSTextAlignmentCenter;
         button.titleLabel.font = FontOfSize(12);
@@ -103,7 +105,36 @@
     }];
     
 }
+- (void)bulidLawyerModel{
 
+    self.categories=[[NSMutableArray alloc]init];
+    for (int i=0; i<help_userManager.lawUserInfo.categories.count; i++) {
+        if ([help_userManager.lawUserInfo.categories[i] isEqualToString:@"PROPERTY_DISPUTES"]) {
+            [self.categories addObject:@"财产纠纷"];
+        }
+        else if ([help_userManager.lawUserInfo.categories[i] isEqualToString:@"MARRIAGE_FAMILY"]){
+            [self.categories addObject:@"婚姻家庭"];
+        }
+        else if ([help_userManager.lawUserInfo.categories[i] isEqualToString:@"TRAFFIC_ACCIDENT"]){
+            [self.categories addObject:@"交通事故"];
+        }
+        else if ([help_userManager.lawUserInfo.categories[i] isEqualToString:@"WORK_COMPENSATION"]){
+            [self.categories addObject:@"工伤赔偿"];
+        }
+        else if ([help_userManager.lawUserInfo.categories[i] isEqualToString:@"CONTRACT_DISPUTE"]){
+            [self.categories addObject:@"合同纠纷"];
+        }
+        else if ([help_userManager.lawUserInfo.categories[i] isEqualToString:@"CRIMINAL_DEFENSE"]){
+            [self.categories addObject:@"刑事辩护"];
+        }
+        else if ([help_userManager.lawUserInfo.categories[i] isEqualToString:@"HOUSING_DISPUTES"]){
+            [self.categories addObject:@"房产纠纷"];
+        }
+        else if ([help_userManager.lawUserInfo.categories[i] isEqualToString:@"LABOR_EMPLOYMENT"]){
+            [self.categories addObject:@"劳动就业"];
+        }}
+
+}
 /*
 -(void)renderContents{
     self.backgroundColor = [UIColor clearColor];

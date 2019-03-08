@@ -14,10 +14,17 @@
 @property (nonatomic, assign) NSInteger pageSize;
 @property (nonatomic, assign) BOOL hasNextPage;
 @property (nonatomic , strong) NSArray *rushAdviceArray;
+@property (nonatomic , strong) NSArray *myAdviceArray;
 
 - (void)refreshLawyerAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 - (void)loadLawyerAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+
 -(void)POSTLawyergrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 
+
+
+
+- (void)refreshMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+- (void)loadMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 -(void)GETMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 @end

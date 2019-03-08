@@ -509,7 +509,25 @@
     }];
 }
 
-
+-(void)GETProcessedCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    NSString *url =[NSString stringWithFormat:@"%@/notifications/netease/%@/processed",ConsultationHostUrl,self.adviceId];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==200||responses.statusCode==201) {
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failedCallback) {
+            failedCallback(error);
+        }
+    }];
+}
 
 //-(void)requestPubicAvatarCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
 //    NSString*token=[NSString stringWithFormat:@"Bearer %@",[LXFileManager readUserDataForKey:@"access_token"]];

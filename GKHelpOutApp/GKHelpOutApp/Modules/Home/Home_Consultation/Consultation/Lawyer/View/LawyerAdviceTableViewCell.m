@@ -86,6 +86,49 @@
     self.typeLab.x = _avatarImg.right+15;
 }
 
+-(void)fillWithModel:(lawyerGrab*)model{
+    if ([model.status isEqualToString:@"PENDING_PAYMENT"]) {
+        [_stateImg setImage:[UIImage imageNamed:@"待支付"]];//待支付
+        self.chatBtn.hidden=YES;
+        self.detailLab.hidden=NO;
+    }
+    else if ([model.status isEqualToString:@"PENDING_APPROVAL"]){
+        [_stateImg setImage:[UIImage imageNamed:@"待处理"]];//待审核
+        self.chatBtn.hidden=YES;
+        self.detailLab.hidden=NO;
+    }
+    else if ([model.status isEqualToString:@"PENDING_ACCEPT"]){
+        [_stateImg setImage:[UIImage imageNamed:@"待接单"]];
+        self.chatBtn.hidden=YES;
+        self.detailLab.hidden=NO;
+    }
+    else if ([model.status isEqualToString:@"ACCEPTED"]){
+        [_stateImg setImage:[UIImage imageNamed:@"已接单"]];
+        self.chatBtn.hidden=NO;
+        self.detailLab.hidden=YES;
+    }
+    else if([model.status isEqualToString:@"PROCESSING"]){
+        [_stateImg setImage:[UIImage imageNamed:@"待处理"]];
+        self.chatBtn.hidden=YES;
+        self.detailLab.hidden=NO;
+    }
+    
+    else if ([model.status isEqualToString:@"COMPLETE"]){
+        [_stateImg setImage:[UIImage imageNamed:@"已完成"]];
+        self.chatBtn.hidden=YES;
+        self.detailLab.hidden=NO;
+    }
+    else if ([model.status isEqualToString:@"CLOSED"]){
+        [_stateImg setImage:[UIImage imageNamed:@"已关闭"]];
+        self.chatBtn.hidden=YES;
+        self.detailLab.hidden=NO;
+    }
+    else if([model.status isEqualToString:@"CANCELLED"]){
+        [_stateImg setImage:[UIImage imageNamed:@"已取消"]];
+        self.chatBtn.hidden=YES;
+        self.detailLab.hidden=NO;
+    }
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

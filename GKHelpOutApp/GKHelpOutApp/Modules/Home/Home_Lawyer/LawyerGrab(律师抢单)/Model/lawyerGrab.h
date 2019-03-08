@@ -18,5 +18,6 @@
 @property (nonatomic , strong) NSString *category;
 @property (nonatomic , strong) NSString *reward;
 @property (nonatomic , strong) NSString *createdTime;
+@property (nonatomic , strong) NSString *status;
 @property (nonatomic , strong) Grab_customer*customer;
 @end

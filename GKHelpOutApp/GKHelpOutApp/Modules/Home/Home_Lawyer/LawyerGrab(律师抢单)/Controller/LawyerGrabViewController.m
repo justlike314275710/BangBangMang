@@ -27,6 +27,7 @@
     [self renderContents];
     [self refreshData];
     [self SDWebImageAuth];
+     self.title=@"法律咨询";
     // Do any additional setup after loading the view.
 }
 
@@ -72,6 +73,9 @@
     self.headerView=[PSLawyerView new];
     [self.view addSubview:self.headerView];
     [self.headerView.avatarView sd_setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] placeholderImage:[UIImage imageWithColor:KGrayColor]];
+    self.headerView.nicknameLabel.text=help_userManager.lawUserInfo.name;
+    self.headerView.addressLable.text=NSStringFormat(@"执业律所:%@",help_userManager.lawUserInfo.lawOffice);
+   // self.headerView.categories=help_userManager.lawUserInfo.categories;
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.right.mas_equalTo(-15);

@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *alipayBind;
 @property (nonatomic,copy) NSString *avatar;   //支付宝头像
 @property (nonatomic,copy) NSString *nickName; //支付昵称
+@property (nonatomic , strong) NSArray *categories;
+@property (nonatomic , strong) NSString *name;
+@property (nonatomic , strong) NSString *lawOffice;
+
 
 @end
 
