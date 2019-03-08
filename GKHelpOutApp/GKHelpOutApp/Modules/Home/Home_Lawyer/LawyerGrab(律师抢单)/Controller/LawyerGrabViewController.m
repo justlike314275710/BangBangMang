@@ -71,6 +71,7 @@
     self.view.backgroundColor=UIColorFromRGBA(248, 247, 254, 1);
     self.headerView=[PSLawyerView new];
     [self.view addSubview:self.headerView];
+    [self.headerView.avatarView sd_setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] placeholderImage:[UIImage imageWithColor:KGrayColor]];
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.right.mas_equalTo(-15);

@@ -93,15 +93,20 @@
 {
     NSMutableArray *controllerMutableArr=[NSMutableArray array];
     
-//    PSMyAdviceViewController *showtwoVc= [[ PSMyAdviceViewController alloc]initWithViewModel:[[PSConsultationViewModel alloc] init]];
-//    showtwoVc.title=@"法律咨询";
-//    [controllerMutableArr addObject:showtwoVc];
+    switch (help_userManager.userStatus) {
+        case 3:{
+            LawyerAdviceViewController *showtwoVc= [[ LawyerAdviceViewController alloc]init];
+            showtwoVc.title=@"法律咨询";
+            [controllerMutableArr addObject:showtwoVc];}//普通用户
+            break;
+            
+        default:{
+            PSMyAdviceViewController *showtwoVc= [[ PSMyAdviceViewController alloc]initWithViewModel:[[PSConsultationViewModel alloc] init]];
+            showtwoVc.title=@"法律咨询";
+            [controllerMutableArr addObject:showtwoVc];}
+            break;
+    }
     
-    
-
-    LawyerAdviceViewController *showtwoVc= [[ LawyerAdviceViewController alloc]init];
-    showtwoVc.title=@"法律咨询";
-    [controllerMutableArr addObject:showtwoVc];
     
     LegaladviceViewController *showoneVc= [[LegaladviceViewController alloc]initWithViewModel:[[PSConsultationViewModel alloc] init]];
     showoneVc.title=@"心理咨询";
