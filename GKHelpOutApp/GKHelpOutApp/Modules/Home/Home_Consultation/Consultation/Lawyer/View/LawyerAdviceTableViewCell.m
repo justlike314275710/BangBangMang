@@ -1,21 +1,13 @@
 //
-//  LegalAdviceCell.m
+//  LawyerAdviceTableViewCell.m
 //  GKHelpOutApp
 //
-//  Created by kky on 2019/2/26.
+//  Created by 狂生烈徒 on 2019/3/7.
 //  Copyright © 2019年 kky. All rights reserved.
 //
-
 #define LegalCellSpaceX  20
-
-#import "LegalAdviceCell.h"
-#import "NSString+Utils.h"
-@interface LegalAdviceCell()
-
-
-
-@end
-@implementation LegalAdviceCell
+#import "LawyerAdviceTableViewCell.h"
+@implementation LawyerAdviceTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -49,8 +41,8 @@
     [bgView addSubview:self.stateImg];
     self.stateImg.frame = CGRectMake(KScreenWidth-60,0,60, 50);
     
-//    [bgView addSubview:self.chatBtn];
-//    self.chatBtn.frame = CGRectMake(KScreenWidth-90,self.stateImg.bottom,66,24);
+    //    [bgView addSubview:self.chatBtn];
+    //    self.chatBtn.frame = CGRectMake(KScreenWidth-90,self.stateImg.bottom,66,24);
     
     [bgView addSubview:self.moneyLab];
     self.moneyLab.frame = CGRectMake(_avatarImg.right+15,_avatarImg.y,150, 20);
@@ -68,9 +60,9 @@
     
     [bgView addSubview:self.chatBtn];
     self.chatBtn.frame = CGRectMake(KScreenWidth-90,_timeLab.bottom-3,66,24);
-
-     [bgView addSubview:self.lawyerMoneyLab];
-    self.lawyerMoneyLab.frame=CGRectMake(KScreenWidth-90, _moneyLab.y, 66, 12);
+    
+    [bgView addSubview:self.lawyerMoneyLab];
+    self.lawyerMoneyLab.frame=CGRectMake(KScreenWidth-110, _moneyLab.y, 66, 12);
     
 }
 
@@ -104,77 +96,6 @@
     
     // Configure the view for the selected state
 }
-
-
--(void)fillWithModel:(PSConsultation*)model{
-    _timeLab.text=[NSString timeChange:model.createdTime];
-    _moneyLab.text=[NSString stringWithFormat:@"¥%.2f",[model.reward floatValue]];
-    _typeLab.text=model.category;
-    if ([model.status isEqualToString:@"PENDING_PAYMENT"]) {
-        [_stateImg setImage:[UIImage imageNamed:@"待支付"]];//待支付
-        self.noRead = NO;
-    }
-    else if ([model.status isEqualToString:@"PENDING_APPROVAL"]){
-        self.noRead = NO;
-        [_stateImg setImage:[UIImage imageNamed:@"待处理"]];//待审核
-        //[_bgview addSubview:self.detailButton];
-    }
-    else if ([model.status isEqualToString:@"PENDING_ACCEPT"]){
-        self.noRead = NO;
-        [_stateImg setImage:[UIImage imageNamed:@"待接单"]];
-       // [_bgview addSubview:self.detailButton];
-        
-    }
-    else if ([model.status isEqualToString:@"ACCEPTED"]){
-        self.noRead = YES;
-        [_stateImg setImage:[UIImage imageNamed:@"已接单"]];
-        //[_bgview addSubview: self.videoButton];
-       self.noRead = NO;
-        
-    }
-    else if([model.status isEqualToString:@"PROCESSING"]){
-        [_stateImg setImage:[UIImage imageNamed:@"待处理"]];
-        self.noRead = NO;
-        //[_bgview addSubview:self.detailButton];
-    }
-    
-    else if ([model.status isEqualToString:@"COMPLETE"]){
-        [_stateImg setImage:[UIImage imageNamed:@"已完成"]];
-        self.noRead = NO;
-        //[_bgview addSubview:self.detailButton];
-    }
-    else if ([model.status isEqualToString:@"CLOSED"]){
-        [_stateImg setImage:[UIImage imageNamed:@"已关闭"]];
-        self.noRead = NO;
-       // [_bgview addSubview:self.detailButton];
-    }
-    else if([model.status isEqualToString:@"CANCELLED"]){
-        [_stateImg setImage:[UIImage imageNamed:@"已取消"]]; //已完成
-        self.noRead = NO;
-        //[_bgview addSubview:self.detailButton];
-    }
-    else{
-        
-    }
-    
-    PSLawer*lawyer=[PSLawer mj_objectWithKeyValues:model.lawyer];
-    if (lawyer.username) {
-        //        UIImage*image=[self stringToImage:lawyer.avatarThumb];
-        //        [self.headImg setImage:image];
-        [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
-        NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
-        [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
-        NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,lawyer.username];
-        [self.avatarImg sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
-        
-        
-    }
-    else{
-        [self setupHeadImg:model.category];
-    }
-}
-
-
 #pragma mark - Setting&&Getting
 
 - (UILabel *)lawyerMoneyLab{
@@ -267,6 +188,9 @@
 }
 
 
+
+
+
 -(void)setupHeadImg:(NSString*)category{
     if ([category isEqualToString:@"财产纠纷"]) {
         [self.avatarImg setImage:[UIImage imageNamed:@"咨询图-财务纠纷"]];
@@ -294,7 +218,6 @@
     }
     
 }
-
 
 
 @end
