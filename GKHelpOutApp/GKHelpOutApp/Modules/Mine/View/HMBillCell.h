@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HMBillModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HMBillCell : UITableViewCell
@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) UILabel *payWayLab;
 @property(nonatomic, strong) UILabel *orderLab;
 @property(nonatomic, strong) UILabel *moneylab;
+@property(nonatomic, strong) HMBillModel *model;
+
 
 @end
 

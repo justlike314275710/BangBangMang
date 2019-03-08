@@ -40,6 +40,7 @@
 - (void)setupUI {
     
     ZWTopSelectVcView *topSelectVcView=[[ZWTopSelectVcView alloc]init];
+    self.topSelectVcView.isCloseSwipeGesture = YES;
     topSelectVcView.frame=CGRectMake(0,14,KScreenWidth,KScreenHeight);
     [self.view addSubview:topSelectVcView];
     self.topSelectVcView=topSelectVcView;

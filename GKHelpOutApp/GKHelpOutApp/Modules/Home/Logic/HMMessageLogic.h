@@ -1,5 +1,5 @@
 //
-//  HMBillLogin.h
+//  HMMessageLogic.h
 //  GKHelpOutApp
 //
 //  Created by kky on 2019/3/7.
@@ -8,15 +8,18 @@
 
 #import "HpBaseLogic.h"
 
-@interface HMBillLogic : HpBaseLogic
+NS_ASSUME_NONNULL_BEGIN
+
+@interface HMMessageLogic : HpBaseLogic
 @property(nonatomic,assign)NSInteger page;
 @property(nonatomic,assign)NSInteger pageSize;
 @property (nonatomic, assign) BOOL hasNextPage;
 @property (nonatomic, assign) PSDataStatus dataStatus;
 @property (nonatomic, strong) NSMutableArray *datalist;
 
-- (void)refreshMyAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
-- (void)loadMyAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+- (void)refreshMesagaeListCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+- (void)loadMyMessageListCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 
 @end
 
+NS_ASSUME_NONNULL_END

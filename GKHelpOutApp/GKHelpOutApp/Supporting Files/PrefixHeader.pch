@@ -67,6 +67,9 @@
 #import "NSObject+version.h"
 #import "PSAuthorizationTool.h"
 #import "PSLoadingView.h"
+#import "PSViewModelService.h"
+#import "MJExtension.h"
+
 //第三方
 #import <AFNetworking.h>
 #import <YYKit.h>

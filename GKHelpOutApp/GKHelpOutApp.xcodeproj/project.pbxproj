@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		551AF6AD2230C57F006AB1A0 /* HMBillLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */; };
+		551AF6B12230F879006AB1A0 /* HMBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B02230F879006AB1A0 /* HMBillModel.m */; };
+		551AF6B422310BE1006AB1A0 /* HMMessageLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B322310BE1006AB1A0 /* HMMessageLogic.m */; };
+		551AF6B72231166A006AB1A0 /* HMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B62231166A006AB1A0 /* HMMessageModel.m */; };
+		551AF6BA223119B2006AB1A0 /* NSString+JsonString.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B9223119B2006AB1A0 /* NSString+JsonString.m */; };
 		5524C68922250F380067F437 /* LegaladviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68822250F380067F437 /* LegaladviceViewController.m */; };
 		5524C68C22250F6E0067F437 /* CounselingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68B22250F6E0067F437 /* CounselingViewController.m */; };
 		5524C6922225106B0067F437 /* ZWTopSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68F2225106B0067F437 /* ZWTopSelectButton.m */; };
@@ -490,6 +494,14 @@
 		489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		551AF6AB2230C57F006AB1A0 /* HMBillLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillLogic.h; sourceTree = "<group>"; };
 		551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMBillLogic.m; sourceTree = "<group>"; };
+		551AF6AF2230F879006AB1A0 /* HMBillModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillModel.h; sourceTree = "<group>"; };
+		551AF6B02230F879006AB1A0 /* HMBillModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMBillModel.m; sourceTree = "<group>"; };
+		551AF6B222310BE1006AB1A0 /* HMMessageLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMMessageLogic.h; sourceTree = "<group>"; };
+		551AF6B322310BE1006AB1A0 /* HMMessageLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMMessageLogic.m; sourceTree = "<group>"; };
+		551AF6B52231166A006AB1A0 /* HMMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMMessageModel.h; sourceTree = "<group>"; };
+		551AF6B62231166A006AB1A0 /* HMMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMMessageModel.m; sourceTree = "<group>"; };
+		551AF6B8223119B2006AB1A0 /* NSString+JsonString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+JsonString.h"; sourceTree = "<group>"; };
+		551AF6B9223119B2006AB1A0 /* NSString+JsonString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+JsonString.m"; sourceTree = "<group>"; };
 		5524C68722250F380067F437 /* LegaladviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LegaladviceViewController.h; sourceTree = "<group>"; };
 		5524C68822250F380067F437 /* LegaladviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegaladviceViewController.m; sourceTree = "<group>"; };
 		5524C68A22250F6E0067F437 /* CounselingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CounselingViewController.h; sourceTree = "<group>"; };
@@ -1700,6 +1712,8 @@
 				5557A50A221BD7F500743012 /* UICollectionView+IndexPath.h */,
 				5557A50B221BD7F500743012 /* UIViewController+AlertViewAndActionSheet.m */,
 				5557A50C221BD7F500743012 /* UIButton+XYButton.m */,
+				551AF6B8223119B2006AB1A0 /* NSString+JsonString.h */,
+				551AF6B9223119B2006AB1A0 /* NSString+JsonString.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2188,6 +2202,8 @@
 				5557A5D4221BD96500743012 /* PersonListLogic.h */,
 				5557A5D5221BD96500743012 /* PersonListLogic.m */,
 				5557A5D6221BD96500743012 /* WaterFallListLogic.h */,
+				551AF6B222310BE1006AB1A0 /* HMMessageLogic.h */,
+				551AF6B322310BE1006AB1A0 /* HMMessageLogic.m */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -2214,6 +2230,8 @@
 			children = (
 				5557A5E1221BD96500743012 /* PersonModel.m */,
 				5557A5E2221BD96500743012 /* PersonModel.h */,
+				551AF6B52231166A006AB1A0 /* HMMessageModel.h */,
+				551AF6B62231166A006AB1A0 /* HMMessageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2367,6 +2385,8 @@
 			children = (
 				5597857A22265E43007BBCC2 /* FeedbackTypeModel.h */,
 				5597857922265E43007BBCC2 /* FeedbackTypeModel.m */,
+				551AF6AF2230F879006AB1A0 /* HMBillModel.h */,
+				551AF6B02230F879006AB1A0 /* HMBillModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3929,6 +3949,7 @@
 				EAB038E9221E817B00331569 /* NIMTeamMemberCardViewController.m in Sources */,
 				EA21CB28221FA444007D3445 /* PSPayOngoingViewController.m in Sources */,
 				EAB03936221E817C00331569 /* NIMKitSwitcherCell.m in Sources */,
+				551AF6B72231166A006AB1A0 /* HMMessageModel.m in Sources */,
 				EAB038C0221E817B00331569 /* NIMContactDataItem.m in Sources */,
 				EAB038C7221E817B00331569 /* NIMContactSelectConfig.m in Sources */,
 				EAB039BA221E8FF200331569 /* NTESGLView.m in Sources */,
@@ -4074,6 +4095,7 @@
 				5557A565221BD84000743012 /* AppManager.m in Sources */,
 				EAB039BE221E8FF200331569 /* mvp.vsh.c in Sources */,
 				EAB03900221E817B00331569 /* NIMKitInfo.m in Sources */,
+				551AF6B12230F879006AB1A0 /* HMBillModel.m in Sources */,
 				5557A4FF221BD76300743012 /* XLWebViewController.m in Sources */,
 				EA78F72222263DA8002D788A /* BaseLawyerTableViewCell.m in Sources */,
 				EAB039B0221E8FF200331569 /* NTESAttachment.m in Sources */,
@@ -4175,6 +4197,7 @@
 				55B4F67A2223EFFC002B1536 /* PSAuthorizationTool.m in Sources */,
 				5557A626221BD96500743012 /* PersonListCollectionViewCell.m in Sources */,
 				5557A612221BD96500743012 /* SettingViewController.m in Sources */,
+				551AF6BA223119B2006AB1A0 /* NSString+JsonString.m in Sources */,
 				5597854B22264326007BBCC2 /* PSSorageViewModel.m in Sources */,
 				5597855822265CB2007BBCC2 /* PSFWriteFeedSuccessViewController.m in Sources */,
 				EA78F6E92225161F002D788A /* DSSettingCell.m in Sources */,
@@ -4223,6 +4246,7 @@
 				5557A547221BD7F500743012 /* YYFPSLabel.m in Sources */,
 				EA21CAB4221F9DCC007D3445 /* PSViewModel.m in Sources */,
 				EAB039D3221E8FF200331569 /* PSchatViewController.m in Sources */,
+				551AF6B422310BE1006AB1A0 /* HMMessageLogic.m in Sources */,
 				5557A607221BD96500743012 /* MsgViewController.m in Sources */,
 				EAB038CC221E817B00331569 /* NIMKitRobotTemplate.m in Sources */,
 				EAB039B7221E8FF200331569 /* NTESNetCallChatInfo.m in Sources */,
