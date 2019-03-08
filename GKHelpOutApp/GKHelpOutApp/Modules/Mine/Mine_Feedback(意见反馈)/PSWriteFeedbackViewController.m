@@ -10,11 +10,11 @@
 #import "UITextView+Placeholder.h"
 #import "FeedbackCell.h"
 #import "FeedloadImgView.h"
-//#import "ReactiveObjC.h"
+#import "ReactiveObjC.h"
 #import "PSFWriteFeedSuccessViewController.h"
 #import "FeedbackTypeModel.h"
 //#import "PSRegisterViewModel.h"
-//#import "NSString+emoji.h"
+#import "NSString+emoji.h"
 
 @interface PSWriteFeedbackViewController () <UITextViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -25,6 +25,7 @@
 @property (nonatomic, assign) NSInteger selecldIndex;
 @property (nonatomic, strong) NSMutableArray *imageUrls;
 @property (nonatomic, assign) BOOL feedbackSucess;
+@property (nonatomic, strong) PSFeedbackViewModel *feedBackLogic;
 
 @end
 
@@ -54,45 +55,27 @@
     
 }
 - (void)sendFeedback {
-    PSFeedbackViewModel *feedbackViewModel = (PSFeedbackViewModel *)self.viewModel;
+    
     @weakify(self)
-    [feedbackViewModel sendFeedbackCompleted:^(PSResponse *response) {
-        @strongify(self)
-        if (response.code == 200) {
-            self.feedbackSucess = YES; //反馈成功
-            PSFWriteFeedSuccessViewController *storageViewController = [[PSFWriteFeedSuccessViewController alloc] initWithViewModel:self.viewModel];
-            [self.navigationController pushViewController:storageViewController animated:YES];
-        }else{
-            NSString *msg = @"提交失败";
-            [PSTipsView showTips:response.msg ? response.msg :msg];
-        }
-    } failed:^(NSError *error) {
-        @strongify(self)
-//        [self showNetError:error];
-    }];
+     [_feedBackLogic sendFeedbackCompleted:^(id data) {
+         @strongify(self);
+         self.feedbackSucess = YES; //反馈成功
+         PSFWriteFeedSuccessViewController *storageViewController = [[PSFWriteFeedSuccessViewController alloc] initWithViewModel:self.viewModel];
+         [self.navigationController pushViewController:storageViewController animated:YES];
+     } failed:^(NSError *error) {
+         NSString *msg = @"提交失败";
+         [PSTipsView showTips:msg];
+     }];
 }
 
 - (void)submitContent {
-    PSFeedbackViewModel *feedbackViewModel = (PSFeedbackViewModel *)self.viewModel;
-     FeedbackTypeModel *typeModel = feedbackViewModel.reasons[self.selecldIndex];
-    feedbackViewModel.type = typeModel.id;
-    feedbackViewModel.content = _contentTextView.text;
-    if (self.imageUrls.count>0) {
-        NSString *imageUrl = @"";
-        for (NSString *url in self.imageUrls) {
-            imageUrl = [NSString stringWithFormat:@"%@;%@",imageUrl,url];
-        }
-        if ([imageUrl hasPrefix:@";"]) {
-            imageUrl = [imageUrl substringFromIndex:1];
-        }
-        feedbackViewModel.imageUrls = imageUrl;
-        NSLog(@"%@",imageUrl);
-    } else {
-        feedbackViewModel.imageUrls = @"";
-    }
+
     
+    _feedBackLogic.problem = _feedBackLogic.reasons[_selecldIndex];
+    _feedBackLogic.detail = self.contentTextView.text;
+    _feedBackLogic.attachments = [self.imageUrls copy];
     @weakify(self)
-    [feedbackViewModel checkDataWithCallback:^(BOOL successful, NSString *tips) {
+    [_feedBackLogic checkDataWithCallback:^(BOOL successful, NSString *tips) {
         @strongify(self)
         if (successful) {
             [self sendFeedback];
@@ -105,13 +88,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
     self.title = @"意见反馈";
     self.isShowLiftBack = YES;
     self.view.backgroundColor = AppBaseBackgroundColor2;
+    _feedBackLogic = [[PSFeedbackViewModel alloc] init];
     self.selecldIndex = 0;
     self.feedbackSucess = NO; //默认没有反馈
-    [self getFeedbackTypes];
+//    [self getFeedbackTypes];
     [self p_setUI];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -149,8 +135,7 @@
     [self.scrollview addSubview:oneView];
     [oneView addSubview:self.tableview];
 
- 
-    
+
     UIView *secondeView = [[UIView alloc] initWithFrame:CGRectMake(0,oneView.bottom+18,self.scrollview.width, 160)];
     secondeView.backgroundColor = [UIColor whiteColor];
     secondeView.layer.shadowColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.1].CGColor;
@@ -194,8 +179,6 @@
     thirdTitleLab.textColor = UIColorFromRGB(51, 51, 51);
     thirdTitleLab.font = FontOfSize(12);
     [thirdView addSubview:thirdTitleLab];
-
-
     FeedloadImgView *loadImg = [[FeedloadImgView alloc] initWithFrame:CGRectMake(0,thirdTitleLab.bottom, thirdView.width,100) count:4];
     [thirdView addSubview:loadImg];
     loadImg.feedloadResultBlock = ^(NSMutableArray *result) {
@@ -256,17 +239,15 @@
 
 #pragma mark UITableViewDelegate&&UITableViewDatalist
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    PSFeedbackViewModel *viewModel = (PSFeedbackViewModel *)self.viewModel;
-    return viewModel.reasons.count;
+    return _feedBackLogic.reasons.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FeedbackCell *cell = [[FeedbackCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FeedbackCell"];
-    PSFeedbackViewModel *viewModel = (PSFeedbackViewModel *)self.viewModel;
-    FeedbackTypeModel *typeModel = viewModel.reasons[indexPath.row];
-    NSString *title = typeModel.desc?[NSString stringWithFormat:@"%@: %@",typeModel.name,typeModel.desc]:typeModel.name;
+   
+    NSString *title = _feedBackLogic.reasons[indexPath.row];
     cell.titleLab.text = title;
-    if (indexPath.row == viewModel.reasons.count-1) cell.lineImg.hidden = YES;
+    if (indexPath.row == _feedBackLogic.reasons.count-1) cell.lineImg.hidden = YES;
     if (self.selecldIndex == indexPath.row) {
         cell.seleImg.image = [UIImage imageNamed:@"writeFeedsel"];
     } else {
@@ -335,16 +316,14 @@
         _contentTextView.placeholder = less_msg;
         _contentTextView.delegate = self;
         @weakify(self);
-        /*
         [_contentTextView.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
             @strongify(self);
             if (x.length>300) {
-                _contentTextView.text = [x substringToIndex:299];
+                self->_contentTextView.text = [x substringToIndex:299];
                 [PSTipsView showTips:more_msg];
             }
-            self.countLab.text = [NSString stringWithFormat:@"%lu/300",_contentTextView.text.length];
+            self.countLab.text = [NSString stringWithFormat:@"%lu/300",self->_contentTextView.text.length];
         }];
-         */
     }
     return _contentTextView;
 }

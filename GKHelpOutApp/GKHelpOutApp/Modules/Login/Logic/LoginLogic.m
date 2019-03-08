@@ -31,6 +31,7 @@
     NSString *apiUrl = NSStringFormat(URL_get_verification_code,self.phoneNumber);
     NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,apiUrl];
     [PPNetworkHelper POST:url parameters:nil success:^(id responseObject) {
+        
         if (completed) {
             completed(responseObject);
         }

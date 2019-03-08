@@ -43,7 +43,6 @@
         feedLoadItem.cancelBlock = ^(NSInteger tag) {
             NSInteger index = tag-10;
             if (self.dataString.count >index) {
-                
                 //删除图片
                 NSArray *ary = [NSArray arrayWithObject:self.dataUrlString];
                 NSDictionary *deleDic = @{@"urls":ary};
@@ -59,7 +58,6 @@
                 [self.dataUrlString removeObjectAtIndex:index];
                 [self p_freshUI:count];
 
-                
                 if (self.feedloadResultBlock) {
                     self.feedloadResultBlock(self.dataUrlString);
                 }

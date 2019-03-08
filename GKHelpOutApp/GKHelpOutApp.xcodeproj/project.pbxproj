@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55050AAF2232016400E9635B /* HMGetCashLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55050AAE2232016400E9635B /* HMGetCashLogic.m */; };
+		55050AB222323CC400E9635B /* NSString+emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 55050AB022323CC300E9635B /* NSString+emoji.m */; };
+		55050AB622323F1F00E9635B /* PSImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55050AB422323F1E00E9635B /* PSImagePickerController.m */; };
+		55050AB922323F6400E9635B /* PSIntercepter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55050AB822323F6300E9635B /* PSIntercepter.m */; };
+		55050ABC22323F8500E9635B /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 55050ABA22323F8400E9635B /* UIImage+Crop.m */; };
 		551AF6AD2230C57F006AB1A0 /* HMBillLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */; };
 		551AF6B12230F879006AB1A0 /* HMBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B02230F879006AB1A0 /* HMBillModel.m */; };
 		551AF6B422310BE1006AB1A0 /* HMMessageLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B322310BE1006AB1A0 /* HMMessageLogic.m */; };
@@ -494,6 +499,16 @@
 
 /* Begin PBXFileReference section */
 		489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55050AAD2232016400E9635B /* HMGetCashLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMGetCashLogic.h; sourceTree = "<group>"; };
+		55050AAE2232016400E9635B /* HMGetCashLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMGetCashLogic.m; sourceTree = "<group>"; };
+		55050AB022323CC300E9635B /* NSString+emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+emoji.m"; sourceTree = "<group>"; };
+		55050AB122323CC400E9635B /* NSString+emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+emoji.h"; sourceTree = "<group>"; };
+		55050AB422323F1E00E9635B /* PSImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSImagePickerController.m; sourceTree = "<group>"; };
+		55050AB522323F1F00E9635B /* PSImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSImagePickerController.h; sourceTree = "<group>"; };
+		55050AB722323F6300E9635B /* PSIntercepter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSIntercepter.h; sourceTree = "<group>"; };
+		55050AB822323F6300E9635B /* PSIntercepter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSIntercepter.m; sourceTree = "<group>"; };
+		55050ABA22323F8400E9635B /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
+		55050ABB22323F8400E9635B /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
 		551AF6AB2230C57F006AB1A0 /* HMBillLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillLogic.h; sourceTree = "<group>"; };
 		551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMBillLogic.m; sourceTree = "<group>"; };
 		551AF6AF2230F879006AB1A0 /* HMBillModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillModel.h; sourceTree = "<group>"; };
@@ -1418,6 +1433,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		55050AB322323F0D00E9635B /* imagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				55050AB722323F6300E9635B /* PSIntercepter.h */,
+				55050AB822323F6300E9635B /* PSIntercepter.m */,
+				55050AB522323F1F00E9635B /* PSImagePickerController.h */,
+				55050AB422323F1E00E9635B /* PSImagePickerController.m */,
+			);
+			path = imagePicker;
+			sourceTree = "<group>";
+		};
 		551AF6AA2230C55C006AB1A0 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1673,6 +1699,7 @@
 		5557A505221BD7BD00743012 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				55050AB322323F0D00E9635B /* imagePicker */,
 				55C0C76C222CFA7C00CD2459 /* LLActionSheetView */,
 				5524C68D2225103B0067F437 /* ZWTopSelectVcView */,
 				55B4F6772223EFFC002B1536 /* AuthorizationTool */,
@@ -1695,6 +1722,10 @@
 		5557A506221BD7F500743012 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				55050ABB22323F8400E9635B /* UIImage+Crop.h */,
+				55050ABA22323F8400E9635B /* UIImage+Crop.m */,
+				55050AB122323CC400E9635B /* NSString+emoji.h */,
+				55050AB022323CC300E9635B /* NSString+emoji.m */,
 				559785AE22266219007BBCC2 /* UIViewController+Tool.h */,
 				559785AD22266219007BBCC2 /* UIViewController+Tool.m */,
 				EA21CB4E221FCEE2007D3445 /* NSObject+version.h */,
@@ -2352,6 +2383,8 @@
 			children = (
 				555C1191222E771500132E4F /* HMAccontBalaceLogic.h */,
 				555C1192222E771500132E4F /* HMAccontBalaceLogic.m */,
+				55050AAD2232016400E9635B /* HMGetCashLogic.h */,
+				55050AAE2232016400E9635B /* HMGetCashLogic.m */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -3993,6 +4026,7 @@
 				EAB03936221E817C00331569 /* NIMKitSwitcherCell.m in Sources */,
 				551AF6B72231166A006AB1A0 /* HMMessageModel.m in Sources */,
 				EAB038C0221E817B00331569 /* NIMContactDataItem.m in Sources */,
+				55050ABC22323F8500E9635B /* UIImage+Crop.m in Sources */,
 				EAB038C7221E817B00331569 /* NIMContactSelectConfig.m in Sources */,
 				EAB039BA221E8FF200331569 /* NTESGLView.m in Sources */,
 				EAB039B8221E8FF200331569 /* UIView+NTES.m in Sources */,
@@ -4049,6 +4083,7 @@
 				EAB0394E221E8BBB00331569 /* PSTipsView.m in Sources */,
 				EAB039BB221E8FF200331569 /* NTESVideoChatNetStatusView.m in Sources */,
 				EAB038F3221E817B00331569 /* NIMTeamSwitchTableViewCell.m in Sources */,
+				55050AB922323F6400E9635B /* PSIntercepter.m in Sources */,
 				EA21CAA5221F9A21007D3445 /* PSMoreServiceViewController.m in Sources */,
 				5557A551221BD7F500743012 /* XYTransition.m in Sources */,
 				EAB0392B221E817C00331569 /* UIImage+NIMKit.m in Sources */,
@@ -4165,6 +4200,7 @@
 				EA78F7402227CDE6002D788A /* BRInfoModel.m in Sources */,
 				EAE19E862230B0DC0080B0F5 /* Lawyer_headView.m in Sources */,
 				EAE19E912230EF3B0080B0F5 /* Grab_customer.m in Sources */,
+				55050AB222323CC400E9635B /* NSString+emoji.m in Sources */,
 				555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */,
 				5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */,
 				559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */,
@@ -4268,6 +4304,7 @@
 				EA21CA7C221F9980007D3445 /* PSScoreViewController.m in Sources */,
 				559785A32226610B007BBCC2 /* FeedbackCell.m in Sources */,
 				EAB038F2221E817B00331569 /* NIMTeamAnnouncementListViewController.m in Sources */,
+				55050AB622323F1F00E9635B /* PSImagePickerController.m in Sources */,
 				EAB0391F221E817B00331569 /* NIMSessionNotificationContentView.m in Sources */,
 				EAB038EB221E817B00331569 /* NIMCreateTeamAnnouncement.m in Sources */,
 				5557A54E221BD7F500743012 /* TAPageControl.m in Sources */,
@@ -4292,6 +4329,7 @@
 				EAB039D3221E8FF200331569 /* PSchatViewController.m in Sources */,
 				551AF6B422310BE1006AB1A0 /* HMMessageLogic.m in Sources */,
 				5557A607221BD96500743012 /* MsgViewController.m in Sources */,
+				55050AAF2232016400E9635B /* HMGetCashLogic.m in Sources */,
 				EAB038CC221E817B00331569 /* NIMKitRobotTemplate.m in Sources */,
 				EAB039B7221E8FF200331569 /* NTESNetCallChatInfo.m in Sources */,
 				EA21CB22221FA36C007D3445 /* PSAppointmentBaseViewModel.m in Sources */,

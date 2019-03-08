@@ -179,10 +179,7 @@
 
 #pragma mark - 修改用户昵称
 - (void)modifyAccountNickname {
-    if (help_userManager.avatarImage==nil&&help_userManager.curUserInfo.avatar.length<=0) {
-       [PSTipsView showTips:@"请先设置头像！"];
-        return;
-    }
+    
     if (self.nickField.text.length==0) {
         [PSTipsView showTips:@"请输入昵称！"];
         return;

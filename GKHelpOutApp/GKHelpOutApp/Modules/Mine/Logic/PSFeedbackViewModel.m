@@ -8,6 +8,7 @@
 
 #import "PSFeedbackViewModel.h"
 #import "FeedbackTypeModel.h"
+#import "NSString+emoji.h"
 
 
 @interface PSFeedbackViewModel ()
@@ -30,22 +31,28 @@
 }
 
 - (void)checkDataWithCallback:(CheckDataCallback)callback {
-    /*
-    if (self.content.length <10) {
+    if (self.detail.length <10) {
         if (callback) {
-            NSString *less_msg = NSLocalizedString(@"Please enter a description of no less than 10 words", @"请输入不少于10个字的描述");
+            NSString *less_msg = @"请输入不少于10个字的描述";
             callback(NO,less_msg);
         }
         return;
     }
-    if ([NSString hasEmoji:self.content]||[NSString stringContainsEmoji:self.content]) {
+    if ([NSString hasEmoji:self.detail]||[NSString stringContainsEmoji:self.detail]) {
         if (callback) {
-            NSString *msg = NSLocalizedString(@"The feedback details entered cannot contain emoticons, please re-enter", @"输入的反馈详情不能包含表情,请重新输入");
+            NSString *msg = @"输入的反馈详情不能包含表情,请重新输入";
             callback(NO,msg);
         }
         return;
     }
-     */
+    if (self.attachments.count <=0) {
+        if (callback) {
+            NSString *less_msg = @"请至少上传一张图片";
+            callback(NO,less_msg);
+        }
+        return;
+    }
+
     if (callback) {
         callback(YES,nil);
     }
@@ -71,22 +78,33 @@
 }
 
 - (void)sendAppFeedbackCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback {
-    /*
-    self.feedbackRequest = [PSFeedbackRequest new];
-    self.feedbackRequest.content = self.content;
-    self.feedbackRequest.imageUrls = self.imageUrls.length>0?self.imageUrls:@"";
-    self.feedbackRequest.type = self.type;
-    self.feedbackRequest.familyId = [PSSessionManager sharedInstance].session.families.id;
-    [self.feedbackRequest send:^(PSRequest *request, PSResponse *response) {
-        if (completedCallback) {
-            completedCallback(response);
+    NSString *platform = @"PLATFORM_ADMIN";
+    NSDictionary *params = @{@"platform":platform,
+                             @"problem":self.problem,
+                             @"detail":self.detail,
+                             @"attachments":self.attachments};
+    
+    NSString *url = NSStringFormat(@"%@%@",EmallHostUrl,URL_feedbacks_add);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSString*token=[NSString stringWithFormat:@"Bearer %@",help_userManager.oathInfo.access_token];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject) {
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
         }
-    } errorCallback:^(PSRequest *request, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failedCallback) {
             failedCallback(error);
         }
     }];
-     */
 }
 
 
@@ -161,6 +179,13 @@
     }
      */
 
+}
+
+-(NSArray *)reasons {
+    return @[@"功能异常：功能故障或不可使用",
+             @"产品建议：使用体验不佳，我有建议",
+             @"安全问题：隐私信息不安全等",
+             @"其他问题"];
 }
 
 //删除图片

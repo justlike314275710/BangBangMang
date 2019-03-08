@@ -10,6 +10,8 @@
 #import "PSAuthorizationTool.h"
 #import "PSResponse.h"
 #import "PSLoadingView.h"
+#import "PSImagePickerController.h"
+#import "UploadManager.h"
 
 
 #define loadImg_width  67
@@ -99,7 +101,7 @@
             [_loadImg bk_whenTapped:^{
                 @strongify(self);
                 if (self.Type == FeedLoadSelect) { //选择图片
-                    [self selectImg:_loadImg];
+                    [self selectImg:self->_loadImg];
                 } else if (self.Type == FeedloadIng) { //浏览图片
                     if (self.browserBlock) {
                         self.browserBlock(self.loadImg, self.tag);
@@ -141,7 +143,7 @@
         _titleLab = [[UILabel alloc] init];
         _titleLab.frame = CGRectMake((self.width-60)/2,_loadiconImg.bottom+1, 60, 25);
         _titleLab.textAlignment  = NSTextAlignmentCenter;
-        _titleLab.text = NSLocalizedString(@"upload certificate", @"上传凭证");
+        _titleLab.text =  @"上传凭证";
         _titleLab.font = FontOfSize(9);
         _titleLab.numberOfLines = 0;
         _titleLab.textColor = UIColorFromRGB(153, 153, 153);
@@ -152,34 +154,30 @@
 #pragma mark - TouchEvent
 - (void)selectImg:(UIImageView *)sender {
     
-    NSString *cancel = NSLocalizedString(@"cancel", @"取消");
-    NSString *Choose_from_album = NSLocalizedString(@"Choose from album", @"从相册选择");
-    NSString *Take_a_photo = NSLocalizedString(@"Take a photo", @"拍照");
+    NSString *cancel =  @"取消";
+    NSString *Choose_from_album =  @"从相册选择";
+    NSString *Take_a_photo = @"拍照";
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancel style:UIAlertActionStyleCancel handler:nil];
     @weakify(self)
     UIAlertAction *takePhotoAction = [UIAlertAction actionWithTitle:Take_a_photo style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [PSAuthorizationTool checkAndRedirectCameraAuthorizationWithBlock:^(BOOL result) {
-            /*
+       
             PSImagePickerController *picker = [[PSImagePickerController alloc] initWithCropHeaderImageCallback:^(UIImage *cropImage) {
                 @strongify(self)
-     
-//                    sender.image = cropImage;
-                    [self handlePickerImage:cropImage];
-   
+                [self handlePickerImage:cropImage];
             }];
          
             [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
             picker.delegate = self;
             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:picker animated:YES completion:nil];
-             */
+    
 
         }];
              
     }];
     UIAlertAction *albumAction = [UIAlertAction actionWithTitle:Choose_from_album style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [PSAuthorizationTool checkAndRedirectPhotoAuthorizationWithBlock:^(BOOL result) {
-            /*
             PSImagePickerController *picker = [[PSImagePickerController alloc] initWithCropHeaderImageCallback:^(UIImage *cropImage) {
                 @strongify(self)
                 [self handlePickerImage:cropImage];
@@ -189,7 +187,6 @@
             [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
             picker.delegate = self;
             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:picker animated:YES completion:nil];
-               */
         }];
     }];
     [alert addAction:cancelAction];
@@ -197,13 +194,6 @@
     [alert addAction:albumAction];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
 }
-
-//-(void)handlePickerImage:(UIImage *)image {
-//
-//    if (self.selectBlock) {
-//        self.selectBlock(self.tag,image);
-//    }
-//}
 
 -(void)cancelPickerImage {
     
@@ -213,31 +203,23 @@
 }
 
 - (void)handlePickerImage:(UIImage *)image {
-    
-    /*
-    PSRegisterViewModel *registerViewModel = [[PSRegisterViewModel alloc] init];
-    registerViewModel.avatarImage = image;
+
     @weakify(self)
     [[PSLoadingView sharedInstance] show];
-    [registerViewModel uploadAvatarCompleted:^(PSResponse *response) {
-        @strongify(self)
+    [[UploadManager uploadManager] uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
+        @strongify(self);
         [[PSLoadingView sharedInstance] dismiss];
-        if (response.code == 200) {
-            if (self.selectBlock) {
-                self.loadImg.image = image;
-                self.selectBlock(self.tag,image,registerViewModel.avatarUrl);
-            }
-        }else{
+        if (successful) {
+            NSDictionary*CerImageDict=@{@"fileId":tips,@"thumbFileId":tips};
+            NSMutableArray*array=[[NSMutableArray alloc]init];
+            [array addObject:CerImageDict];
+            self.loadImg.image = image;
+            self.selectBlock(self.tag,image,tips);
+        } else {
             self.loadImg.image = [UIImage imageNamed:@"bottomLoad"];
-            [PSTipsView showTips:NSLocalizedString(@"Feedback image upload failed", @"反馈图片上传失败")];
+            [PSTipsView showTips:@"反馈图片上传失败"];
         }
-        
-    } failed:^(NSError *error) {
-        @strongify(self)
-        [[PSLoadingView sharedInstance] dismiss];
-//        [self showNetError];
     }];
-     */
 }
 
 

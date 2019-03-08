@@ -112,7 +112,7 @@
 //注释
 #define URL_user_info_change @"/api/user/info/change"
 
-#pragma mark - ——————— 律师相关 ————————
+#pragma mark —— ——————— 律师相关 ————————
 #define URL_Lawyer_certification @"/lawyer/certification"
 #define URL_Lawyer_profiles @"/lawyer/profiles"
 //获取支付宝签名sign
@@ -125,4 +125,10 @@
 #define URL_Lawyer_aliPayinfo     @"/lawyer/alipay"
 //支付宝提现
 #define URL_Lawyer_aliPaywithdrawal     @"/lawyer/withdrawal/alipay"
+
+#pragma mark - ——————— 意见反馈 ————————
+//新增加意见反馈
+#define URL_feedbacks_add     @"/feedbacks"
+
+
 #endif /* URLMacros_h */

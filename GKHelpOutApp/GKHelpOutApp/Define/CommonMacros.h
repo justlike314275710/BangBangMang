@@ -52,7 +52,9 @@
 //个人中心界面变化
 #define KNotificationMineDataChange    @"KNotificationMineDataDataChange"
 //支付宝绑定结果通知
-#define KNotificationBingAliPay         @"KNotificationBingAliPay"
+#define KNotificationBingAliPay        @"KNotificationBingAliPay"
+//提现成功回调通知
+#define KNotificationGetCashSuccess    @"KNotificationGetCashSuccess"
 
 #define defultTager  999
 #endif /* CommonMacros_h */

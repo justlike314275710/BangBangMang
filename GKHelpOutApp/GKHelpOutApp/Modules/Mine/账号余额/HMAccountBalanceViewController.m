@@ -14,6 +14,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "LawUserInfo.h"
 #import "PSAlertView.h"
+#import "Mine_AuthLogic.h"
 @interface HMAccountBalanceViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>{
     NSArray *_dataSource;
     BOOL _isBind;
@@ -24,6 +25,7 @@
 @property(nonatomic, strong) UILabel *k_balanceLab;
 @property(nonatomic, strong) HMAccontBalaceLogic *Logic; //逻辑层
 @property(nonatomic, strong) LawUserInfo *lawUserInfo;   //绑定的支付宝账户信息
+
 
 
 @end
@@ -40,6 +42,13 @@
                                              selector:@selector(gobingAlipy:)
                                                  name:KNotificationBingAliPay
                                                object:nil];
+    //提现成功回调通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(getCashSuccess)
+                                                 name:KNotificationGetCashSuccess
+                                               object:nil];
+    
+    
     [self setupUI];
     [self searchAlilpay];
 }
@@ -130,7 +139,7 @@
     }
 }
 
-#pragma marl - 提现
+#pragma mark - 提现
 -(void)getCash{
     if ([help_userManager.lawUserInfo.alipayBind integerValue] !=1) {
         [PSTipsView showTips:@"需先绑定支付宝才能提现！"];
@@ -138,6 +147,38 @@
         HMGetCashViewController *GetCashVC = [[HMGetCashViewController alloc] init];
         [self.navigationController pushViewController:GetCashVC animated:YES];
     }
+}
+#pragma mark - 提现成功回调
+//获取余额
+-(void)getCashSuccess{
+    
+    Mine_AuthLogic *authLogin = [Mine_AuthLogic new];
+    [authLogin getLawyerProfilesData:^(id data) {
+        if (ValidDict(data)) {
+            NSString *userStaus = [data valueForKey:@"certificationStatus"];
+            if ([userStaus isEqualToString:@"PENDING_CERTIFIED"]) {
+                help_userManager.userStatus = PENDING_CERTIFIED;
+            } else if ([userStaus isEqualToString:@"PENDING_APPROVAL"]){
+                help_userManager.userStatus = PENDING_APPROVAL;
+            } else if ([userStaus isEqualToString:@"APPROVAL_FAILURE"]){
+                help_userManager.userStatus = APPROVAL_FAILURE;
+            } else if ([userStaus isEqualToString:@"CERTIFIED"]){
+                help_userManager.userStatus = CERTIFIED;
+            }
+            [help_userManager saveUserState];
+            LawUserInfo *lawUserInfo = [LawUserInfo modelWithJSON:data];
+            self.lawUserInfo = lawUserInfo;
+            [help_userManager saveLawUserInfo];
+            //刷新界面
+            [self searchAlilpay];
+            //刷新个人中心
+            KPostNotification(KNotificationMineDataChange, nil);
+        }
+    } failed:^(NSError *error) {
+        if (![help_userManager loadUserState]) {
+            help_userManager.userStatus = PENDING_CERTIFIED;
+        }
+    }];
 }
 
 #pragma mark - 获取绑定人信息

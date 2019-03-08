@@ -19,6 +19,7 @@
 #import "Mine_ExpViewController.h"
 #import "HMAccountBalanceViewController.h"
 #import "HMBillViewController.h"
+#import "PSWriteFeedbackViewController.h"
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
@@ -287,8 +288,11 @@
 }
 #pragma mark ————— 意见反馈 —————
 -(void)feedback{
-    PSWriteFeedbackListViewController *feedBackListVC = [[PSWriteFeedbackListViewController alloc] init];
-    [self.navigationController pushViewController:feedBackListVC animated:YES];
+//    PSWriteFeedbackListViewController *feedBackListVC = [[PSWriteFeedbackListViewController alloc] init];
+//    [self.navigationController pushViewController:feedBackListVC animated:YES];
+    PSWriteFeedbackViewController *feedBackVC = [[PSWriteFeedbackViewController alloc] init];
+    [self.navigationController pushViewController:feedBackVC animated:YES];
+    
 }
 
 #pragma mark ————— 修改资料 —————
