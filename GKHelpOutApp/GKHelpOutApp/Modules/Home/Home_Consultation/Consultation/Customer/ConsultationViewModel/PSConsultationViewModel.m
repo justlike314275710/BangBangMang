@@ -400,7 +400,6 @@
         }
     }];
 
-    
 }
 
 - (void)getChatUsernameCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{

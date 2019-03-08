@@ -118,7 +118,11 @@
 //获取支付宝签名sign
 #define URL_Lawyer_aliPayAuthSign @"/lawyer/alipay/auth/sign"
 //绑定支付宝
-#define URL_Lawyer_aliPayBind @"/lawyer/alipay/bind"
+#define URL_Lawyer_aliPayBind     @"/lawyer/alipay/bind"
 //解绑支付宝
 #define URL_Lawyer_aliPayUnBind   @"/lawyer/alipay/unbind"
+//查询支付宝
+#define URL_Lawyer_aliPayinfo     @"/lawyer/alipay"
+//支付宝提现
+#define URL_Lawyer_aliPaywithdrawal     @"/lawyer/withdrawal/alipay"
 #endif /* URLMacros_h */

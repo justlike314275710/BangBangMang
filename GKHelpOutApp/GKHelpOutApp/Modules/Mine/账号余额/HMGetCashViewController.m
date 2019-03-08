@@ -8,8 +8,11 @@
 
 #import "HMGetCashViewController.h"
 #import "HMGetCashResultViewController.h"
+#import "LoginLogic.h"
 
-@interface HMGetCashViewController ()
+@interface HMGetCashViewController (){
+    
+}
 @property(nonatomic,strong)UIScrollView *scrollvew;
 @property(nonatomic,strong)UIView *bgView;
 @property(nonatomic,strong)YYAnimatedImageView *headImgView;
@@ -20,6 +23,11 @@
 @property(nonatomic,strong)UITextField *codeField;
 @property(nonatomic,strong)UIButton *submitBtn;
 
+@property(nonatomic,strong)LoginLogic *logic;
+@property(nonatomic,assign)NSInteger seconds;
+@property (nonatomic, weak) NSTimer *timer; //倒计时
+
+
 @end
 
 @implementation HMGetCashViewController
@@ -28,6 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title=@"提现";
+     _logic = [LoginLogic new];
     [self setupUI];
 }
 
@@ -80,7 +89,11 @@
     
     self.getCodeBtn.frame = CGRectMake(centerView.width-120,10,100,20);
     [centerView addSubview:self.getCodeBtn];
-
+      @weakify(self);
+    [self.getCodeBtn addTapBlock:^(UIButton *btn) {
+        @strongify(self);
+         [self getCode];
+    }];
     self.codeField.frame = CGRectMake(k_codeLabel.right+10,10,100,20);
     [centerView addSubview: self.codeField];
     
@@ -99,16 +112,97 @@
     [self.scrollvew addSubview:self.submitBtn];
     
 }
+#pragma mark - 获取验证码
+//开启定时器
+- (void)startTimer {
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
+#pragma mark - 定时器方法
+- (void)handleTimer {
+    if (_seconds > 0) {
+        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_seconds] forState:UIControlStateDisabled];
+        _seconds --;
+        if (self.seconds==0)
+        {
+            self.getCodeBtn.enabled = YES;
+            [self.timer invalidate];
+            self.timer = nil;
+        }
+    }
+}
+
+-(void)getCode{
+    self.getCodeBtn.enabled = NO;
+    _logic.phoneNumber = help_userManager.curUserInfo.username;
+    [_logic checkDataWithPhoneCallback:^(BOOL successful, NSString *tips) {
+        if (successful) {
+            [self.logic getVerificationCodeData:^(id data) {
+                [PSTipsView showTips:@"已发送"];
+                self.seconds=60;
+                [self startTimer];
+                
+            } failed:^(NSError *error) {
+                NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+                if (data) {
+                    id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                    NSString*message = body[@"message"];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [MBProgressHUD showWarnMessage:message];
+                        self.getCodeBtn.enabled=YES;
+                    });
+                }
+                
+            }];
+            
+        } else {
+            self.getCodeBtn.enabled = YES;
+            [MBProgressHUD showWarnMessage:tips];
+        }
+    }];
+}
+
+-(void)lawyerWithdrawal {
+    
+    NSString *amount = @"0.1";
+    NSString *verificationCode = self.codeField.text;
+    NSDictionary *params = @{@"amount":amount,@"verificationCode":verificationCode};
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    NSString*url=NSStringFormat(@"%@%@",ConsultationHostUrl,URL_Lawyer_aliPaywithdrawal);
+    [manager POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==201||responses.statusCode==200||responses.statusCode==204) {
+//            if (completedCallback) {
+//                completedCallback(responseObject);
+//            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        if (error) {
+//            failedCallback(error);
+//        }
+    }];
+}
 #pragma makr - TouchEvent
 -(void)submitAction:(UIButton*)sender {
-    HMGetCashResultViewController *GetCashResultVC = [[HMGetCashResultViewController alloc] init];
-    [self.navigationController pushViewController:GetCashResultVC animated:YES];
+//    HMGetCashResultViewController *GetCashResultVC = [[HMGetCashResultViewController alloc] init];
+//    [self.navigationController pushViewController:GetCashResultVC animated:YES];
+    [self lawyerWithdrawal];
 }
 
 #pragma mark -Setting&Getting
 -(UIScrollView*)scrollvew{
     if (!_scrollvew) {
         _scrollvew=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight)];
+        _scrollvew.contentSize = CGSizeMake(KScreenWidth, KScreenHeight);
     }
     return _scrollvew;
 }
@@ -124,19 +218,18 @@
     if (!_headImgView) {
         _headImgView = [YYAnimatedImageView new];
         _headImgView.contentMode = UIViewContentModeScaleAspectFill;
-        _headImgView.backgroundColor = [UIColor redColor];
         _headImgView.userInteractionEnabled = YES;
 //        [_headImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headViewClick)]];
         ViewRadius(_headImgView,40);
         [self.bgView addSubview:_headImgView];
-        [_headImgView setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] options:YYWebImageOptionRefreshImageCache];
+        [_headImgView setImageWithURL:[NSURL URLWithString:help_userManager.lawUserInfo.avatar] options:YYWebImageOptionRefreshImageCache];
     }
     return _headImgView;
 }
 -(UILabel*)nameLab{
     if (!_nameLab) {
         _nameLab=[UILabel new];
-        _nameLab.text = help_userManager.curUserInfo.nickname;
+        _nameLab.text = help_userManager.lawUserInfo.nickName;
         _nameLab.textColor = CFontColor1;
         _nameLab.textAlignment = NSTextAlignmentCenter;
         _nameLab.font = FFont1;
@@ -154,13 +247,15 @@
         UILabel*label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 20,40)];
         label.text=@"¥";
         _cashTextField.leftView = label;
+        _cashTextField.keyboardType = UIKeyboardTypeNumberPad;
     }
     return _cashTextField;
 }
 -(UILabel*)msgCodeLab{
     if (!_msgCodeLab) {
         _msgCodeLab=[UILabel new];
-        _msgCodeLab.text = @"提现需要短信确认，验证码已发送至手机：138****6768，轻按提示操作。";
+//        _msgCodeLab.text = @"提现需要短信确认，验证码已发送至手机：138****6768，请按提示操作。";
+        _msgCodeLab.text = NSStringFormat(@"提现需要短信确认，验证码已发送至手机%@，请按提示操作。",help_userManager.curUserInfo.username);
         _msgCodeLab.numberOfLines = 0;
         _msgCodeLab.textColor = CFontColor2;
         _msgCodeLab.textAlignment = NSTextAlignmentLeft;

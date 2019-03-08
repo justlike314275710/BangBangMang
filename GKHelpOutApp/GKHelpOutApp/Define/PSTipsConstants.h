@@ -33,7 +33,7 @@
 #define NET_ERROR [NSObject judegeIsVietnamVersion]?@"Mạng của bạn không bình thường":@"哇哦，您的网络异常了"
 #define CLICK_ADD [NSObject judegeIsVietnamVersion]?@"Nhấn vào đây để tải":@"点击加载"
 
-#define EMPTY_CONTENT NSLocalizedString(@"NoContents", nil)
+#define EMPTY_CONTENT NSLocalizedString(@"暂没有内容", nil)
 //@"暂没有内容"
 
 #define RegisterFaceFailed @"您的用户头像图片检测不到人脸，请退出重新设置"

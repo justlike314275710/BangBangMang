@@ -12,7 +12,8 @@
 #import "HMGetCashViewController.h"
 #import "HMAccontBalaceLogic.h"
 #import <AlipaySDK/AlipaySDK.h>
-
+#import "LawUserInfo.h"
+#import "PSAlertView.h"
 @interface HMAccountBalanceViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>{
     NSArray *_dataSource;
     BOOL _isBind;
@@ -22,6 +23,8 @@
 @property(nonatomic, strong) UILabel *balanceLab;
 @property(nonatomic, strong) UILabel *k_balanceLab;
 @property(nonatomic, strong) HMAccontBalaceLogic *Logic; //逻辑层
+@property(nonatomic, strong) LawUserInfo *lawUserInfo;   //绑定的支付宝账户信息
+
 
 @end
 
@@ -38,20 +41,21 @@
                                                  name:KNotificationBingAliPay
                                                object:nil];
     [self setupUI];
-    [self setupData];
+    [self searchAlilpay];
 }
 
 #pragma mark -PravateMethods
 -(void)setupData{
     NSString*alipayBind = help_userManager.lawUserInfo.alipayBind;
+    NSString*aliPayAccount  =@"";
     if (!alipayBind||[alipayBind integerValue]==0) {
-        alipayBind = @"未绑定";
+        aliPayAccount = @"未绑定";
         _isBind = NO;
     } else {
-        alipayBind = @"王二";
+        aliPayAccount = self.lawUserInfo.nickName;
         _isBind = YES;
     }
-    NSDictionary *Modifydata = @{@"titleText":@"支付宝账户",@"title_icon":@"支付宝账号icon",@"clickSelector":@"",@"detailText":alipayBind,@"arrow_icon":@"myarrow_icon"};
+    NSDictionary *Modifydata = @{@"titleText":@"支付宝账户",@"title_icon":@"支付宝账号icon",@"clickSelector":@"",@"detailText":aliPayAccount,@"arrow_icon":@"myarrow_icon"};
     
     NSDictionary *myMission = @{@"titleText":@"申请提现",@"title_icon":@"申请提现icon",@"clickSelector":@"",@"arrow_icon":@"myarrow_icon"};
     
@@ -104,7 +108,7 @@
             LLActionSheetView *alert = [[LLActionSheetView alloc]initWithTitleArray:@[@"解绑"] andShowCancel:YES];
             alert.ClickIndex = ^(NSInteger index) {
                 if (index == 1){
-                    [self unbingAlipy];
+                    [self unbingAlipay];
                 }else if (index == 2){
 //                    [weakSelf openCamera];
                 }
@@ -118,24 +122,60 @@
             break;
         case 1:
         {
-            HMGetCashViewController *GCashVC = [[HMGetCashViewController alloc] init];
-            [self.navigationController pushViewController:GCashVC animated:YES];
+            [self getCash];
         }
             break;
         default:
             break;
     }
 }
-#pragma mark - 获取绑定人信息
 
-#pragma mark - 解绑支付宝
--(void)unbingAlipy {
+#pragma marl - 提现
+-(void)getCash{
+    if ([help_userManager.lawUserInfo.alipayBind integerValue] !=1) {
+        [PSTipsView showTips:@"需先绑定支付宝才能提现！"];
+    } else {
+        HMGetCashViewController *GetCashVC = [[HMGetCashViewController alloc] init];
+        [self.navigationController pushViewController:GetCashVC animated:YES];
+    }
+}
+
+#pragma mark - 获取绑定人信息
+-(void)searchAlilpay{
     [[PSLoadingView sharedInstance] show];
-    [_Logic postUnBingLawyerAlipayData:^(id data) {
-        
+    [_Logic getBingLawyerAlipayInfo:^(id data) {
         [[PSLoadingView sharedInstance] dismiss];
+        if (ValidDict(data)) {
+            LawUserInfo *aliPayInfo = [LawUserInfo modelWithJSON:data];
+            self.lawUserInfo = aliPayInfo;
+            //修改绑定状态
+            help_userManager.lawUserInfo.alipayBind = @"1";
+            help_userManager.lawUserInfo.nickName = aliPayInfo.nickName;
+            help_userManager.lawUserInfo.avatar = aliPayInfo.avatar;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self setupData];
+            });
+        }
     } failed:^(NSError *error) {
         [[PSLoadingView sharedInstance] dismiss];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setupData];
+        });
+    }];
+}
+#pragma mark - 解绑支付宝
+-(void)unbingAlipay {
+    [[PSLoadingView sharedInstance] show];
+    [_Logic postUnBingLawyerAlipayData:^(id data) {
+        [[PSLoadingView sharedInstance] dismiss];
+        [PSTipsView showTips:@"支付宝解绑成功"];
+        help_userManager.lawUserInfo.alipayBind = @"0";
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setupData];
+        });
+    } failed:^(NSError *error) {
+        [[PSLoadingView sharedInstance] dismiss];
+        [PSTipsView showTips:@"支付宝解绑失败"];
     }];
 }
 #pragma mark - 绑定支付宝
@@ -147,9 +187,13 @@
         [_Logic postBingLawyerAlipayData:result completed:^(id data) {
             [[PSLoadingView sharedInstance] dismiss];
             [PSTipsView showTips:@"支付宝绑定成功"];
+            //查询绑定账户
+            help_userManager.lawUserInfo.alipayBind = @"1";
+            [self searchAlilpay];
         } failed:^(NSError *error) {
             [[PSLoadingView sharedInstance] dismiss];
             [PSTipsView showTips:@"支付宝绑定失败"];
+            help_userManager.lawUserInfo.alipayBind = @"0";
             
         }];
     }
@@ -182,7 +226,7 @@
         [[PSLoadingView sharedInstance] dismiss];
     }];
 }
-#pragma mark - 修改昵称
+
 #pragma mark -Setting&Getting
 -(UIView*)headView{
     if (!_headView) {

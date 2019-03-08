@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HMAccontBalaceLogic : HpBaseLogic
+///<查询支付宝
+- (void)getBingLawyerAlipayInfo:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 ///<获取绑定支付宝的sign
 - (void)getBingLawyerAuthSignData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 ///<绑定支付宝的
