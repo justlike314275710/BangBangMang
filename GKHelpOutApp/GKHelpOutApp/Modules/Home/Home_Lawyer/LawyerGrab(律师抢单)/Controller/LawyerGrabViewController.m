@@ -69,19 +69,20 @@
 }
 
 -(void)renderContents{
-    self.view.backgroundColor=UIColorFromRGBA(248, 247, 254, 1);
+    //self.view.backgroundColor=UIColorFromRGBA(248, 247, 254, 1);
+    self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     self.headerView=[PSLawyerView new];
     [self.view addSubview:self.headerView];
     [self.headerView.avatarView sd_setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] placeholderImage:[UIImage imageWithColor:KGrayColor]];
     self.headerView.nicknameLabel.text=help_userManager.lawUserInfo.name;
     self.headerView.addressLable.text=NSStringFormat(@"执业律所:%@",help_userManager.lawUserInfo.lawOffice);
-   // self.headerView.categories=help_userManager.lawUserInfo.categories;
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.right.mas_equalTo(-15);
         make.top.mas_equalTo(15);
         make.height.mas_equalTo(110);
     }];
+
     
     
     self.LawyersTableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -91,13 +92,14 @@
     self.LawyersTableview.emptyDataSetSource = self;
     self.LawyersTableview.emptyDataSetDelegate = self;
     self.LawyersTableview.tableFooterView = [UIView new];
+    self.LawyersTableview.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self.LawyersTableview  setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.LawyersTableview registerClass:[LegalAdviceCell class] forCellReuseIdentifier:@"LegalAdviceCell"];
     [self.view addSubview:self.LawyersTableview];
     [self.LawyersTableview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
-        make.top.mas_equalTo(140);
+        make.top.mas_equalTo(140);//140
         make.height.mas_equalTo(SCREEN_HEIGHT-140);
     }];
     @weakify(self)
@@ -105,6 +107,7 @@
         @strongify(self)
         [self refreshData];
     }];
+   
 }
 
 - (void)reloadContents {
@@ -161,20 +164,17 @@
 
 #pragma mark - DZNEmptyDataSetSource and DZNEmptyDataSetDelegate
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-     lawyerGrab_Logic*logic=[[lawyerGrab_Logic alloc]init];
-    UIImage *emptyImage = logic.dataStatus == PSDataEmpty ? [UIImage imageNamed:@"universalNoneIcon"] : [UIImage imageNamed:@"universalNetErrorIcon"];
-    return logic.dataStatus == PSDataInitial ? nil : emptyImage;
+    UIImage *emptyImage =self.logic.dataStatus == PSDataEmpty ? [UIImage imageNamed:@"universalNoneIcon"] : [UIImage imageNamed:@"universalNetErrorIcon"];
+    return self.logic.dataStatus == PSDataInitial ? nil : emptyImage;
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    lawyerGrab_Logic*logic=[[lawyerGrab_Logic alloc]init];
-    NSString *tips = logic.dataStatus == PSDataEmpty ? EMPTY_CONTENT : NET_ERROR;
-    return logic.dataStatus == PSDataInitial ? nil : [[NSAttributedString alloc] initWithString:tips attributes:@{NSFontAttributeName:AppBaseTextFont1,NSForegroundColorAttributeName:AppBaseTextColor1}];
+    NSString *tips = self.logic.dataStatus == PSDataEmpty ? EMPTY_CONTENT : NET_ERROR;
+    return self.logic.dataStatus == PSDataInitial ? nil : [[NSAttributedString alloc] initWithString:tips attributes:@{NSFontAttributeName:AppBaseTextFont1,NSForegroundColorAttributeName:AppBaseTextColor1}];
 }
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
-     lawyerGrab_Logic*logic=[[lawyerGrab_Logic alloc]init];
-    return logic.dataStatus == PSDataError ? [[NSAttributedString alloc] initWithString:@"点击加载" attributes:@{NSFontAttributeName:AppBaseTextFont1,NSForegroundColorAttributeName:AppBaseTextColor1}] : nil;
+    return self.logic.dataStatus == PSDataError ? [[NSAttributedString alloc] initWithString:@"点击加载" attributes:@{NSFontAttributeName:AppBaseTextFont1,NSForegroundColorAttributeName:AppBaseTextColor1}] : nil;
 }
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view {

@@ -139,6 +139,7 @@
             break;
         case CERTIFIED:
             self.tableView.tableHeaderView =self.headView;
+            
             break;
         default:
             self.tableView.tableHeaderView =self.headLable ;
@@ -308,6 +309,14 @@
             [tableView dequeueReusableCellWithIdentifier:@"LawyerAuthenticationTableViewCell"];
             self.authCell
             =(LawyerAuthenticationTableViewCell*)cell;
+            switch (help_userManager.userStatus) {
+                case CERTIFIED:
+                    [self.authCell.SubmissionButton setTitle:@"重新认证" forState:0];
+                    break;
+                    
+                default:
+                    break;
+            }
             [self.authCell.SubmissionButton bk_whenTapped:^{
                 [self checkLawyerBasicData];
             }];
