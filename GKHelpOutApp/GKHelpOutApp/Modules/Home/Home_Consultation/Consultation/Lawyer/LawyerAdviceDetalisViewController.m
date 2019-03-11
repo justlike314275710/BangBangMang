@@ -6,7 +6,6 @@
 //  Copyright © 2018年 calvin. All rights reserved.
 //
 #import <AFNetworking/AFNetworking.h>
-#import "PSAdviceDetailsViewController.h"
 #import "PSConsultationViewModel.h"
 #import "PSConsultation.h"
 #import "MJExtension.h"
@@ -30,11 +29,13 @@
 #import "CDZStarsControl.h"
 #import "UITextView+Placeholder.h"
 #import "PSAlertView.h"
-@interface PSAdviceDetailsViewController ()<CDZStarsControlDelegate,UITextViewDelegate>
+#import "LawyerAdviceDetalisViewController.h"
+#import "lawyerGrab_Logic.h"
+@interface LawyerAdviceDetalisViewController ()<CDZStarsControlDelegate,UITextViewDelegate>
 @property (nonatomic , strong) PSConsultation *model;
 @property (nonatomic , strong) PSLawer *layerModel;
 @property (nonatomic , strong) PSAdviceDetailsView *detailsView;
-@property (nonatomic , strong)  PSPayView *payView;
+
 @property (nonatomic , assign) NSInteger index;
 @property (nonatomic , strong) UIScrollView *myScrollview;
 @property (nonatomic , strong) PSAdviceComments*comments ;
@@ -52,32 +53,27 @@
 @property (nonatomic , strong) UIButton*messageButton ;
 @property (nonatomic , strong) UIButton*endButton ;
 @property (nonatomic , strong) UIView* commentsView;
+@property (nonatomic , strong) lawyerGrab_Logic *logic;
 @end
 
-@implementation PSAdviceDetailsViewController
-- (instancetype)initWithViewModel:(PSViewModel *)viewModel {
-    self = [super initWithViewModel:viewModel];
-    if (self) {
-        self.title =@"咨询详情";
-    }
-    return self;
-}
+@implementation LawyerAdviceDetalisViewController
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
     [self refreshData];
-
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.logic=[[lawyerGrab_Logic alloc]init];
     self.isShowLiftBack = YES;
-   
+    
 }
 #pragma mark -- 网络请求
 -(void)checkDataIsEmpty{
-    PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
     @weakify(self)
-    [viewModel checkEvaluateDataWithCallback:^(BOOL successful, NSString *tips) {
+    [self.logic  checkEvaluateDataWithCallback:^(BOOL successful, NSString *tips) {
         @strongify(self)
         if (successful) {
             [self addAdviceEvaluate];
@@ -88,207 +84,61 @@
 }
 
 -(void)addAdviceEvaluate{
-    [[PSLoadingView sharedInstance]show];
-    PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    [viewModel requestAddEvaluateCompleted:^(PSResponse *response) {
-         [[PSLoadingView sharedInstance]dismiss];
-         [PSTipsView showTips:@"评价提交成功"];
-         [self refreshData];
-        
-    } failed:^(NSError *error) {
-         [[PSLoadingView sharedInstance]dismiss];
-        NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-        if (data) {
-            id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSString*code=body[@"message"];
-            [PSTipsView showTips:code?code:@"评价提交失败"];
-            
-        }
-    }];
+
 }
 
--(void)deleteAdvice{
-     [[PSLoadingView sharedInstance]show];
-     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    [viewModel deleteConsultationCompleted:^(PSResponse *response) {
-        [[PSLoadingView sharedInstance]dismiss];
-        [PSTipsView showTips:@"删除订单成功"];
-        [self.navigationController popViewControllerAnimated:YES];
-    } failed:^(NSError *error) {
-        [[PSLoadingView sharedInstance]dismiss];
-        [PSTipsView showTips:@"删除订单失败"];
-    }];
-}
 
--(void)cancelAdvice{
-      [[PSLoadingView sharedInstance]show];
-     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    [viewModel cancelConsultationCompleted:^(PSResponse *response) {
-        [[PSLoadingView sharedInstance]dismiss];
-        [PSTipsView showTips:@"取消订单成功"];
-        [self.navigationController popViewControllerAnimated:YES];
-    } failed:^(NSError *error) {
-        [[PSLoadingView sharedInstance]dismiss];
-        [PSTipsView showTips:@"取消订单失败"];
-    }];
-}
 //获取评论
--(void)getComments{
-     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    [viewModel requestCommentsCompleted:^(PSResponse *response) {
-        self.comments=[PSAdviceComments mj_objectWithKeyValues:response];
-        [self p_commentsUI];
-        
-    } failed:^(NSError *error) {
-        
-    }];
-}
+//-(void)getComments{
+//    PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
+//    [viewModel requestCommentsCompleted:^(PSResponse *response) {
+//        self.comments=[PSAdviceComments mj_objectWithKeyValues:response];
+//        [self p_commentsUI];
+//
+//    } failed:^(NSError *error) {
+//
+//    }];
+//}
 
 
 -(void)chatAtion{
-     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    [viewModel GETProcessedCompleted:^(id data) {
-        [PSTipsView showTips:@"通话完成!"];
-    } failed:^(NSError *error) {
-         [PSTipsView showTips:@"通话失败!"];
-    }];
-    /*
-    //viewModel.chatMessageAccount
-    PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    viewModel.userName=self.layerModel.username;
-    
-    [viewModel getChatUsernameCompleted:^(PSResponse *response) {
-    NIMSession *session = [NIMSession session:viewModel.chatMessageAccount type:NIMSessionTypeP2P];
-    NIMSessionViewController *vc = [[NIMSessionViewController alloc] initWithSession:session];
-    vc.titleName=self.layerModel.name;
-    NTESAttachment *attachment = [[NTESAttachment alloc] init];
-        attachment.title = self.model.des;
-        attachment.cid = self.model.cid;
-        attachment.category=self.model.category;
-        attachment.categoryType=self.model.type;
-        attachment.time= [NSString timeChange:self.model.createdTime];
-        
-        //构造自定义MessageObject
-        NIMCustomObject *object = [[NIMCustomObject alloc] init];
-        object.attachment = attachment;
-       
-        
-        //构造自定义消息
-        NIMMessage *message = [[NIMMessage alloc] init];
-        message.messageObject =object;
-        
-        //发送消息
-        [[NIMSDK sharedSDK].chatManager sendMessage:message toSession:session error:nil];
-        vc.orderID=self.model.cid;
-        vc.videoDuration=self.model.videoDuration;
-       
-        if ([self.model.videoDuration isEqualToString:@"0"]) {
-            [PSTipsView showTips:@"通话时长不足,请充值"];
-            [PSAlertView showWithTitle:nil message:@"您的视频通话时长已用完" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
-                
-            } buttonTitles:@"取消",@"充值", nil];
-        } else {
-            vc.videoDuration=self.model.videoDuration;
-             [self.navigationController pushViewController:vc animated:YES];
-        }
+//    PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
+//    [viewModel GETProcessedCompleted:^(id data) {
+//        [PSTipsView showTips:@"通话完成!"];
+//    } failed:^(NSError *error) {
+//        [PSTipsView showTips:@"通话失败!"];
+//    }];
    
-    } failed:^(NSError *error) {
-        [PSTipsView showTips:@"云信聊天失败!"];
-    }];
-     */
 }
 - (void)refreshData {
-    PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
+    self.logic.cid=self.cid;
     @weakify(self)
-      [[PSLoadingView sharedInstance]show];
+    [[PSLoadingView sharedInstance]show];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [viewModel refreshMyAdviceDetailsCompleted:^(PSResponse *response) {
+        [self.logic GETLawyerDetailsCompleted:^(id data) {
             @strongify(self)
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.model=[PSConsultation mj_objectWithKeyValues:response];
+                self.model=[PSConsultation mj_objectWithKeyValues:data];
                 self.layerModel=[PSLawer mj_objectWithKeyValues:self.model.lawyer];
                 [self buildModel:self.model];
                 [self renderContents];
                 [[PSLoadingView sharedInstance]dismiss];
                 NSLog(@"%@",self.model.videoDuration);
             });
-       
         } failed:^(NSError *error) {
             [[PSLoadingView sharedInstance]dismiss];
-             [self renderContents];
+            [self renderContents];
         }];
+    
     });
 }
 
-#pragma mark -- 微信支付宝支付
-- (void)buyCardAction:(NSString*)cid withReward:(NSString*)reward{
-    PSPhoneCardViewModel*viewModel=[[PSPhoneCardViewModel alloc]init];
-    PSPayView *payView = [PSPayView new];
-    [payView setGetAmount:^CGFloat{
-        return [reward floatValue];
-    }];
-    [payView setGetRows:^NSInteger{
-        return viewModel.payments.count;
-    }];
-    [payView setGetSelectedIndex:^NSInteger{
-        return viewModel.selectedPaymentIndex;
-    }];
-    [payView setGetIcon:^UIImage *(NSInteger index) {
-        PSPayment *payment = viewModel.payments.count > index ? viewModel.payments[index] : nil;
-        return payment ? [UIImage imageNamed:payment.iconName] : nil;
-    }];
-    [payView setGetName:^NSString *(NSInteger index) {
-        PSPayment *payment = viewModel.payments.count > index ? viewModel.payments[index] : nil;
-        return payment ? payment.name : nil;
-    }];
-    [payView setSeletedPayment:^(NSInteger index) {
-        self.index=index;
-        viewModel.selectedPaymentIndex = index;
-    }];
-    
-    @weakify(self)
-    [payView setGoPay:^{
-        @strongify(self)
-        [self goPay:cid];
-        
-    }];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [payView showAnimated:YES];
-    });
-    
-    _payView = payView;
-}
 
--(void)goPay:(NSString*)cid{
-    PSPhoneCardViewModel*viewModel=[[PSPhoneCardViewModel alloc]init];
-    PSPayInfo*payinfo=[PSPayInfo new];
-    PSPayment *paymentInfo = viewModel.payments[_index];
-    payinfo.productID=cid;
-    payinfo.payment=paymentInfo.payment;
-    [[PSLoadingView sharedInstance] show];
-    @weakify(self)
-    [[PSPayCenter payCenter] goPayWithPayInfo:payinfo type:PayTypeOrd callback:^(BOOL result, NSError *error) {
-        @strongify(self)
-        [[PSLoadingView sharedInstance] dismiss];
-        if (error) {
-            if (error.code != 106 && error.code != 206) {
-                [PSTipsView showTips:error.domain];
-            }
-        }else{
-            [self.navigationController popViewControllerAnimated:NO];
-            self.payView.status = PSPaySuccessful;
-
-        }
-    }];
-    
-}
 
 #pragma mark -- UI
 - (void)renderContents {
-    
-    
     [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
-     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
     [self.view addSubview:self.myScrollview];
     [self.myScrollview mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -310,7 +160,7 @@
         } else if([self.model.paymentStatus isEqualToString:@"待支付"]) {
             [self.detailsView.payStatusLable setTextColor:UIColorFromRGB(255,138,7)];
         }
-            
+        
         
         self.detailsView.lawerTimeLabel.text=[NSString stringWithFormat:@"执业律所:%@",self.layerModel.lawOffice];
         self.detailsView.numberLable.text=[NSString stringWithFormat:@"编号:%@",self.model.number];
@@ -326,14 +176,12 @@
     }
     
     else if ([self.model.status isEqualToString:@"已完成"]){
-        
         self.detailsView.categoryButton.hidden=YES;
         self.detailsView.numberLable.text=[NSString stringWithFormat:@"编号:%@",self.model.number];
         self.detailsView.starsControl.score=[self.layerModel.rate integerValue];
         self.detailsView.lawerTimeLabel.text=[NSString stringWithFormat:@"执业律所:%@",self.layerModel.lawOffice];
         self.detailsView.nicknameLabel.text=self.layerModel.name?self.layerModel.name:@"";
         self.detailsView.payStatusLable.text=self.model.paymentStatus;
-
         
         if ([self.model.paymentStatus isEqualToString:@"已支付"]) {
             [self.detailsView.payStatusLable setTextColor:UIColorFromRGB(1,136,42)];
@@ -350,7 +198,7 @@
         }
     }
     else if ([self.model.status isEqualToString:@"已关闭"]){
-         self.detailsView.categoryButton.hidden=YES;
+        self.detailsView.categoryButton.hidden=YES;
         self.detailsView.numberLable.text=[NSString stringWithFormat:@"编号:%@",self.model.number];
         self.detailsView.starsControl.score=[self.layerModel.rate integerValue];
         self.detailsView.lawerTimeLabel.text=[NSString timeChange:self.model.endTime];
@@ -415,7 +263,7 @@
         }
         
         if (self.layerModel.avatarFileId) {
-
+            
             NSString*imageUrl=[NSString stringWithFormat:@"%@/files/%@",EmallHostUrl,self.layerModel.avatarFileId];
             [self.detailsView.avatarView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
             
@@ -425,7 +273,7 @@
         
     }
     [self p_statusUI:self.model.status];
-   
+    
 }
 
 
@@ -451,11 +299,11 @@
     
     UILabel*isResolvedLable=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-95, 15, 80, 15)];
     if ([self.comments.isResolved isEqualToString:@"1"]) {
-         isResolvedLable.text=@"已解决问题";
+        isResolvedLable.text=@"已解决问题";
     } else {
-         isResolvedLable.text=@"未解决问题";
+        isResolvedLable.text=@"未解决问题";
     }
-   
+    
     isResolvedLable.font=FontOfSize(14);
     isResolvedLable.textColor=[UIColor blackColor];
     [_commentsView addSubview:isResolvedLable];
@@ -474,7 +322,7 @@
         self.statusLable.text=self.model.status;
         [self.view addSubview:self.sendButton];
         [self.sendButton bk_whenTapped:^{
-            [self cancelAdvice];
+            //[self cancelAdvice];
         }];
         
     }
@@ -488,6 +336,12 @@
         [self.sendButton bk_whenTapped:^{
             [self  chatAtion];
         }];
+//        [self.view addSubview:self.endButton];
+//        [self.endButton bk_whenTapped:^{
+//            PSScoreViewController*scoreViewControlller=[[PSScoreViewController alloc]initWithViewModel:[[PSEvaluateViewmodel alloc]init]];
+//            scoreViewControlller.cid=self.model.cid;
+//            [self.navigationController pushViewController:scoreViewControlller animated:YES];
+//        }];
     }
     else if ([status isEqualToString:@"待付款"]){
         UIButton*cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
@@ -498,7 +352,7 @@
         cancelButton.layer.cornerRadius = 4.0f;
         [self.view addSubview:cancelButton];
         [cancelButton bk_whenTapped:^{
-            [self deleteAdvice];
+          
         }];
         
         UIButton*payButton=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
@@ -509,14 +363,14 @@
         payButton.layer.cornerRadius = 4.0;
         [self.view addSubview:payButton];
         [payButton bk_whenTapped:^{
-            [self buyCardAction:self.model.cid withReward:self.model.reward];
+          
         }];
     }
     
     else if ([self.model.status isEqualToString:@"已取消"]){
         [self.myScrollview addSubview:self.bgView];
         [self.bgView addSubview:self.statusLable];
-         self.statusLable.text=self.model.status;
+        self.statusLable.text=self.model.status;
         UIView*line_view=[[UIView alloc]initWithFrame:CGRectMake(12, 44, SCREEN_WIDTH-24, 1)];
         line_view.backgroundColor=AppBaseLineColor;
         [self.bgView addSubview:line_view];
@@ -525,23 +379,23 @@
         self.creatTimeLable.text=[NSString stringWithFormat:@"取消时间:  %@ %@",[self.model.endTime substringToIndex:10],[self.model.endTime substringWithRange:range1]];
         [self.bgView addSubview:self.endLable];
         if (self.model.isAutoEnd==YES) {
-             self.endLable.text=@"取消原因:  三天内已无人接单,系统自动取消";
+            self.endLable.text=@"取消原因:  三天内已无人接单,系统自动取消";
         } else {
-             self.endLable.text=@"取消原因:  主动取消订单";
+            self.endLable.text=@"取消原因:  主动取消订单";
         }
         [self.sendButton setTitle:@"删除订单" forState:UIControlStateNormal];
         [self.view addSubview:self.sendButton];
         [self.sendButton bk_whenTapped:^{
-            [self deleteAdvice];
+            
         }];
-       
+        
         
     }
     else if ([self.model.status isEqualToString:@"待处理"]){
-
+        
         [self.myScrollview addSubview:self.bgView];
         [self.bgView addSubview:self.statusLable];
-         self.statusLable.text=self.model.status;
+        self.statusLable.text=self.model.status;
         [self.bgView addSubview:self.creatTimeLable];
         
         UIView*line_view=[[UIView alloc]initWithFrame:CGRectMake(12, 90, SCREEN_WIDTH-24, 1)];
@@ -566,7 +420,7 @@
         _starsControl.allowFraction = YES;
         [scoreBgView addSubview:self.starsControl];
         
-
+        
         
         UITextView*textView=[[UITextView alloc]init];
         textView.delegate=self;
@@ -609,7 +463,7 @@
             [self noAction:self.noButton];
         }];
         
-       
+        
         [scoreBgView addSubview:self.yesButton];
         [_yesButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(_noButton.mas_left).offset(-5);
@@ -623,60 +477,51 @@
         
         
         
-//        self.messageButton=[[UIButton alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
-//        [messageButton setBackgroundColor:AppBaseTextColor3];
-//        [messageButton setTitle:@"立即沟通" forState:0];
-//        messageButton.titleLabel.font=FontOfSize(14);
-//        messageButton.layer.masksToBounds = YES;
-//        messageButton.layer.cornerRadius = 4.0;
-        self.messageButton.frame = CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44);
-        [self.messageButton setTitle:@"立即沟通" forState:0];
-        [self.view addSubview:self.messageButton];
-        [self.messageButton bk_whenTapped:^{
+        UIButton*messageButton=[[UIButton alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
+        [messageButton setBackgroundColor:AppBaseTextColor3];
+        [messageButton setTitle:@"立即沟通" forState:0];
+        messageButton.titleLabel.font=FontOfSize(14);
+        messageButton.layer.masksToBounds = YES;
+        messageButton.layer.cornerRadius = 4.0;
+        
+        [self.view addSubview:messageButton];
+        [messageButton bk_whenTapped:^{
             [self  chatAtion];
         }];
         
-//        UIButton*endButton=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
-//        [endButton setBackgroundColor: AppBaseTextColor3];
-//        [endButton setTitle:@"结束咨询" forState:0];
-//        endButton.titleLabel.font=FontOfSize(14);
-//        endButton.layer.masksToBounds = YES;
-//        endButton.layer.cornerRadius = 4.0;
-        self.endButton.frame = CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44);
-        [self.endButton setTitle:@"结束咨询" forState:0];
-        [self.view addSubview:self.endButton];
-        [self.endButton bk_whenTapped:^{
+        UIButton*endButton=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
+        [endButton setBackgroundColor: AppBaseTextColor3];
+        [endButton setTitle:@"结束咨询" forState:0];
+        endButton.titleLabel.font=FontOfSize(14);
+        endButton.layer.masksToBounds = YES;
+        endButton.layer.cornerRadius = 4.0;
+        [self.view addSubview:endButton];
+        [endButton bk_whenTapped:^{
             [self checkDataIsEmpty];
             //小屏幕滑动到底部
             if (IS_iPhone_5) {
-                [self.myScrollview setContentOffset:CGPointMake(0,40) animated:YES];
+                [_myScrollview setContentOffset:CGPointMake(0,40) animated:YES];
             }
         }];
         
         self.sendButton.hidden = YES;
     }
     else if ([self.model.status isEqualToString:@"已完成"]){
-        [self.bgView removeAllSubviews];
-        self.endButton.hidden = YES;
-        self.messageButton.hidden = YES;
-
         
         [self.myScrollview addSubview:self.bgView];
         [self.bgView addSubview:self.statusLable];
         self.statusLable.text=self.model.status;
         [self.bgView addSubview:self.creatTimeLable];
         [self.bgView addSubview:self.endLable];
-        [self getComments];
-        UIView*line_view=[[UIView alloc]initWithFrame:CGRectMake(12, 132, SCREEN_WIDTH-24, 1)];
+     //
+        UIView*line_view=[[UIView alloc]initWithFrame:CGRectMake(12, 128, SCREEN_WIDTH-24, 1)];
         line_view.backgroundColor=AppBaseLineColor;
         [self.bgView addSubview:line_view];
-
+        
         [self.view addSubview:self.sendButton];
-        self.sendButton.frame = CGRectMake(12, SCREEN_HEIGHT-130, SCREEN_WIDTH-24, 44);
-        self.sendButton.hidden = NO;
         [_sendButton setTitle:@"删除订单" forState:0];
         [_sendButton bk_whenTapped:^{
-            [self deleteAdvice];
+          
         }];
         
     }
@@ -686,18 +531,18 @@
         self.statusLable.text=self.model.status;
         [self.bgView addSubview:self.creatTimeLable];
         [self.bgView addSubview:self.endLable];
-        [self getComments];
+       // [self getComments];
         UIView*line_view=[[UIView alloc]initWithFrame:CGRectMake(12, 125, SCREEN_WIDTH-24, 1)];
         line_view.backgroundColor=AppBaseLineColor;
         [self.bgView addSubview:line_view];
         [self.view addSubview:self.sendButton];
         [self.sendButton setTitle:@"删除订单" forState:0];
         [self.sendButton bk_whenTapped:^{
-            [self deleteAdvice];
+           
         }];
-       
+        
     }
-   
+    
 }
 
 -(void)setupHeadImg:(NSString*)category{
@@ -737,30 +582,25 @@
     BOOL select= !sender.selected;
     _yesButton.selected=select;
     _noButton.selected=!select;
-    PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    viewModel.isResolved=@"true";
+    self.logic.isResolved=@"true";
 }
 
 -(void)noAction:(UIButton*)sender{
     BOOL select= !sender.selected;
     _yesButton.selected=!select;
     _noButton.selected=select;
-    PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    viewModel.isResolved=@"false";
+    self.logic.isResolved=@"false";
 }
 
 
 #pragma mark -- delegate
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
-    PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    viewModel.content = textView.text;
+   self.logic.content = textView.text;
 }
 
 - (void)starsControl:(CDZStarsControl *)starsControl didChangeScore:(CGFloat)score{
-   PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-   viewModel.rate=[NSString stringWithFormat:@"%.2f", score];
-    
+    self.logic.rate=[NSString stringWithFormat:@"%.2f", score];
 }
 
 #pragma mark - setting&&getting
@@ -795,7 +635,7 @@
 
 - (UILabel *)creatTimeLable{
     if (!_creatTimeLable) {
-       _creatTimeLable=[[UILabel alloc]initWithFrame:CGRectMake(15, 54, 300, 16)];
+        _creatTimeLable=[[UILabel alloc]initWithFrame:CGRectMake(15, 54, 300, 16)];
         _creatTimeLable.text=self.model.acceptedTime?[NSString stringWithFormat:@"接单时间:  %@",[NSString timeChange:self.model.acceptedTime]]:@"";
         _creatTimeLable.textColor=AppBaseTextColor1;
         _creatTimeLable.textAlignment=NSTextAlignmentLeft;
@@ -828,7 +668,7 @@
         [_sendButton setTitle:@"取消订单" forState:0];
         _sendButton.layer.masksToBounds = YES;
         _sendButton.layer.cornerRadius = 4.0;
-     
+        
     }
     return _sendButton;
     
@@ -881,9 +721,9 @@
         [_noButton setImage:[UIImage imageNamed:@"已勾选"] forState:UIControlStateSelected];
         [_noButton setTitle:@"  否" forState:0];
         _noButton.titleLabel.font=FontOfSize(12);
-         [_noButton setTitleColor:[UIColor blackColor] forState:0];
+        [_noButton setTitleColor:[UIColor blackColor] forState:0];
     }
-   return _noButton;
+    return _noButton;
 }
 
 
@@ -961,13 +801,13 @@
     return model;
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

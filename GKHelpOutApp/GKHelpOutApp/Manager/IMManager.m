@@ -93,7 +93,6 @@ SINGLETON_FOR_CLASS(IMManager);
 -(void)onReceiveCustomSystemNotification:(NIMCustomSystemNotification *)notification{
     NSData *jsonData = [notification.content dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary*dic=[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-    NSLog(@"***%@",dic);
     if ([dic[@"type"] isEqualToString:@"RUSH_PAGE_REFRESH"]) {
         KPostNotification(@"RUSH_PAGE_REFRESH", nil);
         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {

@@ -187,11 +187,101 @@
 }
 
 
+- (void)checkEvaluateDataWithCallback:(CheckDataCallback)callback {
+    if (self.rate.length == 0) {
+        if (callback){
+            callback(NO,@"请对律师服务进行评分");
+        }
+        return;
+    }
+    
+    if (self.isResolved.length==0) {
+        if (callback){
+            callback(NO,@"请选择是否解决问题");
+        }
+        return;
+    }
+    
+    if (callback) {
+        callback(YES,nil);
+    }
+}
+-(void)GETLawyerDetailsCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    manager=[AFHTTPSessionManager manager];
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    NSString*url=[NSString stringWithFormat:@"%@/lawyer/my/legal-advice/%@",ConsultationHostUrl,self.cid];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+          NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==200) {
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
+        } else{
+            self.dataStatus = PSDataError;
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if (failedCallback) {
+            failedCallback(error);
+        }
+    }];
+}
+
+-(void)requestCommentsCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    NSString *url =[NSString stringWithFormat:@"%@/lawyer/my/legal-advice/%@/comment",ConsultationHostUrl,self.cid];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==200) {
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failedCallback) {
+            failedCallback(error);
+        }
+    }];
+}
+
+
+
+-(void)GETProcessedCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    NSString *url =[NSString stringWithFormat:@"%@/notifications/netease/%@/processed",ConsultationHostUrl,self.cid];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==200||responses.statusCode==201) {
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failedCallback) {
+            failedCallback(error);
+        }
+    }];
+}
+
 -(NSArray *)myAdviceArray{
     return _grabItems;
 }
 - (NSArray *)rushAdviceArray{
     return _items;
 }
+
+
+
+
+
 
 @end

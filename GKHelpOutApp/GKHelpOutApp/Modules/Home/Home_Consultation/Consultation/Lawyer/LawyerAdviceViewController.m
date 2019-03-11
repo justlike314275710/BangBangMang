@@ -14,6 +14,9 @@
 #import "Grab_customer.h"
 #import "NSString+Utils.h"
 #import "LawyerAdviceTableViewCell.h"
+#import "UIViewController+Tool.h"
+#import "LawyerAdviceDetalisViewController.h"
+#import "LawyerAdviceDetalisVC.h"
 @interface LawyerAdviceViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property (nonatomic , strong) UITableView *LawyersTableview;
 @property (nonatomic , strong) PSLawyerView *headerView;
@@ -28,21 +31,11 @@
     [self renderContents];
     [self refreshData];
     [self SDWebImageAuth];
-    // Do any additional setup after loading the view.
 }
 
 
 - (void)loadMore {
-    // lawyerGrab_Logic*logic=[[lawyerGrab_Logic alloc]init];
     @weakify(self)
-//    [self.logic loadLawyerAdviceCompleted:^(id data) {
-//        @strongify(self)
-//        [self reloadContents];
-//    } failed:^(NSError *error) {
-//        @strongify(self)
-//        [self reloadContents];
-//    }];
-    
     [self.logic loadMygrabCompleted:^(id data) {
         @strongify(self)
         [self reloadContents];
@@ -63,13 +56,6 @@
         [self reloadContents];
     }];
     
-//    [self.logic refreshLawyerAdviceCompleted:^(id data) {
-//        [[PSLoadingView sharedInstance] dismiss];
-//        [self reloadContents];
-//    } failed:^(NSError *error) {
-//        [[PSLoadingView sharedInstance] dismiss];
-//        [self reloadContents];
-//    }];
 }
 
 
@@ -148,6 +134,13 @@
     }];
     return cell;
     
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    lawyerGrab*grabModel=self.logic.myAdviceArray[indexPath.row];
+    LawyerAdviceDetalisVC*lawyerAdviceDetalisVC=[[LawyerAdviceDetalisVC alloc]init];
+    lawyerAdviceDetalisVC.cid=grabModel.cid;
+    UIViewController *vc = [UIViewController jsd_getCurrentViewController];
+    [vc.navigationController pushViewController:lawyerAdviceDetalisVC animated:YES];
 }
 
 
