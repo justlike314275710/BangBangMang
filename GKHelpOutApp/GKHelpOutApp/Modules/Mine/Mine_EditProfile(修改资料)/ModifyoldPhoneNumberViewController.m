@@ -47,14 +47,14 @@
     _msglab.text = NSStringFormat(@"＊更换手机号，下次登录可使用新手机号登录。当前手机号:%@",help_userManager.curUserInfo.username);
     
     UIView *line0 = [[UIView alloc] initWithFrame:CGRectMake(0,_msglab.bottom+5, self.scrollview.width, 1)];
-    line0.backgroundColor = CLineColor;
+    line0.backgroundColor =  [UIColor clearColor]; //CLineColor;
     [self.scrollview addSubview:line0];
     
     UIView *BgView = [UIView new];
     BgView.backgroundColor = KWhiteColor;
-    BgView.frame=CGRectMake(0,line0.bottom,KScreenWidth,88);
+    BgView.frame=CGRectMake(0,line0.bottom,KScreenWidth,44);
     [self.scrollview addSubview:BgView];
-    
+    /*
     UILabel *k_phoneNumber = [[UILabel alloc] init];
     k_phoneNumber.frame = CGRectMake(15,11,50,22);
     k_phoneNumber.text = @"手机号:";
@@ -63,8 +63,10 @@
     [BgView addSubview:k_phoneNumber];
     [BgView addSubview:self.phoneField];
     self.phoneField.frame = CGRectMake(k_phoneNumber.right,k_phoneNumber.y, self.scrollview.width-k_phoneNumber.right-10-15, 21);
+    
+    */
     UILabel *k_codeLabel = [[UILabel alloc] init];
-    k_codeLabel.frame = CGRectMake(15,55,50,22);
+    k_codeLabel.frame = CGRectMake(15,11/*55-44*/,50,22);
     k_codeLabel.text = @"验证码:";
     k_codeLabel.font = FFont1;
     k_codeLabel.textColor = CFontColor1;
@@ -73,7 +75,7 @@
     self.getCodeBtn.frame = CGRectMake(self.scrollview.width-125,k_codeLabel.y,100,21);
     [BgView addSubview:self.getCodeBtn];
     
-    UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(0,44, self.scrollview.width, 1)];
+    UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(0,44-44, self.scrollview.width, 1)];
     line1.backgroundColor = CLineColor;
     [BgView addSubview:line1];
     
@@ -107,18 +109,18 @@
     [self.scrollview addSubview:self.nextStep];
     _nextStep.frame = CGRectMake(15,186,self.scrollview.width-30,KNormalBBtnHeight);
     [_nextStep addTapBlock:^(UIButton *btn) {
-        ModifyNewPhoneNumberViewController *ModfiyNewVC = [[ModifyNewPhoneNumberViewController alloc] init];
+//        ModifyNewPhoneNumberViewController *ModfiyNewVC = [[ModifyNewPhoneNumberViewController alloc] init];
         [self_weak_ UserAccoutLogin];
     }];
     
 }
 
 -(void)UserAccoutLogin {
-    self.logic.phoneNumber = self.phoneField.text;
+//    self.logic.phoneNumber = self.phoneField.text;
     self.logic.messageCode = self.codeField.text;
     [_logic checkDataWithCallback:^(BOOL successful, NSString *tips) {
         if (successful) {
-            NSDictionary *params = @{@"username":self.phoneField.text,
+            NSDictionary *params = @{@"username":help_userManager.curUserInfo.username
                                      @"password":self.codeField.text,
                                      @"grant_type":@"password"
                                      };
