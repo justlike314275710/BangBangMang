@@ -8,7 +8,7 @@
 #import "LoginViewController.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "LoginLogic.h"
-
+#import "RMTimer.h"
 
 
 @interface LoginViewController ()
@@ -21,7 +21,6 @@
 @property(nonatomic,strong) UIButton *loginBtn;
 @property(nonatomic,assign) NSInteger seconds;
 
-@property (nonatomic, weak) NSTimer *timer; //倒计时
 
 
 @end
@@ -121,24 +120,20 @@
     }];
  
 }
-
-#pragma mark - 定时器方法
-- (void)handleTimer {
-    if (_seconds > 0) {
-        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_seconds] forState:UIControlStateDisabled];
-        _seconds --;
-        if (self.seconds==0)
-        {
-            self.getCodeBtn.enabled = YES;
-            [self.timer invalidate];
-            self.timer = nil;
-        }
-    }
-}
 //开启定时器
 - (void)startTimer {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    RMTimer *sharedTimer = [RMTimer sharedTimer];
+    @weakify(self);
+    [sharedTimer resumeTimerWithDuration:self.seconds interval:1 handleBlock:^(NSInteger currentTime) {
+        @strongify(self);
+        self.getCodeBtn.enabled = NO;
+        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",currentTime] forState:UIControlStateDisabled];
+        [self.getCodeBtn setTitleColor:KGrayColor forState:UIControlStateDisabled];
+        
+    } timeOutBlock:^{
+        @strongify(self);
+        self.getCodeBtn.enabled = YES;
+    }];
 }
 
 -(void)WXLogin{
@@ -175,9 +170,8 @@
                                          };
             [help_userManager requestEcomRegister:parmeters];
         } else {
-            [MBProgressHUD showWarnMessage:tips];
+            [PSTipsView showTips:tips];
         }
-        
     }];
 }
 
@@ -209,7 +203,6 @@
                 });
                 
             }];
-            
         } else {
             self.getCodeBtn.enabled = YES;
             [MBProgressHUD showWarnMessage:tips];
@@ -261,7 +254,6 @@
 }
 
 - (UIButton *)loginBtn {
-    
     if (!_loginBtn) {
         _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_loginBtn setTitle:@"登录" forState:UIControlStateNormal];

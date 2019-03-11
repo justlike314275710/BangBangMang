@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"修改资料";
+    self.title = @"个人账户";
     self.isShowLiftBack = YES;
     
     [self setupUI];
