@@ -16,6 +16,12 @@
 @property (nonatomic , strong) NSArray *rushAdviceArray;
 @property (nonatomic , strong) NSArray *myAdviceArray;
 
+
+@property (nonatomic , strong) NSString *rate;
+@property (nonatomic , strong) NSString *content;
+@property (nonatomic , strong) NSString *isResolved;
+
+
 - (void)refreshLawyerAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 - (void)loadLawyerAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 
@@ -27,4 +33,12 @@
 - (void)refreshMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 - (void)loadMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 -(void)GETMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+
+- (void)checkEvaluateDataWithCallback:(CheckDataCallback)callback ;
+-(void)GETLawyerDetailsCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+
+-(void)requestCommentsCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;//评论
+
+-(void)GETProcessedCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;//模拟通话
+
 @end

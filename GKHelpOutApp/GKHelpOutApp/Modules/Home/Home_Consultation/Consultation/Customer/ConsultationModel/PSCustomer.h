@@ -14,5 +14,5 @@
 
 @interface PSCustomer : NSObject
 @property (nonatomic , strong) NSString *name;
-@property (nonatomic , strong) NSString *phoneNumber;
+@property (nonatomic , strong) NSString *username;
 @end

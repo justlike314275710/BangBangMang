@@ -26,9 +26,11 @@
 @property (nonatomic, strong) NSArray *attachments;
 @property (nonatomic , strong) NSString *createdTime;
 @property (nonatomic , strong) NSString *acceptedTime;
+@property (nonatomic , strong) NSString *processedTime;
 @property (nonatomic , strong) NSString *endTime;
 @property (nonatomic, strong) PSLawer<Optional> *lawyer;
-//@property (nonatomic, strong) PSCustomer<Optional> *customer;
+//@property (nonatomic , strong) PSCustomer *cu
+@property (nonatomic, strong) PSCustomer<Optional> *customer;
 @property (nonatomic , strong) NSString *type;
 @property (nonatomic , strong) NSString *category;
 @property (nonatomic , strong) NSString *payStatus;

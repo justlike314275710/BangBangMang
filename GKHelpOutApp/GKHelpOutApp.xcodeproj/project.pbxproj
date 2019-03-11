@@ -462,6 +462,9 @@
 		EAE19E912230EF3B0080B0F5 /* Grab_customer.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E902230EF3B0080B0F5 /* Grab_customer.m */; };
 		EAE19E94223110920080B0F5 /* LawyerAdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */; };
 		EAE19E9B223114320080B0F5 /* LawyerAdviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E9A223114320080B0F5 /* LawyerAdviceTableViewCell.m */; };
+		EAE19E9E2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E9D2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m */; };
+		EAE19EA12235FDD80080B0F5 /* LawyerAdviceDetalisVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */; };
+		EAE19EA42235FFBB0080B0F5 /* headerDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA32235FFBB0080B0F5 /* headerDetailsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1379,6 +1382,12 @@
 		EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceViewController.m; sourceTree = "<group>"; };
 		EAE19E99223114320080B0F5 /* LawyerAdviceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerAdviceTableViewCell.h; sourceTree = "<group>"; };
 		EAE19E9A223114320080B0F5 /* LawyerAdviceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceTableViewCell.m; sourceTree = "<group>"; };
+		EAE19E9C2235EF440080B0F5 /* LawyerAdviceDetalisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerAdviceDetalisViewController.h; sourceTree = "<group>"; };
+		EAE19E9D2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceDetalisViewController.m; sourceTree = "<group>"; };
+		EAE19E9F2235FDD80080B0F5 /* LawyerAdviceDetalisVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerAdviceDetalisVC.h; sourceTree = "<group>"; };
+		EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceDetalisVC.m; sourceTree = "<group>"; };
+		EAE19EA22235FFBB0080B0F5 /* headerDetailsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = headerDetailsView.h; sourceTree = "<group>"; };
+		EAE19EA32235FFBB0080B0F5 /* headerDetailsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = headerDetailsView.m; sourceTree = "<group>"; };
 		F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3722,6 +3731,10 @@
 				EAE19E98223114050080B0F5 /* View */,
 				EAE19E92223110920080B0F5 /* LawyerAdviceViewController.h */,
 				EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */,
+				EAE19E9C2235EF440080B0F5 /* LawyerAdviceDetalisViewController.h */,
+				EAE19E9D2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m */,
+				EAE19E9F2235FDD80080B0F5 /* LawyerAdviceDetalisVC.h */,
+				EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */,
 			);
 			path = Lawyer;
 			sourceTree = "<group>";
@@ -3731,6 +3744,8 @@
 			children = (
 				EAE19E99223114320080B0F5 /* LawyerAdviceTableViewCell.h */,
 				EAE19E9A223114320080B0F5 /* LawyerAdviceTableViewCell.m */,
+				EAE19EA22235FFBB0080B0F5 /* headerDetailsView.h */,
+				EAE19EA32235FFBB0080B0F5 /* headerDetailsView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4075,6 +4090,7 @@
 				EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */,
 				EAE19E6F222E0E770080B0F5 /* dashedTextview.m in Sources */,
 				EAB039BF221E8FF200331569 /* renderer_rgb.c in Sources */,
+				EAE19E9E2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m in Sources */,
 				EA21CAC0221FA04F007D3445 /* PSPayView.m in Sources */,
 				EA21CB4D221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m in Sources */,
 				EA21CA85221F9980007D3445 /* PSLawer.m in Sources */,
@@ -4194,6 +4210,7 @@
 				5557A549221BD7F500743012 /* SandBoxHelper.m in Sources */,
 				EAB03908221E817B00331569 /* NIMNotificationContentConfig.m in Sources */,
 				5524C68922250F380067F437 /* LegaladviceViewController.m in Sources */,
+				EAE19EA12235FDD80080B0F5 /* LawyerAdviceDetalisVC.m in Sources */,
 				5557A606221BD96500743012 /* MsgLogic.m in Sources */,
 				EAB0390D221E817B00331569 /* NIMBaseSessionContentConfig.m in Sources */,
 				EAB038ED221E817B00331569 /* NIMTeamCardOperationItem.m in Sources */,
@@ -4210,6 +4227,7 @@
 				EAB038CA221E817B00331569 /* NIMKitResourceResizer.m in Sources */,
 				EA21CA7A221F9980007D3445 /* PSLawerViewModel.m in Sources */,
 				EA78F72122263DA8002D788A /* PersonTableViewCell.m in Sources */,
+				EAE19EA42235FFBB0080B0F5 /* headerDetailsView.m in Sources */,
 				EAB0394B221E88BE00331569 /* PSViewController.m in Sources */,
 				EAE19E8E2230EE140080B0F5 /* lawyerGrab.m in Sources */,
 				EAB038D5221E817B00331569 /* NIMInputMoreContainerView.m in Sources */,
