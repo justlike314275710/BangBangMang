@@ -165,6 +165,8 @@
 		555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 555A564B2228E58300451044 /* ModifyNicknameViewController.m */; };
 		555C118F222E702E00132E4F /* LawUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C118E222E702E00132E4F /* LawUserInfo.m */; };
 		555C1193222E771500132E4F /* HMAccontBalaceLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C1192222E771500132E4F /* HMAccontBalaceLogic.m */; };
+		558BBBD12236389B00CF1122 /* RMTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BBBCE2236389A00CF1122 /* RMTimer.m */; };
+		558BBBD22236389B00CF1122 /* RMCommonTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BBBD02236389B00CF1122 /* RMCommonTimer.m */; };
 		559218DD2226813F00A5C655 /* ModifyDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218DC2226813F00A5C655 /* ModifyDataViewController.m */; };
 		559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218E022268F5900A5C655 /* ModifyoldPhoneNumberViewController.m */; };
 		559218E422268F7600A5C655 /* ModifyNewPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218E322268F7600A5C655 /* ModifyNewPhoneNumberViewController.m */; };
@@ -776,6 +778,10 @@
 		555C118E222E702E00132E4F /* LawUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawUserInfo.m; sourceTree = "<group>"; };
 		555C1191222E771500132E4F /* HMAccontBalaceLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMAccontBalaceLogic.h; sourceTree = "<group>"; };
 		555C1192222E771500132E4F /* HMAccontBalaceLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMAccontBalaceLogic.m; sourceTree = "<group>"; };
+		558BBBCD2236389A00CF1122 /* RMTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTimer.h; sourceTree = "<group>"; };
+		558BBBCE2236389A00CF1122 /* RMTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMTimer.m; sourceTree = "<group>"; };
+		558BBBCF2236389A00CF1122 /* RMCommonTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCommonTimer.h; sourceTree = "<group>"; };
+		558BBBD02236389B00CF1122 /* RMCommonTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCommonTimer.m; sourceTree = "<group>"; };
 		559218DB2226813F00A5C655 /* ModifyDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModifyDataViewController.h; sourceTree = "<group>"; };
 		559218DC2226813F00A5C655 /* ModifyDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModifyDataViewController.m; sourceTree = "<group>"; };
 		559218DF22268F5900A5C655 /* ModifyoldPhoneNumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModifyoldPhoneNumberViewController.h; sourceTree = "<group>"; };
@@ -1708,6 +1714,7 @@
 		5557A505221BD7BD00743012 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				558BBBCC2236387800CF1122 /* RMTimer */,
 				55050AB322323F0D00E9635B /* imagePicker */,
 				55C0C76C222CFA7C00CD2459 /* LLActionSheetView */,
 				5524C68D2225103B0067F437 /* ZWTopSelectVcView */,
@@ -2396,6 +2403,17 @@
 				55050AAE2232016400E9635B /* HMGetCashLogic.m */,
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		558BBBCC2236387800CF1122 /* RMTimer */ = {
+			isa = PBXGroup;
+			children = (
+				558BBBCF2236389A00CF1122 /* RMCommonTimer.h */,
+				558BBBD02236389B00CF1122 /* RMCommonTimer.m */,
+				558BBBCD2236389A00CF1122 /* RMTimer.h */,
+				558BBBCE2236389A00CF1122 /* RMTimer.m */,
+			);
+			path = RMTimer;
 			sourceTree = "<group>";
 		};
 		559218DA2226810F00A5C655 /* Mine_EditProfile(修改资料) */ = {
@@ -4085,6 +4103,7 @@
 				EAB039B4221E8FF200331569 /* UIAlertView+NTESBlock.m in Sources */,
 				EAB039D1221E8FF200331569 /* PSSendShopGoodsAttachment.m in Sources */,
 				EAB03911221E817B00331569 /* NIMSessionMsgDatasource.m in Sources */,
+				558BBBD22236389B00CF1122 /* RMCommonTimer.m in Sources */,
 				5524C6932225106B0067F437 /* ZWTopSelectVcView.m in Sources */,
 				EAB03913221E817B00331569 /* NIMSessionLayoutImpl.m in Sources */,
 				EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */,
@@ -4314,6 +4333,7 @@
 				5557A4C8221BD09200743012 /* main.m in Sources */,
 				555C118F222E702E00132E4F /* LawUserInfo.m in Sources */,
 				EA78F6E82225161F002D788A /* DSSettingItem.m in Sources */,
+				558BBBD12236389B00CF1122 /* RMTimer.m in Sources */,
 				559785A922266158007BBCC2 /* FeedLoadItemView.m in Sources */,
 				EAB03951221E8EE000331569 /* PSAlertView.m in Sources */,
 				EAB038E4221E817B00331569 /* NIMPageView.m in Sources */,

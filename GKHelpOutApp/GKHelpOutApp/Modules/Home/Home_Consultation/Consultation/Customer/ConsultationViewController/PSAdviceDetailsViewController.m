@@ -285,6 +285,8 @@
 
 #pragma mark -- UI
 - (void)renderContents {
+    
+    
     [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
      NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
@@ -324,12 +326,14 @@
     }
     
     else if ([self.model.status isEqualToString:@"已完成"]){
+        
         self.detailsView.categoryButton.hidden=YES;
         self.detailsView.numberLable.text=[NSString stringWithFormat:@"编号:%@",self.model.number];
         self.detailsView.starsControl.score=[self.layerModel.rate integerValue];
         self.detailsView.lawerTimeLabel.text=[NSString stringWithFormat:@"执业律所:%@",self.layerModel.lawOffice];
         self.detailsView.nicknameLabel.text=self.layerModel.name?self.layerModel.name:@"";
         self.detailsView.payStatusLable.text=self.model.paymentStatus;
+
         
         if ([self.model.paymentStatus isEqualToString:@"已支付"]) {
             [self.detailsView.payStatusLable setTextColor:UIColorFromRGB(1,136,42)];
@@ -619,38 +623,43 @@
         
         
         
-        UIButton*messageButton=[[UIButton alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
-        [messageButton setBackgroundColor:AppBaseTextColor3];
-        [messageButton setTitle:@"立即沟通" forState:0];
-        messageButton.titleLabel.font=FontOfSize(14);
-        messageButton.layer.masksToBounds = YES;
-        messageButton.layer.cornerRadius = 4.0;
-        
-        [self.view addSubview:messageButton];
-        [messageButton bk_whenTapped:^{
+//        self.messageButton=[[UIButton alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
+//        [messageButton setBackgroundColor:AppBaseTextColor3];
+//        [messageButton setTitle:@"立即沟通" forState:0];
+//        messageButton.titleLabel.font=FontOfSize(14);
+//        messageButton.layer.masksToBounds = YES;
+//        messageButton.layer.cornerRadius = 4.0;
+        self.messageButton.frame = CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44);
+        [self.messageButton setTitle:@"立即沟通" forState:0];
+        [self.view addSubview:self.messageButton];
+        [self.messageButton bk_whenTapped:^{
             [self  chatAtion];
         }];
         
-        UIButton*endButton=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
-        [endButton setBackgroundColor: AppBaseTextColor3];
-        [endButton setTitle:@"结束咨询" forState:0];
-        endButton.titleLabel.font=FontOfSize(14);
-        endButton.layer.masksToBounds = YES;
-        endButton.layer.cornerRadius = 4.0;
-        [self.view addSubview:endButton];
-        [endButton bk_whenTapped:^{
+//        UIButton*endButton=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
+//        [endButton setBackgroundColor: AppBaseTextColor3];
+//        [endButton setTitle:@"结束咨询" forState:0];
+//        endButton.titleLabel.font=FontOfSize(14);
+//        endButton.layer.masksToBounds = YES;
+//        endButton.layer.cornerRadius = 4.0;
+        self.endButton.frame = CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44);
+        [self.endButton setTitle:@"结束咨询" forState:0];
+        [self.view addSubview:self.endButton];
+        [self.endButton bk_whenTapped:^{
             [self checkDataIsEmpty];
             //小屏幕滑动到底部
             if (IS_iPhone_5) {
-                [_myScrollview setContentOffset:CGPointMake(0,40) animated:YES];
+                [self.myScrollview setContentOffset:CGPointMake(0,40) animated:YES];
             }
         }];
         
         self.sendButton.hidden = YES;
     }
     else if ([self.model.status isEqualToString:@"已完成"]){
-    
         [self.bgView removeAllSubviews];
+        self.endButton.hidden = YES;
+        self.messageButton.hidden = YES;
+
         
         [self.myScrollview addSubview:self.bgView];
         [self.bgView addSubview:self.statusLable];
@@ -663,6 +672,8 @@
         [self.bgView addSubview:line_view];
 
         [self.view addSubview:self.sendButton];
+        self.sendButton.frame = CGRectMake(12, SCREEN_HEIGHT-130, SCREEN_WIDTH-24, 44);
+        self.sendButton.hidden = NO;
         [_sendButton setTitle:@"删除订单" forState:0];
         [_sendButton bk_whenTapped:^{
             [self deleteAdvice];
