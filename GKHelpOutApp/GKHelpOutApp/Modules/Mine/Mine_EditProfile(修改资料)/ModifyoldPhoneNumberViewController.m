@@ -116,11 +116,11 @@
 }
 
 -(void)UserAccoutLogin {
-//    self.logic.phoneNumber = self.phoneField.text;
+    self.logic.phoneNumber = help_userManager.curUserInfo.username;
     self.logic.messageCode = self.codeField.text;
     [_logic checkDataWithCallback:^(BOOL successful, NSString *tips) {
         if (successful) {
-            NSDictionary *params = @{@"username":help_userManager.curUserInfo.username
+            NSDictionary *params = @{@"username":help_userManager.curUserInfo.username,
                                      @"password":self.codeField.text,
                                      @"grant_type":@"password"
                                      };
