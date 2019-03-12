@@ -34,7 +34,8 @@
     self.authLogic=[Mine_AuthLogic new];
     [self setUI];
     [self setIsShowLiftBack:YES];
-    self.title=@"律师会所";
+    self.title=@"律师地址
+    ";
     // Do any additional setup after loading the view.
 }
 

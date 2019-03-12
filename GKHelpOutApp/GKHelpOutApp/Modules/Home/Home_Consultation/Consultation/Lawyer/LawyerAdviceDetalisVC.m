@@ -259,6 +259,17 @@
         payTips.font=FontOfSize(10);
         
         
+//        UIView*payTipsLine=[UIView new];
+//        payTipsLine.backgroundColor =[UIColor groupTableViewBackgroundColor];
+//        [_paymentView addSubview:payTipsLine];
+//        [payTipsLine mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(15);
+//            make.right.mas_equalTo(-15);
+//            make.top.mas_equalTo(payTips.mas_bottom).offset(10);
+//            make.height.mas_equalTo(2);
+//        }];
+        
+        
         _statusLable=[UILabel new];
         [_paymentView addSubview:_statusLable];
         [ _statusLable mas_makeConstraints:^(MASConstraintMaker *make) {

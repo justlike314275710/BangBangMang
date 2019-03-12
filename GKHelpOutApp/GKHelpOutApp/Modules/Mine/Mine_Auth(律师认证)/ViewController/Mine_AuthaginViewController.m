@@ -876,7 +876,7 @@
             
         }
         {
-            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"律师会所" icon:nil];
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"律师地址" icon:nil];
             item.details=@"请填写";
             item.Textdetails=self.lawyerModel.lawOfficeAddress[@"streetDetail"];
             [group.items addObject:item];
@@ -900,9 +900,12 @@
             
         }
         {
-            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"律师年限" icon:nil];
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"职业年限" icon:nil];
             item.details = @"请填写职业年限";
-            item.Textdetails=[NSString stringWithFormat:@"%d年",self.lawyerModel.workExperience];
+            if (self.lawyerModel.workExperience!=0) {
+                 item.Textdetails=[NSString stringWithFormat:@"%d年",self.lawyerModel.workExperience];
+            }
+        
             item.isForbidSelect = YES; //禁止点击
             [group.items addObject:item];
             

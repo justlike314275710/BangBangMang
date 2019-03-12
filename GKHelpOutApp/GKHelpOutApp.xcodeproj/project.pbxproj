@@ -465,7 +465,6 @@
 		EAE19E912230EF3B0080B0F5 /* Grab_customer.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E902230EF3B0080B0F5 /* Grab_customer.m */; };
 		EAE19E94223110920080B0F5 /* LawyerAdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */; };
 		EAE19E9B223114320080B0F5 /* LawyerAdviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E9A223114320080B0F5 /* LawyerAdviceTableViewCell.m */; };
-		EAE19E9E2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E9D2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m */; };
 		EAE19EA12235FDD80080B0F5 /* LawyerAdviceDetalisVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */; };
 		EAE19EA42235FFBB0080B0F5 /* headerDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA32235FFBB0080B0F5 /* headerDetailsView.m */; };
 		EAE19EAA22374A760080B0F5 /* Mine_AuthaginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA922374A760080B0F5 /* Mine_AuthaginViewController.m */; };
@@ -1392,8 +1391,6 @@
 		EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceViewController.m; sourceTree = "<group>"; };
 		EAE19E99223114320080B0F5 /* LawyerAdviceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerAdviceTableViewCell.h; sourceTree = "<group>"; };
 		EAE19E9A223114320080B0F5 /* LawyerAdviceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceTableViewCell.m; sourceTree = "<group>"; };
-		EAE19E9C2235EF440080B0F5 /* LawyerAdviceDetalisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerAdviceDetalisViewController.h; sourceTree = "<group>"; };
-		EAE19E9D2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceDetalisViewController.m; sourceTree = "<group>"; };
 		EAE19E9F2235FDD80080B0F5 /* LawyerAdviceDetalisVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerAdviceDetalisVC.h; sourceTree = "<group>"; };
 		EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceDetalisVC.m; sourceTree = "<group>"; };
 		EAE19EA22235FFBB0080B0F5 /* headerDetailsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = headerDetailsView.h; sourceTree = "<group>"; };
@@ -3759,8 +3756,6 @@
 				EAE19E98223114050080B0F5 /* View */,
 				EAE19E92223110920080B0F5 /* LawyerAdviceViewController.h */,
 				EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */,
-				EAE19E9C2235EF440080B0F5 /* LawyerAdviceDetalisViewController.h */,
-				EAE19E9D2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m */,
 				EAE19E9F2235FDD80080B0F5 /* LawyerAdviceDetalisVC.h */,
 				EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */,
 			);
@@ -4119,7 +4114,6 @@
 				EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */,
 				EAE19E6F222E0E770080B0F5 /* dashedTextview.m in Sources */,
 				EAB039BF221E8FF200331569 /* renderer_rgb.c in Sources */,
-				EAE19E9E2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m in Sources */,
 				EA21CAC0221FA04F007D3445 /* PSPayView.m in Sources */,
 				EA21CB4D221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m in Sources */,
 				EA21CA85221F9980007D3445 /* PSLawer.m in Sources */,

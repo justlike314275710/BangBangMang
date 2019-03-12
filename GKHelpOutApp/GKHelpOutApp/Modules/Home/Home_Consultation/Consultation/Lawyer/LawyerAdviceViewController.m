@@ -15,7 +15,6 @@
 #import "NSString+Utils.h"
 #import "LawyerAdviceTableViewCell.h"
 #import "UIViewController+Tool.h"
-#import "LawyerAdviceDetalisViewController.h"
 #import "LawyerAdviceDetalisVC.h"
 @interface LawyerAdviceViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property (nonatomic , strong) UITableView *LawyersTableview;
