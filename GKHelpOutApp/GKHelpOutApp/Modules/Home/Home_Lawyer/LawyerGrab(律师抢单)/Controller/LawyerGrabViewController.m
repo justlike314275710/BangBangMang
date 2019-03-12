@@ -48,7 +48,6 @@
     //lawyerGrab_Logic*logic=[[lawyerGrab_Logic alloc]init];
      [[PSLoadingView sharedInstance] show];
     [self.logic refreshLawyerAdviceCompleted:^(id data) {
-        NSLog(@"%lu",(unsigned long)self.logic.rushAdviceArray.count);
          [[PSLoadingView sharedInstance] dismiss];
          [self reloadContents];
     } failed:^(NSError *error) {
@@ -63,8 +62,10 @@
     [self.logic POSTLawyergrabCompleted:^(id data) {
         [[PSLoadingView sharedInstance]dismiss];
         [PSTipsView showTips:@"抢单成功"];
+         [self refreshData];
     } failed:^(NSError *error) {
         [[PSLoadingView sharedInstance]dismiss];
+        [PSTipsView showTips:@"抢单失败"];
     }];
 }
 

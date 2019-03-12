@@ -511,13 +511,13 @@
 
 -(void)GETProcessedCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
-    NSString *url =[NSString stringWithFormat:@"%@/notifications/netease/%@/processed",ConsultationHostUrl,self.adviceId];
+    NSString *url =[NSString stringWithFormat:@"%@/notifications/netease/%@/processed",ConsultationHostUrl,self.cid];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
-        if (responses.statusCode==200||responses.statusCode==201) {
+        if (responses.statusCode==200||responses.statusCode==204) {
             if (completedCallback) {
                 completedCallback(responseObject);
             }
