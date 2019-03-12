@@ -8,6 +8,7 @@
 
 #import "MineHeaderView.h"
 #import "NickNameLbel.h"
+#import "NSString+JsonString.h"
 
 @interface MineHeaderView()
 
@@ -41,10 +42,11 @@
         if (help_userManager.avatarImage) {
             self.headImgView.image = help_userManager.avatarImage;
         } else {
-            [self.headImgView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar] placeholderImage:[UIImage imageWithColor:KGrayColor]];
+//            [self.headImgView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar] placeholderImage:[UIImage imageWithColor:KGrayColor]];
+            [self.headImgView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar] placeholderImage:IMAGE_NAMED(@"登录－头像")];
         }
     }else{
-        [self.headImgView setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503377311744&di=a784e64d1cce362c663f3480b8465961&imgtype=0&src=http%3A%2F%2Fww2.sinaimg.cn%2Flarge%2F85cccab3gw1etdit7s3nzg2074074twy.jpg"] placeholder:[UIImage imageWithColor:KGrayColor]];
+        [self.headImgView setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503377311744&di=a784e64d1cce362c663f3480b8465961&imgtype=0&src=http%3A%2F%2Fww2.sinaimg.cn%2Flarge%2F85cccab3gw1etdit7s3nzg2074074twy.jpg"] placeholder:IMAGE_NAMED(@"登录－头像")];
     }
 }
 #pragma mark ————— 头像点击 —————
@@ -106,6 +108,10 @@
     if (!_phoneNuberLab) {
         _phoneNuberLab = [UILabel new];
         _phoneNuberLab.text = help_userManager.curUserInfo.username;
+        if (curUser.username.length>10) {
+            NSString *phoneNumber = [NSString changeTelephone:help_userManager.curUserInfo.username];
+            _phoneNuberLab.text = phoneNumber;
+        }
         _phoneNuberLab.font = FFont2;
         _phoneNuberLab.textAlignment = NSTextAlignmentLeft;
         _phoneNuberLab.textColor = CFontColor4;
@@ -116,6 +122,8 @@
             make.left.mas_equalTo(self.headImgView.mas_right).offset(10);
             make.top.mas_equalTo(self.nickNameLab.mas_bottom).offset(5);
         }];
+        _phoneNuberLab.userInteractionEnabled = YES;
+        [_phoneNuberLab addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nickNameViewClick)]];
     }
     return _phoneNuberLab;
 }
@@ -134,6 +142,8 @@
             make.left.mas_equalTo(self.headImgView.mas_right).offset(10);
             make.top.mas_equalTo(self.headImgView);
         }];
+        _nickNameLab.userInteractionEnabled = YES;
+        [_nickNameLab addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nickNameViewClick)]];
     }
     return _nickNameLab;
 }
@@ -161,7 +171,7 @@
             make.width.mas_equalTo(12);
             make.height.mas_equalTo(14);
             make.left.mas_equalTo(10);
-            make.centerY.mas_equalTo(_cerImg);
+            make.centerY.mas_equalTo(self->_cerImg);
         }];
         
         [_cerImg addSubview:self.cerLab];
@@ -169,7 +179,7 @@
             make.width.mas_equalTo(50);
             make.height.mas_equalTo(20);
             make.left.mas_equalTo(28);
-            make.centerY.mas_equalTo(_cerImg);
+            make.centerY.mas_equalTo(self->_cerImg);
         }];
         
     }

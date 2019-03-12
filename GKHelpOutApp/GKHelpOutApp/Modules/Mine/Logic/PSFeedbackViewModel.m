@@ -45,13 +45,13 @@
         }
         return;
     }
-    if (self.attachments.count <=0) {
-        if (callback) {
-            NSString *less_msg = @"请至少上传一张图片";
-            callback(NO,less_msg);
-        }
-        return;
-    }
+//    if (self.attachments.count <=0) {
+//        if (callback) {
+//            NSString *less_msg = @"请至少上传一张图片";
+//            callback(NO,less_msg);
+//        }
+//        return;
+//    }
 
     if (callback) {
         callback(YES,nil);

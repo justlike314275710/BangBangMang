@@ -12,6 +12,7 @@
 #import "ModifyNicknameViewController.h"
 #import "LLActionSheetView.h"
 #import "UIImage+WLCompress.h"
+#import "NSString+JsonString.h"
 @interface ModifyDataViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate> {
      NSArray *_dataSource;
 }
@@ -42,6 +43,9 @@
     NSDictionary *Modifydata = @{@"titleText":@"昵称",@"clickSelector":@"",@"detailText":nickName,@"arrow_icon":@"myarrow_icon"};
     
     NSString *phoneNumber = help_userManager.curUserInfo.username?help_userManager.curUserInfo.username:@"";
+    if (phoneNumber.length>10) {
+        phoneNumber = [NSString changeTelephone:phoneNumber];
+    }
     NSDictionary *myMission = @{@"titleText":@"手机号码",@"clickSelector":@"",@"detailText":phoneNumber,@"arrow_icon":@"myarrow_icon"};
 //    NSDictionary *myFriends = @{@"titleText":@"家庭住址",@"clickSelector":@"",@"arrow_icon":@"myarrow_icon",@"detailText":@"天安门广场"};
 //    NSDictionary *myLevel = @{@"titleText":@"邮政编码",@"clickSelector":@"",@"detailText":@"410000",@"arrow_icon":@"myarrow_icon"};
@@ -60,7 +64,6 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
