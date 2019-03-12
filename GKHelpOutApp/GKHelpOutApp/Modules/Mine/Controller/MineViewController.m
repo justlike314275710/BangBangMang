@@ -20,6 +20,7 @@
 #import "HMAccountBalanceViewController.h"
 #import "HMBillViewController.h"
 #import "PSWriteFeedbackViewController.h"
+#import "NSString+JsonString.h"
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
@@ -68,14 +69,15 @@
 #pragma mark ————— 头像被点击 —————
 -(void)headerViewClick{
 //        [self ysl_addTransitionDelegate:self];
-    ProfileViewController *profileVC = [ProfileViewController new];
-    profileVC.headerImage = _headerView.headImgView.image;
-
+//    ProfileViewController *profileVC = [ProfileViewController new];
+//    profileVC.headerImage = _headerView.headImgView.image;
+    [self modifyData];
 }
 
 #pragma mark ————— 昵称被点击 —————
 -(void)nickNameViewClick{
-    [self.navigationController pushViewController:[RootViewController new] animated:YES];
+//    [self.navigationController pushViewController:[RootViewController new] animated:YES];
+    [self modifyData];
 }
 #pragma mark ————— 律师认证被点击 —————
 -(void)cerLawViewClick {
@@ -109,6 +111,10 @@
     }
     _headerView.nickNameLab.text = help_userManager.curUserInfo.nickname;
     _headerView.phoneNuberLab.text = help_userManager.curUserInfo.username;
+    if (curUser.username.length>10) {
+        NSString *phoneNumber = [NSString changeTelephone:help_userManager.curUserInfo.username];
+        _headerView.phoneNuberLab.text = phoneNumber;
+    }
   
     NSDictionary *Modifydata = @{@"titleText":@"修改资料",@"clickSelector":@"",@"title_icon":@"修改资料icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     

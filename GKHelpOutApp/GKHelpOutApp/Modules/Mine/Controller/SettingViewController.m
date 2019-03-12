@@ -61,9 +61,9 @@
     NSString *localVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleShortVersionString"];
     localVersion = [NSString stringWithFormat:@"v%@",localVersion];
     
-    NSDictionary *Modifydata = @{@"titleText":@"存储空间",@"clickSelector":@"",@"title_icon":@"清除缓存icon",@"detailText":cacheData,@"arrow_icon":@"arrow_icon"};
+    NSDictionary *Modifydata = @{@"titleText":@"存储空间",@"clickSelector":@"",@"title_icon":@"清除缓存icon",@"detailText":cacheData};
     
-    NSDictionary *myMission = @{@"titleText":@"版本更新",@"clickSelector":@"",@"title_icon":@"设置-版本更新icon",@"detailText":localVersion,@"arrow_icon":@"arrow_icon"};
+    NSDictionary *myMission = @{@"titleText":@"当前版本",@"clickSelector":@"",@"title_icon":@"设置-版本更新icon",@"detailText":localVersion};
     
 //    NSArray *one = @[pushCofigModel];
     NSArray *two = @[Modifydata,myMission];

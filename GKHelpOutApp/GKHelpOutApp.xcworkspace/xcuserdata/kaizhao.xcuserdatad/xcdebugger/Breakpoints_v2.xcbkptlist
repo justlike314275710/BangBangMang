@@ -266,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Controller/UploadAvatarViewController.m"
-            timestampString = "573721605.208967"
+            timestampString = "574063506.983047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "215"
@@ -314,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/&#x8d26;&#x53f7;&#x4f59;&#x989d;/HMAccountBalanceViewController.m"
-            timestampString = "574047777.254045"
+            timestampString = "574064618.67386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -378,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/&#x8d26;&#x53f7;&#x4f59;&#x989d;/Logic/HMAccontBalaceLogic.m"
-            timestampString = "574047777.254171"
+            timestampString = "574049304.689099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -394,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/&#x8d26;&#x53f7;&#x4f59;&#x989d;/Logic/HMAccontBalaceLogic.m"
-            timestampString = "574047777.254634"
+            timestampString = "574049304.689155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/&#x8d26;&#x53f7;&#x4f59;&#x989d;/Logic/HMAccontBalaceLogic.m"
-            timestampString = "574047777.255085"
+            timestampString = "574049304.689203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/&#x8d26;&#x53f7;&#x4f59;&#x989d;/Logic/HMAccontBalaceLogic.m"
-            timestampString = "574047777.255476"
+            timestampString = "574049304.689248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/&#x8d26;&#x53f7;&#x4f59;&#x989d;/Logic/HMAccontBalaceLogic.m"
-            timestampString = "574047777.255825"
+            timestampString = "574049304.689294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -496,22 +496,6 @@
             startingLineNumber = "51"
             endingLineNumber = "51"
             landmarkName = "-postGetCashDatacompleted:failed:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Login/Controller/LoginViewController.m"
-            timestampString = "573990166.134846"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "-getCode"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -586,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/Logic/PSFeedbackViewModel.m"
-            timestampString = "573965775.5892611"
+            timestampString = "574064618.674274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
@@ -666,12 +650,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/Mine_EditProfile(&#x4fee;&#x6539;&#x8d44;&#x6599;)/ModifyoldPhoneNumberViewController.m"
-            timestampString = "573990166.13506"
+            timestampString = "574064618.6744339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "-requestData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Modules/Mine/Mine_Feedback(&#x610f;&#x89c1;&#x53cd;&#x9988;)/PSWriteFeedbackViewController.m"
+            timestampString = "574055479.628194"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-sendFeedback"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Modules/Mine/View/MineHeaderView.m"
+            timestampString = "574064618.674803"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-nickNameViewClick"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Modules/Mine/View/MineHeaderView.m"
+            timestampString = "574064618.674857"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-headViewClick"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

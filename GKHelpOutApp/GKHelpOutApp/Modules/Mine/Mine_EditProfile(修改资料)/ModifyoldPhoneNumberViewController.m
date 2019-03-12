@@ -11,6 +11,7 @@
 #import "LoginLogic.h"
 #import "ReactiveObjC.h"
 #import "RMTimer.h"
+#import "NSString+JsonString.h"
 
 @interface ModifyoldPhoneNumberViewController ()
 @property(nonatomic,strong)  UIScrollView *scrollview;
@@ -43,7 +44,11 @@
     [self.view addSubview:self.scrollview];
     [self.scrollview addSubview:self.msglab];
     _msglab.frame = CGRectMake(16,16,KScreenWidth-32,45);
-    _msglab.text = NSStringFormat(@"＊更换手机号，下次登录可使用新手机号登录。当前手机号:%@",help_userManager.curUserInfo.username);
+    NSString *phone = curUser.username;
+    if (phone.length>10) {
+        phone = [NSString changeTelephone:phone];
+    }
+    _msglab.text = NSStringFormat(@"＊更换手机号，下次登录可使用新手机号登录。当前手机号:%@",phone);
     
     UIView *line0 = [[UIView alloc] initWithFrame:CGRectMake(0,_msglab.bottom+5, self.scrollview.width, 1)];
     line0.backgroundColor =  [UIColor clearColor]; //CLineColor;
