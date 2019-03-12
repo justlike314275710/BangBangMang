@@ -78,7 +78,7 @@
 }
 
 - (void)sendAppFeedbackCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback {
-    NSString *platform = @"PLATFORM_ADMIN";
+    NSString *platform = @"ASSISTANT_APP";
     NSDictionary *params = @{@"platform":platform,
                              @"problem":self.problem,
                              @"detail":self.detail,
@@ -95,6 +95,8 @@
     [manager POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+       
         if (responseObject) {
             if (completedCallback) {
                 completedCallback(responseObject);
