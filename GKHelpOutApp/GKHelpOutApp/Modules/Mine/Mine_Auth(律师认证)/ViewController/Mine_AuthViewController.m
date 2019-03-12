@@ -5,6 +5,7 @@
 //  Created by 徐阳 on 2017/5/18.
 //  Copyright © 2017年 徐阳. All rights reserved.
 //
+#import "Mine_StatusViewController.h"
 #import "fileModel.h"
 #import "Mine_AuthViewController.h"
 #import "MineTableViewCell.h"
@@ -210,6 +211,27 @@
         case  DSSettingItemTypeDetial:{
             cell=[tableView dequeueReusableCellWithIdentifier:@"authBaseTableViewCell"];
             authBaseTableViewCell*baseCell=(authBaseTableViewCell*)cell;
+            
+            if (section==0) {
+                if (indexPath.row==0) {
+                    baseCell.arrowIcon.hidden=YES;
+                    baseCell.isShow=NO;
+                }
+            }
+            else{
+                if (indexPath.row==0) {
+                    baseCell.arrowIcon.hidden=YES;
+                     baseCell.isShow=NO;
+                }
+                else if (indexPath.row==4){
+                    baseCell.arrowIcon.hidden=YES;
+                     baseCell.isShow=NO;
+                }
+                else{
+                    
+                }
+            }
+            
             baseCell.titleLbl.text=item.title;
              cell.userInteractionEnabled=self.isUserEnabled;
             if (item.Textdetails) {
@@ -222,25 +244,7 @@
             [baseCell setSeparatorInset:UIEdgeInsetsMake(0, 14, 0, 14)];
             baseCell.detaileLbl.delegate = self;
             baseCell.detaileLbl.tag = indexPath.row+section*100;
-            if (section==0) {
-                if (indexPath.row==0) {
-                    baseCell.arrowIcon.hidden=YES;
-                }
-                else{
-                   // baseCell.detaileLbl.enabled=NO;
-                }
-            }
-            else{
-                if (indexPath.row==0) {
-                    baseCell.arrowIcon.hidden=YES;
-                }
-                else if (indexPath.row==4){
-                     baseCell.arrowIcon.hidden=YES;
-                }
-                else{
-
-                }
-            }
+            
           
         }
             break;
@@ -405,7 +409,7 @@
         if (self.lawyerModel.lawOffice.length!=0) {
             self.authLogic.lawOffice=self.lawyerModel.lawOffice;
         } else {
-            [PSTipsView showTips:@"请输入职业机构"];
+            [PSTipsView showTips:@"请输入执业机构"];
             return;
         }
     }
@@ -413,7 +417,7 @@
     if (streetDetail.length==0) {
          NSString*streetDetail=self.lawyerModel.lawOfficeAddress[@"streetDetail"];
         if (streetDetail.length==0) {
-            [PSTipsView showTips:@"请输入职业机构"];
+            [PSTipsView showTips:@"请输入执业机构"];
             return;
         } else {
               self.authLogic.lawOfficeAddress=self.lawyerModel.lawOfficeAddress;
@@ -488,18 +492,13 @@
        
     }
    [self postLawyerCertification];
-//    [self.authLogic checkDataWithLawyerBasicCallback:^(BOOL successful, NSString *tips) {
-//        if (successful) {
-//            [self postLawyerCertification];
-//        } else {
-//            [PSTipsView showTips:tips];
-//        }
-//    }];
+
 }
 
 -(void)postLawyerCertification{
     [self.authLogic postCertificationData:^(id data) {
         [PSTipsView showTips:@"提交律师认证成功!"];
+        [self.navigationController pushViewController:[[Mine_StatusViewController alloc]init] animated:YES];
     } failed:^(NSError *error) {
         [PSTipsView showTips:@"提交律师认证失败!"];
     }];
@@ -892,7 +891,7 @@
         
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"执业机构" icon:nil];
-            item.details=@"请输入职业机构";
+            item.details=@"请输入执业机构";
             item.Textdetails=self.lawyerModel.lawOffice;
             [group.items addObject:item];
             
@@ -900,7 +899,12 @@
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"律师地址" icon:nil];
             item.details=@"请填写";
-            item.Textdetails=self.lawyerModel.lawOfficeAddress[@"streetDetail"];
+            NSString*streetDetail=self.lawyerModel.lawOfficeAddress[@"streetDetail"];
+             NSString*provinceName=self.lawyerModel.lawOfficeAddress[@"provinceName"];
+             NSString*cityName=self.lawyerModel.lawOfficeAddress[@"cityName"];
+             NSString*countyName=self.lawyerModel.lawOfficeAddress[@"countryName"];
+            item.Textdetails=
+            NSStringFormat(@"%@%@%@%@",provinceName,cityName,countyName,streetDetail);
             [group.items addObject:item];
             
         }

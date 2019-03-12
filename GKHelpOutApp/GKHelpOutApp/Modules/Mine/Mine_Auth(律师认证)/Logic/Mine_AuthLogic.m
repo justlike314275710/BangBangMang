@@ -48,13 +48,13 @@
     }
     if (self.lawOffice.length == 0) {
         if (callback) {
-            callback(NO,@"请输入职业机构");
+            callback(NO,@"请输入执业机构");
         }
         return;
     }
     if ([self.lawOfficeAddress isKindOfClass:[NSNull class]]) {
         if (callback) {
-            callback(NO,@"请输入职业机构");
+            callback(NO,@"请输入律所地址");
         }
         return;
     }
