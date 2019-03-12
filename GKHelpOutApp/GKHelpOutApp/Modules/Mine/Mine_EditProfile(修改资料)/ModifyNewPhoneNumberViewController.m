@@ -179,7 +179,7 @@
                     id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     NSString*message = body[@"message"];
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD showWarnMessage:message];
+                        [PSTipsView showTips:message];
                         self.getCodeBtn.enabled=YES;
                     });
                 }
@@ -187,7 +187,7 @@
             
         } else {
             self.getCodeBtn.enabled = YES;
-            [MBProgressHUD showWarnMessage:tips];
+            [PSTipsView showTips:tips];
         }
     }];
 }

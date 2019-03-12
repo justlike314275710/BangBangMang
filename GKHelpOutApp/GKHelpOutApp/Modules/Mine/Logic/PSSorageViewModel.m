@@ -23,12 +23,12 @@
 }
 
 -(NSString *)allStorage {
-    return [NSString stringWithFormat:@"%.1fM",[self fileSizeWithIntergeWithM]+58.2];
+    return [NSString stringWithFormat:@"%.1fM",[self fileSizeWithIntergeWithM]+116];
 }
 
 -(NSString *)usedStorage {
     float totalDiskspace = [self getTotalSpaceDiskspace];
-    float userDiskspace = ([self fileSizeWithIntergeWithM]+58.2)/1024;
+    float userDiskspace = ([self fileSizeWithIntergeWithM]+116)/1024;
     float AppDiskspace = userDiskspace/totalDiskspace*100;
     if (AppDiskspace<0.1) {
         AppDiskspace = 0.1;

@@ -56,7 +56,7 @@
 #pragma mark ————— 数据源 —————
 -(void)getData{
     
-    NSString *cacheData = [NSString stringWithFormat:@"%.1fM",[self fileSizeWithIntergeWithM]+58.2];
+    NSString *cacheData = [NSString stringWithFormat:@"%.1fM",[self fileSizeWithIntergeWithM]+116.2];
     
     NSString *localVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleShortVersionString"];
     localVersion = [NSString stringWithFormat:@"v%@",localVersion];

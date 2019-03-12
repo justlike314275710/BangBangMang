@@ -67,16 +67,15 @@
                 //                    [MBProgressHUD showSuccessMessage:@"自动登录成功"];
                 KPostNotification(KNotificationAutoLoginSuccess, nil);
             }else{
-                [MBProgressHUD showErrorMessage:NSStringFormat(@"自动登录失败：%@",des)];
+//                [MBProgressHUD showErrorMessage:NSStringFormat(@"自动登录失败：%@",des)];
+                [PSTipsView showTips:@"自动登录失败"];
             }
         }];
 
         
     }else{
-        [MBProgressHUD showErrorMessage:@"没有登录过，展示登录页面"];
         //没有登录过，展示登录页面
         KPostNotification(KNotificationLoginStateChange, @NO)
-//        [MBProgressHUD showErrorMessage:@"需要登录"];
     }
 }
 #pragma mark ————— 注册第三方库 —————

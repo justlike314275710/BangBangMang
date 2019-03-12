@@ -54,11 +54,10 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    //    self.navigationController.delegate = self.navigationController;
+
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    //    [self ysl_removeTransitionDelegate];
 }
 
 #pragma mark ————— 拉取数据 —————
@@ -183,7 +182,6 @@
     [btn addTarget:self action:@selector(changeUser) forControlEvents:UIControlEventTouchUpInside];
     
 //    [_NavView addSubview:btn];
-    
 //    [self.view addSubview:_NavView];
 }
 
@@ -265,8 +263,6 @@
         default:
             break;
     }
-    
-  
 }
 
 #pragma mark ————— scrollView 代理 —————

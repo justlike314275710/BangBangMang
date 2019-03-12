@@ -165,11 +165,12 @@
 #pragma mark - DZNEmptyDataSetSource and DZNEmptyDataSetDelegate
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     UIImage *emptyImage =self.logic.dataStatus == PSDataEmpty ? [UIImage imageNamed:@"universalNoneIcon"] : [UIImage imageNamed:@"universalNetErrorIcon"];
+    
     return self.logic.dataStatus == PSDataInitial ? nil : emptyImage;
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *tips = self.logic.dataStatus == PSDataEmpty ? EMPTY_CONTENT : NET_ERROR;
+    NSString *tips = self.logic.dataStatus == PSDataEmpty ? @"暂无可抢订单" : NET_ERROR;
     return self.logic.dataStatus == PSDataInitial ? nil : [[NSAttributedString alloc] initWithString:tips attributes:@{NSFontAttributeName:AppBaseTextFont1,NSForegroundColorAttributeName:AppBaseTextColor1}];
 }
 

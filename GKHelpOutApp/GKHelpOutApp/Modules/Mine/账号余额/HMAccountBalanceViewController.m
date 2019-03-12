@@ -8,7 +8,7 @@
 
 #import "HMAccountBalanceViewController.h"
 #import "MineTableViewCell.h"
-#import "LLActionSheetView.h"
+#import "HMActionSheetView.h"
 #import "HMGetCashViewController.h"
 #import "HMAccontBalaceLogic.h"
 #import <AlipaySDK/AlipaySDK.h>
@@ -114,12 +114,10 @@
         case 0:
         {
             if (_isBind) {
-            LLActionSheetView *alert = [[LLActionSheetView alloc]initWithTitleArray:@[@"解绑"] andShowCancel:YES];
+            HMActionSheetView *alert = [[HMActionSheetView alloc]initWithTitleArray:@[@"解绑"] andShowCancel:YES];
             alert.ClickIndex = ^(NSInteger index) {
                 if (index == 1){
                     [self unbingAlipay];
-                }else if (index == 2){
-//                    [weakSelf openCamera];
                 }
             };
             [alert show];

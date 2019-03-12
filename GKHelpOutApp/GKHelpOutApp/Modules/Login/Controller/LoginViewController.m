@@ -198,14 +198,14 @@
                      message = @"无法连接到服务器！";
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD showWarnMessage:message];
+                    [PSTipsView showTips:message];
                     self.getCodeBtn.enabled=YES;
                 });
                 
             }];
         } else {
             self.getCodeBtn.enabled = YES;
-            [MBProgressHUD showWarnMessage:tips];
+            [PSTipsView showTips:tips];
         }
     }];
 }
