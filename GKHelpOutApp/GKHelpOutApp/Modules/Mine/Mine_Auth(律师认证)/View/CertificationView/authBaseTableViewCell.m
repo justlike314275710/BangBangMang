@@ -32,6 +32,14 @@
     [self addSubview:self.arrowIcon];
 }
 
+- (void)setIsShow:(BOOL)isShow{
+    if (isShow) {
+        
+    }
+    else{
+        self.detaileLbl.x=KNormalSpace+80+15;
+    }
+}
 
 
 -(UILabel *)titleLbl{
@@ -53,11 +61,13 @@
         _detaileLbl.textAlignment =NSTextAlignmentRight;
         _detaileLbl.keyboardType = UIKeyboardTypeDefault;
         _detaileLbl.frame=CGRectMake(KNormalSpace+80, 11, SCREEN_WIDTH-80-22-2*KNormalSpace, 20);
-        
 
     }
     return _detaileLbl;
 }
+
+
+
 
 -(UIImageView *)arrowIcon{
     if (!_arrowIcon) {
@@ -67,6 +77,7 @@
     }
     return _arrowIcon;
 }
+
 
 
 
