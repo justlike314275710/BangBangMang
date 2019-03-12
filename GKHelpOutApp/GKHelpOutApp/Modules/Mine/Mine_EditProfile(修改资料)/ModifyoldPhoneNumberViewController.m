@@ -10,6 +10,7 @@
 #import "ModifyNewPhoneNumberViewController.h"
 #import "LoginLogic.h"
 #import "ReactiveObjC.h"
+#import "RMTimer.h"
 
 @interface ModifyoldPhoneNumberViewController ()
 @property(nonatomic,strong)  UIScrollView *scrollview;
@@ -21,7 +22,6 @@
 @property (nonatomic,strong) UIButton *nextStep;
 @property (nonatomic,strong) UIButton *getCodeBtn;
 @property(nonatomic,assign)  NSInteger seconds;
-@property (nonatomic, weak)  NSTimer *timer; //倒计时
 @property(nonatomic,retain) LoginLogic *logic;//逻辑层
 
 
@@ -41,7 +41,6 @@
 -(void)setupUI{
     
     [self.view addSubview:self.scrollview];
-    
     [self.scrollview addSubview:self.msglab];
     _msglab.frame = CGRectMake(16,16,KScreenWidth-32,45);
     _msglab.text = NSStringFormat(@"＊更换手机号，下次登录可使用新手机号登录。当前手机号:%@",help_userManager.curUserInfo.username);
@@ -109,10 +108,8 @@
     [self.scrollview addSubview:self.nextStep];
     _nextStep.frame = CGRectMake(15,186,self.scrollview.width-30,KNormalBBtnHeight);
     [_nextStep addTapBlock:^(UIButton *btn) {
-//        ModifyNewPhoneNumberViewController *ModfiyNewVC = [[ModifyNewPhoneNumberViewController alloc] init];
         [self_weak_ UserAccoutLogin];
-    }];
-    
+    }];    
 }
 
 -(void)UserAccoutLogin {
@@ -127,7 +124,7 @@
             
             [self requestData:params];
         } else {
-            [MBProgressHUD showWarnMessage:tips];
+            [PSTipsView showTips:tips];
         }
     }];
 }
@@ -158,11 +155,11 @@
                 id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                 NSString*code=body[@"error"];
                 NSString*error_description = body[@"error_description"];
-        
+                [PSTipsView showTips:@"验证码错误"];
+                
             }
         }
         else {
-            
             if (responseStatusCode == 200) {
                 ModifyNewPhoneNumberViewController *ModfiyNewVC = [[ModifyNewPhoneNumberViewController alloc] init];
                 [self.navigationController pushViewController:ModfiyNewVC animated:YES];
@@ -195,7 +192,7 @@
                     id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     NSString*message = body[@"message"];
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD showWarnMessage:message];
+                         [PSTipsView showTips:message];
                         self.getCodeBtn.enabled=YES;
                     });
                 }
@@ -203,27 +200,25 @@
             
         } else {
             self.getCodeBtn.enabled = YES;
-            [MBProgressHUD showWarnMessage:tips];
+            [PSTipsView showTips:tips];
         }
     }];
 }
 
 //开启定时器
 - (void)startTimer {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-}
--(void)handleTimer {
-    if (_seconds > 0) {
-        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_seconds] forState:UIControlStateDisabled];
-        _seconds --;
-        if (self.seconds==0)
-        {
-            self.getCodeBtn.enabled = YES;
-            [self.timer invalidate];
-            self.timer = nil;
-        }
-    }
+    RMTimer *sharedTimer = [RMTimer sharedTimer];
+    @weakify(self);
+    [sharedTimer resumeTimerWithDuration:self.seconds interval:1 handleBlock:^(NSInteger currentTime) {
+        @strongify(self);
+        self.getCodeBtn.enabled = NO;
+        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",currentTime] forState:UIControlStateDisabled];
+        [self.getCodeBtn setTitleColor:KGrayColor forState:UIControlStateDisabled];
+        
+    } timeOutBlock:^{
+        @strongify(self);
+        self.getCodeBtn.enabled = YES;
+    }];
 }
 
 #pragma mark --- Setting&&Getting

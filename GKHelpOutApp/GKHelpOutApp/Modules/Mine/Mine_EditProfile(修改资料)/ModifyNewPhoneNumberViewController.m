@@ -10,6 +10,7 @@
 #import "LoginLogic.h"
 #import "ReactiveObjC.h"
 #import "ModifyDataViewController.h"
+#import "RMTimer.h"
 
 @interface ModifyNewPhoneNumberViewController ()
 
@@ -21,7 +22,6 @@
 @property (nonatomic,strong) UIButton *nextStep;
 @property (nonatomic,strong) UIButton *getCodeBtn;
 @property (nonatomic,assign) NSInteger seconds;
-@property (nonatomic, weak)  NSTimer *timer; //倒计时
 @property (nonatomic,retain) LoginLogic *logic;//逻辑层
 
 @end
@@ -85,8 +85,6 @@
         }
     }];
     
-    
-    
     UIView *v_line = [[UIView alloc] initWithFrame:CGRectMake(self.codeField.right-10, k_codeLabel.y+3, 1,15)];
     v_line.backgroundColor = CFontColor3;
     [BgView addSubview:v_line];
@@ -110,7 +108,7 @@
     
 }
 -(void)changePhoneNumber{
-
+    
     if (self.phoneField.text.length<11) {
         [PSTipsView showTips:@"请输入正确额手机号码！"];
         return;
@@ -164,64 +162,6 @@
         }
     }];
 }
-
--(void)UserAccoutLogin {
-    self.logic.phoneNumber = self.phoneField.text;
-    self.logic.messageCode = self.codeField.text;
-    [_logic checkDataWithCallback:^(BOOL successful, NSString *tips) {
-        if (successful) {
-            NSDictionary *params = @{@"username":self.phoneField.text,
-                                     @"password":self.codeField.text,
-                                     @"grant_type":@"password"
-                                     };
-            
-            [self requestData:params];
-        } else {
-            [MBProgressHUD showWarnMessage:tips];
-        }
-    }];
-}
-//MARK:判断手机号是否正确
-- (void)requestData:(NSDictionary*)params {
-    
-    NSString*uid=@"consumer.m.app";
-    NSString*cipherText=@"1688c4f69fc6404285aadbc996f5e429";
-    NSString *part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
-    NSData   *data = [part1 dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *stringBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSString * authorization = [NSString stringWithFormat:@"Basic %@",stringBase64];
-    NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_get_oauth_token];
-    NSMutableURLRequest *formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:params error:nil];
-    [formRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8"forHTTPHeaderField:@"Content-Type"];
-    [formRequest setValue:authorization forHTTPHeaderField:@"Authorization"];
-    AFHTTPSessionManager*manager = [AFHTTPSessionManager manager];
-    AFJSONResponseSerializer* responseSerializer = [AFJSONResponseSerializer serializer];
-    [responseSerializer setAcceptableContentTypes:[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/plain",nil]];
-    manager.responseSerializer= responseSerializer;
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:formRequest uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        
-        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-        NSInteger responseStatusCode = [httpResponse statusCode];
-        if (error) {
-            NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-            if (data) {
-                id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                NSString*code=body[@"error"];
-                NSString*error_description = body[@"error_description"];
-            }
-        }
-        else {
-            
-            if (responseStatusCode == 200) {
-                ModifyNewPhoneNumberViewController *ModfiyNewVC = [[ModifyNewPhoneNumberViewController alloc] init];
-                [self.navigationController pushViewController:ModfiyNewVC animated:YES];
-            }
-        }
-    }];
-    
-    [dataTask resume];
-}
-
 //MARK:获取验证码
 - (void)getCode {
     self.getCodeBtn.enabled = NO;
@@ -239,7 +179,7 @@
                     id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     NSString*message = body[@"message"];
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD showWarnMessage:message];
+                        [PSTipsView showTips:message];
                         self.getCodeBtn.enabled=YES;
                     });
                 }
@@ -247,27 +187,25 @@
             
         } else {
             self.getCodeBtn.enabled = YES;
-            [MBProgressHUD showWarnMessage:tips];
+            [PSTipsView showTips:tips];
         }
     }];
 }
 
 //开启定时器
 - (void)startTimer {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-}
--(void)handleTimer {
-    if (_seconds > 0) {
-        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_seconds] forState:UIControlStateDisabled];
-        _seconds --;
-        if (self.seconds==0)
-        {
-            self.getCodeBtn.enabled = YES;
-            [self.timer invalidate];
-            self.timer = nil;
-        }
-    }
+    RMTimer *sharedTimer = [RMTimer sharedTimer];
+    @weakify(self);
+    [sharedTimer resumeTimerWithDuration:self.seconds interval:1 handleBlock:^(NSInteger currentTime) {
+        @strongify(self);
+        self.getCodeBtn.enabled = NO;
+        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",currentTime] forState:UIControlStateDisabled];
+        [self.getCodeBtn setTitleColor:KGrayColor forState:UIControlStateDisabled];
+        
+    } timeOutBlock:^{
+        @strongify(self);
+        self.getCodeBtn.enabled = YES;
+    }];
 }
 
 #pragma mark --- Setting&&Getting

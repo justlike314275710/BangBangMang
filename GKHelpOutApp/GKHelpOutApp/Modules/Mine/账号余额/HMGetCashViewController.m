@@ -12,6 +12,7 @@
 #import "NSString+JsonString.h"
 #import "HMGetCashLogic.h"
 #import "ReactiveObjC.h"
+#import "RMTimer.h"
 
 @interface HMGetCashViewController (){
     
@@ -26,10 +27,8 @@
 @property(nonatomic,strong)UITextField *codeField;
 @property(nonatomic,strong)UIButton *submitBtn;
 @property(nonatomic,strong)UILabel *cashRightLab;
-
 @property(nonatomic,strong)LoginLogic *logic;
 @property(nonatomic,assign)NSInteger seconds;
-@property(nonatomic,weak)NSTimer *timer; //倒计时
 @property(nonatomic,strong)HMGetCashLogic *getCashLogic;
 
 
@@ -135,22 +134,21 @@
 #pragma mark - 获取验证码
 //开启定时器
 - (void)startTimer {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    
+    RMTimer *sharedTimer = [RMTimer sharedTimer];
+    @weakify(self);
+    [sharedTimer resumeTimerWithDuration:self.seconds interval:1 handleBlock:^(NSInteger currentTime) {
+        @strongify(self);
+        self.getCodeBtn.enabled = NO;
+        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",currentTime] forState:UIControlStateDisabled];
+        [self.getCodeBtn setTitleColor:KGrayColor forState:UIControlStateDisabled];
+        
+    } timeOutBlock:^{
+        @strongify(self);
+        self.getCodeBtn.enabled = YES;
+    }];
 }
-#pragma mark - 定时器方法
-- (void)handleTimer {
-    if (_seconds > 0) {
-        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)_seconds] forState:UIControlStateDisabled];
-        _seconds --;
-        if (self.seconds==0)
-        {
-            self.getCodeBtn.enabled = YES;
-            [self.timer invalidate];
-            self.timer = nil;
-        }
-    }
-}
+
 -(void)getCode{
     self.getCodeBtn.enabled = NO;
     _logic.phoneNumber = help_userManager.curUserInfo.username;
@@ -167,7 +165,7 @@
                     id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     NSString*message = body[@"message"];
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD showWarnMessage:message];
+                        [PSTipsView showTips:message];
                         self.getCodeBtn.enabled=YES;
                     });
                 }
@@ -175,7 +173,7 @@
             }];
         } else {
             self.getCodeBtn.enabled = YES;
-            [MBProgressHUD showWarnMessage:tips];
+            [PSTipsView showTips:tips];
         }
     }];
 }

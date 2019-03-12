@@ -190,12 +190,12 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
                     if (error_description) {
                         [MBProgressHUD showInfoMessage:error_description];
                     } else {
-                        [MBProgressHUD showInfoMessage:@"登录失败"];
+                         [PSTipsView showTips:@"登录失败"];
                     }
-                    [MBProgressHUD hideHUD];
+//                    [MBProgressHUD hideHUD];
                 });
             } else {
-                    [MBProgressHUD showInfoMessage:@"登录失败"];
+                [PSTipsView showTips:@"登录失败"];
             }
             
         }
@@ -284,7 +284,9 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
     [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
     NSString *url = NSStringFormat(@"%@%@",EmallHostUrl,URL_get_im_info);
     [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUD];
+        });
         if (ValidDict(responseObject)) {
             UserInfo *userInfo = [UserInfo modelWithDictionary:responseObject];
             if ([self loadUserInfo]) {
@@ -294,17 +296,12 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
             NSLog(@"%@",self.curUserInfo);
             //登录成功储存用户信息
             [self saveUserInfo];
-            //登录云信
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUD];
-            });
+    
             [self LoginSuccess:responseObject completion:^(BOOL success, NSString *des) {
     
             }];
         } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD hideHUD];
-            });
+            
         }
     } failure:^(NSError *error) {
         NSString *errorInfo = error.userInfo[@"NSLocalizedDescription"];

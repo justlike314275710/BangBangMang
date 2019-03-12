@@ -85,9 +85,9 @@
                 NSString*code=body[@"error"];
                 NSString*error_description = body[@"error_description"];
                 if (error_description) {
-                    [MBProgressHUD showInfoMessage:error_description];
+                    [PSTipsView showTips:error_description];
                 } else {
-                    [MBProgressHUD showInfoMessage:@"服务器异常"];
+                    [PSTipsView showTips:@"服务器异常"];
                 }
             }
         }

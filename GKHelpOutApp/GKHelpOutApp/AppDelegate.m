@@ -35,7 +35,6 @@
     
     //广告页
 //    [AppManager appStart];
-    
     return YES;
     
 }

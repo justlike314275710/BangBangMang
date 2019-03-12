@@ -23,6 +23,7 @@
 		5524C6932225106B0067F437 /* ZWTopSelectVcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C6902225106B0067F437 /* ZWTopSelectVcView.m */; };
 		5524C697222515DC0067F437 /* MyConsultationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C696222515DC0067F437 /* MyConsultationViewController.m */; };
 		5524C69F22251DC90067F437 /* LegalAdviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C69E22251DC90067F437 /* LegalAdviceCell.m */; };
+		552924F82237417900B4899A /* HMActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924F72237417900B4899A /* HMActionSheetView.m */; };
 		5557A48E221BB46C00743012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A48D221BB46C00743012 /* AppDelegate.m */; };
 		5557A491221BB46C00743012 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A490221BB46C00743012 /* ViewController.m */; };
 		5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */; };
@@ -537,6 +538,8 @@
 		5524C696222515DC0067F437 /* MyConsultationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyConsultationViewController.m; sourceTree = "<group>"; };
 		5524C69D22251DC90067F437 /* LegalAdviceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LegalAdviceCell.h; sourceTree = "<group>"; };
 		5524C69E22251DC90067F437 /* LegalAdviceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegalAdviceCell.m; sourceTree = "<group>"; };
+		552924F62237417900B4899A /* HMActionSheetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMActionSheetView.h; sourceTree = "<group>"; };
+		552924F72237417900B4899A /* HMActionSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMActionSheetView.m; sourceTree = "<group>"; };
 		5557A489221BB46C00743012 /* GKHelpOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKHelpOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A48C221BB46C00743012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5557A48D221BB46C00743012 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -2488,6 +2491,8 @@
 			children = (
 				55C0C76E222CFA9300CD2459 /* LLActionSheetView.h */,
 				55C0C76D222CFA9300CD2459 /* LLActionSheetView.m */,
+				552924F62237417900B4899A /* HMActionSheetView.h */,
+				552924F72237417900B4899A /* HMActionSheetView.m */,
 			);
 			path = LLActionSheetView;
 			sourceTree = "<group>";
@@ -4323,6 +4328,7 @@
 				5597854B22264326007BBCC2 /* PSSorageViewModel.m in Sources */,
 				5597855822265CB2007BBCC2 /* PSFWriteFeedSuccessViewController.m in Sources */,
 				EA78F6E92225161F002D788A /* DSSettingCell.m in Sources */,
+				552924F82237417900B4899A /* HMActionSheetView.m in Sources */,
 				EAB03904221E817B00331569 /* NIMFileContentConfig.m in Sources */,
 				EAB03921221E817B00331569 /* NIMSessionImageContentView.m in Sources */,
 				EAB038C2221E817B00331569 /* NIMGroupedData.m in Sources */,
