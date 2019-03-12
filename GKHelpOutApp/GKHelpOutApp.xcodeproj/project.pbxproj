@@ -24,6 +24,7 @@
 		5524C697222515DC0067F437 /* MyConsultationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C696222515DC0067F437 /* MyConsultationViewController.m */; };
 		5524C69F22251DC90067F437 /* LegalAdviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C69E22251DC90067F437 /* LegalAdviceCell.m */; };
 		552924F82237417900B4899A /* HMActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924F72237417900B4899A /* HMActionSheetView.m */; };
+		552924FC2237A9A700B4899A /* WXZTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924FB2237A9A700B4899A /* WXZTipView.m */; };
 		5557A48E221BB46C00743012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A48D221BB46C00743012 /* AppDelegate.m */; };
 		5557A491221BB46C00743012 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A490221BB46C00743012 /* ViewController.m */; };
 		5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */; };
@@ -539,6 +540,8 @@
 		5524C69E22251DC90067F437 /* LegalAdviceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegalAdviceCell.m; sourceTree = "<group>"; };
 		552924F62237417900B4899A /* HMActionSheetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMActionSheetView.h; sourceTree = "<group>"; };
 		552924F72237417900B4899A /* HMActionSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMActionSheetView.m; sourceTree = "<group>"; };
+		552924FA2237A9A700B4899A /* WXZTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXZTipView.h; sourceTree = "<group>"; };
+		552924FB2237A9A700B4899A /* WXZTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXZTipView.m; sourceTree = "<group>"; };
 		5557A489221BB46C00743012 /* GKHelpOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKHelpOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A48C221BB46C00743012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5557A48D221BB46C00743012 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1526,6 +1529,15 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		552924F92237A98C00B4899A /* WXZtipView */ = {
+			isa = PBXGroup;
+			children = (
+				552924FA2237A9A700B4899A /* WXZTipView.h */,
+				552924FB2237A9A700B4899A /* WXZTipView.m */,
+			);
+			path = WXZtipView;
+			sourceTree = "<group>";
+		};
 		5557A480221BB46C00743012 = {
 			isa = PBXGroup;
 			children = (
@@ -1717,6 +1729,7 @@
 		5557A505221BD7BD00743012 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				552924F92237A98C00B4899A /* WXZtipView */,
 				558BBBCC2236387800CF1122 /* RMTimer */,
 				55050AB322323F0D00E9635B /* imagePicker */,
 				55C0C76C222CFA7C00CD2459 /* LLActionSheetView */,
@@ -4092,6 +4105,7 @@
 				EAB03931221E817C00331569 /* NIMKitProgressHUD.m in Sources */,
 				5557A558221BD7F500743012 /* TagsButton.m in Sources */,
 				EAB0392F221E817C00331569 /* UIView+NIM.m in Sources */,
+				552924FC2237A9A700B4899A /* WXZTipView.m in Sources */,
 				5557A504221BD76300743012 /* XYTabBar.m in Sources */,
 				EAB03927221E817C00331569 /* NIMMessageCell.m in Sources */,
 				EA21CB3F221FC5EA007D3445 /* NSString+Utils.m in Sources */,

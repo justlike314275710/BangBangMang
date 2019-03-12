@@ -10,8 +10,9 @@
 #import "UIImage+WLCompress.h"
 #import "LLActionSheetView.h"
 #import "ReactiveObjC.h"
+#import "WXZTipView.h"
 
-@interface UploadAvatarViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate>
+@interface UploadAvatarViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UITextFieldDelegate>
 @property(nonatomic, strong) YYAnimatedImageView *headImgView; //头像
 @property(nonatomic, strong) UITextField *nickField;  //昵称
 @property(nonatomic, strong) UIButton *compleBtn; //完成
@@ -44,7 +45,7 @@
     
     [self headImgView];
     
-    UILabel *uploadLabel = [[UILabel alloc] initWithFrame:CGRectMake((KScreenWidth-100)/2, self.headImgView.bottom+4, 100, KNormalLabeLHeight)];
+    UILabel *uploadLabel = [[UILabel alloc] initWithFrame:CGRectMake((KScreenWidth-100)/2, self.headImgView.bottom+10, 100, KNormalLabeLHeight)];
     uploadLabel.text = @"上传头像";
     uploadLabel.textColor = CFontColor3;
     uploadLabel.font = FFont2;
@@ -52,7 +53,7 @@
     [self.view addSubview:uploadLabel];
     
     
-    UIView *FieldBgView = [[UIView alloc] initWithFrame:CGRectMake(45, uploadLabel.bottom+50, KScreenWidth-90, KNormalBBtnHeight)];
+    UIView *FieldBgView = [[UIView alloc] initWithFrame:CGRectMake(40, uploadLabel.bottom+50, KScreenWidth-80, KNormalBBtnHeight)];
     ViewRadius(FieldBgView, KNormalBBtnHeight/2);
     FieldBgView.backgroundColor = KWhiteColor;
     FieldBgView.layer.borderColor = CLineColor.CGColor;
@@ -67,7 +68,7 @@
     self.nickField.frame = CGRectMake(label.right+100,(FieldBgView.height-KNormalLabeLHeight)/2,120, KNormalLabeLHeight);
     self.nickField.right = FieldBgView.right-15;
     [FieldBgView addSubview:self.nickField];
-    self.compleBtn.frame = CGRectMake(KNormalBBtnHeight,KScreenHeight-200,KScreenWidth-KNormalBBtnHeight*2, KNormalBBtnHeight);
+    self.compleBtn.frame = CGRectMake(50,KScreenHeight-280,KScreenWidth-100, KNormalBBtnHeight);
     [self.view addSubview:self.compleBtn];
     
 }
@@ -133,6 +134,34 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:^(){
     }];
+}
+
+#pragma mark -- UITextFieldDelegate
+- (void)textFieldDidChange:(UITextField *)textField
+{
+    NSString *toBeString = textField.text;
+    //获取高亮部分
+    UITextRange *selectedRange = [textField markedTextRange];
+    UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+    // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+    if (!position)
+    {
+        if (toBeString.length > 6)
+        {
+            NSRange rangeIndex = [toBeString rangeOfComposedCharacterSequenceAtIndex:6];
+            if (rangeIndex.length == 1)
+            {
+                textField.text = [toBeString substringToIndex:6];
+                [WXZTipView showTopWithText:@"请输入不超过6位数的昵称"];
+            }
+            else
+            {
+                NSRange rangeRange = [toBeString rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, 6 - 1 )];
+                textField.text = [toBeString substringWithRange:rangeRange];
+                [WXZTipView showTopWithText:@"请输入不超过6位数的昵称"];
+            }
+        }
+    }
 }
 
 #pragma mark - UploadImage
@@ -280,6 +309,8 @@
         _nickField.textAlignment = NSTextAlignmentLeft;
         _nickField.textColor = CFontColor2;
         _nickField.font = FFont1;
+        _nickField.delegate = self;
+        [_nickField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     }
     return _nickField;
 }
