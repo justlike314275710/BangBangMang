@@ -9,7 +9,7 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import "LoginLogic.h"
 #import "RMTimer.h"
-
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @interface LoginViewController ()
 
@@ -79,8 +79,6 @@
     [mideleBgImg addSubview:self.phoneNumberField];
     self.phoneNumberField.frame = CGRectMake(k_phoneNumber.right,k_phoneNumber.y, mideleBgImg.width-k_phoneNumber.right-10-15, 21);
 
-    
-    
     UILabel *k_codeLabel = [[UILabel alloc] init];
     k_codeLabel.frame = CGRectMake(44,k_phoneNumber.bottom + 30,50,21);
     k_codeLabel.text = @"验证码:";
@@ -97,7 +95,7 @@
     
     self.codeField.frame = CGRectMake(k_codeLabel.right,k_codeLabel.y,mideleBgImg.width-k_codeLabel.right-_getCodeBtn.width, 21);
     [mideleBgImg addSubview: self.codeField];
-    
+
     UIView *v_line = [[UIView alloc] initWithFrame:CGRectMake(self.codeField.right-10, k_codeLabel.y+3, 1,15)];
     v_line.backgroundColor = CFontColor3;
     [mideleBgImg addSubview:v_line];
@@ -127,7 +125,7 @@
     [sharedTimer resumeTimerWithDuration:self.seconds interval:1 handleBlock:^(NSInteger currentTime) {
         @strongify(self);
         self.getCodeBtn.enabled = NO;
-        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",currentTime] forState:UIControlStateDisabled];
+        [self.getCodeBtn setTitle:[NSString stringWithFormat:@"重发(%ld)",(long)currentTime] forState:UIControlStateDisabled];
         [self.getCodeBtn setTitleColor:KGrayColor forState:UIControlStateDisabled];
         
     } timeOutBlock:^{
@@ -136,26 +134,7 @@
     }];
 }
 
--(void)WXLogin{
-    
-    [help_userManager login:kUserLoginTypeWeChat completion:^(BOOL success, NSString *des) {
-        if (success) {
-            DLog(@"登录成功");
-        }else{
-            DLog(@"登录失败：%@", des);
-        }
-    }];
-}
--(void)QQLogin{
-    
-    [help_userManager login:kUserLoginTypeQQ completion:^(BOOL success, NSString *des) {
-        if (success) {
-            DLog(@"登录成功");
-        }else{
-            DLog(@"登录失败：%@", des);
-        }
-    }];
-}
+
 //用户账号登录
 -(void)EcommerceOfRegister{
     self.logic.phoneNumber = self.phoneNumberField.text;
@@ -227,6 +206,11 @@
         _phoneNumberField.textColor = CFontColor2;
         _phoneNumberField.font = FFont1;
         _phoneNumberField.keyboardType = UIKeyboardTypeNumberPad;
+        [_phoneNumberField.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+            NSLog(@"%@",x);
+        } completed:^{
+            
+        }];
     }
     return _phoneNumberField;
 }
