@@ -27,7 +27,7 @@
 - (instancetype)initWithViewModel:(PSViewModel *)viewModel {
     self = [super initWithViewModel:viewModel];
     if (self) {
-        self.title = @"咨询类别";
+        self.title = @"选择专业领域";
         [self setIsShowLiftBack:YES];
         [self createRightBarButtonItemWithTarget:self action:@selector(sureAction) title:@"确定"];
     }
@@ -38,6 +38,8 @@
     self.btnTag = defaultTag;
     [self refreshData];
     [self renderContents];
+    self.isShowLiftBack = YES;
+
     _selectArray=[[NSMutableArray alloc]init];
 }
 

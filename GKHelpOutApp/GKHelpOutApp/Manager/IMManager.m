@@ -106,6 +106,13 @@ SINGLETON_FOR_CLASS(IMManager);
             make.content = dic[@"content"];
         }];
         [banner show];
+        if (ValidStr(dic[@"content"])) {
+            NSString *content = dic[@"content"];
+            if ([content containsString:@"您的律师认证审核已通过"]) {
+                help_userManager.userStatus =  CERTIFIED;
+                KPostNotification(KNotificationMineDataChange, nil);
+            }
+        }
     }
 }
 

@@ -95,8 +95,6 @@
     [manager POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
-       
         if (responseObject) {
             if (completedCallback) {
                 completedCallback(responseObject);

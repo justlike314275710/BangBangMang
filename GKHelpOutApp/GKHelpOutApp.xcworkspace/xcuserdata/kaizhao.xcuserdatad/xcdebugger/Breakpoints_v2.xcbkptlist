@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Controller/UploadAvatarViewController.m"
-            timestampString = "574063506.983047"
+            timestampString = "574074969.5949661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "-modifyAccountNickname"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/&#x8d26;&#x53f7;&#x4f59;&#x989d;/HMAccountBalanceViewController.m"
-            timestampString = "574070226.730378"
+            timestampString = "574074969.5952441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -570,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/Logic/PSFeedbackViewModel.m"
-            timestampString = "574070226.730984"
+            timestampString = "574074969.5958689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
@@ -650,7 +650,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/Mine_EditProfile(&#x4fee;&#x6539;&#x8d44;&#x6599;)/ModifyoldPhoneNumberViewController.m"
-            timestampString = "574070226.731532"
+            timestampString = "574074969.596132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
@@ -666,7 +666,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/View/MineHeaderView.m"
-            timestampString = "574070226.731593"
+            timestampString = "574074969.596229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -682,7 +682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/View/MineHeaderView.m"
-            timestampString = "574070226.731644"
+            timestampString = "574074969.596314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -714,12 +714,12 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Mine/Mine_Feedback(%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88)/PSWriteFeedbackViewController.m"
-                  timestampString = "574070227.051095"
+                  timestampString = "574074970.28784"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
                   endingLineNumber = "116"
-                  offsetFromSymbolStart = "52">
+                  offsetFromSymbolStart = "56">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -729,12 +729,12 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Mine/Mine_Feedback(%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88)/PSWriteFeedbackViewController.m"
-                  timestampString = "574070227.053733"
+                  timestampString = "574074970.2897381"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "118"
                   endingLineNumber = "118"
-                  offsetFromSymbolStart = "52">
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -762,7 +762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Mine/Logic/PSFeedbackViewModel.m"
-            timestampString = "574070226.7318"
+            timestampString = "574074969.5964611"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
@@ -832,22 +832,6 @@
             startingLineNumber = "220"
             endingLineNumber = "220"
             landmarkName = "-handlePickerImage:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Mine/Logic/PSFeedbackViewModel.m"
-            timestampString = "574070226.732249"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "-sendAppFeedbackCompleted:failed:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
