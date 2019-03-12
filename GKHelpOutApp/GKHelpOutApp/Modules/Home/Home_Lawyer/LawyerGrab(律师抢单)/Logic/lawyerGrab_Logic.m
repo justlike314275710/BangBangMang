@@ -238,7 +238,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
-        if (responses.statusCode==200) {
+        if (responses.statusCode==204) {
             if (completedCallback) {
                 completedCallback(responseObject);
             }
@@ -260,7 +260,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
-        if (responses.statusCode==200||responses.statusCode==201) {
+        if (responses.statusCode==200||responses.statusCode==204) {
             if (completedCallback) {
                 completedCallback(responseObject);
             }
