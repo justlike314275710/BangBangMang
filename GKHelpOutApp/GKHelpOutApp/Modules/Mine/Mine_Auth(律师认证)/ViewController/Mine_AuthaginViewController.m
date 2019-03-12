@@ -6,7 +6,7 @@
 //  Copyright © 2017年 徐阳. All rights reserved.
 //
 #import "fileModel.h"
-#import "Mine_AuthViewController.h"
+#import "Mine_AuthaginViewController.h"
 #import "MineTableViewCell.h"
 #import "MineHeaderView.h"
 #import "ProfileViewController.h"
@@ -28,12 +28,10 @@
 #import "Mine_AuthLogic.h"
 #import "Mine_addressViewController.h"
 
-#import "Mine_AuthaginViewController.h"
-
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
-@interface Mine_AuthViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UITextViewDelegate>
+@interface Mine_AuthaginViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UITextViewDelegate>
 
 //    UILabel * lbl;
 //    NSArray *_dataSource;
@@ -56,18 +54,18 @@
 @property (nonatomic , assign) BOOL isUserEnabled;
 @end
 
-@implementation Mine_AuthViewController
+@implementation Mine_AuthaginViewController
 
 #pragma mark ————— LifeCycle —————
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.title=@"专家入驻——法律咨询师";
+    
+    self.title=@"重新认证";
     self.isHidenNaviBar = NO;
     self.isShowLiftBack = YES;//每个根视图需要设置该属性为NO，否则会出现导航栏异常
     _array = [[NSMutableArray alloc] init];
     self.authLogic=[Mine_AuthLogic new];
-   // [self createUI];
+    // [self createUI];
     [self loadLawyerInfo];
     [self SDWebImageAuth];
     
@@ -79,7 +77,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-
+    
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -103,13 +101,13 @@
             [self createUI];
         }
     } failed:^(NSError *error) {
-         [[PSLoadingView sharedInstance]dismiss];
+        [[PSLoadingView sharedInstance]dismiss];
         [self setData];
         [self createUI];
         [PSTipsView showTips:@"获取律师认证详情失败"];
     }];
     
- 
+    
 }
 #pragma mark ————— 创建页面 —————
 -(void)createUI{
@@ -130,19 +128,17 @@
     switch (help_userManager.userStatus) {
         case PENDING_CERTIFIED:
             self.tableView.tableHeaderView =self.headLable ;
-            self.isUserEnabled=YES;
             break;
         case CERTIFIED:
             self.tableView.tableHeaderView =self.headView;
-             self.isUserEnabled=NO;
             break;
         default:
             self.tableView.tableHeaderView =self.headLable ;
             break;
     }
-   [self.view addSubview:self.tableView];
-   //[self setData];
-   [self.tableView reloadData];
+    [self.view addSubview:self.tableView];
+    //[self setData];
+    [self.tableView reloadData];
 }
 
 
@@ -163,8 +159,8 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     DSSettingGroup*group=self.array[section];
     return group.items.count;
-
-
+    
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -186,7 +182,7 @@
     [header.textLabel setFont:[UIFont systemFontOfSize:11]];
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-   DSSettingGroup *group = self.array[section];
+    DSSettingGroup *group = self.array[section];
     return group.headTitle;
 }
 
@@ -194,7 +190,7 @@
     NSInteger section = indexPath.section;
     DSSettingGroup*group=self.array[section];
     DSSettingItem*item=group.items[indexPath.row];
-
+    
     UITableViewCell *cell=nil;
     switch (item.type) {
         case DSSettingItemTypeTextView:{
@@ -204,14 +200,12 @@
             if (item.Textdetails) {
                 personCell.personText.text=item.Textdetails;
             }
-            cell.userInteractionEnabled=self.isUserEnabled;
         }
             break;
         case  DSSettingItemTypeDetial:{
             cell=[tableView dequeueReusableCellWithIdentifier:@"authBaseTableViewCell"];
             authBaseTableViewCell*baseCell=(authBaseTableViewCell*)cell;
             baseCell.titleLbl.text=item.title;
-             cell.userInteractionEnabled=self.isUserEnabled;
             if (item.Textdetails) {
                 baseCell.detaileLbl.text=item.Textdetails;
             }
@@ -227,7 +221,7 @@
                     baseCell.arrowIcon.hidden=YES;
                 }
                 else{
-                   // baseCell.detaileLbl.enabled=NO;
+                    // baseCell.detaileLbl.enabled=NO;
                 }
             }
             else{
@@ -235,13 +229,13 @@
                     baseCell.arrowIcon.hidden=YES;
                 }
                 else if (indexPath.row==4){
-                     baseCell.arrowIcon.hidden=YES;
+                    baseCell.arrowIcon.hidden=YES;
                 }
                 else{
-
+                    
                 }
             }
-          
+            
         }
             break;
             
@@ -250,10 +244,10 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"CertificateTableViewCell"];
             self.cerCell=(CertificateTableViewCell*)cell;
             self.cerCell.titleLable.text=item.title;
-            cell.userInteractionEnabled=self.isUserEnabled;
+            
             [self.cerCell.cameraButton bk_whenTapped:^{
-                  self.Btntager=defultTager+1;
-                  [self ImagePickerClick];
+                self.Btntager=defultTager+1;
+                [self ImagePickerClick];
             }];
             
             fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.certificatePictures[0]];
@@ -266,13 +260,12 @@
         case DSSettingItemTypeAss:{
             cell=[tableView dequeueReusableCellWithIdentifier:@"AssessmentTableViewCell"];
             self.assessCell=(AssessmentTableViewCell*)cell;
-             cell.userInteractionEnabled=self.isUserEnabled;
             self. assessCell.titleLable.text=item.title;
             [self.assessCell.cameraButton bk_whenTapped:^{
                 self.Btntager=defultTager+2;
                 [self ImagePickerClick];
             }];
-        fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.assessmentPictures[0]];
+            fileModel*filemodel=[fileModel modelWithJSON:self.lawyerModel.assessmentPictures[0]];
             NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,filemodel.fileId);
             [self.assessCell.cameraButton sd_setImageWithURL:[NSURL URLWithString:url] forState:0 placeholderImage:[UIImage imageNamed:@"上传图片"]];
         }
@@ -281,7 +274,6 @@
         case DSSettingItemTypeIDCard:{
             cell=[tableView dequeueReusableCellWithIdentifier:@"IdCardTableViewCell"];
             self.idCardCell=(IdCardTableViewCell*)cell;
-             cell.userInteractionEnabled=self.isUserEnabled;
             [self.idCardCell.frontCardButton bk_whenTapped:^{
                 self.Btntager=defultTager+3;
                 [self ImagePickerClick];
@@ -307,67 +299,53 @@
             [tableView dequeueReusableCellWithIdentifier:@"LawyerAuthenticationTableViewCell"];
             self.authCell
             =(LawyerAuthenticationTableViewCell*)cell;
-//            [self.authCell.SubmissionButton bk_whenTapped:^{
-//                [self checkLawyerBasicData];
-//            }];
-            switch (help_userManager.userStatus) {
-                case CERTIFIED:{
-                    [self.authCell.SubmissionButton setTitle:@"重新认证" forState:0];
-                    [self.authCell.SubmissionButton bk_whenTapped:^{
-                        [self.navigationController pushViewController:[[Mine_AuthaginViewController alloc]init] animated:YES];
-                    }];
-                    break;
-                }
-                default:{
-                    [self.authCell.SubmissionButton bk_whenTapped:^{
-                        [self checkLawyerBasicData];
-                    }];
-                }
-                    break;
-            }
+             [self.authCell.SubmissionButton setTitle:@"提交申请" forState:0];
+            [self.authCell.SubmissionButton bk_whenTapped:^{
+                [self checkLawyerBasicData];
+            }];
             
         }
             break;
         default:
             break;
-    
+            
     }
-  
-  
+    
+    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     /*
-    NSInteger section = indexPath.section;
-    switch (section) {
-        case 0:
-        {
-           
-        }
-            break;
-        case 1:
-        {
-            if (indexPath.row==0) {
-               
-            }
-            else if (indexPath.row==1){
-                
-            }
-            else if (indexPath.row==2){
-                [self.navigationController pushViewController:[PSConsultingCategoryViewController new] animated:YES];
-            }
-            else if (indexPath.row==3){
-                
-            }
-        }
-            break;
-       
-            
-        default:
-            break;
-    }
-    */
+     NSInteger section = indexPath.section;
+     switch (section) {
+     case 0:
+     {
+     
+     }
+     break;
+     case 1:
+     {
+     if (indexPath.row==0) {
+     
+     }
+     else if (indexPath.row==1){
+     
+     }
+     else if (indexPath.row==2){
+     [self.navigationController pushViewController:[PSConsultingCategoryViewController new] animated:YES];
+     }
+     else if (indexPath.row==3){
+     
+     }
+     }
+     break;
+     
+     
+     default:
+     break;
+     }
+     */
     
 }
 
@@ -399,7 +377,7 @@
             [PSTipsView showTips:@"请输入个人简介"];
             return;
         }
-       
+        
     }
     if (self.authLogic.lawOffice.length == 0) {
         if (self.lawyerModel.lawOffice.length!=0) {
@@ -411,12 +389,12 @@
     }
     NSString*streetDetail=self.authLogic.lawOfficeAddress[@"streetDetail"];
     if (streetDetail.length==0) {
-         NSString*streetDetail=self.lawyerModel.lawOfficeAddress[@"streetDetail"];
+        NSString*streetDetail=self.lawyerModel.lawOfficeAddress[@"streetDetail"];
         if (streetDetail.length==0) {
             [PSTipsView showTips:@"请输入职业机构"];
             return;
         } else {
-              self.authLogic.lawOfficeAddress=self.lawyerModel.lawOfficeAddress;
+            self.authLogic.lawOfficeAddress=self.lawyerModel.lawOfficeAddress;
             NSLog(@"%@",self.lawyerModel.lawOfficeAddress);
         }
     }
@@ -427,7 +405,7 @@
             [PSTipsView showTips:@"请选择专业领域"];
             return;
         }
-       
+        
     }
     if (self.authLogic.level.length==0) {
         if (self.lawyerModel.level.length!=0) {
@@ -485,16 +463,16 @@
             [PSTipsView showTips:@"请上传身份证反面照片"];
             return;
         }
-       
+        
     }
-   [self postLawyerCertification];
-//    [self.authLogic checkDataWithLawyerBasicCallback:^(BOOL successful, NSString *tips) {
-//        if (successful) {
-//            [self postLawyerCertification];
-//        } else {
-//            [PSTipsView showTips:tips];
-//        }
-//    }];
+    [self postLawyerCertification];
+    //    [self.authLogic checkDataWithLawyerBasicCallback:^(BOOL successful, NSString *tips) {
+    //        if (successful) {
+    //            [self postLawyerCertification];
+    //        } else {
+    //            [PSTipsView showTips:tips];
+    //        }
+    //    }];
 }
 
 -(void)postLawyerCertification{
@@ -559,10 +537,10 @@
     [picker dismissViewControllerAnimated:YES completion:^() {
         UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         if (self.Btntager==defultTager+1) {
-             [self uploadCerImage:portraitImg];
+            [self uploadCerImage:portraitImg];
         }
         else if (self.Btntager==defultTager+2){
-             [self uploadAssImage:portraitImg];
+            [self uploadAssImage:portraitImg];
         }
         else if (self.Btntager==defultTager+3){
             [self uploadFrontCardImage:portraitImg];
@@ -571,9 +549,9 @@
             [self uploadBlackCardImageImage:portraitImg];
         }
         else {
-           
+            
         }
-       
+        
     }];
 }
 
@@ -613,7 +591,7 @@
         case 100://执业机构
         {
             self.authLogic.lawOffice=textField.text;
-           
+            
         }
             break;
             
@@ -648,13 +626,13 @@
                 self.authLogic.lawOfficeAddress=dictionaryValue;
                 textField.text=dictionaryValue[@"streetDetail"];
             }];
-
+            
         }
             break;
         case 102:
         {
             Mine_CategoryViewController*consutingVc=[[Mine_CategoryViewController alloc]initWithViewModel:[PSConsultationViewModel new]];
-             [self.navigationController pushViewController:consutingVc animated:YES];
+            [self.navigationController pushViewController:consutingVc animated:YES];
             consutingVc.returnValueBlock = ^(NSArray *arrayValue) {
                 NSString*category=[arrayValue componentsJoinedByString:@"、"];
                 textField.text=category;
@@ -665,7 +643,7 @@
             break;
         case 103:
         {
-             NSArray *dataSource = @[@"一级律师(高级律师)", @"二级律师(副高级律师)", @"三级律师(中级律师)", @"四级律师(初级律师)"];
+            NSArray *dataSource = @[@"一级律师(高级律师)", @"二级律师(副高级律师)", @"三级律师(中级律师)", @"四级律师(初级律师)"];
             [BRStringPickerView showStringPickerWithTitle:@"选择律师等级" dataSource:dataSource defaultSelValue:textField.text isAutoSelect:YES themeColor:nil resultBlock:^(id selectValue) {
                 textField.text = selectValue;
                 self.authLogic.level=textField.text;
@@ -691,7 +669,7 @@
             break;
         case 6:
         {
-           
+            
             NSString *dataSource = @"testData1.plist"; // 可以将数据源（上面的数组）放到plist文件中
             [BRStringPickerView showStringPickerWithTitle:@"学历" dataSource:dataSource defaultSelValue:textField.text isAutoSelect:YES themeColor:nil resultBlock:^(id selectValue) {
                 textField.text = selectValue;
@@ -700,7 +678,7 @@
             }];
         }
             break;
-
+            
             
         default:
             break;
@@ -735,7 +713,7 @@
 - (void)uploadFrontCardImage:(UIImage *)image {
     [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
         [self.idCardCell.frontCardButton setImage:image forState:0];
-         NSDictionary*FrontCardImageDict=@{@"fileId":tips,@"thumbFileId":tips};
+        NSDictionary*FrontCardImageDict=@{@"fileId":tips,@"thumbFileId":tips};
         NSMutableArray*array=[[NSMutableArray alloc]init];
         [array addObject:FrontCardImageDict];
         self.authLogic.fontCardPictures=array;
@@ -824,7 +802,7 @@
         }
     }
     if (_lawyerModel.categories) {
-         self.LawyerCategories=[[NSMutableArray alloc]init];
+        self.LawyerCategories=[[NSMutableArray alloc]init];
         for (int i=0; i<_lawyerModel.categories.count; i++) {
             if ([_lawyerModel.categories[i] isEqualToString:@"PROPERTY_DISPUTES"]) {
                 [self.LawyerCategories addObject:@"财产纠纷"];
@@ -833,22 +811,22 @@
                 [self.LawyerCategories addObject:@"婚姻家庭"];
             }
             else if ([_lawyerModel.categories[i] isEqualToString:@"TRAFFIC_ACCIDENT"]){
-                 [self.LawyerCategories addObject:@"交通事故"];
+                [self.LawyerCategories addObject:@"交通事故"];
             }
             else if ([_lawyerModel.categories[i] isEqualToString:@"WORK_COMPENSATION"]){
-                 [self.LawyerCategories addObject:@"工伤赔偿"];
+                [self.LawyerCategories addObject:@"工伤赔偿"];
             }
             else if ([_lawyerModel.categories[i] isEqualToString:@"CONTRACT_DISPUTE"]){
-                 [self.LawyerCategories addObject:@"合同纠纷"];
+                [self.LawyerCategories addObject:@"合同纠纷"];
             }
             else if ([_lawyerModel.categories[i] isEqualToString:@"CRIMINAL_DEFENSE"]){
-                 [self.LawyerCategories addObject:@"刑事辩护"];
+                [self.LawyerCategories addObject:@"刑事辩护"];
             }
             else if ([_lawyerModel.categories[i] isEqualToString:@"HOUSING_DISPUTES"]){
-                 [self.LawyerCategories addObject:@"房产纠纷"];
+                [self.LawyerCategories addObject:@"房产纠纷"];
             }
             else if ([_lawyerModel.categories[i] isEqualToString:@"LABOR_EMPLOYMENT"]){
-                 [self.LawyerCategories addObject:@"劳动就业"];
+                [self.LawyerCategories addObject:@"劳动就业"];
             }}
     }
 }
@@ -907,7 +885,7 @@
         {
             DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"专业领域" icon:nil];
             item.details = @"请选择";
-             NSString*category=[self.LawyerCategories componentsJoinedByString:@"、"];
+            NSString*category=[self.LawyerCategories componentsJoinedByString:@"、"];
             item.Textdetails=category;
             item.isForbidSelect = YES; //禁止点击
             [group.items addObject:item];

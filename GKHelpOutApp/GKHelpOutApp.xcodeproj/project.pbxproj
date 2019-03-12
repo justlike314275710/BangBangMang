@@ -467,6 +467,7 @@
 		EAE19E9E2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19E9D2235EF440080B0F5 /* LawyerAdviceDetalisViewController.m */; };
 		EAE19EA12235FDD80080B0F5 /* LawyerAdviceDetalisVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */; };
 		EAE19EA42235FFBB0080B0F5 /* headerDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA32235FFBB0080B0F5 /* headerDetailsView.m */; };
+		EAE19EAA22374A760080B0F5 /* Mine_AuthaginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA922374A760080B0F5 /* Mine_AuthaginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1394,6 +1395,8 @@
 		EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerAdviceDetalisVC.m; sourceTree = "<group>"; };
 		EAE19EA22235FFBB0080B0F5 /* headerDetailsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = headerDetailsView.h; sourceTree = "<group>"; };
 		EAE19EA32235FFBB0080B0F5 /* headerDetailsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = headerDetailsView.m; sourceTree = "<group>"; };
+		EAE19EA822374A760080B0F5 /* Mine_AuthaginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_AuthaginViewController.h; sourceTree = "<group>"; };
+		EAE19EA922374A760080B0F5 /* Mine_AuthaginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_AuthaginViewController.m; sourceTree = "<group>"; };
 		F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2852,6 +2855,8 @@
 				EAE19E68222CC83D0080B0F5 /* Mine_addressViewController.m */,
 				EAE19E70222E4B430080B0F5 /* Mine_StatusViewController.h */,
 				EAE19E71222E4B430080B0F5 /* Mine_StatusViewController.m */,
+				EAE19EA822374A760080B0F5 /* Mine_AuthaginViewController.h */,
+				EAE19EA922374A760080B0F5 /* Mine_AuthaginViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -4374,6 +4379,7 @@
 				EAB038D1221E817B00331569 /* NIMPinyinConverter.m in Sources */,
 				5557A545221BD7F500743012 /* AESCipher.m in Sources */,
 				551AF6AD2230C57F006AB1A0 /* HMBillLogic.m in Sources */,
+				EAE19EAA22374A760080B0F5 /* Mine_AuthaginViewController.m in Sources */,
 				EAB03916221E817B00331569 /* NIMKitLocationPoint.m in Sources */,
 				EA78F70A22263761002D788A /* Mine_AuthViewController.m in Sources */,
 				5557A56E221BD87100743012 /* UserManager.m in Sources */,
