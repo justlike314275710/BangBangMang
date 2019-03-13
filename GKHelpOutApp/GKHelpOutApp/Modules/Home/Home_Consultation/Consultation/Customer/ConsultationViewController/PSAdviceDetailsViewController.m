@@ -149,6 +149,7 @@
      PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
     [viewModel GETProcessedCompleted:^(id data) {
         [PSTipsView showTips:@"通话完成!"];
+        [self refreshData];
     } failed:^(NSError *error) {
          [PSTipsView showTips:@"通话失败!"];
     }];

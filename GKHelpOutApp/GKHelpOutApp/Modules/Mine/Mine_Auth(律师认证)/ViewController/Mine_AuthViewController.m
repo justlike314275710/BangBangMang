@@ -903,8 +903,9 @@
              NSString*provinceName=self.lawyerModel.lawOfficeAddress[@"provinceName"];
              NSString*cityName=self.lawyerModel.lawOfficeAddress[@"cityName"];
              NSString*countyName=self.lawyerModel.lawOfficeAddress[@"countryName"];
-            item.Textdetails=
-            NSStringFormat(@"%@%@%@%@",provinceName,cityName,countyName,streetDetail);
+            item.Textdetails
+            =streetDetail?
+NSStringFormat(@"%@%@%@%@",provinceName,cityName,countyName,streetDetail):@"";
             [group.items addObject:item];
             
         }

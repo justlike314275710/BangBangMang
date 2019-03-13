@@ -103,9 +103,12 @@
 }
 - (void)showInternetError {
    // [PSTipsView showTips:@"无法连接到服务器，请检查网络"];
-     NSString*Tips=NSLocalizedString(@"Tips", @"提示");
-    NSString*InternetError=NSLocalizedString(@"InternetError", @"无法连接到服务器，请检查网络");
-     NSString*determine=NSLocalizedString(@"determine", @"确定");
+    NSString*Tips=@"提示";
+   // NSLocalizedString(@"Tips", @"提示");
+    NSString*InternetError=@"无法连接到服务器，请检查网络";
+    //NSLocalizedString(@"InternetError", @"无法连接到服务器，请检查网络");
+    NSString*determine=@"确定";
+    //NSLocalizedString(@"determine", @"确定");
     [PSAlertView showWithTitle:Tips message:InternetError messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
         
     } buttonTitles:determine, nil];

@@ -13,6 +13,7 @@
 #import "lawyerGrab.h"
 #import "Grab_customer.h"
 #import "NSString+Utils.h"
+#import "LawyerAdviceDetalisVC.h"
 @interface LawyerGrabViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property (nonatomic , strong) UITableView *LawyersTableview;
 @property (nonatomic , strong) PSLawyerView *headerView;
@@ -55,14 +56,26 @@
          [self reloadContents];
     }];
 }
-
+-(void)p_pushDetalisViewController:(NSString*)orderId{
+     LawyerAdviceDetalisVC*lawyerAdviceDetalisVC=[[LawyerAdviceDetalisVC alloc]init];
+    lawyerAdviceDetalisVC.cid=orderId;
+    [self.navigationController pushViewController:lawyerAdviceDetalisVC animated:YES];
+}
 -(void)Grap_Order:(NSString*)orderID{
     [[PSLoadingView sharedInstance]show];
     self.logic.cid=orderID;
     [self.logic POSTLawyergrabCompleted:^(id data) {
         [[PSLoadingView sharedInstance]dismiss];
-        [PSTipsView showTips:@"抢单成功"];
-         [self refreshData];
+        //[PSTipsView showTips:@"抢单成功"];
+        [self AlertWithTitle:nil message:@"恭喜您,抢单成功!" andOthers:@[@"关闭",@"查看"] animated:YES action:^(NSInteger index) {
+            if (index == 1) {
+                [self p_pushDetalisViewController:orderID];
+            }
+            else{
+                 [self refreshData];
+            }
+        }];
+        
     } failed:^(NSError *error) {
         [[PSLoadingView sharedInstance]dismiss];
         [PSTipsView showTips:@"抢单失败"];

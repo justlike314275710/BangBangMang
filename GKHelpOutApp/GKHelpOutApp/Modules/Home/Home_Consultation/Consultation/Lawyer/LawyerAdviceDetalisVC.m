@@ -56,6 +56,7 @@
     self.logic.cid=self.cid;
     [self.logic GETProcessedCompleted:^(id data) {
         [PSTipsView showTips:@"模拟通话成功!"];
+        [self refreshData];
     } failed:^(NSError *error) {
         [PSTipsView showTips:@"模拟通话失败!"];
     }];
@@ -170,11 +171,12 @@
         NSString*endTime=[NSString timeChange:self.model.endTime];
         _tipsLable.text=NSStringFormat(@"到账时间:%@",endTime);
          [self getComments];
-        [self.payButton setTitle:@"删除订单" forState:0];
-        [self.view addSubview:self.payButton];
-        [self.payButton bk_whenTapped:^{
-            
-        }];
+        self.payButton.hidden=YES;
+//        [self.payButton setTitle:@"删除订单" forState:0];
+//        [self.view addSubview:self.payButton];
+//        [self.payButton bk_whenTapped:^{
+//
+//        }];
         
     }
     else if ([self.model.status isEqualToString:@"已关闭"]){
@@ -184,11 +186,12 @@
         _tipsLable.font=FontOfSize(12);
         _tipsLable.text=NSStringFormat(@"到账时间:%@",endTime);
          [self getComments];
-        [self.payButton setTitle:@"删除订单" forState:0];
-        [self.view addSubview:self.payButton];
-        [self.payButton bk_whenTapped:^{
-            
-        }];
+        self.payButton.hidden=YES;
+//        [self.payButton setTitle:@"删除订单" forState:0];
+//        [self.view addSubview:self.payButton];
+//        [self.payButton bk_whenTapped:^{
+//
+//        }];
     }
     else{
         [self.myScrollview addSubview:self.statusView];

@@ -40,12 +40,7 @@
 }
 
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:@"lawyerTableRefesh"
-                                                  object:nil];
-}
+
 
 - (void)loadMore {
     @weakify(self)
@@ -135,7 +130,7 @@
     [self builedModel:grabModel];
     cell.typeLab.text=grabModel.category;
     NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,customer.username];
-    [ cell.avatarImg sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:IMAGE_NAMED(@"lawHead")];
+    [ cell.avatarImg sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:IMAGE_NAMED(@"登录－头像")];
     cell.noRead=NO;
     cell.stateImg.hidden=NO;
     cell.detailLab.hidden = YES;
