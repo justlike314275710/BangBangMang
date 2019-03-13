@@ -113,8 +113,17 @@
     return YES;
 }
 
+- (BOOL)isHidenNaviBar{
+    return YES;
+}
+
 - (BOOL)fd_prefersNavigationBarHidden {
     return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewDidLoad {

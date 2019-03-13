@@ -33,7 +33,7 @@
         make.top.mas_equalTo(sidePidding);
         make.size.mas_equalTo(CGSizeMake(2 * radius, 2 * radius));
     }];
-    [_avatarView setImage:[UIImage imageNamed:@"订单大头像"]];
+    [_avatarView setImage:[UIImage imageNamed:@"登录－头像"]];
     _avatarView.layer.masksToBounds = YES;
     _avatarView.layer.cornerRadius = radius;
     _avatarView.layer.borderWidth=1;

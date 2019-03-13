@@ -169,7 +169,7 @@
 -(void)fillWithModel:(PSConsultation*)model{
     self.nameLab.text=@"";
     NSString*avatarUrl=@"";
-    [self.headImg sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:@"头像"]];
+    [self.headImg sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:@"登录－头像"]];
     NSString*yearTime=[model.createdTime substringToIndex:10];
     NSRange range1 = NSMakeRange(11, 5);
     NSString*minunteTime=[model.createdTime substringWithRange:range1];

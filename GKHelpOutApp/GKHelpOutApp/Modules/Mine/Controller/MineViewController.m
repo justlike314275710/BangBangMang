@@ -81,7 +81,6 @@
 }
 #pragma mark ————— 律师认证被点击 —————
 -(void)cerLawViewClick {
-    
 }
 
 #pragma mark -- YSLTransitionAnimatorDataSource

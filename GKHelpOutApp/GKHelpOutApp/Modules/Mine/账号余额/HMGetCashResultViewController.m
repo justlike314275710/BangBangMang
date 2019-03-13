@@ -116,7 +116,7 @@
     if (!_headImgView) {
         _headImgView = [YYAnimatedImageView new];
         _headImgView.contentMode = UIViewContentModeScaleAspectFill;
-        _headImgView.backgroundColor = [UIColor redColor];
+        //_headImgView.backgroundColor = [UIColor redColor];
         _headImgView.userInteractionEnabled = YES;
         [_headImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headViewClick)]];
         _headImgView.frame = CGRectMake((self.view.width-90*Iphone6ScaleWidth)/2,35, 100*Iphone6ScaleWidth, 100*Iphone6ScaleWidth);

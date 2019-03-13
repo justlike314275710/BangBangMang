@@ -32,8 +32,8 @@
     [super viewDidLoad];
     self.title = @"我的咨询";
 //    [self addNavigationItemWithImageNames:@[@"会话icon－红点"] isLeft:NO target:self action:@selector(rightAction) tags:@[@2000]];
-    
     [self setupUI];
+    
     
 }
 
@@ -98,7 +98,7 @@
         case 3:{
             LawyerAdviceViewController *showtwoVc= [[ LawyerAdviceViewController alloc]init];
             showtwoVc.title=@"法律咨询";
-            [controllerMutableArr addObject:showtwoVc];}//普通用户
+            [controllerMutableArr addObject:showtwoVc];}
             break;
             
         default:{

@@ -10,7 +10,7 @@
 #import "PSPaymentBlock.h"
 
 @interface PSPayOngoingViewController : PSBusinessViewController
-
+//PSBusinessViewController
 @property (nonatomic, copy) PaymentAmount getAmount;
 @property (nonatomic, copy) PaymentRows getRows;
 @property (nonatomic, copy) PaymentSelectedIndex getSelectedIndex;

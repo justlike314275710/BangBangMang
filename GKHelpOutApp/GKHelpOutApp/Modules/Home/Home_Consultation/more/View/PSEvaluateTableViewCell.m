@@ -101,7 +101,7 @@
         make.height.mas_equalTo(12);
     }];
     
-    UIImageView*iconView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"用户头像"]];
+    UIImageView*iconView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"登录－头像"]];
     [bgview addSubview:iconView];
     [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-20);

@@ -23,6 +23,7 @@
 }
 
 - (void)renderContents {
+    //[self isHidenNaviBar];
     UILabel *topTitleLabel = [UILabel new];
     topTitleLabel.font = FontOfSize(15);
     topTitleLabel.textColor = AppBaseTextColor1;
@@ -129,10 +130,20 @@
     return YES;
 }
 
+- (BOOL)isHidenNaviBar{
+    return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
+   // self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.view.backgroundColor = [UIColor clearColor];
     [self renderContents];
 }

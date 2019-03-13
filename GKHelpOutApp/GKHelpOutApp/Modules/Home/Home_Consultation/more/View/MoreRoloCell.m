@@ -182,7 +182,7 @@
 - (UIImageView *)headImg {
     if (!_headImg) {
         _headImg = [UIImageView new];
-        _headImg.image = [UIImage imageNamed:@"头像"];
+        _headImg.image = [UIImage imageNamed:@"登录－头像"];
     }
     return _headImg;
 }

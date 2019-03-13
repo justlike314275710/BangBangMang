@@ -42,7 +42,6 @@
         if (help_userManager.avatarImage) {
             self.headImgView.image = help_userManager.avatarImage;
         } else {
-//            [self.headImgView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar] placeholderImage:[UIImage imageWithColor:KGrayColor]];
             [self.headImgView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar] placeholderImage:IMAGE_NAMED(@"登录－头像")];
         }
     }else{

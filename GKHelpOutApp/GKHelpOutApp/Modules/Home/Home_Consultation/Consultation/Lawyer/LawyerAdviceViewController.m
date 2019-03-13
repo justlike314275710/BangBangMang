@@ -24,6 +24,13 @@
 
 @implementation LawyerAdviceViewController
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.logic=[[lawyerGrab_Logic alloc]init];
@@ -32,6 +39,13 @@
     [self SDWebImageAuth];
 }
 
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"lawyerTableRefesh"
+                                                  object:nil];
+}
 
 - (void)loadMore {
     @weakify(self)
