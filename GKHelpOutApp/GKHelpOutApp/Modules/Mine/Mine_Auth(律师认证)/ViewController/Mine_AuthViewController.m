@@ -648,9 +648,9 @@
                  NSString*streetDetail=dictionaryValue[@"streetDetail"];
                  NSString*provinceName=dictionaryValue[@"provinceName"];
                  NSString*cityName=dictionaryValue[@"cityName"];
-                 NSString*countyName=dictionaryValue[@"countyName"];
+                 NSString*countryName=dictionaryValue[@"countryName"];
                  textField.text=streetDetail?
-NSStringFormat(@"%@%@%@%@",provinceName,cityName,countyName,streetDetail):@"";
+NSStringFormat(@"%@%@%@%@",provinceName,cityName,countryName,streetDetail):@"";
             }];
 
         }
