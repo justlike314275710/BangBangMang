@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-   [self renderContents];
+   //[self renderContents];
     self.title=@"资格认证";
     // Do any additional setup after loading the view.
 }
