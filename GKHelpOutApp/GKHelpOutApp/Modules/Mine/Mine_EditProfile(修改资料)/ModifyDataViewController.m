@@ -136,7 +136,8 @@
         _headImgView.frame = CGRectMake((self.view.width-90*Iphone6ScaleWidth)/2,35, 100*Iphone6ScaleWidth, 100*Iphone6ScaleWidth);
         ViewRadius(_headImgView, (100*Iphone6ScaleWidth)/2);
         [self.view addSubview:_headImgView];
-        [_headImgView setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] options:YYWebImageOptionRefreshImageCache];
+//        [_headImgView setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] options:YYWebImageOptionRefreshImageCache];
+        [_headImgView setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] placeholder:[UIImage imageNamed:@"登录－头像"]];
     }
     return _headImgView;
 }
