@@ -740,4 +740,16 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     return timeChanged;
     
 }
+
++(NSString *)changeFormatWithDateString:(NSString *)date{
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    NSDate *currentDate = [dateFormatter dateFromString:date];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *dateStr=[dateFormatter stringFromDate:currentDate];
+    return dateStr;
+}
+
+
+
 @end
