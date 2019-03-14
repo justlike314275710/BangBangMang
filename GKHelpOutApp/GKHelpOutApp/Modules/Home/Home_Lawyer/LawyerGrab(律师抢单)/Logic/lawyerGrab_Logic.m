@@ -238,7 +238,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
-        if (responses.statusCode==204) {
+        if (responses.statusCode==204||responses.statusCode==200) {
             if (completedCallback) {
                 completedCallback(responseObject);
             }
@@ -271,6 +271,30 @@
         }
     }];
 }
+
+
+
+-(void)deleteConsultationCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    manager=[AFHTTPSessionManager manager];
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    NSString *url =[NSString stringWithFormat:@"%@/lawyer/my/legal-advice/%@",ConsultationHostUrl,self.cid];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    [manager DELETE:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (responses.statusCode==204) {
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failedCallback) {
+            failedCallback(error);
+        }
+    }];
+}
+
+
 
 -(NSArray *)myAdviceArray{
     return _grabItems;

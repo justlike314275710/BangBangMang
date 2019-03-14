@@ -49,6 +49,7 @@
     self.title=@"咨询详情";
     self.logic=[[lawyerGrab_Logic alloc]init];
     self.isShowLiftBack = YES;
+    [self SDWebImageAuth];
     
 }
 
@@ -88,13 +89,25 @@
 -(void)getComments{
     self.logic.cid=self.cid;
     [self.logic requestCommentsCompleted:^(id data) {
-        self.comments=[PSAdviceComments mj_objectWithKeyValues:data];
-        [self p_commentsUI];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.comments=[PSAdviceComments mj_objectWithKeyValues:data];
+            [self p_commentsUI];
+        });
+//        self.comments=[PSAdviceComments mj_objectWithKeyValues:data];
+//        [self p_commentsUI];
     } failed:^(NSError *error) {
         
     }];
 }
 
+-(void)DeleteLawyerDetails{
+    [self.logic deleteConsultationCompleted:^(id data) {
+        [PSTipsView showTips:@"删除订单成功!"];
+        [self.navigationController popViewControllerAnimated:YES];
+    } failed:^(NSError *error) {
+        [PSTipsView showTips:@"删除订单失败!"];
+    }];
+}
 
 -(void)p_commentsUI{
     _commentsView=[UIView new];
@@ -149,6 +162,8 @@
     self.detailsView.moneylable.text=NSStringFormat(@"¥%@",self.model.reward);
     self.detailsView.numberlable.text=NSStringFormat(@"编号:%@",self.model.number);
     self.detailsView.timelable.text=[NSString timeChange:self.model.createdTime];
+    NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,self.customerModel.username];
+    [self.detailsView.avaterImage sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"登录－头像"]];
     [self.myScrollview addSubview:self.paymentView];
     
     if ([self.model.status isEqualToString:@"已接单"]) {
@@ -171,12 +186,11 @@
         NSString*endTime=[NSString timeChange:self.model.endTime];
         _tipsLable.text=NSStringFormat(@"到账时间:%@",endTime);
          [self getComments];
-        self.payButton.hidden=YES;
-//        [self.payButton setTitle:@"删除订单" forState:0];
-//        [self.view addSubview:self.payButton];
-//        [self.payButton bk_whenTapped:^{
-//
-//        }];
+        [self.payButton setTitle:@"删除订单" forState:0];
+        [self.view addSubview:self.payButton];
+        [self.payButton bk_whenTapped:^{
+         [self DeleteLawyerDetails];
+        }];
         
     }
     else if ([self.model.status isEqualToString:@"已关闭"]){
@@ -186,12 +200,12 @@
         _tipsLable.font=FontOfSize(12);
         _tipsLable.text=NSStringFormat(@"到账时间:%@",endTime);
          [self getComments];
-        self.payButton.hidden=YES;
-//        [self.payButton setTitle:@"删除订单" forState:0];
-//        [self.view addSubview:self.payButton];
-//        [self.payButton bk_whenTapped:^{
-//
-//        }];
+        [self.payButton setTitle:@"删除订单" forState:0];
+        [self.view addSubview:self.payButton];
+        [self.payButton bk_whenTapped:^{
+            [self DeleteLawyerDetails];
+
+        }];
     }
     else{
         [self.myScrollview addSubview:self.statusView];
@@ -413,6 +427,17 @@
     }
     model.categories=array;
     return model;
+}
+
+
+#pragma mark ————— 设置SDWebImage认证token —————
+-(void)SDWebImageAuth{
+    [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
+    [SDWebImageManager sharedManager].imageCache.config.maxCacheAge=5*60.0;
+    
+    
 }
 
 /*

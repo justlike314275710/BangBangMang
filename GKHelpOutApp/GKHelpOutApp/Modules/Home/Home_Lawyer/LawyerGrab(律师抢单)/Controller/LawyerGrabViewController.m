@@ -78,7 +78,7 @@
         
     } failed:^(NSError *error) {
         [[PSLoadingView sharedInstance]dismiss];
-        [PSTipsView showTips:@"抢单失败"];
+        [PSTipsView showTips:@"不能抢单,当前有订单未处理!"];
     }];
 }
 

@@ -41,4 +41,7 @@
 
 -(void)GETProcessedCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;//模拟通话
 
+
+
+-(void)deleteConsultationCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;//删除订单
 @end

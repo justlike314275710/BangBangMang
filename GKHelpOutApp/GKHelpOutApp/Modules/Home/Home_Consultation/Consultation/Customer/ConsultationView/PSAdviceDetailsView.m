@@ -48,7 +48,7 @@
     [_nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_avatarView.mas_right).offset(10);
         make.top.mas_equalTo(sidePidding+5);
-        make.width.mas_equalTo(120);
+        make.width.mas_equalTo(160);
         make.height.mas_equalTo(16);
     }];
     _nicknameLabel.text=@"王二二";
