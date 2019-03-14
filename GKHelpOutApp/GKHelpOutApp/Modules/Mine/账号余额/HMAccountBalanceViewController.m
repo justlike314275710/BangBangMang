@@ -61,7 +61,7 @@
         aliPayAccount = @"未绑定";
         _isBind = NO;
     } else {
-        aliPayAccount = self.lawUserInfo.nickName;
+        aliPayAccount = self.lawUserInfo.nickName?self.lawUserInfo.nickName:@"";
         _isBind = YES;
     }
     NSDictionary *Modifydata = @{@"titleText":@"支付宝账户",@"title_icon":@"支付宝账号icon",@"clickSelector":@"",@"detailText":aliPayAccount,@"arrow_icon":@"myarrow_icon"};
