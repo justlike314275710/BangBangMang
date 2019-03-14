@@ -645,7 +645,12 @@
             [self.navigationController pushViewController:addressVc animated:YES];
             [addressVc setReturnValueBlock:^(NSDictionary *dictionaryValue) {
                 self.authLogic.lawOfficeAddress=dictionaryValue;
-                textField.text=dictionaryValue[@"streetDetail"];
+                 NSString*streetDetail=dictionaryValue[@"streetDetail"];
+                 NSString*provinceName=dictionaryValue[@"provinceName"];
+                 NSString*cityName=dictionaryValue[@"cityName"];
+                 NSString*countyName=dictionaryValue[@"countyName"];
+                 textField.text=streetDetail?
+NSStringFormat(@"%@%@%@%@",provinceName,cityName,countyName,streetDetail):@"";
             }];
 
         }
@@ -684,7 +689,7 @@
                 NSLog(@"区[%@]：%@，%@", @(area.index), area.code, area.name);
                 NSLog(@"--------------------");
             } cancelBlock:^{
-                NSLog(@"点击了背景视图或取消按钮");
+
             }];
         }
             break;
@@ -695,7 +700,7 @@
             [BRStringPickerView showStringPickerWithTitle:@"学历" dataSource:dataSource defaultSelValue:textField.text isAutoSelect:YES themeColor:nil resultBlock:^(id selectValue) {
                 textField.text = selectValue;
             } cancelBlock:^{
-                NSLog(@"点击了背景视图或取消按钮");
+
             }];
         }
             break;

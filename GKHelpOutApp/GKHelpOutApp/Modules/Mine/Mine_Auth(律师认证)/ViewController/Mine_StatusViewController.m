@@ -18,16 +18,20 @@
 
 @implementation Mine_StatusViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self refreshData];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [[UserManager sharedUserManager]JudgeIdentityCallback:^(BOOL success, NSString *des) {
-//         [self renderContents];
-//    }];
+
    [self renderContents];
     self.title=@"资格认证";
     // Do any additional setup after loading the view.
 }
-/*
+
 -(void)refreshData{
     Mine_AuthLogic *authLogic = [Mine_AuthLogic new];
     [authLogic getLawyerProfilesData:^(id data) {
@@ -67,7 +71,7 @@
     }
     return NO;
 }
-*/
+
 - (void)renderContents{
     
     CGFloat horSpace = 20;
