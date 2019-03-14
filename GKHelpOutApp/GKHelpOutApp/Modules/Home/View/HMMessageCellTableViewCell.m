@@ -53,13 +53,16 @@
             NSString *content = [dic valueForKey:@"content"];
             if (ValidStr(content)) {
                 self.detailLab.text = content;
+                 self.dataLab.text = [NSString changeFormatWithDateString: model.lastUpdatedTime];
             } else {
                 self.detailLab.text = @"有新的可接订单,快去接单吧";
+                self.dataLab.text = [NSString changeFormatWithDateString:model.createdTime];
+                NSLog(@"%@",[NSString changeFormatWithDateString:model.createdTime]);
             }
         }
     }
 //    self.dataLab.text = model.lastUpdatedTime;
-    self.dataLab.text = [NSString timeChange:model.lastUpdatedTime];
+   
     
 }
 
