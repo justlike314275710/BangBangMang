@@ -338,7 +338,7 @@
             [tableView dequeueReusableCellWithIdentifier:@"LawyerAuthenticationTableViewCell"];
             self.authCell
             =(LawyerAuthenticationTableViewCell*)cell;
-             [self.authCell.SubmissionButton setTitle:@"提交申请" forState:0];
+             [self.authCell.SubmissionButton setTitle:@"同意协议并提交申请" forState:0];
             [self.authCell.SubmissionButton bk_whenTapped:^{
                 [self checkLawyerBasicData];
             }];

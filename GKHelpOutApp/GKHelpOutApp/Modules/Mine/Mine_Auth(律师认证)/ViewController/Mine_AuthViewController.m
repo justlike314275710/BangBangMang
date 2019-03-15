@@ -214,16 +214,7 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"SexTableViewCell"];
             SexTableViewCell*sexCell=(SexTableViewCell*)cell;
             sexCell.titleLbl.text=item.title;
-            [sexCell.manBtn bk_whenTapped:^{
-                sexCell.manBtn.selected=YES;
-                sexCell.womenBtn.selected=NO;
-                self.authLogic.gender=@"男";
-            }];
-            [sexCell.womenBtn bk_whenTapped:^{
-                sexCell.manBtn.selected=NO;
-                sexCell.womenBtn.selected=YES;
-                self.authLogic.gender=@"女";
-            }];
+            
             switch (help_userManager.userStatus) {
                 case CERTIFIED:{
                     if ([self.lawyerModel.gender isEqualToString:@"男"]) {
@@ -233,12 +224,22 @@
                     else{
                         sexCell.manBtn.selected=NO;
                         sexCell.womenBtn.selected=YES;
+                       
                     }
                    
                     break;
                 }
                 default:{
-                    
+                    [sexCell.manBtn bk_whenTapped:^{
+                        sexCell.manBtn.selected=YES;
+                        sexCell.womenBtn.selected=NO;
+                        self.authLogic.gender=@"男";
+                    }];
+                    [sexCell.womenBtn bk_whenTapped:^{
+                        sexCell.manBtn.selected=NO;
+                        sexCell.womenBtn.selected=YES;
+                        self.authLogic.gender=@"女";
+                    }];
                 }
                     break;
             }
@@ -354,7 +355,7 @@
 //            }];
             switch (help_userManager.userStatus) {
                 case CERTIFIED:{
-                    [self.authCell.SubmissionButton setTitle:@"重新认证" forState:0];
+                    [self.authCell.SubmissionButton setTitle:@"同意协议并重新认证" forState:0];
                     [self.authCell.SubmissionButton bk_whenTapped:^{
                         [self.navigationController pushViewController:[[Mine_AuthaginViewController alloc]init] animated:YES];
                     }];
