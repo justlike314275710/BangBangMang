@@ -67,12 +67,14 @@
     [self.logic POSTLawyergrabCompleted:^(id data) {
         [[PSLoadingView sharedInstance]dismiss];
         //[PSTipsView showTips:@"抢单成功"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:KNotificationNewOrderState object:nil];
         [self AlertWithTitle:nil message:@"恭喜您,抢单成功!" andOthers:@[@"关闭",@"查看"] animated:YES action:^(NSInteger index) {
             if (index == 1) {
                 [self p_pushDetalisViewController:orderID];
             }
             else{
                  [self refreshData];
+                
             }
         }];
         

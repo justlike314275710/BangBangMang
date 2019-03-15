@@ -42,6 +42,10 @@
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
     [self refreshData];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData)
+                                                 name:KNotificationOrderStateChange
+                                               object:nil];
     
 }
 - (void)viewDidLoad {
@@ -51,6 +55,14 @@
     self.isShowLiftBack = YES;
     [self SDWebImageAuth];
     
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:KNotificationOrderStateChange
+                                                  object:nil];
 }
 
 -(void)chattingAcion{
