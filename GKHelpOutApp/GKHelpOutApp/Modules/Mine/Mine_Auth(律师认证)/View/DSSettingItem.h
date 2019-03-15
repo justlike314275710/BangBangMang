@@ -16,6 +16,7 @@ typedef void(^DidSelectBlock)(void);
 
 typedef NS_ENUM(NSInteger, DSSettingItemType) {
     DSSettingItemTypeDetial,    // 不显示任何在右边
+    DSSettingItemTypeSex,
     DSSettingItemTypeTextView,
     DSSettingItemTypeIDCard,
     DSSettingItemTypeCer,

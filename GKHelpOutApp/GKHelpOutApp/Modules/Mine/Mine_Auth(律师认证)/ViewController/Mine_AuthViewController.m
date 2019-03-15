@@ -30,6 +30,7 @@
 #import "Mine_addressViewController.h"
 
 #import "Mine_AuthaginViewController.h"
+#import "SexTableViewCell.h"
 
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
@@ -124,6 +125,7 @@
     [self.tableView registerClass:[IdCardTableViewCell class] forCellReuseIdentifier:@"IdCardTableViewCell"];
     [self.tableView registerClass:[LawyerAuthenticationTableViewCell class] forCellReuseIdentifier:@"LawyerAuthenticationTableViewCell"];
     [self.tableView registerClass:[authBaseTableViewCell class] forCellReuseIdentifier:@"authBaseTableViewCell"];
+    [self.tableView registerClass:[SexTableViewCell class] forCellReuseIdentifier:@"SexTableViewCell"];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -208,6 +210,42 @@
             cell.userInteractionEnabled=self.isUserEnabled;
         }
             break;
+        case DSSettingItemTypeSex:{
+            cell=[tableView dequeueReusableCellWithIdentifier:@"SexTableViewCell"];
+            SexTableViewCell*sexCell=(SexTableViewCell*)cell;
+            sexCell.titleLbl.text=item.title;
+            [sexCell.manBtn bk_whenTapped:^{
+                sexCell.manBtn.selected=YES;
+                sexCell.womenBtn.selected=NO;
+                self.authLogic.gender=@"男";
+            }];
+            [sexCell.womenBtn bk_whenTapped:^{
+                sexCell.manBtn.selected=NO;
+                sexCell.womenBtn.selected=YES;
+                self.authLogic.gender=@"女";
+            }];
+            switch (help_userManager.userStatus) {
+                case CERTIFIED:{
+                    if ([self.lawyerModel.gender isEqualToString:@"男"]) {
+                        sexCell.manBtn.selected=YES;
+                        sexCell.womenBtn.selected=NO;
+                    }
+                    else{
+                        sexCell.manBtn.selected=NO;
+                        sexCell.womenBtn.selected=YES;
+                    }
+                   
+                    break;
+                }
+                default:{
+                    
+                }
+                    break;
+            }
+           
+        }
+            break;
+            
         case  DSSettingItemTypeDetial:{
             cell=[tableView dequeueReusableCellWithIdentifier:@"authBaseTableViewCell"];
             authBaseTableViewCell*baseCell=(authBaseTableViewCell*)cell;
@@ -630,14 +668,14 @@
 #pragma mark - 处理点击事件
 - (void)handlerTextFieldSelect:(UITextField *)textField {
     switch (textField.tag) {
-        case 1://性别
-        {
-            [BRStringPickerView showStringPickerWithTitle:@"请选择性别" dataSource:@[@"男", @"女", @"其他"] defaultSelValue:textField.text resultBlock:^(id selectValue) {
-                textField.text = selectValue;
-                self.authLogic.gender=selectValue;
-            }];
-        }
-            break;
+//        case 1://性别
+//        {
+//            [BRStringPickerView showStringPickerWithTitle:@"请选择性别" dataSource:@[@"男", @"女", @"其他"] defaultSelValue:textField.text resultBlock:^(id selectValue) {
+//                textField.text = selectValue;
+//                self.authLogic.gender=selectValue;
+//            }];
+//        }
+//            break;
             
         case 101://律师会所
         {
@@ -870,7 +908,7 @@ NSStringFormat(@"%@%@%@%@",provinceName,cityName,countryName,streetDetail):@"";
             
         }
         {
-            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"性别" icon:nil];
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeSex title:@"性别" icon:nil];
             item.details = @"性别";
             item.Textdetails=self.lawyerModel.gender;
             [group.items addObject:item];

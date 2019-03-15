@@ -28,6 +28,7 @@
 #import "Mine_AuthLogic.h"
 #import "Mine_addressViewController.h"
 #import "Mine_StatusViewController.h"
+#import "SexTableViewCell.h"
 
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
@@ -122,6 +123,7 @@
     [self.tableView registerClass:[IdCardTableViewCell class] forCellReuseIdentifier:@"IdCardTableViewCell"];
     [self.tableView registerClass:[LawyerAuthenticationTableViewCell class] forCellReuseIdentifier:@"LawyerAuthenticationTableViewCell"];
     [self.tableView registerClass:[authBaseTableViewCell class] forCellReuseIdentifier:@"authBaseTableViewCell"];
+    [self.tableView registerClass:[SexTableViewCell class] forCellReuseIdentifier:@"SexTableViewCell"];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -201,6 +203,42 @@
             if (item.Textdetails) {
                 personCell.personText.text=item.Textdetails;
             }
+        }
+            break;
+            
+        case DSSettingItemTypeSex:{
+            cell=[tableView dequeueReusableCellWithIdentifier:@"SexTableViewCell"];
+            SexTableViewCell*sexCell=(SexTableViewCell*)cell;
+            sexCell.titleLbl.text=item.title;
+            [sexCell.manBtn bk_whenTapped:^{
+                sexCell.manBtn.selected=YES;
+                sexCell.womenBtn.selected=NO;
+                self.authLogic.gender=@"男";
+            }];
+            [sexCell.womenBtn bk_whenTapped:^{
+                sexCell.manBtn.selected=NO;
+                sexCell.womenBtn.selected=YES;
+                self.authLogic.gender=@"女";
+            }];
+            switch (help_userManager.userStatus) {
+                case CERTIFIED:{
+                    if ([self.lawyerModel.gender isEqualToString:@"男"]) {
+                        sexCell.manBtn.selected=YES;
+                        sexCell.womenBtn.selected=NO;
+                    }
+                    else{
+                        sexCell.manBtn.selected=NO;
+                        sexCell.womenBtn.selected=YES;
+                    }
+                    
+                    break;
+                }
+                default:{
+                    
+                }
+                    break;
+            }
+            
         }
             break;
         case  DSSettingItemTypeDetial:{
@@ -846,7 +884,7 @@
             
         }
         {
-            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"性别" icon:nil];
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeSex title:@"性别" icon:nil];
             item.details = @"性别";
             item.Textdetails=self.lawyerModel.gender;
             [group.items addObject:item];
