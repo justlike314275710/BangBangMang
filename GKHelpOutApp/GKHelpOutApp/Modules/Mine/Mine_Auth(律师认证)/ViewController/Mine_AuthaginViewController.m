@@ -27,6 +27,7 @@
 #import "BRPickerView.h"
 #import "Mine_AuthLogic.h"
 #import "Mine_addressViewController.h"
+#import "Mine_StatusViewController.h"
 
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
@@ -478,6 +479,7 @@
 -(void)postLawyerCertification{
     [self.authLogic postCertificationData:^(id data) {
         [PSTipsView showTips:@"提交律师认证成功!"];
+        [self.navigationController pushViewController:[[Mine_StatusViewController alloc]init] animated:YES];
     } failed:^(NSError *error) {
         [PSTipsView showTips:@"提交律师认证失败!"];
     }];
