@@ -98,7 +98,7 @@
 
 
 -(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
-    //    NSLog(@"选中 %ld",tabBarController.selectedIndex);
+      [[NSNotificationCenter defaultCenter] postNotificationName:KNotificationOrderStateChange object:nil];
     
 }
 
