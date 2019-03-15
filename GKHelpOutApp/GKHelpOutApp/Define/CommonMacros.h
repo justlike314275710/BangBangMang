@@ -43,6 +43,13 @@
 
 #define AppScheme @"gkytHelpApp"
 
+
+#pragma mark - ——————— 订单状态相关 ————————
+//新的订单
+#define KNotificationNewOrderState @"KNotificationNewOrderState"
+//订单状态改变
+#define KNotificationOrderStateChange @"KNotificationOrderStateChange"
+
 #pragma mark - ——————— 网络状态相关 ————————
 
 //网络状态变化

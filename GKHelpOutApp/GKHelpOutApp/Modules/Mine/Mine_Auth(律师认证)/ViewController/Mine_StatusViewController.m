@@ -9,6 +9,7 @@
 #import "Mine_StatusViewController.h"
 #import "Mine_AuthViewController.h"
 #import "Mine_AuthLogic.h"
+#import "Mine_ExpViewController.h"
 @interface Mine_StatusViewController ()
 @property (nonatomic , strong) UIImageView *backImageView;
 @property (nonatomic , strong) UILabel *titleLable;
@@ -22,12 +23,13 @@
     [super viewWillAppear:YES];
     [self refreshData];
 }
-
+- (void)backBtnClicked{
+    [self.navigationController popToViewController:[[Mine_ExpViewController alloc]init] animated:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-   //[self renderContents];
+   [self renderContents];
     self.title=@"资格认证";
     // Do any additional setup after loading the view.
 }
@@ -148,6 +150,7 @@
         [self.navigationController pushViewController:[[Mine_AuthViewController alloc]init] animated:YES];
     }];
 }
+
 
 
 
