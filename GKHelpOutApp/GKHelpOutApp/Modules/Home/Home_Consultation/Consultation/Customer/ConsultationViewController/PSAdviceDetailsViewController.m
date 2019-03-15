@@ -113,6 +113,7 @@
     [viewModel deleteConsultationCompleted:^(PSResponse *response) {
         [[PSLoadingView sharedInstance]dismiss];
         [PSTipsView showTips:@"删除订单成功"];
+        KPostNotification(KNotificationOrderStateChange, nil);
         [self.navigationController popViewControllerAnimated:YES];
     } failed:^(NSError *error) {
         [[PSLoadingView sharedInstance]dismiss];
@@ -125,6 +126,7 @@
      PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
     [viewModel cancelConsultationCompleted:^(PSResponse *response) {
         [[PSLoadingView sharedInstance]dismiss];
+         KPostNotification(KNotificationOrderStateChange, nil);
         [PSTipsView showTips:@"取消订单成功"];
         [self.navigationController popViewControllerAnimated:YES];
     } failed:^(NSError *error) {

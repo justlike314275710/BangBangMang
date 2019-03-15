@@ -33,6 +33,7 @@
     self.title = @"我的咨询";
 //    [self addNavigationItemWithImageNames:@[@"会话icon－红点"] isLeft:NO target:self action:@selector(rightAction) tags:@[@2000]];
     [self setupUI];
+
     
     
 }
