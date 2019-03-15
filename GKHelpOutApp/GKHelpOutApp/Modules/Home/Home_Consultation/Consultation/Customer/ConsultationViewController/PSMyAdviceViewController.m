@@ -125,11 +125,14 @@
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshData) name:KNotificationOrderStateChange object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(refreshData)
-                                                 name:KNotificationOrderStateChange
-                                               object:nil];
+    
 
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:KNotificationOrderStateChange object:nil];
+    
 }
 
 #pragma mark - UITableViewDataSource
