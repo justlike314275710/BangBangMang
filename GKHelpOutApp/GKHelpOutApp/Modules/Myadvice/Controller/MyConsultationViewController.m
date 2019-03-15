@@ -57,13 +57,13 @@
     [self.topSelectVcView addSubview:self.iconImg2];
     self.iconImg2.frame = CGRectMake(40+KScreenWidth/2,(50-13)/2, 13, 13);
     //fix
-    UIButton *btn = [UIButton new];
-    btn.frame = CGRectMake(KScreenWidth/2,14,KScreenHeight/2,50);
-    [self.view addSubview:btn];
-    btn.backgroundColor= KClearColor;
-    [btn addTapBlock:^(UIButton *btn) {
-         [PSTipsView showTips:Hmsg_Comingsoon];
-    }];
+//    UIButton *btn = [UIButton new];
+//    btn.frame = CGRectMake(KScreenWidth/2,14,KScreenHeight/2,50);
+//    [self.view addSubview:btn];
+//    btn.backgroundColor= KClearColor;
+//    [btn addTapBlock:^(UIButton *btn) {
+//         [PSTipsView showTips:Hmsg_Comingsoon];
+//    }];
 
 }
 
