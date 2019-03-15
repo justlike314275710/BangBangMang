@@ -148,10 +148,10 @@
 -(void)chatAtion{
      PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
     [viewModel GETProcessedCompleted:^(id data) {
-        [PSTipsView showTips:@"通话完成!"];
+        [PSTipsView showTips:@"模拟通话完成!"];
         [self refreshData];
     } failed:^(NSError *error) {
-         [PSTipsView showTips:@"通话失败!"];
+         [PSTipsView showTips:@"模拟通话失败!"];
     }];
     /*
     //viewModel.chatMessageAccount
@@ -504,7 +504,7 @@
         
         UIButton*payButton=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
         [payButton setBackgroundColor:AppBaseTextColor3];
-        [payButton setTitle:@"支付费用" forState:0];
+        [payButton setTitle:@"立即支付" forState:0];
         payButton.titleLabel.font=FontOfSize(14);
         payButton.layer.masksToBounds = YES;
         payButton.layer.cornerRadius = 4.0;

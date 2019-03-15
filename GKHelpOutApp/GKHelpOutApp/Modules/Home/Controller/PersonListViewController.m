@@ -158,8 +158,10 @@
         case APPROVAL_FAILURE:
             [self p_pushMoreService];
             break;
-        default:
+        case CERTIFIED:
             [self p_pushLawyerGrab];
+            break;
+        default:
             break;
     }
     

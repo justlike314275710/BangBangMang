@@ -263,10 +263,6 @@
 		EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB4F221FCEE2007D3445 /* NSObject+version.m */; };
 		EA21CB54221FD337007D3445 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CB53221FD337007D3445 /* CoreMotion.framework */; };
 		EA78F6CD221FFECB002D788A /* UploadAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */; };
-		EA78F6D12223D34C002D788A /* LawyerCertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */; };
-		EA78F6E72225161F002D788A /* DSSettingDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6E22225161E002D788A /* DSSettingDataSource.m */; };
-		EA78F6E82225161F002D788A /* DSSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6E32225161E002D788A /* DSSettingItem.m */; };
-		EA78F6E92225161F002D788A /* DSSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6E42225161E002D788A /* DSSettingCell.m */; };
 		EA78F70A22263761002D788A /* Mine_AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F70922263761002D788A /* Mine_AuthViewController.m */; };
 		EA78F72122263DA8002D788A /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F71722263DA7002D788A /* PersonTableViewCell.m */; };
 		EA78F72222263DA8002D788A /* BaseLawyerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F71822263DA7002D788A /* BaseLawyerTableViewCell.m */; };
@@ -469,6 +465,9 @@
 		EAE19EA12235FDD80080B0F5 /* LawyerAdviceDetalisVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */; };
 		EAE19EA42235FFBB0080B0F5 /* headerDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA32235FFBB0080B0F5 /* headerDetailsView.m */; };
 		EAE19EAA22374A760080B0F5 /* Mine_AuthaginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EA922374A760080B0F5 /* Mine_AuthaginViewController.m */; };
+		EAE19EB3223B32E00080B0F5 /* DSSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EAC223B32DC0080B0F5 /* DSSettingCell.m */; };
+		EAE19EB4223B32E00080B0F5 /* DSSettingDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EAD223B32DD0080B0F5 /* DSSettingDataSource.m */; };
+		EAE19EB5223B32E00080B0F5 /* DSSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE19EB1223B32DF0080B0F5 /* DSSettingItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -976,15 +975,6 @@
 		EA3E7CFC221FE76700D60C6A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EA78F6CB221FFECA002D788A /* UploadAvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAvatarViewController.h; sourceTree = "<group>"; };
 		EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAvatarViewController.m; sourceTree = "<group>"; };
-		EA78F6CF2223D34C002D788A /* LawyerCertificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LawyerCertificationViewController.h; sourceTree = "<group>"; };
-		EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawyerCertificationViewController.m; sourceTree = "<group>"; };
-		EA78F6E02225161E002D788A /* DSSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSettingCell.h; sourceTree = "<group>"; };
-		EA78F6E12225161E002D788A /* DSSettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSettingItem.h; sourceTree = "<group>"; };
-		EA78F6E22225161E002D788A /* DSSettingDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSettingDataSource.m; sourceTree = "<group>"; };
-		EA78F6E32225161E002D788A /* DSSettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSettingItem.m; sourceTree = "<group>"; };
-		EA78F6E42225161E002D788A /* DSSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSettingCell.m; sourceTree = "<group>"; };
-		EA78F6E52225161E002D788A /* DSSettingDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSettingDataSource.h; sourceTree = "<group>"; };
-		EA78F6E62225161E002D788A /* DSSettingCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSettingCellProtocol.h; sourceTree = "<group>"; };
 		EA78F70822263761002D788A /* Mine_AuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_AuthViewController.h; sourceTree = "<group>"; };
 		EA78F70922263761002D788A /* Mine_AuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_AuthViewController.m; sourceTree = "<group>"; };
 		EA78F71522263DA7002D788A /* AssessmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentTableViewCell.h; sourceTree = "<group>"; };
@@ -1400,6 +1390,13 @@
 		EAE19EA32235FFBB0080B0F5 /* headerDetailsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = headerDetailsView.m; sourceTree = "<group>"; };
 		EAE19EA822374A760080B0F5 /* Mine_AuthaginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_AuthaginViewController.h; sourceTree = "<group>"; };
 		EAE19EA922374A760080B0F5 /* Mine_AuthaginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_AuthaginViewController.m; sourceTree = "<group>"; };
+		EAE19EAC223B32DC0080B0F5 /* DSSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSettingCell.m; sourceTree = "<group>"; };
+		EAE19EAD223B32DD0080B0F5 /* DSSettingDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSettingDataSource.m; sourceTree = "<group>"; };
+		EAE19EAE223B32DE0080B0F5 /* DSSettingCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSettingCellProtocol.h; sourceTree = "<group>"; };
+		EAE19EAF223B32DE0080B0F5 /* DSSettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSettingItem.h; sourceTree = "<group>"; };
+		EAE19EB0223B32DF0080B0F5 /* DSSettingDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSettingDataSource.h; sourceTree = "<group>"; };
+		EAE19EB1223B32DF0080B0F5 /* DSSettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSettingItem.m; sourceTree = "<group>"; };
+		EAE19EB2223B32E00080B0F5 /* DSSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSettingCell.h; sourceTree = "<group>"; };
 		F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GKHelpOutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2781,23 +2778,8 @@
 			isa = PBXGroup;
 			children = (
 				EAE19E812230B06F0080B0F5 /* LawyerGrab(律师抢单) */,
-				EAE19E802230B0490080B0F5 /* LawyerCer(律师认证) */,
 			);
 			path = Home_Lawyer;
-			sourceTree = "<group>";
-		};
-		EA78F6DF2225161E002D788A /* DSSettingDataSource */ = {
-			isa = PBXGroup;
-			children = (
-				EA78F6E02225161E002D788A /* DSSettingCell.h */,
-				EA78F6E12225161E002D788A /* DSSettingItem.h */,
-				EA78F6E22225161E002D788A /* DSSettingDataSource.m */,
-				EA78F6E32225161E002D788A /* DSSettingItem.m */,
-				EA78F6E42225161E002D788A /* DSSettingCell.m */,
-				EA78F6E52225161E002D788A /* DSSettingDataSource.h */,
-				EA78F6E62225161E002D788A /* DSSettingCellProtocol.h */,
-			);
-			path = DSSettingDataSource;
 			sourceTree = "<group>";
 		};
 		EA78F70722263719002D788A /* Mine_Auth(律师认证) */ = {
@@ -2835,6 +2817,13 @@
 		EA78F72A22265B37002D788A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EAE19EB2223B32E00080B0F5 /* DSSettingCell.h */,
+				EAE19EAC223B32DC0080B0F5 /* DSSettingCell.m */,
+				EAE19EAE223B32DE0080B0F5 /* DSSettingCellProtocol.h */,
+				EAE19EB0223B32DF0080B0F5 /* DSSettingDataSource.h */,
+				EAE19EAD223B32DD0080B0F5 /* DSSettingDataSource.m */,
+				EAE19EAF223B32DE0080B0F5 /* DSSettingItem.h */,
+				EAE19EB1223B32DF0080B0F5 /* DSSettingItem.m */,
 				EAE19E6D222E0E770080B0F5 /* dashedTextview.h */,
 				EAE19E6E222E0E770080B0F5 /* dashedTextview.m */,
 				EA78F7432227E0EE002D788A /* PSFamilyTableViewCell.h */,
@@ -3678,16 +3667,6 @@
 			path = Viewcontroller;
 			sourceTree = "<group>";
 		};
-		EAE19E802230B0490080B0F5 /* LawyerCer(律师认证) */ = {
-			isa = PBXGroup;
-			children = (
-				EA78F6CF2223D34C002D788A /* LawyerCertificationViewController.h */,
-				EA78F6D02223D34C002D788A /* LawyerCertificationViewController.m */,
-				EA78F6DF2225161E002D788A /* DSSettingDataSource */,
-			);
-			path = "LawyerCer(律师认证)";
-			sourceTree = "<group>";
-		};
 		EAE19E812230B06F0080B0F5 /* LawyerGrab(律师抢单) */ = {
 			isa = PBXGroup;
 			children = (
@@ -4207,7 +4186,6 @@
 				5557A651221BD99E00743012 /* TagsViewController.m in Sources */,
 				EAB039BD221E8FF200331569 /* common.c in Sources */,
 				EAB0393A221E817C00331569 /* NIMKit.m in Sources */,
-				EA78F6E72225161F002D788A /* DSSettingDataSource.m in Sources */,
 				5524C697222515DC0067F437 /* MyConsultationViewController.m in Sources */,
 				55C0C76F222CFA9300CD2459 /* LLActionSheetView.m in Sources */,
 				5557A562221BD84000743012 /* ShareManager.m in Sources */,
@@ -4294,6 +4272,7 @@
 				5557A610221BD96500743012 /* ProfileViewController.m in Sources */,
 				EAB038D7221E817B00331569 /* NIMInputEmoticonTabView.m in Sources */,
 				5557A5FE221BD96500743012 /* MakeFriendsLogic.m in Sources */,
+				EAE19EB3223B32E00080B0F5 /* DSSettingCell.m in Sources */,
 				5557A605221BD96500743012 /* CardView.m in Sources */,
 				EAB038CB221E817B00331569 /* NIMKitTimerHolder.m in Sources */,
 				5557A555221BD7F500743012 /* OpenUDID.m in Sources */,
@@ -4319,6 +4298,7 @@
 				EA21CB1D221FA2C9007D3445 /* PSPhoneCardViewModel.m in Sources */,
 				EA78F73A222783F3002D788A /* WWWaveProgressView.m in Sources */,
 				EAB038C1221E817B00331569 /* NIMContactSelectViewController.m in Sources */,
+				EAE19EB4223B32E00080B0F5 /* DSSettingDataSource.m in Sources */,
 				EAB03906221E817B00331569 /* NIMVideoContentConfig.m in Sources */,
 				EA21CA4B221F9386007D3445 /* PSAliHandler.m in Sources */,
 				EAB038E8221E817B00331569 /* NIMLoadProgressView.m in Sources */,
@@ -4335,7 +4315,6 @@
 				551AF6BA223119B2006AB1A0 /* NSString+JsonString.m in Sources */,
 				5597854B22264326007BBCC2 /* PSSorageViewModel.m in Sources */,
 				5597855822265CB2007BBCC2 /* PSFWriteFeedSuccessViewController.m in Sources */,
-				EA78F6E92225161F002D788A /* DSSettingCell.m in Sources */,
 				552924F82237417900B4899A /* HMActionSheetView.m in Sources */,
 				EAB03904221E817B00331569 /* NIMFileContentConfig.m in Sources */,
 				EAB03921221E817B00331569 /* NIMSessionImageContentView.m in Sources */,
@@ -4351,7 +4330,6 @@
 				559218DD2226813F00A5C655 /* ModifyDataViewController.m in Sources */,
 				5557A4C8221BD09200743012 /* main.m in Sources */,
 				555C118F222E702E00132E4F /* LawUserInfo.m in Sources */,
-				EA78F6E82225161F002D788A /* DSSettingItem.m in Sources */,
 				558BBBD12236389B00CF1122 /* RMTimer.m in Sources */,
 				559785A922266158007BBCC2 /* FeedLoadItemView.m in Sources */,
 				EAB03951221E8EE000331569 /* PSAlertView.m in Sources */,
@@ -4410,7 +4388,6 @@
 				5557A614221BD96500743012 /* MineTableViewCell.m in Sources */,
 				5557A501221BD76300743012 /* RootNavigationController.m in Sources */,
 				EAE19E78222F64DA0080B0F5 /* CustomButton.m in Sources */,
-				EA78F6D12223D34C002D788A /* LawyerCertificationViewController.m in Sources */,
 				EA78F733222770AF002D788A /* Mine_AuthLogic.m in Sources */,
 				EA21CA4A221F9386007D3445 /* PSWechatHandler.m in Sources */,
 				EAB038CD221E817B00331569 /* NIMKitRobotDefaultTemplateParser.m in Sources */,
@@ -4433,6 +4410,7 @@
 				EA78F72322263DA8002D788A /* AssessmentTableViewCell.m in Sources */,
 				EA21CABB221F9EFD007D3445 /* PSLoadingView.m in Sources */,
 				5557A546221BD7F500743012 /* AdPageView.m in Sources */,
+				EAE19EB5223B32E00080B0F5 /* DSSettingItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -98,9 +98,19 @@ SINGLETON_FOR_CLASS(IMManager);
         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
             make.style = 11;
             make.content = @"您有一笔新的订单!";
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNotificationNewOrderState object:nil];
         }];
         [banner show];
-    } else {
+    }
+    else if ([dic[@"type"] isEqualToString:@"NOTIFICATION_LEGAL_ADVICE"]){
+        [[NSNotificationCenter defaultCenter] postNotificationName:KNotificationOrderStateChange object:nil];
+        EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+            make.style = 11;
+            make.content = dic[@"content"];
+        }];
+        [banner show];
+    }
+    else {
         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
             make.style = 11;
             make.content = dic[@"content"];

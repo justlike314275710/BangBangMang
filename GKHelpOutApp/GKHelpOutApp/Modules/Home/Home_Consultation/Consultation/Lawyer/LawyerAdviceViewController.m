@@ -37,9 +37,28 @@
     [self renderContents];
     [self refreshData];
     [self SDWebImageAuth];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData)
+                                                 name:KNotificationNewOrderState
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData)
+                                                 name:KNotificationOrderStateChange
+                                               object:nil];
 }
 
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:KNotificationNewOrderState
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:KNotificationOrderStateChange
+                                                  object:nil];
+}
 
 
 - (void)loadMore {

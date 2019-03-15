@@ -281,7 +281,7 @@
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager DELETE:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
-        if (responses.statusCode==204) {
+        if (responses.statusCode==204||responses.statusCode==201) {
             if (completedCallback) {
                 completedCallback(responseObject);
             }
