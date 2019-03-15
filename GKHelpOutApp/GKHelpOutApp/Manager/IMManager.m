@@ -98,7 +98,7 @@ SINGLETON_FOR_CLASS(IMManager);
         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
             make.style = 11;
             make.content = @"您有一笔新的订单!";
-            [[NSNotificationCenter defaultCenter] postNotificationName:KNotificationNewOrderState object:nil];
+
         }];
         [banner show];
     }
