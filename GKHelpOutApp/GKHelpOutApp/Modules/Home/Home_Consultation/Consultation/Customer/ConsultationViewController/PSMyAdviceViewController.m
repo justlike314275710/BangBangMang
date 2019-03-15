@@ -113,7 +113,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
-   // [self refreshData];
+   
     
 }
 
@@ -122,10 +122,14 @@
     // Do any additional setup after loading the view.
     [self renderContents];
     [self refreshData];
+
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshData) name:KNotificationOrderStateChange object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshData)
                                                  name:KNotificationOrderStateChange
                                                object:nil];
+
 }
 
 #pragma mark - UITableViewDataSource

@@ -24,7 +24,14 @@
     [self refreshData];
 }
 - (void)backBtnClicked{
-    [self.navigationController popToViewController:[[Mine_ExpViewController alloc]init] animated:YES];
+   // [self.navigationController popToViewController:[[Mine_ExpViewController alloc]init] animated:YES];
+   // [self.navigationController popToRootViewControllerAnimated:YES];
+    for (UIViewController*viewController in self.navigationController.viewControllers) {
+        if ([viewController isKindOfClass:[Mine_ExpViewController class]]) {
+            Mine_ExpViewController*vc=(Mine_ExpViewController*)viewController;
+            [self.navigationController popToViewController:vc animated:YES];
+        }
+    }
 }
 
 - (void)viewDidLoad {
