@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Manager/PayManager/Pay/PSPayCenter.m"
-            timestampString = "574156086.09483"
+            timestampString = "574564164.480324"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-onResp:"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,60 +442,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Home/Home_Consultation/Consultation/Customer/ConsultationViewController/PSAdviceDetailsViewController.m"
-            timestampString = "574316921.05352"
+            timestampString = "574564164.480832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "651"
             endingLineNumber = "651"
             landmarkName = "-p_statusUI:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[PSAdviceDetailsViewController p_statusUI:]"
-                  moduleName = "GKHelpOutApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Home/Home_Consultation/Consultation/Customer/ConsultationViewController/PSAdviceDetailsViewController.m"
-                  timestampString = "574316921.7266639"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "651"
-                  endingLineNumber = "651"
-                  offsetFromSymbolStart = "11072">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__44-[PSAdviceDetailsViewController p_statusUI:]_block_invoke.614"
-                  moduleName = "GKHelpOutApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Home/Home_Consultation/Consultation/Customer/ConsultationViewController/PSAdviceDetailsViewController.m"
-                  timestampString = "574316921.72834"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "651"
-                  endingLineNumber = "651"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.626"
-                  moduleName = "GKHelpOutApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Home/Home_Consultation/Consultation/Customer/ConsultationViewController/PSAdviceDetailsViewController.m"
-                  timestampString = "574316921.730003"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "651"
-                  endingLineNumber = "651"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -528,38 +481,6 @@
             endingLineNumber = "115"
             landmarkName = "-actionOfLeftItem:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__50-[PSWriteFeedbackViewController actionOfLeftItem:]_block_invoke"
-                  moduleName = "GKHelpOutApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Mine/Mine_Feedback(%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88)/PSWriteFeedbackViewController.m"
-                  timestampString = "574316921.739765"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__50-[PSWriteFeedbackViewController actionOfLeftItem:]_block_invoke_2"
-                  moduleName = "GKHelpOutApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Mine/Mine_Feedback(%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88)/PSWriteFeedbackViewController.m"
-                  timestampString = "574316921.741415"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -650,83 +571,6 @@
             endingLineNumber = "92"
             landmarkName = "-getComments"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__36-[LawyerAdviceDetalisVC refreshData]_block_invoke"
-                  moduleName = "GKHelpOutApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Home/Home_Consultation/Consultation/Lawyer/LawyerAdviceDetalisVC.m"
-                  timestampString = "574316921.766055"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "208">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__36-[LawyerAdviceDetalisVC refreshData]_block_invoke_2"
-                  moduleName = "GKHelpOutApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Home/Home_Consultation/Consultation/Lawyer/LawyerAdviceDetalisVC.m"
-                  timestampString = "574316921.76772"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "228">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.80"
-                  moduleName = "GKHelpOutApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Home/Home_Consultation/Consultation/Lawyer/LawyerAdviceDetalisVC.m"
-                  timestampString = "574316921.769385"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "83"
-                  endingLineNumber = "83"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__36-[LawyerAdviceDetalisVC refreshData]_block_invoke.83"
-                  moduleName = "GKHelpOutApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Home/Home_Consultation/Consultation/Lawyer/LawyerAdviceDetalisVC.m"
-                  timestampString = "574316921.771045"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.85"
-                  moduleName = "GKHelpOutApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Home/Home_Consultation/Consultation/Lawyer/LawyerAdviceDetalisVC.m"
-                  timestampString = "574316921.772689"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

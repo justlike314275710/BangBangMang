@@ -48,9 +48,10 @@
     //判断微信是否安装
     if ([self.payInfo.payment isEqualToString:@"WEIXIN"]) {
         BOOL Installed = [WXApi isWXAppInstalled];
+       // if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]){
         if (!Installed) {
             if (self.payCallback) {
-                NSString *error_msg = NSLocalizedString(@"weChat not installed", @"微信未安装");
+                NSString *error_msg =  @"微信未安装";
                 NSError *error = [NSError errorWithDomain:error_msg code:102 userInfo:nil];
                 self.payCallback(NO,error);
                 return;

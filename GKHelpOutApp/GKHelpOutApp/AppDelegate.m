@@ -5,7 +5,7 @@
 //  Created by kky on 2019/2/19.
 //  Copyright © 2019年 kky. All rights reserved.
 //
-
+#import "WXApi.h"
 #import "AppDelegate.h"
 #import <AlipaySDK/AlipaySDK.h>
 @interface AppDelegate ()
@@ -33,8 +33,11 @@
     //网络监听
     [self monitorNetworkStatus];
     
+    [self registerThirdParty];
+    
     //广告页
 //    [AppManager appStart];
+    //[WXApi registerApp:@"wx21aed62551567801"];
     return YES;
     
 }
