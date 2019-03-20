@@ -1483,18 +1483,6 @@
 			path = "心理咨询";
 			sourceTree = "<group>";
 		};
-		5524C68622250F090067F437 /* 法律咨询 */ = {
-			isa = PBXGroup;
-			children = (
-				5524C69C22251D910067F437 /* view */,
-				5524C69A22251D750067F437 /* logic */,
-				5524C69922251D6A0067F437 /* model */,
-				5524C68722250F380067F437 /* LegaladviceViewController.h */,
-				5524C68822250F380067F437 /* LegaladviceViewController.m */,
-			);
-			path = "法律咨询";
-			sourceTree = "<group>";
-		};
 		5524C68D2225103B0067F437 /* ZWTopSelectVcView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1504,29 +1492,6 @@
 				5524C6902225106B0067F437 /* ZWTopSelectVcView.m */,
 			);
 			path = ZWTopSelectVcView;
-			sourceTree = "<group>";
-		};
-		5524C69922251D6A0067F437 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		5524C69A22251D750067F437 /* logic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = logic;
-			sourceTree = "<group>";
-		};
-		5524C69C22251D910067F437 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				5524C69D22251DC90067F437 /* LegalAdviceCell.h */,
-				5524C69E22251DC90067F437 /* LegalAdviceCell.m */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		552924F92237A98C00B4899A /* WXZtipView */ = {
@@ -2252,8 +2217,7 @@
 		5557A5D1221BD96500743012 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				EA78F6CE2223D2B4002D788A /* Home_Lawyer */,
-				EA21CA4D221F995C007D3445 /* Home_Consultation */,
+				EA7EA740223F352200144281 /* Other */,
 				5557A5D2221BD96500743012 /* Logic */,
 				5557A5D7221BD96500743012 /* Controller */,
 				5557A5E0221BD96500743012 /* Model */,
@@ -2280,14 +2244,10 @@
 		5557A5D7221BD96500743012 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CA4D221F995C007D3445 /* Home_Customer */,
+				EA78F6CE2223D2B4002D788A /* Home_Lawyer */,
 				5557A5DE221BD96500743012 /* PersonListViewController.h */,
 				5557A5DB221BD96500743012 /* PersonListViewController.m */,
-				5557A5D9221BD96500743012 /* SecondViewController.h */,
-				5557A5DD221BD96500743012 /* SecondViewController.m */,
-				5557A5DA221BD96500743012 /* WaterFallListViewController.h */,
-				5557A5DF221BD96500743012 /* WaterFallListViewController.m */,
-				5557A5DC221BD96500743012 /* HomeViewController.h */,
-				5557A5D8221BD96500743012 /* HomeViewController.m */,
 				55C0C77D222D238000CD2459 /* HMMessageViewController.h */,
 				55C0C77E222D238000CD2459 /* HMMessageViewController.m */,
 			);
@@ -2365,9 +2325,6 @@
 			children = (
 				5557A63D221BD99E00743012 /* ToolDemoViewController.h */,
 				5557A642221BD99E00743012 /* ToolDemoViewController.m */,
-				5524C695222515DC0067F437 /* MyConsultationViewController.h */,
-				5524C696222515DC0067F437 /* MyConsultationViewController.m */,
-				5524C68622250F090067F437 /* 法律咨询 */,
 				5524C68522250EF60067F437 /* 心理咨询 */,
 				5557A63E221BD99E00743012 /* TagsViewController.h */,
 				5557A639221BD99E00743012 /* TagsViewController.m */,
@@ -2580,19 +2537,18 @@
 			path = PayHandler;
 			sourceTree = "<group>";
 		};
-		EA21CA4D221F995C007D3445 /* Home_Consultation */ = {
+		EA21CA4D221F995C007D3445 /* Home_Customer */ = {
 			isa = PBXGroup;
 			children = (
-				EA21CA8B221F9A21007D3445 /* more */,
+				EA21CA8B221F9A21007D3445 /* more(类型选择) */,
 				EA21CA4E221F9980007D3445 /* Consultation */,
 			);
-			path = Home_Consultation;
+			path = Home_Customer;
 			sourceTree = "<group>";
 		};
 		EA21CA4E221F9980007D3445 /* Consultation */ = {
 			isa = PBXGroup;
 			children = (
-				EAE19E97223112D50080B0F5 /* Lawyer */,
 				EAE19E952231127C0080B0F5 /* Customer */,
 			);
 			path = Consultation;
@@ -2653,7 +2609,7 @@
 			path = ConsultationModel;
 			sourceTree = "<group>";
 		};
-		EA21CA8B221F9A21007D3445 /* more */ = {
+		EA21CA8B221F9A21007D3445 /* more(类型选择) */ = {
 			isa = PBXGroup;
 			children = (
 				EA21CA8C221F9A21007D3445 /* ViewModel */,
@@ -2661,7 +2617,7 @@
 				EA21CA96221F9A21007D3445 /* Model */,
 				EA21CA99221F9A21007D3445 /* View */,
 			);
-			path = more;
+			path = "more(类型选择)";
 			sourceTree = "<group>";
 		};
 		EA21CA8C221F9A21007D3445 /* ViewModel */ = {
@@ -2780,6 +2736,7 @@
 		EA78F6CE2223D2B4002D788A /* Home_Lawyer */ = {
 			isa = PBXGroup;
 			children = (
+				EA7EA741223F35A200144281 /* MyLawyer(已抢订单) */,
 				EAE19E812230B06F0080B0F5 /* LawyerGrab(律师抢单) */,
 			);
 			path = Home_Lawyer;
@@ -2888,6 +2845,54 @@
 				EA78F738222783F3002D788A /* WWWaveProgressView.m */,
 			);
 			path = Waves;
+			sourceTree = "<group>";
+		};
+		EA7EA740223F352200144281 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5557A5DC221BD96500743012 /* HomeViewController.h */,
+				5557A5D8221BD96500743012 /* HomeViewController.m */,
+				5557A5D9221BD96500743012 /* SecondViewController.h */,
+				5557A5DD221BD96500743012 /* SecondViewController.m */,
+				5557A5DA221BD96500743012 /* WaterFallListViewController.h */,
+				5557A5DF221BD96500743012 /* WaterFallListViewController.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		EA7EA741223F35A200144281 /* MyLawyer(已抢订单) */ = {
+			isa = PBXGroup;
+			children = (
+				EA7EA743223F36CE00144281 /* ViewController */,
+				EA7EA742223F35F800144281 /* View */,
+			);
+			path = "MyLawyer(已抢订单)";
+			sourceTree = "<group>";
+		};
+		EA7EA742223F35F800144281 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EAE19E99223114320080B0F5 /* LawyerAdviceTableViewCell.h */,
+				EAE19E9A223114320080B0F5 /* LawyerAdviceTableViewCell.m */,
+				EAE19EA22235FFBB0080B0F5 /* headerDetailsView.h */,
+				EAE19EA32235FFBB0080B0F5 /* headerDetailsView.m */,
+				5524C69D22251DC90067F437 /* LegalAdviceCell.h */,
+				5524C69E22251DC90067F437 /* LegalAdviceCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EA7EA743223F36CE00144281 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EAE19E92223110920080B0F5 /* LawyerAdviceViewController.h */,
+				EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */,
+				EAE19E9F2235FDD80080B0F5 /* LawyerAdviceDetalisVC.h */,
+				EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */,
+				5524C695222515DC0067F437 /* MyConsultationViewController.h */,
+				5524C696222515DC0067F437 /* MyConsultationViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		EAB03786221E817A00331569 /* NIMAVChat */ = {
@@ -3735,6 +3740,8 @@
 		EAE19E96223112AD0080B0F5 /* ConsultationViewController */ = {
 			isa = PBXGroup;
 			children = (
+				5524C68722250F380067F437 /* LegaladviceViewController.h */,
+				5524C68822250F380067F437 /* LegaladviceViewController.m */,
 				EA21CA4F221F9980007D3445 /* PSScoreViewController.h */,
 				EA21CA50221F9980007D3445 /* PSConsultationViewController.h */,
 				EA21CA58221F9980007D3445 /* PSAdviceDetailsViewController.h */,
@@ -3745,29 +3752,6 @@
 				EA21CA77221F9980007D3445 /* PSMyAdviceViewController.h */,
 			);
 			path = ConsultationViewController;
-			sourceTree = "<group>";
-		};
-		EAE19E97223112D50080B0F5 /* Lawyer */ = {
-			isa = PBXGroup;
-			children = (
-				EAE19E98223114050080B0F5 /* View */,
-				EAE19E92223110920080B0F5 /* LawyerAdviceViewController.h */,
-				EAE19E93223110920080B0F5 /* LawyerAdviceViewController.m */,
-				EAE19E9F2235FDD80080B0F5 /* LawyerAdviceDetalisVC.h */,
-				EAE19EA02235FDD80080B0F5 /* LawyerAdviceDetalisVC.m */,
-			);
-			path = Lawyer;
-			sourceTree = "<group>";
-		};
-		EAE19E98223114050080B0F5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				EAE19E99223114320080B0F5 /* LawyerAdviceTableViewCell.h */,
-				EAE19E9A223114320080B0F5 /* LawyerAdviceTableViewCell.m */,
-				EAE19EA22235FFBB0080B0F5 /* headerDetailsView.h */,
-				EAE19EA32235FFBB0080B0F5 /* headerDetailsView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
