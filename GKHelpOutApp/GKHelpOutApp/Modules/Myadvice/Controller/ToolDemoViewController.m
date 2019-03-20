@@ -52,7 +52,7 @@
     
     
     
-    self.emitterArray = @[@"彩带",@"下雪",@"下雨",@"烟花"];
+    self.emitterArray = @[@"彩带",@"下雨",@"下雪",@"烟花"];
     
     NSDictionary *tags = @{@"titleText":@"01 - 标签选择",@"clickSelector":@"tagsView"};
     NSDictionary *webView = @{@"titleText":@"02 - 网页 带进度条",@"clickSelector":@"openWebView"};
@@ -241,8 +241,8 @@
             case 1://下雪
                 str = @"下雪";
                 break;
-            case 2://下雨
-                str = @"下雨";
+            case 2://下雪
+                str = @"下雪";
                 break;
             case 3://烟花
                 str = @"烟花";
