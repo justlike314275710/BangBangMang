@@ -29,7 +29,7 @@
             return [TLAddMenuItem createWithType:TLAddMneuTypeGroupChat title:LOCSTR(@"发起群聊") iconPath:@"nav_menu_groupchat" className:@""];
             break;
         case TLAddMneuTypeAddFriend:        // 添加好友
-            return [TLAddMenuItem createWithType:TLAddMneuTypeAddFriend title:LOCSTR(@"添加朋友") iconPath:@"nav_menu_addfriend" className:@"TLAddContactsViewController"];
+            return [TLAddMenuItem createWithType:TLAddMneuTypeAddFriend title:LOCSTR(@"添加朋友") iconPath:@"nav_menu_addfriend" className:@"NTESContactAddFriendViewController"];
             break;
         case TLAddMneuTypeWallet:           // 收付款
             return [TLAddMenuItem createWithType:TLAddMneuTypeWallet title:LOCSTR(@"收付款") iconPath:@"nav_menu_wallet" className:@""];

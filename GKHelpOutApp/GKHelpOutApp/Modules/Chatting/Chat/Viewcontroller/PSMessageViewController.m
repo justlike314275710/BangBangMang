@@ -8,6 +8,7 @@
 
 #import "PSMessageViewController.h"
 #import "TLAddMenuView.h"
+#import "NTESContactAddFriendViewController.h"
 @interface PSMessageViewController ()
 @property (nonatomic, strong) TLAddMenuView *addMenuView;
 @end
@@ -60,8 +61,10 @@
         [_addMenuView setItemSelectedAction:^(TLAddMenuView *addMenuView, TLAddMenuItem *item) {
             @strongify(self);
             if (item.className.length > 0) {
-                id vc = [[NSClassFromString(item.className) alloc] init];
-                PushVC(vc);
+//                id vc = [[NSClassFromString(item.className) alloc] init];
+//                PushVC(vc);
+               NTESContactAddFriendViewController*vc = [[NTESContactAddFriendViewController alloc] initWithNibName:nil bundle:nil];
+                [self.navigationController pushViewController:vc animated:YES];
             }
             else {
                 [PSAlertView showWithTitle:item.title message:@"功能暂未实现" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
