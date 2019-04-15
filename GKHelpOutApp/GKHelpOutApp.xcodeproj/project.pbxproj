@@ -264,6 +264,12 @@
 		EA21CB54221FD337007D3445 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CB53221FD337007D3445 /* CoreMotion.framework */; };
 		EA694ED3223B7EAE00EF821D /* SexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA694ED2223B7EAE00EF821D /* SexTableViewCell.m */; };
 		EA6CCBAD2264130200BB2A74 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */; };
+		EA6CCBB0226417E200BB2A74 /* PSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBAF226417E200BB2A74 /* PSMessageViewController.m */; };
+		EA6CCBB9226429F800BB2A74 /* AddMenu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6CCBB4226429F800BB2A74 /* AddMenu.xcassets */; };
+		EA6CCBBA226429F800BB2A74 /* TLAddMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBB6226429F800BB2A74 /* TLAddMenuItem.m */; };
+		EA6CCBBB226429F800BB2A74 /* TLAddMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBB7226429F800BB2A74 /* TLAddMenuCell.m */; };
+		EA6CCBBC226429F800BB2A74 /* TLAddMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBB8226429F800BB2A74 /* TLAddMenuView.m */; };
+		EA6CCBC022642D1900BB2A74 /* TLAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBBE22642D1900BB2A74 /* TLAppConfig.m */; };
 		EA78F6CD221FFECB002D788A /* UploadAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */; };
 		EA78F70A22263761002D788A /* Mine_AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F70922263761002D788A /* Mine_AuthViewController.m */; };
 		EA78F72122263DA8002D788A /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F71722263DA7002D788A /* PersonTableViewCell.m */; };
@@ -979,6 +985,18 @@
 		EA694ED2223B7EAE00EF821D /* SexTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SexTableViewCell.m; sourceTree = "<group>"; };
 		EA6CCBAB2264130200BB2A74 /* FriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		EA6CCBAE226417E200BB2A74 /* PSMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSMessageViewController.h; sourceTree = "<group>"; };
+		EA6CCBAF226417E200BB2A74 /* PSMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSMessageViewController.m; sourceTree = "<group>"; };
+		EA6CCBB2226429F800BB2A74 /* TLAddMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddMenuCell.h; sourceTree = "<group>"; };
+		EA6CCBB3226429F800BB2A74 /* TLAddMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddMenuItem.h; sourceTree = "<group>"; };
+		EA6CCBB4226429F800BB2A74 /* AddMenu.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AddMenu.xcassets; sourceTree = "<group>"; };
+		EA6CCBB5226429F800BB2A74 /* TLAddMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddMenuView.h; sourceTree = "<group>"; };
+		EA6CCBB6226429F800BB2A74 /* TLAddMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddMenuItem.m; sourceTree = "<group>"; };
+		EA6CCBB7226429F800BB2A74 /* TLAddMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddMenuCell.m; sourceTree = "<group>"; };
+		EA6CCBB8226429F800BB2A74 /* TLAddMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddMenuView.m; sourceTree = "<group>"; };
+		EA6CCBBE22642D1900BB2A74 /* TLAppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAppConfig.m; sourceTree = "<group>"; };
+		EA6CCBBF22642D1900BB2A74 /* TLAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAppConfig.h; sourceTree = "<group>"; };
+		EA6CCBC1226434C500BB2A74 /* ZZFLEX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZFLEX.h; sourceTree = "<group>"; };
 		EA78F6CB221FFECA002D788A /* UploadAvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAvatarViewController.h; sourceTree = "<group>"; };
 		EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAvatarViewController.m; sourceTree = "<group>"; };
 		EA78F70822263761002D788A /* Mine_AuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_AuthViewController.h; sourceTree = "<group>"; };
@@ -2746,6 +2764,45 @@
 			path = FriendsCircle;
 			sourceTree = "<group>";
 		};
+		EA6CCBB1226429F800BB2A74 /* TLAddMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				EA6CCBB2226429F800BB2A74 /* TLAddMenuCell.h */,
+				EA6CCBB3226429F800BB2A74 /* TLAddMenuItem.h */,
+				EA6CCBB4226429F800BB2A74 /* AddMenu.xcassets */,
+				EA6CCBB5226429F800BB2A74 /* TLAddMenuView.h */,
+				EA6CCBB6226429F800BB2A74 /* TLAddMenuItem.m */,
+				EA6CCBB7226429F800BB2A74 /* TLAddMenuCell.m */,
+				EA6CCBB8226429F800BB2A74 /* TLAddMenuView.m */,
+			);
+			path = TLAddMenuView;
+			sourceTree = "<group>";
+		};
+		EA6CCBBD22642D1900BB2A74 /* AppConfig */ = {
+			isa = PBXGroup;
+			children = (
+				EA6CCBC1226434C500BB2A74 /* ZZFLEX.h */,
+				EA6CCBBE22642D1900BB2A74 /* TLAppConfig.m */,
+				EA6CCBBF22642D1900BB2A74 /* TLAppConfig.h */,
+			);
+			path = AppConfig;
+			sourceTree = "<group>";
+		};
+		EA6CCBC32264511800BB2A74 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				EA6CCBC42264513500BB2A74 /* ViewController */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		EA6CCBC42264513500BB2A74 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		EA78F6CE2223D2B4002D788A /* Home_Lawyer */ = {
 			isa = PBXGroup;
 			children = (
@@ -3529,21 +3586,23 @@
 		EAB03952221E8FB600331569 /* Chatting */ = {
 			isa = PBXGroup;
 			children = (
-				EAB03953221E8FF100331569 /* chat */,
+				EA6CCBC32264511800BB2A74 /* Contact */,
+				EAB03953221E8FF100331569 /* Chat */,
 			);
 			path = Chatting;
 			sourceTree = "<group>";
 		};
-		EAB03953221E8FF100331569 /* chat */ = {
+		EAB03953221E8FF100331569 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				EA6CCBBD22642D1900BB2A74 /* AppConfig */,
 				EAB03954221E8FF100331569 /* chatView */,
 				EAB0395F221E8FF100331569 /* Util */,
 				EAB03966221E8FF100331569 /* Model */,
 				EAB03969221E8FF100331569 /* View */,
 				EAB039A5221E8FF100331569 /* Viewcontroller */,
 			);
-			path = chat;
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		EAB03954221E8FF100331569 /* chatView */ = {
@@ -3588,6 +3647,7 @@
 		EAB03969221E8FF100331569 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EA6CCBB1226429F800BB2A74 /* TLAddMenuView */,
 				EAB0396A221E8FF100331569 /* UIView+NTES.m */,
 				EAB0396B221E8FF100331569 /* NTESGLView.h */,
 				EAB0396C221E8FF100331569 /* NTESRecordSelectView.m */,
@@ -3686,6 +3746,8 @@
 				EAB039AC221E8FF100331569 /* PSSendShopGoodsAttachment.h */,
 				EAB039AD221E8FF100331569 /* NTESNetChatViewController.h */,
 				EAB039AE221E8FF100331569 /* NTESVideoChatViewController.m */,
+				EA6CCBAE226417E200BB2A74 /* PSMessageViewController.h */,
+				EA6CCBAF226417E200BB2A74 /* PSMessageViewController.m */,
 			);
 			path = Viewcontroller;
 			sourceTree = "<group>";
@@ -3900,6 +3962,7 @@
 				5557A60E221BD96500743012 /* photo_sample_06.png in Resources */,
 				5557A619221BD96500743012 /* renw@2x.png in Resources */,
 				5557A629221BD96500743012 /* 8.jpg in Resources */,
+				EA6CCBB9226429F800BB2A74 /* AddMenu.xcassets in Resources */,
 				5557A656221BD99E00743012 /* placeholder@2x.png in Resources */,
 				5557A65A221BD99E00743012 /* stepPk_win_colour6@2x.png in Resources */,
 				5557A658221BD99E00743012 /* stepPk_win_colour2@2x.png in Resources */,
@@ -4135,6 +4198,7 @@
 				EA21CB42221FC68F007D3445 /* GTMBase64.m in Sources */,
 				EA21CA86221F9980007D3445 /* PSCustomer.m in Sources */,
 				EAB03912221E817B00331569 /* NIMKitAudioCenter.m in Sources */,
+				EA6CCBBC226429F800BB2A74 /* TLAddMenuView.m in Sources */,
 				EAB03914221E817B00331569 /* NIMSessionConfigurator.m in Sources */,
 				EAB03923221E817B00331569 /* NIMSessionTextContentView.m in Sources */,
 				EA21CA79221F9980007D3445 /* PSEvaluateViewmodel.m in Sources */,
@@ -4203,6 +4267,7 @@
 				EAB039B9221E8FF200331569 /* NTESRecordSelectView.m in Sources */,
 				5557A543221BD7F500743012 /* UIViewController+AlertViewAndActionSheet.m in Sources */,
 				EAB0390A221E817B00331569 /* NIMUnsupportContentConfig.m in Sources */,
+				EA6CCBBA226429F800BB2A74 /* TLAddMenuItem.m in Sources */,
 				EA78F72422263DA8002D788A /* CertificateTableViewCell.m in Sources */,
 				EA21CB37221FA88E007D3445 /* PSAlipayInfo.m in Sources */,
 				5557A565221BD84000743012 /* AppManager.m in Sources */,
@@ -4239,6 +4304,7 @@
 				555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */,
 				5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */,
 				559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */,
+				EA6CCBB0226417E200BB2A74 /* PSMessageViewController.m in Sources */,
 				EAB0391A221E817B00331569 /* NIMSessionTimestampCell.m in Sources */,
 				5557A4FB221BD76300743012 /* HSBaseCellModel.m in Sources */,
 				55C0C779222D130000CD2459 /* HMBillViewController.m in Sources */,
@@ -4294,6 +4360,7 @@
 				EAB039B2221E8FF200331569 /* NTESSessionConfig.m in Sources */,
 				5557A557221BD7F500743012 /* FFTagsView.m in Sources */,
 				EAB038D8221E817B00331569 /* NIMInputEmoticonManager.m in Sources */,
+				EA6CCBBB226429F800BB2A74 /* TLAddMenuCell.m in Sources */,
 				EA21CB15221FA205007D3445 /* UIImage+Stretch.m in Sources */,
 				EAB03929221E817C00331569 /* NIMSessionViewController.m in Sources */,
 				5557A611221BD96500743012 /* MineViewController.m in Sources */,
@@ -4399,6 +4466,7 @@
 				EA78F739222783F3002D788A /* WWWaterWaveView.m in Sources */,
 				5597855E22265CF6007BBCC2 /* PSFeedbackListViewModel.m in Sources */,
 				EAB038FB221E817B00331569 /* NIMTimestampModel.m in Sources */,
+				EA6CCBC022642D1900BB2A74 /* TLAppConfig.m in Sources */,
 				EAB038D2221E817B00331569 /* NIMSpellingCenter.m in Sources */,
 				EAB03922221E817B00331569 /* NIMSessionFileTransContentView.m in Sources */,
 				5557A4FA221BD76300743012 /* BaseTableViewCell.m in Sources */,
