@@ -76,7 +76,7 @@
 //注册接口
 #define URL_post_registe @"/users/of-mobile"
 //获取验证码
-#define URL_get_verification_code @"/users/%@/verification-codes/login"
+#define URL_get_verification_code @"/sms/verification-codes/%@"
 
 //获取认证授权token // 刷新认证授权token
 #define URL_get_oauth_token @"/oauth/token"

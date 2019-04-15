@@ -263,6 +263,7 @@
 		EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB4F221FCEE2007D3445 /* NSObject+version.m */; };
 		EA21CB54221FD337007D3445 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CB53221FD337007D3445 /* CoreMotion.framework */; };
 		EA694ED3223B7EAE00EF821D /* SexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA694ED2223B7EAE00EF821D /* SexTableViewCell.m */; };
+		EA6CCBAD2264130200BB2A74 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */; };
 		EA78F6CD221FFECB002D788A /* UploadAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */; };
 		EA78F70A22263761002D788A /* Mine_AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F70922263761002D788A /* Mine_AuthViewController.m */; };
 		EA78F72122263DA8002D788A /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA78F71722263DA7002D788A /* PersonTableViewCell.m */; };
@@ -976,6 +977,8 @@
 		EA3E7CFC221FE76700D60C6A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EA694ED1223B7EAE00EF821D /* SexTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SexTableViewCell.h; sourceTree = "<group>"; };
 		EA694ED2223B7EAE00EF821D /* SexTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SexTableViewCell.m; sourceTree = "<group>"; };
+		EA6CCBAB2264130200BB2A74 /* FriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		EA78F6CB221FFECA002D788A /* UploadAvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAvatarViewController.h; sourceTree = "<group>"; };
 		EA78F6CC221FFECB002D788A /* UploadAvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAvatarViewController.m; sourceTree = "<group>"; };
 		EA78F70822263761002D788A /* Mine_AuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine_AuthViewController.h; sourceTree = "<group>"; };
@@ -1984,6 +1987,7 @@
 		5557A589221BD93900743012 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				EA6CCBAA226412B800BB2A74 /* FriendsCircle */,
 				EAB03952221E8FB600331569 /* Chatting */,
 				5557A637221BD99E00743012 /* Myadvice */,
 				5557A5D1221BD96500743012 /* Home */,
@@ -2731,6 +2735,15 @@
 				EA21CB2C221FA78C007D3445 /* PSProduct.m */,
 			);
 			path = PayModel;
+			sourceTree = "<group>";
+		};
+		EA6CCBAA226412B800BB2A74 /* FriendsCircle */ = {
+			isa = PBXGroup;
+			children = (
+				EA6CCBAB2264130200BB2A74 /* FriendsViewController.h */,
+				EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */,
+			);
+			path = FriendsCircle;
 			sourceTree = "<group>";
 		};
 		EA78F6CE2223D2B4002D788A /* Home_Lawyer */ = {
@@ -4018,6 +4031,7 @@
 				EAB03902221E817B00331569 /* NIMSessionListCell.m in Sources */,
 				5557A553221BD7F500743012 /* HeaderModel.m in Sources */,
 				5557A623221BD96500743012 /* WaterFallListViewController.m in Sources */,
+				EA6CCBAD2264130200BB2A74 /* FriendsViewController.m in Sources */,
 				EAB038D4221E817B00331569 /* NIMInputAudioRecordIndicatorView.m in Sources */,
 				EAB039C0221E8FF200331569 /* renderer_yuv420p.c in Sources */,
 				EA78F72522263DA8002D788A /* LawyerAuthenticationTableViewCell.m in Sources */,
