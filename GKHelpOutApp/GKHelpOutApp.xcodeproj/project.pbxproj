@@ -195,9 +195,16 @@
 		55C0C77C222D188300CD2459 /* HMBillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0C77B222D188300CD2459 /* HMBillCell.m */; };
 		55C0C77F222D238000CD2459 /* HMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0C77E222D238000CD2459 /* HMMessageViewController.m */; };
 		55C0C782222D240F00CD2459 /* HMMessageCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0C781222D240F00CD2459 /* HMMessageCellTableViewCell.m */; };
+		55C8980B22645928005473AD /* TLMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C8980722645928005473AD /* TLMenuItem.m */; };
+		55C8980C22645928005473AD /* TLMenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C8980A22645928005473AD /* TLMenuItemCell.m */; };
+		55C8981322645B7B005473AD /* UIFont+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C8981022645B7A005473AD /* UIFont+TLChat.m */; };
+		55C8981422645B7B005473AD /* UIColor+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C8981222645B7B005473AD /* UIColor+TLChat.m */; };
+		55C8981C22645C67005473AD /* UIButton+TLWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C8981622645C65005473AD /* UIButton+TLWebImage.m */; };
+		55C8981D22645C67005473AD /* UIImageView+TLWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C8981822645C66005473AD /* UIImageView+TLWebImage.m */; };
+		55C8981E22645C67005473AD /* TLImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C8981B22645C67005473AD /* TLImageDownloader.m */; };
+		55C89822226467B5005473AD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C89821226467B5005473AD /* Media.xcassets */; };
 		A2630C1CA890D20F200E6E6E /* libPods-GKHelpOutAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 489EBF3BF02ED07E33BAA5FF /* libPods-GKHelpOutAppUITests.a */; };
 		A56ED927F1CE79562534A4C9 /* libPods-GKHelpOutApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6BED696CFF51FD7329A1F89 /* libPods-GKHelpOutApp.a */; };
-		EA13D0E6221FDA5600A40EE9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA13D0E5221FDA5600A40EE9 /* Media.xcassets */; };
 		EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */; };
 		EA21CA31221EA694007D3445 /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; };
 		EA21CA32221EA694007D3445 /* NIMAVChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -847,10 +854,24 @@
 		55C0C77E222D238000CD2459 /* HMMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMMessageViewController.m; sourceTree = "<group>"; };
 		55C0C780222D240F00CD2459 /* HMMessageCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMMessageCellTableViewCell.h; sourceTree = "<group>"; };
 		55C0C781222D240F00CD2459 /* HMMessageCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMMessageCellTableViewCell.m; sourceTree = "<group>"; };
+		55C8980722645928005473AD /* TLMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuItem.m; sourceTree = "<group>"; };
+		55C8980822645928005473AD /* TLMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuItem.h; sourceTree = "<group>"; };
+		55C8980922645928005473AD /* TLMenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuItemCell.h; sourceTree = "<group>"; };
+		55C8980A22645928005473AD /* TLMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuItemCell.m; sourceTree = "<group>"; };
+		55C8980F22645B79005473AD /* UIColor+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TLChat.h"; sourceTree = "<group>"; };
+		55C8981022645B7A005473AD /* UIFont+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+TLChat.m"; sourceTree = "<group>"; };
+		55C8981122645B7B005473AD /* UIFont+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TLChat.h"; sourceTree = "<group>"; };
+		55C8981222645B7B005473AD /* UIColor+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TLChat.m"; sourceTree = "<group>"; };
+		55C8981622645C65005473AD /* UIButton+TLWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TLWebImage.m"; sourceTree = "<group>"; };
+		55C8981722645C65005473AD /* UIImageView+TLWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+TLWebImage.h"; sourceTree = "<group>"; };
+		55C8981822645C66005473AD /* UIImageView+TLWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+TLWebImage.m"; sourceTree = "<group>"; };
+		55C8981922645C66005473AD /* UIButton+TLWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TLWebImage.h"; sourceTree = "<group>"; };
+		55C8981A22645C67005473AD /* TLImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImageDownloader.h; sourceTree = "<group>"; };
+		55C8981B22645C67005473AD /* TLImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageDownloader.m; sourceTree = "<group>"; };
+		55C89821226467B5005473AD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		7C10B3AC074F1C870E18701F /* Pods-GKHelpOutApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp.release.xcconfig"; sourceTree = "<group>"; };
 		7C2548D35314A27746458142 /* Pods-GKHelpOutAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7404FC029C5B013F6E316EC /* Pods-GKHelpOutAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GKHelpOutAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GKHelpOutAppUITests/Pods-GKHelpOutAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		EA13D0E5221FDA5600A40EE9 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EA21CA30221E9EB0007D3445 /* PSMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMacro.h; sourceTree = "<group>"; };
 		EA21CA3F221F9386007D3445 /* PSPayCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPayCenter.m; sourceTree = "<group>"; };
@@ -2496,6 +2517,51 @@
 			path = "账单";
 			sourceTree = "<group>";
 		};
+		55C8980622645900005473AD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				55C8981522645C55005473AD /* TLWebImag */,
+				55C8980E22645B59005473AD /* TLMenuItem */,
+				55C8980D22645B15005473AD /* UIUtilities */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		55C8980D22645B15005473AD /* UIUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				55C8980F22645B79005473AD /* UIColor+TLChat.h */,
+				55C8981222645B7B005473AD /* UIColor+TLChat.m */,
+				55C8981122645B7B005473AD /* UIFont+TLChat.h */,
+				55C8981022645B7A005473AD /* UIFont+TLChat.m */,
+			);
+			path = UIUtilities;
+			sourceTree = "<group>";
+		};
+		55C8980E22645B59005473AD /* TLMenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				55C8980822645928005473AD /* TLMenuItem.h */,
+				55C8980722645928005473AD /* TLMenuItem.m */,
+				55C8980922645928005473AD /* TLMenuItemCell.h */,
+				55C8980A22645928005473AD /* TLMenuItemCell.m */,
+			);
+			path = TLMenuItem;
+			sourceTree = "<group>";
+		};
+		55C8981522645C55005473AD /* TLWebImag */ = {
+			isa = PBXGroup;
+			children = (
+				55C8981A22645C67005473AD /* TLImageDownloader.h */,
+				55C8981B22645C67005473AD /* TLImageDownloader.m */,
+				55C8981922645C66005473AD /* UIButton+TLWebImage.h */,
+				55C8981622645C65005473AD /* UIButton+TLWebImage.m */,
+				55C8981722645C65005473AD /* UIImageView+TLWebImage.h */,
+				55C8981822645C66005473AD /* UIImageView+TLWebImage.m */,
+			);
+			path = TLWebImag;
+			sourceTree = "<group>";
+		};
 		64C5C9D239E7F741EC473360 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2518,7 +2584,7 @@
 		EA13D0E4221FDA5600A40EE9 /* GKResource */ = {
 			isa = PBXGroup;
 			children = (
-				EA13D0E5221FDA5600A40EE9 /* Media.xcassets */,
+				55C89821226467B5005473AD /* Media.xcassets */,
 			);
 			path = GKResource;
 			sourceTree = "<group>";
@@ -2758,6 +2824,7 @@
 		EA6CCBAA226412B800BB2A74 /* FriendsCircle */ = {
 			isa = PBXGroup;
 			children = (
+				55C8980622645900005473AD /* Utils */,
 				EA6CCBAB2264130200BB2A74 /* FriendsViewController.h */,
 				EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */,
 			);
@@ -3943,7 +4010,6 @@
 				5557A618221BD96500743012 /* dengji@2x.png in Resources */,
 				5557A633221BD96500743012 /* 2.jpg in Resources */,
 				5557A62C221BD96500743012 /* 13.jpg in Resources */,
-				EA13D0E6221FDA5600A40EE9 /* Media.xcassets in Resources */,
 				5557A61A221BD96500743012 /* qianb@2x.png in Resources */,
 				5557A65F221BD99E00743012 /* pageControlDot@2x.png in Resources */,
 				5557A661221BD99E00743012 /* stepPk_win_colour7@2x.png in Resources */,
@@ -3991,6 +4057,7 @@
 				EAB038BD221E817B00331569 /* README.md in Resources */,
 				5557A4C9221BD09200743012 /* Info.plist in Resources */,
 				5557A61D221BD96500743012 /* haoy@2x.png in Resources */,
+				55C89822226467B5005473AD /* Media.xcassets in Resources */,
 				5557A630221BD96500743012 /* 5.jpg in Resources */,
 				5557A4CA221BD09200743012 /* Assets.xcassets in Resources */,
 				5557A60B221BD96500743012 /* photo_sample_04.png in Resources */,
@@ -4182,6 +4249,7 @@
 				EAB039BB221E8FF200331569 /* NTESVideoChatNetStatusView.m in Sources */,
 				EAB038F3221E817B00331569 /* NIMTeamSwitchTableViewCell.m in Sources */,
 				55050AB922323F6400E9635B /* PSIntercepter.m in Sources */,
+				55C8981422645B7B005473AD /* UIColor+TLChat.m in Sources */,
 				EA21CAA5221F9A21007D3445 /* PSMoreServiceViewController.m in Sources */,
 				5557A551221BD7F500743012 /* XYTransition.m in Sources */,
 				EAB0392B221E817C00331569 /* UIImage+NIMKit.m in Sources */,
@@ -4204,6 +4272,7 @@
 				EA21CA79221F9980007D3445 /* PSEvaluateViewmodel.m in Sources */,
 				5597857B22265E43007BBCC2 /* FeedbackTypeModel.m in Sources */,
 				EAB039C2221E8FF200331569 /* shader.c in Sources */,
+				55C8981C22645C67005473AD /* UIButton+TLWebImage.m in Sources */,
 				EAB038D3221E817B00331569 /* NIMInputEmoticonParser.m in Sources */,
 				EAB038D9221E817B00331569 /* NIMInputAtCache.m in Sources */,
 				EAB038DF221E817B00331569 /* NIMBadgeView.m in Sources */,
@@ -4221,6 +4290,7 @@
 				5524C6922225106B0067F437 /* ZWTopSelectButton.m in Sources */,
 				EAB03939221E817C00331569 /* NIMKitIndependentModeExtraInfo.m in Sources */,
 				5557A544221BD7F500743012 /* UIButton+XYButton.m in Sources */,
+				55C8981E22645C67005473AD /* TLImageDownloader.m in Sources */,
 				5557A556221BD7F500743012 /* MBProgressHUD+XY.m in Sources */,
 				5597855D22265CF6007BBCC2 /* PSFeedbackViewModel.m in Sources */,
 				EA21CAA7221F9A21007D3445 /* PSLawyerView.m in Sources */,
@@ -4308,6 +4378,7 @@
 				EAB0391A221E817B00331569 /* NIMSessionTimestampCell.m in Sources */,
 				5557A4FB221BD76300743012 /* HSBaseCellModel.m in Sources */,
 				55C0C779222D130000CD2459 /* HMBillViewController.m in Sources */,
+				55C8980B22645928005473AD /* TLMenuItem.m in Sources */,
 				EAB038CA221E817B00331569 /* NIMKitResourceResizer.m in Sources */,
 				EA21CA7A221F9980007D3445 /* PSLawerViewModel.m in Sources */,
 				EA78F72122263DA8002D788A /* PersonTableViewCell.m in Sources */,
@@ -4319,6 +4390,7 @@
 				EA21CA78221F9980007D3445 /* PSConsultationViewModel.m in Sources */,
 				5557A548221BD7F500743012 /* XZPickView.m in Sources */,
 				EAB03920221E817B00331569 /* NIMSessionNetChatNotifyContentView.m in Sources */,
+				55C8980C22645928005473AD /* TLMenuItemCell.m in Sources */,
 				EAB039CA221E8FF200331569 /* ijksdl_timer.c in Sources */,
 				EAB038EE221E817B00331569 /* NIMTeamCardRowItem.m in Sources */,
 				EA21CAA6221F9A21007D3445 /* PSMoreModel.m in Sources */,
@@ -4398,6 +4470,7 @@
 				EAB038E0221E817B00331569 /* NIMMemberGroupView.m in Sources */,
 				EAB03925221E817C00331569 /* NIMSessionMessageContentView.m in Sources */,
 				EAB0390F221E817B00331569 /* NIMSessionDataSourceImpl.m in Sources */,
+				55C8981D22645C67005473AD /* UIImageView+TLWebImage.m in Sources */,
 				559218DD2226813F00A5C655 /* ModifyDataViewController.m in Sources */,
 				5557A4C8221BD09200743012 /* main.m in Sources */,
 				555C118F222E702E00132E4F /* LawUserInfo.m in Sources */,
@@ -4468,6 +4541,7 @@
 				EAB038FB221E817B00331569 /* NIMTimestampModel.m in Sources */,
 				EA6CCBC022642D1900BB2A74 /* TLAppConfig.m in Sources */,
 				EAB038D2221E817B00331569 /* NIMSpellingCenter.m in Sources */,
+				55C8981322645B7B005473AD /* UIFont+TLChat.m in Sources */,
 				EAB03922221E817B00331569 /* NIMSessionFileTransContentView.m in Sources */,
 				5557A4FA221BD76300743012 /* BaseTableViewCell.m in Sources */,
 				EAB038E1221E817B00331569 /* NIMKitMediaFetcher.m in Sources */,

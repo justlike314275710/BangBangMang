@@ -33,7 +33,8 @@ pod 'BRPickerView'
 pod 'ReactiveObjC'
 pod 'EBBannerView'
 pod 'ZZFLEX'
-
+pod 'TLTabBarController'
+pod 'TLKit'
 end
 
 target 'GKHelpOutAppUITests' do

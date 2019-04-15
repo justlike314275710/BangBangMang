@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MJRefresh.h>
-
+#import "ZZFLEX.h"
 #import "UIViewController+AlertViewAndActionSheet.h"
 
 /**
  VC 基类
  */
-@interface RootViewController : UIViewController
+@interface RootViewController : ZZFlexibleLayoutViewController
 
 
 
@@ -26,7 +26,7 @@
 
 
 @property (nonatomic, strong) UITableView * tableView;
-@property (nonatomic, strong) UICollectionView * collectionView;
+@property (nonatomic, strong) UICollectionView * mycollectionView;
 
 /**
  *  显示没有数据页面

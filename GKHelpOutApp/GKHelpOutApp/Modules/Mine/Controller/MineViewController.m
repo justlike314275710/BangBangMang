@@ -115,7 +115,6 @@
         _headerView.phoneNuberLab.text = phoneNumber;
     }
   
-    NSDictionary *Modifydata = @{@"titleText":@"修改资料",@"clickSelector":@"",@"title_icon":@"修改资料icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     
     NSString *accont = help_userManager.lawUserInfo.rewardAmount?help_userManager.lawUserInfo.rewardAmount:@"";
     if (accont.length>0) {
@@ -123,24 +122,35 @@
     } else {
         accont = @"0.00";
     }
-    NSDictionary *myMission = @{@"titleText":@"账户余额",@"clickSelector":@"",@"title_icon":@"账户余额icon",@"detailText":accont,@"arrow_icon":@"arrow_icon"};
-    NSDictionary *myFriends = @{@"titleText":@"账单",@"clickSelector":@"",@"title_icon":@"账单icon",@"arrow_icon":@"arrow_icon"};
-    NSDictionary *myLevel = @{@"titleText":@"专家入驻",@"clickSelector":@"",@"title_icon":@"专家入驻icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
-    NSDictionary *myAdvice = @{@"titleText":@"意见反馈",@"clickSelector":@"",@"title_icon":@"意见反馈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    
+    //通讯录
+    NSDictionary *addressbook = @{@"titleText":@"通讯录",@"clickSelector":@"",@"title_icon":@"通讯录icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    //我的生活圈
+    NSDictionary *lifeCircle = @{@"titleText":@"我的生活圈",@"clickSelector":@"",@"title_icon":@"生活圈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    //我的咨询
+    NSDictionary *myConsultation = @{@"titleText":@"我的咨询",@"clickSelector":@"",@"title_icon":@"我的咨询icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    
+    NSDictionary *accountBalance = @{@"titleText":@"账户余额",@"clickSelector":@"",@"title_icon":@"账户余额icon",@"detailText":accont,@"arrow_icon":@"arrow_icon"};
+    NSDictionary *Bill = @{@"titleText":@"账单",@"clickSelector":@"",@"title_icon":@"账单icon",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *expertsInt = @{@"titleText":@"专家入驻",@"clickSelector":@"",@"title_icon":@"专家入驻icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+//    NSDictionary *myAdvice = @{@"titleText":@"意见反馈",@"clickSelector":@"",@"title_icon":@"意见反馈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     NSDictionary *mySet = @{@"titleText":@"设置",@"clickSelector":@"",@"title_icon":@"设置icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     
     NSMutableArray *section1 = [NSMutableArray array];
-    [section1 addObject:Modifydata];
+    [section1 addObject:addressbook];
+    [section1 addObject:lifeCircle];
+    [section1 addObject:myConsultation];
+    
+    
     NSMutableArray *section2 = [NSMutableArray array];
     //认证律师才有账户余额
     if (help_userManager.userStatus == CERTIFIED) {
-        [section2 addObject:myMission];
+        [section2 addObject:accountBalance];
     }
-    [section2 addObject:myFriends];
+    [section2 addObject:Bill];
     NSMutableArray *section3 = [NSMutableArray array];
-    [section3 addObject:myLevel];
+    [section3 addObject:expertsInt];
     NSMutableArray *section4 = [NSMutableArray array];
-    [section4 addObject:myAdvice];
     [section4 addObject:mySet];
     
     _dataSource = @[section1,section2,section3,section4];
