@@ -101,6 +101,7 @@ PODS:
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
+  - ZZFLEX (0.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -130,6 +131,7 @@ DEPENDENCIES:
   - WechatOpenSDK
   - YTKNetwork
   - YYKit
+  - ZZFLEX
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -162,6 +164,7 @@ SPEC REPOS:
     - WechatOpenSDK
     - YTKNetwork
     - YYKit
+    - ZZFLEX
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -193,7 +196,8 @@ SPEC CHECKSUMS:
   WechatOpenSDK: 3117412f8aafde4758cac1e8d20b93c67cafcfef
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+  ZZFLEX: 3f8ac6ce1cfb54eb196cbf25d45b26dcab0743ab
 
-PODFILE CHECKSUM: f7c0eaa91361475761c4fdaa1f43008ab8ec5a7b
+PODFILE CHECKSUM: 23d7d7d8b1f5545748cc2ef1d3f807bca8ed98b9
 
 COCOAPODS: 1.5.2

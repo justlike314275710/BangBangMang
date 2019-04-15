@@ -32,6 +32,8 @@ pod 'UITextView+Placeholder', '~> 1.2.0'
 pod 'BRPickerView'
 pod 'ReactiveObjC'
 pod 'EBBannerView'
+pod 'ZZFLEX'
+
 end
 
 target 'GKHelpOutAppUITests' do

@@ -37,6 +37,8 @@
 //根据ip6的屏幕来拉伸
 #define kRealValue(with) ((with)*(KScreenWidth/375.0f))
 
+#define     IS_IPHONEX              ([UIScreen mainScreen].bounds.size.width == 375.0f && [UIScreen mainScreen].bounds.size.height == 812.0f)
+
 //强弱引用
 #define kWeakSelf(type)  __weak typeof(type) weak##type = type;
 #define kStrongSelf(type) __strong typeof(type) type = weak##type;
@@ -116,6 +118,16 @@
 
 //发送通知
 #define KPostNotification(name,obj) [[NSNotificationCenter defaultCenter] postNotificationName:name object:obj];
+
+/// PushVC
+#define     PushVC(vc)                  {\
+[vc setHidesBottomBarWhenPushed:YES];\
+[self.navigationController pushViewController:vc animated:YES];\
+}
+
+
+/// 国际化
+#define     LOCSTR(str)                 NSLocalizedString(str, nil)
 
 
 

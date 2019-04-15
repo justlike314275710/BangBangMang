@@ -21,6 +21,7 @@
 #import "XYTabBar.h"
 #import "MyConsultationViewController.h"
 #import "FriendsViewController.h"
+#import "PSMessageViewController.h"
 
 @interface MainTabBarController ()<UITabBarControllerDelegate>
 
@@ -64,9 +65,9 @@
     PersonListViewController *homeVC = [[PersonListViewController alloc]init];
     [self setupChildViewController:homeVC title:@"首页" imageName:@"首页icon－未选中" seleceImageName:@"首页icon－选中"];
     
-//    MakeFriendsViewController *makeFriendVC = [[MakeFriendsViewController alloc]init];
-    MyConsultationViewController *makeFriendVC = [[MyConsultationViewController alloc]init];
-    [self setupChildViewController:makeFriendVC title:@"消息" imageName:@"我的咨询icon－未选中" seleceImageName:@"我的咨询icon－选中"];
+    PSMessageViewController*messageVC=[[PSMessageViewController alloc]init];
+   // MyConsultationViewController *makeFriendVC = [[MyConsultationViewController alloc]init];
+    [self setupChildViewController:messageVC title:@"消息" imageName:@"我的咨询icon－未选中" seleceImageName:@"我的咨询icon－选中"];
     
     FriendsViewController *friendsVC = [[FriendsViewController alloc]init];
     [self setupChildViewController:friendsVC title:@"生活圈" imageName:@"生活圈icon－未选中" seleceImageName:@"生活圈icon－选中"];

@@ -78,10 +78,14 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
 #import "PSTipsView.h"
+#import "PSAlertView.h"
 #import "UIImage+Stretch.h"
 #import "BlocksKit+UIKit.h"
 #import "UITextView+Placeholder.h"
 #import <EBBannerView/EBBannerView.h>
+
+#import <ZZFLEX/ZZFlexibleLayoutViewProtocol.h>
+#import "ZZFLEX.h"
 
 //IM
 #import "NIMKit.h"
