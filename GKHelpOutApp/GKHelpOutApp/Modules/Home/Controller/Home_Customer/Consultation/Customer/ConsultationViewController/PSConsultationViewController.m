@@ -152,7 +152,7 @@
     
     [payView setGoZxActcion:^{
 //        [self.navigationController pushViewController:[[PSMyAdviceViewController alloc] initWithViewModel:[[PSConsultationViewModel alloc] init]] animated:YES];
-        [self.navigationController pushViewController:[[MyConsultationViewController alloc]init] animated:YES];
+//        [self.navigationController pushViewController:[[MyConsultationViewController alloc]init] animated:YES];
     }];
     
     @weakify(self)
