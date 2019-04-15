@@ -23,8 +23,6 @@
  *  修改状态栏颜色
  */
 @property (nonatomic, assign) UIStatusBarStyle StatusBarStyle;
-
-
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) UICollectionView * mycollectionView;
 

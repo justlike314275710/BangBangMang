@@ -82,8 +82,6 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
 //            PushVC(scannerVC);
         });
     }
-
-    
     [self reloadView];
 //    [self resetTabBarBadge];
     

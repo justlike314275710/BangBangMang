@@ -121,7 +121,7 @@
  *
  *  @return collectionView
  */
-- (UICollectionView *)collectionView
+- (UICollectionView *)mycollectionView
 {
     if (_mycollectionView == nil) {
         UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc] init];
