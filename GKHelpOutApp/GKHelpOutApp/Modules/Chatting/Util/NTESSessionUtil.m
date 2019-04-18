@@ -16,9 +16,9 @@
 //#import "NTESSnapchatAttachment.h"
 //#import "NTESWhiteboardAttachment.h"
 //#import "NIMKitInfoFetchOption.h"
-//#import "NTESSubscribeManager.h"
+#import "NTESSubscribeManager.h"
 //#import "NIMExtensionHelper.h"
-//#import "NTESSubscribeDefine.h"
+#import "NTESSubscribeDefine.h"
 //#import "NSDictionary+NTESJson.h"
 //#import "NTESDevice.h"
 
@@ -428,7 +428,7 @@ static NSString *const NTESRecentSessionTopMark = @"NTESRecentSessionTopMark";
 
 + (NSString *)onlineState:(NSString *)userId detail:(BOOL)detail
 {
-    /*
+ 
     NSString *state = @"";
     if (![NTESSubscribeManager sharedManager] || [[NIMSDK sharedSDK].loginManager.currentAccount isEqualToString:userId])
     {
@@ -470,8 +470,8 @@ static NSString *const NTESRecentSessionTopMark = @"NTESRecentSessionTopMark";
         state = @"离线";
     }
     return state;
-     */
-     return @"离线";
+   
+    // return @"离线";
 }
 
 

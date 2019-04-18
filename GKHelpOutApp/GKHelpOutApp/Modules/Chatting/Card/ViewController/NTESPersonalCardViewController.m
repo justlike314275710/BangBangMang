@@ -15,6 +15,7 @@
 
 #import "NTESBundleSetting.h"
 #import "UIAlertView+NTESBlock.h"
+#import "NTESAddFriendsMessageViewController.h"
 //#import "NTESUserUtil.h"
 //#import "NTESUserInfoSettingViewController.h"
 //#import "NTESAliasSettingViewController.h"
@@ -275,31 +276,36 @@
 }
 
 - (void)addFriend{
-    NIMUserRequest *request = [[NIMUserRequest alloc] init];
-    request.userId = self.userId;
-    request.operation = NIMUserOperationAdd;
-    if ([[NTESBundleSetting sharedConfig] needVerifyForFriend]) {
-        request.operation = NIMUserOperationRequest;
-        request.message = @"跪求通过";
-    }
-    NSString *successText = request.operation == NIMUserOperationAdd ? @"添加成功" : @"请求成功";
-    NSString *failedText =  request.operation == NIMUserOperationAdd ? @"添加失败" : @"请求失败";
+    NTESAddFriendsMessageViewController*vc=[[NTESAddFriendsMessageViewController alloc]initWithUserId:self.userId];
+    PushVC(vc);
     
-    __weak typeof(self) wself = self;
-     [[PSLoadingView sharedInstance] show];
-    [[NIMSDK sharedSDK].userManager requestFriend:request completion:^(NSError *error) {
-         [[PSLoadingView sharedInstance] dismiss];
-        if (!error) {
-            [wself.view makeToast:successText
-                         duration:2.0f
-                         position:CSToastPositionCenter];
-            [wself refresh];
-        }else{
-            [wself.view makeToast:failedText
-                         duration:2.0f
-                         position:CSToastPositionCenter];
-        }
-    }];
+//    
+//    NIMUserRequest *request = [[NIMUserRequest alloc] init];
+//    request.userId = self.userId;
+//    request.operation = NIMUserOperationAdd;
+//    if ([[NTESBundleSetting sharedConfig] needVerifyForFriend]) {
+//        request.operation = NIMUserOperationRequest;
+//        request.message = @"跪求通过";
+//    }
+//    NSString *successText = request.operation == NIMUserOperationAdd ? @"添加成功" : @"请求成功";
+//    NSString *failedText =  request.operation == NIMUserOperationAdd ? @"添加失败" : @"请求失败";
+//    
+//    __weak typeof(self) wself = self;
+//     [[PSLoadingView sharedInstance] show];
+//    [[NIMSDK sharedSDK].userManager requestFriend:request completion:^(NSError *error) {
+//         [[PSLoadingView sharedInstance] dismiss];
+//        if (!error) {
+//            [wself.view makeToast:successText
+//                         duration:2.0f
+//                         position:CSToastPositionCenter];
+//            [wself refresh];
+//        }else{
+//            [wself.view makeToast:failedText
+//                         duration:2.0f
+//                         position:CSToastPositionCenter];
+//        }
+//    }];
+     
 }
 
 - (void)deleteFriend{

@@ -5,7 +5,7 @@
 //  Created by 徐阳 on 2017/5/18.
 //  Copyright © 2017年 徐阳. All rights reserved.
 //
-
+#import "NTESContactViewController.h"
 #import "MineViewController.h"
 #import "MineTableViewCell.h"
 #import "MineHeaderView.h"
@@ -21,6 +21,8 @@
 #import "HMBillViewController.h"
 #import "PSWriteFeedbackViewController.h"
 #import "NSString+JsonString.h"
+#import "FriendsViewController.h"
+#import "MyConsultationViewController.h"
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
@@ -236,8 +238,19 @@
     switch (section) {
         case 0:
         {
-              NSLog(@"点击了 修改资料");
-            [self modifyData];
+            if (indexPath.row==0) {
+                [self ContactFriends];
+            }
+            else if (indexPath.row==1){
+                [self FriendsCircle];
+            }
+            else if (indexPath.row==2){
+                [self MyConsultation];
+            }
+            else {
+                
+            }
+            
         }
             break;
         case 1:
@@ -265,13 +278,7 @@
             break;
         case 3:
         {
-            if (indexPath.row==0) {
-                NSLog(@"意见反馈");
-                [self feedback];
-            } else {
-                NSLog(@"设置");
-                [self changeUser];
-            }
+             [self changeUser];
         }
             break;
             
@@ -290,6 +297,19 @@
     _headerView.frame = CGRectMake(0, offset, self.view.width, KHeaderHeight- totalOffsetY);
     //    }
     
+}
+#pragma mark ————— 我的咨询 —————
+-(void)MyConsultation{
+    [self.navigationController pushViewController:[[MyConsultationViewController alloc]init] animated:YES];
+}
+#pragma mark ————— 朋友圈 —————
+-(void)FriendsCircle{
+    [self.navigationController pushViewController:[[FriendsViewController alloc]init] animated:YES];
+}
+
+#pragma mark ————— 通讯录 —————
+-(void)ContactFriends{
+    [self.navigationController pushViewController:[[NTESContactViewController alloc]init] animated:YES];
 }
 
 #pragma mark ————— 设置 —————

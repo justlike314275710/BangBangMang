@@ -15,5 +15,5 @@
 //textField的text为NTESCommonTableRow.extraData
 
 @property (nonatomic ,strong) UITextField *textField;
-
+@property (nonatomic , strong) UIImageView*seachImage;
 @end

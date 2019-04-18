@@ -17,9 +17,16 @@
     if (self) {
         _textField                 = [[UITextField alloc] initWithFrame:CGRectZero];
         _textField.clearButtonMode = UITextFieldViewModeAlways;
-        _textField.font            = [UIFont systemFontOfSize:17.f];
+        _textField.font            = [UIFont systemFontOfSize:14.f];
         _textField.textColor       =UIColorHex(0x333333);
         [self addSubview:_textField];
+        
+        _seachImage=[[UIImageView alloc]initWithFrame:CGRectZero];
+        [self addSubview:_seachImage];
+        [_seachImage setImage:[UIImage imageNamed:@"搜索"]];
+        
+
+        
     }
     return self;
 }
@@ -36,10 +43,17 @@
     [super layoutSubviews];
     CGFloat textFieldLeft   = 17.f;
     CGFloat textFieldRight  = 17.f;
-    self.textField.width  = self.width - textFieldLeft - textFieldRight;
+    self.textField.width  = self.width - textFieldLeft - textFieldRight-90;
     self.textField.height = 44.f;
     self.textField.centerX = self.width * .5f;
     self.textField.centerY = self.height * .5f;
+    
+    self.seachImage.width=16;
+    self.seachImage.height=16;
+    self.seachImage.x = 20;
+    self.seachImage.centerY = self.height * .5f;
+    
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated{

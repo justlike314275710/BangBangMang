@@ -237,20 +237,8 @@
         PSConsultationViewModel *viewModel=(PSConsultationViewModel *)self.viewModel;
         [((PSConsultationTableViewCell *)cell).choseButton setTitle:viewModel.category forState:0];
         [self bulidSelectNSSting:viewModel.category];
-        
-        
-//        //相册相机回调
-//        [((PSConsultationTableViewCell *)cell).pickerV observeSelectedMediaArray:^(NSArray<LLImagePickerModel *> *list) {
-//            for (int i=0; i<list.count; i++) {
-//                if (i==list.count-1) {
-//                    LLImagePickerModel*model=[list objectAtIndex:i];
-//                    [self handlePickerImage:model.image];
-//                }
-//            }
-//        }];
-        
         ((PSConsultationTableViewCell *)cell).contentTextView.delegate=self;
-        
+
     }else{
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PSConsultationOtherTableViewCell" forIndexPath:indexPath];
         ((PSConsultationOtherTableViewCell*)cell).moneyTextField.delegate=self;

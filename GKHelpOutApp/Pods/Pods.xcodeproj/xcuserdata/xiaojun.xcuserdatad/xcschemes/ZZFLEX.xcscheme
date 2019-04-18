@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CFE53D03B7393A89DEB1B3EC78F8F15F"
+               BlueprintIdentifier = "5E0CCF7FF8F0C9EDE07207B33254212D"
                BlueprintName = "ZZFLEX"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libZZFLEX.a">

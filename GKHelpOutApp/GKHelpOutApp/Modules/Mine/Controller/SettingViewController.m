@@ -11,7 +11,7 @@
 #import "HSBaseCellModel.h"
 #import "MineTableViewCell.h"
 #import "PSStorageViewController.h"
-
+#import "PSWriteFeedbackViewController.h"
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,copy) NSArray * dataArray;//数据源
@@ -61,12 +61,14 @@
     NSString *localVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleShortVersionString"];
     localVersion = [NSString stringWithFormat:@"v%@",localVersion];
     
+    NSDictionary *myAdvice = @{@"titleText":@"意见反馈",@"clickSelector":@"",@"title_icon":@"意见反馈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    
     NSDictionary *Modifydata = @{@"titleText":@"存储空间",@"clickSelector":@"",@"title_icon":@"清除缓存icon",@"detailText":cacheData};
     
     NSDictionary *myMission = @{@"titleText":@"当前版本",@"clickSelector":@"",@"title_icon":@"设置-版本更新icon",@"detailText":localVersion};
     
 //    NSArray *one = @[pushCofigModel];
-    NSArray *two = @[Modifydata,myMission];
+    NSArray *two = @[myAdvice,Modifydata,myMission];
     _dataArray = @[two];
     [self.tableView reloadData];
     
@@ -112,8 +114,22 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row==0) {
+        [self feedback];
+    }
+    else if (indexPath.row==1){
         [self clearCache];
     }
+    else{
+        
+    }
+}
+
+
+#pragma mark ————— 意见反馈 —————
+-(void)feedback{
+    PSWriteFeedbackViewController *feedBackVC = [[PSWriteFeedbackViewController alloc] init];
+    [self.navigationController pushViewController:feedBackVC animated:YES];
+    
 }
 #pragma mark ———————————— 清除缓存
 - (void)clearCache {
