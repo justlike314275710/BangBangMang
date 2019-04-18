@@ -47,13 +47,13 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 //    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
     
     
-    UINavigationBar *navBar = [UINavigationBar appearance];
-    //导航栏背景图
-    [navBar setBarTintColor:CNavBgColor];
-    [navBar setTintColor:CNavBgFontColor];
-    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName :CNavBgFontColor, NSFontAttributeName :[UIFont boldSystemFontOfSize:18]}];
-    [navBar setBackgroundImage:[UIImage imageWithColor:CNavBgColor] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-    [navBar setShadowImage:[UIImage new]];//去掉阴影线
+//    UINavigationBar *navBar = [UINavigationBar appearance];
+//    //导航栏背景图
+//    [navBar setBarTintColor:CNavBgColor];
+//    [navBar setTintColor:CNavBgFontColor];
+//    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName :CNavBgFontColor, NSFontAttributeName :[UIFont boldSystemFontOfSize:18]}];
+//    [navBar setBackgroundImage:[UIImage imageWithColor:CNavBgColor] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+//    [navBar setShadowImage:[UIImage new]];//去掉阴影线
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -74,6 +74,7 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
     [super viewWillAppear:YES];
     self.collectionView.delegate = self;
     [self scrollViewDidScroll:self.collectionView];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -81,6 +82,7 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
     [super viewWillDisappear:animated];
     self.collectionView.delegate = nil;
     [self.navigationController.navigationBar lt_reset];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 #pragma mark - # Request
