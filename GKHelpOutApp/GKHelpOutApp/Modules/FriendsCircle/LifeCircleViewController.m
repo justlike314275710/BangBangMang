@@ -36,12 +36,13 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 - (void)loadView
 {
     [super loadView];
-    [self loadUI];
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTitle:@"朋友圈"];
+    [self loadUI];
+    [self setTitle:@"朋友圈"];//asdfadfadfasdfasdfasfasfasdfasfasdfa
     [self requestDataWithPageIndex:0];
 //    self.isHidenNaviBar = YES;
 //    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
