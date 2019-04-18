@@ -86,6 +86,12 @@
 
 #import <ZZFLEX/ZZFlexibleLayoutViewProtocol.h>
 #import "ZZFLEX.h"
+#import "UIImageView+TLWebImage.h"
+#import "UIButton+TLWebImage.h"
+
+
+//颜色
+#import "UIColor+TLChat.h"
 
 //IM
 #import "NIMKit.h"

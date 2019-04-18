@@ -121,21 +121,21 @@
  *
  *  @return collectionView
  */
-- (UICollectionView *)mycollectionView
+- (UICollectionView *)collectionView
 {
-    if (_mycollectionView == nil) {
+    if (_collectionView == nil) {
         UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc] init];
         
-        _mycollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth , KScreenHeight - kTopHeight - kTabBarHeight) collectionViewLayout:flow];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth , KScreenHeight - kTopHeight - kTabBarHeight) collectionViewLayout:flow];
         
         MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
         header.automaticallyChangeAlpha = YES;
         header.lastUpdatedTimeLabel.hidden = YES;
         header.stateLabel.hidden = YES;
-        _mycollectionView.mj_header = header;
+        _collectionView.mj_header = header;
         
         //底部刷新
-        _mycollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
+        _collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
 
 //#ifdef kiOS11Before
 //        
@@ -145,10 +145,10 @@
 //        _collectionView.scrollIndicatorInsets = _collectionView.contentInset;
 //#endif
         
-        _mycollectionView.backgroundColor=CViewBgColor;
-        _mycollectionView.scrollsToTop = YES;
+        _collectionView.backgroundColor=CViewBgColor;
+        _collectionView.scrollsToTop = YES;
     }
-    return _mycollectionView;
+    return _collectionView;
 }
 -(void)headerRereshing{
     

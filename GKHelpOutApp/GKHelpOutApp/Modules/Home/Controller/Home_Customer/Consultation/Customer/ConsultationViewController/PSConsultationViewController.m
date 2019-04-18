@@ -28,7 +28,7 @@
 
 
 @interface PSConsultationViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITextViewDelegate,UITextFieldDelegate>
-@property (nonatomic, strong) UICollectionView *serviceCollectionView;
+@property (nonatomic, strong)  UICollectionView *serviceCollectionView;
 @property (nonatomic , strong) NSMutableArray *selectArray;
 @property (nonatomic , strong) NSMutableArray *images;
 @property (nonatomic, strong) PSPayView *payView;

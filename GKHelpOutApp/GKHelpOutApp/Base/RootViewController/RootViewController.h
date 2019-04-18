@@ -14,7 +14,7 @@
 /**
  VC 基类
  */
-@interface RootViewController : ZZFlexibleLayoutViewController
+@interface RootViewController : UIViewController
 
 
 
@@ -24,7 +24,7 @@
  */
 @property (nonatomic, assign) UIStatusBarStyle StatusBarStyle;
 @property (nonatomic, strong) UITableView * tableView;
-@property (nonatomic, strong) UICollectionView * mycollectionView;
+@property (nonatomic, strong) UICollectionView * collectionView;
 
 /**
  *  显示没有数据页面
