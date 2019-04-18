@@ -4988,11 +4988,8 @@
 				55F46D6022657593000D84B1 /* TLMomentExtension.m in Sources */,
 				EA21CA7A221F9980007D3445 /* PSLawerViewModel.m in Sources */,
 				EA78F72122263DA8002D788A /* PersonTableViewCell.m in Sources */,
-<<<<<<< HEAD
 				EA6CCC04226477CB00BB2A74 /* NTESContactDataMember.m in Sources */,
-=======
 				55F46E182266D8A4000D84B1 /* YBVideoBrowseActionBar.m in Sources */,
->>>>>>> e0ed1c39cd5f867c2f93328d094fda00ecba78e3
 				EAE19EA42235FFBB0080B0F5 /* headerDetailsView.m in Sources */,
 				EAB0394B221E88BE00331569 /* PSViewController.m in Sources */,
 				EAE19E8E2230EE140080B0F5 /* lawyerGrab.m in Sources */,
