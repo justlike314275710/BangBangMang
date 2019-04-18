@@ -8,6 +8,6 @@
 
 #import "RootViewController.h"
 
-@interface FriendsViewController : RootViewController
+@interface FriendsViewController : ZZFlexibleLayoutViewController
 
 @end

@@ -22,6 +22,8 @@
 #import "MyConsultationViewController.h"
 #import "FriendsViewController.h"
 #import "PSMessageViewController.h"
+UIColor *MainNavBarColor = nil;
+UIColor *MainViewColor = nil;
 
 @interface MainTabBarController ()<UITabBarControllerDelegate>
 
@@ -36,7 +38,7 @@
     [super viewDidLoad];
     self.delegate = self;
     //初始化tabbar
-    [self setUpTabBar];
+    [self setUpTabBar];    
     //添加子控制器
     [self setUpAllChildViewController];
 }

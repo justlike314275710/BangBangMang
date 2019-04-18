@@ -8,6 +8,8 @@
 
 #import "FriendsViewController.h"
 #import "TLMenuItem.h"
+#import "LifeCircleViewController.h"
+#import "UINavigationBar+Awesome.h"
 
 typedef NS_ENUM(NSInteger, TLDiscoverSectionTag) {
     TLDiscoverSectionTagMoments,
@@ -55,6 +57,10 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
 //MARK: UI
 -(void)loadMenus {
     @weakify(self);
+    
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.right.left.mas_equalTo(self.view);
+    }];
     self.clear();
     //朋友圈
     {
@@ -64,10 +70,8 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
         [moments setRightIconURL:@"http://pic1.nipic.com/2008-08-14/2008814183939909_2.jpg" withRightIconBadge:YES];
         self.addCell(CELL_MENU_ITEM).toSection(sectionTag).withDataModel(moments).selectedAction(^ (TLMenuItem *data) {
             @strongify(self);
-//            if (!self.momentsVC) {
-//                self.momentsVC = [[TLMomentsViewController alloc] init];
-//            }
-//            PushVC(self.momentsVC);
+                LifeCircleViewController *LifeCircleVC = [[LifeCircleViewController alloc] init];
+                [self.navigationController pushViewController:LifeCircleVC animated:YES];
         });
     }
     
@@ -80,6 +84,8 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
             @strongify(self);
 //            TLScanningViewController *scannerVC = [[TLScanningViewController alloc] init];
 //            PushVC(scannerVC);
+            LifeCircleViewController *LifeCircleVC = [[LifeCircleViewController alloc] init];
+            [self.navigationController pushViewController:LifeCircleVC animated:YES];
         });
     }
     [self reloadView];
