@@ -12,6 +12,7 @@
 #import "UIView+Toast.h"
 
 #import "NTESPersonalCardViewController.h"
+#import "NTESAddFriendsMessageViewController.h"
 
 @interface NTESContactAddFriendViewController ()
 
@@ -37,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"添加好友";
+   
     __weak typeof(self) wself = self;
     [self buildData];
     self.delegator = [[NIMCommonTableDelegate alloc] initWithTableData:^NSArray *{
@@ -59,9 +61,9 @@
                           HeaderTitle:@"",
                           RowContent :@[
                                   @{
-                                      Title         : @"请输入帐号",
+                                      Title         : @"请输入手机号码",
                                       CellClass     : @"NTESTextSettingCell",
-                                      RowHeight     : @(50),
+                                      RowHeight     : @(44),
                                       },
                                   ],
                           FooterTitle:@""
@@ -96,6 +98,8 @@
         if (users.count) {
             NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId];
             [wself.navigationController pushViewController:vc animated:YES];
+//            NTESAddFriendsMessageViewController*vc=[[NTESAddFriendsMessageViewController alloc]initWithUserId:userId];
+//            PushVC(vc);
         }else{
             if (wself) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"该用户不存在" message:@"请检查你输入的帐号是否正确" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
