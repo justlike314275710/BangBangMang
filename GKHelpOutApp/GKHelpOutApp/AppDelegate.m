@@ -38,6 +38,9 @@
     //广告页
 //    [AppManager appStart];
     //[WXApi registerApp:@"wx21aed62551567801"];
+    
+    
+    
     return YES;
     
 }

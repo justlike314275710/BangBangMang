@@ -43,10 +43,18 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadUI];
-//    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 //    [self setTitle:@"朋友圈"];
     [self setIsShowLiftBack:YES];
     [self requestDataWithPageIndex:0];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.navigationController.navigationBar.translucent = NO;
+    [UIApplication sharedApplication].statusBarHidden=YES;
+    
+
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -59,12 +67,10 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
         [self addNavigationItemWithImageNames:@[@"返回"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@2001]];
         [self addNavigationItemWithImageNames:@[@"black拍照"] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];
     } else {
-//        self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-//        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
+
+        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
         [self addNavigationItemWithImageNames:@[@"white返回"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@2001]];
         [self addNavigationItemWithImageNames:@[@"white拍照"] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];
-        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
-//        [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
     }
 }
 //MARKL:发朋友圈
@@ -76,20 +82,17 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
     self.collectionView.delegate = self;
     [self scrollViewDidScroll:self.collectionView];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    self.collectionView.delegate = nil;
-//    self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
-//    [self.navigationController.navigationBar lt_reset];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    self.collectionView.delegate = nil;
+    [self.navigationController.navigationBar lt_reset];
 }
 
 #pragma mark - # Request
@@ -112,10 +115,8 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 #pragma mark - # UI
 - (void)loadUI
 {
+
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-         make.top.bottom.right.left.mas_equalTo(self.view);
-    }];
     
     @weakify(self);
 //    [self addRightBarButtonWithImage:TLImage(@"nav_camera") actionBlick:^{
