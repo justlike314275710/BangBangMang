@@ -19,6 +19,7 @@
         _textField.clearButtonMode = UITextFieldViewModeAlways;
         _textField.font            = [UIFont systemFontOfSize:14.f];
         _textField.textColor       =UIColorHex(0x333333);
+        _textField.keyboardType=UIKeyboardTypeNumberPad;
         [self addSubview:_textField];
         
         _seachImage=[[UIImageView alloc]initWithFrame:CGRectZero];
@@ -43,7 +44,7 @@
     [super layoutSubviews];
     CGFloat textFieldLeft   = 17.f;
     CGFloat textFieldRight  = 17.f;
-    self.textField.width  = self.width - textFieldLeft - textFieldRight-90;
+    self.textField.width  =self.width - textFieldLeft - textFieldRight-90;
     self.textField.height = 44.f;
     self.textField.centerX = self.width * .5f;
     self.textField.centerY = self.height * .5f;
