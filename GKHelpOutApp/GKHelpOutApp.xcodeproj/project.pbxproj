@@ -187,6 +187,7 @@
 		559785A922266158007BBCC2 /* FeedLoadItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559785A822266158007BBCC2 /* FeedLoadItemView.m */; };
 		559785AC222661ED007BBCC2 /* FeedbackListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559785AA222661ED007BBCC2 /* FeedbackListCell.m */; };
 		559785AF22266219007BBCC2 /* UIViewController+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 559785AD22266219007BBCC2 /* UIViewController+Tool.m */; };
+		55AB82B7226875F8004EF0A9 /* BaseRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AB82B6226875F8004EF0A9 /* BaseRootViewController.m */; };
 		55B4F67A2223EFFC002B1536 /* PSAuthorizationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */; };
 		55C0C76A222CD23C00CD2459 /* HMAccountBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0C769222CD23C00CD2459 /* HMAccountBalanceViewController.m */; };
 		55C0C76F222CFA9300CD2459 /* LLActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0C76D222CFA9300CD2459 /* LLActionSheetView.m */; };
@@ -908,6 +909,8 @@
 		559785AB222661ED007BBCC2 /* FeedbackListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackListCell.h; sourceTree = "<group>"; };
 		559785AD22266219007BBCC2 /* UIViewController+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Tool.m"; sourceTree = "<group>"; };
 		559785AE22266219007BBCC2 /* UIViewController+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Tool.h"; sourceTree = "<group>"; };
+		55AB82B5226875F8004EF0A9 /* BaseRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRootViewController.h; sourceTree = "<group>"; };
+		55AB82B6226875F8004EF0A9 /* BaseRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseRootViewController.m; sourceTree = "<group>"; };
 		55B4F6782223EFFC002B1536 /* PSAuthorizationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAuthorizationTool.h; sourceTree = "<group>"; };
 		55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAuthorizationTool.m; sourceTree = "<group>"; };
 		55C0C768222CD23C00CD2459 /* HMAccountBalanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMAccountBalanceViewController.h; sourceTree = "<group>"; };
@@ -1892,6 +1895,8 @@
 			children = (
 				5557A4DD221BD76300743012 /* RootViewController.m */,
 				5557A4DE221BD76300743012 /* RootViewController.h */,
+				55AB82B5226875F8004EF0A9 /* BaseRootViewController.h */,
+				55AB82B6226875F8004EF0A9 /* BaseRootViewController.m */,
 			);
 			path = RootViewController;
 			sourceTree = "<group>";
@@ -4833,6 +4838,7 @@
 				EAB039BF221E8FF200331569 /* renderer_rgb.c in Sources */,
 				EA21CAC0221FA04F007D3445 /* PSPayView.m in Sources */,
 				EA21CB4D221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m in Sources */,
+				55AB82B7226875F8004EF0A9 /* BaseRootViewController.m in Sources */,
 				EA21CA85221F9980007D3445 /* PSLawer.m in Sources */,
 				55C8982B22648AF4005473AD /* LifeCircleViewController.m in Sources */,
 				EAB03924221E817C00331569 /* NIMSessionUnknowContentView.m in Sources */,
@@ -4890,11 +4896,8 @@
 				EA21CAA7221F9A21007D3445 /* PSLawyerView.m in Sources */,
 				EAB0390B221E817B00331569 /* NIMTextContentConfig.m in Sources */,
 				EA21CA49221F9386007D3445 /* PSPayCenter.m in Sources */,
-
 				EA6CCC06226477CB00BB2A74 /* NTESGroupedContacts.m in Sources */,
-
 				55F46E092266D8A4000D84B1 /* YBIBUtilities.m in Sources */,
-
 				55C0C775222D0D5100CD2459 /* HMGetCashResultViewController.m in Sources */,
 				EAB038F0221E817B00331569 /* NIMCardMemberItem.m in Sources */,
 				5557A604221BD96500743012 /* YSLCardView.m in Sources */,

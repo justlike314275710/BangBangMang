@@ -6,6 +6,6 @@
 //  Copyright © 2017年 徐阳. All rights reserved.
 //
 
-@interface LoginViewController : RootViewController
+@interface LoginViewController :RootViewController
 
 @end

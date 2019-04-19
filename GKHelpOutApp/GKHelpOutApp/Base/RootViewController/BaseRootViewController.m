@@ -1,27 +1,21 @@
 //
-//  RootViewController.m
-//  MiAiApp
+//  BaseRootViewController.m
+//  GKHelpOutApp
 //
-//  Created by 徐阳 on 2017/5/18.
-//  Copyright © 2017年 徐阳. All rights reserved.
+//  Created by kky on 2019/4/18.
+//  Copyright © 2019年 kky. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "BaseRootViewController.h"
 #import "LoginViewController.h"
 #import <UShareUI/UShareUI.h>
 
-
-@interface RootViewController ()
-
+@interface BaseRootViewController ()
 @property (nonatomic,strong) UIImageView* noDataView;
 
 @end
 
-@implementation RootViewController
-
-
-
-
+@implementation BaseRootViewController
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return _StatusBarStyle;
@@ -55,12 +49,12 @@
 
 - (void)showLoadingAnimation
 {
-   
+    
 }
 
 - (void)stopLoadingAnimation
 {
-   
+    
 }
 
 -(void)showNoDataImage
@@ -73,7 +67,7 @@
             [obj addSubview:_noDataView];
         }
     }];
-
+    
 }
 
 -(void)removeNoDataImage{
@@ -106,9 +100,9 @@
         
         //底部刷新
         _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
-//        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 30, 0);
-//        _tableView.mj_footer.ignoredScrollViewContentInsetBottom = 30;
-
+        //        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 30, 0);
+        //        _tableView.mj_footer.ignoredScrollViewContentInsetBottom = 30;
+        
         _tableView.backgroundColor=CViewBgColor;
         _tableView.scrollsToTop = YES;
         _tableView.tableFooterView = [[UIView alloc] init];
@@ -122,34 +116,34 @@
  *  @return collectionView
  */
 
-- (UICollectionView *)collectionView
+- (UICollectionView *)mycollectionView
 {
-    if (_collectionView == nil) {
+    if (_mycollectionView == nil) {
         UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc] init];
         
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth , KScreenHeight - kTopHeight - kTabBarHeight) collectionViewLayout:flow];
+        _mycollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth , KScreenHeight - kTopHeight - kTabBarHeight) collectionViewLayout:flow];
         
         MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
         header.automaticallyChangeAlpha = YES;
         header.lastUpdatedTimeLabel.hidden = YES;
         header.stateLabel.hidden = YES;
-        _collectionView.mj_header = header;
+        _mycollectionView.mj_header = header;
         
         //底部刷新
-        _collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
-
-//#ifdef kiOS11Before
-//        
-//#else
-//        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//        _collectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
-//        _collectionView.scrollIndicatorInsets = _collectionView.contentInset;
-//#endif
+        _mycollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
         
-        _collectionView.backgroundColor=CViewBgColor;
-        _collectionView.scrollsToTop = YES;
+        //#ifdef kiOS11Before
+        //
+        //#else
+        //        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        //        _collectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+        //        _collectionView.scrollIndicatorInsets = _collectionView.contentInset;
+        //#endif
+        
+        _mycollectionView.backgroundColor=CViewBgColor;
+        _mycollectionView.scrollsToTop = YES;
     }
-    return _collectionView;
+    return _mycollectionView;
 }
 -(void)headerRereshing{
     
@@ -306,15 +300,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
