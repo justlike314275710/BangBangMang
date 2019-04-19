@@ -12,6 +12,7 @@
 		55050AB622323F1F00E9635B /* PSImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55050AB422323F1E00E9635B /* PSImagePickerController.m */; };
 		55050AB922323F6400E9635B /* PSIntercepter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55050AB822323F6300E9635B /* PSIntercepter.m */; };
 		55050ABC22323F8500E9635B /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 55050ABA22323F8400E9635B /* UIImage+Crop.m */; };
+		5511120D22695C7F00D47C0E /* SendLifeCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511120C22695C7F00D47C0E /* SendLifeCircleViewController.m */; };
 		551AF6AD2230C57F006AB1A0 /* HMBillLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */; };
 		551AF6B12230F879006AB1A0 /* HMBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B02230F879006AB1A0 /* HMBillModel.m */; };
 		551AF6B422310BE1006AB1A0 /* HMMessageLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B322310BE1006AB1A0 /* HMMessageLogic.m */; };
@@ -601,6 +602,8 @@
 		55050AB822323F6300E9635B /* PSIntercepter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSIntercepter.m; sourceTree = "<group>"; };
 		55050ABA22323F8400E9635B /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
 		55050ABB22323F8400E9635B /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
+		5511120B22695C7F00D47C0E /* SendLifeCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendLifeCircleViewController.h; sourceTree = "<group>"; };
+		5511120C22695C7F00D47C0E /* SendLifeCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendLifeCircleViewController.m; sourceTree = "<group>"; };
 		551AF6AB2230C57F006AB1A0 /* HMBillLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillLogic.h; sourceTree = "<group>"; };
 		551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMBillLogic.m; sourceTree = "<group>"; };
 		551AF6AF2230F879006AB1A0 /* HMBillModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillModel.h; sourceTree = "<group>"; };
@@ -3271,6 +3274,8 @@
 				EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */,
 				55C8982922648AF4005473AD /* LifeCircleViewController.h */,
 				55C8982A22648AF4005473AD /* LifeCircleViewController.m */,
+				5511120B22695C7F00D47C0E /* SendLifeCircleViewController.h */,
+				5511120C22695C7F00D47C0E /* SendLifeCircleViewController.m */,
 			);
 			path = FriendsCircle;
 			sourceTree = "<group>";
@@ -4900,6 +4905,7 @@
 				55F46E092266D8A4000D84B1 /* YBIBUtilities.m in Sources */,
 				55C0C775222D0D5100CD2459 /* HMGetCashResultViewController.m in Sources */,
 				EAB038F0221E817B00331569 /* NIMCardMemberItem.m in Sources */,
+				5511120D22695C7F00D47C0E /* SendLifeCircleViewController.m in Sources */,
 				5557A604221BD96500743012 /* YSLCardView.m in Sources */,
 				EAB038FE221E817B00331569 /* NIMMediaItem.m in Sources */,
 				EA21CA4C221F9386007D3445 /* PSPayInfo.m in Sources */,
