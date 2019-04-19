@@ -27,6 +27,7 @@
 @property (nonatomic,copy  ) NSArray                 *data;
 
 @property (nonatomic,copy  ) NSString                *userId;
+@property (nonatomic,copy  ) NSString                *phone;
 
 @property (nonatomic,strong) NIMUser                 *user;
 
@@ -36,10 +37,11 @@
 
 @implementation NTESPersonalCardViewController
 
-- (instancetype)initWithUserId:(NSString *)userId{
+- (instancetype)initWithUserId:(NSString *)userId withPhone:(NSString*)phone{
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _userId = userId;
+        _phone=phone;
     }
     return self;
 }
@@ -106,7 +108,7 @@
                           HeaderTitle:@"",
                           RowContent :@[
                                            @{
-                                              ExtraInfo     : self.userId.length ? self.user.userId : [NSNull null],
+                                              ExtraInfo     : self.userId.length ? self.phone : [NSNull null],
                                               CellClass     : @"NTESCardPortraitCell",
                                               RowHeight     : @(100),
                                             },

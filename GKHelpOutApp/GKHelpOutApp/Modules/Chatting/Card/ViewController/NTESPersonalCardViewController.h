@@ -12,7 +12,7 @@
 
 @interface NTESPersonalCardViewController : UIViewController
 
-- (instancetype)initWithUserId:(NSString *)userId;
+- (instancetype)initWithUserId:(NSString *)userId withPhone:(NSString*)phone;
 
 @property (nonatomic, strong) UITableView *tableView;
 

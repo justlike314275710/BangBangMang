@@ -87,8 +87,8 @@
                          duration:2.0f
                          position:CSToastPositionCenter];
            // [wself refresh];
-            NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:self.userId];
-            [wself.navigationController pushViewController:vc animated:YES];
+//            NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:self.userId];
+//            [wself.navigationController pushViewController:vc animated:YES];
         }else{
             [wself.view makeToast:failedText
                          duration:2.0f

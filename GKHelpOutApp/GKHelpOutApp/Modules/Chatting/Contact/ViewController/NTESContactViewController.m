@@ -415,8 +415,9 @@ NIMEventSubscribeManagerDelegate> {
 
 #pragma mark - Private
 - (void)enterPersonalCard:(NSString *)userId{
-    NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId];
-    [self.navigationController pushViewController:vc animated:YES];
+    #warning TODO 代做 通讯录cell点击
+//    NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

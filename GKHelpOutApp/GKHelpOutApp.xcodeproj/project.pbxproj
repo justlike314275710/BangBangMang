@@ -250,6 +250,7 @@
 		EA0434422265C24B00A12210 /* NTESSystemNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA0434402265C24B00A12210 /* NTESSystemNotificationViewController.xib */; };
 		EA0434472265C2C300A12210 /* NTESSystemNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0434442265C2C200A12210 /* NTESSystemNotificationCell.m */; };
 		EA0434482265C2C300A12210 /* NTESSystemNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA0434452265C2C200A12210 /* NTESSystemNotificationCell.xib */; };
+		EA04344B2269B8CF00A12210 /* PSPersonCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA04344A2269B8CF00A12210 /* PSPersonCardViewController.m */; };
 		EA21CA2F221E9A78007D3445 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */; };
 		EA21CA31221EA694007D3445 /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; };
 		EA21CA32221EA694007D3445 /* NIMAVChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB0378A221E817A00331569 /* NIMAVChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1039,6 +1040,8 @@
 		EA0434442265C2C200A12210 /* NTESSystemNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSystemNotificationCell.m; sourceTree = "<group>"; };
 		EA0434452265C2C200A12210 /* NTESSystemNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTESSystemNotificationCell.xib; sourceTree = "<group>"; };
 		EA0434462265C2C300A12210 /* NTESSystemNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSystemNotificationCell.h; sourceTree = "<group>"; };
+		EA0434492269B8CF00A12210 /* PSPersonCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSPersonCardViewController.h; sourceTree = "<group>"; };
+		EA04344A2269B8CF00A12210 /* PSPersonCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSPersonCardViewController.m; sourceTree = "<group>"; };
 		EA21CA2E221E9A78007D3445 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EA21CA30221E9EB0007D3445 /* PSMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMacro.h; sourceTree = "<group>"; };
 		EA21CA3F221F9386007D3445 /* PSPayCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPayCenter.m; sourceTree = "<group>"; };
@@ -3337,6 +3340,8 @@
 			children = (
 				EA6CCBCA226452C400BB2A74 /* NTESPersonalCardViewController.h */,
 				EA6CCBCB226452C400BB2A74 /* NTESPersonalCardViewController.m */,
+				EA0434492269B8CF00A12210 /* PSPersonCardViewController.h */,
+				EA04344A2269B8CF00A12210 /* PSPersonCardViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -4904,6 +4909,7 @@
 				EAB038FE221E817B00331569 /* NIMMediaItem.m in Sources */,
 				EA21CA4C221F9386007D3445 /* PSPayInfo.m in Sources */,
 				55F46E122266D8A4000D84B1 /* YBImageBrowser.m in Sources */,
+				EA04344B2269B8CF00A12210 /* PSPersonCardViewController.m in Sources */,
 				EAB038C4221E817B00331569 /* NIMContactDataCell.m in Sources */,
 				EAB03928221E817C00331569 /* NIMLocationViewController.m in Sources */,
 				EAB0391C221E817B00331569 /* NIMSessionLocationContentView.m in Sources */,

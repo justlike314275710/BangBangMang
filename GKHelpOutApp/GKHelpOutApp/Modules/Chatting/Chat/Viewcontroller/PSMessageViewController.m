@@ -9,6 +9,7 @@
 #import "PSMessageViewController.h"
 #import "TLAddMenuView.h"
 #import "NTESContactAddFriendViewController.h"
+#import "PSPersonCardViewController.h"
 @interface PSMessageViewController ()
 @property (nonatomic, strong) TLAddMenuView *addMenuView;
 @end
@@ -65,6 +66,8 @@
 //                PushVC(vc);
                NTESContactAddFriendViewController*vc = [[NTESContactAddFriendViewController alloc] initWithNibName:nil bundle:nil];
                 [self.navigationController pushViewController:vc animated:YES];
+                
+                
             }
             else {
                 [PSAlertView showWithTitle:item.title message:@"功能暂未实现" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {

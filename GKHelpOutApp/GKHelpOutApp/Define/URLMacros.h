@@ -24,8 +24,8 @@
  这样做切换方便,不用来回每个网络请求修改请求域名,降低出错事件
  */
 
-#define DevelopSever    0
-#define TestSever       1
+#define DevelopSever    1
+#define TestSever       0
 #define ProductSever    0
 
 #if DevelopSever
@@ -76,7 +76,7 @@
 //注册接口
 #define URL_post_registe @"/users/of-mobile"
 //获取验证码
-#define URL_get_verification_code @"/sms/verification-codes/%@"
+#define URL_get_verification_code @"/sms/verification-codes/"
 
 //获取认证授权token // 刷新认证授权token
 #define URL_get_oauth_token @"/oauth/token"

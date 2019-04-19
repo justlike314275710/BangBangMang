@@ -14,6 +14,8 @@
 #import "NTESPersonalCardViewController.h"
 #import "NTESAddFriendsMessageViewController.h"
 
+#import "PSPersonCardViewController.h"
+
 @interface NTESContactAddFriendViewController ()
 
 @property (nonatomic,strong) NIMCommonTableDelegate *delegator;
@@ -76,10 +78,10 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    NSString *userId = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if (userId.length) {
-        userId = [userId lowercaseString];
-        [self addFriend:userId];
+    NSString *phone = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (phone.length) {
+        phone= [phone lowercaseString];
+       // [self IMaddFriend:phone];
     }
     return YES;
 }
@@ -88,22 +90,60 @@
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    NSString *phone = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (phone.length) {
+        phone= [phone lowercaseString];
+        [self IMaddFriend:phone];
+    }
+}
+
+-(void)IMaddFriend:(NSString*)phone{
+    NSString*url=[NSString stringWithFormat:@"http://192.168.0.230:8087/customer/user/getuserim?phoneNumber=%@",phone];
+    NSString *access_token =help_userManager.oathInfo.access_token;
+    NSString *token = NSStringFormat(@"Bearer %@",access_token);
+    [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
+    [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
+        if (ValidDict(responseObject)) {
+            NSString *userId = [responseObject[@"account"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            NSString*nickName=responseObject[@"nickname"];
+            NSString*avatar=responseObject[@"avatar"];
+            if (userId.length) {
+                userId = [userId lowercaseString];
+                [self addFriendWithUserID:userId withPhone:phone withNickName:nickName withAvatar:avatar];
+            }
+        } else {
+            [PSAlertView showWithTitle:@"该用户不存在" message:@"请检查你输入的手机号码是否正确" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
+                
+            } buttonTitles:@"确定", nil];
+        }
+    } failure:^(NSError *error) {
+        [PSAlertView showWithTitle:@"该用户不存在" message:@"请检查你输入的手机号码是否正确" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
+            
+        } buttonTitles:@"确定", nil];
+
+    }];
+}
+
+
 
 #pragma mark - Private
-- (void)addFriend:(NSString *)userId{
+- (void)addFriendWithUserID:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)avatar{
     __weak typeof(self) wself = self;
     [[PSLoadingView sharedInstance] show];
     [[NIMSDK sharedSDK].userManager fetchUserInfos:@[userId] completion:^(NSArray *users, NSError *error) {
         [[PSLoadingView sharedInstance]dismiss];
         if (users.count) {
-            NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId];
+//            NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId withPhone:phone];
+//            [wself.navigationController pushViewController:vc animated:YES];
+            PSPersonCardViewController*vc=[[PSPersonCardViewController alloc]initWithUserId:userId withPhone:phone withNickName:nickName withAvatar:avatar];
             [wself.navigationController pushViewController:vc animated:YES];
-//            NTESAddFriendsMessageViewController*vc=[[NTESAddFriendsMessageViewController alloc]initWithUserId:userId];
-//            PushVC(vc);
+
         }else{
             if (wself) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"该用户不存在" message:@"请检查你输入的帐号是否正确" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alert show];
+                [PSAlertView showWithTitle:@"该用户不存在" message:@"请检查你输入的手机号码是否正确" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
+                    
+                } buttonTitles:@"确定", nil];
             }
         }
     }];
