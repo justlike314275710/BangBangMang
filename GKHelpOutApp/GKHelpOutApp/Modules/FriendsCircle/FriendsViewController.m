@@ -42,6 +42,14 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
 #pragma mark - LifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = CViewBgColor;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.mycollectionView.hidden = YES;
+    self.tableView.hidden = YES;
+}
+-(void)loadView {
+    [super loadView];
     [self loadMenus];
 }
 
@@ -51,16 +59,15 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:nil];
 }
 
 #pragma mark - PrivateMethods
 //MARK: UI
 -(void)loadMenus {
     @weakify(self);
-    
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.right.left.mas_equalTo(self.view);
-    }];
+
     self.clear();
     //朋友圈
     {
@@ -92,6 +99,9 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
 //    [self resetTabBarBadge];
     
 }
+
+
+
 
 
 

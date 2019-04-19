@@ -42,31 +42,32 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadUI];
-    [self setTitle:@"朋友圈"];//asdfadfadfasdfasdfasfasfasdfasfasdfa
+    self.automaticallyAdjustsScrollViewInsets = NO;
+//    [self setTitle:@"朋友圈"];
+    [self setIsShowLiftBack:YES];
     [self requestDataWithPageIndex:0];
-//    self.isHidenNaviBar = YES;
-//    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
     
-    
-//    UINavigationBar *navBar = [UINavigationBar appearance];
-//    //导航栏背景图
-//    [navBar setBarTintColor:CNavBgColor];
-//    [navBar setTintColor:CNavBgFontColor];
-//    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName :CNavBgFontColor, NSFontAttributeName :[UIFont boldSystemFontOfSize:18]}];
-//    [navBar setBackgroundImage:[UIImage imageWithColor:CNavBgColor] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-//    [navBar setShadowImage:[UIImage new]];//去掉阴影线
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    UIColor * color = [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1];
+    UIColor * color = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
     CGFloat offsetY = scrollView.contentOffset.y;
     if (offsetY > NAVBAR_CHANGE_POINT) {
         CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
+        [self addNavigationItemWithImageNames:@[@"返回"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@2001]];
+        [self addNavigationItemWithImageNames:@[@"black拍照"] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];
     } else {
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
+        [self addNavigationItemWithImageNames:@[@"white返回"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@2001]];
+        [self addNavigationItemWithImageNames:@[@"white拍照"] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];
     }
+}
+//MARKL:发朋友圈
+- (void)sendFriendCircle{
+    
 }
 
 
@@ -82,6 +83,7 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 {
     [super viewWillDisappear:animated];
     self.collectionView.delegate = nil;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.navigationController.navigationBar lt_reset];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
@@ -115,7 +117,6 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 //    [self addRightBarButtonWithImage:TLImage(@"nav_camera") actionBlick:^{
 //        @strongify(self);
 //    }];
-    
     // 头图
     self.addSection(TLMomentsVCSectionTypeHeader);
     UserInfo *user = help_userManager.curUserInfo;
@@ -171,6 +172,5 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 //    TLWebViewController *webVC = [[TLWebViewController alloc] initWithUrl:url];
 //    PushVC(webVC);
 }
-
 
 @end

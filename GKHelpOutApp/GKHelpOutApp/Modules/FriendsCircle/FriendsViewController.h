@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-
-@interface FriendsViewController : ZZFlexibleLayoutViewController
+#import "BaseRootViewController.h"
+@interface FriendsViewController : BaseRootViewController
 
 @end

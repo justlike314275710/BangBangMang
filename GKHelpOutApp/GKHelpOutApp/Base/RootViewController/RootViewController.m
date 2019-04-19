@@ -121,6 +121,7 @@
  *
  *  @return collectionView
  */
+
 - (UICollectionView *)collectionView
 {
     if (_collectionView == nil) {
@@ -161,7 +162,7 @@
 /**
  *  是否显示返回按钮
  */
-- (void) setIsShowLiftBack:(BOOL)isShowLiftBack
+- (void)setIsShowLiftBack:(BOOL)isShowLiftBack
 {
     _isShowLiftBack = isShowLiftBack;
     NSInteger VCCount = self.navigationController.viewControllers.count;
