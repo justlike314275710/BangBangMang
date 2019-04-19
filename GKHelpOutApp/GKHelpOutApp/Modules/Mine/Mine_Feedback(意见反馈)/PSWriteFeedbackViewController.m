@@ -188,7 +188,9 @@
     [self.scrollview addSubview:secondeView];
     
     UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    submitBtn.frame = CGRectMake(15,self.scrollview.bottom+13,self.view.width-30, 44);
+    submitBtn.frame =
+    IS_IPHONEX?CGRectMake(15,self.scrollview.bottom+13-44,self.view.width-30, 44)
+    :CGRectMake(15,self.scrollview.bottom+13,self.view.width-30, 44);
     submitBtn.layer.masksToBounds = YES;
     submitBtn.layer.cornerRadius= 4;
     NSString*submit= @"提交";
