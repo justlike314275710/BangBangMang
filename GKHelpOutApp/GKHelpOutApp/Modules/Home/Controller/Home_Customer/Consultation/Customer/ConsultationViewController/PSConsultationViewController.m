@@ -363,7 +363,8 @@
     self.serviceCollectionView.alwaysBounceVertical=YES;
     
     
-    UIButton*releaseButton=[[UIButton alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT-125, SCREEN_WIDTH-30, 44)];
+    UIButton*releaseButton=[[UIButton alloc]init];
+    releaseButton.frame=IS_IPHONEX?CGRectMake(15, SCREEN_HEIGHT-125-44, SCREEN_WIDTH-30, 44):CGRectMake(15, SCREEN_HEIGHT-125, SCREEN_WIDTH-30, 44);
     [releaseButton setBackgroundImage:[UIImage imageNamed:@"提交按钮底框"] forState:0];
     [releaseButton setTitle:@"发布抢单" forState:0];
     releaseButton.titleLabel.font=AppBaseTextFont3;
