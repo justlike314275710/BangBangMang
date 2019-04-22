@@ -45,7 +45,12 @@
     
     UIImageView*iconView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 64, 64)];
     [personView addSubview:iconView];
-    [iconView sd_setImageWithURL:[NSURL URLWithString:self.avatar] placeholderImage:[UIImage imageNamed:@"登录－头像"]];
+    if (!self.avatar) {
+        [iconView sd_setImageWithURL:[NSURL URLWithString:self.avatar] placeholderImage:[UIImage imageNamed:@"登录－头像"]];
+    } else {
+        [iconView setImage:[UIImage imageNamed:@"登录－头像"]];
+    }
+    
     
     UILabel*nickName=[[UILabel alloc]initWithFrame:CGRectMake(64+30, 28, SCREEN_WIDTH-94, 20)];
     nickName.font=FontOfSize(18);
