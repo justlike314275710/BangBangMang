@@ -14,6 +14,7 @@
 @interface RootViewController ()
 
 @property (nonatomic,strong) UIImageView* noDataView;
+@property (nonatomic,strong) UIColor *titleColor;
 
 @end
 
@@ -230,6 +231,12 @@
 }
 
 #pragma mark ————— 导航栏 添加文字按钮 —————
+
+- (void)addNavigationItemWithTitles:(NSArray *)titles isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray *)tags titleColor:(UIColor *)titleColor{
+    _titleColor = titleColor;
+    [self addNavigationItemWithTitles:titles isLeft:isLeft target:target action:action tags:titles];
+}
+
 - (NSMutableArray<UIButton *> *)addNavigationItemWithTitles:(NSArray *)titles isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray *)tags
 {
     
@@ -249,10 +256,10 @@
         [btn setTitle:title forState:UIControlStateNormal];
         [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
         btn.titleLabel.font = SYSTEMFONT(14);
-        [btn setTitleColor:CFontColor4 forState:UIControlStateNormal];
+        _titleColor = _titleColor?_titleColor:CFontColor4;
+        [btn setTitleColor:_titleColor forState:UIControlStateNormal];
         btn.tag = [tags[i++] integerValue];
         [btn sizeToFit];
-        
         //设置偏移
         if (isLeft) {
             [btn setContentEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 10)];

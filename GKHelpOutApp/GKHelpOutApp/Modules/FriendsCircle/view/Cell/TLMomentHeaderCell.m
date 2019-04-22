@@ -67,7 +67,8 @@
     [self.backgroundWall mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self.contentView);
         make.bottom.mas_equalTo(self.mottoLabel.mas_top).mas_offset(- WIDTH_AVATAR / 3.0f - 8.0f);
-        make.top.mas_equalTo(-60);
+//        make.height.mas_equalTo(260);
+        make.top.mas_equalTo(-10);//-60
     }];
     
     [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -75,7 +76,6 @@
         make.centerY.mas_equalTo(self.backgroundWall.mas_bottom).mas_offset(- WIDTH_AVATAR / 6.0f);
         make.size.mas_equalTo(CGSizeMake(WIDTH_AVATAR, WIDTH_AVATAR));
     }];
-    self.avatarView.hidden = YES;
     
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.backgroundWall).mas_offset(-8.0f);

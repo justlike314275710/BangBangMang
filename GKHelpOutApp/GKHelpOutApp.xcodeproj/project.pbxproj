@@ -13,6 +13,10 @@
 		55050AB922323F6400E9635B /* PSIntercepter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55050AB822323F6300E9635B /* PSIntercepter.m */; };
 		55050ABC22323F8500E9635B /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 55050ABA22323F8400E9635B /* UIImage+Crop.m */; };
 		5511120D22695C7F00D47C0E /* SendLifeCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511120C22695C7F00D47C0E /* SendLifeCircleViewController.m */; };
+		551112102269993900D47C0E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511120E2269993900D47C0E /* UIImage+ImageEffects.m */; };
+		551112132269994300D47C0E /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 551112112269994300D47C0E /* UIColor+HexString.m */; };
+		551112172269997600D47C0E /* imageItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551112142269997600D47C0E /* imageItemView.xib */; };
+		551112182269997600D47C0E /* imageItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551112152269997600D47C0E /* imageItemView.m */; };
 		551AF6AD2230C57F006AB1A0 /* HMBillLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */; };
 		551AF6B12230F879006AB1A0 /* HMBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B02230F879006AB1A0 /* HMBillModel.m */; };
 		551AF6B422310BE1006AB1A0 /* HMMessageLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B322310BE1006AB1A0 /* HMMessageLogic.m */; };
@@ -605,6 +609,13 @@
 		55050ABB22323F8400E9635B /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
 		5511120B22695C7F00D47C0E /* SendLifeCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendLifeCircleViewController.h; sourceTree = "<group>"; };
 		5511120C22695C7F00D47C0E /* SendLifeCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendLifeCircleViewController.m; sourceTree = "<group>"; };
+		5511120E2269993900D47C0E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		5511120F2269993900D47C0E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		551112112269994300D47C0E /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
+		551112122269994300D47C0E /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
+		551112142269997600D47C0E /* imageItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = imageItemView.xib; sourceTree = "<group>"; };
+		551112152269997600D47C0E /* imageItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imageItemView.m; sourceTree = "<group>"; };
+		551112162269997600D47C0E /* imageItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imageItemView.h; sourceTree = "<group>"; };
 		551AF6AB2230C57F006AB1A0 /* HMBillLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillLogic.h; sourceTree = "<group>"; };
 		551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMBillLogic.m; sourceTree = "<group>"; };
 		551AF6AF2230F879006AB1A0 /* HMBillModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillModel.h; sourceTree = "<group>"; };
@@ -1991,6 +2002,10 @@
 		5557A506221BD7F500743012 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				551112122269994300D47C0E /* UIColor+HexString.h */,
+				551112112269994300D47C0E /* UIColor+HexString.m */,
+				5511120F2269993900D47C0E /* UIImage+ImageEffects.h */,
+				5511120E2269993900D47C0E /* UIImage+ImageEffects.m */,
 				EA6CCC0B226478A500BB2A74 /* NSString+NTES.h */,
 				EA6CCC0A226478A500BB2A74 /* NSString+NTES.m */,
 				55050ABB22323F8400E9635B /* UIImage+Crop.h */,
@@ -2825,6 +2840,9 @@
 			isa = PBXGroup;
 			children = (
 				55F46D62226576B2000D84B1 /* TLMomentViewDelegate.h */,
+				551112162269997600D47C0E /* imageItemView.h */,
+				551112152269997600D47C0E /* imageItemView.m */,
+				551112142269997600D47C0E /* imageItemView.xib */,
 				55F46D682265771E000D84B1 /* MomentExtensionView */,
 				55F46D64226576F9000D84B1 /* MomentDetailView */,
 				55F46D4B22657258000D84B1 /* Cell */,
@@ -4614,6 +4632,7 @@
 				EA6CCBB9226429F800BB2A74 /* AddMenu.xcassets in Resources */,
 				5557A656221BD99E00743012 /* placeholder@2x.png in Resources */,
 				5557A65A221BD99E00743012 /* stepPk_win_colour6@2x.png in Resources */,
+				551112172269997600D47C0E /* imageItemView.xib in Resources */,
 				5557A658221BD99E00743012 /* stepPk_win_colour2@2x.png in Resources */,
 				5557A61C221BD96500743012 /* man@2x.png in Resources */,
 				5557A617221BD96500743012 /* arrow_icon@2x.png in Resources */,
@@ -4979,6 +4998,7 @@
 				EA21CB4C221FCD2B007D3445 /* PSMyAdviceTableViewCell.m in Sources */,
 				5557A621221BD96500743012 /* PersonListViewController.m in Sources */,
 				5557A61F221BD96500743012 /* PersonListLogic.m in Sources */,
+				551112132269994300D47C0E /* UIColor+HexString.m in Sources */,
 				EAB039B6221E8FF200331569 /* NTESTimerHolder.m in Sources */,
 				5557A549221BD7F500743012 /* SandBoxHelper.m in Sources */,
 				EAB03908221E817B00331569 /* NIMNotificationContentConfig.m in Sources */,
@@ -4992,6 +5012,7 @@
 				EAE19E912230EF3B0080B0F5 /* Grab_customer.m in Sources */,
 				55050AB222323CC400E9635B /* NSString+emoji.m in Sources */,
 				555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */,
+				551112102269993900D47C0E /* UIImage+ImageEffects.m in Sources */,
 				5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */,
 				559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */,
 				EA6CCBB0226417E200BB2A74 /* PSMessageViewController.m in Sources */,
@@ -5061,6 +5082,7 @@
 				EA21CAA2221F9A21007D3445 /* PSMoreServiceViewModel.m in Sources */,
 				55F46E152266D8A4000D84B1 /* YBImageBrowserTipView.m in Sources */,
 				EAB03909221E817B00331569 /* NIMTipContentConfig.m in Sources */,
+				551112182269997600D47C0E /* imageItemView.m in Sources */,
 				EAB039B2221E8FF200331569 /* NTESSessionConfig.m in Sources */,
 				5557A557221BD7F500743012 /* FFTagsView.m in Sources */,
 				EAB038D8221E817B00331569 /* NIMInputEmoticonManager.m in Sources */,

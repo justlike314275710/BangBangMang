@@ -67,6 +67,8 @@
  */
 - (void)addNavigationItemWithTitles:(NSArray *)titles isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray *)tags;
 
+- (void)addNavigationItemWithTitles:(NSArray *)titles isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray *)tags titleColor:(UIColor *)titleColor;
+
 /**
  导航栏添加图标按钮
 
