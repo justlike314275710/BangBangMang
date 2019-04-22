@@ -24,8 +24,8 @@
  这样做切换方便,不用来回每个网络请求修改请求域名,降低出错事件
  */
 
-#define DevelopSever    1
-#define TestSever       0
+#define DevelopSever    0
+#define TestSever       1
 #define ProductSever    0
 
 #if DevelopSever
@@ -89,6 +89,10 @@
 
 //修改手机号码
 #define URL_modify_PhoneNumber @"/users/me/phone-number"
+
+#pragma mark - ——————— 生活圈 ————————————————
+//发布生活圈
+#define URL_lifeCircle_release @"/customer/circleoffriends/release"
 
 
 

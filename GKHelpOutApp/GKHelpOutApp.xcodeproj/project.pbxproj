@@ -173,6 +173,7 @@
 		555C118F222E702E00132E4F /* LawUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C118E222E702E00132E4F /* LawUserInfo.m */; };
 		555C1193222E771500132E4F /* HMAccontBalaceLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C1192222E771500132E4F /* HMAccontBalaceLogic.m */; };
 		557D9E0A226856E200F5D526 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */; };
+		55839656226D5D8300E7CD71 /* SendLifeCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */; };
 		558BBBD12236389B00CF1122 /* RMTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BBBCE2236389A00CF1122 /* RMTimer.m */; };
 		558BBBD22236389B00CF1122 /* RMCommonTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BBBD02236389B00CF1122 /* RMCommonTimer.m */; };
 		559218DD2226813F00A5C655 /* ModifyDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218DC2226813F00A5C655 /* ModifyDataViewController.m */; };
@@ -886,6 +887,8 @@
 		555C1192222E771500132E4F /* HMAccontBalaceLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMAccontBalaceLogic.m; sourceTree = "<group>"; };
 		557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		557D9E09226856E100F5D526 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		55839654226D5D8300E7CD71 /* SendLifeCircleLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendLifeCircleLogic.h; sourceTree = "<group>"; };
+		55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendLifeCircleLogic.m; sourceTree = "<group>"; };
 		558BBBCD2236389A00CF1122 /* RMTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTimer.h; sourceTree = "<group>"; };
 		558BBBCE2236389A00CF1122 /* RMTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMTimer.m; sourceTree = "<group>"; };
 		558BBBCF2236389A00CF1122 /* RMCommonTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCommonTimer.h; sourceTree = "<group>"; };
@@ -2677,6 +2680,15 @@
 			path = UINavigationBarLib;
 			sourceTree = "<group>";
 		};
+		55839653226D5D4100E7CD71 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				55839654226D5D8300E7CD71 /* SendLifeCircleLogic.h */,
+				55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
 		558BBBCC2236387800CF1122 /* RMTimer */ = {
 			isa = PBXGroup;
 			children = (
@@ -3288,6 +3300,7 @@
 		EA6CCBAA226412B800BB2A74 /* FriendsCircle */ = {
 			isa = PBXGroup;
 			children = (
+				55839653226D5D4100E7CD71 /* Logic */,
 				55F46D4A22657230000D84B1 /* view */,
 				55F46D3D22657013000D84B1 /* model */,
 				55C8980622645900005473AD /* Utils */,
@@ -4804,6 +4817,7 @@
 				EAB038C0221E817B00331569 /* NIMContactDataItem.m in Sources */,
 				55050ABC22323F8500E9635B /* UIImage+Crop.m in Sources */,
 				EA6CCBF72264777C00BB2A74 /* NTESUserListCell.m in Sources */,
+				55839656226D5D8300E7CD71 /* SendLifeCircleLogic.m in Sources */,
 				EAB038C7221E817B00331569 /* NIMContactSelectConfig.m in Sources */,
 				55F46D5E22657593000D84B1 /* TLMomentComment.m in Sources */,
 				EAB039BA221E8FF200331569 /* NTESGLView.m in Sources */,
