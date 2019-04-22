@@ -104,27 +104,16 @@ SINGLETON_FOR_CLASS(UserManager);
             id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             
             NSString*code=body[@"code"];
-            if ([code isEqualToString:@"user.Existed"]) {
+            if ([code isEqualToString:@"user.PhoneNumberExisted"]) {
                 //            [self EcommerceOfLogin];
                 [self loginToServer:parmeters refresh:NO  completion:nil];
             }
-            else if ([code isEqualToString:@"user.password.NotMatched"]){
-                [PSTipsView showTips:@"账号密码不匹配"];
+            else if ([code isEqualToString:@"user.SmsVerificationCodeNotMatched"]){
+                [PSTipsView showTips:@"短信验证码不匹配"];
             }
-            else if ([code isEqualToString:@"sms.verification-code.NotMatched"]){
-                [PSTipsView showTips:@"验证码错误"];
-            }
-            else if ([code isEqualToString:@"unauthorized"]){
-                [PSTipsView showTips:@"账号不存在"];
-            }
-            else if ([code isEqualToString:@"user.group.NotMatched"]){
-                [PSTipsView showTips:@"账号不属于该群组"];
-            }
-            else if ([code isEqualToString:@"invalid_grant"]){
-                [PSTipsView showTips:@"账号已禁用"];
-            }
+            
             else {
-                //            [self showNetError:error];
+               [PSTipsView showTips:@"服务器异常"];
             }
         }
     }];
