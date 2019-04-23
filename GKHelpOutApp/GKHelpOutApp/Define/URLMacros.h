@@ -101,6 +101,11 @@
 //获取朋友圈列表
 #define URL_lifeCircle_List @"/customer/circleoffriends/getMyCircleoffriends"
 
+//添加好友
+#define URL_friend_add @"/customer/customerfriend/add"
+
+//根据手机号码获取IM用户
+#define URL_get_im_customerInfo @"/customer/user/getuserim"
 
 //获取当前IM用户
 #define URL_get_im_info @"/im/users/me"

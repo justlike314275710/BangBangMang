@@ -99,7 +99,7 @@
 }
 
 -(void)IMaddFriend:(NSString*)phone{
-    NSString*url=[NSString stringWithFormat:@"http://192.168.0.230:8087/customer/user/getuserim?phoneNumber=%@",phone];
+    NSString*url=[NSString stringWithFormat:@"%@%@?phoneNumber=%@",ChatServerUrl,URL_get_im_customerInfo,phone];
     NSString *access_token =help_userManager.oathInfo.access_token;
     NSString *token = NSStringFormat(@"Bearer %@",access_token);
     [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];

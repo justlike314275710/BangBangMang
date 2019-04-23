@@ -151,13 +151,21 @@ static NSString *reuseIdentifier = @"reuseIdentifier";
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-#pragma mark - SystemNotificationCell
 
--(void)AcceptOnFriendsCircle:(NSDictionary*)par{
-    NSString*url=
-    [PPNetworkHelper POST:<#(NSString *)#> parameters:<#(id)#> success:<#^(id responseObject)success#> failure:<#^(NSError *error)failure#>]
+#pragma mark - 自己平台增加好友
+-(void)AcceptOnFriendsCircle:(NSDictionary*)paramter{
+    NSString*url=NSStringFormat(@"%@%@",ChatServerUrl,URL_friend_add);
+    NSString *access_token =help_userManager.oathInfo.access_token;
+    NSString *token = NSStringFormat(@"Bearer %@",access_token);
+    [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
+    [PPNetworkHelper setRequestSerializer:PPRequestSerializerJSON];
+    [PPNetworkHelper POST:url parameters:paramter success:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
-
+#pragma mark - SystemNotificationCell
 - (void)onAccept:(NIMSystemNotification *)notification
 {
     __weak typeof(self) wself = self;
@@ -170,6 +178,7 @@ static NSString *reuseIdentifier = @"reuseIdentifier";
                                                       position:CSToastPositionCenter];
                     notification.handleStatus = NotificationHandleTypeOk;
                     [wself.tableView reloadData];
+
                 }else {
                     if(error.code == NIMRemoteErrorCodeTimeoutError) {
                         [wself.navigationController.view makeToast:@"网络问题，请重试"
@@ -225,6 +234,11 @@ static NSString *reuseIdentifier = @"reuseIdentifier";
                                                                                            duration:2
                                                                                            position:CSToastPositionCenter];
                                                          notification.handleStatus = NotificationHandleTypeOk;
+                                                         NSDictionary*dic=[notification.postscript mj_JSONObject];
+                                                         NSString*userName=dic[@"curUserName"];
+                                                       
+                                                     NSDictionary*paramter=@{@"username":userName,@"account":notification.sourceID};
+                                                         [self AcceptOnFriendsCircle:paramter];
                                                      }
                                                      else
                                                      {
