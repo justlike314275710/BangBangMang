@@ -39,6 +39,9 @@
 #define EmallHostUrl @"http://192.168.0.230:8081"
 #define ConsultationHostUrl @"http://192.168.0.230:8086"
 
+//聊天朋友圈
+#define ChatServerUrl @"http://192.168.0.230:8087"
+
 #elif TestSever
 
 /**测试服务器*/
@@ -48,7 +51,8 @@
 #define ServerUrl [NSString stringWithFormat:@"%@/ywgk-app-demo",ServerDomain]
 #define EmallHostUrl @"http://qa.api.auth.prisonpublic.com"          //授权认证平台测试地址
 #define ConsultationHostUrl @"http://qa.api.legal.prisonpublic.com"  //法律咨询
-
+//聊天朋友圈
+#define ChatServerUrl @"http://qa.api.chat.prisonpublic.com"
 
 #elif ProductSever
 
@@ -90,7 +94,12 @@
 //修改手机号码
 #define URL_modify_PhoneNumber @"/users/me/phone-number"
 
+#pragma mark - ——————— 生活圈 ————————————————
+//发布生活圈
+#define URL_lifeCircle_release @"/customer/circleoffriends/release"
 
+//获取朋友圈列表
+#define URL_lifeCircle_List @"/customer/circleoffriends/getMyCircleoffriends"
 
 
 //获取当前IM用户

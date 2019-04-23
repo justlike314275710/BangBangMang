@@ -76,7 +76,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 /// 图片
 #define     TLImage(imageName)          (imageName ? [UIImage imageNamed:imageName] : nil)
 
-#define     DEFAULT_AVATAR_PATH @"登录－头像"
+#define     DEFAULT_AVATAR_PATH       @"登录－头像"
 
 #ifdef DEBUG
 #define PSLog(...) NSLog(__VA_ARGS__);

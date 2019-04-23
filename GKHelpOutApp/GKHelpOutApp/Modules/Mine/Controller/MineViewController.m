@@ -42,6 +42,7 @@
     self.isHidenNaviBar = NO;
     self.isShowLiftBack = NO;//每个根视图需要设置该属性为NO，否则会出现导航栏异常
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self createUI];
     [self initData];
     //个人中心资料变化

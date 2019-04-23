@@ -29,6 +29,7 @@
 
 - (void)setImages:(NSArray *)images
 {
+    [self SDWebImageAuth];
     _images = images;
     [self removeAllSubviews];
     
@@ -61,7 +62,11 @@
             [imageView addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self.imageViews addObject:imageView];
         }
-        [imageView tt_setImageWithURL:images[i] forState:UIControlStateNormal];
+
+        NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,images[i]);
+
+        [imageView tt_setImageWithURL:[NSURL URLWithString:url]  forState:UIControlStateNormal];
+        
         [imageView setFrame:CGRectMake(x, y, imageWidth, imageHeight)];
         [self addSubview:imageView];
         
@@ -73,6 +78,15 @@
             x += (imageWidth + SPACE);
         }
     }
+}
+
+#pragma mark ————— 设置SDWebImage认证token —————
+-(void)SDWebImageAuth{
+    [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
+    [SDWebImageManager sharedManager].imageCache.config.maxCacheAge=5*60.0;
+    
 }
 
 #pragma mark - # Event Response

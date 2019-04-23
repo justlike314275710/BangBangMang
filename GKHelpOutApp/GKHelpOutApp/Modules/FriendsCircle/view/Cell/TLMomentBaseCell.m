@@ -69,10 +69,17 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self setBackgroundColor:[UIColor whiteColor]];
-        
+        [self SDWebImageAuth];
         [self p_initSubviews];
     }
     return self;
+}
+-(void)SDWebImageAuth{
+    [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
+    [SDWebImageManager sharedManager].imageCache.config.maxCacheAge=5*60.0;
+    
 }
 
 - (void)setMoment:(TLMoment *)moment
@@ -80,10 +87,14 @@
     _moment = moment;
     
     // 头像
-    [self.avatarView tt_setImageWithURL:TLURL(moment.user.avatar) forState:UIControlStateNormal placeholderImage:TLImage(DEFAULT_AVATAR_PATH)];
+    
+    NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,moment.customer.id);
+    
+//    [imageView tt_setImageWithURL:[NSURL URLWithString:url]  forState:UIControlStateNormal];
+    
+    [self.avatarView tt_setImageWithURL:TLURL(url) forState:UIControlStateNormal placeholderImage:TLImage(DEFAULT_AVATAR_PATH)];
     // 用户名
-    self.nameView.zz_make.title(moment.user.nickname);
-    self.nameView.zz_make.title(@"kky");
+    self.nameView.zz_make.title(moment.customer.name);
     
     // 时间
     [self.dateLabel setText:moment.showDate];

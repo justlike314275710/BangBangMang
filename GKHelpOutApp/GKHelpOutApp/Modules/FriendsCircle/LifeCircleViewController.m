@@ -13,6 +13,7 @@
 #import "TLMomentImagesCell.h"
 #import "UINavigationBar+Awesome.h"
 #import "SendLifeCircleViewController.h"
+#import "LifeCircleLogic.h"
 
 #define NAVBAR_CHANGE_POINT 50
 
@@ -28,6 +29,7 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 
 @interface LifeCircleViewController ()<TLMomentViewDelegate,UIScrollViewDelegate,UICollectionViewDelegate>
 @property (nonatomic,strong) NSArray *datalist;
+@property (nonatomic,strong) LifeCircleLogic *logic;
 
 @end
 
@@ -42,15 +44,14 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _logic = [[LifeCircleLogic alloc] init];
     [self loadUI];
     self.automaticallyAdjustsScrollViewInsets = NO;
-//    [self setTitle:@"朋友圈"];
+
     [self setIsShowLiftBack:YES];
     [self requestDataWithPageIndex:0];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
-//    self.navigationController.navigationBar.translucent = NO;
     [UIApplication sharedApplication].statusBarHidden=YES;
     
 
@@ -98,9 +99,23 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 #pragma mark - # Request
 - (void)requestDataWithPageIndex:(NSInteger)pageIndex
 {
-    NSArray *data = [NSMutableArray arrayWithArray:[self testData]];
-    _datalist = data;
-    [self addMomentsData:data postion:TLMomentsVCNewDataPositionTail];
+    
+    [_logic getLifeCircleListData:^(id data) {
+        if (data) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self addMomentsData:self.logic.datalist postion:TLMomentsVCNewDataPositionTail];
+            });
+        }
+    } failed:^(NSError *error) {
+        if (error) {
+            [PSTipsView showTips:@"获取朋友圈列表失败"];
+        }
+    }];
+    
+//    NSArray *data = [NSMutableArray arrayWithArray:[self testData]];
+//    _datalist = data;
+//    NSLog(@"data:%@",data);
+//    [self addMomentsData:data postion:TLMomentsVCNewDataPositionTail];
 }
 
 - (NSArray *)testData
@@ -139,6 +154,7 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
     else {
         self.addCells(@"TLMomentImagesCell").toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
     }
+    [self reloadView];
 }
 
 #pragma mark - # Delegate
@@ -157,7 +173,8 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 //        MWPhoto *photo = [MWPhoto photoWithURL:TLURL(imageUrl)];
 //        [data addObject:photo];
         YBImageBrowseCellData *data = [YBImageBrowseCellData new];
-        data.url = TLURL(imageUrl);
+        NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,imageUrl);
+        data.url = TLURL(url);
         data.sourceObject = [self sourceObjAtIdx:index cell:cell];
         [browserDataArr addObject:data];
         

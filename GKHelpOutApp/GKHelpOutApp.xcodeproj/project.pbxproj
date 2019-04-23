@@ -173,6 +173,9 @@
 		555C118F222E702E00132E4F /* LawUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C118E222E702E00132E4F /* LawUserInfo.m */; };
 		555C1193222E771500132E4F /* HMAccontBalaceLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C1192222E771500132E4F /* HMAccontBalaceLogic.m */; };
 		557D9E0A226856E200F5D526 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */; };
+		55839656226D5D8300E7CD71 /* SendLifeCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */; };
+		55839659226D6DC600E7CD71 /* LifeCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55839658226D6DC600E7CD71 /* LifeCircleLogic.m */; };
+		5583965C226DAEEF00E7CD71 /* TLCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5583965B226DAEEF00E7CD71 /* TLCustomer.m */; };
 		558BBBD12236389B00CF1122 /* RMTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BBBCE2236389A00CF1122 /* RMTimer.m */; };
 		558BBBD22236389B00CF1122 /* RMCommonTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BBBD02236389B00CF1122 /* RMCommonTimer.m */; };
 		559218DD2226813F00A5C655 /* ModifyDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218DC2226813F00A5C655 /* ModifyDataViewController.m */; };
@@ -886,6 +889,12 @@
 		555C1192222E771500132E4F /* HMAccontBalaceLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMAccontBalaceLogic.m; sourceTree = "<group>"; };
 		557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		557D9E09226856E100F5D526 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		55839654226D5D8300E7CD71 /* SendLifeCircleLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendLifeCircleLogic.h; sourceTree = "<group>"; };
+		55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendLifeCircleLogic.m; sourceTree = "<group>"; };
+		55839657226D6DC600E7CD71 /* LifeCircleLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifeCircleLogic.h; sourceTree = "<group>"; };
+		55839658226D6DC600E7CD71 /* LifeCircleLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeCircleLogic.m; sourceTree = "<group>"; };
+		5583965A226DAEEF00E7CD71 /* TLCustomer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLCustomer.h; sourceTree = "<group>"; };
+		5583965B226DAEEF00E7CD71 /* TLCustomer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLCustomer.m; sourceTree = "<group>"; };
 		558BBBCD2236389A00CF1122 /* RMTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTimer.h; sourceTree = "<group>"; };
 		558BBBCE2236389A00CF1122 /* RMTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMTimer.m; sourceTree = "<group>"; };
 		558BBBCF2236389A00CF1122 /* RMCommonTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCommonTimer.h; sourceTree = "<group>"; };
@@ -2677,6 +2686,17 @@
 			path = UINavigationBarLib;
 			sourceTree = "<group>";
 		};
+		55839653226D5D4100E7CD71 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				55839654226D5D8300E7CD71 /* SendLifeCircleLogic.h */,
+				55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */,
+				55839657226D6DC600E7CD71 /* LifeCircleLogic.h */,
+				55839658226D6DC600E7CD71 /* LifeCircleLogic.m */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
 		558BBBCC2236387800CF1122 /* RMTimer */ = {
 			isa = PBXGroup;
 			children = (
@@ -2832,6 +2852,8 @@
 				55F46D5B22657593000D84B1 /* TLMomentDetail.m */,
 				55F46D5C22657593000D84B1 /* TLMomentExtension.h */,
 				55F46D5D22657593000D84B1 /* TLMomentExtension.m */,
+				5583965A226DAEEF00E7CD71 /* TLCustomer.h */,
+				5583965B226DAEEF00E7CD71 /* TLCustomer.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3288,6 +3310,7 @@
 		EA6CCBAA226412B800BB2A74 /* FriendsCircle */ = {
 			isa = PBXGroup;
 			children = (
+				55839653226D5D4100E7CD71 /* Logic */,
 				55F46D4A22657230000D84B1 /* view */,
 				55F46D3D22657013000D84B1 /* model */,
 				55C8980622645900005473AD /* Utils */,
@@ -4804,6 +4827,7 @@
 				EAB038C0221E817B00331569 /* NIMContactDataItem.m in Sources */,
 				55050ABC22323F8500E9635B /* UIImage+Crop.m in Sources */,
 				EA6CCBF72264777C00BB2A74 /* NTESUserListCell.m in Sources */,
+				55839656226D5D8300E7CD71 /* SendLifeCircleLogic.m in Sources */,
 				EAB038C7221E817B00331569 /* NIMContactSelectConfig.m in Sources */,
 				55F46D5E22657593000D84B1 /* TLMomentComment.m in Sources */,
 				EAB039BA221E8FF200331569 /* NTESGLView.m in Sources */,
@@ -4860,6 +4884,7 @@
 				EA6CCC1A226486D200BB2A74 /* NTESService.m in Sources */,
 				EAB03911221E817B00331569 /* NIMSessionMsgDatasource.m in Sources */,
 				558BBBD22236389B00CF1122 /* RMCommonTimer.m in Sources */,
+				55839659226D6DC600E7CD71 /* LifeCircleLogic.m in Sources */,
 				5524C6932225106B0067F437 /* ZWTopSelectVcView.m in Sources */,
 				EAB03913221E817B00331569 /* NIMSessionLayoutImpl.m in Sources */,
 				EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */,
@@ -4915,6 +4940,7 @@
 				EAB03938221E817C00331569 /* NIMKitColorButtonCell.m in Sources */,
 				EA21CB29221FA444007D3445 /* PSPaySuccessViewController.m in Sources */,
 				EAB0392A221E817C00331569 /* NSDictionary+NIMKit.m in Sources */,
+				5583965C226DAEEF00E7CD71 /* TLCustomer.m in Sources */,
 				EAB038F5221E817B00331569 /* NIMAdvancedTeamMemberCell.m in Sources */,
 				5524C6922225106B0067F437 /* ZWTopSelectButton.m in Sources */,
 				EAB03939221E817C00331569 /* NIMKitIndependentModeExtraInfo.m in Sources */,

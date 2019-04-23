@@ -16,6 +16,7 @@
 #define ROWCount 3 // 每一行放多少个
 #define colorWithBackground   [UIColor colorWithHexString:@"#f8f8f8"]
 #import "UploadManager.h"
+#import "SendLifeCircleLogic.h"
 
 typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
     ZZFDRquestQueueVCSectionType1 = 0,
@@ -47,6 +48,8 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
 @property (nonatomic, strong) ZZFLEXRequestQueue *requestQueue;
 @property (nonatomic, strong) NSMutableArray *loadImageDataArray;
 
+@property (nonatomic, strong) SendLifeCircleLogic *Logic; //逻辑层
+
 @end
 
 @implementation SendLifeCircleViewController
@@ -72,6 +75,7 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
     [self stepUI];
     [self addNavigationItemWithTitles:@[@"  取消"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@100]];
     [self addNavigationItemWithTitles:@[@"发布"] isLeft:NO target:self action:@selector(releaseAction) tags:@[@200] titleColor:UIColorFromRGB(38, 76, 144)];
+    _Logic = [[SendLifeCircleLogic alloc] init];
 
 }
 //发布朋友圈
@@ -89,25 +93,41 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
     
     @weakify(self);
     [self.requestQueue runAllRequestsWithCompleteAction:^(NSArray *data, NSInteger successCount, NSInteger failureCount) {
-
+        @strongify(self);
+        [self.loadImageDataArray removeAllObjects];
+        self.Logic.content = self.textViewContent.text;
+        for (ZZFLEXRequestModel *model in data) {
+            [self.loadImageDataArray addObject:model.data];
+        }
+        self.Logic.circleoffriendsPicture = self.loadImageDataArray;
+        [self.Logic postReleaseLifeCircleData:^(id data) {
+            
+        } failed:^(NSError *error) {
+            
+        }];
     }];
 }
+
+#pragma mark - 发布生活圈
+
 #pragma mark - # Private Methods
 - (ZZFLEXRequestModel *)createRequestModelWithType:(ZZFDRquestQueueVCSectionType)type image:(UIImage *)image
 {
     ZZFLEXRequestModel *requestModel = [ZZFLEXRequestModel requestModelWithTag:type requestAction:^(ZZFLEXRequestModel *requestModel) {
-        [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
-            if (successful) {
-                NSDictionary*AssImageDict=@{@"fileId":tips,@"thumbFileId":tips};
-                [self->_loadImageDataArray addObject:AssImageDict];
-                //接口请求成功
-                [requestModel executeRequestCompleteMethodWithSuccess:YES data:AssImageDict];
-            } else {
-                //接口请求失败
-                [requestModel executeRequestCompleteMethodWithSuccess:NO data:tips];
-            }
-    
-        }];
+
+            [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
+                
+                if (successful) {
+                    NSDictionary*AssImageDict=@{@"fileId":tips};
+                    [self->_loadImageDataArray addObject:AssImageDict];
+                    //接口请求成功
+                    [requestModel executeRequestCompleteMethodWithSuccess:YES data:AssImageDict];
+                } else {
+                    //接口请求失败
+                    [requestModel executeRequestCompleteMethodWithSuccess:NO data:tips];
+                }
+                
+            }];
         
     } requestCompleteAction:^(ZZFLEXRequestModel *requestModel) {
         //所以上传完了 刷新UI
