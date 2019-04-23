@@ -18,16 +18,18 @@
 #import "NTESPersonalCardViewController.h"
 @interface NTESAddFriendsMessageViewController ()
 @property (nonatomic,copy  ) NSString                *userId;
+@property (nonatomic,copy  ) NSString                *curUserName;
 @property (nonatomic , strong) UITextField           *messageField ;
 @end
 
 @implementation NTESAddFriendsMessageViewController
 
 
-    - (instancetype)initWithUserId:(NSString *)userId{
+    - (instancetype)initWithUserId:(NSString *)userId withCurUserName:(NSString *)curUserName{
         self = [super initWithNibName:nil bundle:nil];
         if (self) {
             _userId = userId;
+            _curUserName=curUserName;
         }
         return self;
     }
@@ -74,7 +76,8 @@
     NIMUserRequest *request = [[NIMUserRequest alloc] init];
     request.userId = self.userId;
     request.operation = NIMUserOperationRequest;
-    request.message = _messageField.text;
+    NSDictionary*dic= @{@"verifyContent":_messageField.text,@"userName":help_userManager.curUserInfo.nickname,@"curUserName":self.curUserName};
+    request.message = [dic mj_JSONString];
     NSString *successText = request.operation == NIMUserOperationAdd ? @"添加成功" : @"好友请求成功";
     NSString *failedText =  request.operation == NIMUserOperationAdd ? @"添加失败" : @"好友请求失败";
     

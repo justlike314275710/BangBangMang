@@ -14,16 +14,18 @@
 @property (nonatomic,copy  ) NSString                *phone;
 @property (nonatomic,copy  ) NSString                *nickName;
 @property (nonatomic,copy  ) NSString                *avatar;
+@property (nonatomic,copy  ) NSString                *curUserName;
 @end
 
 @implementation PSPersonCardViewController
-- (instancetype)initWithUserId:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)avatar{
+- (instancetype)initWithUserId:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)avatar withCurUserName:(NSString*)curUserName{
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _nickName=nickName;
         _userId = userId;
         _phone=phone;
         _avatar=avatar;
+        _curUserName=curUserName;
     }
     return self;
 }
@@ -79,7 +81,7 @@
     
 }
 -(void)addFriendsWithMessage{
-    NTESAddFriendsMessageViewController*vc=[[NTESAddFriendsMessageViewController alloc]initWithUserId:self.userId];
+    NTESAddFriendsMessageViewController*vc=[[NTESAddFriendsMessageViewController alloc]initWithUserId:self.userId withCurUserName:self.curUserName];
     PushVC(vc);
 }
 

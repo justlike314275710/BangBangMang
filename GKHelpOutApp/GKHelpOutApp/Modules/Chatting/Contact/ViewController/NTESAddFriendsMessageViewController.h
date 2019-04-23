@@ -9,5 +9,5 @@
 #import "RootViewController.h"
 #import <UIKit/UIKit.h>
 @interface NTESAddFriendsMessageViewController : PSViewController
-- (instancetype)initWithUserId:(NSString *)userId;
+- (instancetype)initWithUserId:(NSString *)userId withCurUserName:(NSString*)curUserName;
 @end

@@ -108,9 +108,10 @@
             NSString *userId = [responseObject[@"account"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             NSString*nickName=responseObject[@"nickname"];
             NSString*avatar=responseObject[@"avatar"];
+            NSString*curUserName=responseObject[@"curUserName"];
             if (userId.length) {
                 userId = [userId lowercaseString];
-                [self addFriendWithUserID:userId withPhone:phone withNickName:nickName withAvatar:avatar];
+                [self addFriendWithUserID:userId withPhone:phone withNickName:nickName withAvatar:avatar withCurUserName:curUserName];
             }
         } else {
             [PSAlertView showWithTitle:@"该用户不存在" message:@"请检查你输入的手机号码是否正确" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
@@ -128,7 +129,7 @@
 
 
 #pragma mark - Private
-- (void)addFriendWithUserID:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)avatar{
+- (void)addFriendWithUserID:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)avatar withCurUserName:(NSString*)curUserName{
     __weak typeof(self) wself = self;
     [[PSLoadingView sharedInstance] show];
     [[NIMSDK sharedSDK].userManager fetchUserInfos:@[userId] completion:^(NSArray *users, NSError *error) {
@@ -136,7 +137,7 @@
         if (users.count) {
 //            NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId withPhone:phone];
 //            [wself.navigationController pushViewController:vc animated:YES];
-            PSPersonCardViewController*vc=[[PSPersonCardViewController alloc]initWithUserId:userId withPhone:phone withNickName:nickName withAvatar:avatar];
+            PSPersonCardViewController*vc=[[PSPersonCardViewController alloc]initWithUserId:userId withPhone:phone withNickName:nickName withAvatar:avatar withCurUserName:curUserName];
             [wself.navigationController pushViewController:vc animated:YES];
 
         }else{

@@ -278,7 +278,7 @@
 }
 
 - (void)addFriend{
-    NTESAddFriendsMessageViewController*vc=[[NTESAddFriendsMessageViewController alloc]initWithUserId:self.userId];
+    NTESAddFriendsMessageViewController*vc=[[NTESAddFriendsMessageViewController alloc]initWithUserId:self.userId withCurUserName:nil];
     PushVC(vc);
     
 //    
