@@ -214,6 +214,7 @@
 		55C8981E22645C67005473AD /* TLImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C8981B22645C67005473AD /* TLImageDownloader.m */; };
 		55C89822226467B5005473AD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C89821226467B5005473AD /* Media.xcassets */; };
 		55C8982B22648AF4005473AD /* LifeCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C8982A22648AF4005473AD /* LifeCircleViewController.m */; };
+		55D1CCBC226EB1ED003DD0CD /* DetailLifeCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CCBB226EB1ED003DD0CD /* DetailLifeCircleViewController.m */; };
 		55F46D4E22657265000D84B1 /* TLMomentHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D4D22657265000D84B1 /* TLMomentHeaderCell.m */; };
 		55F46D5322657540000D84B1 /* TLMomentBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D5122657540000D84B1 /* TLMomentBaseCell.m */; };
 		55F46D5422657540000D84B1 /* TLMomentImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D5222657540000D84B1 /* TLMomentImagesCell.m */; };
@@ -970,6 +971,8 @@
 		55C89821226467B5005473AD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		55C8982922648AF4005473AD /* LifeCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifeCircleViewController.h; sourceTree = "<group>"; };
 		55C8982A22648AF4005473AD /* LifeCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeCircleViewController.m; sourceTree = "<group>"; };
+		55D1CCBA226EB1ED003DD0CD /* DetailLifeCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailLifeCircleViewController.h; sourceTree = "<group>"; };
+		55D1CCBB226EB1ED003DD0CD /* DetailLifeCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailLifeCircleViewController.m; sourceTree = "<group>"; };
 		55F46D4C22657265000D84B1 /* TLMomentHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentHeaderCell.h; sourceTree = "<group>"; };
 		55F46D4D22657265000D84B1 /* TLMomentHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentHeaderCell.m; sourceTree = "<group>"; };
 		55F46D4F22657540000D84B1 /* TLMomentImagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentImagesCell.h; sourceTree = "<group>"; };
@@ -3320,6 +3323,8 @@
 				55C8982A22648AF4005473AD /* LifeCircleViewController.m */,
 				5511120B22695C7F00D47C0E /* SendLifeCircleViewController.h */,
 				5511120C22695C7F00D47C0E /* SendLifeCircleViewController.m */,
+				55D1CCBA226EB1ED003DD0CD /* DetailLifeCircleViewController.h */,
+				55D1CCBB226EB1ED003DD0CD /* DetailLifeCircleViewController.m */,
 			);
 			path = FriendsCircle;
 			sourceTree = "<group>";
@@ -4811,6 +4816,7 @@
 				55F46D5322657540000D84B1 /* TLMomentBaseCell.m in Sources */,
 				55F46E112266D8A4000D84B1 /* YBImageBrowseCell.m in Sources */,
 				55F46DC72265CF95000D84B1 /* DGExplodeAnimationView.m in Sources */,
+				55D1CCBC226EB1ED003DD0CD /* DetailLifeCircleViewController.m in Sources */,
 				5557A54D221BD7F500743012 /* TADotView.m in Sources */,
 				EAB039BC221E8FF200331569 /* renderer_yuv444p10le.c in Sources */,
 				EAB039C5221E8FF200331569 /* yuv420p.fsh.c in Sources */,

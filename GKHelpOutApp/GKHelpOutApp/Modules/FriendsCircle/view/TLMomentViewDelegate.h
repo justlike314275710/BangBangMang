@@ -19,4 +19,10 @@
 
 - (void)momentViewWithModel:(TLMoment *)moment jumpToUrl:(NSString *)url;
 
+//分享
+- (void)momentViewWithModel:(TLMoment *)moment didClickShare:(NSString *)url;
+//评论
+- (void)momentViewWithModel:(TLMoment *)moment didClickComment:(NSString *)url;
+//点赞
+- (void)momentViewWithModel:(TLMoment *)moment didClickLike:(NSString *)url;
 @end

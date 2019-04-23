@@ -87,7 +87,6 @@
     _moment = moment;
     
     // 头像
-    
     NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,moment.customer.id);
     
 //    [imageView tt_setImageWithURL:[NSURL URLWithString:url]  forState:UIControlStateNormal];
@@ -191,8 +190,10 @@
     .view;
     
     //分享
-    self.shareButton = self.contentView.addButton(1040).backgroundImage(IMAGE_NAMED(@"分享icon"))
-    .masonry(^ (MASConstraintMaker *make) {
+    self.shareButton = self.contentView.addButton(1040).backgroundImage(IMAGE_NAMED(@"分享icon")).eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
+        @strongify(self);
+        [self didClicKShare];
+    }).masonry(^ (MASConstraintMaker *make) {
         make.left.mas_equalTo(self.nameView);
         make.width.height.mas_equalTo(16);
         make.bottom.mas_equalTo(self.contentView).mas_offset(-10);
@@ -209,8 +210,10 @@
     .view;
     
     //评论
-    self.commentButton = self.contentView.addButton(1042).backgroundImage(IMAGE_NAMED(@"评论icon"))
-    .masonry(^ (MASConstraintMaker *make) {
+    self.commentButton = self.contentView.addButton(1042).backgroundImage(IMAGE_NAMED(@"评论icon")).eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
+        @strongify(self);
+        [self didClicKComment];
+    }).masonry(^ (MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.detailContainer.mas_centerX).mas_offset(-15);
         make.width.height.mas_equalTo(16);
         make.bottom.mas_equalTo(self.contentView).mas_offset(-10);
@@ -233,6 +236,10 @@
         make.right.mas_equalTo(self.detailContainer).mas_offset(-33);
         make.width.height.mas_equalTo(16);
         make.bottom.mas_equalTo(self.contentView).mas_offset(-10);
+    }];
+    [self.LikeButton addTapBlock:^(UIButton *btn) {
+        @strongify(self);
+        [self didClicKLike];
     }];
     
 //    self.LikeButton = self.contentView.addButton(1044).backgroundImage(IMAGE_NAMED(@"未点赞icon"))
@@ -324,6 +331,24 @@
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(momentViewWithModel:didClickUser:)]) {
         [self.delegate momentViewWithModel:self.moment didClickUser:self.moment.user];
+    }
+}
+//分享
+-(void)didClicKShare{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(momentViewWithModel:didClickShare:)]) {
+        [self.delegate momentViewWithModel:self.moment didClickShare:nil];
+    }
+}
+//点赞
+-(void)didClicKLike{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(momentViewWithModel:didClickLike:)]) {
+        [self.delegate momentViewWithModel:self.moment didClickLike:nil];
+    }
+}
+//评论
+-(void)didClicKComment{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(momentViewWithModel:didClickComment:)]) {
+        [self.delegate momentViewWithModel:self.moment didClickComment:nil];
     }
 }
 
