@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TLMomentDetail.h"
 #import "TLMomentExtension.h"
+#import "TLCustomer.h"
 
 @class TLMomentLinkModel;
 @class TLMomentFrame;
@@ -21,6 +22,7 @@
 
 /// 发布时间
 @property (nonatomic, strong) NSString *date;
+
 @property (nonatomic, strong, readonly) NSString *showDate;
 
 /// 来源
@@ -38,6 +40,15 @@
 @property (nonatomic, strong) TLMomentExtension *extension;
 
 @property (nonatomic, strong) TLMomentFrame *momentFrame;
+
+#pragma mark -------- add
+@property (nonatomic, copy)   NSString *id;
+@property (nonatomic, assign) NSInteger praiseNum; //赞数
+@property (nonatomic, assign) NSInteger  commentNum; //评论数
+@property (nonatomic, strong) TLCustomer *customer; //朋友圈发送人
+@property (nonatomic, strong) NSArray *circleoffriendsPicture; //图片
+@property (nonatomic, strong) NSString *content;    //文字内容;
+
 
 @end
 

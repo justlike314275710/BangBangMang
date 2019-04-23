@@ -17,7 +17,7 @@
 
 
 //发布朋友圈
-- (void)PostReleaseLifeCircleData:(RequestDataCompleted)completed failed:(RequestDataFailed)failedCallback;
+- (void)postReleaseLifeCircleData:(RequestDataCompleted)completed failed:(RequestDataFailed)failedCallback;
 
 @end
 

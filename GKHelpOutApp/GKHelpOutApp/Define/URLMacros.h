@@ -24,8 +24,8 @@
  这样做切换方便,不用来回每个网络请求修改请求域名,降低出错事件
  */
 
-#define DevelopSever    0
-#define TestSever       1
+#define DevelopSever    1
+#define TestSever       0
 #define ProductSever    0
 
 #if DevelopSever
@@ -39,6 +39,9 @@
 #define EmallHostUrl @"http://192.168.0.230:8081"
 #define ConsultationHostUrl @"http://192.168.0.230:8086"
 
+//聊天朋友圈
+#define ChatServerUrl @"http://192.168.0.230:8087"
+
 #elif TestSever
 
 /**测试服务器*/
@@ -48,7 +51,8 @@
 #define ServerUrl [NSString stringWithFormat:@"%@/ywgk-app-demo",ServerDomain]
 #define EmallHostUrl @"http://qa.api.auth.prisonpublic.com"          //授权认证平台测试地址
 #define ConsultationHostUrl @"http://qa.api.legal.prisonpublic.com"  //法律咨询
-
+//聊天朋友圈
+#define ChatServerUrl @"http://qa.api.chat.prisonpublic.com"
 
 #elif ProductSever
 
@@ -94,7 +98,8 @@
 //发布生活圈
 #define URL_lifeCircle_release @"/customer/circleoffriends/release"
 
-
+//获取朋友圈列表
+#define URL_lifeCircle_List @"/customer/circleoffriends/getMyCircleoffriends"
 
 
 //获取当前IM用户

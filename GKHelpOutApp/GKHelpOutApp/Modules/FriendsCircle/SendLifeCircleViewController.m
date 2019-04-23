@@ -94,10 +94,14 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
     @weakify(self);
     [self.requestQueue runAllRequestsWithCompleteAction:^(NSArray *data, NSInteger successCount, NSInteger failureCount) {
         @strongify(self);
+        [self.loadImageDataArray removeAllObjects];
         self.Logic.content = self.textViewContent.text;
+        for (ZZFLEXRequestModel *model in data) {
+            [self.loadImageDataArray addObject:model.data];
+        }
         self.Logic.circleoffriendsPicture = self.loadImageDataArray;
-        [self->_Logic PostReleaseLifeCircleData:^(id data) {
- 
+        [self.Logic postReleaseLifeCircleData:^(id data) {
+            
         } failed:^(NSError *error) {
             
         }];
@@ -112,8 +116,9 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
     ZZFLEXRequestModel *requestModel = [ZZFLEXRequestModel requestModelWithTag:type requestAction:^(ZZFLEXRequestModel *requestModel) {
 
             [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
+                
                 if (successful) {
-                    NSDictionary*AssImageDict=@{@"fileId":tips,@"thumbFileId":tips};
+                    NSDictionary*AssImageDict=@{@"fileId":tips};
                     [self->_loadImageDataArray addObject:AssImageDict];
                     //接口请求成功
                     [requestModel executeRequestCompleteMethodWithSuccess:YES data:AssImageDict];

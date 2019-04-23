@@ -12,6 +12,12 @@
 
 @implementation TLMoment
 
+// UserInfo.m
++ (NSDictionary *)modelCustomPropertyMapper {
+    // 将im_username映射到key为username的数据字段
+    return @{@"date":@"createdTime"};
+}
+
 - (void)setDate:(NSString *)date
 {
     _date = date;
@@ -71,6 +77,19 @@
 {
     BOOL hasExtension = self.extension.likedFriends.count > 0 || self.extension.comments.count > 0;
     return hasExtension;
+}
+
+- (TLMomentDetail *)detail {
+    if (!_detail) {
+        _detail = [[TLMomentDetail alloc] init];
+        _detail.text = self.content;
+        NSMutableArray *mdic = [NSMutableArray array];
+        for (NSDictionary *dic in self.circleoffriendsPicture) {
+            [mdic addObject:[dic valueForKey:@"fileId"]];
+        }
+        _detail.images = [mdic copy];
+    }
+    return _detail;
 }
 
 @end

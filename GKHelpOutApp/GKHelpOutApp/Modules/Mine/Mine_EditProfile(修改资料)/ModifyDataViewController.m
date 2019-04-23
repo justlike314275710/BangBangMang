@@ -27,7 +27,8 @@
     // Do any additional setup after loading the view.
     self.title = @"个人账户";
     self.isShowLiftBack = YES;
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setupUI];
     [self intData];
     //网络状态监听
@@ -35,6 +36,11 @@
                                              selector:@selector(intData)
                                                  name:KNotificationModifyDataChange
                                                object:nil];
+    if (@available(iOS 11.0, *)) {
+         [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    }
+
+    
 }
 
 - (void)intData{
@@ -162,8 +168,10 @@
 -(void)openAlbum{
     
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.edgesForExtendedLayout = UIRectEdgeNone;
     controller.navigationBar.tintColor = [UIColor grayColor];
     controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    controller.navigationBar.translucent = NO;
     NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
     [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
     controller.mediaTypes = mediaTypes;
@@ -174,11 +182,19 @@
                          NSLog(@"Picker View Controller is presented");
                      }];
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+}
+
 //拍照
 -(void)openCamera{
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     controller.sourceType = UIImagePickerControllerSourceTypeCamera;
     controller.navigationBar.tintColor = [UIColor grayColor];
+    controller.edgesForExtendedLayout = UIRectEdgeNone;
     NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
     [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
     controller.mediaTypes = mediaTypes;
