@@ -39,6 +39,8 @@ static NSString *reuseIdentifier = @"reuseIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     NSLog(@"%@",help_userManager.curUserInfo.account);
     
     self.navigationItem.title = @"验证消息";
@@ -150,6 +152,12 @@ static NSString *reuseIdentifier = @"reuseIdentifier";
 }
 
 #pragma mark - SystemNotificationCell
+
+-(void)AcceptOnFriendsCircle:(NSDictionary*)par{
+    NSString*url=
+    [PPNetworkHelper POST:<#(NSString *)#> parameters:<#(id)#> success:<#^(id responseObject)success#> failure:<#^(NSError *error)failure#>]
+}
+
 - (void)onAccept:(NIMSystemNotification *)notification
 {
     __weak typeof(self) wself = self;

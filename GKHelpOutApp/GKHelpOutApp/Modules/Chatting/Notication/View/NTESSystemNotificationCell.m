@@ -130,6 +130,9 @@
     }
     [self.detailTextLabel sizeToFit];
     self.messageLabel.text = self.notification.postscript;
+    NSDictionary*dic= [self.notification.postscript mj_JSONObject];
+    self.messageLabel.text=dic[@"verifyContent"];
+    NSLog(@"%@",dic);
     [self.messageLabel sizeToFit];
     [self setNeedsLayout];
 }

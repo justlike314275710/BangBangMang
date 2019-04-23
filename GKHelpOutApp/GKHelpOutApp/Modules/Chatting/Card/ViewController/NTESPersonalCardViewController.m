@@ -108,7 +108,7 @@
                           HeaderTitle:@"",
                           RowContent :@[
                                            @{
-                                              ExtraInfo     : self.userId.length ? self.phone : [NSNull null],
+                                              ExtraInfo     : self.userId.length ? self.userId : [NSNull null],
                                               CellClass     : @"NTESCardPortraitCell",
                                               RowHeight     : @(100),
                                             },

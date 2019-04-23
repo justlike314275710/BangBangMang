@@ -5,7 +5,7 @@
 //  Created by chris on 15/2/2.
 //  Copyright (c) 2015年 Netease. All rights reserved.
 //
-
+#import "NTESPersonalCardViewController.h"
 #import "NTESContactViewController.h"
 #import "NTESSessionUtil.h"
 
@@ -26,6 +26,8 @@
 #import "NIMContactSelectViewController.h"
 //#import "NTESUserUtil.h"
 #import "NIMSessionViewController.h"
+
+
 @interface NTESContactViewController ()<NIMUserManagerDelegate,
 NIMSystemNotificationManagerDelegate,
 NTESContactUtilCellDelegate,
@@ -84,6 +86,9 @@ NIMEventSubscribeManagerDelegate> {
     [[NIMSDK sharedSDK].loginManager addDelegate:self];
     [[NIMSDK sharedSDK].userManager addDelegate:self];
     [[NIMSDK sharedSDK].subscribeManager addDelegate:self];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 
@@ -416,8 +421,16 @@ NIMEventSubscribeManagerDelegate> {
 #pragma mark - Private
 - (void)enterPersonalCard:(NSString *)userId{
     #warning TODO 代做 通讯录cell点击
-//    NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId];
+//    NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId withPhone:nil];
 //    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+     NIMSession *session = [NIMSession session:userId type:NIMSessionTypeP2P];
+    NIMSessionViewController *vc = [[NIMSessionViewController alloc] initWithSession:session];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    
 }
 
 

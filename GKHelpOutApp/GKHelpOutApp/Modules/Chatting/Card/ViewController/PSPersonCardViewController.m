@@ -32,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self p_setUI];
+    
     // Do any additional setup after loading the view.
 }
 -(void)p_setUI{
