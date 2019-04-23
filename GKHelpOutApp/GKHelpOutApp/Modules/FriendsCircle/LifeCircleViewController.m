@@ -14,18 +14,9 @@
 #import "UINavigationBar+Awesome.h"
 #import "SendLifeCircleViewController.h"
 #import "LifeCircleLogic.h"
+#import "DetailLifeCircleViewController.h"
 
 #define NAVBAR_CHANGE_POINT 50
-
-typedef NS_ENUM(NSInteger, TLMomentsVCSectionType) {
-    TLMomentsVCSectionTypeHeader,
-    TLMomentsVCSectionTypeItems,
-};
-
-typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
-    TLMomentsVCNewDataPositionHead,
-    TLMomentsVCNewDataPositionTail,
-};
 
 @interface LifeCircleViewController ()<TLMomentViewDelegate,UIScrollViewDelegate,UICollectionViewDelegate>
 @property (nonatomic,strong) NSArray *datalist;
@@ -47,14 +38,11 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
     _logic = [[LifeCircleLogic alloc] init];
     [self loadUI];
     self.automaticallyAdjustsScrollViewInsets = NO;
-
     [self setIsShowLiftBack:YES];
     [self requestDataWithPageIndex:0];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
     [UIApplication sharedApplication].statusBarHidden=YES;
-    
-
 
 }
 
@@ -193,6 +181,23 @@ typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
 {
 //    TLWebViewController *webVC = [[TLWebViewController alloc] initWithUrl:url];
 //    PushVC(webVC);
+}
+
+//分享
+- (void)momentViewWithModel:(TLMoment *)moment didClickShare:(NSString *)url {
+    DetailLifeCircleViewController *detailLifeCircleVC = [[DetailLifeCircleViewController alloc] init];
+    detailLifeCircleVC.datalist = @[moment];
+    PushVC(detailLifeCircleVC);
+}
+//评论
+- (void)momentViewWithModel:(TLMoment *)moment didClickComment:(NSString *)url{
+    DetailLifeCircleViewController *detailLifeCircleVC = [[DetailLifeCircleViewController alloc] init];
+    detailLifeCircleVC.datalist = @[moment];
+    PushVC(detailLifeCircleVC);
+}
+//点赞
+- (void)momentViewWithModel:(TLMoment *)moment didClickLike:(NSString *)url{
+    
 }
 
 @end

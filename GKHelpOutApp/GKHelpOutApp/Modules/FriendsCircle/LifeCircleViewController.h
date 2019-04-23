@@ -8,6 +8,15 @@
 
 #import "ZZFlexibleLayoutViewController.h"
 #import "BaseRootViewController.h"
+typedef NS_ENUM(NSInteger, TLMomentsVCSectionType) {
+    TLMomentsVCSectionTypeHeader,
+    TLMomentsVCSectionTypeItems,
+};
+
+typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
+    TLMomentsVCNewDataPositionHead,
+    TLMomentsVCNewDataPositionTail,
+};
 
 NS_ASSUME_NONNULL_BEGIN
 

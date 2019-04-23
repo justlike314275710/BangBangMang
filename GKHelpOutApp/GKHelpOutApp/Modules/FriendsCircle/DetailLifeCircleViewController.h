@@ -8,7 +8,8 @@
 
 #import "RootViewController.h"
 
-@interface DetailLifeCircleViewController : RootViewController
+@interface DetailLifeCircleViewController :RootViewController
+@property (nonatomic,strong)NSArray *datalist;
 
 @end
 
