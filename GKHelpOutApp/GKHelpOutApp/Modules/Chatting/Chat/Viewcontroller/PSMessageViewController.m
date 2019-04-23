@@ -12,6 +12,7 @@
 #import "PSPersonCardViewController.h"
 @interface PSMessageViewController ()
 @property (nonatomic, strong) TLAddMenuView *addMenuView;
+@property (nonatomic , strong) UIView *NavView;//导航栏 ;
 @end
 
 @implementation PSMessageViewController
@@ -19,10 +20,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"消息";
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName :CNavBgFontColor, NSFontAttributeName :[UIFont boldSystemFontOfSize:18]}];
-    [self p_loadUI];
+//    self.isHidenNaviBar = NO;
+//    self.isShowLiftBack = NO;//每个根视图需要设置该属性为NO，否则会出现导航栏异常
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+   // [self createNav];
+    
+   [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName :CNavBgFontColor, NSFontAttributeName :[UIFont boldSystemFontOfSize:18]}];
+  [self p_loadUI];
 
 }
+
+
+
+
+-(void)createNav{
+    _NavView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, kTopHeight)];
+    _NavView.backgroundColor = KClearColor;
+    
+    UILabel * titlelbl = [[UILabel alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, KScreenWidth/2, kNavBarHeight )];
+    titlelbl.centerX = _NavView.width/2;
+    titlelbl.textAlignment = NSTextAlignmentCenter;
+    titlelbl.font= SYSTEMFONT(17);
+    titlelbl.textColor = KWhiteColor;
+    titlelbl.text = @"消息";
+    [_NavView addSubview:titlelbl];
+    
+//    UIButton * btn = [UIButton buttonWithType:UIButtonTypeSystem];
+//    [btn setTitle:@"设置" forState:UIControlStateNormal];
+
+//    btn.titleLabel.font = SYSTEMFONT(16);
+//    [btn setTitleColor:KWhiteColor forState:UIControlStateNormal];
+//    [btn sizeToFit];
+//    btn.frame = CGRectMake(_NavView.width - btn.width - 15, kStatusBarHeight, btn.width, 40);
+//    [btn setTitleColor:KWhiteColor forState:UIControlStateNormal];
+//    [btn addTarget:self action:@selector(changeUser) forControlEvents:UIControlEventTouchUpInside];
+    
+    //    [_NavView addSubview:btn];
+       [self.view addSubview:_NavView];
+}
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {

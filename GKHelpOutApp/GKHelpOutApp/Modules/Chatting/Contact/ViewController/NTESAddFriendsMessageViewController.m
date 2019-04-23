@@ -25,7 +25,7 @@
 @implementation NTESAddFriendsMessageViewController
 
 
-    - (instancetype)initWithUserId:(NSString *)userId withCurUserName:(NSString *)curUserName{
+- (instancetype)initWithUserId:(NSString *)userId withCurUserName:(NSString *)curUserName{
         self = [super initWithNibName:nil bundle:nil];
         if (self) {
             _userId = userId;
@@ -64,6 +64,7 @@
     _messageField=[[UITextField alloc]init];
     _messageField.frame=CGRectMake(15, 0, SCREEN_WIDTH, 44);
     _messageField.placeholder=@"请输入验证信息";
+    _messageField.text=NSStringFormat(@"我是%@",help_userManager.curUserInfo.nickname);
     _messageField.font=FontOfSize(14);
     [backGroundView addSubview:_messageField];
 }
@@ -76,7 +77,7 @@
     NIMUserRequest *request = [[NIMUserRequest alloc] init];
     request.userId = self.userId;
     request.operation = NIMUserOperationRequest;
-    NSDictionary*dic= @{@"verifyContent":_messageField.text,@"userName":help_userManager.curUserInfo.nickname,@"curUserName":self.curUserName};
+    NSDictionary*dic= @{@"verifyContent":_messageField.text,@"nickName":help_userManager.curUserInfo.nickname,@"curUserName":self.curUserName};
     request.message = [dic mj_JSONString];
     NSString *successText = request.operation == NIMUserOperationAdd ? @"添加成功" : @"好友请求成功";
     NSString *failedText =  request.operation == NIMUserOperationAdd ? @"添加失败" : @"好友请求失败";
@@ -100,6 +101,10 @@
     }];
 }
 
+
+- (void)backBtnClicked{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 /*
 #pragma mark - Navigation
 

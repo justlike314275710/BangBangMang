@@ -5426,7 +5426,7 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GKHelpOutApp/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5466,7 +5466,7 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GKHelpOutApp/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
