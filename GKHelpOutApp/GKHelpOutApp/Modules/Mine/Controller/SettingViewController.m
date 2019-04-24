@@ -25,6 +25,9 @@
     self.title = @"设置";
     [self setupUI];
     [self getData];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
 }
 #pragma mark ————— 初始化页面 —————
 -(void)setupUI{

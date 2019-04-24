@@ -44,6 +44,9 @@
      self.view.backgroundColor=UIColorFromRGBA(248, 247, 254, 1);
     [self p_setUI];
     [self setIsShowLiftBack:YES];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
 }
 
 #pragma mark - PrivateMethod

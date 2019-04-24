@@ -16,4 +16,5 @@
 
 @property (nonatomic ,strong) UITextField *textField;
 @property (nonatomic , strong) UIImageView*seachImage;
+@property (nonatomic , strong) UISearchBar *search;
 @end

@@ -59,7 +59,9 @@
     [self renderContents];
     _images=[[NSMutableArray alloc]init];
     self.isShowLiftBack = YES;
-    // Do any additional setup after loading the view.
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
 }
 
 
