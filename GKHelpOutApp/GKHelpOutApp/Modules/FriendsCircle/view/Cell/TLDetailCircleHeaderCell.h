@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLMoment.h"
 
-NS_ASSUME_NONNULL_BEGIN
 
-@interface TLDetailCircleHeaderCell : UITableViewCell
+@interface TLDetailCircleHeaderCell : UIView
+
+@property(nonatomic,strong)TLMoment *moment;
 
 @end
-
-NS_ASSUME_NONNULL_END

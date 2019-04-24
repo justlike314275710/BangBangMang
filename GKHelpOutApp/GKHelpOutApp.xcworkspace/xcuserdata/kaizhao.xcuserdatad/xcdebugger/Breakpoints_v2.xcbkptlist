@@ -474,12 +474,12 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Mine/Mine_Feedback(%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88)/PSWriteFeedbackViewController.m"
-                  timestampString = "577691910.724767"
+                  timestampString = "577764409.028564"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
                   endingLineNumber = "116"
-                  offsetFromSymbolStart = "56">
+                  offsetFromSymbolStart = "52">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -489,12 +489,12 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Mine/Mine_Feedback(%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88)/PSWriteFeedbackViewController.m"
-                  timestampString = "577691910.726467"
+                  timestampString = "577764409.0330091"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "118"
                   endingLineNumber = "118"
-                  offsetFromSymbolStart = "56">
+                  offsetFromSymbolStart = "52">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -723,38 +723,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/FriendsCircle/SendLifeCircleViewController.m"
-            timestampString = "577681808.3840179"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-createRequestModelWithType:image:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/FriendsCircle/SendLifeCircleViewController.m"
-            timestampString = "577681808.38413"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "-createRequestModelWithType:image:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/FriendsCircle/model/TLMoment.m"
             timestampString = "577682330.92614"
             startingColumnNumber = "9223372036854775807"
@@ -788,7 +756,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/FriendsCircle/SendLifeCircleViewController.m"
-            timestampString = "577681808.384251"
+            timestampString = "577705282.324633"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"

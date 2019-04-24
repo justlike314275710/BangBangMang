@@ -117,6 +117,7 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
 
             [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
                 
+
                 if (successful) {
                     NSDictionary*AssImageDict=@{@"fileId":tips};
                     [self->_loadImageDataArray addObject:AssImageDict];

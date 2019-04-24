@@ -9,17 +9,18 @@
 #import "DetailLifeCircleViewController.h"
 #import "LifeCircleViewController.h"
 #import "TLMoment.h"
-#import "TLMomentImagesCell.h"
-#import "TLMomentDetailImagesView.h"
+#import "DetailLifeCircleCell.h"
+#import "TLDetailCircleHeaderCell.h"
 
 
-@interface DetailLifeCircleViewController ()
-@property(nonatomic,strong)UIButton *avatarView;
-@property(nonatomic,strong)UIButton *nameView;
-@property(nonatomic,strong)UILabel *dateLabel;
-@property(nonatomic,strong)UILabel *titleLabel;
-@property(nonatomic,strong)UIView *detailContainer;
-@property(nonatomic,strong)TLMomentDetailImagesView *ImagesView;
+@interface DetailLifeCircleViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)UITableView *tableview;
+@property(nonatomic,strong)UIView *bottomView;
+@property(nonatomic,strong)UIButton *shareButton;
+@property(nonatomic,strong)UIButton *commentButton;
+@property(nonatomic,strong)UIButton *likeButton;
+
+
 @end
 
 @implementation DetailLifeCircleViewController
@@ -31,114 +32,121 @@
     self.title = @"朋友圈";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.backgroundColor = [UIColor whiteColor];
     [self stepUI];
-    [self setMoment:self.datalist[0]];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:nil];
 }
+#pragma mark - Delegate
+//MARK:UITableViewDelegate&UITableViewSources
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    DetailLifeCircleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailLifeCircleCell"];
+    cell.moment = _datalist[0];
+    return cell;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    TLDetailCircleHeaderCell *headView = [[TLDetailCircleHeaderCell alloc] init];
+    headView.moment = _datalist[0];
+    return headView;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    TLMoment *monent = _datalist[0];
+    return monent.detail.detailFrame.height+120; //84
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TLMoment *monent = _datalist[0];
+    return monent.detail.detailFrame.heightText+75;
+}
 
 #pragma mark - Private Methods
 - (void)stepUI{
-    // 头像
-    @weakify(self);
-    self.avatarView = self.view.addButton(3001)
-    .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
-        @strongify(self);
-//        [self e_didClickUser];
-    }).backgroundColor([UIColor redColor])
-    .masonry(^ (MASConstraintMaker *make) {
-        make.left.top.mas_equalTo(15);
-        make.size.mas_equalTo(40);
-    })
-    .view;
-    
-    // 用户名
-    self.nameView = self.view.addButton(1002)
-    .backgroundColor([UIColor clearColor]).backgroundColorHL([UIColor lightGrayColor])
-    .titleFont([UIFont boldSystemFontOfSize:16.0f]).titleColor(CFontColor1)
-    .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
-        @strongify(self);
-//        [self e_didClickUser];
-    })
-    .masonry(^ (MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.avatarView);
-        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(10);
-        make.right.mas_lessThanOrEqualTo(-10);
-        make.height.mas_equalTo(18.0f);
-    })
-    .view;
-    
-    // 时间
-    self.dateLabel = self.view.addLabel(3001)
-    .font([UIFont systemFontOfSize:12.0f]).textColor(CFontColor4)
-    .masonry(^ (MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.nameView.mas_bottom).mas_offset(5);
-        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(10);
-        make.right.mas_lessThanOrEqualTo(-15);
-    })
-    .view;
-    
-    // 正文
-    self.titleLabel = self.view.addLabel(1011).textColor(CFontColor1)
-    .font([UIFont systemFontOfSize:14.0f]).numberOfLines(0)
-    .masonry (^ (MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.dateLabel.mas_bottom).mas_offset(6);
-        make.left.mas_equalTo(self.dateLabel);
-        make.right.mas_lessThanOrEqualTo(-15);
-    })
-    .view;
-    
-    self.ImagesView = [[TLMomentDetailImagesView alloc] initWithImageSelectedAction:^(NSArray *images, NSInteger index) {
-        @strongify(self);
-//        if (self.delegate && [self.delegate respondsToSelector:@selector(momentViewClickImage:atIndex:cell:)]) {
-//            [self.delegate momentViewClickImage:images atIndex:index cell:self];
-//        }
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.left.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view).mas_offset(-14);
+        make.top.mas_equalTo(-20);
     }];
-    [self.view addSubview:self.ImagesView];
-    [self.ImagesView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
-    }];
+    [self.tableView registerClass:[DetailLifeCircleCell class] forCellReuseIdentifier:@"DetailLifeCircleCell"];
+    
+    self.bottomView = self.view.addView(100).backgroundColor(UIColorFromRGB(233, 233, 233)).masonry(^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(50);
+        make.left.bottom.right.mas_equalTo(self.view);
+    })
+    .view;
+    
+    UIView *line1 = self.bottomView.addView(101).backgroundColor(UIColorFromRGB(153, 153, 153))
+    .masonry(^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(20);
+        make.width.mas_equalTo(1);
+        make.top.mas_equalTo(15);
+        make.left.mas_equalTo(KScreenWidth/3);
+    })
+    .view;
+    
+    UIView *line2 = self.bottomView.addView(101).backgroundColor(UIColorFromRGB(153, 153, 153))
+    .masonry(^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(20);
+        make.width.mas_equalTo(1);
+        make.top.mas_equalTo(15);
+        make.left.mas_equalTo((KScreenWidth/3)*2);
+    })
+    .view;
+    
+    self.shareButton = self.bottomView.addButton(102).image(IMAGE_NAMED(@"分享icon")).title(@"分享")
+    .titleColor(CFontColor4).titleFont(FontOfSize(12)).titleEdgeInsets(UIEdgeInsetsMake(0,10, 0, 0))
+    .masonry(^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(14);
+        make.width.mas_equalTo(60);
+        make.top.mas_equalTo(18);
+        make.left.mas_equalTo(((KScreenWidth/3)-60)/2);
+    })
+    .view;
+    
+    self.commentButton = self.bottomView.addButton(103).image(IMAGE_NAMED(@"评论icon")).title(@"评论")
+    .titleColor(CFontColor4).titleFont(FontOfSize(12)).titleEdgeInsets(UIEdgeInsetsMake(0,10, 0, 0))
+    .masonry(^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(14);
+        make.width.mas_equalTo(60);
+        make.top.mas_equalTo(18);
+        make.centerX.mas_equalTo(self.bottomView);
 
-//    self.detailContainer = self.view.addView(1020)
-//    .masonry(^ (MASConstraintMaker *make) {
-//        make.top.mas_equalTo(self.titleLabel.mas_bottom);
-//        make.left.mas_equalTo(self.nameView);
-//        make.right.mas_equalTo(-15);
-//    })
-//    .view;
+    })
+    .view;
+    
+    self.likeButton = self.bottomView.addButton(104)
+    .image(IMAGE_NAMED(@"未点赞icon"))
+    .title(@"23")
+    .titleColor(CFontColor4)
+    .titleFont(FontOfSize(12))
+    .titleEdgeInsets(UIEdgeInsetsMake(0,10, 0, 0))
+    .masonry(^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(14);
+        make.width.mas_equalTo(60);
+        make.top.mas_equalTo(18);
+        make.right.mas_equalTo(-((KScreenWidth/3)-60)/2);
+    })
+    .view;
 }
 
-- (void)setMoment:(TLMoment *)moment
-{
-//    _moment = moment;
-    
-    // 头像
-    NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,moment.customer.id);
-    
-    //    [imageView tt_setImageWithURL:[NSURL URLWithString:url]  forState:UIControlStateNormal];
-    
-    [self.avatarView tt_setImageWithURL:TLURL(url) forState:UIControlStateNormal placeholderImage:TLImage(DEFAULT_AVATAR_PATH)];
-    // 用户名
-    self.nameView.zz_make.title(moment.customer.name);
-    
-    // 时间
-    [self.dateLabel setText:moment.showDate];
-    
-    // 正文
-    [self.titleLabel setText:moment.detail.text];
-    [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(moment.detail.detailFrame.heightText);
-    }];
-    
-    
-    self.ImagesView.images = moment.detail.images;
-    
-    [self.ImagesView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.titleLabel.mas_bottom).mas_offset(moment.detail.text.length > 0 ? 10.0f : 0);
-    }];
+#pragma mark - Setting&Getting
+- (UITableView *)tableView {
+    if (!_tableview) {
+        _tableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableview.tableFooterView = [UIView new];
+        _tableview.backgroundColor = [UIColor clearColor];
+        _tableview.dataSource = self;
+        _tableview.delegate = self;
+    }
+    return _tableview;
 }
     
 

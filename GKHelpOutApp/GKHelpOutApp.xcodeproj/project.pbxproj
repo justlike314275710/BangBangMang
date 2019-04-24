@@ -215,6 +215,9 @@
 		55C89822226467B5005473AD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C89821226467B5005473AD /* Media.xcassets */; };
 		55C8982B22648AF4005473AD /* LifeCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C8982A22648AF4005473AD /* LifeCircleViewController.m */; };
 		55D1CCBC226EB1ED003DD0CD /* DetailLifeCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CCBB226EB1ED003DD0CD /* DetailLifeCircleViewController.m */; };
+		55D1CCBE226EF4D8003DD0CD /* NIMSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CCBD226EF4D8003DD0CD /* NIMSessionViewController.m */; };
+		55D1CCC2226EFB89003DD0CD /* TLDetailCircleHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CCC1226EFB89003DD0CD /* TLDetailCircleHeaderCell.m */; };
+		55D1CCC5226F0528003DD0CD /* DetailLifeCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CCC4226F0528003DD0CD /* DetailLifeCircleCell.m */; };
 		55F46D4E22657265000D84B1 /* TLMomentHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D4D22657265000D84B1 /* TLMomentHeaderCell.m */; };
 		55F46D5322657540000D84B1 /* TLMomentBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D5122657540000D84B1 /* TLMomentBaseCell.m */; };
 		55F46D5422657540000D84B1 /* TLMomentImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D5222657540000D84B1 /* TLMomentImagesCell.m */; };
@@ -487,7 +490,6 @@
 		EAB03926221E817C00331569 /* NIMSessionRobotContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB03880221E817B00331569 /* NIMSessionRobotContentView.m */; };
 		EAB03927221E817C00331569 /* NIMMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB03884221E817B00331569 /* NIMMessageCell.m */; };
 		EAB03928221E817C00331569 /* NIMLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB03888221E817B00331569 /* NIMLocationViewController.m */; };
-		EAB03929221E817C00331569 /* NIMSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB03889221E817B00331569 /* NIMSessionViewController.m */; };
 		EAB0392A221E817C00331569 /* NSDictionary+NIMKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB0388C221E817B00331569 /* NSDictionary+NIMKit.m */; };
 		EAB0392B221E817C00331569 /* UIImage+NIMKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB0388D221E817B00331569 /* UIImage+NIMKit.m */; };
 		EAB0392C221E817C00331569 /* NSString+NIMKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB03891221E817B00331569 /* NSString+NIMKit.m */; };
@@ -973,6 +975,12 @@
 		55C8982A22648AF4005473AD /* LifeCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeCircleViewController.m; sourceTree = "<group>"; };
 		55D1CCBA226EB1ED003DD0CD /* DetailLifeCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailLifeCircleViewController.h; sourceTree = "<group>"; };
 		55D1CCBB226EB1ED003DD0CD /* DetailLifeCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailLifeCircleViewController.m; sourceTree = "<group>"; };
+		55D1CCBD226EF4D8003DD0CD /* NIMSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMSessionViewController.m; sourceTree = "<group>"; };
+		55D1CCBF226EF512003DD0CD /* NIMSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMSessionViewController.h; sourceTree = "<group>"; };
+		55D1CCC0226EFB89003DD0CD /* TLDetailCircleHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDetailCircleHeaderCell.h; sourceTree = "<group>"; };
+		55D1CCC1226EFB89003DD0CD /* TLDetailCircleHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLDetailCircleHeaderCell.m; sourceTree = "<group>"; };
+		55D1CCC3226F0528003DD0CD /* DetailLifeCircleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailLifeCircleCell.h; sourceTree = "<group>"; };
+		55D1CCC4226F0528003DD0CD /* DetailLifeCircleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailLifeCircleCell.m; sourceTree = "<group>"; };
 		55F46D4C22657265000D84B1 /* TLMomentHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentHeaderCell.h; sourceTree = "<group>"; };
 		55F46D4D22657265000D84B1 /* TLMomentHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentHeaderCell.m; sourceTree = "<group>"; };
 		55F46D4F22657540000D84B1 /* TLMomentImagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentImagesCell.h; sourceTree = "<group>"; };
@@ -1526,9 +1534,7 @@
 		EAB03883221E817B00331569 /* NIMSessionTimestampCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMSessionTimestampCell.h; sourceTree = "<group>"; };
 		EAB03884221E817B00331569 /* NIMMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMMessageCell.m; sourceTree = "<group>"; };
 		EAB03886221E817B00331569 /* NIMLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMLocationViewController.h; sourceTree = "<group>"; };
-		EAB03887221E817B00331569 /* NIMSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMSessionViewController.h; sourceTree = "<group>"; };
 		EAB03888221E817B00331569 /* NIMLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMLocationViewController.m; sourceTree = "<group>"; };
-		EAB03889221E817B00331569 /* NIMSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMSessionViewController.m; sourceTree = "<group>"; };
 		EAB0388B221E817B00331569 /* UITableView+NIMScrollToBottom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+NIMScrollToBottom.h"; sourceTree = "<group>"; };
 		EAB0388C221E817B00331569 /* NSDictionary+NIMKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NIMKit.m"; sourceTree = "<group>"; };
 		EAB0388D221E817B00331569 /* UIImage+NIMKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+NIMKit.m"; sourceTree = "<group>"; };
@@ -2884,6 +2890,10 @@
 				55F46D5222657540000D84B1 /* TLMomentImagesCell.m */,
 				55F46D4C22657265000D84B1 /* TLMomentHeaderCell.h */,
 				55F46D4D22657265000D84B1 /* TLMomentHeaderCell.m */,
+				55D1CCC0226EFB89003DD0CD /* TLDetailCircleHeaderCell.h */,
+				55D1CCC1226EFB89003DD0CD /* TLDetailCircleHeaderCell.m */,
+				55D1CCC3226F0528003DD0CD /* DetailLifeCircleCell.h */,
+				55D1CCC4226F0528003DD0CD /* DetailLifeCircleCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -4133,10 +4143,10 @@
 		EAB03885221E817B00331569 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				55D1CCBF226EF512003DD0CD /* NIMSessionViewController.h */,
+				55D1CCBD226EF4D8003DD0CD /* NIMSessionViewController.m */,
 				EAB03886221E817B00331569 /* NIMLocationViewController.h */,
-				EAB03887221E817B00331569 /* NIMSessionViewController.h */,
 				EAB03888221E817B00331569 /* NIMLocationViewController.m */,
-				EAB03889221E817B00331569 /* NIMSessionViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -4823,6 +4833,7 @@
 				55F46E062266D8A4000D84B1 /* YBIBWebImageManager.m in Sources */,
 				EAB038E3221E817B00331569 /* NIMKitTitleView.m in Sources */,
 				55C0C76A222CD23C00CD2459 /* HMAccountBalanceViewController.m in Sources */,
+				55D1CCBE226EF4D8003DD0CD /* NIMSessionViewController.m in Sources */,
 				EAE19E75222E78250080B0F5 /* fileModel.m in Sources */,
 				EA6CCBD3226453BD00BB2A74 /* NTESCardPortraitCell.m in Sources */,
 				EA6CCBD2226453BD00BB2A74 /* NTESColorButtonCell.m in Sources */,
@@ -5036,6 +5047,7 @@
 				EAB03908221E817B00331569 /* NIMNotificationContentConfig.m in Sources */,
 				5524C68922250F380067F437 /* LegaladviceViewController.m in Sources */,
 				EAE19EA12235FDD80080B0F5 /* LawyerAdviceDetalisVC.m in Sources */,
+				55D1CCC5226F0528003DD0CD /* DetailLifeCircleCell.m in Sources */,
 				5557A606221BD96500743012 /* MsgLogic.m in Sources */,
 				EAB0390D221E817B00331569 /* NIMBaseSessionContentConfig.m in Sources */,
 				EAB038ED221E817B00331569 /* NIMTeamCardOperationItem.m in Sources */,
@@ -5068,6 +5080,7 @@
 				EA21CA78221F9980007D3445 /* PSConsultationViewModel.m in Sources */,
 				5557A548221BD7F500743012 /* XZPickView.m in Sources */,
 				EAB03920221E817B00331569 /* NIMSessionNetChatNotifyContentView.m in Sources */,
+				55D1CCC2226EFB89003DD0CD /* TLDetailCircleHeaderCell.m in Sources */,
 				55C8980C22645928005473AD /* TLMenuItemCell.m in Sources */,
 				55F46E102266D8A4000D84B1 /* YBImageBrowseCellData.m in Sources */,
 				EAB039CA221E8FF200331569 /* ijksdl_timer.c in Sources */,
@@ -5121,7 +5134,6 @@
 				55F46D6722657713000D84B1 /* TLMomentDetailImagesView.m in Sources */,
 				EA6CCBBB226429F800BB2A74 /* TLAddMenuCell.m in Sources */,
 				EA21CB15221FA205007D3445 /* UIImage+Stretch.m in Sources */,
-				EAB03929221E817C00331569 /* NIMSessionViewController.m in Sources */,
 				5557A611221BD96500743012 /* MineViewController.m in Sources */,
 				EA21CA83221F9980007D3445 /* PSLawersDetails.m in Sources */,
 				EA21CB1D221FA2C9007D3445 /* PSPhoneCardViewModel.m in Sources */,

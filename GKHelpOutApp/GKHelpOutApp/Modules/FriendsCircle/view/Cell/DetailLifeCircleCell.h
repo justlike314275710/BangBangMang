@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TLMoment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailLifeCircleCell : UITableViewCell
+
+@property(nonatomic,strong)TLMoment *moment;
 
 @end
 
