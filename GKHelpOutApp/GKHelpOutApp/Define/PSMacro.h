@@ -78,6 +78,8 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 #define     DEFAULT_AVATAR_PATH       @"登录－头像"
 
+
+
 #ifdef DEBUG
 #define PSLog(...) NSLog(__VA_ARGS__);
 #else

@@ -41,6 +41,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        self.contentView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.backgroundWall];
         [self.contentView addSubview:self.avatarView];
         [self.contentView addSubview:self.usernameLabel];
@@ -66,9 +67,10 @@
 {
     [self.backgroundWall mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self.contentView);
-        make.bottom.mas_equalTo(self.mottoLabel.mas_top).mas_offset(- WIDTH_AVATAR / 3.0f - 8.0f);
+//        make.bottom.mas_equalTo(self.mottoLabel.mas_top).mas_offset(- WIDTH_AVATAR / 3.0f - 8.0f);
+        make.bottom.mas_equalTo(self.contentView);
 //        make.height.mas_equalTo(260);
-        make.top.mas_equalTo(-10);//-60
+        make.top.mas_equalTo(-60);//-60
     }];
     
     [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -87,6 +89,7 @@
         make.right.mas_equalTo(self.avatarView);
         make.width.mas_lessThanOrEqualTo(SCREEN_WIDTH * 0.4);
     }];
+    self.mottoLabel.hidden = YES;
 }
 
 #pragma mark - # Getter

@@ -10,7 +10,7 @@
 #import "TLMoment.h"
 #import "TLMomentViewDelegate.h"
 
-@interface TLMomentBaseCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
+@interface TLMomentBaseCell : UITableViewCell
 
 @property (nonatomic, assign) id<TLMomentViewDelegate> delegate;
 

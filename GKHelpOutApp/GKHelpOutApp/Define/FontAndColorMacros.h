@@ -46,7 +46,7 @@
 #define CFontColor3 [UIColor colorWithHexString:@"264C90"] //Field pla
 
 //
-#define CFontColor4 [UIColor colorWithHexString:@"666666"] //Field pla
+#define CFontColor4 [UIColor colorWithHexString:@"666666"] //Field pla 102
 
 //按钮字体颜色
 #define CFontColor_BtnTitle [UIColor colorWithHexString:@"ffffff"] //Field pla

@@ -219,7 +219,9 @@
             self.loadImg.image = [UIImage imageNamed:@"bottomLoad"];
             [PSTipsView showTips:@"反馈图片上传失败"];
         }
-    }];
+    } isShowTip:NO];
+    
+    
 }
 
 

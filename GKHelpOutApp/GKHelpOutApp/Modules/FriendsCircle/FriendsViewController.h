@@ -8,6 +8,8 @@
 
 #import "RootViewController.h"
 #import "BaseRootViewController.h"
+#import "LifeCircleViewController.h"
 @interface FriendsViewController : BaseRootViewController
+@property (nonatomic,assign)LifeCircleStyle lifeCircleStyle;
 
 @end

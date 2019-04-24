@@ -158,6 +158,7 @@
         _emptyTipLabel = [[UILabel alloc] init];
         _emptyTipLabel.text = @"还没有会话，在通讯录中找个人聊聊吧";
         [_emptyTipLabel sizeToFit];
+        _emptyTipLabel.textColor = AppBaseTextColor1;
         _emptyTipLabel.hidden = self.recentSessions.count;
         _emptyTipLabel.centerX = self.view.width * .5f;
         _emptyTipLabel.centerY = (self.view.height-44-64) * .5f;

@@ -98,8 +98,14 @@
 //发布生活圈
 #define URL_lifeCircle_release @"/customer/circleoffriends/release"
 
-//获取朋友圈列表
-#define URL_lifeCircle_List @"/customer/circleoffriends/getMyCircleoffriends"
+//获取我的生活圈列表
+#define URL_myLifeCircle_List @"/customer/circleoffriends/getMyCircleoffriends"
+
+//获取所有生活圈列表
+#define URL_allLifeCircle_List @"/customer/circleoffriends/getCircleoffriends"
+
+//获取别人生活圈列表
+#define URL_otherLifeCircle_List @"/customer/circleoffriends/get-friend-circlefriend"
 
 //添加好友
 #define URL_friend_add @"/customer/customerfriend/add"

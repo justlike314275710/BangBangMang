@@ -15,34 +15,34 @@
 #import "SendLifeCircleViewController.h"
 #import "LifeCircleLogic.h"
 #import "DetailLifeCircleViewController.h"
+#import "TLMomentHeaderCell.h"
 
 #define NAVBAR_CHANGE_POINT 50
 
-@interface LifeCircleViewController ()<TLMomentViewDelegate,UIScrollViewDelegate,UICollectionViewDelegate>
+@interface LifeCircleViewController ()<TLMomentViewDelegate,UIScrollViewDelegate,UICollectionViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) NSArray *datalist;
 @property (nonatomic,strong) LifeCircleLogic *logic;
+@property (nonatomic,strong) UITableView *tableview;
 
 @end
 
 @implementation LifeCircleViewController
 
-
-- (void)loadView
-{
-    [super loadView];
-
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     _logic = [[LifeCircleLogic alloc] init];
+    _logic.lifeCircleStyle = self.lifeCircleStyle;
     [self loadUI];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
     [self setIsShowLiftBack:YES];
-    [self requestDataWithPageIndex:0];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
     [UIApplication sharedApplication].statusBarHidden=YES;
+    //刷新朋友圈
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData)
+                                                 name:KNotificationRefreshCirCle
+                                               object:nil];
 
 }
 
@@ -74,7 +74,6 @@
     self.collectionView.delegate = self;
     [self scrollViewDidScroll:self.collectionView];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -84,75 +83,112 @@
     [self.navigationController.navigationBar lt_reset];
 }
 
-#pragma mark - # Request
-- (void)requestDataWithPageIndex:(NSInteger)pageIndex
-{
-    
-    [_logic getLifeCircleListData:^(id data) {
-        if (data) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self addMomentsData:self.logic.datalist postion:TLMomentsVCNewDataPositionTail];
-            });
-        }
-    } failed:^(NSError *error) {
-        if (error) {
-            [PSTipsView showTips:@"获取朋友圈列表失败"];
-        }
-    }];
-    
-//    NSArray *data = [NSMutableArray arrayWithArray:[self testData]];
-//    _datalist = data;
-//    NSLog(@"data:%@",data);
-//    [self addMomentsData:data postion:TLMomentsVCNewDataPositionTail];
-}
-
-- (NSArray *)testData
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Moments" ofType:@"json"];
-    NSData *jsonData = [NSData dataWithContentsOfFile:path];
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-    NSArray *arr = [TLMoment mj_objectArrayWithKeyValuesArray:jsonArray];
-    return arr;
-}
-
 #pragma mark - # UI
 - (void)loadUI
 {
-
-    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 1, KScreenWidth, KScreenHeight - kTopHeight -kTabBarHeight) style:UITableViewStyleGrouped];
+    [self.view addSubview:self.tableView];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.top.mas_equalTo(self.view);
+    }];
+    [self.tableView registerClass:[TLMomentImagesCell class] forCellReuseIdentifier:@"TLMomentImagesCell"];
     
     @weakify(self);
-//    [self addRightBarButtonWithImage:TLImage(@"nav_camera") actionBlick:^{
-//        @strongify(self);
-//    }];
-    // 头图
-    self.addSection(TLMomentsVCSectionTypeHeader);
-    UserInfo *user = help_userManager.curUserInfo;
-    self.addCell(@"TLMomentHeaderCell").toSection(TLMomentsVCSectionTypeHeader).withDataModel(user);
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self)
+        [self refreshData];
+    }];
+    [self.tableView.mj_header beginRefreshing];
     
-    // 列表
-    self.addSection(TLMomentsVCSectionTypeItems);
+    [self setTableleUI];
+    
+}
+-(void)setTableleUI {
+    @weakify(self);
+    if (_logic.hasNextPage) {
+        self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            @strongify(self)
+            [self loadMore];
+        }];
+    }else{
+        self.tableView.mj_footer = nil;
+    }
+}
+-(void)loadMore {
+    [[PSLoadingView sharedInstance] show];
+    [_logic loadMyLifeCircleListCompleted:^(id data) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[PSLoadingView sharedInstance] dismiss];
+            [self.tableView.mj_footer endRefreshing];
+            [self.tableView reloadData];
+            [self setTableleUI];
+        });
+    } failed:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[PSLoadingView sharedInstance] dismiss];
+            [self.tableView.mj_footer endRefreshing];
+            [self.tableView reloadData];
+            [self setTableleUI];
+        });
+    }];
+
 }
 
-- (void)addMomentsData:(NSArray *)momentsData postion:(TLMomentsVCNewDataPosition)position
-{
-    if (position == TLMomentsVCSectionTypeHeader) {
-        self.insertCells(@"TLMomentImagesCell").toIndex(0).toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
-    }
-    else {
-        self.addCells(@"TLMomentImagesCell").toSection(TLMomentsVCSectionTypeItems).withDataModelArray(momentsData);
-    }
-    [self reloadView];
+-(void)refreshData {
+    [[PSLoadingView sharedInstance] show];
+    [_logic refreshLifeCirclelistCompleted:^(id data) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView reloadData];
+            [self setTableleUI];
+            [[PSLoadingView sharedInstance] dismiss];
+        });
+    } failed:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView reloadData];
+            [self setTableleUI];
+            [[PSLoadingView sharedInstance] dismiss];
+        });
+    }];
 }
+
+#pragma mark -   Delegate
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.logic.datalist.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TLMomentImagesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentImagesCell"];
+    cell.delegate = self;
+    TLMoment *monet = self.logic.datalist[indexPath.row];
+    cell.moment = monet;
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TLMoment *monet = self.logic.datalist[indexPath.row];
+    return monet.momentFrame.height;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    TLMomentHeaderCell *headView = [[TLMomentHeaderCell alloc] init];
+    headView.user = help_userManager.curUserInfo;
+    return headView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 260;
+}
+
+
 
 #pragma mark - # Delegate
 //MARK: TLMomentViewDelegate
 - (void)momentViewWithModel:(TLMoment *)moment didClickUser:(UserInfo *)user
 {
-//    TLUserDetailViewController *userDatailVC = [[TLUserDetailViewController alloc] initWithUserModel:user];
-//    PushVC(userDatailVC);
 }
-
 - (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index cell:(TLMomentImagesCell *)cell
 {
     
@@ -179,10 +215,8 @@
 }
 - (void)momentViewWithModel:(TLMoment *)moment jumpToUrl:(NSString *)url
 {
-//    TLWebViewController *webVC = [[TLWebViewController alloc] initWithUrl:url];
-//    PushVC(webVC);
+    
 }
-
 //分享
 - (void)momentViewWithModel:(TLMoment *)moment didClickShare:(NSString *)url {
     DetailLifeCircleViewController *detailLifeCircleVC = [[DetailLifeCircleViewController alloc] init];

@@ -11,6 +11,8 @@
 
 @interface LifeCircleLogic()
 
+@property (nonatomic,strong)NSMutableArray *items;
+
 
 @end
 
@@ -25,17 +27,75 @@
     }
     return self;
 }
-
-//发布朋友圈
-- (void)getLifeCircleListData:(RequestDataCompleted)completed failed:(RequestDataFailed)failedCallback {
+//获取生活圈列表
+- (void)refreshLifeCirclelistCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback {
+    self.page = 0;
+    self.items = nil;
+    self.hasNextPage = NO;
+    self.dataStatus = PSDataInitial;
+    [self requestMyLifeCircleCompleted:completedCallback failed:failedCallback];
     
-    NSString*url=[NSString stringWithFormat:@"%@%@?page=%ld&size=%ld",ChatServerUrl,URL_lifeCircle_List,self.page,self.size];
+}
+- (void)loadMyLifeCircleListCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    self.page ++;
+    [self requestMyLifeCircleCompleted:completedCallback failed:failedCallback];
+    
+}
+-(void)requestMyLifeCircleCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    
+    NSString*url=[NSString stringWithFormat:@"%@%@?page=%ld&size=%ld",ChatServerUrl,URL_myLifeCircle_List,self.page,self.size];
+    switch (self.lifeCircleStyle) {
+        case HMLifeCircleALL:
+        {
+            url = [NSString stringWithFormat:@"%@%@?page=%ld&size=%ld",ChatServerUrl,URL_allLifeCircle_List,self.page,self.size];
+        }
+            break;
+        case HMLifeCircleMy:
+        {
+           url=[NSString stringWithFormat:@"%@%@?page=%ld&size=%ld",ChatServerUrl,URL_myLifeCircle_List,self.page,self.size];
+        }
+            break;
+        case HMLifeCircleOther:
+        {
+            url=[NSString stringWithFormat:@"%@%@?username=%@page=%ld&size=%ld",ChatServerUrl,URL_otherLifeCircle_List,self.username,self.page,self.size];
+        }
+            break;
+            
+        default:
+            break;
+    }
     [PPNetworkHelper setResponseSerializer:PPResponseSerializerJSON];
-    //    [PPNetworkHelper setRequestSerializer:PPRequestSerializerJSON];
     NSString *access_token = help_userManager.oathInfo.access_token;
     NSString *token = NSStringFormat(@"Bearer %@",access_token);
     [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
     [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
+        
+//        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        if (ValidDict(responseObject)) {
+            if (self.page == 0) {
+                self.items = [NSMutableArray array];
+            }
+            if (self.items.count == 0) {
+                self.dataStatus = PSDataEmpty;
+            }else{
+                self.dataStatus = PSDataNormal;
+            }
+            [self.items addObjectsFromArray:[TLMoment mj_objectArrayWithKeyValuesArray:responseObject[@"content"]]];
+            NSArray*hasNextPageArray=[TLMoment mj_objectArrayWithKeyValuesArray:responseObject[@"TLMoment"]];
+            self.hasNextPage = hasNextPageArray.count >= self.page;
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
+            
+        } else {
+            if (self.page > 0) {
+                self.page --;
+                self.hasNextPage = YES;
+            }else{
+                self.dataStatus = PSDataError;
+            }
+        }
+        /*
         if (ValidDict(responseObject)) {
             NSArray *content = [responseObject valueForKey:@"content"];
             for (NSDictionary *dic in content) {
@@ -46,18 +106,23 @@
         if (completed) {
             completed(responseObject);
         }
+         */
     } failure:^(NSError *error) {
         if (failedCallback) {
             failedCallback(error);
         }
+        if (self.page > 0) {
+            self.page --;
+            self.hasNextPage = YES;
+        }else{
+            self.dataStatus = PSDataError;
+        }
     }];
 }
 
--(NSMutableArray *)datalist {
-    if (!_datalist) {
-        _datalist = [NSMutableArray array];
-    }
-    return _datalist;
+- (NSMutableArray *)datalist {
+    return _items;
 }
+
 
 @end

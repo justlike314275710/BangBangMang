@@ -72,6 +72,7 @@ UIColor *MainViewColor = nil;
     [self setupChildViewController:messageVC title:@"消息" imageName:@"我的咨询icon－未选中" seleceImageName:@"我的咨询icon－选中"];
     
     FriendsViewController *friendsVC = [[FriendsViewController alloc]init];
+    friendsVC.lifeCircleStyle = HMLifeCircleALL;
     [self setupChildViewController:friendsVC title:@"发现" imageName:@"生活圈icon－未选中" seleceImageName:@"生活圈icon－选中"];
     
     

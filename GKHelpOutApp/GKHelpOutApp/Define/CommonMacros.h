@@ -63,5 +63,9 @@
 //提现成功回调通知
 #define KNotificationGetCashSuccess    @"KNotificationGetCashSuccess"
 
+//刷新生活圈
+#define KNotificationRefreshCirCle    @"KNotificationRefreshCirCle"
+
+
 #define defultTager  999
 #endif /* CommonMacros_h */

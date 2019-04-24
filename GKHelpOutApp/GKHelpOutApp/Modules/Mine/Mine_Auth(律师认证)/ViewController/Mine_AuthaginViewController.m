@@ -735,7 +735,7 @@
         [array addObject:CerImageDict];
         
         self.authLogic.certificatePictures=array;
-    }];
+    } isShowTip:YES];
 }
 
 #pragma mark ————— 律师年度考核备案照片上传 —————
@@ -746,7 +746,7 @@
         [array addObject:AssImageDict];
         self.authLogic.assessmentPictures=array;
         [self.assessCell.cameraButton setImage:image forState:0];
-    }];
+    }isShowTip:YES];
 }
 
 #pragma mark ————— 身份证照片正面上传 —————
@@ -757,7 +757,7 @@
         NSMutableArray*array=[[NSMutableArray alloc]init];
         [array addObject:FrontCardImageDict];
         self.authLogic.fontCardPictures=array;
-    }];
+    }isShowTip:YES];
 }
 
 #pragma mark ————— 身份证照片反面上传 —————
@@ -768,7 +768,7 @@
         NSMutableArray*array=[[NSMutableArray alloc]init];
         [array addObject:FrontCardImageDict];
         self.authLogic.backCardPictures=array;
-    }];
+    }isShowTip:YES];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

@@ -92,18 +92,25 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
     }];
     
     @weakify(self);
+    [[PSLoadingView sharedInstance]show];
     [self.requestQueue runAllRequestsWithCompleteAction:^(NSArray *data, NSInteger successCount, NSInteger failureCount) {
         @strongify(self);
+        [[PSLoadingView sharedInstance]dismiss];
         [self.loadImageDataArray removeAllObjects];
         self.Logic.content = self.textViewContent.text;
         for (ZZFLEXRequestModel *model in data) {
             [self.loadImageDataArray addObject:model.data];
         }
         self.Logic.circleoffriendsPicture = self.loadImageDataArray;
+        
         [self.Logic postReleaseLifeCircleData:^(id data) {
-            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [PSTipsView showTips:@"发布生活圈成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+                KPostNotification(KNotificationRefreshCirCle, nil);
+            });
         } failed:^(NSError *error) {
-            
+            [PSTipsView showTips:@"发布生活圈失败"];
         }];
     }];
 }
@@ -114,9 +121,9 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
 - (ZZFLEXRequestModel *)createRequestModelWithType:(ZZFDRquestQueueVCSectionType)type image:(UIImage *)image
 {
     ZZFLEXRequestModel *requestModel = [ZZFLEXRequestModel requestModelWithTag:type requestAction:^(ZZFLEXRequestModel *requestModel) {
-
-            [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips) {
-                
+        
+            [[UploadManager uploadManager]uploadConsultationImages:image completed:^(BOOL successful, NSString *tips)  {
+            
                 if (successful) {
                     NSDictionary*AssImageDict=@{@"fileId":tips};
                     [self->_loadImageDataArray addObject:AssImageDict];
@@ -127,7 +134,7 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
                     [requestModel executeRequestCompleteMethodWithSuccess:NO data:tips];
                 }
                 
-            }];
+            } isShowTip:NO];
         
     } requestCompleteAction:^(ZZFLEXRequestModel *requestModel) {
         //所以上传完了 刷新UI

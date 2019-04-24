@@ -77,8 +77,9 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
         [moments setRightIconURL:@"http://pic1.nipic.com/2008-08-14/2008814183939909_2.jpg" withRightIconBadge:YES];
         self.addCell(CELL_MENU_ITEM).toSection(sectionTag).withDataModel(moments).selectedAction(^ (TLMenuItem *data) {
             @strongify(self);
-                LifeCircleViewController *LifeCircleVC = [[LifeCircleViewController alloc] init];
-                [self.navigationController pushViewController:LifeCircleVC animated:YES];
+            LifeCircleViewController *LifeCircleVC = [[LifeCircleViewController alloc] init];
+            LifeCircleVC.lifeCircleStyle = self.lifeCircleStyle;
+            PushVC(LifeCircleVC);
         });
     }
     
