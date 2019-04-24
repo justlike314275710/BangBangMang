@@ -43,7 +43,7 @@ static NSString *reuseIdentifier = @"reuseIdentifier";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     NSLog(@"%@",help_userManager.curUserInfo.account);
     
-    self.navigationItem.title = @"验证消息";
+    self.navigationItem.title = @"新的朋友";
     [self.tableView registerNib:[UINib nibWithNibName:@"NTESSystemNotificationCell" bundle:nil]
            forCellReuseIdentifier:reuseIdentifier];
     
@@ -76,10 +76,10 @@ static NSString *reuseIdentifier = @"reuseIdentifier";
         self.tableView.tableFooterView = [[UIView alloc] init];
     }
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空"
-                                                                              style:UIBarButtonItemStylePlain
-                                                                             target:self
-                                                                             action:@selector(clearAll:)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空"
+//                                                                              style:UIBarButtonItemStylePlain
+//                                                                             target:self
+//                                                                             action:@selector(clearAll:)];
 }
 
 

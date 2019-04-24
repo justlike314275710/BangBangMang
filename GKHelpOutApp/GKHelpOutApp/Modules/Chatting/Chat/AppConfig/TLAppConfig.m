@@ -25,18 +25,18 @@
 - (TLAddMenuItem *)p_getMenuItemByType:(TLAddMneuType)type
 {
     switch (type) {
-        case TLAddMneuTypeGroupChat:        // 群聊
-            return [TLAddMenuItem createWithType:TLAddMneuTypeGroupChat title:LOCSTR(@"发起群聊") iconPath:@"nav_menu_groupchat" className:@""];
-            break;
+//        case TLAddMneuTypeGroupChat:        // 群聊
+//            return [TLAddMenuItem createWithType:TLAddMneuTypeGroupChat title:LOCSTR(@"发起群聊") iconPath:@"nav_menu_groupchat" className:@""];
+//            break;
         case TLAddMneuTypeAddFriend:        // 添加好友
             return [TLAddMenuItem createWithType:TLAddMneuTypeAddFriend title:LOCSTR(@"添加朋友") iconPath:@"nav_menu_addfriend" className:@"NTESContactAddFriendViewController"];
             break;
-        case TLAddMneuTypeWallet:           // 收付款
-            return [TLAddMenuItem createWithType:TLAddMneuTypeWallet title:LOCSTR(@"收付款") iconPath:@"nav_menu_wallet" className:@""];
-            break;
-        case TLAddMneuTypeScan:             // 扫一扫
-            return [TLAddMenuItem createWithType:TLAddMneuTypeScan title:LOCSTR(@"扫一扫") iconPath:@"nav_menu_scan" className:@""];
-            break;
+//        case TLAddMneuTypeWallet:           // 收付款
+//            return [TLAddMenuItem createWithType:TLAddMneuTypeWallet title:LOCSTR(@"收付款") iconPath:@"nav_menu_wallet" className:@""];
+//            break;
+//        case TLAddMneuTypeScan:             // 扫一扫
+//            return [TLAddMenuItem createWithType:TLAddMneuTypeScan title:LOCSTR(@"扫一扫") iconPath:@"nav_menu_scan" className:@""];
+//            break;
         default:
             break;
     }
@@ -56,10 +56,11 @@
 - (NSArray *)addMenuItems
 {
     if (!_addMenuItems) {
-        return @[[self p_getMenuItemByType:0],
+        return @[//[self p_getMenuItemByType:0],
                  [self p_getMenuItemByType:1],
-                 [self p_getMenuItemByType:2],
-                 [self p_getMenuItemByType:3],];
+                 //[self p_getMenuItemByType:2],
+                 //[self p_getMenuItemByType:3],
+                 ];
     }
     return _addMenuItems;
 }

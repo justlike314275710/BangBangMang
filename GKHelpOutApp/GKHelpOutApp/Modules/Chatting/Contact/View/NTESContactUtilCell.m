@@ -13,6 +13,7 @@
 @interface NTESContactUtilCell()
 
 @property (nonatomic,strong) NTESBadgeView *badgeView;
+@property (nonatomic,strong) UIView *redView;
 
 @property (nonatomic,strong) id<NTESContactItem> data;
 
@@ -23,8 +24,8 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _badgeView = [NTESBadgeView viewWithBadgeTip:@""];
-        [self addSubview:_badgeView];
+        //_badgeView = [NTESBadgeView viewWithBadgeTip:@""];
+        //[self addSubview:_badgeView];
     }
     return self;
 }
@@ -41,6 +42,11 @@
     NSString *badge  = [item badge];
     self.badgeView.hidden = badge.integerValue == 0;
     self.badgeView.badgeValue = badge;
+    
+   
+    [self addSubview:self.redView];
+     self.redView.hidden=badge.integerValue == 0;
+  
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -64,7 +70,21 @@
     self.imageView.centerY = self.height * .5f;
     self.badgeView.right = self.width - BadgeValueRight;
     self.badgeView.centerY = self.height * .5f;
+    
+    _redView.left =  self.imageView.right+95;
+    _redView.centerY = self.height * .3f;
+    _redView.size=CGSizeMake(7, 7);
+    _redView.layer.cornerRadius=3.5;
 }
 
+- (UIView *)redView{
+    if (!_redView) {
+        _redView=[UIView new];
+        _redView.backgroundColor=[UIColor redColor];
+        
+
+    }
+    return _redView;
+}
 
 @end
