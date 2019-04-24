@@ -8,19 +8,15 @@
 
 #import "ZZFlexibleLayoutViewController.h"
 #import "BaseRootViewController.h"
-typedef NS_ENUM(NSInteger, TLMomentsVCSectionType) {
-    TLMomentsVCSectionTypeHeader,
-    TLMomentsVCSectionTypeItems,
+typedef NS_ENUM(NSInteger, LifeCircleStyle) {
+    HMLifeCircleALL = 0,   //所有人的朋友圈
+    HMLifeCircleMy,    //自己的朋友圈
+    HMLifeCircleOther, //朋友的朋友圈
 };
-
-typedef NS_ENUM(NSInteger, TLMomentsVCNewDataPosition) {
-    TLMomentsVCNewDataPositionHead,
-    TLMomentsVCNewDataPositionTail,
-};
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LifeCircleViewController : BaseRootViewController
+@property(nonatomic,assign)LifeCircleStyle lifeCircleStyle;
 
 @end
 

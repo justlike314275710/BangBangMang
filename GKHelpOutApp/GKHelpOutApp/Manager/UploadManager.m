@@ -25,8 +25,11 @@
 
 
 #define boundary @"6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm"
--(void)uploadConsultationImages:(UIImage*)images completed:(CheckDataCallback)callback;{
-    [[PSLoadingView sharedInstance]show];
+-(void)uploadConsultationImages:(UIImage*)images completed:(CheckDataCallback)callback
+                      isShowTip:(BOOL)isShowTip{
+    if (isShowTip) {
+        [[PSLoadingView sharedInstance]show];
+    }
     //1 创建请求
     NSString*urlSting=[NSString stringWithFormat:@"%@/files?type=PUBLIC",EmallHostUrl];
     NSURL *url = [NSURL URLWithString:urlSting];
@@ -52,16 +55,21 @@
                 if (callback) {
                     callback(YES,result[@"filename"]);
                 }
-                [[PSLoadingView sharedInstance]dismiss];
-                
+                if (isShowTip) {
+                    [[PSLoadingView sharedInstance]dismiss];
+                }
             } else {
-                [[PSLoadingView sharedInstance]dismiss];
-                [PSTipsView showTips:@"上传图片失败"];
+                if (isShowTip) {
+                    [[PSLoadingView sharedInstance]dismiss];
+                    [PSTipsView showTips:@"上传图片失败"];
+                }
             }
         }
         else{
-            [[PSLoadingView sharedInstance]dismiss];
-            [PSTipsView showTips:@"上传图片失败"];
+            if (isShowTip) {
+                [[PSLoadingView sharedInstance]dismiss];
+                [PSTipsView showTips:@"上传图片失败"];
+            }
         }
         
     }];

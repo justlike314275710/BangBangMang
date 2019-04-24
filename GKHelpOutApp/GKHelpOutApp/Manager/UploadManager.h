@@ -14,5 +14,5 @@
 + (UploadManager *)uploadManager;
 
 //- (void)uploadConsultationImagesCompleted:(CheckDataCallback)callback;
--(void)uploadConsultationImages:(UIImage*)images completed:(CheckDataCallback)callback;
+-(void)uploadConsultationImages:(UIImage*)images completed:(CheckDataCallback)callback isShowTip:(BOOL)isShowTip;
 @end

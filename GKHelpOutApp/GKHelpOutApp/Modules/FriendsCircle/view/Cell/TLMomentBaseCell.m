@@ -65,15 +65,27 @@
 }
 
 #pragma mark - # Cell
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame]) {
-        [self setBackgroundColor:[UIColor whiteColor]];
-        [self SDWebImageAuth];
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self p_initSubviews];
     }
     return self;
 }
+
+//- (instancetype)initWithFrame:(CGRect)frame
+//{
+//    if (self = [super initWithFrame:frame]) {
+//        [self setBackgroundColor:[UIColor whiteColor]];
+//        [self SDWebImageAuth];
+//        [self p_initSubviews];
+//    }
+//    return self;
+//}
 -(void)SDWebImageAuth{
     [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);

@@ -306,7 +306,9 @@
 }
 #pragma mark ————— 朋友圈 —————
 -(void)FriendsCircle{
-    [self.navigationController pushViewController:[[FriendsViewController alloc]init] animated:YES];
+    FriendsViewController *friendsVC = [[FriendsViewController alloc] init];
+    friendsVC.lifeCircleStyle = HMLifeCircleMy;
+    PushVC(friendsVC);
 }
 
 #pragma mark ————— 通讯录 —————
