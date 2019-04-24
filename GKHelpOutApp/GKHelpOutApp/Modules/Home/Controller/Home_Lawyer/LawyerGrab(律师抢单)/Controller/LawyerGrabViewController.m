@@ -24,11 +24,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.logic=[[lawyerGrab_Logic alloc]init];
+    self.logic=[[lawyerGrab_Logic alloc]init];
     [self renderContents];
     [self refreshData];
     [self SDWebImageAuth];
-     self.title=@"法律咨询";
+    self.title=@"法律咨询";
+
+
     // Do any additional setup after loading the view.
 }
 

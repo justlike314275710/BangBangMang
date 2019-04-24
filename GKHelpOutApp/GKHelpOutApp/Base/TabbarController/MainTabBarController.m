@@ -72,7 +72,7 @@ UIColor *MainViewColor = nil;
     [self setupChildViewController:messageVC title:@"消息" imageName:@"我的咨询icon－未选中" seleceImageName:@"我的咨询icon－选中"];
     
     FriendsViewController *friendsVC = [[FriendsViewController alloc]init];
-    [self setupChildViewController:friendsVC title:@"生活圈" imageName:@"生活圈icon－未选中" seleceImageName:@"生活圈icon－选中"];
+    [self setupChildViewController:friendsVC title:@"发现" imageName:@"生活圈icon－未选中" seleceImageName:@"生活圈icon－选中"];
     
     
     MineViewController *mineVC = [[MineViewController alloc]init];

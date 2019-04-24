@@ -9,5 +9,5 @@
 #import "RootViewController.h"
 #import "NIMSessionListViewController.h"
 @interface PSMessageViewController : NIMSessionListViewController
-
+@property (nonatomic,strong) UILabel *emptyTipLabel;
 @end

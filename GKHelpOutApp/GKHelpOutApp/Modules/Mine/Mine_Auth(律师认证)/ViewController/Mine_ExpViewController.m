@@ -79,6 +79,9 @@
     [self.greenView addSubview:self.two_LawLable];
     [self.greenView addSubview:self.LawArrow];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
     
 }
 
