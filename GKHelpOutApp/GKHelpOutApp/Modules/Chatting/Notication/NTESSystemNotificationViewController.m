@@ -155,10 +155,10 @@ static NSString *reuseIdentifier = @"reuseIdentifier";
 #pragma mark - 自己平台增加好友
 -(void)AcceptOnFriendsCircle:(NSDictionary*)paramter{
     NSString*url=NSStringFormat(@"%@%@",ChatServerUrl,URL_friend_add);
-    NSString *access_token =help_userManager.oathInfo.access_token;
+    [PPNetworkHelper setRequestSerializer:PPRequestSerializerJSON];
+    NSString *access_token = help_userManager.oathInfo.access_token;
     NSString *token = NSStringFormat(@"Bearer %@",access_token);
     [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
-    [PPNetworkHelper setRequestSerializer:PPRequestSerializerJSON];
     [PPNetworkHelper POST:url parameters:paramter success:^(id responseObject) {
         
     } failure:^(NSError *error) {
