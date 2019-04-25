@@ -103,9 +103,14 @@
 
 //获取所有生活圈列表
 #define URL_allLifeCircle_List @"/customer/circleoffriends/getCircleoffriends"
-
 //获取别人生活圈列表
 #define URL_otherLifeCircle_List @"/customer/circleoffriends/get-friend-circlefriend"
+//获取某条生活圈详情
+#define URL_LifeCircle_detail @"/customer/circleoffriends"
+//评论某条生活圈
+#define URL_LifeCircle_comment @"/customer/circleoffriends/comment"
+//点赞某条生活圈
+#define URL_LifeCircle_praise @"/customer/circleoffriends/praise"
 
 //添加好友
 #define URL_friend_add @"/customer/customerfriend/add"

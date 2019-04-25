@@ -17,6 +17,8 @@
 		551112132269994300D47C0E /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 551112112269994300D47C0E /* UIColor+HexString.m */; };
 		551112172269997600D47C0E /* imageItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551112142269997600D47C0E /* imageItemView.xib */; };
 		551112182269997600D47C0E /* imageItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551112152269997600D47C0E /* imageItemView.m */; };
+		5516D0792270562300A95E3C /* LifeDetailCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5516D0782270562300A95E3C /* LifeDetailCircleLogic.m */; };
+		5516D07C22705BD000A95E3C /* XHInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5516D07B22705BD000A95E3C /* XHInputView.m */; };
 		551AF6AD2230C57F006AB1A0 /* HMBillLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */; };
 		551AF6B12230F879006AB1A0 /* HMBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B02230F879006AB1A0 /* HMBillModel.m */; };
 		551AF6B422310BE1006AB1A0 /* HMMessageLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B322310BE1006AB1A0 /* HMMessageLogic.m */; };
@@ -622,6 +624,10 @@
 		551112142269997600D47C0E /* imageItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = imageItemView.xib; sourceTree = "<group>"; };
 		551112152269997600D47C0E /* imageItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imageItemView.m; sourceTree = "<group>"; };
 		551112162269997600D47C0E /* imageItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imageItemView.h; sourceTree = "<group>"; };
+		5516D0772270562300A95E3C /* LifeDetailCircleLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifeDetailCircleLogic.h; sourceTree = "<group>"; };
+		5516D0782270562300A95E3C /* LifeDetailCircleLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeDetailCircleLogic.m; sourceTree = "<group>"; };
+		5516D07A22705BD000A95E3C /* XHInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHInputView.h; sourceTree = "<group>"; };
+		5516D07B22705BD000A95E3C /* XHInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHInputView.m; sourceTree = "<group>"; };
 		551AF6AB2230C57F006AB1A0 /* HMBillLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillLogic.h; sourceTree = "<group>"; };
 		551AF6AC2230C57F006AB1A0 /* HMBillLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMBillLogic.m; sourceTree = "<group>"; };
 		551AF6AF2230F879006AB1A0 /* HMBillModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBillModel.h; sourceTree = "<group>"; };
@@ -2702,6 +2708,8 @@
 				55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */,
 				55839657226D6DC600E7CD71 /* LifeCircleLogic.h */,
 				55839658226D6DC600E7CD71 /* LifeCircleLogic.m */,
+				5516D0772270562300A95E3C /* LifeDetailCircleLogic.h */,
+				5516D0782270562300A95E3C /* LifeDetailCircleLogic.m */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -2870,6 +2878,8 @@
 		55F46D4A22657230000D84B1 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				5516D07A22705BD000A95E3C /* XHInputView.h */,
+				5516D07B22705BD000A95E3C /* XHInputView.m */,
 				55F46D62226576B2000D84B1 /* TLMomentViewDelegate.h */,
 				551112162269997600D47C0E /* imageItemView.h */,
 				551112152269997600D47C0E /* imageItemView.m */,
@@ -4821,6 +4831,7 @@
 				5557A542221BD7F500743012 /* UICollectionView+IndexPath.m in Sources */,
 				EA21CA84221F9980007D3445 /* PSConsultation.m in Sources */,
 				EA6CCC092264780300BB2A74 /* NTESBadgeView.m in Sources */,
+				5516D07C22705BD000A95E3C /* XHInputView.m in Sources */,
 				EAB03945221E883C00331569 /* UIView+Toast.m in Sources */,
 				EA78F73D2227AEEA002D788A /* Mine_ExpViewController.m in Sources */,
 				55F46D5322657540000D84B1 /* TLMomentBaseCell.m in Sources */,
@@ -5275,6 +5286,7 @@
 				EA21CAAA221F9A21007D3445 /* serciceIiem.m in Sources */,
 				EA78F72322263DA8002D788A /* AssessmentTableViewCell.m in Sources */,
 				EA21CABB221F9EFD007D3445 /* PSLoadingView.m in Sources */,
+				5516D0792270562300A95E3C /* LifeDetailCircleLogic.m in Sources */,
 				5557A546221BD7F500743012 /* AdPageView.m in Sources */,
 				EAE19EB5223B32E00080B0F5 /* DSSettingItem.m in Sources */,
 			);
