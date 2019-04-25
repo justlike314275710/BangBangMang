@@ -66,7 +66,6 @@
 
 - (void)reloadContents {
     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    //(PSTransactionRecordViewModel *)self.viewModel;
     if (viewModel.hasNextPage) {
         @weakify(self)
         self.honorTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
@@ -82,6 +81,8 @@
 }
 
 - (void)renderContents {
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor=UIColorFromRGBA(248, 247, 254, 1);
     _honorTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.honorTableView.dataSource = self;

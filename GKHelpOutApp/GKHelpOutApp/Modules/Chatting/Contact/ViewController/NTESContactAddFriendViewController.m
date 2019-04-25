@@ -99,19 +99,27 @@
 }
 
 -(void)IMaddFriend:(NSString*)phone{
-    NSString*url=[NSString stringWithFormat:@"%@%@?phoneNumber=%@",ChatServerUrl,URL_get_im_customerInfo,phone];
+    NSString*url=[NSString stringWithFormat:@"%@%@?phoneNumber=%@",ChatServerUrl,URL_get_customerFriend,phone];
     NSString *access_token =help_userManager.oathInfo.access_token;
     NSString *token = NSStringFormat(@"Bearer %@",access_token);
     [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
     [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
         if (ValidDict(responseObject)) {
             NSString *userId = [responseObject[@"account"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            NSString*nickName=responseObject[@"nickname"];
-            NSString*avatar=responseObject[@"avatar"];
-            NSString*curUserName=responseObject[@"curUserName"];
+            NSString*nickName=responseObject[@"name"];
+            NSString*avatar=responseObject[@"username"];
+            NSString*curUserName=responseObject[@"curUsername"];
+            NSString*friendinfo=responseObject[@"friendinfo"];
+            NSArray*circleoffriendsPicture=responseObject[@"circleoffriendsPicture"];
             if (userId.length) {
                 userId = [userId lowercaseString];
-                [self addFriendWithUserID:userId withPhone:phone withNickName:nickName withAvatar:avatar withCurUserName:curUserName];
+                [self addFriendWithUserID:userId
+                                withPhone:phone
+                                withNickName:nickName
+                                withAvatar:avatar
+                                withCurUserName:curUserName
+                                withFriendinfo:friendinfo
+               withCircleoffriendsPicture:circleoffriendsPicture];
             }
         } else {
             [PSAlertView showWithTitle:@"该用户不存在" message:@"请检查你输入的手机号码是否正确" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
@@ -129,7 +137,7 @@
 
 
 #pragma mark - Private
-- (void)addFriendWithUserID:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)avatar withCurUserName:(NSString*)curUserName{
+- (void)addFriendWithUserID:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)avatar withCurUserName:(NSString*)curUserName withFriendinfo:(NSString*)friendinfo withCircleoffriendsPicture:(NSArray*)CircleoffriendsPicture{
     __weak typeof(self) wself = self;
     [[PSLoadingView sharedInstance] show];
     [[NIMSDK sharedSDK].userManager fetchUserInfos:@[userId] completion:^(NSArray *users, NSError *error) {
@@ -137,7 +145,7 @@
         if (users.count) {
 //            NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId withPhone:phone];
 //            [wself.navigationController pushViewController:vc animated:YES];
-            PSPersonCardViewController*vc=[[PSPersonCardViewController alloc]initWithUserId:userId withPhone:phone withNickName:nickName withAvatar:avatar withCurUserName:curUserName];
+            PSPersonCardViewController*vc=[[PSPersonCardViewController alloc]initWithUserId:userId withPhone:phone withNickName:nickName withAvatar:avatar withCurUserName:curUserName withFriendinfo:friendinfo withCircleoffriendsPicture:CircleoffriendsPicture];
             [wself.navigationController pushViewController:vc animated:YES];
 
         }else{

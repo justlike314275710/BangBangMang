@@ -9,5 +9,7 @@
 #import "RootViewController.h"
 
 @interface PSPersonCardViewController : RootViewController
-- (instancetype)initWithUserId:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)withAvatar withCurUserName:(NSString*)curUserName;
+- (instancetype)initWithUserId:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)avatar withCurUserName:(NSString*)curUserName withFriendinfo:(NSString*)friendinfo withCircleoffriendsPicture:(NSArray*)CircleoffriendsPicture;
+
+
 @end
