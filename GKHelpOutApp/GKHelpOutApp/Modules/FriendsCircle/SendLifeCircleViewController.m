@@ -81,6 +81,10 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
 //发布朋友圈
 -(void)releaseAction {
     
+    if (self.dataArray.count<=0&&self.textViewContent.text.length<=0) {
+        [PSTipsView showTips:@"请输入文字或者上传图片!"];
+        return;
+    }
     // 停止并清空请求队列
     if (self.requestQueue.isRuning) {
         [self.requestQueue cancelAllRequests];

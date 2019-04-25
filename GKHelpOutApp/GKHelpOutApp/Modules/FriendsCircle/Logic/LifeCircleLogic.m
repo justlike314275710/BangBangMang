@@ -81,7 +81,9 @@
                 self.dataStatus = PSDataNormal;
             }
             [self.items addObjectsFromArray:[TLMoment mj_objectArrayWithKeyValuesArray:responseObject[@"content"]]];
-            NSArray*hasNextPageArray=[TLMoment mj_objectArrayWithKeyValuesArray:responseObject[@"TLMoment"]];
+//            self.items addObjectsFromArray:[TLMoment ]
+            
+            NSArray*hasNextPageArray=[TLMoment mj_objectArrayWithKeyValuesArray:responseObject[@"content"]];
             self.hasNextPage = hasNextPageArray.count >= self.page;
             if (completedCallback) {
                 completedCallback(responseObject);
@@ -95,18 +97,6 @@
                 self.dataStatus = PSDataError;
             }
         }
-        /*
-        if (ValidDict(responseObject)) {
-            NSArray *content = [responseObject valueForKey:@"content"];
-            for (NSDictionary *dic in content) {
-                TLMoment *monent = [TLMoment modelWithJSON:dic];
-                [self.datalist addObject:monent];
-            }
-        }
-        if (completed) {
-            completed(responseObject);
-        }
-         */
     } failure:^(NSError *error) {
         if (failedCallback) {
             failedCallback(error);
