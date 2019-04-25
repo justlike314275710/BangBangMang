@@ -117,8 +117,8 @@
 //添加好友
 #define URL_friend_add @"/customer/customerfriend/add"
 
-//根据手机号码获取IM用户
-#define URL_get_im_customerInfo @"/customer/user/getuserim"
+//根据手机号码查找好友
+#define URL_get_customerFriend @"/customer/customerfriend/get-customer-friend"
 
 //获取当前IM用户
 #define URL_get_im_info @"/im/users/me"

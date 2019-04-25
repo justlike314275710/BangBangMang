@@ -92,6 +92,8 @@
 #define SYSTEMFONT(FONTSIZE)    [UIFont systemFontOfSize:FONTSIZE]
 #define FONT(NAME, FONTSIZE)    [UIFont fontWithName:(NAME) size:(FONTSIZE)]
 
+//根据username获取头像url
+#define AvaterImageWithUsername(username)  [NSString stringWithFormat:@"%@/users/by-username/avatar?username=%@",EmallHostUrl,username]
 
 //定义UIImage对象
 #define ImageWithFile(_pointer) [UIImage imageWithContentsOfFile:([[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@@%dx", _pointer, (int)[UIScreen mainScreen].nativeScale] ofType:@"png"])]

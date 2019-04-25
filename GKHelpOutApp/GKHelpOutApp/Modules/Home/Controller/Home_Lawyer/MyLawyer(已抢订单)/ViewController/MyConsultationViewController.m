@@ -40,7 +40,8 @@
 
 #pragma mark - PrivateMethods
 - (void)setupUI {
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     ZWTopSelectVcView *topSelectVcView=[[ZWTopSelectVcView alloc]init];
     self.topSelectVcView.isCloseSwipeGesture = YES;
     topSelectVcView.frame=CGRectMake(0,14,KScreenWidth,KScreenHeight);

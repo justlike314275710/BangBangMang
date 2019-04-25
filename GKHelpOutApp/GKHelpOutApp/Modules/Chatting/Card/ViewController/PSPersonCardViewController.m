@@ -15,10 +15,12 @@
 @property (nonatomic,copy  ) NSString                *nickName;
 @property (nonatomic,copy  ) NSString                *avatar;
 @property (nonatomic,copy  ) NSString                *curUserName;
+@property (nonatomic,copy  ) NSArray                 *pictuerArray;
+@property (nonatomic,copy  ) NSString                *friendinfo ;
 @end
 
 @implementation PSPersonCardViewController
-- (instancetype)initWithUserId:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)avatar withCurUserName:(NSString*)curUserName{
+- (instancetype)initWithUserId:(NSString *)userId withPhone:(NSString*)phone withNickName:(NSString*)nickName withAvatar:(NSString*)avatar withCurUserName:(NSString*)curUserName withFriendinfo:(NSString*)friendinfo withCircleoffriendsPicture:(NSArray*)CircleoffriendsPicture;{
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _nickName=nickName;
@@ -26,18 +28,30 @@
         _phone=phone;
         _avatar=avatar;
         _curUserName=curUserName;
+        _pictuerArray=CircleoffriendsPicture;
+        _friendinfo=friendinfo;
     }
     return self;
 }
 
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self p_setUI];
+    self.title=@"好友信息";
+   // [self p_setUI];
+    if ([self.friendinfo isEqualToString:@"1"]) {
+         [self p_setFriendsUI];
+    } else {
+        [self p_setNotFriendsUI];
+    }
+   
+    [self SDWebImageAuth];
     
     // Do any additional setup after loading the view.
 }
--(void)p_setUI{
+-(void)p_setNotFriendsUI{
     self.isShowLiftBack=YES;
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     
@@ -48,8 +62,9 @@
     
     UIImageView*iconView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 64, 64)];
     [personView addSubview:iconView];
-    if (!self.avatar) {
-        [iconView sd_setImageWithURL:[NSURL URLWithString:self.avatar] placeholderImage:[UIImage imageNamed:@"登录－头像"]];
+    if (_avatar) {
+        NSString*url=AvaterImageWithUsername(self.avatar);
+        [iconView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"登录－头像"]];
     } else {
         [iconView setImage:[UIImage imageNamed:@"登录－头像"]];
     }
@@ -80,9 +95,117 @@
     }];
     
 }
+
+
+
+
+-(void)p_setFriendsUI{
+    self.isShowLiftBack=YES;
+    self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    
+    CGFloat sidding=15.0f;
+    CGFloat personHeight=94.0f;
+    CGFloat iconViewWitdh=64.0f;
+    CGFloat picterViewHeight=70.0f;
+    UIView*personView=[UIView new];
+    personView.backgroundColor=[UIColor whiteColor];
+    personView.frame=CGRectMake(0, sidding, SCREEN_WIDTH, personHeight);
+    [self.view addSubview:personView];
+    
+    UIImageView*iconView=[[UIImageView alloc]initWithFrame:CGRectMake(sidding, sidding, iconViewWitdh, iconViewWitdh)];
+    [personView addSubview:iconView];
+    if (_avatar) {
+        NSString*url=AvaterImageWithUsername(self.avatar);
+        [iconView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"登录－头像"]];
+    } else {
+        [iconView setImage:[UIImage imageNamed:@"登录－头像"]];
+    }
+
+    UILabel*nickName=[[UILabel alloc]initWithFrame:CGRectMake(iconViewWitdh+2*sidding, 28, SCREEN_WIDTH-94, 20)];
+    nickName.font=FontOfSize(18);
+    nickName.textColor=[UIColor blackColor];
+    [personView addSubview:nickName];
+    nickName.text=self.nickName;
+    
+    UILabel*phone=[[UILabel alloc]initWithFrame:CGRectMake(iconViewWitdh+2*sidding, 48+5, SCREEN_WIDTH-94, 20)];
+    phone.font=FontOfSize(14);
+    phone.textColor=AppBaseTextColor1;
+    [personView addSubview:phone];
+    phone.text=[NSString changeTelephone:self.phone];
+    
+ 
+    UIView*picterView=[UIView new];
+    picterView.backgroundColor=[UIColor whiteColor];
+    picterView.frame=CGRectMake(0, personHeight+2*sidding, SCREEN_WIDTH, picterViewHeight);
+    [self.view addSubview:picterView];
+    UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
+      [picterView addGestureRecognizer:tapGesturRecognizer];
+
+    
+    UILabel*titleLable=[UILabel new];
+    titleLable.frame=CGRectMake(sidding, 26, 50, 15);
+    [picterView addSubview:titleLable];
+    titleLable.text=@"生活圈";
+    titleLable.font=FontOfSize(14);
+    titleLable.textColor=[UIColor blackColor];
+   
+    NSMutableArray *mdic = [NSMutableArray array];
+    for (NSDictionary *dic in self.pictuerArray) {
+        [mdic addObject:[dic valueForKey:@"fileId"]];
+    }
+    NSLog(@"%@",mdic);
+    
+    for (int i=0; i<4; i++) {
+        NSString*imageUrl=mdic[i];
+        NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,imageUrl);
+        UIImageView*friendsView=[[UIImageView alloc]init];
+        [friendsView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:IMAGE_NAMED(@"朋友圈图片")];
+        [picterView addSubview: friendsView];
+        friendsView.frame=CGRectMake(80+i*59, 13, 44, 44);
+        
+    }
+    
+    UIImageView*arrawImage=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"进入icon"]];
+    [picterView addSubview:arrawImage];
+    arrawImage.frame=CGRectMake(SCREEN_WIDTH-25, 27, 10, 16);
+    
+    
+    UIButton*sendMessageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0,3*sidding+picterViewHeight+personHeight , SCREEN_WIDTH, 44)];
+    [self.view addSubview:sendMessageBtn];
+    [sendMessageBtn setTitle:@"发消息" forState:0];
+    [sendMessageBtn setTitleColor:AppBaseTextColor3 forState:0];
+    [sendMessageBtn setBackgroundColor:[UIColor whiteColor]];
+   sendMessageBtn.titleLabel.font=FontOfSize(14);
+    [sendMessageBtn addTapBlock:^(UIButton *btn) {
+        [self sendMessage];
+    }];
+    
+}
+
+
+-(void)tapAction{
+    
+}
+-(void)sendMessage{
+    NIMSession *session = [NIMSession session:self.userId type:NIMSessionTypeP2P];
+    NIMSessionViewController *vc = [[NIMSessionViewController alloc] initWithSession:session];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(void)addFriendsWithMessage{
+    NSLog(@"%@ %@",self.userId,self.curUserName);
     NTESAddFriendsMessageViewController*vc=[[NTESAddFriendsMessageViewController alloc]initWithUserId:self.userId withCurUserName:self.curUserName];
     PushVC(vc);
+}
+
+
+#pragma mark ————— 设置SDWebImage认证token —————
+-(void)SDWebImageAuth{
+    [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
+    NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
+    [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
+    [SDWebImageManager sharedManager].imageCache.config.maxCacheAge=5*60.0;
+    
 }
 
 - (void)didReceiveMemoryWarning {
