@@ -91,7 +91,6 @@
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
     [SDWebImageManager sharedManager].imageCache.config.maxCacheAge=5*60.0;
-    
 }
 
 - (void)setMoment:(TLMoment *)moment
@@ -99,7 +98,7 @@
     _moment = moment;
     
     // 头像
-    NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,moment.customer.id);
+    NSString*url=NSStringFormat(@"%@%@?username=%@",EmallHostUrl,URL_get_userAvatar,moment.customer.id);
     
 //    [imageView tt_setImageWithURL:[NSURL URLWithString:url]  forState:UIControlStateNormal];
     
