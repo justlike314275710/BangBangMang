@@ -72,7 +72,7 @@
     self.badgeView.centerY = self.height * .5f;
     
     _redView.left =  self.imageView.right+95;
-    _redView.centerY = self.height * .3f;
+    _redView.centerY = self.height * 0.35;
     _redView.size=CGSizeMake(7, 7);
     _redView.layer.cornerRadius=3.5;
 }
