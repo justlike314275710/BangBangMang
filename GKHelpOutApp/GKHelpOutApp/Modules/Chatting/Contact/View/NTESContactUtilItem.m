@@ -51,7 +51,7 @@
 }
 
 - (BOOL)showAccessoryView{
-    return YES;
+    return NO;
 }
 
 - (id)sortKey {

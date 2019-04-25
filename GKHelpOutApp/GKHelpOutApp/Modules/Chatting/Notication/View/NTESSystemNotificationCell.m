@@ -38,11 +38,12 @@
 
     [self.acceptButton setHidden:hideActionButton];
     [self.refuseButton setHidden:hideActionButton];
+    self.acceptButton.layer.borderColor=RGBColor(38, 76, 144).CGColor;
     if(hideActionButton) {
         self.handleInfoLabel.hidden = NO;
         switch (self.notification.handleStatus) {
             case NotificationHandleTypeOk:
-                 self.handleInfoLabel.text = @"已同意";
+                 self.handleInfoLabel.text = @"已添加";
                 break;
             case NotificationHandleTypeNo:
                 self.handleInfoLabel.text = @"已拒绝";
