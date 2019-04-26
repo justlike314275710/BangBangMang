@@ -19,7 +19,12 @@
     [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
     [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
         if (ValidDict(responseObject)) {
-          
+            TLMoment*moment=[TLMoment modelWithJSON:responseObject];
+            self.moment = moment;
+            NSLog(@"%@",moment);
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
         }
     } failure:^(NSError *error) {
         if (failedCallback) {
@@ -39,10 +44,13 @@
     [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
     [PPNetworkHelper POST:url parameters:parameters success:^(id responseObject) {
         if (ValidDict(responseObject)) {
-            
-        }
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }        }
     } failure:^(NSError *error) {
-        
+        if (failedCallback) {
+            failedCallback(error);
+        }
     }];
 }
 
@@ -58,12 +66,21 @@
     [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
     [PPNetworkHelper POST:url parameters:parameters success:^(id responseObject) {
         if (ValidDict(responseObject)) {
-            
+            self.moment.praisesCircleoffriends = YES;
+            self.moment.praiseNum++;
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
         }
     } failure:^(NSError *error) {
-        
+            if (failedCallback) {
+                failedCallback(error);
+            }
     }];
-    
+}
+
+-(TLMoment *)moment {
+    return _moment;
 }
 
 @end

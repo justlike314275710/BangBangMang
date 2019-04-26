@@ -33,11 +33,11 @@
 
 @property (nonatomic, strong) UIButton *shareButton;
 
-@property (nonatomic, strong) UILabel *shareLabel;
+//@property (nonatomic, strong) UILabel *shareLabel;
 
 @property (nonatomic, strong) UIButton *commentButton;
 
-@property (nonatomic, strong) UILabel *commentLabel;
+//@property (nonatomic, strong) UILabel *commentLabel;
 
 @property (nonatomic, strong) DGThumbUpButton *LikeButton;
 
@@ -77,36 +77,23 @@
     return self;
 }
 
-//- (instancetype)initWithFrame:(CGRect)frame
-//{
-//    if (self = [super initWithFrame:frame]) {
-//        [self setBackgroundColor:[UIColor whiteColor]];
-//        [self SDWebImageAuth];
-//        [self p_initSubviews];
-//    }
-//    return self;
-//}
 -(void)SDWebImageAuth{
     [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
     [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
     [SDWebImageManager sharedManager].imageCache.config.maxCacheAge=5*60.0;
-    
 }
 
 - (void)setMoment:(TLMoment *)moment
 {
+    @weakify(self);
     _moment = moment;
     
     // 头像
-    NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,moment.customer.id);
-    
-//    [imageView tt_setImageWithURL:[NSURL URLWithString:url]  forState:UIControlStateNormal];
-    
-    [self.avatarView tt_setImageWithURL:TLURL(url) forState:UIControlStateNormal placeholderImage:TLImage(DEFAULT_AVATAR_PATH)];
+    NSString *url  = AvaterImageWithUsername(moment.username);
+    [self.avatarView tt_setImageWithURL:[NSURL URLWithString:url] forState:UIControlStateNormal placeholderImage:IMAGE_NAMED(DEFAULT_AVATAR_PATH)];
     // 用户名
     self.nameView.zz_make.title(moment.customer.name);
-    
     // 时间
     [self.dateLabel setText:moment.showDate];
     
@@ -118,7 +105,24 @@
     [self.detailContainer mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.titleLabel.mas_bottom).mas_offset(moment.detail.text.length > 0 ? 10.0f : 0);
     }];
+    //评论
+    [self.commentButton setTitle:[NSString stringWithFormat:@"%ld",moment.commentNum] forState:UIControlStateNormal];
+    //点赞
+    [self.LikeLabel setText:[NSString stringWithFormat:@"%ld",moment.praiseNum]];
     
+    //点赞
+    if (moment.praisesCircleoffriends) {
+        [self.LikeButton setBackgroundImage:IMAGE_NAMED(@"已点赞icon") forState:UIControlStateNormal];
+        [self.LikeButton addTapBlock:^(UIButton *btn) {
+            [PSTipsView showTips:@"已点赞不能重复点赞"];
+        }];
+    } else {
+        [self.LikeButton setBackgroundImage:IMAGE_NAMED(@"未点赞icon") forState:UIControlStateNormal];
+        [self.LikeButton addTapBlock:^(UIButton *btn) {
+            @strongify(self);
+            [self didClicKLike];
+        }];
+    }
     
     /*
     // 点赞&评论
@@ -202,77 +206,46 @@
     .view;
     
     //分享
-    self.shareButton = self.contentView.addButton(1040).backgroundImage(IMAGE_NAMED(@"分享icon")).eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
+    self.shareButton = self.contentView.addButton(1040).image(IMAGE_NAMED(@"分享icon")).title(@"分享").imageEdgeInsets(UIEdgeInsetsMake(0,-10,0,0)).titleColor(CFontColor4).titleFont(FontOfSize(12))
+        .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
         @strongify(self);
         [self didClicKShare];
     }).masonry(^ (MASConstraintMaker *make) {
         make.left.mas_equalTo(self.nameView);
-        make.width.height.mas_equalTo(16);
+        make.height.mas_equalTo(16);
+        make.width.mas_equalTo(45);
         make.bottom.mas_equalTo(self.contentView).mas_offset(-10);
     })
     .view;
     
-    self.shareLabel = self.contentView.addLabel(1041).backgroundColor([UIColor clearColor]).textColor(CFontColor4).font(FontOfSize(12)).text(@"分享")
-    .masonry(^ (MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.shareButton.mas_right).mas_offset(3);
-        make.width.mas_equalTo(30);
-        make.height.mas_equalTo(15);
-        make.centerY.mas_equalTo(self.shareButton);
-    })
-    .view;
     
     //评论
-    self.commentButton = self.contentView.addButton(1042).backgroundImage(IMAGE_NAMED(@"评论icon")).eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
+    self.commentButton = self.contentView.addButton(1042).image(IMAGE_NAMED(@"评论icon")).title(@"评论").imageEdgeInsets(UIEdgeInsetsMake(0,-10,0,0)).titleColor(CFontColor4).titleFont(FontOfSize(12)).
+    eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
         @strongify(self);
         [self didClicKComment];
     }).masonry(^ (MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.detailContainer.mas_centerX).mas_offset(-15);
-        make.width.height.mas_equalTo(16);
+        make.centerX.mas_equalTo(self.detailContainer.mas_centerX);
+        make.height.mas_equalTo(16);
+        make.width.mas_equalTo(45);
         make.bottom.mas_equalTo(self.contentView).mas_offset(-10);
     })
     .view;
-    
-    self.commentLabel = self.contentView.addLabel(1043).backgroundColor([UIColor clearColor]).textColor(CFontColor4).font(FontOfSize(12)).text(@"评论")
-    .masonry(^ (MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.commentButton.mas_right).mas_offset(3);
-        make.width.mas_equalTo(30);
-        make.height.mas_equalTo(15);
-        make.centerY.mas_equalTo(self.commentButton);
-    })
-    .view;
+
     
     //点赞
     self.LikeButton = [[DGThumbUpButton alloc] init];
     [self.contentView addSubview:self.LikeButton];
     [self.LikeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.detailContainer).mas_offset(-33);
+        make.right.mas_equalTo(self.detailContainer).mas_offset(-25);
         make.width.height.mas_equalTo(16);
         make.bottom.mas_equalTo(self.contentView).mas_offset(-10);
     }];
-    [self.LikeButton addTapBlock:^(UIButton *btn) {
-        @strongify(self);
-        [self didClicKLike];
-    }];
-    
-//    self.LikeButton = self.contentView.addButton(1044).backgroundImage(IMAGE_NAMED(@"未点赞icon"))
-//    .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
-//        @strongify(self);
-////        if (self.delegate && [self.delegate respondsToSelector:@selector(momentViewWithModel:jumpToUrl:)]) {
-////            [self.delegate momentViewWithModel:self.moment jumpToUrl:self.moment.link.jumpUrl];
-////
-////        }
-//    })
-//    .masonry(^ (MASConstraintMaker *make) {
-//        make.right.mas_equalTo(self.detailContainer).mas_offset(-33);
-//        make.width.height.mas_equalTo(16);
-//        make.bottom.mas_equalTo(self.contentView).mas_offset(-10);
-//    })
-//    .view;
     
     self.LikeLabel = self.contentView.addLabel(1045).backgroundColor([UIColor clearColor]).textColor(CFontColor4).font(FontOfSize(12)).text(@"23")
     .masonry(^ (MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.LikeButton.mas_right).mas_offset(3);
-        make.width.mas_equalTo(30);
+        make.left.mas_equalTo(self.LikeButton.mas_right).mas_offset(4);
+        make.width.mas_equalTo(25);
         make.height.mas_equalTo(15);
         make.centerY.mas_equalTo(self.LikeButton);
     })

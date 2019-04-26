@@ -7,12 +7,15 @@
 //
 
 #import "HpBaseLogic.h"
+#import "TLMoment.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LifeDetailCircleLogic : HpBaseLogic
 @property (nonatomic,copy)NSString* circleoffriendsId;
 @property (nonatomic,copy)NSString* content;
+@property (nonatomic,strong)TLMoment *moment;
 //获取某条生活圈详情
 -(void)requestLifeCircleDetailCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 //评论某条朋友圈

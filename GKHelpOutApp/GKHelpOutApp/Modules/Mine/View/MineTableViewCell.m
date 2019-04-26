@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UILabel *titleLbl;//标题
 @property (nonatomic, strong) UILabel *detaileLbl;//内容
 @property (nonatomic, strong) UIImageView *arrowIcon;//右箭头图标
+@property (nonatomic, strong) UIView *reddot;//小红点
 
 @end
 
@@ -44,9 +45,11 @@
                 make.width.height.mas_equalTo(0);
             }];
         }
-        
+        NSInteger xleng = 0;
         if (cellData[@"titleText"]) {
             self.titleLbl.text = cellData[@"titleText"];
+            CGSize titleSize = [self.titleLbl.text sizeWithFont:FontOfSize(15) constrainedToSize:CGSizeMake(MAXFLOAT, 30)];
+            xleng = titleSize.width;
         }
         
         if (cellData[@"detailText"]) {
@@ -63,6 +66,20 @@
                 make.right.mas_equalTo(self.arrowIcon.mas_left).offset(0);
             }];
         }
+        if ([cellData[@"reddot"] isEqualToString:@"1"]) {
+            [self.reddot mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(KNormalSpace+17+xleng+20);
+                make.centerY.mas_equalTo(self);
+                make.size.mas_equalTo(10);
+            }];
+        } else {
+            [self.reddot mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(_titleLbl.mas_right).offset(5);
+                make.centerY.mas_equalTo(self);
+                make.size.mas_equalTo(0);
+            }];
+        }
+        
         if (cellData[@"arrow_icon"]) {
             [self.arrowIcon setImage:IMAGE_NAMED(@"arrow_icon")];
             [_arrowIcon mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -114,7 +131,7 @@
         _detaileLbl = [UILabel new];
         _detaileLbl.font = SYSTEMFONT(12);
         _detaileLbl.textColor = KGrayColor;
-        _detaileLbl.textAlignment = UITextAlignmentRight;
+        _detaileLbl.textAlignment = NSTextAlignmentRight;
         [self addSubview:_detaileLbl];
         
         [_detaileLbl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -124,6 +141,23 @@
         }];
     }
     return _detaileLbl;
+}
+
+- (UIView *)reddot {
+    if (!_reddot) {
+        _reddot = [UIView new];
+        _reddot.layer.masksToBounds = YES;
+        _reddot.backgroundColor = [UIColor redColor];
+        _reddot.layer.cornerRadius =5 ;
+        [self addSubview:_reddot];
+        [_reddot mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(_titleLbl.mas_right).offset(5);
+            make.centerY.mas_equalTo(self);
+            make.size.mas_equalTo(10);
+        }];
+        
+    }
+    return _reddot;
 }
 
 -(UIImageView *)arrowIcon{
@@ -140,4 +174,5 @@
     }
     return _arrowIcon;
 }
+
 @end

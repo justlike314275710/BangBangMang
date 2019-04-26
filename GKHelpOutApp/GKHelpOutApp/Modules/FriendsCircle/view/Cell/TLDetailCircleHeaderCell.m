@@ -96,14 +96,10 @@
 
 - (void)setMoment:(TLMoment *)moment
 {
-    //    _moment = moment;
-    
+    _moment = moment;
     // 头像
-    NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,moment.customer.id);
-    
-    //    [imageView tt_setImageWithURL:[NSURL URLWithString:url]  forState:UIControlStateNormal];
-    
-    [self.avatarView tt_setImageWithURL:TLURL(url) forState:UIControlStateNormal placeholderImage:TLImage(DEFAULT_AVATAR_PATH)];
+    NSString *url  = AvaterImageWithUsername(moment.username);
+    [self.avatarView tt_setImageWithURL:TLURL(url) forState:UIControlStateNormal placeholderImage:IMAGE_NAMED(DEFAULT_AVATAR_PATH)];
     // 用户名
     self.nameView.zz_make.title(moment.customer.name);
     
@@ -130,8 +126,9 @@
         make.left.right.mas_equalTo(self);
     })
     .view;
-    
-    self.commentLabel = self.addLabel(1013).text(@"评论 76").textAlignment(NSTextAlignmentLeft)
+
+    NSString *contentText = [NSString stringWithFormat:@"评论 %ld",moment.commentNum];
+    self.commentLabel = self.addLabel(1013).text(contentText).textAlignment(NSTextAlignmentLeft)
     .font(FontOfSize(14)).textColor(CFontColor1)
     .masonry(^ (MASConstraintMaker *make) {
         make.top.mas_equalTo(self.lineView.mas_bottom).mas_offset(12);
@@ -142,7 +139,8 @@
     })
     .view;
     
-    self.likeLabel = self.addLabel(1014).text(@"点赞 16").textAlignment(NSTextAlignmentRight)
+    NSString *likeText = [NSString stringWithFormat:@"点赞 %ld",moment.praiseNum];
+    self.likeLabel = self.addLabel(1014).text(likeText).textAlignment(NSTextAlignmentRight)
     .font(FontOfSize(14)).textColor(CFontColor1)
     .masonry(^ (MASConstraintMaker *make) {
         make.top.mas_equalTo(self.lineView.mas_bottom).mas_offset(12);
@@ -151,7 +149,6 @@
         make.width.mas_equalTo(120);
     })
     .view;
-    
     
 }
 

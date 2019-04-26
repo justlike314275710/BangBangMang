@@ -111,6 +111,8 @@
 #define URL_LifeCircle_comment @"/customer/circleoffriends/comment"
 //点赞某条生活圈
 #define URL_LifeCircle_praise @"/customer/circleoffriends/praise"
+//获取用户头像
+#define URL_get_userAvatar @"/users/by-username/avatar"
 
 //添加好友
 #define URL_friend_add @"/customer/customerfriend/add"

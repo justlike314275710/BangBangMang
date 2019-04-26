@@ -80,24 +80,22 @@
  
 }
 
-- (void)setMoment:(TLMoment *)moment
+- (void)setMoment:(TLCommentDetail *)moment
 {
-        _moment = moment;
+    _moment = moment;
     
     // 头像
-    NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,moment.customer.id);
-    
-    //    [imageView tt_setImageWithURL:[NSURL URLWithString:url]  forState:UIControlStateNormal];
-    
-    [self.avatarView tt_setImageWithURL:TLURL(url) forState:UIControlStateNormal placeholderImage:TLImage(DEFAULT_AVATAR_PATH)];
+    NSString *url  = AvaterImageWithUsername(moment.username);
+    [self.avatarView tt_setImageWithURL:[NSURL URLWithString:url] forState:UIControlStateNormal placeholderImage:IMAGE_NAMED(DEFAULT_AVATAR_PATH)];
     // 用户名
-    self.nameView.zz_make.title(moment.customer.name);
+    self.nameView.zz_make.title(moment.customerName);
     
     // 时间
     [self.dateLabel setText:moment.showDate];
     
     // 正文
-    [self.titleLabel setText:moment.detail.text];
+    [self.titleLabel setText:moment.content];
+    
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(moment.detail.detailFrame.heightText);
     }];
