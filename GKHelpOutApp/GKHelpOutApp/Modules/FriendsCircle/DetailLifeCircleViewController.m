@@ -49,37 +49,43 @@
 }
 #pragma mark - Delegate
 //MARK:UITableViewDelegate&UITableViewSources
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return self.logic.moment.circleoffriendsComments.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailLifeCircleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailLifeCircleCell"];
-    cell.moment = _datalist[0];
+    TLCommentDetail *commentDetail = self.logic.moment.showcircleoffriendsComments[indexPath.row];
+    cell.moment = commentDetail;
     return cell;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     TLDetailCircleHeaderCell *headView = [[TLDetailCircleHeaderCell alloc] init];
-    headView.moment = _datalist[0];
+    headView.moment = self.logic.moment;
     return headView;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    TLMoment *monent = _datalist[0];
+    TLMoment *monent = self.logic.moment;
     return monent.detail.detailFrame.height+120; //84
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    TLMoment *monent = _datalist[0];
-    return monent.detail.detailFrame.heightText+75;
+    TLCommentDetail *commentDetail = self.logic.moment.showcircleoffriendsComments[indexPath.row];
+    return commentDetail.detail.detailFrame.heightText+75;
 }
 
 #pragma mark - Private Methods
 - (void)stepData {
     [self.logic requestLifeCircleDetailCompleted:^(id data) {
-        
+        if (ValidDict(data)) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.datalist = @[self.logic.moment];
+                [self reloadUI];
+                [self.tableView reloadData];
+            });
+        }
     } failed:^(NSError *error) {
-        
+        [PSTipsView showTips:@"获取详情失败"];
     }];
 }
 - (void)stepUI{
@@ -142,9 +148,12 @@
     })
     .view;
     
+    TLMoment *monent = _datalist[0];
+    NSString *imageIconName = monent.praisesCircleoffriends?@"已点赞icon":@"未点赞icon";
+    NSString *praiseCount =  [NSString stringWithFormat:@"%ld",monent.praiseNum];
     self.likeButton = self.bottomView.addButton(104)
-    .image(IMAGE_NAMED(@"未点赞icon"))
-    .title(@"23")
+    .image(IMAGE_NAMED(imageIconName))
+    .title(praiseCount)
     .titleColor(CFontColor4)
     .titleFont(FontOfSize(12))
     .titleEdgeInsets(UIEdgeInsetsMake(0,10, 0, 0))
@@ -160,22 +169,46 @@
     })
     .view;
 }
+-(void)reloadUI {
+    
+    TLMoment *monent = self.logic.moment;
+    NSString *praiseCount =  [NSString stringWithFormat:@"%ld",monent.praiseNum];
+    UIButton *likeButton = [self.view viewWithTag:104];
+    if (monent.praisesCircleoffriends) {
+        [likeButton setImage:IMAGE_NAMED(@"已点赞icon") forState:UIControlStateNormal];
+    } else {
+        [likeButton setImage:IMAGE_NAMED(@"未点赞icon") forState:UIControlStateNormal];
+    }
+    [likeButton setTitle:praiseCount forState:UIControlStateNormal];
+}
+
 #pragma mark - TouchEvent
 //评论
 -(void)postCommentData:(NSString *)content{
     self.logic.content = content;
     [self.logic requestLifeCircleDetailCommentCompleted:^(id data) {
-        
+        [self stepData];
     } failed:^(NSError *error) {
-        
+        [PSTipsView showTips:@"评论失败"];
     }];
 }
 //点赞
 -(void)postPraiseData{
+    TLMoment *monent = _datalist[0];
+    if (monent.praisesCircleoffriends) {
+        [PSTipsView showTips:@"已点赞不能重复点赞"];
+        return;
+    }
+    @weakify(self);
     [self.logic requestLifeCircleDetailPraiseCompleted:^(id data) {
-        
+        @strongify(self);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.datalist = @[self.logic.moment];
+            [self reloadUI];
+            [self.tableView reloadData];
+        });
     } failed:^(NSError *error) {
-        
+        [PSTipsView showTips:@"点赞失败"];
     }];
 }
 

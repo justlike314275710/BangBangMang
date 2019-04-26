@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, STUserLevelType) {
 + (NSString *)dateWithDate:(NSDate *)date formatter:(NSString *)formatter;
 +(NSString *) timeChange:(NSString *)timeString;
 +(NSString *)changeFormatWithDateString:(NSString *)date;
++(NSInteger)timeSwitchTimestamp:(NSString *)formatTime andFormatter:(NSString *)format;
 /**
  *  时间显示逻辑
  *

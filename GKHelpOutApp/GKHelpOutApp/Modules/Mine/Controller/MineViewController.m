@@ -128,16 +128,15 @@
     }
     
     //通讯录
-    NSDictionary *addressbook = @{@"titleText":@"通讯录",@"clickSelector":@"",@"title_icon":@"通讯录icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *addressbook = @{@"titleText":@"通讯录",@"clickSelector":@"",@"title_icon":@"通讯录icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"1"};
     //我的生活圈
-    NSDictionary *lifeCircle = @{@"titleText":@"我的生活圈",@"clickSelector":@"",@"title_icon":@"生活圈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *lifeCircle = @{@"titleText":@"我的生活圈",@"clickSelector":@"",@"title_icon":@"生活圈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"1"};
     //我的咨询
-    NSDictionary *myConsultation = @{@"titleText":@"我的咨询",@"clickSelector":@"",@"title_icon":@"我的咨询icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *myConsultation = @{@"titleText":@"我的咨询",@"clickSelector":@"",@"title_icon":@"我的咨询icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"1"};
     
     NSDictionary *accountBalance = @{@"titleText":@"账户余额",@"clickSelector":@"",@"title_icon":@"账户余额icon",@"detailText":accont,@"arrow_icon":@"arrow_icon"};
     NSDictionary *Bill = @{@"titleText":@"账单",@"clickSelector":@"",@"title_icon":@"账单icon",@"arrow_icon":@"arrow_icon"};
     NSDictionary *expertsInt = @{@"titleText":@"专家入驻",@"clickSelector":@"",@"title_icon":@"专家入驻icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
-//    NSDictionary *myAdvice = @{@"titleText":@"意见反馈",@"clickSelector":@"",@"title_icon":@"意见反馈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     NSDictionary *mySet = @{@"titleText":@"设置",@"clickSelector":@"",@"title_icon":@"设置icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
     
     NSMutableArray *section1 = [NSMutableArray array];

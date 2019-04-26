@@ -10,9 +10,12 @@
 #import "TLMomentDetail.h"
 #import "TLMomentExtension.h"
 #import "TLCustomer.h"
+#import "TLMomentComment.h"
+#import "TLCommentDetail.h"
 
 @class TLMomentLinkModel;
 @class TLMomentFrame;
+@class TLCommentDetail;
 
 @interface TLMoment : NSObject
 
@@ -48,6 +51,14 @@
 @property (nonatomic, strong) TLCustomer *customer; //朋友圈发送人
 @property (nonatomic, strong) NSArray *circleoffriendsPicture; //图片
 @property (nonatomic, strong) NSString *content;    //文字内容;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *createdTime; //发布时间
+@property (nonatomic, assign) BOOL praisesCircleoffriends; //是否点赞 circleoffriendsComments
+//点赞
+@property (nonatomic, strong) NSArray *circleoffriendsComments; //circleoffriendsComments
+//点赞
+@property (nonatomic, strong) NSArray<TLCommentDetail *> *showcircleoffriendsComments; //circleoffriendsComments
+
 
 
 @end

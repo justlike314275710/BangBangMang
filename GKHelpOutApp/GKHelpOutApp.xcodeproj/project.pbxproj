@@ -198,6 +198,7 @@
 		559785AC222661ED007BBCC2 /* FeedbackListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559785AA222661ED007BBCC2 /* FeedbackListCell.m */; };
 		559785AF22266219007BBCC2 /* UIViewController+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 559785AD22266219007BBCC2 /* UIViewController+Tool.m */; };
 		55AB82B7226875F8004EF0A9 /* BaseRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AB82B6226875F8004EF0A9 /* BaseRootViewController.m */; };
+		55AC64D52271A84700F82DB9 /* TLCommentDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AC64D42271A84700F82DB9 /* TLCommentDetail.m */; };
 		55B4F67A2223EFFC002B1536 /* PSAuthorizationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */; };
 		55C0C76A222CD23C00CD2459 /* HMAccountBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0C769222CD23C00CD2459 /* HMAccountBalanceViewController.m */; };
 		55C0C76F222CFA9300CD2459 /* LLActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0C76D222CFA9300CD2459 /* LLActionSheetView.m */; };
@@ -944,6 +945,8 @@
 		559785AE22266219007BBCC2 /* UIViewController+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Tool.h"; sourceTree = "<group>"; };
 		55AB82B5226875F8004EF0A9 /* BaseRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRootViewController.h; sourceTree = "<group>"; };
 		55AB82B6226875F8004EF0A9 /* BaseRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseRootViewController.m; sourceTree = "<group>"; };
+		55AC64D32271A84700F82DB9 /* TLCommentDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLCommentDetail.h; sourceTree = "<group>"; };
+		55AC64D42271A84700F82DB9 /* TLCommentDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLCommentDetail.m; sourceTree = "<group>"; };
 		55B4F6782223EFFC002B1536 /* PSAuthorizationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAuthorizationTool.h; sourceTree = "<group>"; };
 		55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAuthorizationTool.m; sourceTree = "<group>"; };
 		55C0C768222CD23C00CD2459 /* HMAccountBalanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMAccountBalanceViewController.h; sourceTree = "<group>"; };
@@ -2871,6 +2874,8 @@
 				55F46D5D22657593000D84B1 /* TLMomentExtension.m */,
 				5583965A226DAEEF00E7CD71 /* TLCustomer.h */,
 				5583965B226DAEEF00E7CD71 /* TLCustomer.m */,
+				55AC64D32271A84700F82DB9 /* TLCommentDetail.h */,
+				55AC64D42271A84700F82DB9 /* TLCommentDetail.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -5148,6 +5153,7 @@
 				5557A611221BD96500743012 /* MineViewController.m in Sources */,
 				EA21CA83221F9980007D3445 /* PSLawersDetails.m in Sources */,
 				EA21CB1D221FA2C9007D3445 /* PSPhoneCardViewModel.m in Sources */,
+				55AC64D52271A84700F82DB9 /* TLCommentDetail.m in Sources */,
 				EA78F73A222783F3002D788A /* WWWaveProgressView.m in Sources */,
 				EAB038C1221E817B00331569 /* NIMContactSelectViewController.m in Sources */,
 				EAE19EB4223B32E00080B0F5 /* DSSettingDataSource.m in Sources */,

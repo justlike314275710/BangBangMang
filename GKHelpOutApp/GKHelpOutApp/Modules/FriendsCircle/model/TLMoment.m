@@ -7,26 +7,24 @@
 //
 
 #import "TLMoment.h"
+#import "NSString+Utils.h"
 
 #define     HEIGHT_MOMENT_DEFAULT       78.0f
 
 @implementation TLMoment
 
-// UserInfo.m
-+ (NSDictionary *)modelCustomPropertyMapper {
-    // 将im_username映射到key为username的数据字段
-    return @{@"date":@"createdTime"};
-}
 
-- (void)setDate:(NSString *)date
+- (void)setCreatedTime:(NSString *)createdTime
 {
-    _date = date;
-    _showDate = [self momBabayMomentPublishTimeFromInterval:date];
+    _createdTime = createdTime;
+    _showDate = [self momBabayMomentPublishTimeFromInterval:createdTime];
 }
 
 - (NSString *)momBabayMomentPublishTimeFromInterval:(NSString *)timeInterval
 {
-    NSTimeInterval late = [timeInterval longLongValue];
+    //NSTimeInterval late = // [timeInterval longLongValue];
+    NSString *lateTime = [NSString timeChange:timeInterval];
+    NSTimeInterval late = [NSString timeSwitchTimestamp:lateTime andFormatter:@"YYYY-MM-dd HH:mm:ss"];
     NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
     NSString *timeString = @"";
     
@@ -53,6 +51,17 @@
     
     return timeString;
 }
+
+- (void)setCircleoffriendsComments:(NSArray *)circleoffriendsComments {
+    _circleoffriendsComments = circleoffriendsComments;
+    NSMutableArray *comments = [NSMutableArray array];
+    for (NSDictionary *dic in circleoffriendsComments) {
+        TLCommentDetail *detail = [TLCommentDetail modelWithJSON:dic];
+        [comments addObject:detail];
+    }
+    _showcircleoffriendsComments = [comments copy];
+}
+
 
 #pragma mark - # Getter
 - (TLMomentFrame *)momentFrame
@@ -91,6 +100,7 @@
     }
     return _detail;
 }
+
 
 @end
 
