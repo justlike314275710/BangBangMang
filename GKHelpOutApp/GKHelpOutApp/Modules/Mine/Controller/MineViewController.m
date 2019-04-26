@@ -26,7 +26,7 @@
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
 
-@interface MineViewController ()<UITableViewDelegate,UITableViewDataSource,headerViewDelegate,XYTransitionProtocol>
+@interface MineViewController ()<UITableViewDelegate,UITableViewDataSource,headerViewDelegate,XYTransitionProtocol,NIMSystemNotificationManager>
 {
     UILabel * lbl;
     NSArray *_dataSource;
@@ -45,6 +45,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createUI];
     [self initData];
+    [[NIMSDK sharedSDK].systemNotificationManager addDelegate:self];
     //个人中心资料变化
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(initData)
@@ -53,9 +54,18 @@
     
 }
 
+- (void)onSystemNotificationCountChanged:(NSInteger)unreadCount{
+    [self initData];
+}
+
+- (void)dealloc{
+     [[NIMSDK sharedSDK].systemNotificationManager removeDelegate:self];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getRequset];
+    [self initData];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -126,18 +136,20 @@
     } else {
         accont = @"0.00";
     }
-    
+     NSInteger systemCount = [[[NIMSDK sharedSDK] systemNotificationManager] allUnreadCount];
+    NSString *systemCountStr = [NSString stringWithFormat: @"%ld", (long)systemCount];
+  
     //通讯录
-    NSDictionary *addressbook = @{@"titleText":@"通讯录",@"clickSelector":@"",@"title_icon":@"通讯录icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"1"};
+    NSDictionary *addressbook = @{@"titleText":@"通讯录",@"clickSelector":@"",@"title_icon":@"通讯录icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":systemCountStr};
     //我的生活圈
-    NSDictionary *lifeCircle = @{@"titleText":@"我的生活圈",@"clickSelector":@"",@"title_icon":@"生活圈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"1"};
+    NSDictionary *lifeCircle = @{@"titleText":@"我的生活圈",@"clickSelector":@"",@"title_icon":@"生活圈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"0"};
     //我的咨询
-    NSDictionary *myConsultation = @{@"titleText":@"我的咨询",@"clickSelector":@"",@"title_icon":@"我的咨询icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"1"};
+    NSDictionary *myConsultation = @{@"titleText":@"我的咨询",@"clickSelector":@"",@"title_icon":@"我的咨询icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"0"};
     
-    NSDictionary *accountBalance = @{@"titleText":@"账户余额",@"clickSelector":@"",@"title_icon":@"账户余额icon",@"detailText":accont,@"arrow_icon":@"arrow_icon"};
-    NSDictionary *Bill = @{@"titleText":@"账单",@"clickSelector":@"",@"title_icon":@"账单icon",@"arrow_icon":@"arrow_icon"};
-    NSDictionary *expertsInt = @{@"titleText":@"专家入驻",@"clickSelector":@"",@"title_icon":@"专家入驻icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
-    NSDictionary *mySet = @{@"titleText":@"设置",@"clickSelector":@"",@"title_icon":@"设置icon",@"detailText":@"",@"arrow_icon":@"arrow_icon"};
+    NSDictionary *accountBalance = @{@"titleText":@"账户余额",@"clickSelector":@"",@"title_icon":@"账户余额icon",@"detailText":accont,@"arrow_icon":@"arrow_icon",@"reddot":@"0"};
+    NSDictionary *Bill = @{@"titleText":@"账单",@"clickSelector":@"",@"title_icon":@"账单icon",@"arrow_icon":@"arrow_icon",@"reddot":@"0"};
+    NSDictionary *expertsInt = @{@"titleText":@"专家入驻",@"clickSelector":@"",@"title_icon":@"专家入驻icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"0"};
+    NSDictionary *mySet = @{@"titleText":@"设置",@"clickSelector":@"",@"title_icon":@"设置icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"0"};
     
     NSMutableArray *section1 = [NSMutableArray array];
     [section1 addObject:addressbook];
@@ -349,6 +361,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 
 @end
