@@ -24,8 +24,8 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        //_badgeView = [NTESBadgeView viewWithBadgeTip:@""];
-        //[self addSubview:_badgeView];
+        _badgeView = [NTESBadgeView viewWithBadgeTip:@""];
+        [self addSubview:_badgeView];
     }
     return self;
 }
@@ -44,8 +44,8 @@
     self.badgeView.badgeValue = badge;
     
    
-    [self addSubview:self.redView];
-     self.redView.hidden=badge.integerValue == 0;
+//    [self addSubview:self.redView];
+//     self.redView.hidden=badge.integerValue == 0;
   
 }
 
@@ -68,10 +68,11 @@
     [super layoutSubviews];
     self.imageView.left = NTESContactAvatarLeft;
     self.imageView.centerY = self.height * .5f;
-    self.badgeView.right = self.width - BadgeValueRight;
+    //self.badgeView.right = self.width - BadgeValueRight;
+    self.badgeView.left =  self.imageView.right+95;
     self.badgeView.centerY = self.height * .5f;
     
-    _redView.left =  self.imageView.right+95;
+   // _redView.left =  self.imageView.right+95;
 
 }
 

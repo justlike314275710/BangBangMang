@@ -153,9 +153,8 @@
     for (NSDictionary *dic in self.pictuerArray) {
         [mdic addObject:[dic valueForKey:@"fileId"]];
     }
-    NSLog(@"%@",mdic);
     
-    for (int i=0; i<4; i++) {
+    for (int i=0; i<mdic.count; i++) {
         NSString*imageUrl=mdic[i];
         NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,imageUrl);
         UIImageView*friendsView=[[UIImageView alloc]init];

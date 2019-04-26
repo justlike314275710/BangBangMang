@@ -326,6 +326,7 @@ NIMEventSubscribeManagerDelegate> {
                    //[SVProgressHUD dismiss];
                     if (!error) {
                         [_contacts removeGroupMember:contactItem];
+                        [self IMDeleteFriend:userId];
                     }else{
                         [wself.view makeToast:@"删除失败"duration:2.0f position:CSToastPositionCenter];
                     }
@@ -334,6 +335,21 @@ NIMEventSubscribeManagerDelegate> {
         }];
     }
 }
+
+-(void)IMDeleteFriend:(NSString*)userId{
+    NSString*url=[NSString stringWithFormat:@"%@%@",ChatServerUrl,URL_friend_delete];
+    NSDictionary*dic=@{@"account":userId};
+     [PPNetworkHelper setRequestSerializer:PPRequestSerializerJSON];
+    NSString *access_token =help_userManager.oathInfo.access_token;
+    NSString *token = NSStringFormat(@"Bearer %@",access_token);
+    [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
+    [PPNetworkHelper POST:url parameters:dic success:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 
 #pragma mark - NIMContactDataCellDelegate
 - (void)onPressAvatar:(NSString *)memberId{
