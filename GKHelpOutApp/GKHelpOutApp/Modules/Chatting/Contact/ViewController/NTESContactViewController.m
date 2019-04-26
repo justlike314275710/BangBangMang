@@ -105,6 +105,7 @@ NIMEventSubscribeManagerDelegate> {
 //原始数据
     
     NSInteger systemCount = [[[NIMSDK sharedSDK] systemNotificationManager] allUnreadCount];
+
     NSMutableArray *utils =
             [@[
               @{

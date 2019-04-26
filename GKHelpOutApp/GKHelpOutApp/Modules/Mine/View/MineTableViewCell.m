@@ -55,28 +55,29 @@
         if (cellData[@"detailText"]) {
             self.detaileLbl.text = cellData[@"detailText"];
             [_detaileLbl mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.left.mas_equalTo(_titleLbl.mas_right).offset(10);
+                make.left.mas_equalTo(self.titleLbl.mas_right).offset(10);
                 make.centerY.mas_equalTo(self);
                 make.right.mas_equalTo(self.arrowIcon.mas_left).offset(- 10);
             }];
         }else{
             [_detaileLbl mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.left.mas_equalTo(_titleLbl.mas_right).offset(0);
+                make.left.mas_equalTo(self.titleLbl.mas_right).offset(0);
                 make.centerY.mas_equalTo(self);
                 make.right.mas_equalTo(self.arrowIcon.mas_left).offset(0);
             }];
         }
-        if ([cellData[@"reddot"] isEqualToString:@"1"]) {
+        if ([cellData[@"reddot"] isEqualToString:@"0"]) {
+            [self.reddot mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(self.titleLbl.mas_right).offset(5);
+                make.centerY.mas_equalTo(self);
+                make.size.mas_equalTo(0);
+            }];
+           
+        } else {
             [self.reddot mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.left.mas_equalTo(KNormalSpace+17+xleng+20);
                 make.centerY.mas_equalTo(self);
-                make.size.mas_equalTo(10);
-            }];
-        } else {
-            [self.reddot mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.left.mas_equalTo(_titleLbl.mas_right).offset(5);
-                make.centerY.mas_equalTo(self);
-                make.size.mas_equalTo(0);
+                make.size.mas_equalTo(8);
             }];
         }
         
@@ -148,12 +149,12 @@
         _reddot = [UIView new];
         _reddot.layer.masksToBounds = YES;
         _reddot.backgroundColor = [UIColor redColor];
-        _reddot.layer.cornerRadius =5 ;
+        _reddot.layer.cornerRadius =4 ;
         [self addSubview:_reddot];
         [_reddot mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(_titleLbl.mas_right).offset(5);
             make.centerY.mas_equalTo(self);
-            make.size.mas_equalTo(10);
+            make.size.mas_equalTo(8);
         }];
         
     }
