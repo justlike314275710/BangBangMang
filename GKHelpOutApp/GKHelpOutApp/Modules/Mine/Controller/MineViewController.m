@@ -156,7 +156,6 @@
     [section1 addObject:lifeCircle];
     [section1 addObject:myConsultation];
     
-    
     NSMutableArray *section2 = [NSMutableArray array];
     //认证律师才有账户余额
     if (help_userManager.userStatus == CERTIFIED) {
