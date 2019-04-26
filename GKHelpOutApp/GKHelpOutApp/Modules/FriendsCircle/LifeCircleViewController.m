@@ -188,6 +188,7 @@
 //MARK: TLMomentViewDelegate
 - (void)momentViewWithModel:(TLMoment *)moment didClickUser:(UserInfo *)user
 {
+
 }
 - (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index cell:(TLMomentImagesCell *)cell
 {
