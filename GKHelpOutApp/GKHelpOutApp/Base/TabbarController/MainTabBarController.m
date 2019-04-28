@@ -65,7 +65,7 @@ UIColor *MainViewColor = nil;
 //    HomeViewController *homeVC = [[HomeViewController alloc]init];
 //    WaterFallListViewController *homeVC = [WaterFallListViewController new];
     PersonListViewController *homeVC = [[PersonListViewController alloc]init];
-    [self setupChildViewController:homeVC title:@"首页" imageName:@"首页icon－未选中" seleceImageName:@"首页icon－选中"];
+    [self setupChildViewController:homeVC title:@"服务" imageName:@"首页icon－未选中" seleceImageName:@"首页icon－选中"];
     
     PSMessageViewController*messageVC=[[PSMessageViewController alloc]init];
    // MyConsultationViewController *makeFriendVC = [[MyConsultationViewController alloc]init];
@@ -77,7 +77,7 @@ UIColor *MainViewColor = nil;
     
     
     MineViewController *mineVC = [[MineViewController alloc]init];
-    [self setupChildViewController:mineVC title:@"个人中心" imageName:@"我的icon－未选中" seleceImageName:@"我的icon－选中"];
+    [self setupChildViewController:mineVC title:@"我" imageName:@"我的icon－未选中" seleceImageName:@"我的icon－选中"];
     
     self.viewControllers = _VCS;
 }
