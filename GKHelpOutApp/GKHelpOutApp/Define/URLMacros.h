@@ -122,9 +122,11 @@
 
 //添加好友
 #define URL_friend_add @"/customer/customerfriend/add"
-
+//删除好友关系
+#define URL_friend_delete @"/customer/customerfriend/delete"
 //根据手机号码查找好友
 #define URL_get_customerFriend @"/customer/customerfriend/get-customer-friend"
+
 
 //获取当前IM用户
 #define URL_get_im_info @"/im/users/me"

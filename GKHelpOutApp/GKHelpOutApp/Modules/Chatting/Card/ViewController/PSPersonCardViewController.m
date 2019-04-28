@@ -178,7 +178,6 @@
     for (NSDictionary *dic in self.pictuerArray) {
         [mdic addObject:[dic valueForKey:@"fileId"]];
     }
-    NSLog(@"%@",mdic);
     
     for (int i=0; i<mdic.count; i++) {
         NSString*imageUrl=mdic[i];
