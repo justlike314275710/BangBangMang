@@ -66,13 +66,13 @@
                 make.right.mas_equalTo(self.arrowIcon.mas_left).offset(0);
             }];
         }
-        if ([cellData[@"reddot"] isEqualToString:@"0"]) {
+        if ([cellData[@"reddot"] isEqualToString:@"0"]||!cellData[@"reddot"]) {
             [self.reddot mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.left.mas_equalTo(self.titleLbl.mas_right).offset(5);
                 make.centerY.mas_equalTo(self);
                 make.size.mas_equalTo(0);
             }];
-           
+            
         } else {
             [self.reddot mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.left.mas_equalTo(KNormalSpace+17+xleng+20);

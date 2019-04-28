@@ -25,6 +25,7 @@
 @property (nonatomic, assign) UIStatusBarStyle StatusBarStyle;
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) UICollectionView * collectionView;
+@property (nonatomic,strong)  UIColor *titleColor; 
 
 /**
  *  显示没有数据页面

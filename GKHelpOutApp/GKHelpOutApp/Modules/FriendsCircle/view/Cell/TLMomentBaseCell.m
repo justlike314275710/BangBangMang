@@ -95,7 +95,7 @@
     // 用户名
     self.nameView.zz_make.title(moment.customer.name);
     // 时间
-    [self.dateLabel setText:moment.showDate];
+    [self.dateLabel setText:moment.createdTime];
     
     // 正文
     [self.titleLabel setText:moment.detail.text];
@@ -112,12 +112,13 @@
     
     //点赞
     if (moment.praisesCircleoffriends) {
-        [self.LikeButton setBackgroundImage:IMAGE_NAMED(@"已点赞icon") forState:UIControlStateNormal];
+        [self.LikeButton setImage:IMAGE_NAMED(@"已点赞icon") forState:UIControlStateNormal];
         [self.LikeButton addTapBlock:^(UIButton *btn) {
             [PSTipsView showTips:@"已点赞不能重复点赞"];
+            [btn setImage:IMAGE_NAMED(@"已点赞icon") forState:UIControlStateNormal];
         }];
     } else {
-        [self.LikeButton setBackgroundImage:IMAGE_NAMED(@"未点赞icon") forState:UIControlStateNormal];
+        [self.LikeButton setImage:IMAGE_NAMED(@"未点赞icon") forState:UIControlStateNormal];
         [self.LikeButton addTapBlock:^(UIButton *btn) {
             @strongify(self);
             [self didClicKLike];
@@ -160,6 +161,8 @@
         make.size.mas_equalTo(40);
     })
     .view;
+    self.avatarView.layer.masksToBounds = YES;
+    self.avatarView.layer.cornerRadius = 2.0;
     
     // 用户名
     self.nameView = self.contentView.addButton(1002)

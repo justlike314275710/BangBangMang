@@ -18,6 +18,7 @@
 {
     _createdTime = createdTime;
     _showDate = [self momBabayMomentPublishTimeFromInterval:createdTime];
+    _createdTime = [NSString timeChange:createdTime];
 }
 
 - (NSString *)momBabayMomentPublishTimeFromInterval:(NSString *)timeInterval

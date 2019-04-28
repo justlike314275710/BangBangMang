@@ -18,7 +18,6 @@
 - (void)momentViewWithModel:(TLMoment *)moment didClickUser:(UserInfo *)user;
 
 - (void)momentViewWithModel:(TLMoment *)moment jumpToUrl:(NSString *)url;
-
 //分享
 - (void)momentViewWithModel:(TLMoment *)moment didClickShare:(NSString *)url;
 //评论

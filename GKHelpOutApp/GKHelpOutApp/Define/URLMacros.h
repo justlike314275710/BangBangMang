@@ -111,6 +111,12 @@
 #define URL_LifeCircle_comment @"/customer/circleoffriends/comment"
 //点赞某条生活圈
 #define URL_LifeCircle_praise @"/customer/circleoffriends/praise"
+//获取最新未看的生活圈
+#define URL_LifeCircle_getNewest @"/customer/circleoffriends/get-circlefriend-newest"
+
+//获取我的生活圈最新四张图片
+#define URL_LifeCircle_getMyNewPicture @"/customer/circleoffriends/getNewPicture"
+
 //获取用户头像
 #define URL_get_userAvatar @"/users/by-username/avatar"
 

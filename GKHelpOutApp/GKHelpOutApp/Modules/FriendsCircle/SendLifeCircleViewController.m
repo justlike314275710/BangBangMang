@@ -71,10 +71,11 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"发生活圈";
+    self.edgesForExtendedLayout = UIRectEdgeTop;
     self.requestQueue = [[ZZFLEXRequestQueue alloc] init];
     [self stepUI];
     [self addNavigationItemWithTitles:@[@"  取消"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@100]];
-    [self addNavigationItemWithTitles:@[@"发布"] isLeft:NO target:self action:@selector(releaseAction) tags:@[@200] titleColor:UIColorFromRGB(38, 76, 144)];
+    [self addNavigationItemWithTitles:@[@"发布"] isLeft:NO target:self action:@selector(releaseAction) tags:@[@200] titleColor:UIColorFromRGB(102,102,102)];
     _Logic = [[SendLifeCircleLogic alloc] init];
 
 }
@@ -257,6 +258,7 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
     imagePickerVc.allowPickingVideo = NO;
     // 是否允许显示图片
     imagePickerVc.allowPickingImage = YES;
+    
     imagePickerVc.pickerDelegate = self;
     [self presentViewController:imagePickerVc animated:YES completion:nil];
 }
@@ -295,7 +297,7 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
 #pragma mark 『 根据选择的图片或视频更新UI 』
 - (void)updateUI:(id)obj{
     @weakify(self);
-    /// 添加图片
+    
     if([obj isKindOfClass:[NSArray class]]){
         _imgCount = self.dataArray.count;
         
@@ -353,7 +355,19 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
 }
 - (void)adjustUI{
     @weakify(self);
-    /// 改变整体内容大小
+    // 改变整体内容大小
+    if (self.dataArray.count<=0&&self.textViewContent.text.length<=0) {
+        if (![self.titleColor isEqual:UIColorFromRGB(102,102,102)]) {
+            [self addNavigationItemWithTitles:@[@"发布"] isLeft:NO target:self action:@selector(releaseAction) tags:@[@200] titleColor:UIColorFromRGB(102,102,102)];
+        }
+    } else {
+        if (![self.titleColor isEqual:UIColorFromRGB(38,76,144)]) {
+            [self addNavigationItemWithTitles:@[@"发布"] isLeft:NO target:self action:@selector(releaseAction) tags:@[@200] titleColor:UIColorFromRGB(38,76,144)];
+        }
+    }
+    //是否隐藏加号
+    _btnAdd.hidden = self.dataArray.count==9?YES:NO;
+    
     NSInteger ROW = self.dataArray.count/ROWCount+1;//还有个加号
     NSInteger column = self.dataArray.count%ROWCount;
     CGFloat height = 5+ROW*(_itemWidth+5);
@@ -548,9 +562,17 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
 - (void)textViewDidChange:(UITextView *)textView{
     if (textView.text.length) {
         self.labPolder.hidden = YES;
+        if (![self.titleColor isEqual:UIColorFromRGB(38,76,144)]) {
+            [self addNavigationItemWithTitles:@[@"发布"] isLeft:NO target:self action:@selector(releaseAction) tags:@[@200] titleColor:UIColorFromRGB(38,76,144)];
+        }
     }
     else{
         self.labPolder.hidden = NO;
+        if (self.dataArray.count<=0) {
+            if (![self.titleColor isEqual:UIColorFromRGB(102,102,102)]) {
+                [self addNavigationItemWithTitles:@[@"发布"] isLeft:NO target:self action:@selector(releaseAction) tags:@[@200] titleColor:UIColorFromRGB(102,102,102)];
+            }
+        }
     }
 }
 

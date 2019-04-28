@@ -55,9 +55,22 @@
 - (void)setUser:(UserInfo *)user
 {
     _user = user;
-    [self.backgroundWall tt_setImageWithURL:TLURL(@"https://pics4.baidu.com/feed/cb8065380cd791237b4053d472daf486b0b780e6.jpeg?token=10f11ef4c8aca97c673e14ab7f3f3b9d&s=DA322BC59B9BB3867ED1F522010060C3") forState:UIControlStateNormal];
-    [self.backgroundWall tt_setImageWithURL:TLURL(@"https://pics4.baidu.com/feed/cb8065380cd791237b4053d472daf486b0b780e6.jpeg?token=10f11ef4c8aca97c673e14ab7f3f3b9d&s=DA322BC59B9BB3867ED1F522010060C3") forState:UIControlStateHighlighted];
-    [self.avatarView tt_setImageWithURL:TLURL(user.avatar) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"登录－头像"]];
+//    [self.backgroundWall tt_setImageWithURL:TLURL(@"https://pics4.baidu.com/feed/cb8065380cd791237b4053d472daf486b0b780e6.jpeg?token=10f11ef4c8aca97c673e14ab7f3f3b9d&s=DA322BC59B9BB3867ED1F522010060C3") forState:UIControlStateNormal];
+//    [self.backgroundWall tt_setImageWithURL:TLURL(@"https://pics4.baidu.com/feed/cb8065380cd791237b4053d472daf486b0b780e6.jpeg?token=10f11ef4c8aca97c673e14ab7f3f3b9d&s=DA322BC59B9BB3867ED1F522010060C3") forState:UIControlStateHighlighted];
+//    [self.backgroundWall tt_setImageWithURL:@"11" forState:UIControlStateNormal placeholderImage:IMAGE_NAMED(@"lifeCircleHeadbg")];
+//    [self.backgroundWall setBackgroundImage:IMAGE_NAMED(@"lifeCircleHeadbg") forState:UIControlStateNormal];
+    [self.backgroundWall tt_setBackgroundImageWithURL:nil forState:UIControlStateNormal placeholderImage:IMAGE_NAMED(@"lifeCircleHeadbg")];
+    
+    
+    
+    //朋友
+    if (self.isFirend) {
+        NSString*url= AvaterImageWithUsername(user.avatar);
+        [self.avatarView tt_setImageWithURL:TLURL(url) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"登录－头像"]];
+    } else {
+      //自己
+        [self.avatarView tt_setImageWithURL:TLURL(user.avatar) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"登录－头像"]];
+    }
     [self.usernameLabel setText:user.nickname];
     [self.mottoLabel setText:@"qwerqwrqwrqwerqwerqreqw"];
 }
@@ -90,6 +103,9 @@
         make.width.mas_lessThanOrEqualTo(SCREEN_WIDTH * 0.4);
     }];
     self.mottoLabel.hidden = YES;
+    self.avatarView.hidden = YES;
+    self.usernameLabel.hidden = YES;
+    
 }
 
 #pragma mark - # Getter

@@ -18,6 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LifeCircleViewController : BaseRootViewController
 @property(nonatomic,assign)LifeCircleStyle lifeCircleStyle;
 
+#pragma mark - 别人朋友圈
+@property(nonatomic,copy)NSString *friendusername; //别人username
+@property(nonatomic,copy)NSString *showName;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -314,11 +314,11 @@
 -(void)MyConsultation{
     [self.navigationController pushViewController:[[MyConsultationViewController alloc]init] animated:YES];
 }
-#pragma mark ————— 朋友圈 —————
+#pragma mark ————— 生活圈 —————
 -(void)FriendsCircle{
-    FriendsViewController *friendsVC = [[FriendsViewController alloc] init];
-    friendsVC.lifeCircleStyle = HMLifeCircleMy;
-    PushVC(friendsVC);
+    LifeCircleViewController *LifeCircleVC = [[LifeCircleViewController alloc] init];
+    LifeCircleVC.lifeCircleStyle = HMLifeCircleMy;
+    PushVC(LifeCircleVC);
 }
 
 #pragma mark ————— 通讯录 —————
