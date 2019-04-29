@@ -122,14 +122,11 @@
                withCircleoffriendsPicture:circleoffriendsPicture];
             }
         } else {
-            [PSAlertView showWithTitle:@"该用户不存在" message:@"请检查你输入的手机号码是否正确" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
-                
-            } buttonTitles:@"确定", nil];
+            [PSTipsView showTips:@"该用户不存在"];
+            
         }
     } failure:^(NSError *error) {
-        [PSAlertView showWithTitle:@"该用户不存在" message:@"请检查你输入的手机号码是否正确" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
-            
-        } buttonTitles:@"确定", nil];
+         [PSTipsView showTips:@"该用户不存在"];
 
     }];
 }
@@ -143,16 +140,12 @@
     [[NIMSDK sharedSDK].userManager fetchUserInfos:@[userId] completion:^(NSArray *users, NSError *error) {
         [[PSLoadingView sharedInstance]dismiss];
         if (users.count) {
-//            NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId withPhone:phone];
-//            [wself.navigationController pushViewController:vc animated:YES];
             PSPersonCardViewController*vc=[[PSPersonCardViewController alloc]initWithUserId:userId withPhone:phone withNickName:nickName withAvatar:avatar withCurUserName:curUserName withFriendinfo:friendinfo withCircleoffriendsPicture:CircleoffriendsPicture];
             [wself.navigationController pushViewController:vc animated:YES];
 
         }else{
             if (wself) {
-                [PSAlertView showWithTitle:@"该用户不存在" message:@"请检查你输入的手机号码是否正确" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
-                    
-                } buttonTitles:@"确定", nil];
+                 [PSTipsView showTips:@"该用户不存在"];
             }
         }
     }];
