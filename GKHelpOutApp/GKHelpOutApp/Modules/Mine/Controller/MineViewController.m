@@ -23,8 +23,11 @@
 #import "NSString+JsonString.h"
 #import "FriendsViewController.h"
 #import "MyConsultationViewController.h"
+#import "UITabBar+CustomBadge.h"
+
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
+
 
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource,headerViewDelegate,XYTransitionProtocol,NIMSystemNotificationManager>
 {
@@ -32,6 +35,7 @@
     NSArray *_dataSource;
     MineHeaderView *_headerView;//头部view
     UIView *_NavView;//导航栏
+    NSString *_LifeRedDot;
 }
 @end
 
@@ -43,6 +47,7 @@
     self.isShowLiftBack = NO;//每个根视图需要设置该属性为NO，否则会出现导航栏异常
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    _LifeRedDot = @"0";
     [self createUI];
     [self initData];
     [[NIMSDK sharedSDK].systemNotificationManager addDelegate:self];
@@ -51,7 +56,23 @@
                                              selector:@selector(initData)
                                                  name:KNotificationMineDataChange
                                                object:nil];
-    
+  
+}
+
+#pragma mark ————— 生活圈底部tabbar —————
+-(void)refreshLifeTabbar {
+    [[LifeCircleManager sharedInstance] requestLifeCircleNewDatacompleted:^(BOOL successful, NSString *tips) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (successful) {
+                self->_LifeRedDot = @"1";
+                [self.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleRedDot value:1 atIndex:2];
+            } else {
+                self->_LifeRedDot = @"0";
+                [self.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleNone value:0 atIndex:2];
+            }
+            [self initData];
+        });
+    }];
 }
 
 - (void)onSystemNotificationCountChanged:(NSInteger)unreadCount{
@@ -65,7 +86,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getRequset];
-    [self initData];
+    [self refreshLifeTabbar];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -142,7 +163,7 @@
     //通讯录
     NSDictionary *addressbook = @{@"titleText":@"通讯录",@"clickSelector":@"",@"title_icon":@"通讯录icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":systemCountStr};
     //我的生活圈
-    NSDictionary *lifeCircle = @{@"titleText":@"我的生活圈",@"clickSelector":@"",@"title_icon":@"生活圈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"0"};
+    NSDictionary *lifeCircle = @{@"titleText":@"我的生活圈",@"clickSelector":@"",@"title_icon":@"生活圈icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":_LifeRedDot};
     //我的咨询
     NSDictionary *myConsultation = @{@"titleText":@"我的咨询",@"clickSelector":@"",@"title_icon":@"我的咨询icon",@"detailText":@"",@"arrow_icon":@"arrow_icon",@"reddot":@"0"};
     

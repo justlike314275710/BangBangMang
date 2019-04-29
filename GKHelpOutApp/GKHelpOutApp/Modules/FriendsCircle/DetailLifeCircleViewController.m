@@ -231,7 +231,8 @@
         inputView.delegate = self;
         inputView.placeholder = @"千头万绪,落笔评论一句...";
         inputView.maxCount = 100;
-        inputView.textViewBackgroundColor = [UIColor groupTableViewBackgroundColor];
+        inputView.font = FontOfSize(15);
+        inputView.textViewBackgroundColor = [UIColor whiteColor];
         /** 更多属性设置,详见XHInputView.h文件 */
         
     } sendBlock:^BOOL(NSString *text) {

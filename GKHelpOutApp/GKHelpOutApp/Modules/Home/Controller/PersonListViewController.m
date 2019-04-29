@@ -23,6 +23,7 @@
 #import "PSMoreServiceViewModel.h"
 #import "WWWaterWaveView.h"
 #import "LawyerGrabViewController.h"
+#import "UITabBar+CustomBadge.h"
 
 #define itemWidthHeight ((kScreenWidth-30)/2)
 #define homespaceX  16
@@ -57,8 +58,12 @@
     [self setupUI];
     //开始第一次数据拉取
 //    [self.collectionView.mj_header beginRefreshing];
+    [self refreshLifeTabbar];
 
 }
+
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //是设置昵称
@@ -70,6 +75,18 @@
             [self presentViewController:UploadVC animated:YES completion:nil];
         }
     }
+}
+#pragma mark ————— 生活圈底部tabbar —————
+-(void)refreshLifeTabbar {
+    [[LifeCircleManager sharedInstance] requestLifeCircleNewDatacompleted:^(BOOL successful, NSString *tips) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (successful) {
+                [self.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleRedDot value:1 atIndex:2];
+            } else {
+                [self.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleNone value:0 atIndex:2];
+            }
+        });
+    }];
 }
 #pragma mark ————— 初始化页面 —————
 -(void)setupUI{

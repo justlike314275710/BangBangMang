@@ -30,6 +30,7 @@
 		5524C6932225106B0067F437 /* ZWTopSelectVcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C6902225106B0067F437 /* ZWTopSelectVcView.m */; };
 		5524C697222515DC0067F437 /* MyConsultationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C696222515DC0067F437 /* MyConsultationViewController.m */; };
 		5524C69F22251DC90067F437 /* LegalAdviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C69E22251DC90067F437 /* LegalAdviceCell.m */; };
+		5527EBAB22769E7D007BC1BF /* LifeCircleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527EBAA22769E7D007BC1BF /* LifeCircleManager.m */; };
 		552924F82237417900B4899A /* HMActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924F72237417900B4899A /* HMActionSheetView.m */; };
 		552924FC2237A9A700B4899A /* WXZTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924FB2237A9A700B4899A /* WXZTipView.m */; };
 		5557A48E221BB46C00743012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A48D221BB46C00743012 /* AppDelegate.m */; };
@@ -651,6 +652,8 @@
 		5524C696222515DC0067F437 /* MyConsultationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyConsultationViewController.m; sourceTree = "<group>"; };
 		5524C69D22251DC90067F437 /* LegalAdviceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LegalAdviceCell.h; sourceTree = "<group>"; };
 		5524C69E22251DC90067F437 /* LegalAdviceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegalAdviceCell.m; sourceTree = "<group>"; };
+		5527EBA922769E7D007BC1BF /* LifeCircleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifeCircleManager.h; sourceTree = "<group>"; };
+		5527EBAA22769E7D007BC1BF /* LifeCircleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeCircleManager.m; sourceTree = "<group>"; };
 		552924F62237417900B4899A /* HMActionSheetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMActionSheetView.h; sourceTree = "<group>"; };
 		552924F72237417900B4899A /* HMActionSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMActionSheetView.m; sourceTree = "<group>"; };
 		552924FA2237A9A700B4899A /* WXZTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXZTipView.h; sourceTree = "<group>"; };
@@ -2211,6 +2214,8 @@
 				5557A55C221BD83F00743012 /* ShareManager.m */,
 				EA78F72D22268E46002D788A /* UploadManager.h */,
 				EA78F72E22268E46002D788A /* UploadManager.m */,
+				5527EBA922769E7D007BC1BF /* LifeCircleManager.h */,
+				5527EBAA22769E7D007BC1BF /* LifeCircleManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -4909,6 +4914,7 @@
 				EAB038C8221E817B00331569 /* NIMKitFileLocationHelper.m in Sources */,
 				EAB03915221E817B00331569 /* NIMSessionInteractorImpl.m in Sources */,
 				55F46E142266D8A4000D84B1 /* YBImageBrowserToolBar.m in Sources */,
+				5527EBAB22769E7D007BC1BF /* LifeCircleManager.m in Sources */,
 				5597855722265CB2007BBCC2 /* PSWriteFeedbackViewController.m in Sources */,
 				EA04343C2265A4DC00A12210 /* NTESAddFriendsMessageViewController.m in Sources */,
 				EAE19E94223110920080B0F5 /* LawyerAdviceViewController.m in Sources */,

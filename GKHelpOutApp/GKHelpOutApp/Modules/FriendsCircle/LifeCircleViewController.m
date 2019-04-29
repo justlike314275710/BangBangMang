@@ -93,12 +93,7 @@
         tap.numberOfTapsRequired = 2;
         [self.topView addGestureRecognizer:tap];
         [self.navigationController.navigationBar addSubview:self.topView];
-        [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(40);
-            make.right.mas_equalTo(-40);
-            make.top.mas_equalTo(0);
-            make.height.mas_equalTo(kNavBarHeight);
-        }];
+        self.topView.frame = CGRectMake(40, 0, KScreenWidth-80, kNavBarHeight);
     }
 }
 - (void)viewWillDisappear:(BOOL)animated

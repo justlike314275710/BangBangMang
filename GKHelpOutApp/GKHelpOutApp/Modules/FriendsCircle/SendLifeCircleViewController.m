@@ -318,7 +318,8 @@ typedef NS_ENUM(NSInteger, ZZFDRquestQueueVCSectionType) {
             };
             imageView.isVisible = NO;
             UIPanGestureRecognizer *longTouch = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveView:)];
-            [imageView addGestureRecognizer:longTouch];
+            //手指移动
+//            [imageView addGestureRecognizer:longTouch];
             longTouch.maximumNumberOfTouches = 1;
             longTouch.minimumNumberOfTouches = 1;
             NSDictionary *dic = @{@"content":obj[i-_imgCount],@"isHidden":@(0)};

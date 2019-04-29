@@ -61,6 +61,7 @@
 #import "ShareManager.h"
 #import "UserManager.h"
 #import "IMManager.h"
+#import "LifeCircleManager.h"
 #import "UIButton+XYButton.h"
 #import "HpBaseLogic.h"
 #import "UIView+Frame.h"

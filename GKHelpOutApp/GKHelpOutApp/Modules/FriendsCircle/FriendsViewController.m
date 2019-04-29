@@ -10,6 +10,7 @@
 #import "TLMenuItem.h"
 #import "LifeCircleViewController.h"
 #import "UINavigationBar+Awesome.h"
+#import "UITabBar+CustomBadge.h"
 
 typedef NS_ENUM(NSInteger, TLDiscoverSectionTag) {
     TLDiscoverSectionTagMoments,
@@ -49,35 +50,11 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
     self.mycollectionView.hidden = YES;
     self.tableView.hidden = YES;
     self.username = @"";
+    
 }
 -(void)loadView {
     [super loadView];
     [self loadMenus];
-}
-
-- (void)loadData {
-    
-    NSString*url=[NSString stringWithFormat:@"%@%@",ChatServerUrl,URL_LifeCircle_getNewest];
-    [PPNetworkHelper setRequestSerializer:PPRequestSerializerJSON];
-    NSString *access_token = help_userManager.oathInfo.access_token;
-    NSString *token = NSStringFormat(@"Bearer %@",access_token);
-    [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
-    [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
-        if (ValidDict(responseObject)) {
-            NSString *username = responseObject[@"username"];
-            if (ValidStr(username)&&username.length>0) {
-                self.username = username;
-            } else {
-                self.username = @"";
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self loadMenus];
-            });
-
-        }
-    } failure:^(NSError *error) {
-    
-    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,7 +65,24 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:nil];
-    [self loadData];
+    [self refreshLifeTabbar];
+    
+}
+
+#pragma mark ————— 生活圈底部tabbar —————
+-(void)refreshLifeTabbar {
+    [[LifeCircleManager sharedInstance] requestLifeCircleNewDatacompleted:^(BOOL successful, NSString *tips) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (successful) {
+                [self.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleRedDot value:1 atIndex:2];
+                self.username = tips;
+            } else {
+                [self.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleNone value:0 atIndex:2];
+                self.username = tips;
+            }
+            [self loadMenus];
+        });
+    }];
 }
 
 #pragma mark - PrivateMethods
@@ -130,15 +124,8 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
         });
     }
     [self reloadView];
-//    [self resetTabBarBadge];
     
 }
-
-
-
-
-
-
 
 
 @end

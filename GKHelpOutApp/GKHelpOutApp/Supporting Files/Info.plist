@@ -5,7 +5,7 @@
 	<key>CFBundleAllowMixedLocalizations</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>china</string>
 	<key>CFBundleDisplayName</key>
 	<string>帮帮忙</string>
 	<key>CFBundleExecutable</key>

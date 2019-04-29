@@ -12,13 +12,13 @@
 #define XHInputView_ScreenH    [UIScreen mainScreen].bounds.size.height
 #define XHInputView_StyleLarge_LRSpace 10
 #define XHInputView_StyleLarge_TBSpace 8
-#define XHInputView_StyleDefault_LRSpace 5
-#define XHInputView_StyleDefault_TBSpace 5
+#define XHInputView_StyleDefault_LRSpace 15
+#define XHInputView_StyleDefault_TBSpace 10
 #define XHInputView_CountLabHeight 20
 #define XHInputView_BgViewColor [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]
 
 #define XHInputView_StyleLarge_Height 170
-#define XHInputView_StyleDefault_Height 45
+#define XHInputView_StyleDefault_Height 65
 
 static CGFloat keyboardAnimationDuration = 0.5;
 
@@ -104,7 +104,7 @@ static CGFloat keyboardAnimationDuration = 0.5;
     [self addGestureRecognizer:tap];
     
     _inputView = [[UIView alloc] init];
-    _inputView.backgroundColor = [UIColor whiteColor];
+    _inputView.backgroundColor = UIColorFromRGB(244, 244, 244);
     [self addSubview:_inputView];
     
     switch (_style) {
@@ -121,12 +121,18 @@ static CGFloat keyboardAnimationDuration = 0.5;
             [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
             [_sendButton addTarget:self action:@selector(sendButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             _sendButton.titleLabel.font = [UIFont systemFontOfSize:15];
-            [_inputView addSubview:_sendButton];
+//            [_inputView addSubview:_sendButton];
             
-            _textView = [[UITextView alloc] initWithFrame:CGRectMake(XHInputView_StyleDefault_LRSpace, XHInputView_StyleDefault_TBSpace, XHInputView_ScreenW - 3*XHInputView_StyleDefault_LRSpace - sendButtonWidth, self.inputView.bounds.size.height-2*XHInputView_StyleDefault_TBSpace)];
+//            _textView = [[UITextView alloc] initWithFrame:CGRectMake(XHInputView_StyleDefault_LRSpace, XHInputView_StyleDefault_TBSpace, XHInputView_ScreenW - 3*XHInputView_StyleDefault_LRSpace - sendButtonWidth, self.inputView.bounds.size.height-2*XHInputView_StyleDefault_TBSpace)];
+            
+             _textView = [[UITextView alloc] initWithFrame:CGRectMake(XHInputView_StyleDefault_LRSpace, XHInputView_StyleDefault_TBSpace, XHInputView_ScreenW - 2*XHInputView_StyleDefault_LRSpace, self.inputView.bounds.size.height-2*XHInputView_StyleDefault_TBSpace)];
             _textView.font = [UIFont systemFontOfSize:14];
-            _textView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+            _textView.backgroundColor = [UIColor whiteColor];
+            _textView.layer.masksToBounds = YES;
+            _textView.layer.cornerRadius = 2.0;
             _textView.delegate = self;
+            _textView.returnKeyType = UIReturnKeySend;
+            _textView.enablesReturnKeyAutomatically = YES;
             [_inputView addSubview:_textView];
             //KVO监听contentSize变化
             [_textView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
@@ -167,6 +173,7 @@ static CGFloat keyboardAnimationDuration = 0.5;
             _textBgView = [[UIView alloc] initWithFrame:CGRectMake(XHInputView_StyleLarge_LRSpace, XHInputView_StyleLarge_TBSpace, XHInputView_ScreenW-2*XHInputView_StyleLarge_LRSpace, CGRectGetMinY(_sendButton.frame)-2*XHInputView_StyleLarge_TBSpace)];
             _textBgView.backgroundColor = [UIColor groupTableViewBackgroundColor];
             [_inputView addSubview:_textBgView];
+
             
             _textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, _textBgView.bounds.size.width, _textBgView.bounds.size.height-XHInputView_CountLabHeight)];
             _textView.backgroundColor = [UIColor clearColor];
@@ -251,6 +258,19 @@ static CGFloat keyboardAnimationDuration = 0.5;
     }
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        if(self.sendBlcok){
+            BOOL hideKeyBoard = self.sendBlcok(self.textView.text);
+            if(hideKeyBoard){
+                [self hide];
+            }
+        }
+        return NO;//这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
+    }
+    return YES;
+}
+
 #pragma mark - Action
 -(void)bgViewClick{
     [self hide];
@@ -263,6 +283,7 @@ static CGFloat keyboardAnimationDuration = 0.5;
         }
     }
 }
+
 #pragma mark - 监听键盘
 - (void)keyboardWillAppear:(NSNotification *)noti{
     if(_textView.isFirstResponder){

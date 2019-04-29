@@ -67,6 +67,8 @@
 #define KNotificationRefreshCirCle    @"KNotificationRefreshCirCle"
 //刷新指定单元格
 #define KNotificationRefreshCirCleIndex   @"KNotificationRefreshCirCleIndex"
+//刷新生活圈红点
+#define KNotificationRefreshTabbarDot @"KNotificationRefreshTabbarDot"
 
 
 #define defultTager  999
