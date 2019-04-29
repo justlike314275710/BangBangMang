@@ -102,38 +102,41 @@
             break;
         case NIMSystemNotificationTypeFriendAdd:
         {
-            NSString *text = @"未知请求";
-            id object = self.notification.attachment;
-            if ([object isKindOfClass:[NIMUserAddAttachment class]]) {
-                NIMUserOperation operation = [(NIMUserAddAttachment *)object operationType];
-                switch (operation) {
-                    case NIMUserOperationAdd:
-                        text = @"已添加你为好友";
-                        break;
-                    case NIMUserOperationRequest:
-                        text = @"请求添加你为好友";
-                        break;
-                    case NIMUserOperationVerify:
-                        text = @"通过了你的好友请求";
-                        break;
-                    case NIMUserOperationReject:
-                        text = @"拒绝了你的好友请求";
-                        break;
-                    default:
-                        break;
-                }
-            }
-            self.detailTextLabel.text = text;
+            
+//            NSString *text = @"未知请求";
+//            id object = self.notification.attachment;
+//            if ([object isKindOfClass:[NIMUserAddAttachment class]]) {
+//                NIMUserOperation operation = [(NIMUserAddAttachment *)object operationType];
+//                switch (operation) {
+//                    case NIMUserOperationAdd:
+//                        text = @"已添加你为好友";
+//                        break;
+//                    case NIMUserOperationRequest:
+//                        text = @"请求添加你为好友";
+//                        break;
+//                    case NIMUserOperationVerify:
+//                        text = @"通过了你的好友请求";
+//                        break;
+//                    case NIMUserOperationReject:
+//                        text = @"拒绝了你的好友请求";
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            }
+//            self.detailTextLabel.text = text;
+             NSDictionary*dic= [self.notification.postscript mj_JSONObject];
+            self.detailTextLabel.text=dic[@"verifyContent"];
         }
             break;
         default:
             break;
     }
     [self.detailTextLabel sizeToFit];
-    self.messageLabel.text = self.notification.postscript;
-    NSDictionary*dic= [self.notification.postscript mj_JSONObject];
-    self.messageLabel.text=dic[@"verifyContent"];
-    NSLog(@"%@",dic);
+    //self.messageLabel.text = self.notification.postscript;
+//    NSDictionary*dic= [self.notification.postscript mj_JSONObject];
+//    self.messageLabel.text=dic[@"verifyContent"];
+//    NSLog(@"%@",dic);
     [self.messageLabel sizeToFit];
     [self setNeedsLayout];
 }
