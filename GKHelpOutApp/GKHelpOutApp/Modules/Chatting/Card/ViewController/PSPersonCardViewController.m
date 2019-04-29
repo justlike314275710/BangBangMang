@@ -44,13 +44,8 @@
     if ([self.friendinfo isEqualToString:@"1"]) { //好友
          [self p_setFriendsUI];
     } else {
-        //自己
-        if ([_phone isEqualToString:help_userManager.curUserInfo.username]) {
-            self.pictuerArray = [NSArray array];
-            [self p_setData];
-        } else {
-            [self p_setNotFriendsUI];
-        }
+         [self p_setNotFriendsUI];
+       
     }
    
     [self SDWebImageAuth];
@@ -227,9 +222,15 @@
 }
 
 -(void)addFriendsWithMessage{
-    NSLog(@"%@ %@",self.userId,self.curUserName);
-    NTESAddFriendsMessageViewController*vc=[[NTESAddFriendsMessageViewController alloc]initWithUserId:self.userId withCurUserName:self.curUserName];
-    PushVC(vc);
+    if ([_phone isEqualToString:help_userManager.curUserInfo.username]) {
+        [PSAlertView showWithTitle:@"提示" message:@"不能将自己添加到通讯录" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
+            
+        } buttonTitles:@"确定", nil];
+    } else {
+        NTESAddFriendsMessageViewController*vc=[[NTESAddFriendsMessageViewController alloc]initWithUserId:self.userId withCurUserName:self.curUserName];
+        PushVC(vc);
+    }
+  
 }
 
 
