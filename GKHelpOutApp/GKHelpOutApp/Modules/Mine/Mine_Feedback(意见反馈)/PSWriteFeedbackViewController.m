@@ -96,6 +96,8 @@
     self.selecldIndex = 0;
     self.feedbackSucess = NO; //默认没有反馈
 //    [self getFeedbackTypes];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self p_setUI];
     
 }

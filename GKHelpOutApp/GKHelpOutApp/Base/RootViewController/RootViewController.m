@@ -14,7 +14,7 @@
 @interface RootViewController ()
 
 @property (nonatomic,strong) UIImageView* noDataView;
-@property (nonatomic,strong) UIColor *titleColor;
+
 
 @end
 
@@ -41,6 +41,7 @@
     //默认导航栏样式：黑字 //UIStatusBarStyleLightContent
     self.StatusBarStyle = UIStatusBarStyleDefault;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -234,6 +235,7 @@
 
 - (void)addNavigationItemWithTitles:(NSArray *)titles isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray *)tags titleColor:(UIColor *)titleColor{
     _titleColor = titleColor;
+
     [self addNavigationItemWithTitles:titles isLeft:isLeft target:target action:action tags:titles];
 }
 

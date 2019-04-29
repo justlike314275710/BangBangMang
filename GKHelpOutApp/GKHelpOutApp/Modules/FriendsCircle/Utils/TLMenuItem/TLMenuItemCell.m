@@ -94,7 +94,7 @@
     [self.rightBadgeView setHidden:YES];
     if (menuItem.rightIconURL.length > 0) {
         [self.rightImageView setHidden:NO];
-        [self.rightImageView tt_setImageWithURL:menuItem.rightIconURL.toURL];
+        [self.rightImageView tt_setImageWithURL:menuItem.rightIconURL.toURL placeholderImage:IMAGE_NAMED(DEFAULT_AVATAR_PATH)];
         if (menuItem.subTitle.length > 0) {
             [self.detailLabel mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(self.arrowView.mas_left).mas_offset(-WIDTH_ICON_RIGHT - EGDE_RIGHT_IMAGE - EGDE_SUB_TITLE);

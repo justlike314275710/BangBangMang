@@ -24,7 +24,6 @@
     if (viewModel.writefeedType == PSPrisonfeedBack) {
          title=@"投诉建议";
     }
-
     self.title = title;
     self.view.backgroundColor = UIColorFromRGBA(248, 247, 254, 1);
     NSString*close= @"关闭";

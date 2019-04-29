@@ -9,6 +9,7 @@
 #import "PSPersonCardViewController.h"
 #import "NSString+JsonString.h"
 #import "NTESAddFriendsMessageViewController.h"
+#import "LifeCircleViewController.h"
 @interface PSPersonCardViewController ()
 @property (nonatomic,copy  ) NSString                *userId;
 @property (nonatomic,copy  ) NSString                *phone;
@@ -40,17 +41,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"好友信息";
-   // [self p_setUI];
-    if ([self.friendinfo isEqualToString:@"1"]) {
+    if ([self.friendinfo isEqualToString:@"1"]) { //好友
          [self p_setFriendsUI];
     } else {
-        [self p_setNotFriendsUI];
+        //自己
+        if ([_phone isEqualToString:help_userManager.curUserInfo.username]) {
+            self.pictuerArray = [NSArray array];
+            [self p_setData];
+        } else {
+            [self p_setNotFriendsUI];
+        }
     }
    
     [self SDWebImageAuth];
     
     // Do any additional setup after loading the view.
 }
+
+-(void)p_setData{
+    
+    NSString*url=[NSString stringWithFormat:@"%@%@",ChatServerUrl,URL_LifeCircle_getMyNewPicture];
+    NSString *access_token =help_userManager.oathInfo.access_token;
+    NSString *token = NSStringFormat(@"Bearer %@",access_token);
+    [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
+    [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
+        if (ValidArray(responseObject)) {
+            self.pictuerArray = responseObject;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self p_setFriendsUI];
+        });
+    } failure:^(NSError *error) {
+
+    }];
+}
+
 -(void)p_setNotFriendsUI{
     self.isShowLiftBack=YES;
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
@@ -184,6 +209,16 @@
 
 -(void)tapAction{
     
+    LifeCircleViewController *LifeCircleVC = [[LifeCircleViewController alloc] init];
+    //自己
+    if ([_phone isEqualToString:help_userManager.curUserInfo.username]) {
+        LifeCircleVC.lifeCircleStyle = HMLifeCircleMy;
+    } else {
+        LifeCircleVC.lifeCircleStyle = HMLifeCircleOther;
+        LifeCircleVC.friendusername = _avatar;
+        LifeCircleVC.showName = _nickName;
+    }
+    PushVC(LifeCircleVC);
 }
 -(void)sendMessage{
     NIMSession *session = [NIMSession session:self.userId type:NIMSessionTypeP2P];
@@ -212,14 +247,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

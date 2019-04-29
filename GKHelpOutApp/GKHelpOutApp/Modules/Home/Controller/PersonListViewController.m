@@ -63,8 +63,12 @@
     [super viewWillAppear:animated];
     //是设置昵称
     if (!help_userManager.curUserInfo.nickname) {
-        UploadAvatarViewController *UploadVC = [[UploadAvatarViewController alloc] init];
-        [self presentViewController:UploadVC animated:YES completion:nil];
+        if (!help_userManager.curUserInfo.username) {
+            [help_userManager logout:nil];
+        } else {
+            UploadAvatarViewController *UploadVC = [[UploadAvatarViewController alloc] init];
+            [self presentViewController:UploadVC animated:YES completion:nil];
+        }
     }
 }
 #pragma mark ————— 初始化页面 —————

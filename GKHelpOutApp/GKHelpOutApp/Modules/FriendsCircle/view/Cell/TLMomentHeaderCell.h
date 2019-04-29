@@ -12,5 +12,6 @@
 @interface TLMomentHeaderCell : UICollectionViewCell <ZZFlexibleLayoutViewProtocol>
 
 @property (nonatomic, strong) UserInfo *user;
+@property (nonatomic, assign) BOOL isFirend;
 
 @end

@@ -40,7 +40,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
     [self stepUI];
-    [self stepData];
+    [self stepData:NO];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -75,13 +75,19 @@
 }
 
 #pragma mark - Private Methods
-- (void)stepData {
+- (void)stepData:(BOOL)isNotice {
     [self.logic requestLifeCircleDetailCompleted:^(id data) {
         if (ValidDict(data)) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                TLMoment *monent = self.datalist[0];
+                self.logic.moment.index = monent.index;
                 self.datalist = @[self.logic.moment];
                 [self reloadUI];
                 [self.tableView reloadData];
+                //发送通知刷新列表改cell;
+                if (isNotice) {
+                   KPostNotification(KNotificationRefreshCirCleIndex,self.logic.moment);
+                }
             });
         }
     } failed:^(NSError *error) {
@@ -187,7 +193,7 @@
 -(void)postCommentData:(NSString *)content{
     self.logic.content = content;
     [self.logic requestLifeCircleDetailCommentCompleted:^(id data) {
-        [self stepData];
+        [self stepData:YES];
     } failed:^(NSError *error) {
         [PSTipsView showTips:@"评论失败"];
     }];
@@ -206,6 +212,8 @@
             self.datalist = @[self.logic.moment];
             [self reloadUI];
             [self.tableView reloadData];
+            //发送通知刷新列表改cell;
+            KPostNotification(KNotificationRefreshCirCleIndex,self.logic.moment);
         });
     } failed:^(NSError *error) {
         [PSTipsView showTips:@"点赞失败"];

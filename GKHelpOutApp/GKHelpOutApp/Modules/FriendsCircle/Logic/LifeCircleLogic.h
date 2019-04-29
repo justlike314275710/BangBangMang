@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)NSInteger page;
 @property(nonatomic,assign)NSInteger size;
 @property(nonatomic,copy) NSString *username;
+@property(nonatomic,copy) NSString *friendusername;
 @property (nonatomic, assign) BOOL hasNextPage;
 @property (nonatomic, assign) PSDataStatus dataStatus;
 @property (nonatomic, strong) NSMutableArray *datalist;
@@ -24,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)refreshLifeCirclelistCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 - (void)loadMyLifeCircleListCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 
+//获取朋友详情
+- (void)getFriendDetailInfoCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 
 @end
 

@@ -57,7 +57,7 @@
             break;
         case HMLifeCircleOther:
         {
-            url=[NSString stringWithFormat:@"%@%@?username=%@page=%ld&size=%ld",ChatServerUrl,URL_otherLifeCircle_List,self.username,self.page,self.size];
+            url=[NSString stringWithFormat:@"%@%@?username=%@&page=%ld&size=%ld",ChatServerUrl,URL_otherLifeCircle_List,self.friendusername,self.page,self.size];
         }
             break;
             
@@ -112,6 +112,27 @@
 
 - (NSMutableArray *)datalist {
     return _items;
+}
+//获取朋友详情
+- (void)getFriendDetailInfoCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback
+{
+    NSString*url=[NSString stringWithFormat:@"%@%@?username=%@",ChatServerUrl,URL_get_customerFriend,self.friendusername];
+    NSString *access_token =help_userManager.oathInfo.access_token;
+    NSString *token = NSStringFormat(@"Bearer %@",access_token);
+    [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
+    [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
+        if (ValidDict(responseObject)) {
+            if (completedCallback) {
+                completedCallback(responseObject);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedCallback) {
+            failedCallback(error);
+        }
+    }];
+    
 }
 
 

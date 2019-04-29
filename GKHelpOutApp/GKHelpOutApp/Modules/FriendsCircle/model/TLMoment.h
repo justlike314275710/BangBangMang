@@ -59,6 +59,9 @@
 //点赞
 @property (nonatomic, strong) NSArray<TLCommentDetail *> *showcircleoffriendsComments; //circleoffriendsComments
 
+//第几个单元格
+@property (nonatomic,assign)NSInteger index;
+
 
 
 @end

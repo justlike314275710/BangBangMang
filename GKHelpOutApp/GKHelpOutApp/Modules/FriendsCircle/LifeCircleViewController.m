@@ -16,6 +16,8 @@
 #import "LifeCircleLogic.h"
 #import "DetailLifeCircleViewController.h"
 #import "TLMomentHeaderCell.h"
+#import "PSPersonCardViewController.h"
+#import "LifeDetailCircleLogic.h"
 
 #define NAVBAR_CHANGE_POINT 50
 
@@ -23,15 +25,17 @@
 @property (nonatomic,strong) NSArray *datalist;
 @property (nonatomic,strong) LifeCircleLogic *logic;
 @property (nonatomic,strong) UITableView *tableview;
+@property (nonatomic,strong) UIView *topView;
 
 @end
 
 @implementation LifeCircleViewController
-
+#pragma mark - LifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     _logic = [[LifeCircleLogic alloc] init];
     _logic.lifeCircleStyle = self.lifeCircleStyle;
+    _logic.friendusername = self.friendusername;
     [self loadUI];
 //    self.automaticallyAdjustsScrollViewInsets = NO;
     [self setIsShowLiftBack:YES];
@@ -43,7 +47,13 @@
                                              selector:@selector(refreshData)
                                                  name:KNotificationRefreshCirCle
                                                object:nil];
+    //刷新朋友圈指定单元格
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshIndexData:) name:KNotificationRefreshCirCleIndex object:nil];
 
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -55,11 +65,13 @@
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
         [self addNavigationItemWithImageNames:@[@"返回"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@2001]];
         [self addNavigationItemWithImageNames:@[@"black拍照"] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];
+        self.topView.hidden = NO;
     } else {
 
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
         [self addNavigationItemWithImageNames:@[@"white返回"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@2001]];
         [self addNavigationItemWithImageNames:@[@"white拍照"] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];
+        self.topView.hidden = YES;
     }
 }
 //MARKL:发朋友圈
@@ -74,13 +86,30 @@
     self.collectionView.delegate = self;
     [self scrollViewDidScroll:self.collectionView];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    if (self.topView == nil) {
+        self.topView = [[UIView alloc] init];
+        self.topView.backgroundColor = [UIColor clearColor];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollviewTopAction)];
+        tap.numberOfTapsRequired = 2;
+        [self.topView addGestureRecognizer:tap];
+        [self.navigationController.navigationBar addSubview:self.topView];
+        [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(40);
+            make.right.mas_equalTo(-40);
+            make.top.mas_equalTo(0);
+            make.height.mas_equalTo(kNavBarHeight);
+        }];
+    }
 }
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.collectionView.delegate = nil;
     [self.navigationController.navigationBar lt_reset];
+    if (self.topView) {
+        self.topView = nil;
+        [self.topView removeFromSuperview];
+    }
 }
 
 #pragma mark - # UI
@@ -88,6 +117,7 @@
 {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 1, KScreenWidth, KScreenHeight - kTopHeight -kTabBarHeight) style:UITableViewStyleGrouped];
     [self.view addSubview:self.tableView];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -133,7 +163,6 @@
             [self setTableleUI];
         });
     }];
-
 }
 
 -(void)refreshData {
@@ -154,7 +183,11 @@
         });
     }];
 }
-
+#pragma mark -   NSNotifica
+- (void)refreshIndexData:(NSNotification *)notification {
+    TLMoment *moent = (TLMoment *)[notification object];
+    [self reloadIndexCell:moent];
+}
 #pragma mark -   Delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.logic.datalist.count;
@@ -164,6 +197,7 @@
     TLMomentImagesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLMomentImagesCell"];
     cell.delegate = self;
     TLMoment *monet = self.logic.datalist[indexPath.row];
+    monet.index=indexPath.row;
     cell.moment = monet;
     return cell;
 }
@@ -175,20 +209,43 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     TLMomentHeaderCell *headView = [[TLMomentHeaderCell alloc] init];
-    headView.user = help_userManager.curUserInfo;
+    if (self.lifeCircleStyle == HMLifeCircleOther) {
+        UserInfo *userInfo = [[UserInfo alloc] init];
+        userInfo.nickname = _showName;
+        userInfo.avatar = _friendusername;
+        headView.isFirend = YES;
+        headView.user = userInfo;
+    } else {
+        headView.user = help_userManager.curUserInfo;
+    }
     return headView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 260;
 }
 
-
-
 #pragma mark - # Delegate
 //MARK: TLMomentViewDelegate
 - (void)momentViewWithModel:(TLMoment *)moment didClickUser:(UserInfo *)user
 {
-
+    self.logic.friendusername = moment.username;
+    [self.logic getFriendDetailInfoCompleted:^(id data) {
+                    NSString *userId = [data[@"account"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    NSString*nickName=data[@"name"];
+                    NSString*avatar=data[@"username"];
+                    NSString*phone=data[@"phoneNumber"];
+                    NSString*curUserName=data[@"curUsername"];
+                    NSString*friendinfo=data[@"friendinfo"];
+                    NSArray*circleoffriendsPicture=data[@"circleoffriendsPicture"];
+                    if (userId.length) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            PSPersonCardViewController *PSPersonCardVC = [[PSPersonCardViewController alloc] initWithUserId:userId withPhone:phone withNickName:nickName withAvatar:avatar withCurUserName:curUserName withFriendinfo:friendinfo withCircleoffriendsPicture:circleoffriendsPicture];
+                            PushVC(PSPersonCardVC);
+                        });
+                    }
+    } failed:^(NSError *error) {
+       [PSTipsView showTips:@"获取好友信息失败"];
+    }];
 }
 - (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index cell:(TLMomentImagesCell *)cell
 {
@@ -220,9 +277,7 @@
 }
 //分享
 - (void)momentViewWithModel:(TLMoment *)moment didClickShare:(NSString *)url {
-    DetailLifeCircleViewController *detailLifeCircleVC = [[DetailLifeCircleViewController alloc] init];
-    detailLifeCircleVC.datalist = @[moment];
-    PushVC(detailLifeCircleVC);
+    [PSTipsView showTips:@"暂未开通此功能!"];
 }
 //评论
 - (void)momentViewWithModel:(TLMoment *)moment didClickComment:(NSString *)url{
@@ -233,6 +288,31 @@
 //点赞
 - (void)momentViewWithModel:(TLMoment *)moment didClickLike:(NSString *)url{
     
+    @weakify(self);
+    LifeDetailCircleLogic *detailLogic = [LifeDetailCircleLogic new];
+    detailLogic.circleoffriendsId = moment.id;
+    [detailLogic requestLifeCircleDetailPraiseCompleted:^(id data) {
+        @strongify(self);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            moment.praiseNum++;
+            moment.praisesCircleoffriends = YES;
+            [self reloadIndexCell:moment];
+        });
+    } failed:^(NSError *error) {
+        [PSTipsView showTips:@"点赞失败"];
+    }];
 }
+
+#pragma mark - 刷新指定单元格
+-(void)reloadIndexCell:(TLMoment *)moment {
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:moment.index inSection:0];
+    [self.logic.datalist replaceObjectAtIndex:moment.index withObject:moment];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+}
+#pragma mark - 滑动到最顶部
+- (void)scrollviewTopAction {
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
 
 @end

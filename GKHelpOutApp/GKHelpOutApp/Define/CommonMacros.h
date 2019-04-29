@@ -65,6 +65,8 @@
 
 //刷新生活圈
 #define KNotificationRefreshCirCle    @"KNotificationRefreshCirCle"
+//刷新指定单元格
+#define KNotificationRefreshCirCleIndex   @"KNotificationRefreshCirCleIndex"
 
 
 #define defultTager  999

@@ -91,7 +91,7 @@
     self.nameView.zz_make.title(moment.customerName);
     
     // 时间
-    [self.dateLabel setText:moment.showDate];
+    [self.dateLabel setText:moment.createdTime];
     
     // 正文
     [self.titleLabel setText:moment.content];

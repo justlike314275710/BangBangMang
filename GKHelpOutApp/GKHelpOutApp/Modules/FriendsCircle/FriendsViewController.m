@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
 };
 
 @interface FriendsViewController ()
+@property (nonatomic,copy) NSString *username;
 
 @end
 
@@ -47,10 +48,36 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.mycollectionView.hidden = YES;
     self.tableView.hidden = YES;
+    self.username = @"";
 }
 -(void)loadView {
     [super loadView];
     [self loadMenus];
+}
+
+- (void)loadData {
+    
+    NSString*url=[NSString stringWithFormat:@"%@%@",ChatServerUrl,URL_LifeCircle_getNewest];
+    [PPNetworkHelper setRequestSerializer:PPRequestSerializerJSON];
+    NSString *access_token = help_userManager.oathInfo.access_token;
+    NSString *token = NSStringFormat(@"Bearer %@",access_token);
+    [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
+    [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
+        if (ValidDict(responseObject)) {
+            NSString *username = responseObject[@"username"];
+            if (ValidStr(username)&&username.length>0) {
+                self.username = username;
+            } else {
+                self.username = @"";
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self loadMenus];
+            });
+
+        }
+    } failure:^(NSError *error) {
+    
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,12 +88,16 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:nil];
+    [self loadData];
 }
 
 #pragma mark - PrivateMethods
 //MARK: UI
 -(void)loadMenus {
     @weakify(self);
+    
+    BOOL isBadge = self.username.length>0?YES:NO;
+    NSString *url = AvaterImageWithUsername(self.username);
 
     self.clear();
     //朋友圈
@@ -74,7 +105,9 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
         NSInteger sectionTag = TLDiscoverSectionTagMoments;
         self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(15, 0, 0, 0));
         TLMenuItem *moments = createMenuItem(@"生活圈icon", LOCSTR(@"生活圈"));
-        [moments setRightIconURL:@"http://pic1.nipic.com/2008-08-14/2008814183939909_2.jpg" withRightIconBadge:YES];
+        if (isBadge) {
+            [moments setRightIconURL:url withRightIconBadge:isBadge];
+        }
         self.addCell(CELL_MENU_ITEM).toSection(sectionTag).withDataModel(moments).selectedAction(^ (TLMenuItem *data) {
             @strongify(self);
             LifeCircleViewController *LifeCircleVC = [[LifeCircleViewController alloc] init];
