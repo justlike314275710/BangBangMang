@@ -173,15 +173,14 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
             NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
             if (data) {
                 id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                NSString*code=body[@"error"];
-                NSString*error_description = body[@"error_description"];
+                NSString*code=body[@"code"];
+                NSString*message = body[@"message"];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (error_description) {
-                        [MBProgressHUD showInfoMessage:error_description];
+                    if (message) {
+                        [MBProgressHUD showInfoMessage:message];
                     } else {
                          [PSTipsView showTips:@"登录失败"];
                     }
-//                    [MBProgressHUD hideHUD];
                 });
             } else {
                 [PSTipsView showTips:@"登录失败"];

@@ -69,7 +69,8 @@
 #define KNotificationRefreshCirCleIndex   @"KNotificationRefreshCirCleIndex"
 //刷新生活圈红点
 #define KNotificationRefreshTabbarDot @"KNotificationRefreshTabbarDot"
-
+//刷新我的生活圈红点(有人点赞评论)
+#define KNotificationMineRefreshDot @"KNotificationMineRefreshDot"
 
 #define defultTager  999
 #endif /* CommonMacros_h */
