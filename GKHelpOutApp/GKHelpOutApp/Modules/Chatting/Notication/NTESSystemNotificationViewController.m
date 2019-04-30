@@ -54,7 +54,7 @@ static NSString *reuseIdentifier = @"reuseIdentifier";
     
     NSArray *notifications = [systemNotificationManager fetchSystemNotifications:nil
                                                          limit:MaxNotificationCount];
-    
+   
     if ([notifications count])
     {
         [_notifications addObjectsFromArray:notifications];

@@ -223,7 +223,7 @@
 
 -(void)addFriendsWithMessage{
     if ([_phone isEqualToString:help_userManager.curUserInfo.username]) {
-        [PSAlertView showWithTitle:@"提示" message:@"不能将自己添加到通讯录" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
+        [PSAlertView showWithTitle:@"提示" message:@"您不能添加自己为好友" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
             
         } buttonTitles:@"确定", nil];
     } else {
