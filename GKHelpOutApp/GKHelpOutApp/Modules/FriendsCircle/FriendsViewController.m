@@ -119,8 +119,9 @@ typedef NS_ENUM(NSInteger, TLDiscoverCellTag) {
             @strongify(self);
 //            TLScanningViewController *scannerVC = [[TLScanningViewController alloc] init];
 //            PushVC(scannerVC);
-            LifeCircleViewController *LifeCircleVC = [[LifeCircleViewController alloc] init];
-            [self.navigationController pushViewController:LifeCircleVC animated:YES];
+//            LifeCircleViewController *LifeCircleVC = [[LifeCircleViewController alloc] init];
+//            [self.navigationController pushViewController:LifeCircleVC animated:YES];
+            [PSTipsView showTips:Hmsg_Comingsoon];
         });
     }
     [self reloadView];

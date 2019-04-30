@@ -105,7 +105,6 @@
         make.top.mas_equalTo(-20);
     }];
     [self.tableView registerClass:[DetailLifeCircleCell class] forCellReuseIdentifier:@"DetailLifeCircleCell"];
-    
     self.bottomView = self.view.addView(100).backgroundColor(UIColorFromRGB(233, 233, 233)).masonry(^(MASConstraintMaker *make) {
         make.height.mas_equalTo(50);
         make.left.bottom.right.mas_equalTo(self.view);

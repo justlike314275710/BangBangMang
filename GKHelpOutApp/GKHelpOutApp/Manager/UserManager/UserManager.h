@@ -47,6 +47,7 @@ SINGLETON_FOR_HEADER(UserManager)
 ///<律师用户的信息
 @property (nonatomic, strong) LawUserInfo *lawUserInfo;
 @property (nonatomic, strong) UIImage *avatarImage; //及时修改的头像
+@property (nonatomic, copy) NSString *myLifePraise; //我的朋友圈是否有人点赞评论
 
 
 
