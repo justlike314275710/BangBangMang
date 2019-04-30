@@ -49,6 +49,10 @@
                                                object:nil];
     //刷新朋友圈指定单元格
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshIndexData:) name:KNotificationRefreshCirCleIndex object:nil];
+    
+    if (self.lifeCircleStyle == HMLifeCircleMy) {
+        KPostNotification(KNotificationMineRefreshDot, @"0");
+    }
 
 }
 

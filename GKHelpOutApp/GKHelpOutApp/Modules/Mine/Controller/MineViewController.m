@@ -56,25 +56,20 @@
                                              selector:@selector(initData)
                                                  name:KNotificationMineDataChange
                                                object:nil];
-  
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(initDotData:)
+                                                 name:KNotificationMineRefreshDot
+                                               object:nil];
 }
+
 
 #pragma mark ————— 生活圈底部tabbar —————
--(void)refreshLifeTabbar {
-    [[LifeCircleManager sharedInstance] requestLifeCircleNewDatacompleted:^(BOOL successful, NSString *tips) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (successful) {
-                self->_LifeRedDot = @"1";
-                [self.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleRedDot value:1 atIndex:2];
-            } else {
-                self->_LifeRedDot = @"0";
-                [self.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleNone value:0 atIndex:2];
-            }
-            [self initData];
-        });
-    }];
+- (void)initDotData:(NSNotification*)notification{
+    NSString *dotString = [notification object];
+    _LifeRedDot = dotString;
+    [self initData];
 }
-
 - (void)onSystemNotificationCountChanged:(NSInteger)unreadCount{
     [self initData];
 }
@@ -86,7 +81,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getRequset];
-    [self refreshLifeTabbar];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -337,6 +331,7 @@
 }
 #pragma mark ————— 生活圈 —————
 -(void)FriendsCircle{
+    _LifeRedDot = @"0";
     LifeCircleViewController *LifeCircleVC = [[LifeCircleViewController alloc] init];
     LifeCircleVC.lifeCircleStyle = HMLifeCircleMy;
     PushVC(LifeCircleVC);

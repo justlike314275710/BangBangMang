@@ -110,6 +110,15 @@ SINGLETON_FOR_CLASS(IMManager);
         }];
         [banner show];
     }
+    else if ([dic[@"type"] isEqualToString:@"NOTIFICATION_PRAISE_ADVICE"]||[dic[@"type"] isEqualToString:@"NOTIFICATION_COMMENT_ADVICE"]){  //评论点赞
+        KPostNotification(KNotificationMineRefreshDot, @"1");
+        EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+            make.style = 11;
+            make.content = dic[@"content"];
+        }];
+        [banner show]; //NOTIFICATION_PRAISE_ADVICE
+        
+    }
     else {
         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
             make.style = 11;
