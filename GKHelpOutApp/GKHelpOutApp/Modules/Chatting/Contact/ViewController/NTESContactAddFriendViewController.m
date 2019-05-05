@@ -61,21 +61,24 @@
     
   
     TestResultTableViewController *result = [[TestResultTableViewController alloc] init];
-    result.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    result.view.frame = CGRectMake(0, 10, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:result];
 
     self.searchController.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     self.searchController.searchResultsUpdater = self;
     self.searchController.searchBar.placeholder = @"手机号";
-    //self.searchController.searchBar.barTintColor=[UIColor whiteColor];
+    //self.searchController.searchBar.barTintColor=[UIColor groupTableViewBackgroundColor];
     self.searchController.searchBar.barTintColor = [UIColor groupTableViewBackgroundColor];
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
     self.searchController.searchBar.barStyle = UIBarStyleDefault;
     self.searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x, self.searchController.searchBar.frame.origin.y+15, self.searchController.searchBar.frame.size.width, 44.0);
+
+    self.searchController.searchBar.backgroundImage=[UIImage new];
     
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = YES;
     self.searchController.searchBar.delegate=self;
+   
     
   
     
@@ -90,8 +93,15 @@
     NSString *phone = [[self.searchController.searchBar text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if (phone.length) {
         phone= [phone lowercaseString];
-        [self IMaddFriend:phone];
+        if ([self deptNumInputShouldNumber:phone]) {
+            [self IMaddFriend:phone];
+        }
+        else{
+            [PSTipsView showTips:@"请输入正确手机号码!"];
+        }
+        
     }
+    
 }
 
 #pragma mark - UISearchControllerDelegate代理
@@ -131,6 +141,7 @@
     if (phone.length) {
         phone= [phone lowercaseString];
        // [self IMaddFriend:phone];
+        
     }
     return YES;
 }
@@ -143,9 +154,30 @@
     NSString *phone = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if (phone.length) {
         phone= [phone lowercaseString];
-        [self IMaddFriend:phone];
+        if ([self deptNumInputShouldNumber:phone]) {
+             [self IMaddFriend:phone];
+        }
+        else{
+            [PSTipsView showTips:@"请输入正确手机号码"];
+        }
+       
     }
 }
+
+- (BOOL) deptNumInputShouldNumber:(NSString *)str
+{
+    if (str.length == 0) {
+        return NO;
+    }
+    NSString *regex = @"[0-9]*";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    if ([pred evaluateWithObject:str]) {
+        return YES;
+    }
+    return NO;
+}
+
+
 
 -(void)IMaddFriend:(NSString*)phone{
     NSString*url=[NSString stringWithFormat:@"%@%@?phoneNumber=%@",ChatServerUrl,URL_get_customerFriend,phone];
