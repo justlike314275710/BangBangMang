@@ -57,7 +57,7 @@
     self.tableView.delegate   = self.delegator;
     self.tableView.dataSource = self.delegator;
     self.tableView.separatorStyle=NO;
-    
+
     
   
     TestResultTableViewController *result = [[TestResultTableViewController alloc] init];
@@ -76,9 +76,13 @@
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = YES;
     self.searchController.searchBar.delegate=self;
+    [self.searchController.searchBar setBackgroundImage:[UIImage new]];
+   
+
     
-  
+
     
+
 }
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
