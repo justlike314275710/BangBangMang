@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
-            timestampString = "578219239.589923"
+            timestampString = "578287693.883406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -474,7 +474,7 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Mine/Mine_Feedback(%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88)/PSWriteFeedbackViewController.m"
-                  timestampString = "578219240.153421"
+                  timestampString = "578288772.106379"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "118"
@@ -489,7 +489,7 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Mine/Mine_Feedback(%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88)/PSWriteFeedbackViewController.m"
-                  timestampString = "578219240.155408"
+                  timestampString = "578288772.108102"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "120"
@@ -692,7 +692,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/FriendsCircle/SendLifeCircleViewController.m"
-            timestampString = "578219239.590609"
+            timestampString = "578286940.1381741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "280"
@@ -714,38 +714,6 @@
             startingLineNumber = "102"
             endingLineNumber = "102"
             landmarkName = "-IMaddFriend:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/FriendsCircle/Logic/LifeCircleLogic.m"
-            timestampString = "577965237.792956"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-requestMyLifeCircleCompleted:failed:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/FriendsCircle/Logic/LifeCircleLogic.m"
-            timestampString = "577965237.793048"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-requestMyLifeCircleCompleted:failed:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -787,24 +755,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/FriendsCircle/DetailLifeCircleViewController.m"
-            timestampString = "578214827.242698"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "-postPraiseData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/FriendsCircle/view/XHInputView.m"
-            timestampString = "578219239.590778"
+            timestampString = "578224672.914223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
@@ -820,7 +772,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/FriendsCircle/view/XHInputView.m"
-            timestampString = "578219239.590837"
+            timestampString = "578224672.914278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -883,13 +835,77 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Manager/IMManager.m"
-            timestampString = "578219239.590941"
+            filePath = "GKHelpOutApp/Modules/Mine/Mine_EditProfile(&#x4fee;&#x6539;&#x8d44;&#x6599;)/ModifyNicknameViewController.m"
+            timestampString = "578288771.803297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-onReceiveCustomSystemNotification:"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-modifyAccountNickname"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
+            timestampString = "578287693.884791"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "-autoLoginToServer:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
+            timestampString = "578287693.885864"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
+            landmarkName = "-LoginSuccess:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
+            timestampString = "578287693.886384"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "-LoginSuccess:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
+            timestampString = "578288417.397288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
+            landmarkName = "-LoginSuccess:completion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -900,12 +916,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Manager/IMManager.m"
-            timestampString = "578219239.59132"
+            timestampString = "578288771.803436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-onReceiveCustomSystemNotification:"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-IMLogin:IMPwd:completion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -915,13 +931,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Mine/Controller/MineViewController.m"
-            timestampString = "578219364.89068"
+            filePath = "GKHelpOutApp/Manager/IMManager.m"
+            timestampString = "578288771.803827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-onSystemNotificationCountChanged:"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-IMLogin:IMPwd:completion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -931,14 +947,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Mine/Controller/MineViewController.m"
-            timestampString = "578219371.106508"
+            filePath = "GKHelpOutApp/Manager/IMManager.m"
+            timestampString = "578288771.804085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-initDotData:"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "-IMLogin:IMPwd:completion:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[IMManager IMLogin:IMPwd:completion:]"
+                  moduleName = "GKHelpOutApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Manager/IMManager.m"
+                  timestampString = "578288772.2053781"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[IMManager IMLogin:IMPwd:completion:]_block_invoke"
+                  moduleName = "GKHelpOutApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Manager/IMManager.m"
+                  timestampString = "578288772.2073669"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.39"
+                  moduleName = "GKHelpOutApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Manager/IMManager.m"
+                  timestampString = "578288772.209197"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

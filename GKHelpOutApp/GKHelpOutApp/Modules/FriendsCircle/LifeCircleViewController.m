@@ -68,13 +68,17 @@
         CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
         [self addNavigationItemWithImageNames:@[@"返回"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@2001]];
-        [self addNavigationItemWithImageNames:@[@"black拍照"] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];
+        if (self.lifeCircleStyle == HMLifeCircleALL) {
+            [self addNavigationItemWithImageNames:@[@"black拍照"] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];
+        }
         self.topView.hidden = NO;
     } else {
 
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
         [self addNavigationItemWithImageNames:@[@"white返回"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@2001]];
+        if (self.lifeCircleStyle == HMLifeCircleALL) {
         [self addNavigationItemWithImageNames:@[@"white拍照"] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];
+        }
         self.topView.hidden = YES;
     }
 }

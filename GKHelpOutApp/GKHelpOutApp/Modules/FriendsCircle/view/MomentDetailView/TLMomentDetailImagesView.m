@@ -58,7 +58,6 @@
             imageView = [[UIButton alloc] init];
             [imageView.imageView setContentMode:UIViewContentModeScaleAspectFill];
             [imageView setClipsToBounds:YES];
-            imageView.backgroundColor  = [UIColor grayColor];
             [imageView setTag:i];
             [imageView addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self.imageViews addObject:imageView];
@@ -66,8 +65,8 @@
 
         NSString*url=NSStringFormat(@"%@/files/%@",EmallHostUrl,images[i]);
 
-        [imageView tt_setImageWithURL:[NSURL URLWithString:url]  forState:UIControlStateNormal];
-        
+        [imageView tt_setImageWithURL:[NSURL URLWithString:url] forState:UIControlStateNormal placeholderImage:IMAGE_NAMED(@"circle_detail")];
+
         [imageView setFrame:CGRectMake(x, y, imageWidth, imageHeight)];
         [self addSubview:imageView];
         
