@@ -11,6 +11,7 @@
 #import "NTESContactAddFriendViewController.h"
 #import "PSPersonCardViewController.h"
 #import "NTESSessionUtil.h"
+#import "NTESSearchViewController.h"
 @interface PSMessageViewController ()
 @property (nonatomic, strong) TLAddMenuView *addMenuView;
 @property (nonatomic , strong) UIView *NavView;//导航栏 ;
@@ -178,6 +179,7 @@
 //                id vc = [[NSClassFromString(item.className) alloc] init];
 //                PushVC(vc);
                NTESContactAddFriendViewController*vc = [[NTESContactAddFriendViewController alloc] initWithNibName:nil bundle:nil];
+                NTESSearchViewController*searchVC=[[NTESSearchViewController alloc]init];
                 [self.navigationController pushViewController:vc animated:YES];
                 
                 

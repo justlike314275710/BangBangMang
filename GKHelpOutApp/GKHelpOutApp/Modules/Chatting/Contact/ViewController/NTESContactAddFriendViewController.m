@@ -13,16 +13,18 @@
 
 #import "NTESPersonalCardViewController.h"
 #import "NTESAddFriendsMessageViewController.h"
-
 #import "PSPersonCardViewController.h"
+#import "TestResultTableViewController.h"
 
-@interface NTESContactAddFriendViewController ()
+@interface NTESContactAddFriendViewController ()<UISearchBarDelegate,UISearchResultsUpdating>
 
 @property (nonatomic,strong) NIMCommonTableDelegate *delegator;
 
 @property (nonatomic,copy  ) NSArray                 *data;
 
 @property (nonatomic,assign) NSInteger               inputLimit;
+
+@property (nonatomic, strong) UISearchController *searchController;
 
 
 @end
@@ -42,7 +44,7 @@
     self.navigationItem.title = @"添加好友";
    
     __weak typeof(self) wself = self;
-    [self buildData];
+    //[self buildData];
     self.delegator = [[NIMCommonTableDelegate alloc] initWithTableData:^NSArray *{
         return wself.data;
     }];
@@ -54,8 +56,55 @@
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
     self.tableView.delegate   = self.delegator;
     self.tableView.dataSource = self.delegator;
+    self.tableView.separatorStyle=NO;
+    
+    
+  
+    TestResultTableViewController *result = [[TestResultTableViewController alloc] init];
+    result.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:result];
+
+    self.searchController.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.searchBar.placeholder = @"手机号";
+    //self.searchController.searchBar.barTintColor=[UIColor whiteColor];
+    self.searchController.searchBar.barTintColor = [UIColor groupTableViewBackgroundColor];
+    self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
+    self.searchController.searchBar.barStyle = UIBarStyleDefault;
+    self.searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x, self.searchController.searchBar.frame.origin.y+15, self.searchController.searchBar.frame.size.width, 44.0);
+    
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
+    self.searchController.searchBar.delegate=self;
+    
+  
+    
+}
+#pragma mark - UISearchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
+{
+    [self updateSearchResultsForSearchController:self.searchController];
+}
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    
+    NSString *phone = [[self.searchController.searchBar text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (phone.length) {
+        phone= [phone lowercaseString];
+        [self IMaddFriend:phone];
+    }
 }
 
+#pragma mark - UISearchControllerDelegate代理
+
+
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    NSLog(@"updateSearchResultsForSearchController");
+
+   
+    
+}
 
 - (void)buildData{
     NSArray *data = @[
@@ -122,11 +171,27 @@
                withCircleoffriendsPicture:circleoffriendsPicture];
             }
         } else {
-            [PSTipsView showTips:@"该用户不存在"];
+           // [PSTipsView showTips:@"该用户不存在"];
+            if (self.searchController.searchResultsController) {
+                
+                TestResultTableViewController *vc = (TestResultTableViewController *)self.searchController.searchResultsController;
+                vc.searchResults = @[@"该用户不存在"];
+                vc.tableView.separatorStyle=NO;
+                vc.tableView.backgroundColor=[UIColor groupTableViewBackgroundColor];
+                [vc.tableView reloadData];
+            }
             
         }
     } failure:^(NSError *error) {
-         [PSTipsView showTips:@"该用户不存在"];
+       // [PSTipsView showTips:@"该用户不存在"];
+        if (self.searchController.searchResultsController) {
+            
+            TestResultTableViewController *vc = (TestResultTableViewController *)self.searchController.searchResultsController;
+            vc.searchResults = @[@"该用户不存在"];
+            vc.tableView.separatorStyle=NO;
+             vc.tableView.backgroundColor=[UIColor groupTableViewBackgroundColor];
+            [vc.tableView reloadData];
+        }
 
     }];
 }
@@ -150,6 +215,7 @@
         }
     }];
 }
+
 
 
 @end

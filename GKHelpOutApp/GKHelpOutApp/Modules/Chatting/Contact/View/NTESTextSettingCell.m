@@ -20,6 +20,7 @@
         _textField.font            = [UIFont systemFontOfSize:14.f];
         _textField.textColor       =UIColorHex(0x333333);
         _textField.keyboardType=UIKeyboardTypeNumberPad;
+        _textField.placeholder=@"该用户不存在";
         [self addSubview:_textField];
         
         _seachImage=[[UIImageView alloc]initWithFrame:CGRectZero];

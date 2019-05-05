@@ -332,6 +332,8 @@
 		EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB4F221FCEE2007D3445 /* NSObject+version.m */; };
 		EA21CB54221FD337007D3445 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CB53221FD337007D3445 /* CoreMotion.framework */; };
 		EA694ED3223B7EAE00EF821D /* SexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA694ED2223B7EAE00EF821D /* SexTableViewCell.m */; };
+		EA6C209B227E8DE100C26872 /* TestResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C2099227E8DE000C26872 /* TestResultTableViewController.m */; };
+		EA6C209E227E949500C26872 /* NTESSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C209D227E949500C26872 /* NTESSearchViewController.m */; };
 		EA6CCBAD2264130200BB2A74 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */; };
 		EA6CCBB0226417E200BB2A74 /* PSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBAF226417E200BB2A74 /* PSMessageViewController.m */; };
 		EA6CCBB9226429F800BB2A74 /* AddMenu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6CCBB4226429F800BB2A74 /* AddMenu.xcassets */; };
@@ -1220,6 +1222,10 @@
 		EA3E7CFC221FE76700D60C6A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EA694ED1223B7EAE00EF821D /* SexTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SexTableViewCell.h; sourceTree = "<group>"; };
 		EA694ED2223B7EAE00EF821D /* SexTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SexTableViewCell.m; sourceTree = "<group>"; };
+		EA6C2099227E8DE000C26872 /* TestResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestResultTableViewController.m; sourceTree = "<group>"; };
+		EA6C209A227E8DE100C26872 /* TestResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestResultTableViewController.h; sourceTree = "<group>"; };
+		EA6C209C227E949500C26872 /* NTESSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTESSearchViewController.h; sourceTree = "<group>"; };
+		EA6C209D227E949500C26872 /* NTESSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTESSearchViewController.m; sourceTree = "<group>"; };
 		EA6CCBAB2264130200BB2A74 /* FriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		EA6CCBAE226417E200BB2A74 /* PSMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSMessageViewController.h; sourceTree = "<group>"; };
@@ -3397,12 +3403,16 @@
 		EA6CCBC42264513500BB2A74 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA6C209A227E8DE100C26872 /* TestResultTableViewController.h */,
+				EA6C2099227E8DE000C26872 /* TestResultTableViewController.m */,
 				EA6CCBEB226476D800BB2A74 /* NTESContactViewController.h */,
 				EA6CCBEA226476D800BB2A74 /* NTESContactViewController.m */,
 				EA6CCBC6226451BA00BB2A74 /* NTESContactAddFriendViewController.h */,
 				EA6CCBC5226451B900BB2A74 /* NTESContactAddFriendViewController.m */,
 				EA04343A2265A4DB00A12210 /* NTESAddFriendsMessageViewController.h */,
 				EA04343B2265A4DB00A12210 /* NTESAddFriendsMessageViewController.m */,
+				EA6C209C227E949500C26872 /* NTESSearchViewController.h */,
+				EA6C209D227E949500C26872 /* NTESSearchViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -5082,6 +5092,7 @@
 				5557A66A221CE1A000743012 /* HpBaseLogic.m in Sources */,
 				559218E122268F5900A5C655 /* ModifyoldPhoneNumberViewController.m in Sources */,
 				EA6CCBB0226417E200BB2A74 /* PSMessageViewController.m in Sources */,
+				EA6C209B227E8DE100C26872 /* TestResultTableViewController.m in Sources */,
 				EAB0391A221E817B00331569 /* NIMSessionTimestampCell.m in Sources */,
 				5557A4FB221BD76300743012 /* HSBaseCellModel.m in Sources */,
 				55C0C779222D130000CD2459 /* HMBillViewController.m in Sources */,
@@ -5089,6 +5100,7 @@
 				EAB038CA221E817B00331569 /* NIMKitResourceResizer.m in Sources */,
 				55F46D6022657593000D84B1 /* TLMomentExtension.m in Sources */,
 				EA21CA7A221F9980007D3445 /* PSLawerViewModel.m in Sources */,
+				EA6C209E227E949500C26872 /* NTESSearchViewController.m in Sources */,
 				EA78F72122263DA8002D788A /* PersonTableViewCell.m in Sources */,
 				EA6CCC04226477CB00BB2A74 /* NTESContactDataMember.m in Sources */,
 				55F46E182266D8A4000D84B1 /* YBVideoBrowseActionBar.m in Sources */,
