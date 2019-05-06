@@ -334,6 +334,7 @@
 		EA694ED3223B7EAE00EF821D /* SexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA694ED2223B7EAE00EF821D /* SexTableViewCell.m */; };
 		EA6C209B227E8DE100C26872 /* TestResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C2099227E8DE000C26872 /* TestResultTableViewController.m */; };
 		EA6C209E227E949500C26872 /* NTESSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C209D227E949500C26872 /* NTESSearchViewController.m */; };
+		EA6C20A12280206300C26872 /* ZQLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C209F2280206200C26872 /* ZQLocalNotification.m */; };
 		EA6CCBAD2264130200BB2A74 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */; };
 		EA6CCBB0226417E200BB2A74 /* PSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBAF226417E200BB2A74 /* PSMessageViewController.m */; };
 		EA6CCBB9226429F800BB2A74 /* AddMenu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6CCBB4226429F800BB2A74 /* AddMenu.xcassets */; };
@@ -1226,6 +1227,8 @@
 		EA6C209A227E8DE100C26872 /* TestResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestResultTableViewController.h; sourceTree = "<group>"; };
 		EA6C209C227E949500C26872 /* NTESSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTESSearchViewController.h; sourceTree = "<group>"; };
 		EA6C209D227E949500C26872 /* NTESSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTESSearchViewController.m; sourceTree = "<group>"; };
+		EA6C209F2280206200C26872 /* ZQLocalNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQLocalNotification.m; sourceTree = "<group>"; };
+		EA6C20A02280206200C26872 /* ZQLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQLocalNotification.h; sourceTree = "<group>"; };
 		EA6CCBAB2264130200BB2A74 /* FriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		EA6CCBAE226417E200BB2A74 /* PSMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSMessageViewController.h; sourceTree = "<group>"; };
@@ -2098,6 +2101,8 @@
 		5557A513221BD7F500743012 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				EA6C20A02280206200C26872 /* ZQLocalNotification.h */,
+				EA6C209F2280206200C26872 /* ZQLocalNotification.m */,
 				5557A514221BD7F500743012 /* YYFPSLabel.h */,
 				5557A515221BD7F500743012 /* YYFPSLabel.m */,
 				EAE19E76222F64DA0080B0F5 /* CustomButton.h */,
@@ -5019,6 +5024,7 @@
 				5557A500221BD76300743012 /* RootWebViewController.m in Sources */,
 				5557A66E221D027200743012 /* OauthInfo.m in Sources */,
 				EA21CAA8221F9A21007D3445 /* MoreRoloCell.m in Sources */,
+				EA6C20A12280206300C26872 /* ZQLocalNotification.m in Sources */,
 				EA21CA7F221F9980007D3445 /* PSConsultationTableViewCell.m in Sources */,
 				EA6CCBEC226476D800BB2A74 /* NTESContactViewController.m in Sources */,
 				EAB039C9221E8FF200331569 /* IJKSDLGLView.m in Sources */,

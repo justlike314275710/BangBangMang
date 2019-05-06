@@ -9,7 +9,7 @@
 #import "IMManager.h"
 #import "NTESCellLayoutConfig.h"
 #import "NTESAttachmentDecoder.h"
-
+#import "ZQLocalNotification.h"
 @interface IMManager()<NIMLoginManagerDelegate,NIMChatManagerDelegate,NIMSystemNotificationManagerDelegate,NIMNetCallManagerDelegate>
 //@interface IMManager()
 @property (nonatomic, strong) NIMSession *session;
@@ -101,6 +101,8 @@ SINGLETON_FOR_CLASS(IMManager);
 
         }];
         [banner show];
+        [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"1" activityId:1900000 alertBody:@"您有一笔新的订单!" alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
+
     }
     else if ([dic[@"type"] isEqualToString:@"NOTIFICATION_LEGAL_ADVICE"]){
         [[NSNotificationCenter defaultCenter] postNotificationName:KNotificationOrderStateChange object:nil];
@@ -109,6 +111,7 @@ SINGLETON_FOR_CLASS(IMManager);
             make.content = dic[@"content"];
         }];
         [banner show];
+        [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"2" activityId:1900000 alertBody: dic[@"content"] alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
     }
     else if ([dic[@"type"] isEqualToString:@"NOTIFICATION_PRAISE_ADVICE"]||[dic[@"type"] isEqualToString:@"NOTIFICATION_COMMENT_ADVICE"]){  //评论点赞
         KPostNotification(KNotificationMineRefreshDot, @"1");
@@ -117,6 +120,7 @@ SINGLETON_FOR_CLASS(IMManager);
             make.content = dic[@"content"];
         }];
         [banner show]; //NOTIFICATION_PRAISE_ADVICE
+        [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"3" activityId:1900000 alertBody:dic[@"content"] alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
         
     }
     else {
@@ -125,6 +129,7 @@ SINGLETON_FOR_CLASS(IMManager);
             make.content = dic[@"content"];
         }];
         [banner show];
+        [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"4" activityId:1900000 alertBody:dic[@"content"] alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
         if (ValidStr(dic[@"content"])) {
             NSString *content = dic[@"content"];
             if ([content containsString:@"您的律师认证审核已通过"]) {
