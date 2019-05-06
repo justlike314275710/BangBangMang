@@ -12,9 +12,13 @@
 
 @implementation TestResultTableViewController
 
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     self.tableView.separatorStyle=NO;
+}
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
