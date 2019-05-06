@@ -325,7 +325,7 @@ typedef void(^PPNetworkStatus)(PPNetworkStatusType status);
 + (void)setResponseSerializer:(PPResponseSerializer)responseSerializer;
 
 /**
- *  设置请求超时时间:默认为30S
+ *  设置请求超时时间:默认为10S
  *
  *  @param time 时长
  */

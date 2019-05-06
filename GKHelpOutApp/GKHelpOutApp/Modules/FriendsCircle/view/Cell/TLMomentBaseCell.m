@@ -91,7 +91,9 @@
     
     // 头像
     NSString *url  = AvaterImageWithUsername(moment.username);
+    [self SDWebImageAuth];
     [self.avatarView tt_setImageWithURL:[NSURL URLWithString:url] forState:UIControlStateNormal placeholderImage:IMAGE_NAMED(DEFAULT_AVATAR_PATH)];
+    
     // 用户名
     self.nameView.zz_make.title(moment.customer.name);
     // 时间
@@ -144,6 +146,7 @@
     // 链接
 //    self.linkButton.zz_make.title(moment.link.title).hidden(moment.link.title.length == 0);
 }
+
 
 #pragma mark - # UI
 - (void)p_initSubviews

@@ -35,6 +35,14 @@
     
     [self registerThirdParty];
     
+    
+    //显示环境
+#ifdef DEBUG
+    [self showURL];
+#else
+    
+#endif
+    
     //广告页
 //    [AppManager appStart];
     //[WXApi registerApp:@"wx21aed62551567801"];
@@ -43,6 +51,22 @@
     
     return YES;
     
+}
+
+#pragma mark - 显示debug下程序运行环境
+-(void)showURL{
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(KScreenWidth-100,0,50,20)];
+    label.font = FontOfSize(10);
+    label.textColor = [UIColor redColor];
+    if (DevelopSever) {
+        label.text = @"开发环境";
+    } else if (TestSever){
+        label.text = @"测试环境";
+    } else if (ProductSever){
+        label.text = @"生产环境";
+    }
+    [window addSubview:label];
 }
 
 

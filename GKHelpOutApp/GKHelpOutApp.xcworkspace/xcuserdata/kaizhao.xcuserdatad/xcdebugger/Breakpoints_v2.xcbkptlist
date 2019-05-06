@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Logic/LoginLogic.m"
-            timestampString = "577620055.53232"
+            timestampString = "578801276.2357661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Logic/LoginLogic.m"
-            timestampString = "577620055.5324121"
+            timestampString = "578801276.236212"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Login/Logic/LoginLogic.m"
-            timestampString = "577620055.532578"
+            timestampString = "578801276.236593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -474,7 +474,7 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Mine/Mine_Feedback(%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88)/PSWriteFeedbackViewController.m"
-                  timestampString = "578735294.064718"
+                  timestampString = "578816738.728029"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "118"
@@ -489,7 +489,7 @@
                   moduleName = "GKHelpOutApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kaizhao/Desktop/%E5%B8%AE%E5%B8%AE%E5%BF%99/GKHelpOutApp/GKHelpOutApp/Modules/Mine/Mine_Feedback(%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88)/PSWriteFeedbackViewController.m"
-                  timestampString = "578735294.066704"
+                  timestampString = "578816738.730273"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "120"
@@ -819,13 +819,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Mine/Mine_EditProfile(&#x4fee;&#x6539;&#x8d44;&#x6599;)/ModifyNicknameViewController.m"
-            timestampString = "578288968.359367"
+            filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
+            timestampString = "578713981.416032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-modifyAccountNickname"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "-LoginSuccess:completion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -835,13 +835,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Manager/UserManager/UserManager.m"
-            timestampString = "578713981.416032"
+            filePath = "GKHelpOutApp/Modules/Login/Controller/LoginViewController.m"
+            timestampString = "578801156.023508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
-            landmarkName = "-LoginSuccess:completion:"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "-getCode"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Modules/Login/Logic/LoginLogic.m"
+            timestampString = "578801276.238111"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-getVerificationCodeData:failed:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Modules/Login/Logic/LoginLogic.m"
+            timestampString = "578801309.861806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-getVerificationCodeData:failed:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
