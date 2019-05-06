@@ -78,7 +78,7 @@
 }
 
 - (void)sendAppFeedbackCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback {
-    NSString *platform = @"ASSISTANT_APP";
+    NSString *platform = @"ASSISTANT";
     NSDictionary *params = @{@"platform":platform,
                              @"problem":self.problem,
                              @"detail":self.detail,
