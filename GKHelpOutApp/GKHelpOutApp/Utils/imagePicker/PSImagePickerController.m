@@ -157,7 +157,8 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
 }
 
-- (IBAction)back:(id)sender {
+- (IBAction)backAction:(id)sender {
+    
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -221,7 +222,7 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
      */
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     backButton.frame = CGRectMake(0, 0, 60, 44);
     backButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -283,6 +284,8 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
         self.cropCallback = callback;
         CGFloat length = MIN([[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
         self.cropSize = CGSizeMake(length - 2.0, length - 2.0);
+        self.edgesForExtendedLayout = UIRectEdgeNone;// 推荐使用
+   
     }
     return self;
 }

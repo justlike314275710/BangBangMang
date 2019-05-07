@@ -12,6 +12,7 @@
 #import "PSLoadingView.h"
 #import "PSImagePickerController.h"
 #import "UploadManager.h"
+#import "UIViewController+Tool.h"
 
 
 #define loadImg_width  67
@@ -167,7 +168,7 @@
                 @strongify(self)
                 [self handlePickerImage:cropImage];
             }];
-         
+            picker.navigationBar.translucent = NO;
             [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
             picker.delegate = self;
             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:picker animated:YES completion:nil];
@@ -185,8 +186,10 @@
                 sender.image = cropImage;
             }];
             [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+            picker.navigationBar.translucent = NO;
             picker.delegate = self;
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:picker animated:YES completion:nil];
+//            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:picker animated:YES completion:nil];
+            [[UIViewController jsd_getCurrentViewController] presentViewController:picker animated:YES completion:nil];
         }];
     }];
     [alert addAction:cancelAction];
