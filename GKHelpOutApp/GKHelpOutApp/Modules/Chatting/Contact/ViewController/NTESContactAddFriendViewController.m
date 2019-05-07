@@ -203,9 +203,8 @@
                withCircleoffriendsPicture:circleoffriendsPicture];
             }
         } else {
-           // [PSTipsView showTips:@"该用户不存在"];
+
             if (self.searchController.searchResultsController) {
-                
                 TestResultTableViewController *vc = (TestResultTableViewController *)self.searchController.searchResultsController;
                 vc.searchResults = @[@"该用户不存在"];
                 vc.tableView.separatorStyle=NO;
@@ -215,7 +214,6 @@
             
         }
     } failure:^(NSError *error) {
-       // [PSTipsView showTips:@"该用户不存在"];
         if (self.searchController.searchResultsController) {
             
             TestResultTableViewController *vc = (TestResultTableViewController *)self.searchController.searchResultsController;
