@@ -171,7 +171,7 @@
             picker.navigationBar.translucent = NO;
             [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
             picker.delegate = self;
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:picker animated:YES completion:nil];
+            [[UIViewController jsd_getCurrentViewController] presentViewController:picker animated:YES completion:nil];
     
 
         }];
@@ -188,7 +188,6 @@
             [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
             picker.navigationBar.translucent = NO;
             picker.delegate = self;
-//            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:picker animated:YES completion:nil];
             [[UIViewController jsd_getCurrentViewController] presentViewController:picker animated:YES completion:nil];
         }];
     }];
@@ -197,6 +196,7 @@
     [alert addAction:albumAction];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
 }
+
 
 -(void)cancelPickerImage {
     

@@ -51,6 +51,14 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
     return self;
 }
 
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if ([UIDevice currentDevice].systemVersion.floatValue < 11)
+    {
+        return;
+    }
+}
+
 - (void)dealloc {
     _contentScrollView.delegate = nil;
 }
@@ -157,7 +165,7 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
     [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
 }
 
-- (IBAction)backAction:(id)sender {
+- (IBAction)backAction {
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -215,20 +223,24 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
     self.originalImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentScrollView addSubview:self.originalImageView];
     
-    /*
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] init];
-    [tapGesture addTarget:self action:@selector(backgroundTapped:)];
-    [self.view addGestureRecognizer:tapGesture];
-     */
+
+
+
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     backButton.frame = CGRectMake(0, 0, 60, 44);
+    backButton.backgroundColor = [UIColor redColor];
     backButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [backButton setTitle:@"返回" forState:UIControlStateNormal];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = leftItem;
+    
+
+   
+    
+    
     
     UIButton *comfirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [comfirmButton addTarget:self action:@selector(comfirm:) forControlEvents:UIControlEventTouchUpInside];
@@ -238,6 +250,7 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
     [comfirmButton setTitle:@"确定" forState:UIControlStateNormal];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:comfirmButton];
     self.navigationItem.rightBarButtonItem = rightItem;
+    
     
     self.cropView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.cropSize.width, self.cropSize.height)];
     self.cropView.center = self.view.center;
