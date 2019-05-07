@@ -36,7 +36,7 @@ pod 'ZZFLEX'
 pod 'TLTabBarController'
 pod 'TLKit'
 pod 'Reachability', '~> 3.2'
-pod 'SVProgressHUD'
+
 end
 
 target 'GKHelpOutAppUITests' do

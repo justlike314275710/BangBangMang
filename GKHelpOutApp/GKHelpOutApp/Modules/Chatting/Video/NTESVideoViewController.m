@@ -11,7 +11,7 @@
 #import "Reachability.h"
 #import "UIAlertView+NTESBlock.h"
 //#import "NTESNavigationHandler.h"
-//#import "NTESMediaPreviewViewController.h"
+#import "NTESMediaPreviewViewController.h"
 
 @interface NTESVideoViewController ()
 
@@ -77,7 +77,7 @@
 
 - (void)onMore:(id)sender
 {
-    /*
+
     NIMMessageSearchOption *option = [[NIMMessageSearchOption alloc] init];
     option.limit = 0;
     option.messageTypes = @[@(NIMMessageTypeImage),@(NIMMessageTypeVideo)];
@@ -119,9 +119,8 @@
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }
     }];
-     */
 }
-/*
+
 - (NTESMediaPreviewObject *)previewObjectByVideo:(NIMVideoObject *)object
 {
     NTESMediaPreviewObject *previewObject = [[NTESMediaPreviewObject alloc] init];
@@ -153,7 +152,7 @@
     return previewObject;
 }
 
-*/
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
