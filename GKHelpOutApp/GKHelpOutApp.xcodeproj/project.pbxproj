@@ -331,6 +331,14 @@
 		EA21CB4D221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB49221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m */; };
 		EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CB4F221FCEE2007D3445 /* NSObject+version.m */; };
 		EA21CB54221FD337007D3445 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA21CB53221FD337007D3445 /* CoreMotion.framework */; };
+		EA626CDD2281149D00B1FBF3 /* NTESMediaPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA626CDC2281149C00B1FBF3 /* NTESMediaPreviewViewController.m */; };
+		EA626CE02281154C00B1FBF3 /* UIImage+NTESColor.m in Sources */ = {isa = PBXBuildFile; fileRef = EA626CDF2281154B00B1FBF3 /* UIImage+NTESColor.m */; };
+		EA626CE42281156600B1FBF3 /* NTESGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA626CE12281156500B1FBF3 /* NTESGalleryViewController.m */; };
+		EA626CE52281156600B1FBF3 /* NTESGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA626CE22281156500B1FBF3 /* NTESGalleryViewController.xib */; };
+		EA626CE9228117FD00B1FBF3 /* NTESSnapchatAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = EA626CE7228117FD00B1FBF3 /* NTESSnapchatAttachment.m */; };
+		EA626CED2281193600B1FBF3 /* NTESFileLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA626CEC2281193500B1FBF3 /* NTESFileLocationHelper.m */; };
+		EA626CF02281196100B1FBF3 /* NTESDemoConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EA626CEE2281196100B1FBF3 /* NTESDemoConfig.m */; };
+		EA626CF3228119DE00B1FBF3 /* NSData+NTES.m in Sources */ = {isa = PBXBuildFile; fileRef = EA626CF2228119DE00B1FBF3 /* NSData+NTES.m */; };
 		EA694ED3223B7EAE00EF821D /* SexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA694ED2223B7EAE00EF821D /* SexTableViewCell.m */; };
 		EA6C209B227E8DE100C26872 /* TestResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C2099227E8DE000C26872 /* TestResultTableViewController.m */; };
 		EA6C209E227E949500C26872 /* NTESSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C209D227E949500C26872 /* NTESSearchViewController.m */; };
@@ -1223,6 +1231,22 @@
 		EA3E7CF8221FE74F00D60C6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA3E7CFA221FE75C00D60C6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA3E7CFC221FE76700D60C6A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		EA626CDB2281149C00B1FBF3 /* NTESMediaPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESMediaPreviewViewController.h; sourceTree = "<group>"; };
+		EA626CDC2281149C00B1FBF3 /* NTESMediaPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESMediaPreviewViewController.m; sourceTree = "<group>"; };
+		EA626CDE2281154B00B1FBF3 /* UIImage+NTESColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+NTESColor.h"; sourceTree = "<group>"; };
+		EA626CDF2281154B00B1FBF3 /* UIImage+NTESColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+NTESColor.m"; sourceTree = "<group>"; };
+		EA626CE12281156500B1FBF3 /* NTESGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESGalleryViewController.m; sourceTree = "<group>"; };
+		EA626CE22281156500B1FBF3 /* NTESGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTESGalleryViewController.xib; sourceTree = "<group>"; };
+		EA626CE32281156600B1FBF3 /* NTESGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESGalleryViewController.h; sourceTree = "<group>"; };
+		EA626CE7228117FD00B1FBF3 /* NTESSnapchatAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSnapchatAttachment.m; sourceTree = "<group>"; };
+		EA626CE8228117FD00B1FBF3 /* NTESSnapchatAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSnapchatAttachment.h; sourceTree = "<group>"; };
+		EA626CEA2281185F00B1FBF3 /* NTESCustomAttachmentDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTESCustomAttachmentDefines.h; sourceTree = "<group>"; };
+		EA626CEB2281193500B1FBF3 /* NTESFileLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESFileLocationHelper.h; sourceTree = "<group>"; };
+		EA626CEC2281193500B1FBF3 /* NTESFileLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESFileLocationHelper.m; sourceTree = "<group>"; };
+		EA626CEE2281196100B1FBF3 /* NTESDemoConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESDemoConfig.m; sourceTree = "<group>"; };
+		EA626CEF2281196100B1FBF3 /* NTESDemoConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESDemoConfig.h; sourceTree = "<group>"; };
+		EA626CF1228119DD00B1FBF3 /* NSData+NTES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NTES.h"; sourceTree = "<group>"; };
+		EA626CF2228119DE00B1FBF3 /* NSData+NTES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NTES.m"; sourceTree = "<group>"; };
 		EA694ED1223B7EAE00EF821D /* SexTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SexTableViewCell.h; sourceTree = "<group>"; };
 		EA694ED2223B7EAE00EF821D /* SexTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SexTableViewCell.m; sourceTree = "<group>"; };
 		EA6C2099227E8DE000C26872 /* TestResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestResultTableViewController.m; sourceTree = "<group>"; };
@@ -2046,6 +2070,10 @@
 		5557A506221BD7F500743012 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				EA626CF1228119DD00B1FBF3 /* NSData+NTES.h */,
+				EA626CF2228119DE00B1FBF3 /* NSData+NTES.m */,
+				EA626CDE2281154B00B1FBF3 /* UIImage+NTESColor.h */,
+				EA626CDF2281154B00B1FBF3 /* UIImage+NTESColor.m */,
 				551112122269994300D47C0E /* UIColor+HexString.h */,
 				551112112269994300D47C0E /* UIColor+HexString.m */,
 				5511120F2269993900D47C0E /* UIImage+ImageEffects.h */,
@@ -2837,6 +2865,10 @@
 		55C8980622645900005473AD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EA626CEF2281196100B1FBF3 /* NTESDemoConfig.h */,
+				EA626CEE2281196100B1FBF3 /* NTESDemoConfig.m */,
+				EA626CEB2281193500B1FBF3 /* NTESFileLocationHelper.h */,
+				EA626CEC2281193500B1FBF3 /* NTESFileLocationHelper.m */,
 				557D9E07226856C400F5D526 /* UINavigationBarLib */,
 				55F46DC92266D875000D84B1 /* YBImageBrowser */,
 				55F46DC22265CF6B000D84B1 /* DGTHumbUpButton */,
@@ -3356,9 +3388,25 @@
 			path = PayModel;
 			sourceTree = "<group>";
 		};
+		EA626CE6228117EB00B1FBF3 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				EA626CEA2281185F00B1FBF3 /* NTESCustomAttachmentDefines.h */,
+				EA626CE8228117FD00B1FBF3 /* NTESSnapchatAttachment.h */,
+				EA626CE7228117FD00B1FBF3 /* NTESSnapchatAttachment.m */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
 		EA6C20A222803C2A00C26872 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				EA626CE6228117EB00B1FBF3 /* Object */,
+				EA626CE32281156600B1FBF3 /* NTESGalleryViewController.h */,
+				EA626CE12281156500B1FBF3 /* NTESGalleryViewController.m */,
+				EA626CE22281156500B1FBF3 /* NTESGalleryViewController.xib */,
+				EA626CDB2281149C00B1FBF3 /* NTESMediaPreviewViewController.h */,
+				EA626CDC2281149C00B1FBF3 /* NTESMediaPreviewViewController.m */,
 				EA6C20A322803C2A00C26872 /* NTESVideoViewController.h */,
 				EA6C20A422803C2A00C26872 /* NTESVideoViewController.xib */,
 				EA6C20A522803C2A00C26872 /* NTESVideoViewController.m */,
@@ -4714,6 +4762,7 @@
 				5557A659221BD99E00743012 /* pageControlCurrentDot@3x.png in Resources */,
 				55F46DBD22657C0F000D84B1 /* Moments.json in Resources */,
 				5557A631221BD96500743012 /* 7.jpg in Resources */,
+				EA626CE52281156600B1FBF3 /* NTESGalleryViewController.xib in Resources */,
 				5557A662221BD99E00743012 /* stepPk_win_colour5@2x.png in Resources */,
 				5557A60E221BD96500743012 /* photo_sample_06.png in Resources */,
 				5557A619221BD96500743012 /* renw@2x.png in Resources */,
@@ -4868,6 +4917,7 @@
 				EA78F72F22268E46002D788A /* UploadManager.m in Sources */,
 				55F46D5F22657593000D84B1 /* TLMomentDetail.m in Sources */,
 				EAB03934221E817C00331569 /* NIMCommonTableDelegate.m in Sources */,
+				EA626CED2281193600B1FBF3 /* NTESFileLocationHelper.m in Sources */,
 				EAB039D7221E907400331569 /* UIImage+Image.m in Sources */,
 				EA6CCBF92264777C00BB2A74 /* NTESContactUtilCell.m in Sources */,
 				5557A542221BD7F500743012 /* UICollectionView+IndexPath.m in Sources */,
@@ -4944,6 +4994,7 @@
 				5557A622221BD96500743012 /* SecondViewController.m in Sources */,
 				55F46E1B2266D8A4000D84B1 /* YBImageBrowserView.m in Sources */,
 				EAB038C8221E817B00331569 /* NIMKitFileLocationHelper.m in Sources */,
+				EA626CE02281154C00B1FBF3 /* UIImage+NTESColor.m in Sources */,
 				EAB03915221E817B00331569 /* NIMSessionInteractorImpl.m in Sources */,
 				55F46E142266D8A4000D84B1 /* YBImageBrowserToolBar.m in Sources */,
 				5527EBAB22769E7D007BC1BF /* LifeCircleManager.m in Sources */,
@@ -4986,6 +5037,7 @@
 				5557A5FD221BD96500743012 /* LoginViewController.m in Sources */,
 				EAB0392E221E817C00331569 /* NIMExtensionHelper.m in Sources */,
 				5557A56D221BD87100743012 /* UserInfo.m in Sources */,
+				EA626CDD2281149D00B1FBF3 /* NTESMediaPreviewViewController.m in Sources */,
 				EAB03932221E817C00331569 /* NIMKitDataProviderImpl.m in Sources */,
 				EAB038F9221E817B00331569 /* NIMTeamNotifyUpdateViewController.m in Sources */,
 				EA21CB42221FC68F007D3445 /* GTMBase64.m in Sources */,
@@ -4997,10 +5049,12 @@
 				EA21CA79221F9980007D3445 /* PSEvaluateViewmodel.m in Sources */,
 				5597857B22265E43007BBCC2 /* FeedbackTypeModel.m in Sources */,
 				EAB039C2221E8FF200331569 /* shader.c in Sources */,
+				EA626CF02281196100B1FBF3 /* NTESDemoConfig.m in Sources */,
 				55C8981C22645C67005473AD /* UIButton+TLWebImage.m in Sources */,
 				EAB038D3221E817B00331569 /* NIMInputEmoticonParser.m in Sources */,
 				EAB038D9221E817B00331569 /* NIMInputAtCache.m in Sources */,
 				EA6CCC03226477CB00BB2A74 /* NTESGroupedUsrInfo.m in Sources */,
+				EA626CE42281156600B1FBF3 /* NTESGalleryViewController.m in Sources */,
 				EAB038DF221E817B00331569 /* NIMBadgeView.m in Sources */,
 				EAB038FA221E817B00331569 /* NIMAdvancedTeamCardViewController.m in Sources */,
 				EAB038FF221E817B00331569 /* NIMMessageModel.m in Sources */,
@@ -5043,6 +5097,7 @@
 				5557A66E221D027200743012 /* OauthInfo.m in Sources */,
 				EA21CAA8221F9A21007D3445 /* MoreRoloCell.m in Sources */,
 				EA6C20A12280206300C26872 /* ZQLocalNotification.m in Sources */,
+				EA626CF3228119DE00B1FBF3 /* NSData+NTES.m in Sources */,
 				EA21CA7F221F9980007D3445 /* PSConsultationTableViewCell.m in Sources */,
 				EA6CCBEC226476D800BB2A74 /* NTESContactViewController.m in Sources */,
 				EAB039C9221E8FF200331569 /* IJKSDLGLView.m in Sources */,
@@ -5162,6 +5217,7 @@
 				EA21CB2D221FA78C007D3445 /* PSProduct.m in Sources */,
 				EAB03933221E817C00331569 /* NIMKitSetting.m in Sources */,
 				5557A554221BD7F500743012 /* PPNetworkCache.m in Sources */,
+				EA626CE9228117FD00B1FBF3 /* NTESSnapchatAttachment.m in Sources */,
 				55C0C772222CFBFF00CD2459 /* HMGetCashViewController.m in Sources */,
 				5557A610221BD96500743012 /* ProfileViewController.m in Sources */,
 				EAB038D7221E817B00331569 /* NIMInputEmoticonTabView.m in Sources */,
