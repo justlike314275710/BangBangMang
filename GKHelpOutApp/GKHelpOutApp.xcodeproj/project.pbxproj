@@ -335,6 +335,8 @@
 		EA6C209B227E8DE100C26872 /* TestResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C2099227E8DE000C26872 /* TestResultTableViewController.m */; };
 		EA6C209E227E949500C26872 /* NTESSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C209D227E949500C26872 /* NTESSearchViewController.m */; };
 		EA6C20A12280206300C26872 /* ZQLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C209F2280206200C26872 /* ZQLocalNotification.m */; };
+		EA6C20A622803C2A00C26872 /* NTESVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6C20A422803C2A00C26872 /* NTESVideoViewController.xib */; };
+		EA6C20A722803C2A00C26872 /* NTESVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6C20A522803C2A00C26872 /* NTESVideoViewController.m */; };
 		EA6CCBAD2264130200BB2A74 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */; };
 		EA6CCBB0226417E200BB2A74 /* PSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6CCBAF226417E200BB2A74 /* PSMessageViewController.m */; };
 		EA6CCBB9226429F800BB2A74 /* AddMenu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6CCBB4226429F800BB2A74 /* AddMenu.xcassets */; };
@@ -1229,6 +1231,9 @@
 		EA6C209D227E949500C26872 /* NTESSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTESSearchViewController.m; sourceTree = "<group>"; };
 		EA6C209F2280206200C26872 /* ZQLocalNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQLocalNotification.m; sourceTree = "<group>"; };
 		EA6C20A02280206200C26872 /* ZQLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQLocalNotification.h; sourceTree = "<group>"; };
+		EA6C20A322803C2A00C26872 /* NTESVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESVideoViewController.h; sourceTree = "<group>"; };
+		EA6C20A422803C2A00C26872 /* NTESVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTESVideoViewController.xib; sourceTree = "<group>"; };
+		EA6C20A522803C2A00C26872 /* NTESVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESVideoViewController.m; sourceTree = "<group>"; };
 		EA6CCBAB2264130200BB2A74 /* FriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		EA6CCBAC2264130200BB2A74 /* FriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		EA6CCBAE226417E200BB2A74 /* PSMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSMessageViewController.h; sourceTree = "<group>"; };
@@ -3351,6 +3356,16 @@
 			path = PayModel;
 			sourceTree = "<group>";
 		};
+		EA6C20A222803C2A00C26872 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				EA6C20A322803C2A00C26872 /* NTESVideoViewController.h */,
+				EA6C20A422803C2A00C26872 /* NTESVideoViewController.xib */,
+				EA6C20A522803C2A00C26872 /* NTESVideoViewController.m */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 		EA6CCBAA226412B800BB2A74 /* FriendsCircle */ = {
 			isa = PBXGroup;
 			children = (
@@ -4321,6 +4336,7 @@
 		EAB03952221E8FB600331569 /* Chatting */ = {
 			isa = PBXGroup;
 			children = (
+				EA6C20A222803C2A00C26872 /* Video */,
 				EA04343D2265C23500A12210 /* Notication */,
 				EA6CCBDC226461DE00BB2A74 /* Setting */,
 				EA6CCBD4226454FA00BB2A74 /* Util */,
@@ -4735,6 +4751,7 @@
 				5557A61D221BD96500743012 /* haoy@2x.png in Resources */,
 				55C89822226467B5005473AD /* Media.xcassets in Resources */,
 				5557A630221BD96500743012 /* 5.jpg in Resources */,
+				EA6C20A622803C2A00C26872 /* NTESVideoViewController.xib in Resources */,
 				5557A4CA221BD09200743012 /* Assets.xcassets in Resources */,
 				5557A60B221BD96500743012 /* photo_sample_04.png in Resources */,
 				55F46E0E2266D8A4000D84B1 /* YBImageBrowser.bundle in Resources */,
@@ -4942,6 +4959,7 @@
 				5524C6932225106B0067F437 /* ZWTopSelectVcView.m in Sources */,
 				EAB03913221E817B00331569 /* NIMSessionLayoutImpl.m in Sources */,
 				EA21CB50221FCEE3007D3445 /* NSObject+version.m in Sources */,
+				EA6C20A722803C2A00C26872 /* NTESVideoViewController.m in Sources */,
 				EAE19E6F222E0E770080B0F5 /* dashedTextview.m in Sources */,
 				EAB039BF221E8FF200331569 /* renderer_rgb.c in Sources */,
 				EA21CAC0221FA04F007D3445 /* PSPayView.m in Sources */,
