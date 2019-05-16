@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+Tool.h"
 
 typedef void (^CropHeaderImageCallback) (UIImage *cropImage);
 

@@ -9,7 +9,6 @@
 #import "PSImagePickerController.h"
 #import "PSIntercepter.h"
 #import "UIImage+Crop.h"
-
 #define DEFAULT_CROP_SIZE (CGSize){200,200}
 #define MIN_ZOOM_SCALE 1.0
 #define MAX_ZOOM_SCALE 3.0
@@ -35,6 +34,7 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
 @property (nonatomic, strong) UIView *cropView;
 @property (nonatomic, strong) UIView *coverView;
 
+
 @end
 
 @implementation PSCropViewController
@@ -49,14 +49,6 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
         self.cropSize = DEFAULT_CROP_SIZE;
     }
     return self;
-}
-
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    if ([UIDevice currentDevice].systemVersion.floatValue < 11)
-    {
-        return;
-    }
 }
 
 - (void)dealloc {
@@ -208,6 +200,16 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
     self.contentScrollView.contentInset = [self contentInsetForScrollView:self.contentScrollView.zoomScale];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
@@ -223,47 +225,50 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
     self.originalImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentScrollView addSubview:self.originalImageView];
     
-
-
+    
+    UIView *bgNavView = [[UIView alloc] initWithFrame:CGRectMake(0,0,KScreenWidth,kTopHeight)];
+    bgNavView.backgroundColor = [UIColor whiteColor];
 
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    backButton.frame = CGRectMake(0, 0, 60, 44);
-    backButton.backgroundColor = [UIColor redColor];
+    backButton.frame = CGRectMake(20,(kTopHeight-44)/2+kStatusBarHeight/2, 60, 44);
     backButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [backButton setTitle:@"返回" forState:UIControlStateNormal];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    self.navigationItem.leftBarButtonItem = leftItem;
+    [bgNavView addSubview:backButton];
+//    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+//    self.navigationItem.leftBarButtonItem = leftItem;
     
-
-   
-    
-    
+                                             
     
     UIButton *comfirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [comfirmButton addTarget:self action:@selector(comfirm:) forControlEvents:UIControlEventTouchUpInside];
-    comfirmButton.frame = CGRectMake(0, 0, 60, 44);
+    comfirmButton.frame = CGRectMake(KScreenWidth-80,(kTopHeight-44)/2+kStatusBarHeight/2, 60, 44);
     comfirmButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [comfirmButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [comfirmButton setTitle:@"确定" forState:UIControlStateNormal];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:comfirmButton];
-    self.navigationItem.rightBarButtonItem = rightItem;
+//    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:comfirmButton];
+//    self.navigationItem.rightBarButtonItem = rightItem;
+    [bgNavView addSubview:comfirmButton];
     
     
+    
+
     self.cropView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.cropSize.width, self.cropSize.height)];
     self.cropView.center = self.view.center;
     self.cropView.backgroundColor = [UIColor clearColor];
     self.cropView.userInteractionEnabled = NO;
     [self.view addSubview:self.cropView];
     
-    self.coverView = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.coverView = [[UIView alloc] initWithFrame:CGRectMake(0,0, KScreenWidth, KScreenHeight)];
     self.coverView.userInteractionEnabled = NO;
     self.coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
     self.coverView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addFilterInView:self.coverView inRect:self.cropView.frame];
     [self.view addSubview:self.coverView];
+    
+    [self.view addSubview:bgNavView];
 }
 
 #pragma mark - 
@@ -339,6 +344,12 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+}
+
+
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
 //    if ([_intercepter.receiver
 //         respondsToSelector:@selector(imagePickerControllerDidCancel)]) {
@@ -355,6 +366,8 @@ typedef void(^CropedImageCallBack)(UIImage *cropImage,PSCropViewController *view
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation
