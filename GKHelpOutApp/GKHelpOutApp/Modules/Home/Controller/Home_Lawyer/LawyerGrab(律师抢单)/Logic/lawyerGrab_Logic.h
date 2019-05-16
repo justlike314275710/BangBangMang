@@ -21,6 +21,8 @@
 @property (nonatomic , strong) NSString *content;
 @property (nonatomic , strong) NSString *isResolved;
 
+- (void)refreshAdviceProcessingCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+
 
 - (void)refreshLawyerAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 - (void)loadLawyerAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;

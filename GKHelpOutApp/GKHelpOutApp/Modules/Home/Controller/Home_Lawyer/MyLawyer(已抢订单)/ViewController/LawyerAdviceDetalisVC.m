@@ -244,7 +244,8 @@
 
 - (UIButton *)payButton{
     if (!_payButton) {
-        _payButton=[[UIButton alloc]initWithFrame:CGRectMake(18, SCREEN_HEIGHT-130, SCREEN_WIDTH-36, 44)];
+        _payButton=[[UIButton alloc]init];
+        _payButton.frame=IS_IPHONEX?CGRectMake(18, SCREEN_HEIGHT-130-64, SCREEN_WIDTH-36, 44):CGRectMake(18, SCREEN_HEIGHT-130, SCREEN_WIDTH-36, 44);
         [_payButton setBackgroundColor:AppBaseTextColor3];
         [_payButton setTitle:@"立即沟通" forState:0];
         _payButton.titleLabel.font=FontOfSize(14);

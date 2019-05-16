@@ -2267,16 +2267,9 @@
 		5557A566221BD85E00743012 /* UserManager */ = {
 			isa = PBXGroup;
 			children = (
-				5557A66C221D027200743012 /* OauthInfo.h */,
-				5557A66D221D027200743012 /* OauthInfo.m */,
-				5557A569221BD87100743012 /* GameInfo.h */,
-				5557A56C221BD87100743012 /* GameInfo.m */,
-				5557A568221BD87100743012 /* UserInfo.h */,
-				5557A56A221BD87100743012 /* UserInfo.m */,
+				EA626DC52284146300B1FBF3 /* Model */,
 				5557A567221BD87100743012 /* UserManager.h */,
 				5557A56B221BD87100743012 /* UserManager.m */,
-				555C118D222E702E00132E4F /* LawUserInfo.h */,
-				555C118E222E702E00132E4F /* LawUserInfo.m */,
 			);
 			path = UserManager;
 			sourceTree = "<group>";
@@ -3396,6 +3389,21 @@
 				EA626CE7228117FD00B1FBF3 /* NTESSnapchatAttachment.m */,
 			);
 			path = Object;
+			sourceTree = "<group>";
+		};
+		EA626DC52284146300B1FBF3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				555C118D222E702E00132E4F /* LawUserInfo.h */,
+				555C118E222E702E00132E4F /* LawUserInfo.m */,
+				5557A66C221D027200743012 /* OauthInfo.h */,
+				5557A66D221D027200743012 /* OauthInfo.m */,
+				5557A569221BD87100743012 /* GameInfo.h */,
+				5557A56C221BD87100743012 /* GameInfo.m */,
+				5557A568221BD87100743012 /* UserInfo.h */,
+				5557A56A221BD87100743012 /* UserInfo.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EA6C20A222803C2A00C26872 /* Video */ = {
@@ -5550,7 +5558,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NMR83889V8;
+				DEVELOPMENT_TEAM = 35NTC834XG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",
@@ -5590,7 +5598,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NMR83889V8;
+				DEVELOPMENT_TEAM = 35NTC834XG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",

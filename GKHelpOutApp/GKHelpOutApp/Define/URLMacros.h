@@ -64,7 +64,7 @@
 #define EmallHostUrl @"http://api.auth.prisonpublic.com"           //授权认证平台生产地址
 #define ConsultationHostUrl @"http://120.79.67.25"
 
-
+#define ChatServerUrl @"http://qa.api.chat.prisonpublic.com"
 
 #endif
 
@@ -166,4 +166,7 @@
 #define URL_feedbacks_add     @"/feedbacks"
 
 
+#pragma mark - ——————— 法律咨询 ————————
+
+#define URL_advice_processing  @"/lawyer/my/legal-advice/processing"
 #endif /* URLMacros_h */

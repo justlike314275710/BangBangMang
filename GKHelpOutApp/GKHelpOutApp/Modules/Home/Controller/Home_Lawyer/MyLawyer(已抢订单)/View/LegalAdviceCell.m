@@ -214,10 +214,11 @@
 - (UIButton *)chatBtn {
     if (!_chatBtn) {
         _chatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_chatBtn setBackgroundImage:IMAGE_NAMED(@"立即沟通底") forState:UIControlStateNormal];
+//        [_chatBtn setBackgroundImage:IMAGE_NAMED(@"立即沟通底") forState:UIControlStateNormal];
         [_chatBtn setTitle:@"立即沟通" forState:UIControlStateNormal];
         _chatBtn.titleLabel.textColor = CFontColor_BtnTitle;
         _chatBtn.titleLabel.font = SFFont;
+        ViewRadius(_chatBtn, 4.0);
     }
     return _chatBtn;
 }

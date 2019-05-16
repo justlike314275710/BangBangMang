@@ -826,7 +826,9 @@
 
 - (UIButton *)sendButton{
     if (!_sendButton) {
-        _sendButton=[[UIButton alloc]initWithFrame:CGRectMake(12, SCREEN_HEIGHT-130, SCREEN_WIDTH-24, 44)];
+        
+        _sendButton=[[UIButton alloc]init];
+        _sendButton.frame=IS_IPHONEX?CGRectMake(12, SCREEN_HEIGHT-130-64, SCREEN_WIDTH-24, 44):CGRectMake(12, SCREEN_HEIGHT-130, SCREEN_WIDTH-24, 44);
         [_sendButton setBackgroundColor:AppBaseTextColor3];
         [_sendButton setTitle:@"取消订单" forState:0];
         _sendButton.layer.masksToBounds = YES;
@@ -840,7 +842,8 @@
 - (UIButton *)messageButton{
     
     if (!_messageButton) {
-        _messageButton=[[UIButton alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
+        _messageButton=[[UIButton alloc]init];
+        _messageButton.frame=IS_IPHONEX?CGRectMake(15, SCREEN_HEIGHT-130-64, (SCREEN_WIDTH-60)/2, 44):CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44);
         [_messageButton setBackgroundColor:AppBaseTextColor3];
         _messageButton.layer.masksToBounds = YES;
         _messageButton.layer.cornerRadius = 4.0;

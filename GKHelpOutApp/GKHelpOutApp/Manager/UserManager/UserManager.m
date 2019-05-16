@@ -258,11 +258,6 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
     [self JudgeIdentityCallback:^(BOOL success, NSString *des) {
         
     }];
-
-//    [self requestEcomRegister:@{ @"phoneNumber":@"15526477756",
-//                                 @"verificationCode":@"5422",
-//                                 @"name":@"15526477756",//姓名是手机号码
-//                                 @"group":@"CUSTOMER"}];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD showActivityMessageInView:@"登录中..."];

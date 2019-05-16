@@ -294,6 +294,22 @@
     }];
 }
 
+- (void)refreshAdviceProcessingCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+    NSString*url=[NSString stringWithFormat:@"%@%@",ConsultationHostUrl,URL_advice_processing];
+    NSString *access_token = help_userManager.oathInfo.access_token;
+    NSString *token = NSStringFormat(@"Bearer %@",access_token);
+    [PPNetworkHelper setValue:token forHTTPHeaderField:@"Authorization"];
+    [PPNetworkHelper GET:url parameters:nil success:^(id responseObject) {
+        if (completedCallback) {
+            completedCallback(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failedCallback) {
+            failedCallback(error);
+        }
+    }];
+}
+
 
 
 -(NSArray *)myAdviceArray{

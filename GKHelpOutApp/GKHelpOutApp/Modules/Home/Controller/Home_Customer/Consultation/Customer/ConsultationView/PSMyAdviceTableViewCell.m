@@ -245,7 +245,8 @@
         [_videoButton setTitleColor:[UIColor whiteColor] forState:0];
         _videoButton.titleLabel.font = FontOfSize(10);
         _videoButton.layer.cornerRadius=2.0f;
-       _videoButton.frame=CGRectMake(SCREEN_WIDTH-128, 56, 68, 24);
+       _videoButton.frame= CGRectMake(SCREEN_WIDTH-128, 56, 68, 24);
+        
     }
     
     return _videoButton;

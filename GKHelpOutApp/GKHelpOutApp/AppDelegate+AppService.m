@@ -50,7 +50,6 @@
 -(void)initUserManager{
     DLog(@"设备IMEI ：%@",[OpenUDID value]);
     if([help_userManager loadUserInfo]){
-        
         //加载用户token
         [help_userManager loadUserOuathInfo];
         //加载律师用户资料

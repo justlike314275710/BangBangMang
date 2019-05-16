@@ -18,20 +18,42 @@
 @property (nonatomic , strong) UITableView *LawyersTableview;
 @property (nonatomic , strong) PSLawyerView *headerView;
 @property (nonatomic , strong) lawyerGrab_Logic*logic;
+@property (nonatomic , assign) BOOL isProcessing;
+@property (nonatomic , strong) NSString *orderID;
 @end
 
 @implementation LawyerGrabViewController
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.logic=[[lawyerGrab_Logic alloc]init];
-    [self renderContents];
+    [self getProcessing];
+//    [self renderContents];
     [self refreshData];
     [self SDWebImageAuth];
     self.title=@"法律咨询";
 
 
     // Do any additional setup after loading the view.
+}
+
+-(void)getProcessing{
+    @weakify(self)
+    [self.logic refreshAdviceProcessingCompleted:^(id data) {
+        @strongify(self)
+        if (data[@"id"]) {
+            self.isProcessing=YES;
+            self.orderID=data[@"id"];
+        } else {
+            self.isProcessing=NO;
+        }
+         [self renderContents];
+    } failed:^(NSError *error) {
+         [self renderContents];
+    }];
 }
 
 
@@ -70,7 +92,7 @@
         [[PSLoadingView sharedInstance]dismiss];
         //[PSTipsView showTips:@"抢单成功"];
         [[NSNotificationCenter defaultCenter] postNotificationName:KNotificationNewOrderState object:nil];
-        [self AlertWithTitle:nil message:@"恭喜您,抢单成功!" andOthers:@[@"关闭",@"查看"] animated:YES action:^(NSInteger index) {
+        [self AlertWithTitle:@"提示" message:@"恭喜您,抢单成功!" andOthers:@[@"关闭",@"查看"] animated:YES action:^(NSInteger index) {
             if (index == 1) {
                 [self p_pushDetalisViewController:orderID];
             }
@@ -83,6 +105,19 @@
     } failed:^(NSError *error) {
         [[PSLoadingView sharedInstance]dismiss];
         [PSTipsView showTips:@"不能抢单,当前有订单未处理!"];
+    }];
+}
+
+
+-(void)processing_Order:(NSString*)orderID{
+    [self AlertWithTitle:@"提示" message:@"您有订单未处理,请先处理!" andOthers:@[@"关闭",@"查看"] animated:YES action:^(NSInteger index) {
+        if (index == 1) {
+            [self p_pushDetalisViewController:orderID];
+        }
+        else{
+            [self refreshData];
+            
+        }
     }];
 }
 
@@ -170,10 +205,20 @@
     cell.detailLab.hidden = YES;
     cell.chatBtn.hidden=NO;
     cell.lawyerMoneyLab.hidden=NO;
-    [cell.chatBtn setTitle:@"抢单" forState:0];
-    [cell.chatBtn bk_whenTapped:^{
-        [self Grap_Order:grabModel.cid];
-    }];
+    if (_isProcessing==YES) {
+        [cell.chatBtn setTitle:@"抢单" forState:0];
+        [cell.chatBtn setBackgroundImage:[self imageWithColor:[UIColor grayColor]] forState:UIControlStateNormal];
+        [cell.chatBtn bk_whenTapped:^{
+            [self processing_Order:self.orderID];
+        }];
+    } else {
+        [cell.chatBtn setTitle:@"抢单" forState:0];
+         [cell.chatBtn setBackgroundImage:IMAGE_NAMED(@"立即沟通底") forState:UIControlStateNormal];
+        [cell.chatBtn bk_whenTapped:^{
+            [self Grap_Order:grabModel.cid];
+        }];
+    }
+   
     return cell;
     
 }
@@ -214,6 +259,20 @@
     [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
 }
 
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
