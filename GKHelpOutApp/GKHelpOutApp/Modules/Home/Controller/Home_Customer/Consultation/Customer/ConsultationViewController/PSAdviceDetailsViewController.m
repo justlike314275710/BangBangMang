@@ -493,7 +493,8 @@
         }];
     }
     else if ([status isEqualToString:@"待付款"]){
-        UIButton*cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
+        UIButton*cancelButton=[[UIButton alloc]init];
+        cancelButton.frame=IS_IPHONEX?CGRectMake(15, SCREEN_HEIGHT-130-64, (SCREEN_WIDTH-60)/2, 44):CGRectMake(15, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44);
         [cancelButton setBackgroundColor:AppBaseTextColor3];
         [cancelButton setTitle:@"删除订单" forState:0];
         cancelButton.titleLabel.font=FontOfSize(14);
@@ -504,7 +505,8 @@
             [self deleteAdvice];
         }];
         
-        UIButton*payButton=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44)];
+        UIButton*payButton=[[UIButton alloc]init];
+        payButton.frame=IS_IPHONEX?CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130-64, (SCREEN_WIDTH-60)/2, 44):CGRectMake((SCREEN_WIDTH-70)/2+50, SCREEN_HEIGHT-130, (SCREEN_WIDTH-60)/2, 44);
         [payButton setBackgroundColor:AppBaseTextColor3];
         [payButton setTitle:@"立即支付" forState:0];
         payButton.titleLabel.font=FontOfSize(14);
@@ -675,7 +677,7 @@
         [self.bgView addSubview:line_view];
 
         [self.view addSubview:self.sendButton];
-        self.sendButton.frame = CGRectMake(12, SCREEN_HEIGHT-130, SCREEN_WIDTH-24, 44);
+        self.sendButton.frame =IS_IPHONEX? CGRectMake(12, SCREEN_HEIGHT-130-64, SCREEN_WIDTH-24, 44):CGRectMake(12, SCREEN_HEIGHT-130, SCREEN_WIDTH-24, 44);
         self.sendButton.hidden = NO;
         [_sendButton setTitle:@"删除订单" forState:0];
         [_sendButton bk_whenTapped:^{

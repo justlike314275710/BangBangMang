@@ -216,22 +216,18 @@
         [self.view addSubview:self.payButton];
         [self.payButton bk_whenTapped:^{
             [self DeleteLawyerDetails];
-
         }];
     }
     else{
         [self.myScrollview addSubview:self.statusView];
     }
     
-    
-    
-   
-    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma mark - setting&&getting
 - (UIScrollView *)myScrollview {
     if (!_myScrollview) {
