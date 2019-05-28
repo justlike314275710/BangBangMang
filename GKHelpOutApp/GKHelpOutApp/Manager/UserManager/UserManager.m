@@ -362,9 +362,9 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
 }
 
 -(void)saveUserState {
-        YYCache *cache = [[YYCache alloc] initWithName:KUserCacheName];
-        NSString *state = NSStringFormat(@"%ld",self.userStatus);
-        [cache setObject:state forKey:KUserStateName];
+    YYCache *cache = [[YYCache alloc] initWithName:KUserCacheName];
+    NSString *state = NSStringFormat(@"%ld",(long)self.userStatus);
+    [cache setObject:state forKey:KUserStateName];
 }
 
 -(BOOL)loadUserState {
