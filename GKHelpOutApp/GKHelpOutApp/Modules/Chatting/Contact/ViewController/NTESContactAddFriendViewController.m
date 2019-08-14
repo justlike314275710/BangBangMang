@@ -15,6 +15,7 @@
 #import "NTESAddFriendsMessageViewController.h"
 #import "PSPersonCardViewController.h"
 #import "TestResultTableViewController.h"
+#import "NSString+JsonString.h"
 
 @interface NTESContactAddFriendViewController ()<UISearchBarDelegate,UISearchResultsUpdating>
 
@@ -192,6 +193,9 @@
             NSString*curUserName=responseObject[@"curUsername"];
             NSString*friendinfo=responseObject[@"friendinfo"];
             NSArray*circleoffriendsPicture=responseObject[@"circleoffriendsPicture"];
+            if ([nickName isKindOfClass:[NSNull class]]) {
+                nickName=[NSString changeTelephone:phone];
+            }
             if (userId.length) {
                 userId = [userId lowercaseString];
                 [self addFriendWithUserID:userId

@@ -23,7 +23,7 @@
 }
 
 - (UIImage *)leftItemImage {
-    return [UIImage imageNamed:@"universalBackIcon"];
+    return [UIImage imageNamed:@"返回"];
 }
 
 - (UIImage *)navgationBarImage {

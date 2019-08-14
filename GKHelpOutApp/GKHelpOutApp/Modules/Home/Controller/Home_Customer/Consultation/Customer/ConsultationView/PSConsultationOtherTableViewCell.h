@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 //#import <YYText/YYText.h>
+typedef void(^ButtonClick)(NSString * text);
 @interface PSConsultationOtherTableViewCell : UICollectionViewCell
 @property (nonatomic , strong) UITextField *moneyTextField;
 @property (nonatomic, strong) YYLabel *protocolLabel;
+@property (nonatomic,strong) UIButton *selectedBtn;
+@property (nonatomic,copy) ButtonClick buttonAction;
+
+- (void)handlerButtonAction:(ButtonClick)block;
+
 @end

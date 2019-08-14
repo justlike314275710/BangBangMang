@@ -6,12 +6,14 @@
 //  Copyright © 2018年 calvin. All rights reserved.
 //
 
+
+#import "NSAttributedString+YYText.h"
 #import "PSConsultationViewController.h"
 #import "PSServiceLinkView.h"
 #import "PSConsultationTableViewCell.h"
 #import "PSConsultationOtherTableViewCell.h"
 #import "PSConsultationViewModel.h"
-#import "Mine_CategoryViewController.h"
+//#import "PSConsultingCategoryViewController.h"
 #import "PSConsultationViewModel.h"
 #import <AFNetworking/AFNetworking.h>
 #import "PSPayView.h"
@@ -24,15 +26,15 @@
 #import "PSMyAdviceViewController.h"
 #import "PSConsultationViewModel.h"
 #import "PSMoreServiceViewController.h"
-#import "MyConsultationViewController.h"
-
+#import "PSRemittancePayStateViewController.h"
 
 @interface PSConsultationViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITextViewDelegate,UITextFieldDelegate>
-@property (nonatomic, strong)  UICollectionView *serviceCollectionView;
+@property (nonatomic, strong) UICollectionView *serviceCollectionView;
 @property (nonatomic , strong) NSMutableArray *selectArray;
 @property (nonatomic , strong) NSMutableArray *images;
 @property (nonatomic, strong) PSPayView *payView;
 @property (nonatomic , assign) NSInteger index;
+@property (nonatomic, assign) NSString *money;
 
 @end
 
@@ -50,6 +52,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
+    
+    
 }
 
 
@@ -57,10 +61,9 @@
     [super viewDidLoad];
     [self renderContents];
     _images=[[NSMutableArray alloc]init];
-    self.isShowLiftBack = YES;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-
+    
+    
+    // Do any additional setup after loading the view.
 }
 
 
@@ -110,6 +113,7 @@
 
 
 - (void)buyCardAction:(NSString*)cid withReward:(NSString*)reward{
+    _money = reward;
     PSPhoneCardViewModel*viewModel=[[PSPhoneCardViewModel alloc]init];
     PSPayView *payView = [PSPayView new];
     payView.payType = @"law";
@@ -153,7 +157,6 @@
     
     [payView setGoZxActcion:^{
         [self.navigationController pushViewController:[[PSMyAdviceViewController alloc] initWithViewModel:[[PSConsultationViewModel alloc] init]] animated:YES];
-        [self.navigationController pushViewController:[[MyConsultationViewController alloc]init] animated:YES];
     }];
     
     @weakify(self)
@@ -174,15 +177,36 @@
     PSPayInfo*payinfo=[PSPayInfo new];
     PSPayment *paymentInfo = viewModel.payments[_index];
     payinfo.productID=cid;
+    payinfo.money = [NSString stringWithFormat:@"%@",_money];
     payinfo.payment=paymentInfo.payment;
     [[PSLoadingView sharedInstance] show];
     @weakify(self)
     [[PSPayCenter payCenter] goPayWithPayInfo:payinfo type:PayTypeOrd callback:^(BOOL result, NSError *error) {
         @strongify(self)
         [[PSLoadingView sharedInstance] dismiss];
+        //        if (error) {
+        //            if (error.code != 106 && error.code != 206) {
+        //                [PSTipsView showTips:error.domain];
+        //            }
+        //        }else{
+        //            self.payView.status = PSPaySuccessful;
+        //            PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
+        //            viewModel.adviceId=cid;
+        //            [self.navigationController pushViewController:[[PSAdviceDetailsViewController alloc]initWithViewModel:viewModel] animated:YES];
+        //        }
+        
+        
         if (error) {
             if (error.code != 106 && error.code != 206) {
-                [PSTipsView showTips:error.domain];
+                if (error.code == 202 ||error.code == 205||error.code == 102) { //输入金额不正确 (202)  系统错误(支付宝返回205)   未安装微信（202）
+                    [PSTipsView showTips:error.domain dismissAfterDelay:1];
+                } else { //可能点击取消返回
+                    [self p_showPayResult:payCancel PSPayInfo:payinfo];
+                    [self.payView dismissAnimated:YES];
+                }
+            } else {
+                [self p_showPayResult:payFailure PSPayInfo:payinfo];
+                [self.payView dismissAnimated:YES];
             }
         }else{
             self.payView.status = PSPaySuccessful;
@@ -192,6 +216,23 @@
         }
     }];
     
+}
+
+
+- (void)p_showPayResult:(PayState)state PSPayInfo:(PSPayInfo *)info {
+    PSRemittancePayStateViewController *payStateVC = [[PSRemittancePayStateViewController alloc] init];
+    payStateVC.payWay = payWayLegaladvice;
+    @weakify(self)
+    payStateVC.completeBlock = ^(PayState state) {
+        @strongify(self);
+        if (state == payScuess) {
+            //            [self remittanceRecord];
+        }
+    };
+    payStateVC.info = info;
+    payStateVC.state = state;
+    //    payStateVC.prisoner = self.prisoner;
+    [self.navigationController presentViewController:payStateVC animated:YES completion:nil];
 }
 
 #pragma mark  - UITableViewDelegate
@@ -209,7 +250,7 @@
     if (indexPath.section == 0) {
         itemSIze = CGSizeMake(SCREEN_WIDTH, 66);
     }else{
-        itemSIze = CGSizeMake(SCREEN_WIDTH, 160);
+        itemSIze = CGSizeMake(SCREEN_WIDTH, 234);
     }
     return itemSIze;
 }
@@ -238,17 +279,37 @@
         PSConsultationViewModel *viewModel=(PSConsultationViewModel *)self.viewModel;
         [((PSConsultationTableViewCell *)cell).choseButton setTitle:viewModel.category forState:0];
         [self bulidSelectNSSting:viewModel.category];
+        
+        
+        //相册相机回调
+//        [((PSConsultationTableViewCell *)cell).pickerV observeSelectedMediaArray:^(NSArray<LLImagePickerModel *> *list) {
+//            for (int i=0; i<list.count; i++) {
+//                if (i==list.count-1) {
+//                    LLImagePickerModel*model=[list objectAtIndex:i];
+//                    [self handlePickerImage:model.image];
+//                }
+//            }
+//        }];
+        
         ((PSConsultationTableViewCell *)cell).contentTextView.delegate=self;
-
+        
     }else{
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PSConsultationOtherTableViewCell" forIndexPath:indexPath];
         ((PSConsultationOtherTableViewCell*)cell).moneyTextField.delegate=self;
         [((PSConsultationOtherTableViewCell*)cell).moneyTextField setBk_didEndEditingBlock:^(UITextField *TextField) {
             PSConsultationViewModel *viewModel=(PSConsultationViewModel *)self.viewModel;
             viewModel.reward=TextField.text;
-            //[TextField.text floatValue];
             
         }];
+        
+        
+        [((PSConsultationOtherTableViewCell*)cell) handlerButtonAction:^(NSString *text) {
+            PSConsultationViewModel *viewModel=(PSConsultationViewModel *)self.viewModel;
+            viewModel.reward=text;
+        }];
+        
+        
+        
         @weakify(self)
         [self updateProtocolText:((PSConsultationOtherTableViewCell*)cell)];
         [((PSConsultationOtherTableViewCell*)cell).protocolLabel setTextTapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
@@ -277,10 +338,17 @@
 }
 
 
+
 - (void)textViewDidEndEditing:(UITextView *)textView {
     PSConsultationViewModel *viewModel=(PSConsultationViewModel *)self.viewModel;
     viewModel.describe = textView.text;
 }
+
+//- (void)textFieldDidEndEditing:(UITextField *)textField{
+//    PSConsultationViewModel *viewModel=(PSConsultationViewModel *)self.viewModel;
+//    viewModel.reward=textField.text;
+//}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     //    限制只能输入数字
     BOOL isHaveDian = YES;
@@ -364,8 +432,7 @@
     self.serviceCollectionView.alwaysBounceVertical=YES;
     
     
-    UIButton*releaseButton=[[UIButton alloc]init];
-    releaseButton.frame=IS_IPHONEX?CGRectMake(15, SCREEN_HEIGHT-125-44, SCREEN_WIDTH-30, 44):CGRectMake(15, SCREEN_HEIGHT-125, SCREEN_WIDTH-30, 44);
+    UIButton*releaseButton=[[UIButton alloc]initWithFrame:CGRectMake(15, 330, SCREEN_WIDTH-30, 44)];
     [releaseButton setBackgroundImage:[UIImage imageNamed:@"提交按钮底框"] forState:0];
     [releaseButton setTitle:@"发布抢单" forState:0];
     releaseButton.titleLabel.font=AppBaseTextFont3;
@@ -375,6 +442,20 @@
         [self checkDataIsEmpty];
         //[self buyCardAction];
     }];
+    
+    UILabel*consulationLable=[[UILabel alloc]initWithFrame:CGRectMake(47, releaseButton.bottom+10, SCREEN_WIDTH-100, 12)];
+    consulationLable.textColor=AppBaseTextColor1;
+    consulationLable.textAlignment=NSTextAlignmentCenter;
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"咨询费用越多，回复效率与质量越高!"];
+    NSRange range1=[[str  string]rangeOfString:@"效率"];
+    [str  addAttribute:NSForegroundColorAttributeName value:UIColorFromRGBA(255, 138, 7, 1) range:range1];
+    NSRange range2=[[str string]rangeOfString:@"质量"];
+    [str  addAttribute:NSForegroundColorAttributeName value:UIColorFromRGBA(255, 138, 7, 1) range:range2];
+    //[str addAttribute:NSForegroundColorAttributeName value:UIColorFromRGBA(255, 138, 7, 1) range:NSMakeRange(10,5)];
+    consulationLable.attributedText = str;
+    consulationLable.font=FontOfSize(10);
+    [self.serviceCollectionView addSubview:consulationLable];
+    
     
 }
 #pragma mark  - setter & getter
@@ -468,11 +549,15 @@
     [protocolText appendAttributedString:[[NSAttributedString  alloc] initWithString: usageProtocol attributes:@{NSFontAttributeName:textFont,NSForegroundColorAttributeName:UIColorFromRGB(102, 102, 102)}]];
     [protocolText appendAttributedString:[[NSAttributedString  alloc] initWithString:@" " attributes:@{NSFontAttributeName:textFont,NSForegroundColorAttributeName:AppBaseTextColor3}]];
     PSConsultationViewModel *viewModel=(PSConsultationViewModel *)self.viewModel;
-    UIImage *statusImage = viewModel.agreeProtocol ? [UIImage imageNamed:@"已勾选"] : [UIImage imageNamed:@"未勾选"];
+    
+     UIImage *statusImage =viewModel.agreeProtocol ? [UIImage imageNamed:@"已勾选"] : [UIImage imageNamed:@"未勾选"];
+    
+
     [protocolText insertAttributedString:[NSAttributedString attachmentStringWithContent:statusImage contentMode:UIViewContentModeCenter attachmentSize:statusImage.size alignToFont:textFont alignment:YYTextVerticalAlignmentCenter] atIndex:0];
-    protocolText.alignment = NSTextAlignmentRight ;
+    protocolText.alignment = NSTextAlignmentRight;
     ((PSConsultationOtherTableViewCell*)cell).protocolLabel.attributedText = protocolText;
     ((PSConsultationOtherTableViewCell*)cell).protocolLabel.numberOfLines=0;
+    
 }
 
 /*

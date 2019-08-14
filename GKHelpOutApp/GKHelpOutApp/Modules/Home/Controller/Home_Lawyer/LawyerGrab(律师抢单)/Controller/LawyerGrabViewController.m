@@ -44,7 +44,7 @@
     @weakify(self)
     [self.logic refreshAdviceProcessingCompleted:^(id data) {
         @strongify(self)
-        if (data[@"id"]) {
+        if (data[@"id"]&&![data[@"id"] isKindOfClass:[NSNull class]]) {
             self.isProcessing=YES;
             self.orderID=data[@"id"];
         } else {

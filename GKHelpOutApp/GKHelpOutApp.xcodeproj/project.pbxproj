@@ -179,6 +179,9 @@
 		55839656226D5D8300E7CD71 /* SendLifeCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */; };
 		55839659226D6DC600E7CD71 /* LifeCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55839658226D6DC600E7CD71 /* LifeCircleLogic.m */; };
 		5583965C226DAEEF00E7CD71 /* TLCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5583965B226DAEEF00E7CD71 /* TLCustomer.m */; };
+		558551E12303AAA300F8162E /* PSConsultationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558551E02303AAA300F8162E /* PSConsultationViewController.m */; };
+		558551E42303AAF400F8162E /* PSConsultationOtherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 558551E22303AAF400F8162E /* PSConsultationOtherTableViewCell.m */; };
+		558551E72303AB2300F8162E /* PSRemittancePayStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558551E62303AB2200F8162E /* PSRemittancePayStateViewController.m */; };
 		558BBBD12236389B00CF1122 /* RMTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BBBCE2236389A00CF1122 /* RMTimer.m */; };
 		558BBBD22236389B00CF1122 /* RMCommonTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BBBD02236389B00CF1122 /* RMCommonTimer.m */; };
 		559218DD2226813F00A5C655 /* ModifyDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559218DC2226813F00A5C655 /* ModifyDataViewController.m */; };
@@ -282,11 +285,9 @@
 		EA21CA7A221F9980007D3445 /* PSLawerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA55221F9980007D3445 /* PSLawerViewModel.m */; };
 		EA21CA7B221F9980007D3445 /* PSMyAdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */; };
 		EA21CA7C221F9980007D3445 /* PSScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5B221F9980007D3445 /* PSScoreViewController.m */; };
-		EA21CA7D221F9980007D3445 /* PSConsultationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */; };
 		EA21CA7E221F9980007D3445 /* Mine_CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5D221F9980007D3445 /* Mine_CategoryViewController.m */; };
 		EA21CA7F221F9980007D3445 /* PSConsultationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA5F221F9980007D3445 /* PSConsultationTableViewCell.m */; };
 		EA21CA80221F9980007D3445 /* PSAdviceDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA61221F9980007D3445 /* PSAdviceDetailsView.m */; };
-		EA21CA81221F9980007D3445 /* PSConsultationOtherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA63221F9980007D3445 /* PSConsultationOtherTableViewCell.m */; };
 		EA21CA82221F9980007D3445 /* PSAdviceComments.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA68221F9980007D3445 /* PSAdviceComments.m */; };
 		EA21CA83221F9980007D3445 /* PSLawersDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA6A221F9980007D3445 /* PSLawersDetails.m */; };
 		EA21CA84221F9980007D3445 /* PSConsultation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21CA6C221F9980007D3445 /* PSConsultation.m */; };
@@ -921,6 +922,11 @@
 		55839658226D6DC600E7CD71 /* LifeCircleLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeCircleLogic.m; sourceTree = "<group>"; };
 		5583965A226DAEEF00E7CD71 /* TLCustomer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLCustomer.h; sourceTree = "<group>"; };
 		5583965B226DAEEF00E7CD71 /* TLCustomer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLCustomer.m; sourceTree = "<group>"; };
+		558551E02303AAA300F8162E /* PSConsultationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationViewController.m; sourceTree = "<group>"; };
+		558551E22303AAF400F8162E /* PSConsultationOtherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationOtherTableViewCell.m; sourceTree = "<group>"; };
+		558551E32303AAF400F8162E /* PSConsultationOtherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultationOtherTableViewCell.h; sourceTree = "<group>"; };
+		558551E52303AB2200F8162E /* PSRemittancePayStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSRemittancePayStateViewController.h; sourceTree = "<group>"; };
+		558551E62303AB2200F8162E /* PSRemittancePayStateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSRemittancePayStateViewController.m; sourceTree = "<group>"; };
 		558BBBCD2236389A00CF1122 /* RMTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTimer.h; sourceTree = "<group>"; };
 		558BBBCE2236389A00CF1122 /* RMTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMTimer.m; sourceTree = "<group>"; };
 		558BBBCF2236389A00CF1122 /* RMCommonTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCommonTimer.h; sourceTree = "<group>"; };
@@ -1124,13 +1130,10 @@
 		EA21CA59221F9980007D3445 /* Mine_CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mine_CategoryViewController.h; sourceTree = "<group>"; };
 		EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMyAdviceViewController.m; sourceTree = "<group>"; };
 		EA21CA5B221F9980007D3445 /* PSScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSScoreViewController.m; sourceTree = "<group>"; };
-		EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationViewController.m; sourceTree = "<group>"; };
 		EA21CA5D221F9980007D3445 /* Mine_CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mine_CategoryViewController.m; sourceTree = "<group>"; };
 		EA21CA5F221F9980007D3445 /* PSConsultationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationTableViewCell.m; sourceTree = "<group>"; };
-		EA21CA60221F9980007D3445 /* PSConsultationOtherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultationOtherTableViewCell.h; sourceTree = "<group>"; };
 		EA21CA61221F9980007D3445 /* PSAdviceDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAdviceDetailsView.m; sourceTree = "<group>"; };
 		EA21CA62221F9980007D3445 /* PSConsultationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultationTableViewCell.h; sourceTree = "<group>"; };
-		EA21CA63221F9980007D3445 /* PSConsultationOtherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConsultationOtherTableViewCell.m; sourceTree = "<group>"; };
 		EA21CA64221F9980007D3445 /* PSAdviceDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAdviceDetailsView.h; sourceTree = "<group>"; };
 		EA21CA66221F9980007D3445 /* PSCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCustomer.h; sourceTree = "<group>"; };
 		EA21CA67221F9980007D3445 /* PSLawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLawer.h; sourceTree = "<group>"; };
@@ -3218,6 +3221,8 @@
 		EA21CA5E221F9980007D3445 /* ConsultationView */ = {
 			isa = PBXGroup;
 			children = (
+				558551E32303AAF400F8162E /* PSConsultationOtherTableViewCell.h */,
+				558551E22303AAF400F8162E /* PSConsultationOtherTableViewCell.m */,
 				EA21CB4A221FCD2B007D3445 /* PSLawerAdviceTableViewCell.h */,
 				EA21CB49221FCD2B007D3445 /* PSLawerAdviceTableViewCell.m */,
 				EA21CB4B221FCD2B007D3445 /* PSMyAdviceTableViewCell.h */,
@@ -3225,10 +3230,8 @@
 				EA21CB3B221FA99A007D3445 /* PSServiceLinkView.h */,
 				EA21CB3A221FA99A007D3445 /* PSServiceLinkView.m */,
 				EA21CA5F221F9980007D3445 /* PSConsultationTableViewCell.m */,
-				EA21CA60221F9980007D3445 /* PSConsultationOtherTableViewCell.h */,
 				EA21CA61221F9980007D3445 /* PSAdviceDetailsView.m */,
 				EA21CA62221F9980007D3445 /* PSConsultationTableViewCell.h */,
-				EA21CA63221F9980007D3445 /* PSConsultationOtherTableViewCell.m */,
 				EA21CA64221F9980007D3445 /* PSAdviceDetailsView.h */,
 			);
 			path = ConsultationView;
@@ -4626,14 +4629,16 @@
 		EAE19E96223112AD0080B0F5 /* ConsultationViewController */ = {
 			isa = PBXGroup;
 			children = (
+				558551E52303AB2200F8162E /* PSRemittancePayStateViewController.h */,
+				558551E62303AB2200F8162E /* PSRemittancePayStateViewController.m */,
 				5524C68722250F380067F437 /* LegaladviceViewController.h */,
 				5524C68822250F380067F437 /* LegaladviceViewController.m */,
 				EA21CA4F221F9980007D3445 /* PSScoreViewController.h */,
 				EA21CA50221F9980007D3445 /* PSConsultationViewController.h */,
+				558551E02303AAA300F8162E /* PSConsultationViewController.m */,
 				EA21CA58221F9980007D3445 /* PSAdviceDetailsViewController.h */,
 				EA21CA5A221F9980007D3445 /* PSMyAdviceViewController.m */,
 				EA21CA5B221F9980007D3445 /* PSScoreViewController.m */,
-				EA21CA5C221F9980007D3445 /* PSConsultationViewController.m */,
 				EA21CA76221F9980007D3445 /* PSAdviceDetailsViewController.m */,
 				EA21CA77221F9980007D3445 /* PSMyAdviceViewController.h */,
 			);
@@ -4996,7 +5001,6 @@
 				EA78F72922264BD8002D788A /* authBaseTableViewCell.m in Sources */,
 				EA6CCC05226477CB00BB2A74 /* NTESGroupedDataCollection.m in Sources */,
 				EAB03903221E817B00331569 /* NIMRobotContentConfig.m in Sources */,
-				EA21CA7D221F9980007D3445 /* PSConsultationViewController.m in Sources */,
 				EA21CAAD221F9D5E007D3445 /* PSBusinessViewController.m in Sources */,
 				55C0C77F222D238000CD2459 /* HMMessageViewController.m in Sources */,
 				5557A622221BD96500743012 /* SecondViewController.m in Sources */,
@@ -5304,6 +5308,7 @@
 				558BBBD12236389B00CF1122 /* RMTimer.m in Sources */,
 				559785A922266158007BBCC2 /* FeedLoadItemView.m in Sources */,
 				EAB03951221E8EE000331569 /* PSAlertView.m in Sources */,
+				558551E12303AAA300F8162E /* PSConsultationViewController.m in Sources */,
 				EAB038E4221E817B00331569 /* NIMPageView.m in Sources */,
 				EA21CB39221FA88E007D3445 /* PSPayment.m in Sources */,
 				EAB038EF221E817B00331569 /* NIMUsrInfoData.m in Sources */,
@@ -5369,6 +5374,7 @@
 				5557A614221BD96500743012 /* MineTableViewCell.m in Sources */,
 				5557A501221BD76300743012 /* RootNavigationController.m in Sources */,
 				EA6CCC0C226478A600BB2A74 /* NSString+NTES.m in Sources */,
+				558551E42303AAF400F8162E /* PSConsultationOtherTableViewCell.m in Sources */,
 				EAE19E78222F64DA0080B0F5 /* CustomButton.m in Sources */,
 				55F46E0D2266D8A4000D84B1 /* YBIBGestureInteractionProfile.m in Sources */,
 				EA6CCBE72264620C00BB2A74 /* NTESSettingCheckCell.m in Sources */,
@@ -5387,7 +5393,6 @@
 				EAB03922221E817B00331569 /* NIMSessionFileTransContentView.m in Sources */,
 				5557A4FA221BD76300743012 /* BaseTableViewCell.m in Sources */,
 				EAB038E1221E817B00331569 /* NIMKitMediaFetcher.m in Sources */,
-				EA21CA81221F9980007D3445 /* PSConsultationOtherTableViewCell.m in Sources */,
 				5557A615221BD96500743012 /* NickNameLbel.m in Sources */,
 				55F46D5422657540000D84B1 /* TLMomentImagesCell.m in Sources */,
 				5557A652221BD99E00743012 /* NativeCallJSVC.m in Sources */,
@@ -5398,6 +5403,7 @@
 				EA21CAAA221F9A21007D3445 /* serciceIiem.m in Sources */,
 				EA78F72322263DA8002D788A /* AssessmentTableViewCell.m in Sources */,
 				EA21CABB221F9EFD007D3445 /* PSLoadingView.m in Sources */,
+				558551E72303AB2300F8162E /* PSRemittancePayStateViewController.m in Sources */,
 				5516D0792270562300A95E3C /* LifeDetailCircleLogic.m in Sources */,
 				5557A546221BD7F500743012 /* AdPageView.m in Sources */,
 				EAE19EB5223B32E00080B0F5 /* DSSettingItem.m in Sources */,
