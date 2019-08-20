@@ -78,6 +78,10 @@
 - (void)topSelectVcView:(ZWTopSelectVcView *)topSelectVcView didSelectVc:(UIViewController *)selectVc atIndex:(int)index
 {
     NSLog(@"\n当前选中Vc %@ \n index为%d  222",selectVc,index);
+    if (index==1) {
+        [PSTipsView showTips:@"敬请期待!"];
+        return;
+    }
     selectIndex = index;
     selectViewController = selectVc;
     if (index==0) {

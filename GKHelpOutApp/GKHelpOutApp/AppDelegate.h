@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (assign, nonatomic) BOOL IS_NetWork; //是否有网
+
 @property (strong, nonatomic) MainTabBarController *mainTabBar;
 
 

@@ -175,6 +175,7 @@
 		555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 555A564B2228E58300451044 /* ModifyNicknameViewController.m */; };
 		555C118F222E702E00132E4F /* LawUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C118E222E702E00132E4F /* LawUserInfo.m */; };
 		555C1193222E771500132E4F /* HMAccontBalaceLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C1192222E771500132E4F /* HMAccontBalaceLogic.m */; };
+		556974CC230B8FCB00A20D3F /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 556974CB230B8FCB00A20D3F /* KGStatusBar.m */; };
 		557D9E0A226856E200F5D526 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */; };
 		55839656226D5D8300E7CD71 /* SendLifeCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */; };
 		55839659226D6DC600E7CD71 /* LifeCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55839658226D6DC600E7CD71 /* LifeCircleLogic.m */; };
@@ -914,6 +915,8 @@
 		555C118E222E702E00132E4F /* LawUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawUserInfo.m; sourceTree = "<group>"; };
 		555C1191222E771500132E4F /* HMAccontBalaceLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMAccontBalaceLogic.h; sourceTree = "<group>"; };
 		555C1192222E771500132E4F /* HMAccontBalaceLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMAccontBalaceLogic.m; sourceTree = "<group>"; };
+		556974CA230B8FCB00A20D3F /* KGStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGStatusBar.h; sourceTree = "<group>"; };
+		556974CB230B8FCB00A20D3F /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
 		557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		557D9E09226856E100F5D526 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		55839654226D5D8300E7CD71 /* SendLifeCircleLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendLifeCircleLogic.h; sourceTree = "<group>"; };
@@ -2048,6 +2051,7 @@
 		5557A505221BD7BD00743012 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				556974C9230B8FB600A20D3F /* KGStatusBar */,
 				552924F92237A98C00B4899A /* WXZtipView */,
 				558BBBCC2236387800CF1122 /* RMTimer */,
 				55050AB322323F0D00E9635B /* imagePicker */,
@@ -2738,6 +2742,15 @@
 				55050AAE2232016400E9635B /* HMGetCashLogic.m */,
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		556974C9230B8FB600A20D3F /* KGStatusBar */ = {
+			isa = PBXGroup;
+			children = (
+				556974CA230B8FCB00A20D3F /* KGStatusBar.h */,
+				556974CB230B8FCB00A20D3F /* KGStatusBar.m */,
+			);
+			path = KGStatusBar;
 			sourceTree = "<group>";
 		};
 		557D9E07226856C400F5D526 /* UINavigationBarLib */ = {
@@ -5045,6 +5058,7 @@
 				EA6CCBC7226451BA00BB2A74 /* NTESContactAddFriendViewController.m in Sources */,
 				EAB038D6221E817B00331569 /* NIMInputView.m in Sources */,
 				EAB03905221E817B00331569 /* NIMLocationContentConfig.m in Sources */,
+				556974CC230B8FCB00A20D3F /* KGStatusBar.m in Sources */,
 				EA21CA8A221F9980007D3445 /* PSAdviceDetailsViewController.m in Sources */,
 				5557A5FD221BD96500743012 /* LoginViewController.m in Sources */,
 				EAB0392E221E817C00331569 /* NIMExtensionHelper.m in Sources */,

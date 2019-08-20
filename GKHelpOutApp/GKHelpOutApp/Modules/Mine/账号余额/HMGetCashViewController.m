@@ -71,7 +71,7 @@
              [PSTipsView showTips:@"提现金额不能大于账户总余额"];
             return;
         }
-        float actual = [x floatValue]*0.75;
+        float actual = [x floatValue]*0.65;
         if ([x floatValue]>=1) {
             NSString *actualMoney = [NSString stringWithFormat:@"实际到账¥%.1f",actual];
             self.cashRightLab.text = actualMoney;
@@ -88,7 +88,7 @@
     msgLab.font = FFont1;
     msgLab.textColor = CFontColor1;
     msgLab.textAlignment = NSTextAlignmentLeft;
-    msgLab.text=@"额外扣除25%平台佣金费";
+    msgLab.text=@"额外扣除35%平台佣金费";
     [self.bgView addSubview:msgLab];
     
     self.msgCodeLab.frame = CGRectMake(spacex,self.bgView.bottom+8,KScreenWidth-2*spacex,40);
@@ -191,7 +191,15 @@
                 KPostNotification(KNotificationGetCashSuccess, nil);
                 
             } failed:^(NSError *error) {
-                [PSTipsView showTips:@"提现失败"];
+                NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+                NSString *message = @"";
+                if (data) {
+                    id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                    message = body[@"message"];
+                    NSLog(@"%@",body);
+                }
+                
+                [PSTipsView showTips:message.length>0?message:@"提现失败!"];
             }];
         } else {
             [PSTipsView showTips:tips];

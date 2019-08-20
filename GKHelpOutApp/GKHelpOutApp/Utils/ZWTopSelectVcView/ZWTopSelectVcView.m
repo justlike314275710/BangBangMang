@@ -535,6 +535,7 @@ typedef enum{
     [self.viewTop addSubview:btn];
 }
 -(void)underViewMoveTo:(int)index withAnimation:(BOOL)isAnimation{
+    return;
     NSInteger spaceX = 100/self.contentVC.childViewControllers.count/2;
     if (isAnimation) {
         [UIView animateWithDuration:0.7 animations:^{
@@ -721,7 +722,7 @@ typedef enum{
 //手势实现内容
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer{
     
-    //如果往右滑
+ 
     
     if(recognizer.direction==UISwipeGestureRecognizerDirectionRight) {
         self.btnIndex--;

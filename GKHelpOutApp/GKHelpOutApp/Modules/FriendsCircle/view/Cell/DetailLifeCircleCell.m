@@ -7,6 +7,7 @@
 //
 
 #import "DetailLifeCircleCell.h"
+#import "NSString+JsonString.h"
 @interface DetailLifeCircleCell()
 
 @property(nonatomic,strong)UIButton *avatarView;
@@ -87,8 +88,15 @@
     // 头像
     NSString *url  = AvaterImageWithUsername(moment.username);
     [self.avatarView tt_setImageWithURL:[NSURL URLWithString:url] forState:UIControlStateNormal placeholderImage:IMAGE_NAMED(DEFAULT_AVATAR_PATH)];
+    
+    NSString *customerName = moment.customerName;
+    if (curUser.username.length>10&&!customerName) {
+        NSString *phoneNumber = [NSString changeTelephone:help_userManager.curUserInfo.username];
+        customerName = phoneNumber;
+    }
+    
     // 用户名
-    self.nameView.zz_make.title(moment.customerName);
+    self.nameView.zz_make.title(customerName);
     
     // 时间
     [self.dateLabel setText:moment.createdTime];
