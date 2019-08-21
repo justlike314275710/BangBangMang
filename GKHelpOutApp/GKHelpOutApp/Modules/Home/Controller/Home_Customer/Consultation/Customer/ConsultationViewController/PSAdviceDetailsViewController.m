@@ -287,6 +287,7 @@
         }else{
             [self.navigationController popViewControllerAnimated:NO];
             self.payView.status = PSPaySuccessful;
+             KPostNotification(KNotificationOrderStateChange, nil);
 
         }
     }];
