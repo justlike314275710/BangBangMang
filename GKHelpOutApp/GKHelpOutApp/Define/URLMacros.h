@@ -85,6 +85,9 @@
 //获取认证授权token // 刷新认证授权token
 #define URL_get_oauth_token @"/oauth/token"
 
+//校验短信验证码接口
+#define URL_post_sms_verification @"/sms/verification-codes/verification"
+
 //修改头像
 #define URL_upload_avatar @"/users/me/avatar"
 

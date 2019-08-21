@@ -136,43 +136,24 @@
 //MARK:判断手机号是否正确
 - (void)requestData:(NSDictionary*)params {
     
-    NSString*uid=@"consumer.m.app";
-    NSString*cipherText=@"1688c4f69fc6404285aadbc996f5e429";
-    NSString *part1 = [NSString stringWithFormat:@"%@:%@",uid,cipherText];
-    NSData   *data = [part1 dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *stringBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSString * authorization = [NSString stringWithFormat:@"Basic %@",stringBase64];
-    NSString*url=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_get_oauth_token];
-    NSMutableURLRequest *formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:params error:nil];
-    [formRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8"forHTTPHeaderField:@"Content-Type"];
-    [formRequest setValue:authorization forHTTPHeaderField:@"Authorization"];
-    AFHTTPSessionManager*manager = [AFHTTPSessionManager manager];
-    AFJSONResponseSerializer* responseSerializer = [AFJSONResponseSerializer serializer];
-    [responseSerializer setAcceptableContentTypes:[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/plain",nil]];
-    manager.responseSerializer= responseSerializer;
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:formRequest uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    
+    NSString*url1=[NSString stringWithFormat:@"%@%@",EmallHostUrl,URL_post_sms_verification];
+    NSDictionary*parameters=@{@"phoneNumber":params[@"username"],@"code":params[@"password"]};
+    [PPNetworkHelper setRequestSerializer:PPRequestSerializerJSON];
+    [PPNetworkHelper POST:url1 parameters:parameters success:^(id responseObject) {
+      
+        ModifyNewPhoneNumberViewController *ModfiyNewVC = [[ModifyNewPhoneNumberViewController alloc] init];
+        [self.navigationController pushViewController:ModfiyNewVC animated:YES];
+  
+    } failure:^(NSError *error) {
+        NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        if (data) {
+            id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSString*message=body[@"message"];
+            [PSTipsView showTips:message?message:@"短信验证码不匹配"];
         
-        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-        NSInteger responseStatusCode = [httpResponse statusCode];
-        if (error) {
-            NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-            if (data) {
-                id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                NSString*code=body[@"error"];
-                NSString*error_description = body[@"error_description"];
-                [PSTipsView showTips:@"验证码错误"];
-                
-            }
-        }
-        else {
-            if (responseStatusCode == 200) {
-                ModifyNewPhoneNumberViewController *ModfiyNewVC = [[ModifyNewPhoneNumberViewController alloc] init];
-                [self.navigationController pushViewController:ModfiyNewVC animated:YES];
-            }
         }
     }];
-    
-    [dataTask resume];
 }
 
 //MARK:获取验证码

@@ -63,8 +63,13 @@
          PSFWriteFeedSuccessViewController *storageViewController = [[PSFWriteFeedSuccessViewController alloc] initWithViewModel:self.viewModel];
          [self.navigationController pushViewController:storageViewController animated:YES];
      } failed:^(NSError *error) {
-         NSString *msg = @"提交失败";
-         [PSTipsView showTips:msg];
+         NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+         if (data) {
+             id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+             NSString*code=body[@"message"];
+             [PSTipsView showTips:code?code:@"提交失败"];
+             
+         }
      }];
 }
 
