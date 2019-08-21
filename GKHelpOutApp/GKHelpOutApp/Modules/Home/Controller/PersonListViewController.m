@@ -67,14 +67,14 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //是设置昵称
-    if (!help_userManager.curUserInfo.nickname) {
-        if (!help_userManager.curUserInfo.username) {
-            [help_userManager logout:nil];
-        } else {
-            UploadAvatarViewController *UploadVC = [[UploadAvatarViewController alloc] init];
-            [self presentViewController:UploadVC animated:YES completion:nil];
-        }
-    }
+//    if (!help_userManager.curUserInfo.nickname) {
+//        if (!help_userManager.curUserInfo.username) {
+//            [help_userManager logout:nil];
+//        } else {
+//            UploadAvatarViewController *UploadVC = [[UploadAvatarViewController alloc] init];
+//            [self presentViewController:UploadVC animated:YES completion:nil];
+//        }
+//    }
 }
 #pragma mark ————— 生活圈底部tabbar —————
 -(void)refreshLifeTabbar {
