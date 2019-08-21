@@ -427,7 +427,6 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
     }];
 }
 
-
 #pragma mark ————— 获取oauthtoken
 - (OauthInfo *)loadOuathInfo {
     YYCache *cache = [[YYCache alloc] initWithName:KOauthModelCache];
@@ -445,6 +444,7 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
 }
 #pragma mark ————— 退出登录 —————
 - (void)logout:(void (^)(BOOL, NSString *))completion{
+    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     [[UIApplication sharedApplication] unregisterForRemoteNotifications];
