@@ -23,8 +23,10 @@
 #import "PSLawerAdviceTableViewCell.h"
 #import "LegalAdviceCell.h"
 
+
 @interface PSMyAdviceViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property (nonatomic, strong) UITableView *honorTableView;
+
 @end
 
 @implementation PSMyAdviceViewController
@@ -136,6 +138,20 @@
     
 }
 
+-(void)chattingAcion :(NSString*)cid{
+     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
+    [viewModel GETProcessedCompleted:cid :^(id data) {
+        [PSTipsView showTips:@"模拟通话成功!"];
+        [self refreshData];
+    } failed:^(NSError *error) {
+         [PSTipsView showTips:@"模拟通话失败!"];
+    }];
+    
+    
+   
+}
+
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
@@ -153,6 +169,9 @@
 //    PSMyAdviceTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"PSMyAdviceTableViewCell"];
     [self builedModel:model];
     [cell fillWithModel:model];
+    [cell.chatBtn bk_whenTapped:^{
+        [self chattingAcion:model.cid];
+    }];
     return cell;
     
 }

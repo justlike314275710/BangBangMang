@@ -115,7 +115,9 @@
             [self p_pushDetalisViewController:orderID];
         }
         else{
+            [self getProcessing];
             [self refreshData];
+            
             
         }
     }];
