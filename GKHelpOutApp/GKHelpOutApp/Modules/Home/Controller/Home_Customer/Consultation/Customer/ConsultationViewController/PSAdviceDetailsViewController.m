@@ -149,12 +149,19 @@
 
 -(void)chatAtion{
      PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
-    [viewModel GETProcessedCompleted:^(id data) {
+    [viewModel GETProcessedCompleted:self.model.cid :^(id data) {
         [PSTipsView showTips:@"模拟通话完成!"];
         [self refreshData];
     } failed:^(NSError *error) {
          [PSTipsView showTips:@"模拟通话失败!"];
     }];
+    
+//    [viewModel GETProcessedCompleted:^(id data) {
+//        [PSTipsView showTips:@"模拟通话完成!"];
+//        [self refreshData];
+//    } failed:^(NSError *error) {
+//         [PSTipsView showTips:@"模拟通话失败!"];
+//    }];
     /*
     //viewModel.chatMessageAccount
     PSConsultationViewModel *viewModel =(PSConsultationViewModel *)self.viewModel;
@@ -320,7 +327,8 @@
         self.detailsView.nicknameLabel.text=self.layerModel.name?self.layerModel.name:@"";
         self.detailsView.starsControl.score=[self.layerModel.rate integerValue];
         if (self.layerModel.username) {
-            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,self.layerModel.username];
+//            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,self.layerModel.username];
+            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/by-username/avatar?username=%@",EmallHostUrl,self.layerModel.username];
             [self.detailsView.avatarView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
         }
         else{
@@ -343,14 +351,22 @@
         } else if([self.model.paymentStatus isEqualToString:@"待支付"]) {
             [self.detailsView.payStatusLable setTextColor:UIColorFromRGB(255,138,7)];
         }
-        
-        if (self.layerModel.avatarFileId) {
-            NSString*imageUrl=[NSString stringWithFormat:@"%@/files/%@",EmallHostUrl,self.layerModel.avatarFileId];
+        if (self.layerModel.username) {
+            //            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,self.layerModel.username];
+            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/by-username/avatar?username=%@",EmallHostUrl,self.layerModel.username];
             [self.detailsView.avatarView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
         }
         else{
             [self setupHeadImg:self.model.category];
         }
+        
+//        if (self.layerModel.avatarFileId) {
+//            NSString*imageUrl=[NSString stringWithFormat:@"%@/files/%@",EmallHostUrl,self.layerModel.avatarFileId];
+//            [self.detailsView.avatarView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+//        }
+//        else{
+//            [self setupHeadImg:self.model.category];
+//        }
     }
     else if ([self.model.status isEqualToString:@"已关闭"]){
          self.detailsView.categoryButton.hidden=YES;
@@ -366,13 +382,21 @@
             [self.detailsView.payStatusLable setTextColor:UIColorFromRGB(255,138,7)];
         }
         
-        if (self.layerModel.avatarFileId) {
-            NSString*imageUrl=[NSString stringWithFormat:@"%@/files/%@",EmallHostUrl,self.layerModel.avatarFileId];
+        if (self.layerModel.username) {
+            //            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,self.layerModel.username];
+            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/by-username/avatar?username=%@",EmallHostUrl,self.layerModel.username];
             [self.detailsView.avatarView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
-            
-        } else {
+        }
+        else{
             [self setupHeadImg:self.model.category];
         }
+//        if (self.layerModel.avatarFileId) {
+//            NSString*imageUrl=[NSString stringWithFormat:@"%@/files/%@",EmallHostUrl,self.layerModel.avatarFileId];
+//            [self.detailsView.avatarView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+//
+//        } else {
+//            [self setupHeadImg:self.model.category];
+//        }
     }
     else if ([self.model.status isEqualToString:@"待接单"]){
         self.detailsView.starsControl.hidden=YES;
@@ -390,15 +414,23 @@
         } else if([self.model.paymentStatus isEqualToString:@"待支付"]) {
             [self.detailsView.payStatusLable setTextColor:UIColorFromRGB(255,138,7)];
         }
-        
-        if (self.layerModel.avatarFileId) {
-            
-            NSString*imageUrl=[NSString stringWithFormat:@"%@/files/%@",EmallHostUrl,self.layerModel.avatarFileId];
+        if (self.layerModel.username) {
+            //            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,self.layerModel.username];
+            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/by-username/avatar?username=%@",EmallHostUrl,self.layerModel.username];
             [self.detailsView.avatarView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
-            
-        } else {
+        }
+        else{
             [self setupHeadImg:self.model.category];
         }
+        
+//        if (self.layerModel.avatarFileId) {
+//
+//            NSString*imageUrl=[NSString stringWithFormat:@"%@/files/%@",EmallHostUrl,self.layerModel.avatarFileId];
+//            [self.detailsView.avatarView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+//
+//        } else {
+//            [self setupHeadImg:self.model.category];
+//        }
     }
     
     else {
@@ -416,15 +448,23 @@
         } else if([self.model.paymentStatus isEqualToString:@"待支付"]) {
             [self.detailsView.payStatusLable setTextColor:UIColorFromRGB(255,138,7)];
         }
-        
-        if (self.layerModel.avatarFileId) {
-
-            NSString*imageUrl=[NSString stringWithFormat:@"%@/files/%@",EmallHostUrl,self.layerModel.avatarFileId];
+        if (self.layerModel.username) {
+            //            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,self.layerModel.username];
+            NSString*imageUrl=[NSString stringWithFormat:@"%@/users/by-username/avatar?username=%@",EmallHostUrl,self.layerModel.username];
             [self.detailsView.avatarView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
-            
-        } else {
+        }
+        else{
             [self setupHeadImg:self.model.category];
         }
+        
+//        if (self.layerModel.avatarFileId) {
+//
+//            NSString*imageUrl=[NSString stringWithFormat:@"%@/files/%@",EmallHostUrl,self.layerModel.avatarFileId];
+//            [self.detailsView.avatarView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+//            
+//        } else {
+//            [self setupHeadImg:self.model.category];
+//        }
         
     }
     [self p_statusUI:self.model.status];

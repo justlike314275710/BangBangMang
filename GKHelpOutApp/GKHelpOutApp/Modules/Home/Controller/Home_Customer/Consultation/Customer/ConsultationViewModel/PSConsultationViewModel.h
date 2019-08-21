@@ -60,5 +60,8 @@
 
 //-(void)requestPubicAvatarCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;//获取公共平台头像
 
--(void)GETProcessedCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;//模拟通话
+
+-(void)GETProcessedCompleted:(NSString*)cid :(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+//
+//-(void)GETProcessedCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;//模拟通话
 @end
