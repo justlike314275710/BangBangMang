@@ -850,22 +850,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Home/Logic/HMMessageLogic.m"
-            timestampString = "587982709.2879601"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "-requestMyAdviceCompleted:failed:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Utils/ZWTopSelectVcView/ZWTopSelectVcView.m"
             timestampString = "588064242.417793"
             startingColumnNumber = "9223372036854775807"
@@ -921,38 +905,6 @@
             startingLineNumber = "629"
             endingLineNumber = "629"
             landmarkName = "-btnHeadClickType:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Home/Logic/HMMessageLogic.m"
-            timestampString = "588059300.462536"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "-refreshMesagaeListCompleted:failed:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Home/Logic/HMMessageLogic.m"
-            timestampString = "588059302.012722"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-loadMyMessageListCompleted:failed:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
