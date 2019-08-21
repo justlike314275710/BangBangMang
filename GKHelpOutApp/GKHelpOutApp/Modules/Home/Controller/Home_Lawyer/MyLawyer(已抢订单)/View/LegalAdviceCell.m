@@ -129,7 +129,8 @@
         self.noRead = YES;
         [_stateImg setImage:[UIImage imageNamed:@"已接单"]];
         //[_bgview addSubview: self.videoButton];
-       self.noRead = NO;
+        self.noRead = NO;
+        self.chatBtn.hidden = NO;
         
     }
     else if([model.status isEqualToString:@"PROCESSING"]){
@@ -164,7 +165,7 @@
         [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
         NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
         [SDWebImageManager.sharedManager.imageDownloader setValue:token forHTTPHeaderField:@"Authorization"];
-        NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,lawyer.username];
+        NSString*imageUrl=[NSString stringWithFormat:@"%@/users/by-username/avatar?username=%@",EmallHostUrl,lawyer.username];
         [self.avatarImg sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
         
         

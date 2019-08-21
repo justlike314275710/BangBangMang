@@ -509,9 +509,9 @@
     }];
 }
 
--(void)GETProcessedCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
+-(void)GETProcessedCompleted:(NSString*)cid :(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback{
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
-    NSString *url =[NSString stringWithFormat:@"%@/notifications/netease/%@/processed",ConsultationHostUrl,self.cid];
+    NSString *url =[NSString stringWithFormat:@"%@/notifications/netease/%@/processed",ConsultationHostUrl,cid];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         

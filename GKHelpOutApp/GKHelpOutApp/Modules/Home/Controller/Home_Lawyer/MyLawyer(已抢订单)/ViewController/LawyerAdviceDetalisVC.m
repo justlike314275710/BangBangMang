@@ -174,7 +174,9 @@
     self.detailsView.moneylable.text=NSStringFormat(@"¥%@",self.model.reward);
     self.detailsView.numberlable.text=NSStringFormat(@"编号:%@",self.model.number);
     self.detailsView.timelable.text=[NSString timeChange:self.model.createdTime];
-    NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,self.customerModel.username];
+//    NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,self.customerModel.username];
+    
+    NSString*imageUrl=[NSString stringWithFormat:@"%@/users/by-username/avatar?username=%@",EmallHostUrl,self.customerModel.username];
     [self.detailsView.avaterImage sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"登录－头像"]];
     [self.myScrollview addSubview:self.paymentView];
     
