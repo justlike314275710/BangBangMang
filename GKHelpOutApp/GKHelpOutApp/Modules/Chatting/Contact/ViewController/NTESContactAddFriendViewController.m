@@ -218,16 +218,22 @@
             
         }
     } failure:^(NSError *error) {
-        if (self.searchController.searchResultsController) {
-            
-            TestResultTableViewController *vc = (TestResultTableViewController *)self.searchController.searchResultsController;
-            vc.searchResults = @[@"该用户不存在"];
-            vc.tableView.separatorStyle=NO;
-             vc.tableView.backgroundColor=[UIColor groupTableViewBackgroundColor];
-            [vc.tableView reloadData];
+        if ([error.userInfo[@"code"] isEqualToString:@"customer.isNotExisted"]) {
+            if (self.searchController.searchResultsController) {
+                TestResultTableViewController *vc = (TestResultTableViewController *)self.searchController.searchResultsController;
+                vc.searchResults = @[@"该用户不存在"];
+                vc.tableView.separatorStyle=NO;
+                vc.tableView.backgroundColor=[UIColor groupTableViewBackgroundColor];
+                [vc.tableView reloadData];
+            }
         }
-
+        else{
+            [PSAlertView showWithTitle:@"提示" message:@"网络无法连接" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
+            } buttonTitles:@"确定", nil];
+        }
+        
     }];
+
 }
 
 

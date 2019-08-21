@@ -13,6 +13,7 @@
 #import "IQKeyboardManager.h"
 #import "WXApi.h"
 #import "PSPayCenter.h"
+#import "KGStatusBar.h"
 
 @implementation AppDelegate (AppService)
 
@@ -217,19 +218,34 @@
         switch (networkStatus) {
                 // 未知网络
             case PPNetworkStatusUnknown:
+            {
                 DLog(@"网络环境：未知网络");
+                [KGStatusBar dismiss];
+                self.IS_NetWork = YES;
                 // 无网络
+            }
             case PPNetworkStatusNotReachable:
+            {
                 DLog(@"网络环境：无网络");
                 KPostNotification(KNotificationNetWorkStateChange, @NO);
+                NSString *msg =  @"当前网络不可用,请检查你的网络设置";
+                [KGStatusBar showWithStatus:msg];
+                self.IS_NetWork = NO;
+            }
                 break;
                 // 手机网络
             case PPNetworkStatusReachableViaWWAN:
+            {
                 DLog(@"网络环境：手机自带网络");
+                [KGStatusBar dismiss];
                 // 无线网络
+                self.IS_NetWork = YES;
+            }
             case PPNetworkStatusReachableViaWiFi:
                 DLog(@"网络环境：WiFi");
+                [KGStatusBar dismiss];
                 KPostNotification(KNotificationNetWorkStateChange, @YES);
+                self.IS_NetWork = YES;
                 break;
         }
         

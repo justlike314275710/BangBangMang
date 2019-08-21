@@ -85,6 +85,9 @@
 //获取认证授权token // 刷新认证授权token
 #define URL_get_oauth_token @"/oauth/token"
 
+//校验短信验证码接口
+#define URL_post_sms_verification @"/sms/verification-codes/verification"
+
 //修改头像
 #define URL_upload_avatar @"/users/me/avatar"
 
@@ -135,8 +138,6 @@
 
 //登录注册
 #define URL_user_login @"/families/validTourist"
-
-
 //自动登录
 #define URL_user_auto_login @"/api/autoLogin"
 
@@ -164,7 +165,6 @@
 #pragma mark - ——————— 意见反馈 ————————
 //新增加意见反馈
 #define URL_feedbacks_add     @"/feedbacks"
-
 
 #pragma mark - ——————— 法律咨询 ————————
 
