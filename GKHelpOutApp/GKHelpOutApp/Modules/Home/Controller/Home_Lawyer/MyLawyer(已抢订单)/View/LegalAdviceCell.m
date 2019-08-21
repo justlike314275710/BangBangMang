@@ -67,7 +67,7 @@
     
     
     [bgView addSubview:self.chatBtn];
-    self.chatBtn.frame = CGRectMake(KScreenWidth-90,_timeLab.bottom-3,66,24);
+    self.chatBtn.frame = CGRectMake(KScreenWidth-80,_timeLab.bottom-3,66,24);
 
      [bgView addSubview:self.lawyerMoneyLab];
     self.lawyerMoneyLab.frame=CGRectMake(KScreenWidth-90, _moneyLab.y, 66, 12);
@@ -126,11 +126,12 @@
         
     }
     else if ([model.status isEqualToString:@"ACCEPTED"]){
-        self.noRead = YES;
+        //self.noRead = YES;
         [_stateImg setImage:[UIImage imageNamed:@"已接单"]];
         //[_bgview addSubview: self.videoButton];
         self.noRead = NO;
         self.chatBtn.hidden = NO;
+        self.detailLab.hidden=YES;
         
     }
     else if([model.status isEqualToString:@"PROCESSING"]){
@@ -215,7 +216,7 @@
 - (UIButton *)chatBtn {
     if (!_chatBtn) {
         _chatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_chatBtn setBackgroundImage:IMAGE_NAMED(@"立即沟通底") forState:UIControlStateNormal];
+        [_chatBtn setBackgroundImage:IMAGE_NAMED(@"立即沟通底") forState:UIControlStateNormal];
         [_chatBtn setTitle:@"立即沟通" forState:UIControlStateNormal];
         _chatBtn.titleLabel.textColor = CFontColor_BtnTitle;
         _chatBtn.titleLabel.font = SFFont;
