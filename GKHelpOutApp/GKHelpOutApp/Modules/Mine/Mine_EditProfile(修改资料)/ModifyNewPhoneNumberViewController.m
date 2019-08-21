@@ -156,7 +156,7 @@
         NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
         if (ValidData(data)) {
             id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSString*code=body[@"code"];
+            //NSString*code=body[@"code"];
             NSString*message=body[@"message"];
             [PSTipsView showTips:message];
         }
