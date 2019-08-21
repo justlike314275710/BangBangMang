@@ -25,6 +25,8 @@
 		551AF6B72231166A006AB1A0 /* HMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B62231166A006AB1A0 /* HMMessageModel.m */; };
 		551AF6BA223119B2006AB1A0 /* NSString+JsonString.m in Sources */ = {isa = PBXBuildFile; fileRef = 551AF6B9223119B2006AB1A0 /* NSString+JsonString.m */; };
 		55249100230CF4C0008102C2 /* XXAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552490FE230CF4C0008102C2 /* XXAlertView.m */; };
+		55249102230D37D1008102C2 /* LoginViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55249101230D37D1008102C2 /* LoginViewControllerTests.m */; };
+		55249104230D3A0F008102C2 /* LoginLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55249103230D3A0F008102C2 /* LoginLogicTests.m */; };
 		5524C68922250F380067F437 /* LegaladviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68822250F380067F437 /* LegaladviceViewController.m */; };
 		5524C68C22250F6E0067F437 /* CounselingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68B22250F6E0067F437 /* CounselingViewController.m */; };
 		5524C6922225106B0067F437 /* ZWTopSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524C68F2225106B0067F437 /* ZWTopSelectButton.m */; };
@@ -658,6 +660,8 @@
 		551AF6B9223119B2006AB1A0 /* NSString+JsonString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+JsonString.m"; sourceTree = "<group>"; };
 		552490FE230CF4C0008102C2 /* XXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXAlertView.m; sourceTree = "<group>"; };
 		552490FF230CF4C0008102C2 /* XXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXAlertView.h; sourceTree = "<group>"; };
+		55249101230D37D1008102C2 /* LoginViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewControllerTests.m; sourceTree = "<group>"; };
+		55249103230D3A0F008102C2 /* LoginLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginLogicTests.m; sourceTree = "<group>"; };
 		5524C68722250F380067F437 /* LegaladviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LegaladviceViewController.h; sourceTree = "<group>"; };
 		5524C68822250F380067F437 /* LegaladviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegaladviceViewController.m; sourceTree = "<group>"; };
 		5524C68A22250F6E0067F437 /* CounselingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CounselingViewController.h; sourceTree = "<group>"; };
@@ -1918,8 +1922,10 @@
 		5557A4A4221BB46E00743012 /* GKHelpOutAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */,
 				5557A4A7221BB46E00743012 /* Info.plist */,
+				5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */,
+				55249101230D37D1008102C2 /* LoginViewControllerTests.m */,
+				55249103230D3A0F008102C2 /* LoginLogicTests.m */,
 			);
 			path = GKHelpOutAppTests;
 			sourceTree = "<group>";
@@ -5442,6 +5448,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55249104230D3A0F008102C2 /* LoginLogicTests.m in Sources */,
+				55249102230D37D1008102C2 /* LoginViewControllerTests.m in Sources */,
 				5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
