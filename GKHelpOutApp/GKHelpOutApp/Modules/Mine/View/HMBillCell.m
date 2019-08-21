@@ -51,6 +51,8 @@
         self.titleLab.text = @"法律咨询退费";
     } else if([model.type isEqualToString:@"WITHDRAW"]) {
         self.titleLab.text = @"账户提现";
+    } else if([model.type isEqualToString:@"REWARD"]) {
+        self.titleLab.text = @"赏金";
     }
     self.moneylab.text = model.amount;
 //    self.dataLab.text = model.successTime;

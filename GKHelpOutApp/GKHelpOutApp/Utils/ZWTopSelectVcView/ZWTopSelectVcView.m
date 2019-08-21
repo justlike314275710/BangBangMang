@@ -623,6 +623,10 @@ typedef enum{
 }
 -(void)btnHeadClickType:(ZWTopSelectButton *)btn
 {
+    if (btn.index==1) {
+        [PSTipsView showTips:@"敬请期待"];
+        return;
+    }
     self.btnIndex=(int)btn.index;
     [self.showVC.view removeFromSuperview];
     self.newindex=[btn.superview.subviews indexOfObject:btn];
@@ -635,9 +639,7 @@ typedef enum{
     
     
     
-    
     //  NSLog(@"%d --init222",self.btnIndex);
-    
     
     [self setupActionState:self.isCloseAnimation];
     
@@ -707,10 +709,7 @@ typedef enum{
         
         [self.showVC.view addGestureRecognizer:self.recognizerLeft ];
         
-        
-        
-        
-        
+
         self.recognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
         
         [self.recognizerRight  setDirection:(UISwipeGestureRecognizerDirectionRight)];
