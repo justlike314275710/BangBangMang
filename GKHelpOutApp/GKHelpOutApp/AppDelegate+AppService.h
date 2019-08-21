@@ -32,7 +32,6 @@
 //注册第三方库
 - (void)registerThirdParty;
 
-
 //单例
 + (AppDelegate *)shareAppDelegate;
 

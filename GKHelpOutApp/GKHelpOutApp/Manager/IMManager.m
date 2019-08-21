@@ -10,6 +10,7 @@
 #import "NTESCellLayoutConfig.h"
 #import "NTESAttachmentDecoder.h"
 #import "ZQLocalNotification.h"
+#import "XXAlertView.h"
 @interface IMManager()<NIMLoginManagerDelegate,NIMChatManagerDelegate,NIMSystemNotificationManagerDelegate,NIMNetCallManagerDelegate>
 //@interface IMManager()
 @property (nonatomic, strong) NIMSession *session;
@@ -73,6 +74,16 @@ SINGLETON_FOR_CLASS(IMManager);
             case NIMKickReasonByClient:
             case NIMKickReasonByClientManually:{
                 reason = @"你的帐号被踢出下线，请注意帐号信息安全";
+                NSString*determine=NSLocalizedString(@"determine", @"确定");
+                NSString*Tips=NSLocalizedString(@"Tips", @"提示");
+                NSString*pushed_off_line=NSLocalizedString(@"pushed_off_line", @"您的账号已在其他设备登陆,已被挤下线");
+                XXAlertView*alert=[[XXAlertView alloc]initWithTitle:Tips message:pushed_off_line sureBtn:determine cancleBtn:nil];
+                alert.clickIndex = ^(NSInteger index) {
+                    if (index==2) {
+                        [help_userManager logout:nil];
+                    }
+                };
+                [alert show];
                 break;
             }
             case NIMKickReasonByServer:
