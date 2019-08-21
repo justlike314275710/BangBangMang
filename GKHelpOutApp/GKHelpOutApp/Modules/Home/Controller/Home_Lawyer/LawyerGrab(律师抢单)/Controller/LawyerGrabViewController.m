@@ -126,7 +126,7 @@
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     self.headerView=[PSLawyerView new];
     [self.view addSubview:self.headerView];
-    [self.headerView.avatarView sd_setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] placeholderImage:[UIImage imageWithColor:KGrayColor]];
+    [self.headerView.avatarView sd_setImageWithURL:[NSURL URLWithString:help_userManager.curUserInfo.avatar] placeholderImage:IMAGE_NAMED(@"登录－头像")];
     self.headerView.nicknameLabel.text=help_userManager.lawUserInfo.name;
     self.headerView.addressLable.text=NSStringFormat(@"执业律所:%@",help_userManager.lawUserInfo.lawOffice);
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {

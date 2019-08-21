@@ -20,44 +20,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationViewController/PSAdviceDetailsViewController.m"
-            timestampString = "588067187.882809"
+            timestampString = "588069563.246015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-chatAtion"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationViewController/PSAdviceDetailsViewController.m"
-            timestampString = "588067188.988701"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "-chatAtion"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationViewController/PSAdviceDetailsViewController.m"
-            timestampString = "588067197.363318"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "682"
-            endingLineNumber = "682"
+            startingLineNumber = "622"
+            endingLineNumber = "622"
             landmarkName = "-p_statusUI:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationViewController/PSAdviceDetailsViewController.m"
+            timestampString = "588069612.099409"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
+            landmarkName = "-renderContents"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationViewController/PSAdviceDetailsViewController.m"
+            timestampString = "588069613.4850971"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
+            landmarkName = "-renderContents"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationViewController/PSAdviceDetailsViewController.m"
+            timestampString = "588069634.3543611"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
+            landmarkName = "-renderContents"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
