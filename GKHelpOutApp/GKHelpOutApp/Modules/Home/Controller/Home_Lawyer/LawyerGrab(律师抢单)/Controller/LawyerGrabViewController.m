@@ -198,8 +198,9 @@
     cell.lawyerMoneyLab.text=NSStringFormat(@"¥%@", grabModel.reward);
     [self builedModel:grabModel];
      cell.typeLab.text=grabModel.category;
-    NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,customer.username];
-    [ cell.avatarImg sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:IMAGE_NAMED(@"lawHead")];
+//    NSString*imageUrl=[NSString stringWithFormat:@"%@/users/%@/avatar",EmallHostUrl,customer.username];
+      NSString*imageUrl=[NSString stringWithFormat:@"%@/users/by-username/avatar?username=%@",EmallHostUrl,customer.username];
+    [ cell.avatarImg sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:IMAGE_NAMED(@"登录－头像")];
     cell.noRead=NO;
     cell.stateImg.hidden=YES;
     cell.detailLab.hidden = YES;
