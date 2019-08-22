@@ -28,6 +28,13 @@
 
 @implementation MyConsultationViewController
 
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    KPostNotification(KNotificationOrderStateChange, nil);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的咨询";

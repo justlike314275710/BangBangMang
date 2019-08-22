@@ -93,9 +93,8 @@
     [viewModel requestAddEvaluateCompleted:^(PSResponse *response) {
          [[PSLoadingView sharedInstance]dismiss];
          [PSTipsView showTips:@"评价提交成功"];
-         //[self refreshData];
-        KPostNotification(KNotificationOrderStateChange, nil);
-        [self.navigationController popViewControllerAnimated:YES];
+         [self refreshData];
+
         
     } failed:^(NSError *error) {
          [[PSLoadingView sharedInstance]dismiss];
