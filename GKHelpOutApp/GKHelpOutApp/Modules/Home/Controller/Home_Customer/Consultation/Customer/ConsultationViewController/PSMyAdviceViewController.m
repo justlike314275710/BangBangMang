@@ -106,7 +106,7 @@
     [self.view addSubview:self.honorTableView];
     [self.honorTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0);
-        make.bottom.mas_equalTo(-49-kTopHeight-44-14);
+        make.bottom.mas_equalTo(-49-kTopHeight-14);
         make.right.mas_equalTo(0);
         make.left.mas_equalTo(0);
         //make.edges.mas_equalTo(UIEdgeInsetsZero);
@@ -116,6 +116,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
+    [self refreshData];
    
     
 }

@@ -27,7 +27,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    [self refreshData];
 }
 
 
@@ -104,7 +104,7 @@
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(0);
-        make.bottom.mas_equalTo(0);
+        make.bottom.mas_equalTo(-49-kTopHeight-14);
     }];
     @weakify(self)
     self.LawyersTableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

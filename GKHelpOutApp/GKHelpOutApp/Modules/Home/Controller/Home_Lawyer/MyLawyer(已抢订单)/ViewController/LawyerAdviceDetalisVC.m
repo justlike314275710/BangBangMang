@@ -42,11 +42,7 @@
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
     [self refreshData];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(refreshData)
-                                                 name:KNotificationOrderStateChange
-                                               object:nil];
-    
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,6 +50,11 @@
     self.logic=[[lawyerGrab_Logic alloc]init];
     self.isShowLiftBack = YES;
     [self SDWebImageAuth];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData)
+                                                 name:KNotificationOrderStateChange
+                                               object:nil];
     
 }
 
@@ -115,6 +116,7 @@
 -(void)DeleteLawyerDetails{
     [self.logic deleteConsultationCompleted:^(id data) {
         [PSTipsView showTips:@"删除订单成功!"];
+         KPostNotification(KNotificationOrderStateChange, nil);
         [self.navigationController popViewControllerAnimated:YES];
     } failed:^(NSError *error) {
         [PSTipsView showTips:@"删除订单失败!"];
