@@ -55,7 +55,12 @@
         self.titleLab.text = @"赏金";
     }
     self.moneylab.text = model.amount;
-//    self.dataLab.text = model.successTime;
+    if ([model.amount doubleValue]>0) {
+        [self.moneylab setTextColor:UIColorFromRGB(255,96,0)];
+    } else {
+        [self.moneylab setTextColor:UIColorFromRGB(51, 51, 51)];
+    }
+    
     self.dataLab.text = [NSString timeChange:model.successTime];
     if ([_model.source isEqualToString:@"ALIPAY"]) {
         self.payWayLab.text = @"支付方式:支付宝";

@@ -5674,39 +5674,77 @@
 		};
 		5557A4B9221BB46E00743012 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F90F6F15AA7A3E250460AC0B /* Pods-GKHelpOutApp.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35NTC834XG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMAVChat",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMSDK",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
+				);
 				INFOPLIST_FILE = GKHelpOutAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDKPlugin",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkzxhn.HelpOut.GKHelpOutAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GKHelpOutApp.app/GKHelpOutApp";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/FLAnimatedImage/FLAnimatedImage",
+				);
 			};
 			name = Debug;
 		};
 		5557A4BA221BB46E00743012 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C10B3AC074F1C870E18701F /* Pods-GKHelpOutApp.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35NTC834XG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMAVChat",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMSDK",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
+				);
 				INFOPLIST_FILE = GKHelpOutAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDKPlugin",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkzxhn.HelpOut.GKHelpOutAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GKHelpOutApp.app/GKHelpOutApp";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/FLAnimatedImage/FLAnimatedImage",
+				);
 			};
 			name = Release;
 		};
@@ -5716,16 +5754,34 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35NTC834XG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMAVChat",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMSDK",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
+				);
 				INFOPLIST_FILE = GKHelpOutAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDKPlugin",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkzxhn.HelpOut.GKHelpOutAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = GKHelpOutApp;
+				USER_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/FLAnimatedImage/FLAnimatedImage",
+				);
 			};
 			name = Debug;
 		};
@@ -5735,16 +5791,34 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35NTC834XG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMAVChat",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMSDK",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
+				);
 				INFOPLIST_FILE = GKHelpOutAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/UMSocial/UMSocialSDKPlugin",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkzxhn.HelpOut.GKHelpOutAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = GKHelpOutApp;
+				USER_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/FLAnimatedImage/FLAnimatedImage",
+				);
 			};
 			name = Release;
 		};
