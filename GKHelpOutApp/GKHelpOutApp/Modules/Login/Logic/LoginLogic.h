@@ -23,6 +23,6 @@
 - (void)getVerificationCodeData:(RequestDataCompleted)completed failed:(RequestDataFailed)failedCallback;
 
 //获取认证授权token
-- (void)getOauthTokenData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+//- (void)getOauthTokenData:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 
 @end

@@ -262,7 +262,7 @@
         UILabel*label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 20,40)];
         label.text=@"¥";
         _cashTextField.leftView = label;
-        _cashTextField.keyboardType = UIKeyboardTypeNumberPad;
+        _cashTextField.keyboardType = UIKeyboardTypeDecimalPad;
         _cashTextField.rightViewMode = UITextFieldViewModeAlways;
         self.cashRightLab.frame = CGRectMake(0,0,150,40);
         _cashTextField.rightView = _cashRightLab;

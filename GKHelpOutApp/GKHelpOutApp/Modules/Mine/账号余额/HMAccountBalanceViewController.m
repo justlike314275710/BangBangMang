@@ -290,7 +290,7 @@
         _balanceLab.text = @"666.00";
         NSString *accont = help_userManager.lawUserInfo.rewardAmount?help_userManager.lawUserInfo.rewardAmount:@"";
         if (accont.length>0) {
-            accont = NSStringFormat(@"%@",accont);
+            accont = NSStringFormat(@"%.2f",[accont floatValue]);
         } else {
             accont = @"0.00";
         }
