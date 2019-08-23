@@ -228,7 +228,7 @@
             }
         }
         else{
-            [PSAlertView showWithTitle:@"提示" message:@"网络无法连接" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
+            [PSAlertView showWithTitle:@"提示" message:@"服务器异常" messageAlignment:NSTextAlignmentCenter image:nil handler:^(PSAlertView *alertView, NSInteger buttonIndex) {
             } buttonTitles:@"确定", nil];
         }
         
