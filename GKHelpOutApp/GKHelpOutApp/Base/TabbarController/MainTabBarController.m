@@ -25,7 +25,7 @@
 UIColor *MainNavBarColor = nil;
 UIColor *MainViewColor = nil;
 
-@interface MainTabBarController ()<UITabBarControllerDelegate>
+@interface MainTabBarController ()<UITabBarControllerDelegate,NIMConversationManagerDelegate,NIMLoginManager>
 
 @property (nonatomic,strong) NSMutableArray * VCS;//tabbar root VC
 
@@ -40,7 +40,11 @@ UIColor *MainViewColor = nil;
     //初始化tabbar
     [self setUpTabBar];    
     //添加子控制器
+    [[NIMSDK sharedSDK].loginManager addDelegate:self];
+    [[NIMSDK sharedSDK].conversationManager addDelegate:self];
+    
     [self setUpAllChildViewController];
+  
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,6 +84,16 @@ UIColor *MainViewColor = nil;
     [self setupChildViewController:mineVC title:@"我" imageName:@"我的icon－未选中" seleceImageName:@"我的icon－选中"];
     
     self.viewControllers = _VCS;
+    
+    //未读消息
+    NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
+    if (systemCount>0) {
+        [self setRedDotWithIndex:1 isShow:YES];
+    } else {
+        [self setRedDotWithIndex:1 isShow:NO];
+    }
+    
+    
 }
 
 -(void)setupChildViewController:(UIViewController*)controller title:(NSString *)title imageName:(NSString *)imageName seleceImageName:(NSString *)selectImageName{

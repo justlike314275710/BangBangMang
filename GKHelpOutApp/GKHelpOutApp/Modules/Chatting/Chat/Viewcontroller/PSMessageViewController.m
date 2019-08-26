@@ -19,21 +19,38 @@
 
 @implementation PSMessageViewController
 
+
+-(id)init
+{
+    self = [super init];
+    if (self) {
+        NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
+        if (systemCount>0) {
+            [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
+        } else {
+            [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:NO];
+        }
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"消息";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName :CNavBgFontColor, NSFontAttributeName :[UIFont boldSystemFontOfSize:18]}];
     [self p_loadUI];
      //[self.view addSubview:self.emptyTipLabel];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(initNewMessage:)
-                                                 name:KNotificationReceiceNewMessage
-                                               object:nil];
 
 }
 
--(void)initNewMessage:(NSNotification*)notification {
-    [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
+    if (systemCount>0) {
+        [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
+    } else {
+        [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:NO];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -43,7 +60,6 @@
     if (self.addMenuView.isShow) {
         [self.addMenuView dismiss];
     }
-    [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
 }
 
 - (void)p_loadUI{

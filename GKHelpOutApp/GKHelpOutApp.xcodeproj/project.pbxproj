@@ -3228,7 +3228,6 @@
 			children = (
 				EA21CB2A221FA752007D3445 /* PayModel */,
 				EA21CB23221FA409007D3445 /* PayViewController */,
-				EA21CB16221FA29E007D3445 /* PayViewModel */,
 				EA21CABC221FA040007D3445 /* PayView */,
 				EA21CA3E221F9386007D3445 /* Pay */,
 			);
@@ -3441,6 +3440,7 @@
 		EA21CB2A221FA752007D3445 /* PayModel */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CB16221FA29E007D3445 /* PayViewModel */,
 				EA21CB30221FA88D007D3445 /* PSAlipayInfo.h */,
 				EA21CB31221FA88E007D3445 /* PSAlipayInfo.m */,
 				EA21CB2F221FA88D007D3445 /* PSPayment.h */,

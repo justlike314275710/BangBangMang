@@ -62,18 +62,11 @@
                                                  name:KNotificationMineRefreshDot
                                                object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(initNewFriend:)
-                                                 name:KNotificationMineNewFriendDot
-                                               object:nil];
     
 }
 
 
 #pragma mark ————— 生活圈底部tabbar —————
-- (void)initNewFriend:(NSNotification*)notification{
-    [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:YES];
-}
 
 - (void)initDotData:(NSNotification*)notification{
     NSString *dotString = [notification object];
@@ -91,6 +84,12 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getRequset];
+    NSInteger systemCount = [[[NIMSDK sharedSDK] systemNotificationManager] allUnreadCount];
+    if (systemCount>0) {
+        [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:YES];
+    } else {
+        [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:NO];
+    }
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -98,7 +97,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:NO];
+
 }
 
 #pragma mark ————— 拉取数据 —————
