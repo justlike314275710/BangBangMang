@@ -155,7 +155,7 @@
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(140);//140
-        make.height.mas_equalTo(SCREEN_HEIGHT-140);
+        make.bottom.mas_equalTo(0);
     }];
     @weakify(self)
     self.LawyersTableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

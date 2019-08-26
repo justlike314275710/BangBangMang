@@ -27,7 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   // [self refreshData];
    [self renderContents];
     // Do any additional setup after loading the view.
     self.title = @"法律咨询";

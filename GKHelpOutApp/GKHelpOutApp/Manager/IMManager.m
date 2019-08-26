@@ -74,18 +74,16 @@ SINGLETON_FOR_CLASS(IMManager);
             case NIMKickReasonByClient:
             case NIMKickReasonByClientManually:{
                 reason = @"你的帐号被踢出下线，请注意帐号信息安全";
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSString*determine=NSLocalizedString(@"determine", @"确定");
-                    NSString*Tips=NSLocalizedString(@"Tips", @"提示");
-                    NSString*pushed_off_line=NSLocalizedString(@"pushed_off_line", @"您的账号已在其他设备登陆,已被挤下线");
-                    XXAlertView*alert=[[XXAlertView alloc]initWithTitle:Tips message:pushed_off_line sureBtn:determine cancleBtn:nil];
-                    alert.clickIndex = ^(NSInteger index) {
-                        if (index==2) {
-                            [help_userManager logout:nil];
-                        }
-                    };
-                    [alert show];
-                });
+                NSString*determine=NSLocalizedString(@"determine", @"确定");
+                NSString*Tips=NSLocalizedString(@"Tips", @"提示");
+                NSString*pushed_off_line=NSLocalizedString(@"pushed_off_line", @"您的账号已在其他设备登陆,已被挤下线");
+                XXAlertView*alert=[[XXAlertView alloc]initWithTitle:Tips message:pushed_off_line sureBtn:determine cancleBtn:nil];
+                alert.clickIndex = ^(NSInteger index) {
+                    if (index==2) {
+                        [help_userManager logout:nil];
+                    }
+                };
+                [alert show];
                 break;
             }
             case NIMKickReasonByServer:
@@ -99,14 +97,8 @@ SINGLETON_FOR_CLASS(IMManager);
 
 #pragma mark ————— 代理 收到新消息 —————
 - (void)onRecvMessages:(NSArray<NIMMessage *> *)messages{
-    NIMMessage *message = [messages objectAtIndex:0];
     DLog(@"收到新消息");
-    EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
-        make.style = 11;
-        make.content = message.text;
-    }];
-    [banner show];
-    [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"2" activityId:1900000 alertBody: message.text alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
+    [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"0" activityId:1900001 alertBody:@"您有一条新消息!" alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
 }
 
 
