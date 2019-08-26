@@ -61,10 +61,20 @@
                                              selector:@selector(initDotData:)
                                                  name:KNotificationMineRefreshDot
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(initNewFriend:)
+                                                 name:KNotificationMineNewFriendDot
+                                               object:nil];
+    
 }
 
 
 #pragma mark ————— 生活圈底部tabbar —————
+- (void)initNewFriend:(NSNotification*)notification{
+    [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:YES];
+}
+
 - (void)initDotData:(NSNotification*)notification{
     NSString *dotString = [notification object];
     _LifeRedDot = dotString;
@@ -88,6 +98,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:NO];
 }
 
 #pragma mark ————— 拉取数据 —————

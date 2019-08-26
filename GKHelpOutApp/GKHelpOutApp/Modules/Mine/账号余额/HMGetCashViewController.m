@@ -189,6 +189,11 @@
                 [PSTipsView showTips:@"提现成功"];
                 //发送通知余额变化
                 KPostNotification(KNotificationGetCashSuccess, nil);
+                HMGetCashResultViewController *GetCashResultVC = [[HMGetCashResultViewController alloc] init];
+                GetCashResultVC.getCashState = PSGetCashScuess;
+                GetCashResultVC.cash = [NSString stringWithFormat:@"¥%.3f",[self.cashTextField.text doubleValue]*0.65];
+                
+                [self.navigationController pushViewController:GetCashResultVC animated:YES];
                 
             } failed:^(NSError *error) {
                 NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
@@ -198,7 +203,6 @@
                     message = body[@"message"];
                     NSLog(@"%@",body);
                 }
-                
                 [PSTipsView showTips:message.length>0?message:@"提现失败!"];
             }];
         } else {
@@ -209,6 +213,8 @@
 #pragma makr - TouchEvent
 -(void)submitAction:(UIButton*)sender {
 //    HMGetCashResultViewController *GetCashResultVC = [[HMGetCashResultViewController alloc] init];
+//    GetCashResultVC.getCashState = PSGetCashScuess;
+//    GetCashResultVC.cash = [NSString stringWithFormat:@"¥%.3f",[self.cashTextField.text doubleValue]*0.65];
 //    [self.navigationController pushViewController:GetCashResultVC animated:YES];
     [self lawyerWithdrawal];
 }
@@ -326,14 +332,5 @@
     }
     return _cashRightLab;
 }
-
-
-
-
-
-
-
-
-
 
 @end

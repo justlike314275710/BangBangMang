@@ -25,14 +25,16 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName :CNavBgFontColor, NSFontAttributeName :[UIFont boldSystemFontOfSize:18]}];
     [self p_loadUI];
      //[self.view addSubview:self.emptyTipLabel];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(initNewMessage:)
+                                                 name:KNotificationReceiceNewMessage
+                                               object:nil];
 
 }
 
-
-
-
-
-
+-(void)initNewMessage:(NSNotification*)notification {
+    [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -41,6 +43,7 @@
     if (self.addMenuView.isShow) {
         [self.addMenuView dismiss];
     }
+    [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
 }
 
 - (void)p_loadUI{

@@ -16,13 +16,15 @@
 @end
 
 @implementation HMMessageViewController
-
+#pragma mark - LifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"消息";
     _logic = [HMMessageLogic new];
     [self setupUI];
 }
+
+
 #pragma mark - PrivateMethods
 -(void)setupUI{
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth,KScreenHeight-kTabBarHeight-kStatusBarHeight) style:UITableViewStylePlain];
