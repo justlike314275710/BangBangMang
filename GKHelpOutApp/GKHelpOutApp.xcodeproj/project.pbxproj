@@ -178,6 +178,8 @@
 		555A564C2228E58300451044 /* ModifyNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 555A564B2228E58300451044 /* ModifyNicknameViewController.m */; };
 		555C118F222E702E00132E4F /* LawUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C118E222E702E00132E4F /* LawUserInfo.m */; };
 		555C1193222E771500132E4F /* HMAccontBalaceLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C1192222E771500132E4F /* HMAccontBalaceLogic.m */; };
+		555DB7CB230E815C00B51B9D /* UserManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 555DB7CA230E815C00B51B9D /* UserManagerTests.m */; };
+		555DB7CD230E993B00B51B9D /* AppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 555DB7CC230E993B00B51B9D /* AppDelegateTests.m */; };
 		556974CC230B8FCB00A20D3F /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 556974CB230B8FCB00A20D3F /* KGStatusBar.m */; };
 		557D9E0A226856E200F5D526 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */; };
 		55839656226D5D8300E7CD71 /* SendLifeCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */; };
@@ -922,6 +924,8 @@
 		555C118E222E702E00132E4F /* LawUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LawUserInfo.m; sourceTree = "<group>"; };
 		555C1191222E771500132E4F /* HMAccontBalaceLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMAccontBalaceLogic.h; sourceTree = "<group>"; };
 		555C1192222E771500132E4F /* HMAccontBalaceLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMAccontBalaceLogic.m; sourceTree = "<group>"; };
+		555DB7CA230E815C00B51B9D /* UserManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserManagerTests.m; sourceTree = "<group>"; };
+		555DB7CC230E993B00B51B9D /* AppDelegateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegateTests.m; sourceTree = "<group>"; };
 		556974CA230B8FCB00A20D3F /* KGStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGStatusBar.h; sourceTree = "<group>"; };
 		556974CB230B8FCB00A20D3F /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
 		557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
@@ -1922,10 +1926,11 @@
 		5557A4A4221BB46E00743012 /* GKHelpOutAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				555DB7CC230E993B00B51B9D /* AppDelegateTests.m */,
+				555DB7C9230E748700B51B9D /* Components */,
+				555DB7C8230E713600B51B9D /* LoginAndRegister */,
 				5557A4A7221BB46E00743012 /* Info.plist */,
 				5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */,
-				55249101230D37D1008102C2 /* LoginViewControllerTests.m */,
-				55249103230D3A0F008102C2 /* LoginLogicTests.m */,
 			);
 			path = GKHelpOutAppTests;
 			sourceTree = "<group>";
@@ -2761,6 +2766,23 @@
 				55050AAE2232016400E9635B /* HMGetCashLogic.m */,
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		555DB7C8230E713600B51B9D /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				55249101230D37D1008102C2 /* LoginViewControllerTests.m */,
+				55249103230D3A0F008102C2 /* LoginLogicTests.m */,
+				555DB7CA230E815C00B51B9D /* UserManagerTests.m */,
+			);
+			path = LoginAndRegister;
+			sourceTree = "<group>";
+		};
+		555DB7C9230E748700B51B9D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		556974C9230B8FB600A20D3F /* KGStatusBar */ = {
@@ -5449,7 +5471,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				55249104230D3A0F008102C2 /* LoginLogicTests.m in Sources */,
+				555DB7CD230E993B00B51B9D /* AppDelegateTests.m in Sources */,
 				55249102230D37D1008102C2 /* LoginViewControllerTests.m in Sources */,
+				555DB7CB230E815C00B51B9D /* UserManagerTests.m in Sources */,
 				5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5609,6 +5633,7 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMSDK",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
 				);
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/GKHelpOutApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5649,6 +5674,7 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMSDK",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
 				);
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/GKHelpOutApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (

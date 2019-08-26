@@ -52,12 +52,10 @@ SINGLETON_FOR_HEADER(UserManager)
 
 
 #pragma mark - ——————— 注册账号判断账号状态   ————————
--(void)requestEcomRegister:(NSDictionary *)parmeters;
+-(BOOL)requestEcomRegister:(NSDictionary *)parmeters;
 
 
 #pragma mark - ——————— 登录相关 ————————
-
-
 
 -(void)JudgeIdentityCallback:(loginBlock)callback;
 /**
@@ -66,7 +64,7 @@ SINGLETON_FOR_HEADER(UserManager)
  @param loginType 登录方式
  @param completion 回调
  */
--(void)login:(UserLoginType )loginType completion:(loginBlock)completion;
+//-(void)login:(UserLoginType )loginType completion:(loginBlock)completion;
 
 /**
 手动登录到服务器

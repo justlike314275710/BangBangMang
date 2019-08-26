@@ -61,7 +61,7 @@
         }
         return;
     }
-    if ([self.amount floatValue]<=1) {
+    if ([self.amount floatValue]<1) {
         if (callback){
             callback(NO,@"提现金额不能少于1元");
         }

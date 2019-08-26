@@ -46,6 +46,8 @@
 #pragma mark  - Event
 -(void)PsychologyClick{
     NSLog(@"心理咨询");
+    [PSTipsView showTips:@"敬请期待"];
+    
 }
 -(void)push_MineAuthViewController{
     [self.navigationController pushViewController:[[Mine_AuthViewController alloc]init] animated:YES];
@@ -190,6 +192,7 @@
         _PsychologyIcon=[UIImageView new];
         _PsychologyIcon.frame=CGRectMake(sidding, sidding, width, height);
         [_PsychologyIcon setImage:[UIImage imageNamed:@"心理咨询师icon"]];
+     
     }
     return _PsychologyIcon;
 }

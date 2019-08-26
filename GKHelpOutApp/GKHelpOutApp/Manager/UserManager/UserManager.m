@@ -29,6 +29,7 @@ SINGLETON_FOR_CLASS(UserManager);
 }
 
 #pragma mark ————— 三方登录 —————
+/*
 -(void)login:(UserLoginType )loginType completion:(loginBlock)completion{
     [self login:loginType params:nil completion:completion];
 }
@@ -72,11 +73,12 @@ SINGLETON_FOR_CLASS(UserManager);
         
     }
 }
+ 
+ */
 #pragma mark ————— 注册账号或者判断账号是否存在 —————
 
-
--(void)requestEcomRegister:(NSDictionary *)parmeters {
-    
+-(BOOL)requestEcomRegister:(NSDictionary *)parmeters {
+    __block BOOL result = NO;
     NSString *url = NSStringFormat(@"%@%@",EmallHostUrl,URL_post_registe);
     AFHTTPSessionManager* manager=[AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
@@ -84,39 +86,33 @@ SINGLETON_FOR_CLASS(UserManager);
     manager.requestSerializer.timeoutInterval = 10.f;
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-//    NSDictionary*parmeters=@{
-//                             @"phoneNumber":self.phoneNumber,
-//                             @"verificationCode":self.verificationCode,
-//                             @"name":self.phoneNumber,//姓名是手机号码
-//                             @"group":@"CUSTOMER"
-//                             };
     [manager POST:url parameters:parmeters progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
         NSInteger code = responses.statusCode;
         if (code == 201) {
             [self loginToServer:parmeters refresh:NO completion:nil];
+            result = YES;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
         if (ValidData(data)) {
             id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            
+            result = NO;
             NSString*code=body[@"code"];
             if ([code isEqualToString:@"user.PhoneNumberExisted"]) {
-                //            [self EcommerceOfLogin];
+                
                 [self loginToServer:parmeters refresh:NO  completion:nil];
             }
             else if ([code isEqualToString:@"user.SmsVerificationCodeNotMatched"]){
                 [PSTipsView showTips:@"短信验证码不匹配"];
             }
-            
             else {
                [PSTipsView showTips:@"服务器异常"];
             }
         }
     }];
+    return result;
 
 }
 
