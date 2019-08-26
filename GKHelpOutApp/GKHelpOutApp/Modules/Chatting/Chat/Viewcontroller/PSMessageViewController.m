@@ -42,9 +42,7 @@
      //[self.view addSubview:self.emptyTipLabel];
 }
 
-<<<<<<< HEAD
 
-=======
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
@@ -54,7 +52,7 @@
         [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:NO];
     }
 }
->>>>>>> 85ed4575f9fe31e8efdeb881b7641eb405adefb9
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
