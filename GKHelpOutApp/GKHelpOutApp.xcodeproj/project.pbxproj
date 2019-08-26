@@ -36,6 +36,7 @@
 		5527EBAB22769E7D007BC1BF /* LifeCircleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527EBAA22769E7D007BC1BF /* LifeCircleManager.m */; };
 		552924F82237417900B4899A /* HMActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924F72237417900B4899A /* HMActionSheetView.m */; };
 		552924FC2237A9A700B4899A /* WXZTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924FB2237A9A700B4899A /* WXZTipView.m */; };
+		554E0F45230F8F52000D6C92 /* HpBaseLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 554E0F44230F8F52000D6C92 /* HpBaseLogicTests.m */; };
 		5557A48E221BB46C00743012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A48D221BB46C00743012 /* AppDelegate.m */; };
 		5557A491221BB46C00743012 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A490221BB46C00743012 /* ViewController.m */; };
 		5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */; };
@@ -182,6 +183,8 @@
 		555DB7CD230E993B00B51B9D /* AppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 555DB7CC230E993B00B51B9D /* AppDelegateTests.m */; };
 		556974CC230B8FCB00A20D3F /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 556974CB230B8FCB00A20D3F /* KGStatusBar.m */; };
 		557D9E0A226856E200F5D526 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */; };
+		55820D72230FC69300C73920 /* UploadManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55820D71230FC69300C73920 /* UploadManagerTests.m */; };
+		55820D74230FCF0B00C73920 /* LifeCircleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55820D73230FCF0B00C73920 /* LifeCircleManagerTests.m */; };
 		55839656226D5D8300E7CD71 /* SendLifeCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */; };
 		55839659226D6DC600E7CD71 /* LifeCircleLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 55839658226D6DC600E7CD71 /* LifeCircleLogic.m */; };
 		5583965C226DAEEF00E7CD71 /* TLCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5583965B226DAEEF00E7CD71 /* TLCustomer.m */; };
@@ -682,6 +685,7 @@
 		552924F72237417900B4899A /* HMActionSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMActionSheetView.m; sourceTree = "<group>"; };
 		552924FA2237A9A700B4899A /* WXZTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXZTipView.h; sourceTree = "<group>"; };
 		552924FB2237A9A700B4899A /* WXZTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXZTipView.m; sourceTree = "<group>"; };
+		554E0F44230F8F52000D6C92 /* HpBaseLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HpBaseLogicTests.m; sourceTree = "<group>"; };
 		5557A489221BB46C00743012 /* GKHelpOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKHelpOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A48C221BB46C00743012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5557A48D221BB46C00743012 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -930,6 +934,8 @@
 		556974CB230B8FCB00A20D3F /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
 		557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		557D9E09226856E100F5D526 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		55820D71230FC69300C73920 /* UploadManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadManagerTests.m; sourceTree = "<group>"; };
+		55820D73230FCF0B00C73920 /* LifeCircleManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeCircleManagerTests.m; sourceTree = "<group>"; };
 		55839654226D5D8300E7CD71 /* SendLifeCircleLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendLifeCircleLogic.h; sourceTree = "<group>"; };
 		55839655226D5D8300E7CD71 /* SendLifeCircleLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendLifeCircleLogic.m; sourceTree = "<group>"; };
 		55839657226D6DC600E7CD71 /* LifeCircleLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifeCircleLogic.h; sourceTree = "<group>"; };
@@ -1927,6 +1933,7 @@
 			isa = PBXGroup;
 			children = (
 				555DB7CC230E993B00B51B9D /* AppDelegateTests.m */,
+				55820D70230FC63200C73920 /* Manager */,
 				555DB7C9230E748700B51B9D /* Components */,
 				555DB7C8230E713600B51B9D /* LoginAndRegister */,
 				5557A4A7221BB46E00743012 /* Info.plist */,
@@ -2774,6 +2781,7 @@
 				55249101230D37D1008102C2 /* LoginViewControllerTests.m */,
 				55249103230D3A0F008102C2 /* LoginLogicTests.m */,
 				555DB7CA230E815C00B51B9D /* UserManagerTests.m */,
+				554E0F44230F8F52000D6C92 /* HpBaseLogicTests.m */,
 			);
 			path = LoginAndRegister;
 			sourceTree = "<group>";
@@ -2801,6 +2809,15 @@
 				557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */,
 			);
 			path = UINavigationBarLib;
+			sourceTree = "<group>";
+		};
+		55820D70230FC63200C73920 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				55820D71230FC69300C73920 /* UploadManagerTests.m */,
+				55820D73230FCF0B00C73920 /* LifeCircleManagerTests.m */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		55839653226D5D4100E7CD71 /* Logic */ = {
@@ -3211,7 +3228,6 @@
 			children = (
 				EA21CB2A221FA752007D3445 /* PayModel */,
 				EA21CB23221FA409007D3445 /* PayViewController */,
-				EA21CB16221FA29E007D3445 /* PayViewModel */,
 				EA21CABC221FA040007D3445 /* PayView */,
 				EA21CA3E221F9386007D3445 /* Pay */,
 			);
@@ -3424,6 +3440,7 @@
 		EA21CB2A221FA752007D3445 /* PayModel */ = {
 			isa = PBXGroup;
 			children = (
+				EA21CB16221FA29E007D3445 /* PayViewModel */,
 				EA21CB30221FA88D007D3445 /* PSAlipayInfo.h */,
 				EA21CB31221FA88E007D3445 /* PSAlipayInfo.m */,
 				EA21CB2F221FA88D007D3445 /* PSPayment.h */,
@@ -5471,7 +5488,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				55249104230D3A0F008102C2 /* LoginLogicTests.m in Sources */,
+				554E0F45230F8F52000D6C92 /* HpBaseLogicTests.m in Sources */,
 				555DB7CD230E993B00B51B9D /* AppDelegateTests.m in Sources */,
+				55820D74230FCF0B00C73920 /* LifeCircleManagerTests.m in Sources */,
+				55820D72230FC69300C73920 /* UploadManagerTests.m in Sources */,
 				55249102230D37D1008102C2 /* LoginViewControllerTests.m in Sources */,
 				555DB7CB230E815C00B51B9D /* UserManagerTests.m in Sources */,
 				5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */,

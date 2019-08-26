@@ -48,6 +48,19 @@ SINGLETON_FOR_CLASS(IMManager);
         if (!error) {
             if (completion) {
                 completion(YES,nil);
+                //未读消息
+                NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
+                if (systemCount>0) {
+                    [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
+                } else {
+                    [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:NO];
+                }
+                //系统未读消息数
+                if (systemCount>0) {
+                    [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:YES];
+                } else {
+                    [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:NO];
+                }
             }
         }else{
             if (completion) {
@@ -99,6 +112,14 @@ SINGLETON_FOR_CLASS(IMManager);
 - (void)onRecvMessages:(NSArray<NIMMessage *> *)messages{
     DLog(@"收到新消息");
     [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"0" activityId:1900001 alertBody:@"您有一条新消息!" alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
+    
+    //未读消息
+    NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
+    if (systemCount>0) {
+        [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
+    } else {
+        [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:NO];
+    }
 }
 
 

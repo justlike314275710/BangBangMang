@@ -88,4 +88,10 @@ typedef NS_ENUM(NSInteger, STUserLevelType) {
 
 + (NSString *)stringWithNumber:(NSUInteger)number;
 
++(NSString*)getCurrentTimes;
+
++(NSString *)getNowTimeTimestamp;
+
++ (NSString *)getTimeFromTimestamp:(double)Timestamp;
+
 @end

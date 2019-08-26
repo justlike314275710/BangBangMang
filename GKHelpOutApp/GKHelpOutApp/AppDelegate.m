@@ -35,6 +35,8 @@
     
     [self registerThirdParty];
     
+
+    
     
     //显示环境
 #ifdef DEBUG

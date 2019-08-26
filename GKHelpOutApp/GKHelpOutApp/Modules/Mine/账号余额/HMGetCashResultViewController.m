@@ -8,10 +8,13 @@
 
 #import "HMGetCashResultViewController.h"
 #import "MineTableViewCell.h"
+#import "NSString+Utils.h"
 
 @interface HMGetCashResultViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *_dataSource;
+    NSString *_nowTime;
+    NSString *_twoHourLateTime;
 }
 @property(nonatomic, strong) YYAnimatedImageView *headImgView; //头像
 @property(nonatomic, strong) UILabel *stateLab; //头像
@@ -30,12 +33,21 @@
     [self setupUI];
 }
 - (void)intData{
+    _nowTime = [NSString getCurrentTimes];
+    
+    _twoHourLateTime = [NSString getTimeFromTimestamp:[[NSString getNowTimeTimestamp] doubleValue] + 7200];
+    
+    NSLog(@"%@",_twoHourLateTime);
     
 }
 
 -(void)setupUI{
     
     [self.view addSubview:self.headImgView];
+    if (self.getCashState == PSGetCashScuess) {
+        self.headImgView.image = IMAGE_NAMED(@"已提交图");
+        self.stateLab.text = @"提现申请已提交";
+    } 
     [self.view addSubview:self.stateLab];
     self.stateLab.frame = CGRectMake((KScreenWidth-200)/2,self.headImgView.bottom+10, 200, 30);
     self.tableView.frame = CGRectMake(0,_headImgView.bottom+50, KScreenWidth, KScreenHeight - kTopHeight - kTabBarHeight-_headImgView.bottom-50);
@@ -47,12 +59,11 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
-    NSDictionary *Modifydata = @{@"titleText":@"提现申请时间",@"detailText":@"2018-09-28 13:16:18"};
-    
-    NSDictionary *myMission = @{@"titleText":@"支付宝姓名",@"detailText":@"张三"};
-    NSDictionary *myFriends = @{@"titleText":@"支付宝账户",@"detailText":@"15555555555"};
-    NSDictionary *myLevel = @{@"titleText":@"提现金额",@"detailText":@"¥100(实际到账)"};
-    NSDictionary *failReason = @{@"titleText":@"失败原因",@"detailText":@"网络异常,请重新申请提现"};
+    NSDictionary *Modifydata = @{@"titleText":@"提现申请时间",@"detailText":_nowTime};
+    NSDictionary *myMission = @{@"titleText":@"预计到账时间",@"detailText":_twoHourLateTime};
+    NSDictionary *myFriends = @{@"titleText":@"支付宝姓名",@"detailText":help_userManager.lawUserInfo.nickName};
+    NSDictionary *myLevel = @{@"titleText":@"支付宝账户",@"detailText":help_userManager.curUserInfo.username};
+    NSDictionary *failReason = @{@"titleText":@"提现金额",@"detailText":self.cash};
     
     _dataSource = @[Modifydata,myMission,myFriends,myLevel,failReason];
     [self.tableView reloadData];
@@ -134,7 +145,7 @@
         _stateLab.text=@"提现失败";
         _stateLab.textAlignment = NSTextAlignmentCenter;
         _stateLab.font=FontOfSize(16);
-        _stateLab.textColor=UIColorFromRGB(216,46,46);
+        _stateLab.textColor=KBlackColor;
     }
     return _stateLab;
 }

@@ -19,6 +19,21 @@
 
 @implementation PSMessageViewController
 
+
+-(id)init
+{
+    self = [super init];
+    if (self) {
+        NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
+        if (systemCount>0) {
+            [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
+        } else {
+            [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:NO];
+        }
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"消息";
@@ -27,7 +42,19 @@
      //[self.view addSubview:self.emptyTipLabel];
 }
 
+<<<<<<< HEAD
 
+=======
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
+    if (systemCount>0) {
+        [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
+    } else {
+        [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:NO];
+    }
+}
+>>>>>>> 85ed4575f9fe31e8efdeb881b7641eb405adefb9
 
 - (void)viewWillDisappear:(BOOL)animated
 {
