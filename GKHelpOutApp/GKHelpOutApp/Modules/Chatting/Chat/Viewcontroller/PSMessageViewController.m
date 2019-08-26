@@ -25,12 +25,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName :CNavBgFontColor, NSFontAttributeName :[UIFont boldSystemFontOfSize:18]}];
     [self p_loadUI];
      //[self.view addSubview:self.emptyTipLabel];
-
 }
-
-
-
-
 
 
 
