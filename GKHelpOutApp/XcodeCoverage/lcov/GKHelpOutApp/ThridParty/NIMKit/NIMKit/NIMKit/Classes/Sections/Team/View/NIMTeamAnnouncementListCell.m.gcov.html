@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Team/View/NIMTeamAnnouncementListCell.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Team/View</a> - NIMTeamAnnouncementListCell.m<span style="font-size: 80%;"> (source / <a href="NIMTeamAnnouncementListCell.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">44</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  TeamAnnouncementListCell.m
+<span class="lineNum">       3 </span>            : //  NIM
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by Xuhui on 15/3/31.
+<span class="lineNum">       6 </span>            : //  Copyright (c) 2015年 Netease. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;NIMTeamAnnouncementListCell.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;NIMUsrInfoData.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;NIMKitUtil.h&quot;
+<a name="12"><span class="lineNum">      12 </span>            : </a>
+<a name="13"><span class="lineNum">      13 </span>            : @interface NIMTeamAnnouncementListCell ()</a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineNoCov">          0 : @property (strong, nonatomic) UILabel *titleLabel;</span></a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineNoCov">          0 : @property (strong, nonatomic) UILabel *infoLabel;</span></a>
+<span class="lineNum">      16 </span><span class="lineNoCov">          0 : @property (strong, nonatomic) UIView *line;</span>
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 : @property (strong, nonatomic) UILabel *contentLabel;</span>
+<span class="lineNum">      18 </span>            : 
+<a name="19"><span class="lineNum">      19 </span>            : @end</a>
+<span class="lineNum">      20 </span>            : 
+<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 : @implementation NIMTeamAnnouncementListCell</span></a>
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(11, 15, 298, 16)];</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :         _titleLabel.font = [UIFont systemFontOfSize:16.f];</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :         _titleLabel.textColor = [UIColor blackColor];</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         [self addSubview:_titleLabel];</span>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :         _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(11, 39, 298, 13)];</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :         _infoLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :         _infoLabel.font = [UIFont systemFontOfSize:13.f];</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :         _infoLabel.textColor = [UIColor grayColor];</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         [self addSubview:_infoLabel];</span>
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :         _line = [[UIView alloc] initWithFrame:CGRectMake(11, 64, 298, .5)];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :         _line.backgroundColor = [UIColor lightGrayColor];</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :         _line.autoresizingMask = UIViewAutoresizingFlexibleWidth;</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :         [self addSubview:_line];</span>
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :         _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(11, 73, 298, 178)];</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :         _contentLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :         _contentLabel.textColor = [UIColor blackColor];</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :         _contentLabel.font = [UIFont systemFontOfSize:14.f];</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :         [self addSubview:_contentLabel];</span>
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     return self;</span>
+<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : - (void)refreshData:(NSDictionary *)data team:(NIMTeam *)team{</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     NSString *title = [data objectForKey:@&quot;title&quot;];</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     _titleLabel.text = title;</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     NSString *content = [data objectForKey:@&quot;content&quot;];</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     _contentLabel.text = content;</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     NSString *creatorId = [data objectForKey:@&quot;creator&quot;];</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     NSNumber *time = [data objectForKey:@&quot;time&quot;];</span>
+<span class="lineNum">      60 </span>            :     
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :     [dateFormatter setDateFormat:@&quot;MM-dd HH:mm&quot;];</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     NSDate * date = [NSDate dateWithTimeIntervalSince1970:time.integerValue];</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     NIMSession *session = [NIMSession session:team.teamId type:NIMSessionTypeTeam];</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     NSString *nick = [NIMKitUtil showNick:creatorId inSession:session];</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     _infoLabel.text = [NSString stringWithFormat:@&quot;%@ %@&quot;, nick, [dateFormatter stringFromDate:date]];</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

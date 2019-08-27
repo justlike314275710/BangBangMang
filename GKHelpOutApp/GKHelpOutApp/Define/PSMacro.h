@@ -78,6 +78,8 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 #define     DEFAULT_AVATAR_PATH       @"登录－头像"
 
+//覆盖率
+#define  NT_COVERAGE  1
 
 
 #ifdef DEBUG

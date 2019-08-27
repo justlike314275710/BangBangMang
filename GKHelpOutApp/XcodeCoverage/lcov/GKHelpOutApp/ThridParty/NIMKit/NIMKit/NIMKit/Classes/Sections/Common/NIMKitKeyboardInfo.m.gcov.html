@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Common/NIMKitKeyboardInfo.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Common</a> - NIMKitKeyboardInfo.m<span style="font-size: 80%;"> (source / <a href="NIMKitKeyboardInfo.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  NIMKitKeyboardInfo.m
+<span class="lineNum">       3 </span>            : //  NIMKit
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by chris on 2017/11/3.
+<span class="lineNum">       6 </span>            : //  Copyright © 2017年 NetEase. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;NIMKitKeyboardInfo.h&quot;
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : NSNotificationName const NIMKitKeyboardWillChangeFrameNotification = @&quot;NIMKitKeyboardWillChangeFrameNotification&quot;;
+<span class="lineNum">      12 </span>            : NSNotificationName const NIMKitKeyboardWillHideNotification        = @&quot;NIMKitKeyboardWillHideNotification&quot;;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : @implementation NIMKitKeyboardInfo
+<span class="lineNum">      15 </span>            : 
+<a name="16"><span class="lineNum">      16 </span>            : @synthesize keyboardHeight = _keyboardHeight;</a>
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 : + (instancetype)instance</span>
+<span class="lineNum">      19 </span>            : {
+<a name="20"><span class="lineNum">      20 </span>            :     static NIMKitKeyboardInfo *instance;</a>
+<span class="lineNum">      21 </span>            :     static dispatch_once_t onceToken;
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 :     dispatch_once(&amp;onceToken, ^{</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 :         instance = [[NIMKitKeyboardInfo alloc] init];</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     return instance;</span>
+<span class="lineNum">      26 </span>            : }
+<a name="27"><span class="lineNum">      27 </span>            : </a>
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 : - (instancetype)init</span>
+<span class="lineNum">      30 </span>            : {
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     if (self)</span>
+<span class="lineNum">      33 </span>            :     {
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : }</span>
+<a name="39"><span class="lineNum">      39 </span>            : </a>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : - (void)keyboardWillChangeFrame:(NSNotification *)notification</span>
+<span class="lineNum">      42 </span>            : {
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     NSDictionary *userInfo = notification.userInfo;</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     CGRect endFrame   = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     _isVisiable = endFrame.origin.y != [UIApplication sharedApplication].keyWindow.frame.size.height;</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     _keyboardHeight = _isVisiable? endFrame.size.height: 0;</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     [[NSNotificationCenter defaultCenter] postNotificationName:NIMKitKeyboardWillChangeFrameNotification object:nil userInfo:notification.userInfo];</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      49 </span>            : 
+<a name="50"><span class="lineNum">      50 </span>            : </a>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : - (void)keyboardWillHide:(NSNotification *)notification</span>
+<span class="lineNum">      53 </span>            : {
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     _isVisiable = NO;</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     _keyboardHeight = 0;</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     [[NSNotificationCenter defaultCenter] postNotificationName:NIMKitKeyboardWillHideNotification object:nil userInfo:notification.userInfo];</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

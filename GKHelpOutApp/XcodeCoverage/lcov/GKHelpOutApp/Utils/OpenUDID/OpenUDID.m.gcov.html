@@ -1,0 +1,503 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Utils/OpenUDID/OpenUDID.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Utils/OpenUDID</a> - OpenUDID.m<span style="font-size: 80%;"> (source / <a href="OpenUDID.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">63</td>
+            <td class="headerCovTableEntry">144</td>
+            <td class="headerCovTableEntryLo">43.8 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  OpenUDID.m
+<span class="lineNum">       3 </span>            : //  openudid
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  initiated by Yann Lechelle (cofounder @Appsfire) on 8/28/11.
+<span class="lineNum">       6 </span>            : //  Copyright 2011, 2012 OpenUDID.org
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : //  Initiators/root branches
+<span class="lineNum">       9 </span>            : //      iOS code: https://github.com/ylechelle/OpenUDID
+<span class="lineNum">      10 </span>            : //      Android code: https://github.com/vieux/OpenUDID
+<span class="lineNum">      11 </span>            : //
+<span class="lineNum">      12 </span>            : //  Contributors:
+<span class="lineNum">      13 </span>            : //      https://github.com/ylechelle/OpenUDID/contributors
+<span class="lineNum">      14 </span>            : //
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : /*
+<span class="lineNum">      17 </span>            :  http://en.wikipedia.org/wiki/Zlib_License
+<span class="lineNum">      18 </span>            :  
+<span class="lineNum">      19 </span>            :  This software is provided 'as-is', without any express or implied
+<span class="lineNum">      20 </span>            :  warranty. In no event will the authors be held liable for any damages
+<span class="lineNum">      21 </span>            :  arising from the use of this software.
+<span class="lineNum">      22 </span>            :  
+<span class="lineNum">      23 </span>            :  Permission is granted to anyone to use this software for any purpose,
+<span class="lineNum">      24 </span>            :  including commercial applications, and to alter it and redistribute it
+<span class="lineNum">      25 </span>            :  freely, subject to the following restrictions:
+<span class="lineNum">      26 </span>            :  
+<span class="lineNum">      27 </span>            :  1. The origin of this software must not be misrepresented; you must not
+<span class="lineNum">      28 </span>            :  claim that you wrote the original software. If you use this software
+<span class="lineNum">      29 </span>            :  in a product, an acknowledgment in the product documentation would be
+<span class="lineNum">      30 </span>            :  appreciated but is not required.
+<span class="lineNum">      31 </span>            :  
+<span class="lineNum">      32 </span>            :  2. Altered source versions must be plainly marked as such, and must not be
+<span class="lineNum">      33 </span>            :  misrepresented as being the original software.
+<span class="lineNum">      34 </span>            :  
+<span class="lineNum">      35 </span>            :  3. This notice may not be removed or altered from any source
+<span class="lineNum">      36 </span>            :  distribution.
+<span class="lineNum">      37 </span>            : */
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : #if __has_feature(objc_arc)
+<span class="lineNum">      40 </span>            : //#error This file uses the classic non-ARC retain/release model; hints below...
+<span class="lineNum">      41 </span>            :     // to selectively compile this file as non-ARC, do as follows:
+<span class="lineNum">      42 </span>            :     // https://img.skitch.com/20120717-g3ag5h9a6ehkgpmpjiuen3qpwp.png
+<span class="lineNum">      43 </span>            : #endif
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            : #import &quot;OpenUDID.h&quot;
+<span class="lineNum">      48 </span>            : #import &lt;CommonCrypto/CommonDigest.h&gt; // Need to import for CC_MD5 access
+<span class="lineNum">      49 </span>            : #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+<span class="lineNum">      50 </span>            : #import &lt;UIKit/UIPasteboard.h&gt;
+<span class="lineNum">      51 </span>            : #import &lt;UIKit/UIKit.h&gt;
+<span class="lineNum">      52 </span>            : #else
+<span class="lineNum">      53 </span>            : #import &lt;AppKit/NSPasteboard.h&gt;
+<span class="lineNum">      54 </span>            : #endif
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : #define OpenUDIDLog(fmt, ...)
+<span class="lineNum">      57 </span>            : //#define OpenUDIDLog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+<span class="lineNum">      58 </span>            : //#define OpenUDIDLog(fmt, ...) NSLog((@&quot;[Line %d] &quot; fmt), __LINE__, ##__VA_ARGS__);
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : static NSString * kOpenUDIDSessionCache = nil;
+<span class="lineNum">      61 </span>            : static NSString * const kOpenUDIDDescription = @&quot;OpenUDID_with_iOS6_Support&quot;;
+<span class="lineNum">      62 </span>            : static NSString * const kOpenUDIDKey = @&quot;OpenUDID&quot;;
+<span class="lineNum">      63 </span>            : static NSString * const kOpenUDIDSlotKey = @&quot;OpenUDID_slot&quot;;
+<span class="lineNum">      64 </span>            : static NSString * const kOpenUDIDAppUIDKey = @&quot;OpenUDID_appUID&quot;;
+<span class="lineNum">      65 </span>            : static NSString * const kOpenUDIDTSKey = @&quot;OpenUDID_createdTS&quot;;
+<span class="lineNum">      66 </span>            : static NSString * const kOpenUDIDOOTSKey = @&quot;OpenUDID_optOutTS&quot;;
+<span class="lineNum">      67 </span>            : static NSString * const kOpenUDIDDomain = @&quot;org.OpenUDID&quot;;
+<span class="lineNum">      68 </span>            : static NSString * const kOpenUDIDSlotPBPrefix = @&quot;org.OpenUDID.slot.&quot;;
+<span class="lineNum">      69 </span>            : static int const kOpenUDIDRedundancySlots = 100;
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            : @interface OpenUDID (Private)
+<span class="lineNum">      72 </span>            : + (void) _setDict:(id)dict forPasteboard:(id)pboard;
+<span class="lineNum">      73 </span>            : + (NSMutableDictionary*) _getDictFromPasteboard:(id)pboard;
+<span class="lineNum">      74 </span>            : + (NSString*) _generateFreshOpenUDID;
+<span class="lineNum">      75 </span>            : @end
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span>            : @implementation OpenUDID
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            : // Archive a NSDictionary inside a pasteboard of a given type
+<a name="80"><span class="lineNum">      80 </span>            : // Convenience method to support iOS &amp; Mac OS X</a>
+<span class="lineNum">      81 </span>            : //
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 : + (void) _setDict:(id)dict forPasteboard:(id)pboard {</span>
+<span class="lineNum">      83 </span>            : #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR         
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:dict] forPasteboardType:kOpenUDIDDomain];</span>
+<span class="lineNum">      85 </span>            : #else
+<span class="lineNum">      86 </span>            :     [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:dict] forType:kOpenUDIDDomain];
+<span class="lineNum">      87 </span>            : #endif
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : // Retrieve an NSDictionary from a pasteboard of a given type
+<a name="91"><span class="lineNum">      91 </span>            : // Convenience method to support iOS &amp; Mac OS X</a>
+<span class="lineNum">      92 </span>            : //
+<span class="lineNum">      93 </span><span class="lineCov">>2730*10^13 : + (NSMutableDictionary*) _getDictFromPasteboard:(id)pboard {</span>
+<span class="lineNum">      94 </span>            : #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR 
+<span class="lineNum">      95 </span><span class="lineCov">>2730*10^13 :     id item = [pboard dataForPasteboardType:kOpenUDIDDomain];</span>
+<span class="lineNum">      96 </span>            : #else
+<span class="lineNum">      97 </span>            :         id item = [pboard dataForType:kOpenUDIDDomain];
+<span class="lineNum">      98 </span>            : #endif  
+<span class="lineNum">      99 </span><span class="lineCov">>5460*10^13 :     if (item) {</span>
+<span class="lineNum">     100 </span>            :         @try{
+<span class="lineNum">     101 </span><span class="lineCov">>5460*10^13 :             item = [NSKeyedUnarchiver unarchiveObjectWithData:item];</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :         } @catch(NSException* e) {</span>
+<span class="lineNum">     103 </span>            :             OpenUDIDLog(@&quot;Unable to unarchive item %@ on pasteboard!&quot;, [pboard name]);
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :             item = nil;</span>
+<span class="lineNum">     105 </span><span class="lineCov">>2730*10^13 :         }</span>
+<span class="lineNum">     106 </span><span class="lineCov">>2730*10^13 :     }</span>
+<span class="lineNum">     107 </span>            :     
+<span class="lineNum">     108 </span>            :     // return an instance of a MutableDictionary 
+<span class="lineNum">     109 </span><span class="lineCov">>1092*10^14 :     return [NSMutableDictionary dictionaryWithDictionary:(item == nil || [item isKindOfClass:[NSDictionary class]]) ? item : nil];</span>
+<span class="lineNum">     110 </span><span class="lineCov">>2730*10^13 : }</span>
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span>            : // Private method to create and return a new OpenUDID
+<span class="lineNum">     113 </span>            : // Theoretically, this function is called once ever per application when calling [OpenUDID value] for the first time.
+<a name="114"><span class="lineNum">     114 </span>            : // After that, the caching/pasteboard/redundancy mechanism inside [OpenUDID value] returns a persistent and cross application OpenUDID</a>
+<span class="lineNum">     115 </span>            : //
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 : + (NSString*) _generateFreshOpenUDID {</span>
+<span class="lineNum">     117 </span>            :     
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     NSString* _openUDID = nil;</span>
+<span class="lineNum">     119 </span>            :     
+<span class="lineNum">     120 </span>            :     // August 2011: One day, this may no longer be allowed in iOS. When that is, just comment this line out.
+<span class="lineNum">     121 </span>            :     // March 25th 2012: this day has come, let's remove this &quot;outlawed&quot; call...
+<span class="lineNum">     122 </span>            :     // August 2012: well, perhaps much ado about nothing; in any case WWDC2012 gave us something to work with; read below
+<span class="lineNum">     123 </span>            : #if TARGET_OS_IPHONE    
+<span class="lineNum">     124 </span>            : //    if([UIDevice instancesRespondToSelector:@selector(uniqueIdentifier)]){
+<span class="lineNum">     125 </span>            : //        _openUDID = [[UIDevice currentDevice] uniqueIdentifier];
+<span class="lineNum">     126 </span>            : //    }
+<span class="lineNum">     127 </span>            : #endif
+<span class="lineNum">     128 </span>            :     
+<span class="lineNum">     129 </span>            :     //
+<span class="lineNum">     130 </span>            :     // !!!!! IMPORTANT README !!!!!
+<span class="lineNum">     131 </span>            :     //
+<span class="lineNum">     132 </span>            :     // August 2012: iOS 6 introduces new APIs that help us deal with the now deprecated [UIDevice uniqueIdentifier]
+<span class="lineNum">     133 </span>            :     // Since iOS 6 is still pre-release and under NDA, the following piece of code is meant to produce an error at
+<span class="lineNum">     134 </span>            :     // compile time. Accredited developers integrating OpenUDID are expected to review the iOS 6 release notes and
+<span class="lineNum">     135 </span>            :     // documentation, and replace the underscore ______ in the last part of the selector below with the right
+<span class="lineNum">     136 </span>            :     // selector syntax as described here (make sure to use the right one! last word starts with the letter &quot;A&quot;):
+<span class="lineNum">     137 </span>            :     // https://developer.apple.com/library/prerelease/ios/#documentation/UIKit/Reference/UIDevice_Class/Reference/UIDevice.html
+<span class="lineNum">     138 </span>            :     //
+<span class="lineNum">     139 </span>            :     // The semantic compiler warnings are still normal if you are compiling for iOS 5 only since Xcode will not
+<span class="lineNum">     140 </span>            :     // know about the two instance methods used on that line; the code running on iOS will work well at run-time.
+<span class="lineNum">     141 </span>            :     // Either way, it's time that you junped on the iOS 6 bandwagon and start testing your code on iOS 6 ;-)
+<span class="lineNum">     142 </span>            :     //
+<span class="lineNum">     143 </span>            :     // WHAT IS THE SIGNIFICANCE OF THIS CHANGE?
+<span class="lineNum">     144 </span>            :     //
+<span class="lineNum">     145 </span>            :     // Essentially, this means that OpenUDID will keep on behaving the same way as before for existing users or
+<span class="lineNum">     146 </span>            :     // new users in iOS 5 and before. For new users on iOS 6 and after, the new official public APIs will take over.
+<span class="lineNum">     147 </span>            :     // OpenUDID will therefore be obsoleted when iOS reaches significant adoption, anticipated around mid-2013.
+<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     149 </span>            :     /*
+<span class="lineNum">     150 </span>            : 
+<span class="lineNum">     151 </span>            :         September 14; ok, new development. The alleged API has moved!
+<span class="lineNum">     152 </span>            :         This part of the code will therefore be updated when iOS 6 is actually released.
+<span class="lineNum">     153 </span>            :         Nevertheless, if you want to go ahead, the code should be pretty easy to
+<span class="lineNum">     154 </span>            :         guess... it involves including a .h file from a nine-letter framework that ends
+<span class="lineNum">     155 </span>            :         with the word &quot;Support&quot;, and then assigning _openUDID with the only identifier method called on the sharedManager of that new class... don't forget to add
+<span class="lineNum">     156 </span>            :         the framework to your project!
+<span class="lineNum">     157 </span>            :      
+<span class="lineNum">     158 </span>            : #if TARGET_OS_IPHONE
+<span class="lineNum">     159 </span>            :     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@&quot;6.0&quot;)) {
+<span class="lineNum">     160 </span>            :         _openUDID = [[[UIDevice currentDevice] identifierForA_______] UUIDString];
+<span class="lineNum">     161 </span>            : # error                                                         ^ read comments above, fix accordingly, and remove this #error line
+<span class="lineNum">     162 </span>            :     }
+<span class="lineNum">     163 </span>            : #endif
+<span class="lineNum">     164 </span>            :     
+<span class="lineNum">     165 </span>            :      */
+<span class="lineNum">     166 </span>            :     
+<span class="lineNum">     167 </span>            :     // Next we generate a UUID.
+<span class="lineNum">     168 </span>            :     // UUIDs (Universally Unique Identifiers), also known as GUIDs (Globally Unique Identifiers) or IIDs
+<span class="lineNum">     169 </span>            :     // (Interface Identifiers), are 128-bit values guaranteed to be unique. A UUID is made unique over 
+<span class="lineNum">     170 </span>            :     // both space and time by combining a value unique to the computer on which it was generated—usually the
+<span class="lineNum">     171 </span>            :     // Ethernet hardware address—and a value representing the number of 100-nanosecond intervals since 
+<span class="lineNum">     172 </span>            :     // October 15, 1582 at 00:00:00.
+<span class="lineNum">     173 </span>            :     // We then hash this UUID with md5 to get 32 bytes, and then add 4 extra random bytes
+<span class="lineNum">     174 </span>            :     // Collision is possible of course, but unlikely and suitable for most industry needs (e.g. aggregate tracking)
+<span class="lineNum">     175 </span>            :     //
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :     if (_openUDID==nil) {</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :         CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :         CFStringRef cfstring = CFUUIDCreateString(kCFAllocatorDefault, uuid);</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :         const char *cStr = CFStringGetCStringPtr(cfstring,CFStringGetFastestEncoding(cfstring));</span>
+<span class="lineNum">     180 </span>            :         unsigned char result[16];
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :         CC_MD5( cStr, strlen(cStr), result );</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :         CFRelease(uuid);</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :         CFRelease(cfstring);</span>
+<span class="lineNum">     184 </span>            : 
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :         _openUDID = [NSString stringWithFormat:</span>
+<span class="lineNum">     186 </span>            :                 @&quot;%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%08x&quot;,
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :                 result[0], result[1], result[2], result[3], </span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :                 result[4], result[5], result[6], result[7],</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :                 result[8], result[9], result[10], result[11],</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :                 result[12], result[13], result[14], result[15],</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :                      (NSUInteger)(arc4random() % NSUIntegerMax)];  </span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     193 </span>            :     
+<span class="lineNum">     194 </span>            :     // Call to other developers in the Open Source community:
+<span class="lineNum">     195 </span>            :     //
+<span class="lineNum">     196 </span>            :     // feel free to suggest better or alternative &quot;UDID&quot; generation code above.
+<span class="lineNum">     197 </span>            :     // NOTE that the goal is NOT to find a better hash method, but rather, find a decentralized (i.e. not web-based)
+<span class="lineNum">     198 </span>            :     // 160 bits / 20 bytes random string generator with the fewest possible collisions.
+<span class="lineNum">     199 </span>            :     // 
+<span class="lineNum">     200 </span>            : 
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :     return _openUDID;</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     203 </span>            : 
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span>            : // Main public method that returns the OpenUDID
+<span class="lineNum">     206 </span>            : // This method will generate and store the OpenUDID if it doesn't exist, typically the first time it is called
+<span class="lineNum">     207 </span>            : // It will return the null udid (forty zeros) if the user has somehow opted this app out (this is subject to 3rd party implementation)
+<a name="208"><span class="lineNum">     208 </span>            : // Otherwise, it will register the current app and return the OpenUDID</a>
+<span class="lineNum">     209 </span>            : //
+<span class="lineNum">     210 </span><span class="lineCov">>8162*10^12 : + (NSString*) value {</span>
+<span class="lineNum">     211 </span><span class="lineCov">>8162*10^12 :     return [OpenUDID valueWithError:nil];</span>
+<a name="212"><span class="lineNum">     212 </span>            : }</a>
+<span class="lineNum">     213 </span>            : 
+<span class="lineNum">     214 </span><span class="lineCov">>8162*10^12 : + (NSString*) valueWithError:(NSError **)error {</span>
+<span class="lineNum">     215 </span>            : 
+<span class="lineNum">     216 </span><span class="lineCov">>1604*10^13 :     if (kOpenUDIDSessionCache!=nil) {</span>
+<span class="lineNum">     217 </span><span class="lineCov">>7881*10^12 :         if (error!=nil)</span>
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :             *error = [NSError errorWithDomain:kOpenUDIDDomain</span>
+<span class="lineNum">     219 </span>            :                                          code:kOpenUDIDErrorNone
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@&quot;OpenUDID in cache from first call&quot;,@&quot;description&quot;, nil]];</span>
+<span class="lineNum">     221 </span><span class="lineCov">>7881*10^12 :         return kOpenUDIDSessionCache;</span>
+<span class="lineNum">     222 </span>            :     }
+<span class="lineNum">     223 </span>            :     
+<span class="lineNum">     224 </span><span class="lineCov">>2814*10^11 :         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];</span>
+<span class="lineNum">     225 </span>            :     
+<span class="lineNum">     226 </span>            :     // The AppUID will uniquely identify this app within the pastebins
+<span class="lineNum">     227 </span>            :     //
+<span class="lineNum">     228 </span><span class="lineCov">>2814*10^11 :     NSString * appUID = [defaults objectForKey:kOpenUDIDAppUIDKey];</span>
+<span class="lineNum">     229 </span><span class="lineCov">>5629*10^11 :     if(appUID == nil)</span>
+<span class="lineNum">     230 </span>            :     {
+<span class="lineNum">     231 </span>            :       // generate a new uuid and store it in user defaults
+<span class="lineNum">     232 </span><span class="lineCov">>2814*10^11 :         CFUUIDRef uuid = CFUUIDCreate(NULL);</span>
+<span class="lineNum">     233 </span><span class="lineCov">>2814*10^11 :         appUID = (NSString *) CFBridgingRelease(CFUUIDCreateString(NULL, uuid));</span>
+<span class="lineNum">     234 </span><span class="lineCov">>2814*10^11 :         CFRelease(uuid);</span>
+<span class="lineNum">     235 </span><span class="lineCov">>2814*10^11 :     }</span>
+<span class="lineNum">     236 </span>            :   
+<span class="lineNum">     237 </span><span class="lineCov">>2814*10^11 :     NSString* openUDID = nil;</span>
+<span class="lineNum">     238 </span><span class="lineCov">>2814*10^11 :     NSString* myRedundancySlotPBid = nil;</span>
+<span class="lineNum">     239 </span><span class="lineCov">>2814*10^11 :     NSDate* optedOutDate = nil;</span>
+<span class="lineNum">     240 </span><span class="lineCov">>2814*10^11 :     BOOL optedOut = NO;</span>
+<span class="lineNum">     241 </span><span class="lineCov">>2814*10^11 :     BOOL saveLocalDictToDefaults = NO;</span>
+<span class="lineNum">     242 </span><span class="lineCov">>2814*10^11 :     BOOL isCompromised = NO;</span>
+<span class="lineNum">     243 </span>            :     
+<span class="lineNum">     244 </span>            :     // Do we have a local copy of the OpenUDID dictionary?
+<span class="lineNum">     245 </span>            :     // This local copy contains a copy of the openUDID, myRedundancySlotPBid (and unused in this block, the local bundleid, and the timestamp)
+<span class="lineNum">     246 </span>            :     //
+<span class="lineNum">     247 </span><span class="lineCov">>2814*10^11 :     id localDict = [defaults objectForKey:kOpenUDIDKey];</span>
+<span class="lineNum">     248 </span><span class="lineCov">>5629*10^11 :     if ([localDict isKindOfClass:[NSDictionary class]]) {</span>
+<span class="lineNum">     249 </span><span class="lineCov">>2814*10^11 :         localDict = [NSMutableDictionary dictionaryWithDictionary:localDict]; // we might need to set/overwrite the redundancy slot</span>
+<span class="lineNum">     250 </span><span class="lineCov">>2814*10^11 :         openUDID = [localDict objectForKey:kOpenUDIDKey];</span>
+<span class="lineNum">     251 </span><span class="lineCov">>2814*10^11 :         myRedundancySlotPBid = [localDict objectForKey:kOpenUDIDSlotKey];</span>
+<span class="lineNum">     252 </span><span class="lineCov">>2814*10^11 :         optedOutDate = [localDict objectForKey:kOpenUDIDOOTSKey];</span>
+<span class="lineNum">     253 </span><span class="lineCov">>2814*10^11 :         optedOut = optedOutDate!=nil;</span>
+<span class="lineNum">     254 </span>            :         OpenUDIDLog(@&quot;localDict = %@&quot;,localDict);
+<span class="lineNum">     255 </span><span class="lineCov">>2814*10^11 :     }</span>
+<span class="lineNum">     256 </span>            :     
+<span class="lineNum">     257 </span>            :     // Here we go through a sequence of slots, each of which being a UIPasteboard created by each participating app
+<span class="lineNum">     258 </span>            :     // The idea behind this is to both multiple and redundant representations of OpenUDIDs, as well as serve as placeholder for potential opt-out
+<span class="lineNum">     259 </span>            :     //
+<span class="lineNum">     260 </span><span class="lineCov">>2814*10^11 :     NSString* availableSlotPBid = nil;</span>
+<span class="lineNum">     261 </span><span class="lineCov">>2814*10^11 :     NSMutableDictionary* frequencyDict = [NSMutableDictionary dictionaryWithCapacity:kOpenUDIDRedundancySlots];</span>
+<span class="lineNum">     262 </span><span class="lineCov">>8500*10^13 :     for (int n=0; n&lt;kOpenUDIDRedundancySlots; n++) {</span>
+<span class="lineNum">     263 </span><span class="lineCov">>2814*10^13 :         NSString* slotPBid = [NSString stringWithFormat:@&quot;%@%d&quot;,kOpenUDIDSlotPBPrefix,n];</span>
+<span class="lineNum">     264 </span>            : #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+<span class="lineNum">     265 </span><span class="lineCov">>2814*10^13 :         UIPasteboard* slotPB = [UIPasteboard pasteboardWithName:slotPBid create:NO];</span>
+<span class="lineNum">     266 </span>            : #else
+<span class="lineNum">     267 </span>            :         NSPasteboard* slotPB = [NSPasteboard pasteboardWithName:slotPBid];
+<span class="lineNum">     268 </span>            : #endif
+<span class="lineNum">     269 </span>            :         OpenUDIDLog(@&quot;SlotPB name = %@&quot;,slotPBid);
+<span class="lineNum">     270 </span><span class="lineCov">>2899*10^13 :         if (slotPB==nil) {</span>
+<span class="lineNum">     271 </span>            :             // assign availableSlotPBid to be the first one available
+<span class="lineNum">     272 </span><span class="lineCov">>1126*10^12 :             if (availableSlotPBid==nil) availableSlotPBid = slotPBid;</span>
+<span class="lineNum">     273 </span><span class="lineCov">>8448*10^11 :         } else {</span>
+<span class="lineNum">     274 </span><span class="lineCov">>2730*10^13 :             NSDictionary* dict = [OpenUDID _getDictFromPasteboard:slotPB];</span>
+<span class="lineNum">     275 </span><span class="lineCov">>2730*10^13 :             NSString* oudid = [dict objectForKey:kOpenUDIDKey];</span>
+<span class="lineNum">     276 </span>            :             OpenUDIDLog(@&quot;SlotPB dict = %@&quot;,dict);
+<span class="lineNum">     277 </span><span class="lineCov">>2730*10^13 :             if (oudid==nil) {</span>
+<span class="lineNum">     278 </span>            :                 // availableSlotPBid could inside a non null slot where no oudid can be found
+<span class="lineNum">     279 </span><span class="lineNoCov">          0 :                 if (availableSlotPBid==nil) availableSlotPBid = slotPBid;</span>
+<span class="lineNum">     280 </span><span class="lineNoCov">          0 :             } else {</span>
+<span class="lineNum">     281 </span>            :                 // increment the frequency of this oudid key
+<span class="lineNum">     282 </span><span class="lineCov">>2730*10^13 :                 int count = [[frequencyDict valueForKey:oudid] intValue];</span>
+<span class="lineNum">     283 </span><span class="lineCov">>2730*10^13 :                 [frequencyDict setObject:[NSNumber numberWithInt:++count] forKey:oudid];</span>
+<span class="lineNum">     284 </span>            :             }
+<span class="lineNum">     285 </span>            :             // if we have a match with the app unique id,
+<span class="lineNum">     286 </span>            :             // then let's look if the external UIPasteboard representation marks this app as OptedOut
+<span class="lineNum">     287 </span><span class="lineCov">>2730*10^13 :             NSString* gid = [dict objectForKey:kOpenUDIDAppUIDKey];</span>
+<span class="lineNum">     288 </span><span class="lineCov">>5460*10^13 :             if (gid!=nil &amp;&amp; [gid isEqualToString:appUID]) {</span>
+<span class="lineNum">     289 </span><span class="lineNoCov">          0 :                 myRedundancySlotPBid = slotPBid;</span>
+<span class="lineNum">     290 </span>            :                 // the local dictionary is prime on the opt-out subject, so ignore if already opted-out locally
+<span class="lineNum">     291 </span><span class="lineNoCov">          0 :                 if (optedOut) {</span>
+<span class="lineNum">     292 </span><span class="lineNoCov">          0 :                     optedOutDate = [dict objectForKey:kOpenUDIDOOTSKey];</span>
+<span class="lineNum">     293 </span><span class="lineNoCov">          0 :                     optedOut = optedOutDate!=nil;   </span>
+<span class="lineNum">     294 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">     295 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     296 </span><span class="lineCov">>2730*10^13 :         }</span>
+<span class="lineNum">     297 </span><span class="lineCov">>2814*10^13 :     }</span>
+<span class="lineNum">     298 </span>            :     
+<span class="lineNum">     299 </span>            :     // sort the Frequency dict with highest occurence count of the same OpenUDID (redundancy, failsafe)
+<span class="lineNum">     300 </span>            :     // highest is last in the list
+<span class="lineNum">     301 </span>            :     //
+<span class="lineNum">     302 </span><span class="lineCov">>2814*10^11 :     NSArray* arrayOfUDIDs = [frequencyDict keysSortedByValueUsingSelector:@selector(compare:)];</span>
+<span class="lineNum">     303 </span><span class="lineCov">>1407*10^12 :     NSString* mostReliableOpenUDID = (arrayOfUDIDs!=nil &amp;&amp; [arrayOfUDIDs count]&gt;0)? [arrayOfUDIDs lastObject] : nil;</span>
+<span class="lineNum">     304 </span>            :     OpenUDIDLog(@&quot;Freq Dict = %@\nMost reliable %@&quot;,frequencyDict,mostReliableOpenUDID);
+<span class="lineNum">     305 </span>            :         
+<span class="lineNum">     306 </span>            :     // if openUDID was not retrieved from the local preferences, then let's try to get it from the frequency dictionary above
+<span class="lineNum">     307 </span>            :     //
+<span class="lineNum">     308 </span><span class="lineCov">>2814*10^11 :     if (openUDID==nil) {        </span>
+<span class="lineNum">     309 </span><span class="lineNoCov">          0 :         if (mostReliableOpenUDID==nil) {</span>
+<span class="lineNum">     310 </span>            :             // this is the case where this app instance is likely to be the first one to use OpenUDID on this device
+<span class="lineNum">     311 </span>            :             // we create the OpenUDID, legacy or semi-random (i.e. most certainly unique)
+<span class="lineNum">     312 </span>            :             //
+<span class="lineNum">     313 </span><span class="lineNoCov">          0 :             openUDID = [OpenUDID _generateFreshOpenUDID];</span>
+<span class="lineNum">     314 </span><span class="lineNoCov">          0 :         } else {</span>
+<span class="lineNum">     315 </span>            :             // or we leverage the OpenUDID shared by other apps that have already gone through the process
+<span class="lineNum">     316 </span>            :             // 
+<span class="lineNum">     317 </span><span class="lineNoCov">          0 :             openUDID = mostReliableOpenUDID;</span>
+<span class="lineNum">     318 </span>            :         }
+<span class="lineNum">     319 </span>            :         // then we create a local representation
+<span class="lineNum">     320 </span>            :         //
+<span class="lineNum">     321 </span><span class="lineNoCov">          0 :         if (localDict==nil) { </span>
+<span class="lineNum">     322 </span><span class="lineNoCov">          0 :             localDict = [NSMutableDictionary dictionaryWithCapacity:4];</span>
+<span class="lineNum">     323 </span><span class="lineNoCov">          0 :             [localDict setObject:openUDID forKey:kOpenUDIDKey];</span>
+<span class="lineNum">     324 </span><span class="lineNoCov">          0 :             [localDict setObject:appUID forKey:kOpenUDIDAppUIDKey];</span>
+<span class="lineNum">     325 </span><span class="lineNoCov">          0 :             [localDict setObject:[NSDate date] forKey:kOpenUDIDTSKey];</span>
+<span class="lineNum">     326 </span><span class="lineNoCov">          0 :             if (optedOut) [localDict setObject:optedOutDate forKey:kOpenUDIDTSKey];</span>
+<span class="lineNum">     327 </span><span class="lineNoCov">          0 :             saveLocalDictToDefaults = YES;</span>
+<span class="lineNum">     328 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     329 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     330 </span>            :     else {
+<span class="lineNum">     331 </span>            :         // Sanity/tampering check
+<span class="lineNum">     332 </span>            :         //
+<span class="lineNum">     333 </span><span class="lineCov">>5629*10^11 :         if (mostReliableOpenUDID!=nil &amp;&amp; ![mostReliableOpenUDID isEqualToString:openUDID])</span>
+<span class="lineNum">     334 </span><span class="lineNoCov">          0 :             isCompromised = YES;</span>
+<span class="lineNum">     335 </span>            :     }
+<span class="lineNum">     336 </span>            :     
+<span class="lineNum">     337 </span>            :     // Here we store in the available PB slot, if applicable
+<span class="lineNum">     338 </span>            :     //
+<span class="lineNum">     339 </span>            :     OpenUDIDLog(@&quot;Available Slot %@ Existing Slot %@&quot;,availableSlotPBid,myRedundancySlotPBid);
+<span class="lineNum">     340 </span><span class="lineCov">>8444*10^11 :     if (availableSlotPBid!=nil &amp;&amp; (myRedundancySlotPBid==nil || [availableSlotPBid isEqualToString:myRedundancySlotPBid])) {</span>
+<span class="lineNum">     341 </span>            : #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+<span class="lineNum">     342 </span><span class="lineNoCov">          0 :         UIPasteboard* slotPB = [UIPasteboard pasteboardWithName:availableSlotPBid create:YES];</span>
+<span class="lineNum">     343 </span><span class="lineNoCov">          0 :         [slotPB setPersistent:YES];</span>
+<span class="lineNum">     344 </span>            : #else
+<span class="lineNum">     345 </span>            :         NSPasteboard* slotPB = [NSPasteboard pasteboardWithName:availableSlotPBid];
+<span class="lineNum">     346 </span>            : #endif
+<span class="lineNum">     347 </span>            :         
+<span class="lineNum">     348 </span>            :         // save slotPBid to the defaults, and remember to save later
+<span class="lineNum">     349 </span>            :         //
+<span class="lineNum">     350 </span><span class="lineNoCov">          0 :         if (localDict) {</span>
+<span class="lineNum">     351 </span><span class="lineNoCov">          0 :             [localDict setObject:availableSlotPBid forKey:kOpenUDIDSlotKey];</span>
+<span class="lineNum">     352 </span><span class="lineNoCov">          0 :             saveLocalDictToDefaults = YES;</span>
+<span class="lineNum">     353 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     354 </span>            :         
+<span class="lineNum">     355 </span>            :         // Save the local dictionary to the corresponding UIPasteboard slot
+<span class="lineNum">     356 </span>            :         //
+<span class="lineNum">     357 </span><span class="lineNoCov">          0 :         if (openUDID &amp;&amp; localDict)</span>
+<span class="lineNum">     358 </span><span class="lineNoCov">          0 :             [OpenUDID _setDict:localDict forPasteboard:slotPB];</span>
+<span class="lineNum">     359 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     360 </span>            : 
+<span class="lineNum">     361 </span>            :     // Save the dictionary locally if applicable
+<span class="lineNum">     362 </span>            :     //
+<span class="lineNum">     363 </span><span class="lineCov">>5629*10^11 :     if (localDict &amp;&amp; saveLocalDictToDefaults)</span>
+<span class="lineNum">     364 </span><span class="lineNoCov">          0 :         [defaults setObject:localDict forKey:kOpenUDIDKey];</span>
+<span class="lineNum">     365 </span>            : 
+<span class="lineNum">     366 </span>            :     // If the UIPasteboard external representation marks this app as opted-out, then to respect privacy, we return the ZERO OpenUDID, a sequence of 40 zeros...
+<span class="lineNum">     367 </span>            :     // This is a *new* case that developers have to deal with. Unlikely, statistically low, but still.
+<span class="lineNum">     368 </span>            :     // To circumvent this and maintain good tracking (conversion ratios, etc.), developers are invited to calculate how many of their users have opted-out from the full set of users.
+<span class="lineNum">     369 </span>            :     // This ratio will let them extrapolate convertion ratios more accurately.
+<span class="lineNum">     370 </span>            :     //
+<span class="lineNum">     371 </span><span class="lineCov">>2814*10^11 :     if (optedOut) {</span>
+<span class="lineNum">     372 </span><span class="lineNoCov">          0 :         if (error!=nil) *error = [NSError errorWithDomain:kOpenUDIDDomain</span>
+<span class="lineNum">     373 </span>            :                                                      code:kOpenUDIDErrorOptedOut
+<span class="lineNum">     374 </span><span class="lineNoCov">          0 :                                                  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@&quot;Application with unique id %@ is opted-out from OpenUDID as of %@&quot;,appUID,optedOutDate],@&quot;description&quot;, nil]];</span>
+<span class="lineNum">     375 </span>            :             
+<span class="lineNum">     376 </span><span class="lineNoCov">          0 :         kOpenUDIDSessionCache = [NSString stringWithFormat:@&quot;%040x&quot;,0];</span>
+<span class="lineNum">     377 </span><span class="lineNoCov">          0 :         return kOpenUDIDSessionCache;</span>
+<span class="lineNum">     378 </span>            :     }
+<span class="lineNum">     379 </span>            : 
+<span class="lineNum">     380 </span>            :     // return the well earned openUDID!
+<span class="lineNum">     381 </span>            :     //
+<span class="lineNum">     382 </span><span class="lineCov">>2814*10^11 :     if (error!=nil) {</span>
+<span class="lineNum">     383 </span><span class="lineNoCov">          0 :         if (isCompromised)</span>
+<span class="lineNum">     384 </span><span class="lineNoCov">          0 :             *error = [NSError errorWithDomain:kOpenUDIDDomain</span>
+<span class="lineNum">     385 </span>            :                                          code:kOpenUDIDErrorCompromised
+<span class="lineNum">     386 </span><span class="lineNoCov">          0 :                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@&quot;Found a discrepancy between stored OpenUDID (reliable) and redundant copies; one of the apps on the device is most likely corrupting the OpenUDID protocol&quot;,@&quot;description&quot;, nil]];</span>
+<span class="lineNum">     387 </span>            :         else
+<span class="lineNum">     388 </span><span class="lineNoCov">          0 :             *error = [NSError errorWithDomain:kOpenUDIDDomain</span>
+<span class="lineNum">     389 </span>            :                                          code:kOpenUDIDErrorNone
+<span class="lineNum">     390 </span><span class="lineNoCov">          0 :                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@&quot;OpenUDID succesfully retrieved&quot;,@&quot;description&quot;, nil]];</span>
+<span class="lineNum">     391 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     392 </span><span class="lineCov">>2814*10^11 :     kOpenUDIDSessionCache = openUDID;</span>
+<span class="lineNum">     393 </span><span class="lineCov">>2814*10^11 :     return kOpenUDIDSessionCache;</span>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">>8444*10^12 : }</span></a>
+<span class="lineNum">     395 </span>            : 
+<span class="lineNum">     396 </span><span class="lineNoCov">          0 : + (void) setOptOut:(BOOL)optOutValue {</span>
+<span class="lineNum">     397 </span>            : 
+<span class="lineNum">     398 </span>            :     // init call
+<span class="lineNum">     399 </span><span class="lineNoCov">          0 :     [OpenUDID value];</span>
+<span class="lineNum">     400 </span>            :     
+<span class="lineNum">     401 </span><span class="lineNoCov">          0 :     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];</span>
+<span class="lineNum">     402 </span>            : 
+<span class="lineNum">     403 </span>            :     // load the dictionary from local cache or create one
+<span class="lineNum">     404 </span><span class="lineNoCov">          0 :     id dict = [defaults objectForKey:kOpenUDIDKey];</span>
+<span class="lineNum">     405 </span><span class="lineNoCov">          0 :     if ([dict isKindOfClass:[NSDictionary class]]) {</span>
+<span class="lineNum">     406 </span><span class="lineNoCov">          0 :         dict = [NSMutableDictionary dictionaryWithDictionary:dict];</span>
+<span class="lineNum">     407 </span><span class="lineNoCov">          0 :     } else {</span>
+<span class="lineNum">     408 </span><span class="lineNoCov">          0 :         dict = [NSMutableDictionary dictionaryWithCapacity:2];</span>
+<span class="lineNum">     409 </span>            :     }
+<span class="lineNum">     410 </span>            : 
+<span class="lineNum">     411 </span>            :     // set the opt-out date or remove key, according to parameter
+<span class="lineNum">     412 </span><span class="lineNoCov">          0 :     if (optOutValue)</span>
+<span class="lineNum">     413 </span><span class="lineNoCov">          0 :         [dict setObject:[NSDate date] forKey:kOpenUDIDOOTSKey];</span>
+<span class="lineNum">     414 </span>            :     else
+<span class="lineNum">     415 </span><span class="lineNoCov">          0 :         [dict removeObjectForKey:kOpenUDIDOOTSKey];</span>
+<span class="lineNum">     416 </span>            : 
+<span class="lineNum">     417 </span>            :         // store the dictionary locally
+<span class="lineNum">     418 </span><span class="lineNoCov">          0 :     [defaults setObject:dict forKey:kOpenUDIDKey];</span>
+<span class="lineNum">     419 </span>            :     
+<span class="lineNum">     420 </span>            :     OpenUDIDLog(@&quot;Local dict after opt-out = %@&quot;,dict);
+<span class="lineNum">     421 </span>            :     
+<span class="lineNum">     422 </span>            :     // reset memory cache 
+<span class="lineNum">     423 </span><span class="lineNoCov">          0 :     kOpenUDIDSessionCache = nil;</span>
+<span class="lineNum">     424 </span>            :     
+<span class="lineNum">     425 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     426 </span>            : 
+<span class="lineNum">     427 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

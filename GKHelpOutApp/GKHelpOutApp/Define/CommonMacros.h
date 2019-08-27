@@ -71,10 +71,8 @@
 #define KNotificationRefreshTabbarDot @"KNotificationRefreshTabbarDot"
 //刷新我的生活圈红点(有人点赞评论)
 #define KNotificationMineRefreshDot @"KNotificationMineRefreshDot"
-//有新的好友“我”底部增加红点
-#define KNotificationMineNewFriendDot @"KNotificationMineNewFriendDot"
-//有新消息
-#define KNotificationReceiceNewMessage @"KNotificationReceiceNewMessage"
+
+
 
 #define defultTager  999
 #endif /* CommonMacros_h */

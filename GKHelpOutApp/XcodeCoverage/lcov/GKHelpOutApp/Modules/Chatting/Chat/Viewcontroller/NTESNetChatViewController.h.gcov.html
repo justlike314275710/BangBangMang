@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/Chatting/Chat/Viewcontroller/NTESNetChatViewController.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/Chatting/Chat/Viewcontroller</a> - NTESNetChatViewController.h<span style="font-size: 80%;"> (source / <a href="NTESNetChatViewController.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  NTESNetChatViewController.h
+<span class="lineNum">       3 </span>            : //  NIM
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by chris on 15/5/18.
+<span class="lineNum">       6 </span>            : //  Copyright (c) 2015年 Netease. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &lt;UIKit/UIKit.h&gt;
+<span class="lineNum">      10 </span>            : #import &quot;NTESTimerHolder.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;NTESRecordSelectView.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;PSViewController.h&quot;
+<span class="lineNum">      13 </span>            : @class NTESNetCallChatInfo;
+<span class="lineNum">      14 </span>            : @class AVAudioPlayer;
+<span class="lineNum">      15 </span>            : 
+<a name="16"><span class="lineNum">      16 </span>            : </a>
+<a name="17"><span class="lineNum">      17 </span>            : @interface NTESNetChatViewController : PSViewController&lt;NIMNetCallManagerDelegate,NTESTimerHolderDelegate,NTESRecordSelectViewDelegate&gt;</a>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 : @property (nonatomic , strong)NIMNetCallOption *option;</span>
+<a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) NTESNetCallChatInfo *callInfo;</span></a>
+<span class="lineNum">      20 </span>            : 
+<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) AVAudioPlayer *player; //播放提示音</span></a>
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) NSString *peerUid;</span>
+<a name="24"><span class="lineNum">      24 </span>            : </a>
+<a name="25"><span class="lineNum">      25 </span>            : </a>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 : @property (nonatomic , strong) NSString* orderID;</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : @property (nonatomic , strong) NSString* videoDuration;</span>
+<span class="lineNum">      28 </span>            : //主叫方是自己，发起通话，初始化方法
+<span class="lineNum">      29 </span>            : - (instancetype)initWithCallee:(NSString *)callee;
+<span class="lineNum">      30 </span>            : //被叫方是自己，接听界面，初始化方法
+<span class="lineNum">      31 </span>            : - (instancetype)initWithCaller:(NSString *)caller
+<span class="lineNum">      32 </span>            :                         callId:(uint64_t)callID;
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            : //主叫方开始界面回调
+<span class="lineNum">      36 </span>            : - (void)startByCaller;
+<span class="lineNum">      37 </span>            : //被叫方开始界面回调
+<span class="lineNum">      38 </span>            : - (void)startByCallee;
+<span class="lineNum">      39 </span>            : //同意后正在进入聊天界面
+<span class="lineNum">      40 </span>            : - (void)waitForConnectiong;
+<span class="lineNum">      41 </span>            : //双方开始通话
+<span class="lineNum">      42 </span>            : - (void)onCalling;
+<span class="lineNum">      43 </span>            : //挂断
+<span class="lineNum">      44 </span>            : - (void)hangup;
+<span class="lineNum">      45 </span>            : //接受/拒接通话
+<span class="lineNum">      46 </span>            : - (void)response:(BOOL)accept;
+<span class="lineNum">      47 </span>            : //退出界面
+<span class="lineNum">      48 </span>            : - (void)dismiss:(void (^)(void))completion;
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : - (void)onCalleeBusy;
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : //开始语音对话录制
+<span class="lineNum">      53 </span>            : - (BOOL)startAudioRecording;
+<span class="lineNum">      54 </span>            : //开始本地录制
+<span class="lineNum">      55 </span>            : - (BOOL)startLocalRecording;
+<span class="lineNum">      56 </span>            : //开始对方录制
+<span class="lineNum">      57 </span>            : - (BOOL)startOtherSideRecording;
+<span class="lineNum">      58 </span>            : //结束语音对话录制
+<span class="lineNum">      59 </span>            : -(void)stopAudioRecording;
+<span class="lineNum">      60 </span>            : //结束本地录制
+<span class="lineNum">      61 </span>            : - (BOOL)stopLocalRecording;
+<span class="lineNum">      62 </span>            : //结束对方录制
+<span class="lineNum">      63 </span>            : - (BOOL)stopOtherSideRecording;
+<span class="lineNum">      64 </span>            : //结束所有录制任务
+<span class="lineNum">      65 </span>            : - (void)stopRecordTaskWithVideo:(BOOL)isVideo;
+<span class="lineNum">      66 </span>            : //所有录制是否结束
+<span class="lineNum">      67 </span>            : - (BOOL)allRecordsStopped;
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            : //低空间警告
+<span class="lineNum">      70 </span>            : - (void)udpateLowSpaceWarning:(BOOL)show;
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : //选择类型进行录制
+<span class="lineNum">      73 </span>            : - (void)recordWithAudioConversation:(BOOL)audioConversationOn myMedia:(BOOL)myMediaOn otherSideMedia:(BOOL)otherSideMediaOn video:(BOOL)isVideo;
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            : //显示录制选择框
+<span class="lineNum">      76 </span>            : -(void)showRecordSelectView:(BOOL)isVideo;
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            : #pragma mark - Ring
+<span class="lineNum">      80 </span>            : //铃声 - 正在呼叫请稍后
+<span class="lineNum">      81 </span>            : - (void)playConnnetRing;
+<span class="lineNum">      82 </span>            : //铃声 - 对方暂时无法接听
+<span class="lineNum">      83 </span>            : - (void)playHangUpRing;
+<span class="lineNum">      84 </span>            : //铃声 - 对方正在通话中
+<span class="lineNum">      85 </span>            : - (void)playOnCallRing;
+<span class="lineNum">      86 </span>            : //铃声 - 对方无人接听
+<span class="lineNum">      87 </span>            : - (void)playTimeoutRing;
+<span class="lineNum">      88 </span>            : //铃声 - 接收方铃声
+<span class="lineNum">      89 </span>            : - (void)playReceiverRing;
+<span class="lineNum">      90 </span>            : //铃声 - 拨打方铃声
+<span class="lineNum">      91 </span>            : - (void)playSenderRing;
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -9,6 +9,7 @@
 #import "HMGetCashResultViewController.h"
 #import "MineTableViewCell.h"
 #import "NSString+Utils.h"
+#import "HMAccountBalanceViewController.h"
 
 @interface HMGetCashResultViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -32,10 +33,22 @@
     [self intData];
     [self setupUI];
 }
+
+-(void)backBtnClicked {
+    __block HMAccountBalanceViewController *accountVC = nil;
+    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[HMAccountBalanceViewController class]]) {
+            accountVC = obj;
+            [self.navigationController popToViewController:accountVC animated:YES];
+            *stop = YES;
+        }
+    }];
+}
+
 - (void)intData{
     _nowTime = [NSString getCurrentTimes];
     
-    _twoHourLateTime = [NSString getTimeFromTimestamp:[[NSString getNowTimeTimestamp] doubleValue] + 7200];
+    _twoHourLateTime = [NSString getTimeFromTimestamp:[[NSString getNowTimeTimestamp] doubleValue] + 3600*3];
     
     NSLog(@"%@",_twoHourLateTime);
     
@@ -64,6 +77,9 @@
     NSDictionary *myFriends = @{@"titleText":@"支付宝姓名",@"detailText":help_userManager.lawUserInfo.nickName};
     NSDictionary *myLevel = @{@"titleText":@"支付宝账户",@"detailText":help_userManager.curUserInfo.username};
     NSDictionary *failReason = @{@"titleText":@"提现金额",@"detailText":self.cash};
+    
+    //self.lawUserInfo.nickName
+    
     
     _dataSource = @[Modifydata,myMission,myFriends,myLevel,failReason];
     [self.tableView reloadData];

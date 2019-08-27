@@ -1,0 +1,564 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Utils/Category/UIImage+ImageEffects.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Utils/Category</a> - UIImage+ImageEffects.m<span style="font-size: 80%;"> (source / <a href="UIImage+ImageEffects.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">224</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*</a>
+<span class="lineNum">       2 </span>            :      File: UIImage+ImageEffects.m
+<span class="lineNum">       3 </span>            :  Abstract: This is a category of UIImage that adds methods to apply blur and tint effects to an image. This is the code you’ll want to look out to find out how to use vImage to efficiently calculate a blur.
+<span class="lineNum">       4 </span>            :   Version: 1.0
+<span class="lineNum">       5 </span>            :  
+<span class="lineNum">       6 </span>            :  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
+<span class="lineNum">       7 </span>            :  Inc. (&quot;Apple&quot;) in consideration of your agreement to the following
+<span class="lineNum">       8 </span>            :  terms, and your use, installation, modification or redistribution of
+<span class="lineNum">       9 </span>            :  this Apple software constitutes acceptance of these terms.  If you do
+<span class="lineNum">      10 </span>            :  not agree with these terms, please do not use, install, modify or
+<span class="lineNum">      11 </span>            :  redistribute this Apple software.
+<span class="lineNum">      12 </span>            :  
+<span class="lineNum">      13 </span>            :  In consideration of your agreement to abide by the following terms, and
+<span class="lineNum">      14 </span>            :  subject to these terms, Apple grants you a personal, non-exclusive
+<span class="lineNum">      15 </span>            :  license, under Apple's copyrights in this original Apple software (the
+<span class="lineNum">      16 </span>            :  &quot;Apple Software&quot;), to use, reproduce, modify and redistribute the Apple
+<span class="lineNum">      17 </span>            :  Software, with or without modifications, in source and/or binary forms;
+<span class="lineNum">      18 </span>            :  provided that if you redistribute the Apple Software in its entirety and
+<span class="lineNum">      19 </span>            :  without modifications, you must retain this notice and the following
+<span class="lineNum">      20 </span>            :  text and disclaimers in all such redistributions of the Apple Software.
+<span class="lineNum">      21 </span>            :  Neither the name, trademarks, service marks or logos of Apple Inc. may
+<span class="lineNum">      22 </span>            :  be used to endorse or promote products derived from the Apple Software
+<span class="lineNum">      23 </span>            :  without specific prior written permission from Apple.  Except as
+<span class="lineNum">      24 </span>            :  expressly stated in this notice, no other rights or licenses, express or
+<span class="lineNum">      25 </span>            :  implied, are granted by Apple herein, including but not limited to any
+<span class="lineNum">      26 </span>            :  patent rights that may be infringed by your derivative works or by other
+<span class="lineNum">      27 </span>            :  works in which the Apple Software may be incorporated.
+<span class="lineNum">      28 </span>            :  
+<span class="lineNum">      29 </span>            :  The Apple Software is provided by Apple on an &quot;AS IS&quot; basis.  APPLE
+<span class="lineNum">      30 </span>            :  MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION
+<span class="lineNum">      31 </span>            :  THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS
+<span class="lineNum">      32 </span>            :  FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
+<span class="lineNum">      33 </span>            :  OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
+<span class="lineNum">      34 </span>            :  
+<span class="lineNum">      35 </span>            :  IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
+<span class="lineNum">      36 </span>            :  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+<span class="lineNum">      37 </span>            :  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+<span class="lineNum">      38 </span>            :  INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
+<span class="lineNum">      39 </span>            :  MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
+<span class="lineNum">      40 </span>            :  AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
+<span class="lineNum">      41 </span>            :  STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
+<span class="lineNum">      42 </span>            :  POSSIBILITY OF SUCH DAMAGE.
+<span class="lineNum">      43 </span>            :  
+<span class="lineNum">      44 </span>            :  Copyright (C) 2013 Apple Inc. All Rights Reserved.
+<span class="lineNum">      45 </span>            :  
+<span class="lineNum">      46 </span>            :  
+<span class="lineNum">      47 </span>            :  Copyright © 2013 Apple Inc. All rights reserved.
+<span class="lineNum">      48 </span>            :  WWDC 2013 License
+<span class="lineNum">      49 </span>            :  
+<span class="lineNum">      50 </span>            :  NOTE: This Apple Software was supplied by Apple as part of a WWDC 2013
+<span class="lineNum">      51 </span>            :  Session. Please refer to the applicable WWDC 2013 Session for further
+<span class="lineNum">      52 </span>            :  information.
+<span class="lineNum">      53 </span>            :  
+<span class="lineNum">      54 </span>            :  IMPORTANT: This Apple software is supplied to you by Apple Inc.
+<span class="lineNum">      55 </span>            :  (&quot;Apple&quot;) in consideration of your agreement to the following terms, and
+<span class="lineNum">      56 </span>            :  your use, installation, modification or redistribution of this Apple
+<span class="lineNum">      57 </span>            :  software constitutes acceptance of these terms. If you do not agree with
+<span class="lineNum">      58 </span>            :  these terms, please do not use, install, modify or redistribute this
+<span class="lineNum">      59 </span>            :  Apple software.
+<span class="lineNum">      60 </span>            :  
+<span class="lineNum">      61 </span>            :  In consideration of your agreement to abide by the following terms, and
+<span class="lineNum">      62 </span>            :  subject to these terms, Apple grants you a non-exclusive license, under
+<span class="lineNum">      63 </span>            :  Apple's copyrights in this original Apple software (the &quot;Apple
+<span class="lineNum">      64 </span>            :  Software&quot;), to use, reproduce, modify and redistribute the Apple
+<span class="lineNum">      65 </span>            :  Software, with or without modifications, in source and/or binary forms;
+<span class="lineNum">      66 </span>            :  provided that if you redistribute the Apple Software in its entirety and
+<span class="lineNum">      67 </span>            :  without modifications, you must retain this notice and the following
+<span class="lineNum">      68 </span>            :  text and disclaimers in all such redistributions of the Apple Software.
+<span class="lineNum">      69 </span>            :  Neither the name, trademarks, service marks or logos of Apple Inc. may
+<span class="lineNum">      70 </span>            :  be used to endorse or promote products derived from the Apple Software
+<span class="lineNum">      71 </span>            :  without specific prior written permission from Apple. Except as
+<span class="lineNum">      72 </span>            :  expressly stated in this notice, no other rights or licenses, express or
+<span class="lineNum">      73 </span>            :  implied, are granted by Apple herein, including but not limited to any
+<span class="lineNum">      74 </span>            :  patent rights that may be infringed by your derivative works or by other
+<span class="lineNum">      75 </span>            :  works in which the Apple Software may be incorporated.
+<span class="lineNum">      76 </span>            :  
+<span class="lineNum">      77 </span>            :  The Apple Software is provided by Apple on an &quot;AS IS&quot; basis. APPLE MAKES
+<span class="lineNum">      78 </span>            :  NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE
+<span class="lineNum">      79 </span>            :  IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR
+<span class="lineNum">      80 </span>            :  A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
+<span class="lineNum">      81 </span>            :  OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
+<span class="lineNum">      82 </span>            :  
+<span class="lineNum">      83 </span>            :  IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
+<span class="lineNum">      84 </span>            :  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+<span class="lineNum">      85 </span>            :  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+<span class="lineNum">      86 </span>            :  INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
+<span class="lineNum">      87 </span>            :  MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
+<span class="lineNum">      88 </span>            :  AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
+<span class="lineNum">      89 </span>            :  STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
+<span class="lineNum">      90 </span>            :  POSSIBILITY OF SUCH DAMAGE.
+<span class="lineNum">      91 </span>            :  
+<span class="lineNum">      92 </span>            :  EA1002
+<span class="lineNum">      93 </span>            :  5/3/2013
+<span class="lineNum">      94 </span>            :  */
+<span class="lineNum">      95 </span>            : 
+<span class="lineNum">      96 </span>            : #import &quot;UIImage+ImageEffects.h&quot;
+<span class="lineNum">      97 </span>            : #import &lt;float.h&gt;
+<span class="lineNum">      98 </span>            : @import Accelerate;
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            : @implementation UIImage (ImageEffects)
+<a name="101"><span class="lineNum">     101 </span>            : </a>
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 : - (UIImage *)applyLightEffect{</span>
+<span class="lineNum">     104 </span>            :     
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     UIColor *tintColor = [UIColor colorWithWhite:1.0 alpha:0.3];</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     return [self applyBlurWithRadius:30 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : }</span>
+<a name="108"><span class="lineNum">     108 </span>            : </a>
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 : - (UIImage *)applyExtraLightEffect {</span>
+<span class="lineNum">     111 </span>            :     
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :     UIColor *tintColor = [UIColor colorWithWhite:0.97 alpha:0.82];</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :     return [self applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 : }</span>
+<a name="115"><span class="lineNum">     115 </span>            : </a>
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 : - (UIImage *)applyDarkEffect {</span>
+<span class="lineNum">     118 </span>            :     
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :     UIColor *tintColor = [UIColor colorWithWhite:0.11 alpha:0.73];</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     return [self applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 : }</span>
+<a name="122"><span class="lineNum">     122 </span>            : </a>
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : - (UIImage *)applyTintEffectWithColor:(UIColor *)tintColor {</span>
+<span class="lineNum">     125 </span>            :     
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     const CGFloat EffectColorAlpha = 0.6;</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     UIColor      *effectColor      = tintColor;</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :     int           componentCount   = (int)CGColorGetNumberOfComponents(tintColor.CGColor);</span>
+<span class="lineNum">     129 </span>            :     
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :     if (componentCount == 2) {</span>
+<span class="lineNum">     131 </span>            :         
+<span class="lineNum">     132 </span>            :         CGFloat b;
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :         if ([tintColor getWhite:&amp;b alpha:NULL]) {</span>
+<span class="lineNum">     134 </span>            :             
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :             effectColor = [UIColor colorWithWhite:b alpha:EffectColorAlpha];</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     137 </span>            :         
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     } else {</span>
+<span class="lineNum">     139 </span>            :         
+<span class="lineNum">     140 </span>            :         CGFloat r, g, b;
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :         if ([tintColor getRed:&amp;r green:&amp;g blue:&amp;b alpha:NULL]) {</span>
+<span class="lineNum">     142 </span>            :             
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :             effectColor = [UIColor colorWithRed:r green:g blue:b alpha:EffectColorAlpha];</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     145 </span>            :     }
+<span class="lineNum">     146 </span>            :     
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :     return [self applyBlurWithRadius:20 tintColor:effectColor saturationDeltaFactor:1.4 maskImage:nil];</span>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : - (UIImage *)blurImage {</span>
+<span class="lineNum">     151 </span>            :     
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :     return [self applyBlurWithRadius:20</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :                            tintColor:[UIColor colorWithWhite:0 alpha:0.0]</span>
+<span class="lineNum">     154 </span>            :                saturationDeltaFactor:1.4
+<span class="lineNum">     155 </span>            :                            maskImage:nil];
+<a name="156"><span class="lineNum">     156 </span>            : }</a>
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 : - (UIImage *)blurImageWithRadius:(CGFloat)radius {</span>
+<span class="lineNum">     159 </span>            :     
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :     return [self applyBlurWithRadius:radius</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :                            tintColor:[UIColor colorWithWhite:0 alpha:0.0]</span>
+<span class="lineNum">     162 </span>            :                saturationDeltaFactor:1.4
+<span class="lineNum">     163 </span>            :                            maskImage:nil];
+<a name="164"><span class="lineNum">     164 </span>            : }</a>
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 : - (UIImage *)blurImageWithMask:(UIImage *)maskImage {</span>
+<span class="lineNum">     167 </span>            :     
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     return [self applyBlurWithRadius:20</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 :                            tintColor:[UIColor colorWithWhite:0 alpha:0.0]</span>
+<span class="lineNum">     170 </span>            :                saturationDeltaFactor:1.4
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :                            maskImage:maskImage];</span>
+<a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     173 </span>            : 
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 : - (UIImage *)blurImageAtFrame:(CGRect)frame {</span>
+<span class="lineNum">     175 </span>            :     
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :     return [self applyBlurWithRadius:20</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :                            tintColor:[UIColor colorWithWhite:0 alpha:0.0]</span>
+<span class="lineNum">     178 </span>            :                saturationDeltaFactor:1.4
+<span class="lineNum">     179 </span>            :                            maskImage:nil
+<span class="lineNum">     180 </span>            :                              atFrame:frame];
+<a name="181"><span class="lineNum">     181 </span>            : }</a>
+<span class="lineNum">     182 </span>            : 
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 : - (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage {</span>
+<span class="lineNum">     184 </span>            :     
+<span class="lineNum">     185 </span>            :     // Check pre-conditions.
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :     if (self.size.width &lt; 1 || self.size.height &lt; 1) {</span>
+<span class="lineNum">     187 </span>            :         
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :         NSLog (@&quot;*** error: invalid size: (%.2f x %.2f). Both dimensions must be &gt;= 1: %@&quot;, self.size.width, self.size.height, self);</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :         return nil;</span>
+<span class="lineNum">     190 </span>            :     }
+<span class="lineNum">     191 </span>            :     
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :     if (!self.CGImage) {</span>
+<span class="lineNum">     193 </span>            :         
+<span class="lineNum">     194 </span><span class="lineNoCov">          0 :         NSLog (@&quot;*** error: image must be backed by a CGImage: %@&quot;, self);</span>
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 :         return nil;</span>
+<span class="lineNum">     196 </span>            :     }
+<span class="lineNum">     197 </span>            :     
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :     if (maskImage &amp;&amp; !maskImage.CGImage) {</span>
+<span class="lineNum">     199 </span>            :         
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :         NSLog (@&quot;*** error: maskImage must be backed by a CGImage: %@&quot;, maskImage);</span>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :         return nil;</span>
+<span class="lineNum">     202 </span>            :     }
+<span class="lineNum">     203 </span>            : 
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :     CGRect   imageRect   = { CGPointZero, self.size };</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 :     UIImage *effectImage = self;</span>
+<span class="lineNum">     206 </span>            :     
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 :     BOOL hasBlur             = blurRadius &gt; __FLT_EPSILON__;</span>
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 :     BOOL hasSaturationChange = fabs(saturationDeltaFactor - 1.) &gt; __FLT_EPSILON__;</span>
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 :     if (hasBlur || hasSaturationChange) {</span>
+<span class="lineNum">     210 </span>            :         
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :         UIGraphicsBeginImageContextWithOptions(self.size, NO, [[UIScreen mainScreen] scale]);</span>
+<span class="lineNum">     212 </span><span class="lineNoCov">          0 :         CGContextRef effectInContext = UIGraphicsGetCurrentContext();</span>
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :         CGContextScaleCTM(effectInContext, 1.0, -1.0);</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :         CGContextTranslateCTM(effectInContext, 0, -self.size.height);</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :         CGContextDrawImage(effectInContext, imageRect, self.CGImage);</span>
+<span class="lineNum">     216 </span>            : 
+<span class="lineNum">     217 </span>            :         vImage_Buffer effectInBuffer;
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :         effectInBuffer.data     = CGBitmapContextGetData(effectInContext);</span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 :         effectInBuffer.width    = CGBitmapContextGetWidth(effectInContext);</span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :         effectInBuffer.height   = CGBitmapContextGetHeight(effectInContext);</span>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 :         effectInBuffer.rowBytes = CGBitmapContextGetBytesPerRow(effectInContext);</span>
+<span class="lineNum">     222 </span>            :     
+<span class="lineNum">     223 </span><span class="lineNoCov">          0 :         UIGraphicsBeginImageContextWithOptions(self.size, NO, [[UIScreen mainScreen] scale]);</span>
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 :         CGContextRef effectOutContext = UIGraphicsGetCurrentContext();</span>
+<span class="lineNum">     225 </span>            :         vImage_Buffer effectOutBuffer;
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 :         effectOutBuffer.data     = CGBitmapContextGetData(effectOutContext);</span>
+<span class="lineNum">     227 </span><span class="lineNoCov">          0 :         effectOutBuffer.width    = CGBitmapContextGetWidth(effectOutContext);</span>
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :         effectOutBuffer.height   = CGBitmapContextGetHeight(effectOutContext);</span>
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 :         effectOutBuffer.rowBytes = CGBitmapContextGetBytesPerRow(effectOutContext);</span>
+<span class="lineNum">     230 </span>            : 
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :         if (hasBlur) {</span>
+<span class="lineNum">     232 </span>            :             
+<span class="lineNum">     233 </span>            :             // A description of how to compute the box kernel width from the Gaussian
+<span class="lineNum">     234 </span>            :             // radius (aka standard deviation) appears in the SVG spec:
+<span class="lineNum">     235 </span>            :             // http://www.w3.org/TR/SVG/filters.html#feGaussianBlurElement
+<span class="lineNum">     236 </span>            :             // 
+<span class="lineNum">     237 </span>            :             // For larger values of 's' (s &gt;= 2.0), an approximation can be used: Three
+<span class="lineNum">     238 </span>            :             // successive box-blurs build a piece-wise quadratic convolution kernel, which
+<span class="lineNum">     239 </span>            :             // approximates the Gaussian kernel to within roughly 3%.
+<span class="lineNum">     240 </span>            :             //
+<span class="lineNum">     241 </span>            :             // let d = floor(s * 3*sqrt(2*pi)/4 + 0.5)
+<span class="lineNum">     242 </span>            :             // 
+<span class="lineNum">     243 </span>            :             // ... if d is odd, use three box-blurs of size 'd', centered on the output pixel.
+<span class="lineNum">     244 </span>            :             // 
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :             CGFloat inputRadius = blurRadius * [[UIScreen mainScreen] scale];</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :             NSUInteger radius = floor(inputRadius * 3. * sqrt(2 * M_PI) / 4 + 0.5);</span>
+<span class="lineNum">     247 </span><span class="lineNoCov">          0 :             if (radius % 2 != 1) {</span>
+<span class="lineNum">     248 </span>            :                 
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 :                 radius += 1; // force radius to be odd so that the three box-blur methodology works.</span>
+<span class="lineNum">     250 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     251 </span>            :             
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 :             vImageBoxConvolve_ARGB8888(&amp;effectInBuffer, &amp;effectOutBuffer, NULL, 0, 0, (uint32_t)radius, (uint32_t)radius, 0, kvImageEdgeExtend);</span>
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 :             vImageBoxConvolve_ARGB8888(&amp;effectOutBuffer, &amp;effectInBuffer, NULL, 0, 0, (uint32_t)radius, (uint32_t)radius, 0, kvImageEdgeExtend);</span>
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 :             vImageBoxConvolve_ARGB8888(&amp;effectInBuffer, &amp;effectOutBuffer, NULL, 0, 0, (uint32_t)radius, (uint32_t)radius, 0, kvImageEdgeExtend);</span>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     256 </span>            :         
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 :         BOOL effectImageBuffersAreSwapped = NO;</span>
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 :         if (hasSaturationChange) {</span>
+<span class="lineNum">     259 </span>            :             
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 :             CGFloat s = saturationDeltaFactor;</span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :             CGFloat floatingPointSaturationMatrix[] = {</span>
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 :                 0.0722 + 0.9278 * s,  0.0722 - 0.0722 * s,  0.0722 - 0.0722 * s,  0,</span>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 :                 0.7152 - 0.7152 * s,  0.7152 + 0.2848 * s,  0.7152 - 0.7152 * s,  0,</span>
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 :                 0.2126 - 0.2126 * s,  0.2126 - 0.2126 * s,  0.2126 + 0.7873 * s,  0,</span>
+<span class="lineNum">     265 </span>            :                                   0,                    0,                    0,  1,
+<span class="lineNum">     266 </span>            :             };
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 :             const int32_t divisor = 256;</span>
+<span class="lineNum">     268 </span><span class="lineNoCov">          0 :             NSUInteger matrixSize = sizeof(floatingPointSaturationMatrix)/sizeof(floatingPointSaturationMatrix[0]);</span>
+<span class="lineNum">     269 </span><span class="lineNoCov">          0 :             int16_t saturationMatrix[matrixSize];</span>
+<span class="lineNum">     270 </span>            :             
+<span class="lineNum">     271 </span><span class="lineNoCov">          0 :             for (NSUInteger i = 0; i &lt; matrixSize; ++i) {</span>
+<span class="lineNum">     272 </span>            :                 
+<span class="lineNum">     273 </span><span class="lineNoCov">          0 :                 saturationMatrix[i] = (int16_t)roundf(floatingPointSaturationMatrix[i] * divisor);</span>
+<span class="lineNum">     274 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     275 </span>            :             
+<span class="lineNum">     276 </span><span class="lineNoCov">          0 :             if (hasBlur) {</span>
+<span class="lineNum">     277 </span>            :                 
+<span class="lineNum">     278 </span><span class="lineNoCov">          0 :                 vImageMatrixMultiply_ARGB8888(&amp;effectOutBuffer, &amp;effectInBuffer, saturationMatrix, divisor, NULL, NULL, kvImageNoFlags);</span>
+<span class="lineNum">     279 </span><span class="lineNoCov">          0 :                 effectImageBuffersAreSwapped = YES;</span>
+<span class="lineNum">     280 </span>            :                 
+<span class="lineNum">     281 </span><span class="lineNoCov">          0 :             } else {</span>
+<span class="lineNum">     282 </span>            :                 
+<span class="lineNum">     283 </span><span class="lineNoCov">          0 :                 vImageMatrixMultiply_ARGB8888(&amp;effectInBuffer, &amp;effectOutBuffer, saturationMatrix, divisor, NULL, NULL, kvImageNoFlags);</span>
+<span class="lineNum">     284 </span>            :             }
+<span class="lineNum">     285 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     286 </span>            :         
+<span class="lineNum">     287 </span><span class="lineNoCov">          0 :         if (!effectImageBuffersAreSwapped) {</span>
+<span class="lineNum">     288 </span>            :             
+<span class="lineNum">     289 </span><span class="lineNoCov">          0 :             effectImage = UIGraphicsGetImageFromCurrentImageContext();</span>
+<span class="lineNum">     290 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     291 </span>            :         
+<span class="lineNum">     292 </span><span class="lineNoCov">          0 :         UIGraphicsEndImageContext();</span>
+<span class="lineNum">     293 </span>            : 
+<span class="lineNum">     294 </span><span class="lineNoCov">          0 :         if (effectImageBuffersAreSwapped) {</span>
+<span class="lineNum">     295 </span>            :             
+<span class="lineNum">     296 </span><span class="lineNoCov">          0 :             effectImage = UIGraphicsGetImageFromCurrentImageContext();</span>
+<span class="lineNum">     297 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     298 </span>            :         
+<span class="lineNum">     299 </span><span class="lineNoCov">          0 :         UIGraphicsEndImageContext();</span>
+<span class="lineNum">     300 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     301 </span>            : 
+<span class="lineNum">     302 </span>            :     // Set up output context.
+<span class="lineNum">     303 </span><span class="lineNoCov">          0 :     UIGraphicsBeginImageContextWithOptions(self.size, NO, [[UIScreen mainScreen] scale]);</span>
+<span class="lineNum">     304 </span><span class="lineNoCov">          0 :     CGContextRef outputContext = UIGraphicsGetCurrentContext();</span>
+<span class="lineNum">     305 </span><span class="lineNoCov">          0 :     CGContextScaleCTM(outputContext, 1.0, -1.0);</span>
+<span class="lineNum">     306 </span><span class="lineNoCov">          0 :     CGContextTranslateCTM(outputContext, 0, -self.size.height);</span>
+<span class="lineNum">     307 </span>            : 
+<span class="lineNum">     308 </span>            :     // Draw base image.
+<span class="lineNum">     309 </span><span class="lineNoCov">          0 :     CGContextDrawImage(outputContext, imageRect, self.CGImage);</span>
+<span class="lineNum">     310 </span>            : 
+<span class="lineNum">     311 </span>            :     // Draw effect image.
+<span class="lineNum">     312 </span><span class="lineNoCov">          0 :     if (hasBlur) {</span>
+<span class="lineNum">     313 </span>            :         
+<span class="lineNum">     314 </span><span class="lineNoCov">          0 :         CGContextSaveGState(outputContext);</span>
+<span class="lineNum">     315 </span>            :         
+<span class="lineNum">     316 </span><span class="lineNoCov">          0 :         if (maskImage) {</span>
+<span class="lineNum">     317 </span>            :             
+<span class="lineNum">     318 </span><span class="lineNoCov">          0 :             CGContextClipToMask(outputContext, imageRect, maskImage.CGImage);</span>
+<span class="lineNum">     319 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     320 </span>            :         
+<span class="lineNum">     321 </span><span class="lineNoCov">          0 :         CGContextDrawImage(outputContext, imageRect, effectImage.CGImage);</span>
+<span class="lineNum">     322 </span><span class="lineNoCov">          0 :         CGContextRestoreGState(outputContext);</span>
+<span class="lineNum">     323 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     324 </span>            : 
+<span class="lineNum">     325 </span>            :     // Add in color tint.
+<span class="lineNum">     326 </span><span class="lineNoCov">          0 :     if (tintColor) {</span>
+<span class="lineNum">     327 </span>            :         
+<span class="lineNum">     328 </span><span class="lineNoCov">          0 :         CGContextSaveGState(outputContext);</span>
+<span class="lineNum">     329 </span><span class="lineNoCov">          0 :         CGContextSetFillColorWithColor(outputContext, tintColor.CGColor);</span>
+<span class="lineNum">     330 </span><span class="lineNoCov">          0 :         CGContextFillRect(outputContext, imageRect);</span>
+<span class="lineNum">     331 </span><span class="lineNoCov">          0 :         CGContextRestoreGState(outputContext);</span>
+<span class="lineNum">     332 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     333 </span>            : 
+<span class="lineNum">     334 </span>            :     // Output image is ready.
+<span class="lineNum">     335 </span><span class="lineNoCov">          0 :     UIImage *outputImage = UIGraphicsGetImageFromCurrentImageContext();</span>
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 :     UIGraphicsEndImageContext();</span>
+<span class="lineNum">     337 </span>            : 
+<span class="lineNum">     338 </span><span class="lineNoCov">          0 :     return outputImage;</span>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     340 </span>            : 
+<span class="lineNum">     341 </span><span class="lineNoCov">          0 : - (UIImage *)grayScale {</span>
+<span class="lineNum">     342 </span>            :     
+<span class="lineNum">     343 </span><span class="lineNoCov">          0 :     int width  = self.size.width;</span>
+<span class="lineNum">     344 </span><span class="lineNoCov">          0 :     int height = self.size.height;</span>
+<span class="lineNum">     345 </span>            :     
+<span class="lineNum">     346 </span><span class="lineNoCov">          0 :     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();</span>
+<span class="lineNum">     347 </span>            :     
+<span class="lineNum">     348 </span><span class="lineNoCov">          0 :     CGContextRef context = CGBitmapContextCreate(nil,</span>
+<span class="lineNum">     349 </span><span class="lineNoCov">          0 :                                                  width,</span>
+<span class="lineNum">     350 </span><span class="lineNoCov">          0 :                                                  height,</span>
+<span class="lineNum">     351 </span>            :                                                  8, // bits per component
+<span class="lineNum">     352 </span>            :                                                  0,
+<span class="lineNum">     353 </span><span class="lineNoCov">          0 :                                                  colorSpace,</span>
+<span class="lineNum">     354 </span>            :                                                  kCGBitmapByteOrderDefault);
+<span class="lineNum">     355 </span>            :     
+<span class="lineNum">     356 </span><span class="lineNoCov">          0 :     CGColorSpaceRelease(colorSpace);</span>
+<span class="lineNum">     357 </span>            :     
+<span class="lineNum">     358 </span><span class="lineNoCov">          0 :     if (context == NULL) {</span>
+<span class="lineNum">     359 </span>            :         
+<span class="lineNum">     360 </span><span class="lineNoCov">          0 :         return nil;</span>
+<span class="lineNum">     361 </span>            :     }
+<span class="lineNum">     362 </span>            :     
+<span class="lineNum">     363 </span><span class="lineNoCov">          0 :     CGContextDrawImage(context,</span>
+<span class="lineNum">     364 </span><span class="lineNoCov">          0 :                        CGRectMake(0, 0, width, height), self.CGImage);</span>
+<span class="lineNum">     365 </span><span class="lineNoCov">          0 :     CGImageRef image   = CGBitmapContextCreateImage(context);</span>
+<span class="lineNum">     366 </span><span class="lineNoCov">          0 :     UIImage *grayImage = [UIImage imageWithCGImage:image];</span>
+<span class="lineNum">     367 </span><span class="lineNoCov">          0 :     CFRelease(image);</span>
+<span class="lineNum">     368 </span><span class="lineNoCov">          0 :     CGContextRelease(context);</span>
+<span class="lineNum">     369 </span>            :     
+<span class="lineNum">     370 </span><span class="lineNoCov">          0 :     return grayImage;</span>
+<a name="371"><span class="lineNum">     371 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     372 </span>            : 
+<span class="lineNum">     373 </span><span class="lineNoCov">          0 : - (UIImage *)scaleWithFixedWidth:(CGFloat)width {</span>
+<span class="lineNum">     374 </span>            :     
+<span class="lineNum">     375 </span><span class="lineNoCov">          0 :     float newHeight = self.size.height * (width / self.size.width);</span>
+<span class="lineNum">     376 </span><span class="lineNoCov">          0 :     CGSize size     = CGSizeMake(width, newHeight);</span>
+<span class="lineNum">     377 </span><span class="lineNoCov">          0 :     UIGraphicsBeginImageContextWithOptions(size, NO, 0);</span>
+<span class="lineNum">     378 </span>            :     
+<span class="lineNum">     379 </span><span class="lineNoCov">          0 :     CGContextRef context = UIGraphicsGetCurrentContext();</span>
+<span class="lineNum">     380 </span>            :     
+<span class="lineNum">     381 </span><span class="lineNoCov">          0 :     CGContextTranslateCTM(context, 0.0, size.height);</span>
+<span class="lineNum">     382 </span><span class="lineNoCov">          0 :     CGContextScaleCTM(context, 1.0, -1.0);</span>
+<span class="lineNum">     383 </span>            :     
+<span class="lineNum">     384 </span><span class="lineNoCov">          0 :     CGContextSetBlendMode(context, kCGBlendModeCopy);</span>
+<span class="lineNum">     385 </span><span class="lineNoCov">          0 :     CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, size.width, size.height), self.CGImage);</span>
+<span class="lineNum">     386 </span>            :     
+<span class="lineNum">     387 </span><span class="lineNoCov">          0 :     UIImage *imageOut = UIGraphicsGetImageFromCurrentImageContext();</span>
+<span class="lineNum">     388 </span>            :     
+<span class="lineNum">     389 </span><span class="lineNoCov">          0 :     UIGraphicsEndImageContext();</span>
+<span class="lineNum">     390 </span>            :     
+<span class="lineNum">     391 </span><span class="lineNoCov">          0 :     return imageOut;</span>
+<a name="392"><span class="lineNum">     392 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     393 </span>            : 
+<span class="lineNum">     394 </span><span class="lineNoCov">          0 : - (UIImage *)scaleWithFixedHeight:(CGFloat)height {</span>
+<span class="lineNum">     395 </span>            :     
+<span class="lineNum">     396 </span><span class="lineNoCov">          0 :     float newWidth = self.size.width * (height / self.size.height);</span>
+<span class="lineNum">     397 </span><span class="lineNoCov">          0 :     CGSize size    = CGSizeMake(newWidth, height);</span>
+<span class="lineNum">     398 </span>            :     
+<span class="lineNum">     399 </span><span class="lineNoCov">          0 :     UIGraphicsBeginImageContextWithOptions(size, NO, 0);</span>
+<span class="lineNum">     400 </span>            :     
+<span class="lineNum">     401 </span><span class="lineNoCov">          0 :     CGContextRef context = UIGraphicsGetCurrentContext();</span>
+<span class="lineNum">     402 </span>            :     
+<span class="lineNum">     403 </span><span class="lineNoCov">          0 :     CGContextTranslateCTM(context, 0.0, size.height);</span>
+<span class="lineNum">     404 </span><span class="lineNoCov">          0 :     CGContextScaleCTM(context, 1.0, -1.0);</span>
+<span class="lineNum">     405 </span>            :     
+<span class="lineNum">     406 </span><span class="lineNoCov">          0 :     CGContextSetBlendMode(context, kCGBlendModeCopy);</span>
+<span class="lineNum">     407 </span><span class="lineNoCov">          0 :     CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, size.width, size.height), self.CGImage);</span>
+<span class="lineNum">     408 </span>            :     
+<span class="lineNum">     409 </span><span class="lineNoCov">          0 :     UIImage *imageOut = UIGraphicsGetImageFromCurrentImageContext();</span>
+<span class="lineNum">     410 </span>            :     
+<span class="lineNum">     411 </span><span class="lineNoCov">          0 :     UIGraphicsEndImageContext();</span>
+<span class="lineNum">     412 </span>            :     
+<span class="lineNum">     413 </span><span class="lineNoCov">          0 :     return imageOut;</span>
+<a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     415 </span>            : 
+<span class="lineNum">     416 </span><span class="lineNoCov">          0 : - (UIColor *)averageColor {</span>
+<span class="lineNum">     417 </span>            :     
+<span class="lineNum">     418 </span><span class="lineNoCov">          0 :     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();</span>
+<span class="lineNum">     419 </span>            :     unsigned char rgba[4];
+<span class="lineNum">     420 </span><span class="lineNoCov">          0 :     CGContextRef context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);</span>
+<span class="lineNum">     421 </span>            :     
+<span class="lineNum">     422 </span><span class="lineNoCov">          0 :     CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), self.CGImage);</span>
+<span class="lineNum">     423 </span><span class="lineNoCov">          0 :     CGColorSpaceRelease(colorSpace);</span>
+<span class="lineNum">     424 </span><span class="lineNoCov">          0 :     CGContextRelease(context);</span>
+<span class="lineNum">     425 </span>            :     
+<span class="lineNum">     426 </span><span class="lineNoCov">          0 :     if(rgba[3] &gt; 0) {</span>
+<span class="lineNum">     427 </span><span class="lineNoCov">          0 :         CGFloat alpha = ((CGFloat)rgba[3])/255.0;</span>
+<span class="lineNum">     428 </span><span class="lineNoCov">          0 :         CGFloat multiplier = alpha/255.0;</span>
+<span class="lineNum">     429 </span><span class="lineNoCov">          0 :         return [UIColor colorWithRed:((CGFloat)rgba[0])*multiplier</span>
+<span class="lineNum">     430 </span><span class="lineNoCov">          0 :                                green:((CGFloat)rgba[1])*multiplier</span>
+<span class="lineNum">     431 </span><span class="lineNoCov">          0 :                                 blue:((CGFloat)rgba[2])*multiplier</span>
+<span class="lineNum">     432 </span><span class="lineNoCov">          0 :                                alpha:alpha];</span>
+<span class="lineNum">     433 </span>            :     }
+<span class="lineNum">     434 </span>            :     else {
+<span class="lineNum">     435 </span><span class="lineNoCov">          0 :         return [UIColor colorWithRed:((CGFloat)rgba[0])/255.0</span>
+<span class="lineNum">     436 </span><span class="lineNoCov">          0 :                                green:((CGFloat)rgba[1])/255.0</span>
+<span class="lineNum">     437 </span><span class="lineNoCov">          0 :                                 blue:((CGFloat)rgba[2])/255.0</span>
+<span class="lineNum">     438 </span><span class="lineNoCov">          0 :                                alpha:((CGFloat)rgba[3])/255.0];</span>
+<span class="lineNum">     439 </span>            :     }
+<a name="440"><span class="lineNum">     440 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     441 </span>            : 
+<span class="lineNum">     442 </span><span class="lineNoCov">          0 : - (UIImage *)croppedImageAtFrame:(CGRect)frame {</span>
+<span class="lineNum">     443 </span>            :     
+<span class="lineNum">     444 </span><span class="lineNoCov">          0 :     frame = CGRectMake(frame.origin.x * self.scale,</span>
+<span class="lineNum">     445 </span><span class="lineNoCov">          0 :                        frame.origin.y * self.scale,</span>
+<span class="lineNum">     446 </span><span class="lineNoCov">          0 :                        frame.size.width * self.scale,</span>
+<span class="lineNum">     447 </span><span class="lineNoCov">          0 :                        frame.size.height * self.scale);</span>
+<span class="lineNum">     448 </span>            :     
+<span class="lineNum">     449 </span><span class="lineNoCov">          0 :     CGImageRef sourceImageRef = [self CGImage];</span>
+<span class="lineNum">     450 </span><span class="lineNoCov">          0 :     CGImageRef newImageRef    = CGImageCreateWithImageInRect(sourceImageRef, frame);</span>
+<span class="lineNum">     451 </span><span class="lineNoCov">          0 :     UIImage   *newImage       = [UIImage imageWithCGImage:newImageRef scale:[self scale] orientation:[self imageOrientation]];</span>
+<span class="lineNum">     452 </span><span class="lineNoCov">          0 :     CGImageRelease(newImageRef);</span>
+<span class="lineNum">     453 </span><span class="lineNoCov">          0 :     return newImage;</span>
+<a name="454"><span class="lineNum">     454 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     455 </span>            : 
+<span class="lineNum">     456 </span><span class="lineNoCov">          0 : - (UIImage *)addImageToImage:(UIImage *)img atRect:(CGRect)cropRect {</span>
+<span class="lineNum">     457 </span>            :     
+<span class="lineNum">     458 </span><span class="lineNoCov">          0 :     CGSize size = CGSizeMake(self.size.width, self.size.height);</span>
+<span class="lineNum">     459 </span><span class="lineNoCov">          0 :     UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);</span>
+<span class="lineNum">     460 </span>            :     
+<span class="lineNum">     461 </span><span class="lineNoCov">          0 :     CGPoint pointImg1 = CGPointMake(0,0);</span>
+<span class="lineNum">     462 </span><span class="lineNoCov">          0 :     [self drawAtPoint:pointImg1];</span>
+<span class="lineNum">     463 </span>            :     
+<span class="lineNum">     464 </span><span class="lineNoCov">          0 :     CGPoint pointImg2 = cropRect.origin;</span>
+<span class="lineNum">     465 </span><span class="lineNoCov">          0 :     [img drawAtPoint: pointImg2];</span>
+<span class="lineNum">     466 </span>            :     
+<span class="lineNum">     467 </span><span class="lineNoCov">          0 :     UIImage* result = UIGraphicsGetImageFromCurrentImageContext();</span>
+<span class="lineNum">     468 </span><span class="lineNoCov">          0 :     UIGraphicsEndImageContext();</span>
+<span class="lineNum">     469 </span>            :     
+<span class="lineNum">     470 </span><span class="lineNoCov">          0 :     return result;</span>
+<a name="471"><span class="lineNum">     471 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     472 </span>            : 
+<span class="lineNum">     473 </span><span class="lineNoCov">          0 : - (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius</span>
+<span class="lineNum">     474 </span>            :                        tintColor:(UIColor *)tintColor
+<span class="lineNum">     475 </span>            :            saturationDeltaFactor:(CGFloat)saturationDeltaFactor
+<span class="lineNum">     476 </span>            :                        maskImage:(UIImage *)maskImage
+<span class="lineNum">     477 </span>            :                          atFrame:(CGRect)frame
+<span class="lineNum">     478 </span>            : {
+<span class="lineNum">     479 </span><span class="lineNoCov">          0 :     UIImage *blurredFrame = \</span>
+<span class="lineNum">     480 </span><span class="lineNoCov">          0 :     [[self croppedImageAtFrame:frame] applyBlurWithRadius:blurRadius</span>
+<span class="lineNum">     481 </span><span class="lineNoCov">          0 :                                                 tintColor:tintColor</span>
+<span class="lineNum">     482 </span><span class="lineNoCov">          0 :                                     saturationDeltaFactor:saturationDeltaFactor</span>
+<span class="lineNum">     483 </span><span class="lineNoCov">          0 :                                                 maskImage:maskImage];</span>
+<span class="lineNum">     484 </span>            :     
+<span class="lineNum">     485 </span><span class="lineNoCov">          0 :     return [self addImageToImage:blurredFrame atRect:frame];</span>
+<span class="lineNum">     486 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     487 </span>            : 
+<span class="lineNum">     488 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

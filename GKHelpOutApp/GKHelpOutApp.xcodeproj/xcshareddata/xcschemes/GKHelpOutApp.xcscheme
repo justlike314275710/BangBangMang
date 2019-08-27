@@ -26,8 +26,18 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      systemAttachmentLifetime = "keepAlways"
       codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5557A4A0221BB46E00743012"
+            BuildableName = "GKHelpOutAppTests.xctest"
+            BlueprintName = "GKHelpOutAppTests"
+            ReferencedContainer = "container:GKHelpOutApp.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">

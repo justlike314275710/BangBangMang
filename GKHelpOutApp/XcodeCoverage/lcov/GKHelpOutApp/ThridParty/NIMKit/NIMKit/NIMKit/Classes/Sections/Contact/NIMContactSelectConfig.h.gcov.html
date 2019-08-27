@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/NIMContactSelectConfig.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact</a> - NIMContactSelectConfig.h<span style="font-size: 80%;"> (source / <a href="NIMContactSelectConfig.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">48</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  NIMContactSelectConfig.h
+<span class="lineNum">       3 </span>            : //  NIMKit
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by chris on 15/9/14.
+<span class="lineNum">       6 </span>            : //  Copyright (c) 2015年 NetEase. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &lt;Foundation/Foundation.h&gt;
+<span class="lineNum">      10 </span>            : #import &quot;NIMKitInfo.h&quot;
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : /**
+<span class="lineNum">      13 </span>            :  *  联系人选择器数据回调
+<span class="lineNum">      14 </span>            :  */
+<span class="lineNum">      15 </span>            : typedef void(^NIMContactDataProviderHandler)(NSDictionary *contentDic, NSArray *titles);
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            : @protocol NIMContactSelectConfig &lt;NSObject&gt;
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span>            : @optional
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : /**
+<span class="lineNum">      22 </span>            :  *  联系人选择器标题
+<span class="lineNum">      23 </span>            :  */
+<span class="lineNum">      24 </span>            : - (NSString *)title;
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span>            : /**
+<span class="lineNum">      27 </span>            :  *  最多选择的人数
+<span class="lineNum">      28 </span>            :  */
+<span class="lineNum">      29 </span>            : - (NSInteger)maxSelectedNum;
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            : /**
+<span class="lineNum">      32 </span>            :  *  超过最多选择人数时的提示
+<span class="lineNum">      33 </span>            :  */
+<span class="lineNum">      34 </span>            : - (NSString *)selectedOverFlowTip;
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : /**
+<span class="lineNum">      37 </span>            :  *  默认已经勾选的人或群组
+<span class="lineNum">      38 </span>            :  */
+<span class="lineNum">      39 </span>            : - (NSArray *)alreadySelectedMemberId;
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : /**
+<span class="lineNum">      42 </span>            :  *  需要过滤的人或群组id
+<span class="lineNum">      43 </span>            :  */
+<span class="lineNum">      44 </span>            : - (NSArray *)filterIds;
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : /**
+<span class="lineNum">      47 </span>            :  *  当数据源类型为群组时，需要设置的群id
+<span class="lineNum">      48 </span>            :  *
+<span class="lineNum">      49 </span>            :  *  @return 群id
+<span class="lineNum">      50 </span>            :  */
+<span class="lineNum">      51 </span>            : - (NSString *)teamId;
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : /**
+<span class="lineNum">      54 </span>            :  *  显示具体选择人数
+<span class="lineNum">      55 </span>            :  */
+<span class="lineNum">      56 </span>            : - (BOOL)showSelectDetail;
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : /**
+<span class="lineNum">      59 </span>            :  *  是否要加入机器人
+<span class="lineNum">      60 </span>            :  */
+<span class="lineNum">      61 </span>            : - (BOOL)enableRobot;
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : /**
+<span class="lineNum">      64 </span>            :  *  提供联系人选择期的昵称，title信息
+<span class="lineNum">      65 </span>            :  */
+<span class="lineNum">      66 </span>            : - (void)getContactData:(NIMContactDataProviderHandler)handler;
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : /**
+<span class="lineNum">      69 </span>            :  *  提供联系人id、显示名、头像等信息
+<span class="lineNum">      70 </span>            :  */
+<span class="lineNum">      71 </span>            : - (NIMKitInfo *)getInfoById:(NSString *)selectedId;
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : @end
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            : /**
+<span class="lineNum">      76 </span>            :  *  内置配置-选择好友
+<span class="lineNum">      77 </span>            :  */
+<a name="78"><span class="lineNum">      78 </span>            : @interface NIMContactFriendSelectConfig : NSObject&lt;NIMContactSelectConfig&gt;</a>
+<span class="lineNum">      79 </span>            : 
+<a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL needMutiSelected;</span></a>
+<span class="lineNum">      81 </span>            : 
+<a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) NSInteger maxSelectMemberCount;</span></a>
+<span class="lineNum">      83 </span>            : 
+<a name="84"><span class="lineNum">      84 </span><span class="lineNoCov">          0 : @property (nonatomic,copy) NSArray *alreadySelectedMemberId;</span></a>
+<span class="lineNum">      85 </span>            : 
+<a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 : @property (nonatomic,copy) NSArray *filterIds;</span></a>
+<span class="lineNum">      87 </span>            : 
+<a name="88"><span class="lineNum">      88 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL showSelectDetail;</span></a>
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL enableRobot;</span>
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            : @end
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            : /**
+<span class="lineNum">      95 </span>            :  *  内置配置-选择机器人
+<span class="lineNum">      96 </span>            :  */
+<a name="97"><span class="lineNum">      97 </span>            : @interface NIMContactRobotSelectConfig : NSObject&lt;NIMContactSelectConfig&gt;</a>
+<span class="lineNum">      98 </span>            : 
+<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL needMutiSelected;</span></a>
+<span class="lineNum">     100 </span>            : 
+<a name="101"><span class="lineNum">     101 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) NSInteger maxSelectMemberCount;</span></a>
+<span class="lineNum">     102 </span>            : 
+<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 : @property (nonatomic,copy) NSArray *alreadySelectedMemberId;</span></a>
+<span class="lineNum">     104 </span>            : 
+<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 : @property (nonatomic,copy) NSArray *filterIds;</span></a>
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL showSelectDetail;</span>
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span>            : @end
+<span class="lineNum">     110 </span>            : 
+<span class="lineNum">     111 </span>            : /**
+<span class="lineNum">     112 </span>            :  *  内置配置-选择群成员
+<span class="lineNum">     113 </span>            :  */
+<a name="114"><span class="lineNum">     114 </span>            : @interface NIMContactTeamMemberSelectConfig : NSObject&lt;NIMContactSelectConfig&gt;</a>
+<span class="lineNum">     115 </span>            : 
+<a name="116"><span class="lineNum">     116 </span><span class="lineNoCov">          0 : @property (nonatomic,copy) NSString *teamId;</span></a>
+<span class="lineNum">     117 </span>            : 
+<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL needMutiSelected;</span></a>
+<span class="lineNum">     119 </span>            : 
+<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) NSInteger maxSelectMemberCount;</span></a>
+<span class="lineNum">     121 </span>            : 
+<a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 : @property (nonatomic,copy) NSArray *alreadySelectedMemberId;</span></a>
+<span class="lineNum">     123 </span>            : 
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 : @property (nonatomic,copy) NSArray *filterIds;</span></a>
+<span class="lineNum">     125 </span>            : 
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL showSelectDetail;</span></a>
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL enableRobot;</span>
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span>            : @end
+<span class="lineNum">     131 </span>            : 
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span>            : /**
+<span class="lineNum">     134 </span>            :  *  内置配置-选择群
+<span class="lineNum">     135 </span>            :  */
+<a name="136"><span class="lineNum">     136 </span>            : @interface NIMContactTeamSelectConfig : NSObject&lt;NIMContactSelectConfig&gt;</a>
+<span class="lineNum">     137 </span>            : 
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL needMutiSelected;</span></a>
+<span class="lineNum">     139 </span>            : 
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) NSInteger maxSelectMemberCount;</span></a>
+<span class="lineNum">     141 </span>            : 
+<a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 : @property (nonatomic,copy) NSArray *alreadySelectedMemberId;</span></a>
+<span class="lineNum">     143 </span>            : 
+<a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 : @property (nonatomic,copy) NSArray *filterIds;</span></a>
+<span class="lineNum">     145 </span>            : 
+<a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL showSelectDetail;</span></a>
+<span class="lineNum">     147 </span>            : 
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) BOOL enableRobot;</span>
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

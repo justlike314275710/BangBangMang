@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/SessionList/NIMSessionListViewController.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/SessionList</a> - NIMSessionListViewController.h<span style="font-size: 80%;"> (source / <a href="NIMSessionListViewController.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  NIMSessionListViewController.h
+<span class="lineNum">       3 </span>            : //  NIMKit
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by NetEase.
+<span class="lineNum">       6 </span>            : //  Copyright (c) 2015年 NetEase. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &lt;UIKit/UIKit.h&gt;
+<span class="lineNum">      10 </span>            : #import &quot;NIMCellConfig.h&quot;
+<span class="lineNum">      11 </span>            : #import &lt;NIMSDK/NIMSDK.h&gt;
+<span class="lineNum">      12 </span>            : #import &quot;PSViewController.h&quot;
+<span class="lineNum">      13 </span>            : @interface NIMSessionListViewController : PSViewController&lt;UITableViewDataSource,UITableViewDelegate,NIMLoginManagerDelegate,NIMConversationManagerDelegate&gt;
+<span class="lineNum">      14 </span>            : /**
+<span class="lineNum">      15 </span>            :  *  会话列表tableView
+<span class="lineNum">      16 </span>            :  */
+<span class="lineNum">      17 </span>            : @property (nonatomic,strong)   UITableView *tableView;
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span>            : /**
+<a name="20"><span class="lineNum">      20 </span>            :  *  最近会话集合</a>
+<span class="lineNum">      21 </span>            :  */
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) NSMutableArray * recentSessions;</span>
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            : /**
+<a name="25"><span class="lineNum">      25 </span>            :  *  删除会话时是不是也同时删除服务器会话 (防止漫游)</a>
+<span class="lineNum">      26 </span>            :  */
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : @property (nonatomic,assign)   BOOL autoRemoveRemoteSession;</span>
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : /**
+<span class="lineNum">      31 </span>            :  *  选中某一条最近会话时触发的事件回调
+<span class="lineNum">      32 </span>            :  *
+<span class="lineNum">      33 </span>            :  *  @param recent    最近会话
+<span class="lineNum">      34 </span>            :  *  @param indexPath 最近会话cell所在的位置
+<span class="lineNum">      35 </span>            :  *  @discussion      默认将进入会话界面
+<span class="lineNum">      36 </span>            :  */
+<span class="lineNum">      37 </span>            : - (void)onSelectedRecent:(NIMRecentSession *)recent
+<span class="lineNum">      38 </span>            :              atIndexPath:(NSIndexPath *)indexPath;
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : /**
+<span class="lineNum">      41 </span>            :  *  选中某一条最近会话的头像控件，触发的事件回调
+<span class="lineNum">      42 </span>            :  *
+<span class="lineNum">      43 </span>            :  *  @param recent    最近会话
+<span class="lineNum">      44 </span>            :  *  @param indexPath 最近会话cell所在的位置
+<span class="lineNum">      45 </span>            :  *  @discussion      默认将进入会话界面
+<span class="lineNum">      46 </span>            :  */
+<span class="lineNum">      47 </span>            : - (void)onSelectedAvatar:(NIMRecentSession *)recent
+<span class="lineNum">      48 </span>            :              atIndexPath:(NSIndexPath *)indexPath;
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : /**
+<span class="lineNum">      52 </span>            :  *  cell显示的会话名
+<span class="lineNum">      53 </span>            :  *
+<span class="lineNum">      54 </span>            :  *  @param recent 最近会话
+<span class="lineNum">      55 </span>            :  *
+<span class="lineNum">      56 </span>            :  *  @return 会话名
+<span class="lineNum">      57 </span>            :  *
+<span class="lineNum">      58 </span>            :  *  @discussion 默认实现为：点对点会话，显示聊天对象的昵称(没有昵称则显示账号)；群聊会话，显示群名称。
+<span class="lineNum">      59 </span>            :  */
+<span class="lineNum">      60 </span>            : - (NSString *)nameForRecentSession:(NIMRecentSession *)recent;
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : /**
+<span class="lineNum">      63 </span>            :  *  cell显示的最近会话具体内容
+<span class="lineNum">      64 </span>            :  *
+<span class="lineNum">      65 </span>            :  *  @param recent 最近会话
+<span class="lineNum">      66 </span>            :  *
+<span class="lineNum">      67 </span>            :  *  @return 具体内容名
+<span class="lineNum">      68 </span>            :  *
+<span class="lineNum">      69 </span>            :  *  @discussion 默认实现为：显示最近一条消息的内容，文本消息则显示文本信息，其他类型消息详见本类中 - (NSAttributedString *)messageContent:(NIMMessage *)lastMessage 方法的实现。
+<span class="lineNum">      70 </span>            :  */
+<span class="lineNum">      71 </span>            : - (NSAttributedString *)contentForRecentSession:(NIMRecentSession *)recent;
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            : /**
+<span class="lineNum">      75 </span>            :  *  cell显示的最近会话时间戳
+<span class="lineNum">      76 </span>            :  *
+<span class="lineNum">      77 </span>            :  *  @param recent 最近会话
+<span class="lineNum">      78 </span>            :  *
+<span class="lineNum">      79 </span>            :  *  @return 时间戳格式化后的字符串
+<span class="lineNum">      80 </span>            :  *
+<span class="lineNum">      81 </span>            :  *  @discussion 默认实现为：最后一条消息的时间戳，具体时间戳消息格式详见NIMKitUtil中， + (NSString*)showTime:(NSTimeInterval) msglastTime showDetail:(BOOL)showDetail 方法的实现。
+<span class="lineNum">      82 </span>            :  */
+<span class="lineNum">      83 </span>            : - (NSString *)timestampDescriptionForRecentSession:(NIMRecentSession *)recent;
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            : /**
+<span class="lineNum">      86 </span>            :  *  重新加载所有数据，调用时必须先调用父类方法
+<span class="lineNum">      87 </span>            :  */
+<span class="lineNum">      88 </span>            : - (void)refresh;
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : /**
+<span class="lineNum">      91 </span>            :  *  自定义最近会话排序，上层可以重写这个方法对最近会话重新排序
+<span class="lineNum">      92 </span>            :  */
+<span class="lineNum">      93 </span>            : - (NSMutableArray *)customSortRecents:(NSMutableArray *)recentSessions;
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

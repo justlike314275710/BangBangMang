@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Utils/AES/AESCipher.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Utils/AES</a> - AESCipher.m<span style="font-size: 80%;"> (source / <a href="AESCipher.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntryLo">61.2 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntryLo">57.1 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  AESCipher.m
+<span class="lineNum">       3 </span>            : //  AESCipher
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by Welkin Xie on 8/13/16.
+<span class="lineNum">       6 </span>            : //  Copyright © 2016 WelkinXie. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : //  https://github.com/WelkinXie/AESCipher-iOS
+<span class="lineNum">       9 </span>            : //
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : #import &quot;AESCipher.h&quot;
+<span class="lineNum">      12 </span>            : #import &lt;CommonCrypto/CommonCryptor.h&gt;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : #define kPwd @&quot;0102030405060708&quot;
+<span class="lineNum">      15 </span>            : NSString const *kInitVector = kPwd;
+<a name="16"><span class="lineNum">      16 </span>            : size_t const kKeySize = kCCKeySizeAES128;</a>
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span><span class="lineCov">>2306*10^15 : NSData * cipherOperation(NSData *contentData, NSData *keyData, CCOperation operation) {</span>
+<span class="lineNum">      19 </span><span class="lineCov">>2306*10^15 :     NSUInteger dataLength = contentData.length;</span>
+<span class="lineNum">      20 </span>            :     
+<span class="lineNum">      21 </span><span class="lineCov">>2306*10^15 :     void const *initVectorBytes = [kInitVector dataUsingEncoding:NSUTF8StringEncoding].bytes;</span>
+<span class="lineNum">      22 </span><span class="lineCov">>2306*10^15 :     void const *contentBytes = contentData.bytes;</span>
+<span class="lineNum">      23 </span><span class="lineCov">>2306*10^15 :     void const *keyBytes = keyData.bytes;</span>
+<span class="lineNum">      24 </span>            :     
+<span class="lineNum">      25 </span><span class="lineCov">>2306*10^15 :     size_t operationSize = dataLength + kCCBlockSizeAES128;</span>
+<span class="lineNum">      26 </span><span class="lineCov">>2306*10^15 :     void *operationBytes = malloc(operationSize);</span>
+<span class="lineNum">      27 </span><span class="lineCov">>2306*10^15 :     size_t actualOutSize = 0;</span>
+<span class="lineNum">      28 </span>            :     
+<span class="lineNum">      29 </span><span class="lineCov">>4612*10^15 :     CCCryptorStatus cryptStatus = CCCrypt(operation,</span>
+<span class="lineNum">      30 </span>            :                                           kCCAlgorithmAES,
+<span class="lineNum">      31 </span>            :                                           kCCOptionPKCS7Padding,
+<span class="lineNum">      32 </span><span class="lineCov">>2306*10^15 :                                           keyBytes,</span>
+<span class="lineNum">      33 </span>            :                                           kKeySize,
+<span class="lineNum">      34 </span><span class="lineCov">>2306*10^15 :                                           initVectorBytes,</span>
+<span class="lineNum">      35 </span><span class="lineCov">>2306*10^15 :                                           contentBytes,</span>
+<span class="lineNum">      36 </span><span class="lineCov">>2306*10^15 :                                           dataLength,</span>
+<span class="lineNum">      37 </span><span class="lineCov">>2306*10^15 :                                           operationBytes,</span>
+<span class="lineNum">      38 </span><span class="lineCov">>2306*10^15 :                                           operationSize,</span>
+<span class="lineNum">      39 </span>            :                                           &amp;actualOutSize);
+<span class="lineNum">      40 </span>            :     
+<span class="lineNum">      41 </span><span class="lineCov">>4612*10^15 :     if (cryptStatus == kCCSuccess) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">>2306*10^15 :         return [NSData dataWithBytesNoCopy:operationBytes length:actualOutSize];</span>
+<span class="lineNum">      43 </span>            :     }
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     free(operationBytes);</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     return nil;</span>
+<span class="lineNum">      46 </span><span class="lineCov">>2306*10^15 : }</span>
+<a name="47"><span class="lineNum">      47 </span>            : </a>
+<span class="lineNum">      48 </span>            :                             
+<span class="lineNum">      49 </span><span class="lineCov">>2306*10^15 : NSString * aesEncryptString(NSString *content, NSString *key) {</span>
+<span class="lineNum">      50 </span><span class="lineCov">>2306*10^15 :     NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      51 </span><span class="lineCov">>2306*10^15 :     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      52 </span><span class="lineCov">>2306*10^15 :     NSData *encrptedData = aesEncryptData(contentData, keyData);</span>
+<span class="lineNum">      53 </span><span class="lineCov">>2306*10^15 :     return [encrptedData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];</span>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">>2306*10^15 : }</span></a>
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : NSString * aesDecryptString(NSString *content, NSString *key) {</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     NSData *contentData = [[NSData alloc] initWithBase64EncodedString:content options:NSDataBase64DecodingIgnoreUnknownCharacters];</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     NSData *decryptedData = aesDecryptData(contentData, keyData);</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     return [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];</span>
+<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span><span class="lineCov">>2306*10^15 : NSData * aesEncryptData(NSData *contentData, NSData *keyData) {</span>
+<span class="lineNum">      64 </span><span class="lineCov">>2306*10^15 :     return cipherOperation(contentData, keyData, kCCEncrypt);</span>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">>2306*10^15 : }</span></a>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : NSData * aesDecryptData(NSData *contentData, NSData *keyData) {</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :     return cipherOperation(contentData, keyData, kCCDecrypt);</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : }</span>
+<a name="70"><span class="lineNum">      70 </span>            : </a>
+<span class="lineNum">      71 </span>            : #pragma mark - ——————— 加解密 二次封装 ————————
+<span class="lineNum">      72 </span><span class="lineCov">>2306*10^15 : NSString * aesEncrypt(NSString *content){</span>
+<span class="lineNum">      73 </span><span class="lineCov">>2306*10^15 :     return aesEncryptString(content, kPwd);</span>
+<span class="lineNum">      74 </span><span class="lineCov">>2306*10^15 : }</span>
+<a name="75"><span class="lineNum">      75 </span>            : </a>
+<span class="lineNum">      76 </span>            : //自己封装的解密方法
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : NSDictionary * aesDecryptWithData(NSData *content){</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     if(!content) return nil;</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     NSString *result =[[ NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     NSData *contentData = [[NSData alloc] initWithBase64EncodedString:result options:NSDataBase64DecodingIgnoreUnknownCharacters];</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     NSData *data = aesDecryptData(contentData,[kPwd dataUsingEncoding:NSUTF8StringEncoding]);</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :     NSDictionary *dic = [data jsonValueDecoded];</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     return dic;</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      85 </span>            : #pragma mark - ——————— 结束 ————————
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

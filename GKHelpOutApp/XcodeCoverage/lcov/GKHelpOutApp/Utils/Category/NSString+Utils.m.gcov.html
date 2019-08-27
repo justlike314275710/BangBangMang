@@ -1,0 +1,930 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Utils/Category/NSString+Utils.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Utils/Category</a> - NSString+Utils.m<span style="font-size: 80%;"> (source / <a href="NSString+Utils.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">555</td>
+            <td class="headerCovTableEntryLo">4.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">42</td>
+            <td class="headerCovTableEntryLo">4.8 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  NSString+Utils.m
+<span class="lineNum">       3 </span>            : //  Common
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by calvin on 14-4-2.
+<span class="lineNum">       6 </span>            : //  Copyright (c) 2014年 BuBuGao. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;GTMBase64.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;NSString+Utils.h&quot;
+<span class="lineNum">      11 </span>            : #import &lt;CoreText/CoreText.h&gt;
+<span class="lineNum">      12 </span>            : #import &lt;CommonCrypto/CommonDigest.h&gt;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : static const char encodingTable[] = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;;
+<a name="15"><span class="lineNum">      15 </span>            : @implementation NSString (Utils)</a>
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 : - (NSString*)encodeAsURIComponent</span>
+<span class="lineNum">      18 </span>            : {
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 :         const char* p = [self UTF8String];</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :         NSMutableString* result = [NSMutableString string];</span>
+<span class="lineNum">      21 </span>            :         
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 :         for (;*p ;p++) {</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 :                 unsigned char c = *p;</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :                 if (('0' &lt;= c &amp;&amp; c &lt;= '9') || ('a' &lt;= c &amp;&amp; c &lt;= 'z') || ('A' &lt;= c &amp;&amp; c &lt;= 'Z') || (c == '-' || c == '_')) {</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 :                         [result appendFormat:@&quot;%c&quot;, c];</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :                 } else {</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :                         [result appendFormat:@&quot;%%%02X&quot;, c];</span>
+<span class="lineNum">      28 </span>            :                 }
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         return result;</span>
+<a name="31"><span class="lineNum">      31 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 : + (NSString*)base64encode:(NSString*)str</span>
+<span class="lineNum">      34 </span>            : {
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     if ([str length] == 0)</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         return @&quot;&quot;;</span>
+<span class="lineNum">      37 </span>            :     
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     const char *source = [str UTF8String];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     unsigned long strlength  = strlen(source);</span>
+<span class="lineNum">      40 </span>            :     
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     char *characters = malloc(((strlength + 2) / 3) * 4);</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     if (characters == NULL)</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :         return nil;</span>
+<span class="lineNum">      44 </span>            :     
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     NSUInteger length = 0;</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     NSUInteger i = 0;</span>
+<span class="lineNum">      47 </span>            :     
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     while (i &lt; strlength) {</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :         char buffer[3] = {0,0,0};</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :         short bufferLength = 0;</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :         while (bufferLength &lt; 3 &amp;&amp; i &lt; strlength)</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :             buffer[bufferLength++] = source[i++];</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :         characters[length++] = encodingTable[(buffer[0] &amp; 0xFC) &gt;&gt; 2];</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :         characters[length++] = encodingTable[((buffer[0] &amp; 0x03) &lt;&lt; 4) | ((buffer[1] &amp; 0xF0) &gt;&gt; 4)];</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :         if (bufferLength &gt; 1)</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :             characters[length++] = encodingTable[((buffer[1] &amp; 0x0F) &lt;&lt; 2) | ((buffer[2] &amp; 0xC0) &gt;&gt; 6)];</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :         else characters[length++] = '=';</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :         if (bufferLength &gt; 2)</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :             characters[length++] = encodingTable[buffer[2] &amp; 0x3F];</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :         else characters[length++] = '=';</span>
+<span class="lineNum">      61 </span>            :     }
+<span class="lineNum">      62 </span>            :     
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     return [[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES];</span>
+<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : - (NSString*)escapeHTML</span>
+<span class="lineNum">      67 </span>            : {
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :         NSMutableString* s = [NSMutableString string];</span>
+<span class="lineNum">      69 </span>            :         
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :         unsigned long start = 0;</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :         unsigned long len = [self length];</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :         NSCharacterSet* chs = [NSCharacterSet characterSetWithCharactersInString:@&quot;&lt;&gt;&amp;\&quot;&quot;];</span>
+<span class="lineNum">      73 </span>            :         
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :         while (start &lt; len) {</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :                 NSRange r = [self rangeOfCharacterFromSet:chs options:0 range:NSMakeRange(start, len-start)];</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :                 if (r.location == NSNotFound) {</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :                         [s appendString:[self substringFromIndex:start]];</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">      79 </span>            :                 }
+<span class="lineNum">      80 </span>            :                 
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :                 if (start &lt; r.location) {</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :                         [s appendString:[self substringWithRange:NSMakeRange(start, r.location-start)]];</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">      84 </span>            :                 
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :                 switch ([self characterAtIndex:r.location]) {</span>
+<span class="lineNum">      86 </span>            :                         case '&lt;':
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :                                 [s appendString:@&quot;&amp;lt;&quot;];</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">      89 </span>            :                         case '&gt;':
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :                                 [s appendString:@&quot;&amp;gt;&quot;];</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">      92 </span>            :                         case '&quot;':
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :                                 [s appendString:@&quot;&amp;quot;&quot;];</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">      95 </span>            :                         case '&amp;':
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :                                 [s appendString:@&quot;&amp;amp;&quot;];</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">      99 </span>            :                 
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :                 start = r.location + 1;</span>
+<span class="lineNum">     101 </span>            :         }
+<span class="lineNum">     102 </span>            :         
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :         return s;</span>
+<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     105 </span>            : 
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : - (NSString*)unescapeHTML</span>
+<span class="lineNum">     107 </span>            : {
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :         NSMutableString* s = [NSMutableString string];</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :         NSMutableString* target = [self mutableCopy];</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :         NSCharacterSet* chs = [NSCharacterSet characterSetWithCharactersInString:@&quot;&amp;&quot;];</span>
+<span class="lineNum">     111 </span>            :         
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :         while ([target length] &gt; 0) {</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :                 NSRange r = [target rangeOfCharacterFromSet:chs];</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :                 if (r.location == NSNotFound) {</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :                         [s appendString:target];</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">     117 </span>            :                 }
+<span class="lineNum">     118 </span>            :                 
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :                 if (r.location &gt; 0) {</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :                         [s appendString:[target substringToIndex:r.location]];</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :                         [target deleteCharactersInRange:NSMakeRange(0, r.location)];</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">     123 </span>            :                 
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :                 if ([target hasPrefix:@&quot;&amp;lt;&quot;]) {</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :                         [s appendString:@&quot;&lt;&quot;];</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :                         [target deleteCharactersInRange:NSMakeRange(0, 4)];</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :                 } else if ([target hasPrefix:@&quot;&amp;gt;&quot;]) {</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :                         [s appendString:@&quot;&gt;&quot;];</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :                         [target deleteCharactersInRange:NSMakeRange(0, 4)];</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :                 } else if ([target hasPrefix:@&quot;&amp;quot;&quot;]) {</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :                         [s appendString:@&quot;\&quot;&quot;];</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :                         [target deleteCharactersInRange:NSMakeRange(0, 6)];</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :                 } else if ([target hasPrefix:@&quot;&amp;amp;&quot;]) {</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :                         [s appendString:@&quot;&amp;&quot;];</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :                         [target deleteCharactersInRange:NSMakeRange(0, 5)];</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :                 } else {</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :                         [s appendString:@&quot;&amp;&quot;];</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :                         [target deleteCharactersInRange:NSMakeRange(0, 1)];</span>
+<span class="lineNum">     139 </span>            :                 }
+<span class="lineNum">     140 </span>            :         }
+<span class="lineNum">     141 </span>            :         
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :         return s;</span>
+<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     144 </span>            : 
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 : + (NSString*)localizedString:(NSString*)key</span>
+<span class="lineNum">     146 </span>            : {
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :         return [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:key];</span>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : + (NSString *)dateWithTimeInterval:(NSTimeInterval)timeInterval formatter:(NSString *)formatter</span>
+<span class="lineNum">     151 </span>            : {
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];</span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :     [dateFormatter setDateFormat:formatter];</span>
+<span class="lineNum">     155 </span>            :     
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :     return [dateFormatter stringFromDate:date];</span>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     158 </span>            : 
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 : + (NSString *)dateWithDate:(NSDate *)date formatter:(NSString *)formatter</span>
+<span class="lineNum">     160 </span>            : {
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :     [dateFormatter setDateFormat:formatter];</span>
+<span class="lineNum">     163 </span>            :     
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :     return [dateFormatter stringFromDate:date];</span>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 : + (NSString *)customFormateDateStringFromDate:(NSDate *)needFormatDate</span>
+<span class="lineNum">     168 </span>            : {
+<span class="lineNum">     169 </span>            :     @try {
+<span class="lineNum">     170 </span>            :         //实例化一个NSDateFormatter对象
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];</span>
+<span class="lineNum">     172 </span>            :         
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :         NSDate * nowDate = [NSDate date];</span>
+<span class="lineNum">     174 </span>            :         // 取当前时间和转换时间两个日期对象的时间间隔
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :         NSTimeInterval time = [nowDate timeIntervalSinceDate:needFormatDate];</span>
+<span class="lineNum">     176 </span>            :         
+<span class="lineNum">     177 </span>            :         //把间隔的秒数折算成天数和小时数：
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :         NSString *dateStr = @&quot;&quot;;</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :         if (time &lt;= 60 * 30) {  // 30分钟以内的</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :             dateStr = @&quot;刚刚&quot;;</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :         }else if(time &lt;= 60*60*24){   // 24小时以内</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :             [dateFormatter setDateFormat:@&quot;yyyy-MM-dd&quot;];</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :             NSString * need_yMd = [dateFormatter stringFromDate:needFormatDate];</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :             NSString *now_yMd = [dateFormatter stringFromDate:nowDate];</span>
+<span class="lineNum">     185 </span>            :             
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :             if ([need_yMd isEqualToString:now_yMd]) {</span>
+<span class="lineNum">     187 </span>            :                 // 在当天 显示几点几分
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :                 [dateFormatter setDateFormat:@&quot;HH:mm&quot;];</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :                 dateStr = [NSString stringWithFormat:@&quot;%@&quot;,[dateFormatter stringFromDate:needFormatDate]];</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :             }else{</span>
+<span class="lineNum">     191 </span>            :                 // 不在当天 显示几月几号
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :                 [dateFormatter setDateFormat:@&quot;MM-dd&quot;];</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :                 dateStr = [dateFormatter stringFromDate:needFormatDate];</span>
+<span class="lineNum">     194 </span>            :             }
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 :         }else {</span>
+<span class="lineNum">     196 </span>            :             
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :             [dateFormatter setDateFormat:@&quot;yyyy&quot;];</span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :             NSString * yearStr = [dateFormatter stringFromDate:needFormatDate];</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :             NSString *nowYear = [dateFormatter stringFromDate:nowDate];</span>
+<span class="lineNum">     200 </span>            :             
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :             if ([yearStr isEqualToString:nowYear]) {</span>
+<span class="lineNum">     202 </span>            :                 //  在同一年
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :                 [dateFormatter setDateFormat:@&quot;MM-dd&quot;];</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :                 dateStr = [dateFormatter stringFromDate:needFormatDate];</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 :             }else{</span>
+<span class="lineNum">     206 </span><span class="lineNoCov">          0 :                 [dateFormatter setDateFormat:@&quot;yyyy-MM-dd&quot;];</span>
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 :                 dateStr = [dateFormatter stringFromDate:needFormatDate];</span>
+<span class="lineNum">     208 </span>            :             }
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 :         return dateStr;</span>
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     212 </span><span class="lineNoCov">          0 :     @catch (NSException *exception) {</span>
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :         return @&quot;&quot;;</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     215 </span>            :     
+<span class="lineNum">     216 </span>            :     
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     218 </span>            : 
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 : + (NSString *)globalRedPackFormateDateStringFromDate:(NSDate *)actDate {</span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];</span>
+<span class="lineNum">     221 </span>            :     //获取今天0点时间
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 :     NSCalendar *calendar = [NSCalendar currentCalendar];</span>
+<span class="lineNum">     223 </span><span class="lineNoCov">          0 :     NSDate *now = [NSDate date];</span>
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 :     NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:now];</span>
+<span class="lineNum">     225 </span><span class="lineNoCov">          0 :     NSDate *todayBegin = [calendar dateFromComponents:components];</span>
+<span class="lineNum">     226 </span>            :     //下次活动时间距离今天0点的间隔
+<span class="lineNum">     227 </span><span class="lineNoCov">          0 :     NSTimeInterval interval = [actDate timeIntervalSinceDate:todayBegin];</span>
+<span class="lineNum">     228 </span>            :     
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 :     NSString *dateStr = @&quot;&quot;;</span>
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :     if(interval &gt;= 0 &amp;&amp; interval &lt;= 60*60*48){   //48小时以内</span>
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :         [dateFormatter setDateFormat:@&quot;yyyy-MM-dd&quot;];</span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :         NSString * act_yMd = [dateFormatter stringFromDate:actDate];</span>
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :         NSString *now_yMd = [dateFormatter stringFromDate:now];</span>
+<span class="lineNum">     234 </span>            :         
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 :         if ([act_yMd isEqualToString:now_yMd]) {</span>
+<span class="lineNum">     236 </span>            :             //今天 显示几点几分
+<span class="lineNum">     237 </span><span class="lineNoCov">          0 :             [dateFormatter setDateFormat:@&quot;HH:mm&quot;];</span>
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :             dateStr = [dateFormatter stringFromDate:actDate];</span>
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 :         }else{</span>
+<span class="lineNum">     240 </span>            :             //明天
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 :             [dateFormatter setDateFormat:@&quot;HH:mm&quot;];</span>
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 :             dateStr = [NSString stringWithFormat:@&quot;明天%@&quot;,[dateFormatter stringFromDate:actDate]];</span>
+<span class="lineNum">     243 </span>            :         }
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 :     }else {</span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :         [dateFormatter setDateFormat:@&quot;MM月dd日HH:mm&quot;];</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :         dateStr = [dateFormatter stringFromDate:actDate];</span>
+<span class="lineNum">     247 </span>            :     }
+<span class="lineNum">     248 </span><span class="lineNoCov">          0 :     return dateStr;</span>
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     250 </span>            : 
+<span class="lineNum">     251 </span>            : /*
+<span class="lineNum">     252 </span>            :  
+<span class="lineNum">     253 </span>            :  Return the hexadecimal string representation of the MD5 digest of the target
+<span class="lineNum">     254 </span>            :  NSString. In this example, this is used to generate a statistically unique
+<span class="lineNum">     255 </span>            :  ID for each fortune file.
+<span class="lineNum">     256 </span>            :  
+<a name="257"><span class="lineNum">     257 </span>            :  */</a>
+<span class="lineNum">     258 </span>            : 
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 : - (NSString *)flattenHTMLWhiteSpace:(BOOL)trim</span>
+<span class="lineNum">     260 </span>            : {
+<span class="lineNum">     261 </span>            :     
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 :     NSScanner *theScanner;</span>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 :     NSString *text = nil;</span>
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 :     NSString *flattenString = [NSString stringWithString:self];</span>
+<span class="lineNum">     265 </span>            :     
+<span class="lineNum">     266 </span><span class="lineNoCov">          0 :     theScanner = [NSScanner scannerWithString:self];</span>
+<span class="lineNum">     267 </span>            :     
+<span class="lineNum">     268 </span><span class="lineNoCov">          0 :     while (![theScanner isAtEnd]) {</span>
+<span class="lineNum">     269 </span>            :         
+<span class="lineNum">     270 </span><span class="lineNoCov">          0 :         [theScanner scanUpToString:@&quot;&lt;&quot; intoString:NULL] ;</span>
+<span class="lineNum">     271 </span>            :         
+<span class="lineNum">     272 </span><span class="lineNoCov">          0 :         [theScanner scanUpToString:@&quot;&gt;&quot; intoString:&amp;text] ;</span>
+<span class="lineNum">     273 </span>            :         
+<span class="lineNum">     274 </span><span class="lineNoCov">          0 :         flattenString = [self stringByReplacingOccurrencesOfString:</span>
+<span class="lineNum">     275 </span><span class="lineNoCov">          0 :                 [ NSString stringWithFormat:@&quot;%@&gt;&quot;, text]</span>
+<span class="lineNum">     276 </span>            :                                                withString:@&quot;&quot;];
+<span class="lineNum">     277 </span>            :         
+<span class="lineNum">     278 </span>            :     }
+<span class="lineNum">     279 </span>            :     
+<span class="lineNum">     280 </span><span class="lineNoCov">          0 :     return trim ? [flattenString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] : flattenString;</span>
+<span class="lineNum">     281 </span>            :     
+<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     283 </span>            : 
+<span class="lineNum">     284 </span><span class="lineNoCov">          0 : - (NSString *)flattenHTMLWithImgStyle</span>
+<span class="lineNum">     285 </span>            : {
+<span class="lineNum">     286 </span>            :     
+<span class="lineNum">     287 </span><span class="lineNoCov">          0 :     NSScanner *theScanner;</span>
+<span class="lineNum">     288 </span><span class="lineNoCov">          0 :     NSString *text = nil;</span>
+<span class="lineNum">     289 </span><span class="lineNoCov">          0 :     NSString *flattenString = [NSString stringWithString:self];</span>
+<span class="lineNum">     290 </span>            :     
+<span class="lineNum">     291 </span><span class="lineNoCov">          0 :     theScanner = [NSScanner scannerWithString:self];</span>
+<span class="lineNum">     292 </span>            :     
+<span class="lineNum">     293 </span><span class="lineNoCov">          0 :     while (![theScanner isAtEnd]) {</span>
+<span class="lineNum">     294 </span>            :         
+<span class="lineNum">     295 </span><span class="lineNoCov">          0 :         [theScanner scanUpToString:@&quot;&lt;&quot; intoString:NULL] ;</span>
+<span class="lineNum">     296 </span><span class="lineNoCov">          0 :         [theScanner scanUpToString:@&quot;&gt;&quot; intoString:&amp;text];</span>
+<span class="lineNum">     297 </span>            :         
+<span class="lineNum">     298 </span><span class="lineNoCov">          0 :         if ([text hasPrefix:@&quot;&lt;img&quot;]</span>
+<span class="lineNum">     299 </span><span class="lineNoCov">          0 :             ||[text hasPrefix:@&quot;&lt;span&quot;]</span>
+<span class="lineNum">     300 </span><span class="lineNoCov">          0 :             ||[text hasPrefix:@&quot;&lt;/span&quot;]</span>
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 :             ||[text hasPrefix:@&quot;&lt;strong&quot;]</span>
+<span class="lineNum">     302 </span><span class="lineNoCov">          0 :             ||[text hasPrefix:@&quot;&lt;/strong&quot;]) {</span>
+<span class="lineNum">     303 </span><span class="lineNoCov">          0 :             flattenString = [self stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@&quot;%@&gt;&quot;, text] withString:@&quot;&quot;];</span>
+<span class="lineNum">     304 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     305 </span>            :     }
+<span class="lineNum">     306 </span>            :     
+<span class="lineNum">     307 </span><span class="lineNoCov">          0 :     return flattenString;</span>
+<span class="lineNum">     308 </span>            :     
+<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     310 </span>            : 
+<span class="lineNum">     311 </span><span class="lineNoCov">          0 : - (NSString *)flattenImgHTMLWithWihtString:(NSString *)str</span>
+<span class="lineNum">     312 </span>            : {
+<span class="lineNum">     313 </span><span class="lineNoCov">          0 :     NSScanner *theScanner;</span>
+<span class="lineNum">     314 </span><span class="lineNoCov">          0 :     NSString *text = nil;</span>
+<span class="lineNum">     315 </span><span class="lineNoCov">          0 :     NSString *flattenString = [NSString stringWithString:self];</span>
+<span class="lineNum">     316 </span>            :     
+<span class="lineNum">     317 </span><span class="lineNoCov">          0 :     theScanner = [NSScanner scannerWithString:self];</span>
+<span class="lineNum">     318 </span>            :     
+<span class="lineNum">     319 </span><span class="lineNoCov">          0 :     while (![theScanner isAtEnd]) {</span>
+<span class="lineNum">     320 </span>            :         
+<span class="lineNum">     321 </span><span class="lineNoCov">          0 :         [theScanner scanUpToString:@&quot;&lt;&quot; intoString:NULL] ;</span>
+<span class="lineNum">     322 </span><span class="lineNoCov">          0 :         [theScanner scanUpToString:@&quot;&gt;&quot; intoString:&amp;text];</span>
+<span class="lineNum">     323 </span>            :         
+<span class="lineNum">     324 </span><span class="lineNoCov">          0 :         if ([text hasPrefix:@&quot;&lt;img&quot;]) {</span>
+<span class="lineNum">     325 </span><span class="lineNoCov">          0 :             flattenString = [self stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@&quot;%@&gt;&quot;, text] withString:str];</span>
+<span class="lineNum">     326 </span><span class="lineNoCov">          0 :         }else {</span>
+<span class="lineNum">     327 </span>            :             
+<span class="lineNum">     328 </span><span class="lineNoCov">          0 :             flattenString = [self stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@&quot;%@&gt;&quot;, text] withString:@&quot;&quot;];</span>
+<span class="lineNum">     329 </span>            :         }
+<span class="lineNum">     330 </span>            :     }
+<span class="lineNum">     331 </span>            :     
+<span class="lineNum">     332 </span><span class="lineNoCov">          0 :     return flattenString;</span>
+<span class="lineNum">     333 </span><span class="lineNoCov">          0 : }</span>
+<a name="334"><span class="lineNum">     334 </span>            : </a>
+<span class="lineNum">     335 </span>            : 
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 : - (NSString *)stringByDecodingHTMLEntitiesInString</span>
+<span class="lineNum">     337 </span>            : {
+<span class="lineNum">     338 </span><span class="lineNoCov">          0 :     NSMutableString *results = [NSMutableString string];</span>
+<span class="lineNum">     339 </span><span class="lineNoCov">          0 :     NSScanner *scanner = [NSScanner scannerWithString:self];</span>
+<span class="lineNum">     340 </span><span class="lineNoCov">          0 :     [scanner setCharactersToBeSkipped:nil];</span>
+<span class="lineNum">     341 </span><span class="lineNoCov">          0 :     while (![scanner isAtEnd]) {</span>
+<span class="lineNum">     342 </span><span class="lineNoCov">          0 :         NSString *temp;</span>
+<span class="lineNum">     343 </span><span class="lineNoCov">          0 :         if ([scanner scanUpToString:@&quot;&amp;&quot; intoString:&amp;temp]) {</span>
+<span class="lineNum">     344 </span><span class="lineNoCov">          0 :             [results appendString:temp];</span>
+<span class="lineNum">     345 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     346 </span><span class="lineNoCov">          0 :         if ([scanner scanString:@&quot;&amp;&quot; intoString:NULL]) {</span>
+<span class="lineNum">     347 </span><span class="lineNoCov">          0 :             BOOL valid = YES;</span>
+<span class="lineNum">     348 </span><span class="lineNoCov">          0 :             unsigned c = 0;</span>
+<span class="lineNum">     349 </span><span class="lineNoCov">          0 :             NSUInteger savedLocation = [scanner scanLocation];</span>
+<span class="lineNum">     350 </span><span class="lineNoCov">          0 :             if ([scanner scanString:@&quot;#&quot; intoString:NULL]) {</span>
+<span class="lineNum">     351 </span>            :                 // it's a numeric entity
+<span class="lineNum">     352 </span><span class="lineNoCov">          0 :                 if ([scanner scanString:@&quot;x&quot; intoString:NULL]) {</span>
+<span class="lineNum">     353 </span>            :                     // hexadecimal
+<span class="lineNum">     354 </span>            :                     unsigned int value;
+<span class="lineNum">     355 </span><span class="lineNoCov">          0 :                     if ([scanner scanHexInt:&amp;value]) {</span>
+<span class="lineNum">     356 </span><span class="lineNoCov">          0 :                         c = value;</span>
+<span class="lineNum">     357 </span><span class="lineNoCov">          0 :                     } else {</span>
+<span class="lineNum">     358 </span><span class="lineNoCov">          0 :                         valid = NO;</span>
+<span class="lineNum">     359 </span>            :                     }
+<span class="lineNum">     360 </span><span class="lineNoCov">          0 :                 } else {</span>
+<span class="lineNum">     361 </span>            :                     // decimal
+<span class="lineNum">     362 </span>            :                     int value;
+<span class="lineNum">     363 </span><span class="lineNoCov">          0 :                     if ([scanner scanInt:&amp;value] &amp;&amp; value &gt;= 0) {</span>
+<span class="lineNum">     364 </span><span class="lineNoCov">          0 :                         c = value;</span>
+<span class="lineNum">     365 </span><span class="lineNoCov">          0 :                     } else {</span>
+<span class="lineNum">     366 </span><span class="lineNoCov">          0 :                         valid = NO;</span>
+<span class="lineNum">     367 </span>            :                     }
+<span class="lineNum">     368 </span>            :                 }
+<span class="lineNum">     369 </span><span class="lineNoCov">          0 :                 if (![scanner scanString:@&quot;;&quot; intoString:NULL]) {</span>
+<span class="lineNum">     370 </span>            :                     // not ;-terminated, bail out and emit the whole entity
+<span class="lineNum">     371 </span><span class="lineNoCov">          0 :                     valid = NO;</span>
+<span class="lineNum">     372 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">     373 </span><span class="lineNoCov">          0 :             } else {</span>
+<span class="lineNum">     374 </span><span class="lineNoCov">          0 :                 if (![scanner scanUpToString:@&quot;;&quot; intoString:&amp;temp]) {</span>
+<span class="lineNum">     375 </span>            :                     // &amp;; is not a valid entity
+<span class="lineNum">     376 </span><span class="lineNoCov">          0 :                     valid = NO;</span>
+<span class="lineNum">     377 </span><span class="lineNoCov">          0 :                 } else if (![scanner scanString:@&quot;;&quot; intoString:NULL]) {</span>
+<span class="lineNum">     378 </span>            :                     // there was no trailing ;
+<span class="lineNum">     379 </span><span class="lineNoCov">          0 :                     valid = NO;</span>
+<span class="lineNum">     380 </span><span class="lineNoCov">          0 :                 } else if ([temp isEqualToString:@&quot;amp&quot;]) {</span>
+<span class="lineNum">     381 </span><span class="lineNoCov">          0 :                     c = '&amp;';</span>
+<span class="lineNum">     382 </span><span class="lineNoCov">          0 :                 } else if ([temp isEqualToString:@&quot;quot&quot;]) {</span>
+<span class="lineNum">     383 </span><span class="lineNoCov">          0 :                     c = '&quot;';</span>
+<span class="lineNum">     384 </span><span class="lineNoCov">          0 :                 } else if ([temp isEqualToString:@&quot;lt&quot;]) {</span>
+<span class="lineNum">     385 </span><span class="lineNoCov">          0 :                     c = '&lt;';</span>
+<span class="lineNum">     386 </span><span class="lineNoCov">          0 :                 } else if ([temp isEqualToString:@&quot;gt&quot;]) {</span>
+<span class="lineNum">     387 </span><span class="lineNoCov">          0 :                     c = '&gt;';</span>
+<span class="lineNum">     388 </span><span class="lineNoCov">          0 :                 } else if ([temp isEqualToString:@&quot;nbsp&quot;]) {</span>
+<span class="lineNum">     389 </span><span class="lineNoCov">          0 :                     c = ' ';</span>
+<span class="lineNum">     390 </span><span class="lineNoCov">          0 :                 } else if ([temp isEqualToString:@&quot;times&quot;]){</span>
+<span class="lineNum">     391 </span><span class="lineNoCov">          0 :                     c = 'x';</span>
+<span class="lineNum">     392 </span><span class="lineNoCov">          0 :                 } else if ([temp isEqualToString:@&quot;ldquo&quot;]){</span>
+<span class="lineNum">     393 </span><span class="lineNoCov">          0 :                     c = '&quot;';</span>
+<span class="lineNum">     394 </span><span class="lineNoCov">          0 :                 }else if ([temp isEqualToString:@&quot;rdquo&quot;]){</span>
+<span class="lineNum">     395 </span><span class="lineNoCov">          0 :                     c = '&quot;';</span>
+<span class="lineNum">     396 </span><span class="lineNoCov">          0 :                 }else if ([temp isEqualToString:@&quot;middot&quot;]){</span>
+<span class="lineNum">     397 </span><span class="lineNoCov">          0 :                     c = '.';</span>
+<span class="lineNum">     398 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">     399 </span>            :                 else {
+<span class="lineNum">     400 </span>            :                     // unknown entity
+<span class="lineNum">     401 </span><span class="lineNoCov">          0 :                     valid = NO;</span>
+<span class="lineNum">     402 </span>            :                 }
+<span class="lineNum">     403 </span>            :             }
+<span class="lineNum">     404 </span><span class="lineNoCov">          0 :             if (!valid) {</span>
+<span class="lineNum">     405 </span>            :                 // we errored, just emit the whole thing raw
+<span class="lineNum">     406 </span><span class="lineNoCov">          0 :                 [results appendString:[self substringWithRange:NSMakeRange(savedLocation, [scanner scanLocation]-savedLocation)]];</span>
+<span class="lineNum">     407 </span><span class="lineNoCov">          0 :             } else {</span>
+<span class="lineNum">     408 </span><span class="lineNoCov">          0 :                 [results appendFormat:@&quot;%c&quot;, c];</span>
+<span class="lineNum">     409 </span>            :             }
+<span class="lineNum">     410 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     411 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     412 </span><span class="lineNoCov">          0 :     return results;</span>
+<a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     414 </span>            : 
+<span class="lineNum">     415 </span><span class="lineNoCov">          0 : -(NSString *)stringByStrippingHTML</span>
+<span class="lineNum">     416 </span>            : {
+<span class="lineNum">     417 </span>            :     NSRange r;
+<span class="lineNum">     418 </span><span class="lineNoCov">          0 :     NSString *s = [self copy];</span>
+<span class="lineNum">     419 </span><span class="lineNoCov">          0 :     while ((r = [s rangeOfString:@&quot;&lt;[^&gt;]+&gt;&quot; options:NSRegularExpressionSearch]).location != NSNotFound)</span>
+<span class="lineNum">     420 </span><span class="lineNoCov">          0 :         s = [s stringByReplacingCharactersInRange:r withString:@&quot;&quot;];</span>
+<span class="lineNum">     421 </span><span class="lineNoCov">          0 :     return s;</span>
+<a name="422"><span class="lineNum">     422 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     423 </span>            : 
+<span class="lineNum">     424 </span><span class="lineNoCov">          0 : -(NSString *)stringByStrippingSpace</span>
+<span class="lineNum">     425 </span>            : {
+<span class="lineNum">     426 </span><span class="lineNoCov">          0 :     NSString *s = [self copy];</span>
+<span class="lineNum">     427 </span>            :     
+<span class="lineNum">     428 </span>            :     NSRange spaceRange,wrapRange;
+<span class="lineNum">     429 </span><span class="lineNoCov">          0 :     while ((spaceRange = [s rangeOfString:@&quot;&amp;nbsp;&quot;]).location != NSNotFound)</span>
+<span class="lineNum">     430 </span>            :     {
+<span class="lineNum">     431 </span><span class="lineNoCov">          0 :         s = [s stringByReplacingCharactersInRange:spaceRange withString:@&quot;&quot;];</span>
+<span class="lineNum">     432 </span>            :     }
+<span class="lineNum">     433 </span><span class="lineNoCov">          0 :     while ((wrapRange = [s rangeOfString:@&quot;\n&quot;]).location != NSNotFound)</span>
+<span class="lineNum">     434 </span>            :     {
+<span class="lineNum">     435 </span><span class="lineNoCov">          0 :         int i = 1;</span>
+<span class="lineNum">     436 </span><span class="lineNoCov">          0 :         while ([[s substringWithRange:NSMakeRange(wrapRange.location + i, 1)] isEqualToString:@&quot;\n&quot;])</span>
+<span class="lineNum">     437 </span>            :         {
+<span class="lineNum">     438 </span><span class="lineNoCov">          0 :             wrapRange.length += 1;</span>
+<span class="lineNum">     439 </span><span class="lineNoCov">          0 :             i += 1;</span>
+<span class="lineNum">     440 </span><span class="lineNoCov">          0 :             if ((wrapRange.location +i) &gt;= [s length])</span>
+<span class="lineNum">     441 </span>            :             {
+<span class="lineNum">     442 </span><span class="lineNoCov">          0 :                 break;</span>
+<span class="lineNum">     443 </span>            :             }
+<span class="lineNum">     444 </span>            :         }
+<span class="lineNum">     445 </span><span class="lineNoCov">          0 :         if (i &gt; 1)</span>
+<span class="lineNum">     446 </span>            :         {
+<span class="lineNum">     447 </span><span class="lineNoCov">          0 :             s = [s stringByReplacingCharactersInRange:wrapRange withString:@&quot;wrapwrap&quot;];</span>
+<span class="lineNum">     448 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     449 </span>            :         else
+<span class="lineNum">     450 </span>            :         {
+<span class="lineNum">     451 </span><span class="lineNoCov">          0 :             s = [s stringByReplacingCharactersInRange:wrapRange withString:@&quot;wrap&quot;];</span>
+<span class="lineNum">     452 </span>            :         }
+<span class="lineNum">     453 </span>            :     }
+<span class="lineNum">     454 </span>            :     //NSLog(@&quot;s = %@&quot;,s);
+<span class="lineNum">     455 </span><span class="lineNoCov">          0 :     return [s stringByReplacingOccurrencesOfString:@&quot;wrap&quot; withString:@&quot;\n&quot;];</span>
+<a name="456"><span class="lineNum">     456 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     457 </span>            : 
+<span class="lineNum">     458 </span><span class="lineNoCov">          0 : + (NSString*)encodeBase64String:(NSString * )input {</span>
+<span class="lineNum">     459 </span><span class="lineNoCov">          0 :     NSData *data = [input dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];</span>
+<span class="lineNum">     460 </span><span class="lineNoCov">          0 :     data = [GTMBase64 encodeData:data];</span>
+<span class="lineNum">     461 </span><span class="lineNoCov">          0 :     NSString *base64String = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     462 </span><span class="lineNoCov">          0 :     return base64String;</span>
+<a name="463"><span class="lineNum">     463 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     464 </span>            : 
+<span class="lineNum">     465 </span><span class="lineNoCov">          0 : + (NSString*)decodeBase64String:(NSString * )input {</span>
+<span class="lineNum">     466 </span><span class="lineNoCov">          0 :     NSData *data = [input dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];</span>
+<span class="lineNum">     467 </span><span class="lineNoCov">          0 :     data = [GTMBase64 decodeData:data];</span>
+<span class="lineNum">     468 </span><span class="lineNoCov">          0 :     NSString *base64String = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     469 </span><span class="lineNoCov">          0 :     return base64String;</span>
+<a name="470"><span class="lineNum">     470 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     471 </span>            : 
+<span class="lineNum">     472 </span><span class="lineNoCov">          0 : + (NSString*)encodeBase64Data:(NSData *)data {</span>
+<span class="lineNum">     473 </span><span class="lineNoCov">          0 :     data = [GTMBase64 encodeData:data];</span>
+<span class="lineNum">     474 </span><span class="lineNoCov">          0 :     NSString *base64String = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     475 </span><span class="lineNoCov">          0 :     return base64String;</span>
+<a name="476"><span class="lineNum">     476 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     477 </span>            : 
+<span class="lineNum">     478 </span><span class="lineNoCov">          0 : + (NSString*)decodeBase64Data:(NSData *)data {</span>
+<span class="lineNum">     479 </span><span class="lineNoCov">          0 :     data = [GTMBase64 decodeData:data];</span>
+<span class="lineNum">     480 </span><span class="lineNoCov">          0 :     NSString *base64String = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     481 </span><span class="lineNoCov">          0 :     return base64String;</span>
+<a name="482"><span class="lineNum">     482 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     483 </span>            : 
+<span class="lineNum">     484 </span><span class="lineNoCov">          0 : + (NSString*)guid {</span>
+<span class="lineNum">     485 </span><span class="lineNoCov">          0 :     CFUUIDRef cfuuid = CFUUIDCreate(kCFAllocatorDefault);</span>
+<span class="lineNum">     486 </span><span class="lineNoCov">          0 :     NSString *cfuuidString = (NSString*)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, cfuuid));</span>
+<span class="lineNum">     487 </span><span class="lineNoCov">          0 :     CFRelease(cfuuid);</span>
+<span class="lineNum">     488 </span><span class="lineNoCov">          0 :     return cfuuidString;</span>
+<a name="489"><span class="lineNum">     489 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     490 </span>            : 
+<span class="lineNum">     491 </span><span class="lineNoCov">          0 : +(BOOL)isLegalInputString:(NSString *)inputString {</span>
+<span class="lineNum">     492 </span>            : 
+<span class="lineNum">     493 </span>            :     // 编写正则表达式：最多输入50个中文、英文、数字的字符，且不能包含英文标点和特殊符号
+<span class="lineNum">     494 </span><span class="lineNoCov">          0 :     NSString *regex = @&quot;^[\u4e00-\u9fa5a-zA-Z0-9]{0,50}$&quot;;</span>
+<span class="lineNum">     495 </span>            :     // 创建谓词对象并设定条件的表达式
+<span class="lineNum">     496 </span><span class="lineNoCov">          0 :     NSPredicate *predicate = [NSPredicate predicateWithFormat:@&quot;SELF MATCHES %@&quot;, regex];</span>
+<span class="lineNum">     497 </span>            :     // 对字符串进行判断
+<span class="lineNum">     498 </span><span class="lineNoCov">          0 :     if ([predicate evaluateWithObject:inputString]) {</span>
+<span class="lineNum">     499 </span><span class="lineNoCov">          0 :         return NO;</span>
+<span class="lineNum">     500 </span>            :     }else{
+<span class="lineNum">     501 </span><span class="lineNoCov">          0 :         return YES;</span>
+<span class="lineNum">     502 </span>            :     }
+<a name="503"><span class="lineNum">     503 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     504 </span>            : 
+<a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 : - (NSInteger)multiLength {</span></a>
+<span class="lineNum">     506 </span><span class="lineNoCov">          0 :     __block CGFloat length = 0;</span>
+<span class="lineNum">     507 </span><span class="lineNoCov">          0 :     [self enumerateSubstringsInRange:NSMakeRange(0, [self length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {</span>
+<span class="lineNum">     508 </span><span class="lineNoCov">          0 :         if ([substring length] == 1) {</span>
+<span class="lineNum">     509 </span><span class="lineNoCov">          0 :             NSInteger clength = strlen([substring UTF8String]);</span>
+<span class="lineNum">     510 </span><span class="lineNoCov">          0 :             if (clength == 1) {</span>
+<span class="lineNum">     511 </span><span class="lineNoCov">          0 :                 length += 0.5;</span>
+<span class="lineNum">     512 </span><span class="lineNoCov">          0 :             }else {</span>
+<span class="lineNum">     513 </span><span class="lineNoCov">          0 :                 length += 1;</span>
+<span class="lineNum">     514 </span>            :             }
+<span class="lineNum">     515 </span><span class="lineNoCov">          0 :         }else {</span>
+<a name="516"><span class="lineNum">     516 </span><span class="lineNoCov">          0 :             length += 1;</span></a>
+<span class="lineNum">     517 </span>            :         }
+<span class="lineNum">     518 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     519 </span><span class="lineNoCov">          0 :     return (int)ceil(length);</span>
+<a name="520"><span class="lineNum">     520 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     521 </span>            : 
+<span class="lineNum">     522 </span><span class="lineNoCov">          0 : - (NSString *)subMultiStringToIndex:(NSInteger)index {</span>
+<a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :     __block CGFloat length = 0;</span></a>
+<span class="lineNum">     524 </span><span class="lineNoCov">          0 :     NSMutableString *subString = [NSMutableString stringWithString:@&quot;&quot;];</span>
+<span class="lineNum">     525 </span><span class="lineNoCov">          0 :     [self enumerateSubstringsInRange:NSMakeRange(0, [self length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {</span>
+<span class="lineNum">     526 </span><span class="lineNoCov">          0 :         if ([substring length] == 1) {</span>
+<span class="lineNum">     527 </span><span class="lineNoCov">          0 :             NSInteger clength = strlen([substring UTF8String]);</span>
+<span class="lineNum">     528 </span><span class="lineNoCov">          0 :             if (clength == 1) {</span>
+<span class="lineNum">     529 </span><span class="lineNoCov">          0 :                 length += 0.5;</span>
+<span class="lineNum">     530 </span><span class="lineNoCov">          0 :             }else {</span>
+<span class="lineNum">     531 </span><span class="lineNoCov">          0 :                 length += 1;</span>
+<span class="lineNum">     532 </span>            :             }
+<span class="lineNum">     533 </span><span class="lineNoCov">          0 :         }else {</span>
+<span class="lineNum">     534 </span><span class="lineNoCov">          0 :             length += 1;</span>
+<span class="lineNum">     535 </span>            :         }
+<span class="lineNum">     536 </span><span class="lineNoCov">          0 :         if (length &lt;= index) {</span>
+<span class="lineNum">     537 </span><span class="lineNoCov">          0 :             [subString appendString:substring];</span>
+<span class="lineNum">     538 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     539 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     540 </span><span class="lineNoCov">          0 :     return subString;</span>
+<a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     542 </span>            : 
+<span class="lineNum">     543 </span><span class="lineNoCov">          0 : - (NSString *)filterTopicString</span>
+<span class="lineNum">     544 </span>            : {
+<span class="lineNum">     545 </span><span class="lineNoCov">          0 :     NSRange topicRange = NSMakeRange(0, 0);</span>
+<span class="lineNum">     546 </span><span class="lineNoCov">          0 :     NSMutableString *msg = [[NSMutableString alloc] initWithString:self];</span>
+<span class="lineNum">     547 </span><span class="lineNoCov">          0 :     if ([msg hasPrefix:@&quot;#&quot;]) {</span>
+<span class="lineNum">     548 </span><span class="lineNoCov">          0 :         [msg replaceCharactersInRange:NSMakeRange(0, 1) withString:@&quot;&quot;];</span>
+<span class="lineNum">     549 </span><span class="lineNoCov">          0 :         NSRange range = [msg rangeOfString:@&quot;#&quot;];</span>
+<span class="lineNum">     550 </span><span class="lineNoCov">          0 :         if (range.location != NSNotFound &amp;&amp; range.location != 0) {</span>
+<span class="lineNum">     551 </span><span class="lineNoCov">          0 :             NSString *filterStr = [NSString stringWithString:[msg substringToIndex:range.location]];</span>
+<span class="lineNum">     552 </span><span class="lineNoCov">          0 :             filterStr = [filterStr stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];</span>
+<span class="lineNum">     553 </span><span class="lineNoCov">          0 :             if (filterStr.length &gt; 0) {</span>
+<span class="lineNum">     554 </span><span class="lineNoCov">          0 :                 topicRange = NSMakeRange(0, range.location + 2);</span>
+<span class="lineNum">     555 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     556 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     557 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     558 </span><span class="lineNoCov">          0 :     return [self substringWithRange:topicRange];</span>
+<a name="559"><span class="lineNum">     559 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     560 </span>            : 
+<span class="lineNum">     561 </span><span class="lineNoCov">          0 : - (NSString *)decodePercentEscapeString {</span>
+<span class="lineNum">     562 </span><span class="lineNoCov">          0 :     NSMutableString *outputStr = [NSMutableString stringWithString:self];</span>
+<span class="lineNum">     563 </span><span class="lineNoCov">          0 :     [outputStr replaceOccurrencesOfString:@&quot;+&quot;</span>
+<span class="lineNum">     564 </span>            :                                withString:@&quot; &quot;
+<span class="lineNum">     565 </span>            :                                   options:NSLiteralSearch
+<span class="lineNum">     566 </span><span class="lineNoCov">          0 :                                     range:NSMakeRange(0, [outputStr length])];</span>
+<span class="lineNum">     567 </span>            :     
+<span class="lineNum">     568 </span><span class="lineNoCov">          0 :     return [outputStr stringByRemovingPercentEncoding];</span>
+<a name="569"><span class="lineNum">     569 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     570 </span>            : 
+<span class="lineNum">     571 </span><span class="lineNoCov">          0 : + (STUserLevelType)getUserLevelTypeWithUserLevel:(NSString *)userlevel {</span>
+<span class="lineNum">     572 </span>            :     STUserLevelType levelType;
+<span class="lineNum">     573 </span><span class="lineNoCov">          0 :     NSInteger level = [userlevel integerValue];</span>
+<span class="lineNum">     574 </span><span class="lineNoCov">          0 :     if (level &lt;= 10) {</span>
+<span class="lineNum">     575 </span><span class="lineNoCov">          0 :         levelType = STUserLevelTypeStar;</span>
+<span class="lineNum">     576 </span><span class="lineNoCov">          0 :     } else if (level &lt;= 15) {</span>
+<span class="lineNum">     577 </span><span class="lineNoCov">          0 :         levelType = STUserLevelTypeMoon;</span>
+<span class="lineNum">     578 </span><span class="lineNoCov">          0 :     } else if (level &lt;= 20) {</span>
+<span class="lineNum">     579 </span><span class="lineNoCov">          0 :         levelType = STUserLevelTypeSun;</span>
+<span class="lineNum">     580 </span><span class="lineNoCov">          0 :     } else if (level &lt;= 25) {</span>
+<span class="lineNum">     581 </span><span class="lineNoCov">          0 :         levelType = STUserLevelTypeCyanDiamond;</span>
+<span class="lineNum">     582 </span><span class="lineNoCov">          0 :     } else if (level &lt;= 30) {</span>
+<span class="lineNum">     583 </span><span class="lineNoCov">          0 :         levelType = STUserLevelTypeBlueDiamond;</span>
+<span class="lineNum">     584 </span><span class="lineNoCov">          0 :     } else if (level &lt;= 35) {</span>
+<span class="lineNum">     585 </span><span class="lineNoCov">          0 :         levelType = STUserLevelTypePurpleDiamond;</span>
+<span class="lineNum">     586 </span><span class="lineNoCov">          0 :     } else if (level &lt;= 45) {</span>
+<span class="lineNum">     587 </span><span class="lineNoCov">          0 :         levelType = STUserLevelTypeCrownOne;</span>
+<span class="lineNum">     588 </span><span class="lineNoCov">          0 :     } else if (level &lt;= 55) {</span>
+<span class="lineNum">     589 </span><span class="lineNoCov">          0 :         levelType = STUserLevelTypeCrownTwo;</span>
+<span class="lineNum">     590 </span><span class="lineNoCov">          0 :     } else {</span>
+<span class="lineNum">     591 </span><span class="lineNoCov">          0 :         levelType = STUserLevelTypeCrownThree;</span>
+<span class="lineNum">     592 </span>            :     }
+<span class="lineNum">     593 </span><span class="lineNoCov">          0 :     return levelType;</span>
+<a name="594"><span class="lineNum">     594 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     595 </span>            : 
+<span class="lineNum">     596 </span><span class="lineNoCov">          0 : + (BOOL)verifyIDCardNumber:(NSString *)value {</span>
+<span class="lineNum">     597 </span><span class="lineNoCov">          0 :     value = [value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];</span>
+<span class="lineNum">     598 </span><span class="lineNoCov">          0 :     if ([value length] != 18) {</span>
+<span class="lineNum">     599 </span><span class="lineNoCov">          0 :             return NO;</span>
+<span class="lineNum">     600 </span>            :         }
+<span class="lineNum">     601 </span><span class="lineNoCov">          0 :     NSString *mmdd = @&quot;(((0[13578]|1[02])(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)(0[1-9]|[12][0-9]|30))|(02(0[1-9]|[1][0-9]|2[0-8])))&quot;;</span>
+<span class="lineNum">     602 </span><span class="lineNoCov">          0 :     NSString *leapMmdd = @&quot;0229&quot;;</span>
+<span class="lineNum">     603 </span><span class="lineNoCov">          0 :     NSString *year = @&quot;(19|20)[0-9]{2}&quot;;</span>
+<span class="lineNum">     604 </span><span class="lineNoCov">          0 :     NSString *leapYear = @&quot;(19|20)(0[48]|[2468][048]|[13579][26])&quot;;</span>
+<span class="lineNum">     605 </span><span class="lineNoCov">          0 :     NSString *yearMmdd = [NSString stringWithFormat:@&quot;%@%@&quot;, year, mmdd];</span>
+<span class="lineNum">     606 </span><span class="lineNoCov">          0 :     NSString *leapyearMmdd = [NSString stringWithFormat:@&quot;%@%@&quot;, leapYear, leapMmdd];</span>
+<span class="lineNum">     607 </span><span class="lineNoCov">          0 :     NSString *yyyyMmdd = [NSString stringWithFormat:@&quot;((%@)|(%@)|(%@))&quot;, yearMmdd, leapyearMmdd, @&quot;20000229&quot;];</span>
+<span class="lineNum">     608 </span><span class="lineNoCov">          0 :     NSString *area = @&quot;(1[1-5]|2[1-3]|3[1-7]|4[1-6]|5[0-4]|6[1-5]|82|[7-9]1)[0-9]{4}&quot;;</span>
+<span class="lineNum">     609 </span><span class="lineNoCov">          0 :     NSString *regex = [NSString stringWithFormat:@&quot;%@%@%@&quot;, area, yyyyMmdd  , @&quot;[0-9]{3}[0-9Xx]&quot;];</span>
+<span class="lineNum">     610 </span>            :     
+<span class="lineNum">     611 </span><span class="lineNoCov">          0 :     NSPredicate *regexTest = [NSPredicate predicateWithFormat:@&quot;SELF MATCHES %@&quot;, regex];</span>
+<span class="lineNum">     612 </span><span class="lineNoCov">          0 :     if (![regexTest evaluateWithObject:value]) {</span>
+<span class="lineNum">     613 </span><span class="lineNoCov">          0 :             return NO;</span>
+<span class="lineNum">     614 </span>            :         }
+<span class="lineNum">     615 </span><span class="lineNoCov">          0 :     int summary = ([value substringWithRange:NSMakeRange(0,1)].intValue + [value substringWithRange:NSMakeRange(10,1)].intValue) *7</span>
+<span class="lineNum">     616 </span><span class="lineNoCov">          0 :                 + ([value substringWithRange:NSMakeRange(1,1)].intValue + [value substringWithRange:NSMakeRange(11,1)].intValue) *9</span>
+<span class="lineNum">     617 </span><span class="lineNoCov">          0 :                 + ([value substringWithRange:NSMakeRange(2,1)].intValue + [value substringWithRange:NSMakeRange(12,1)].intValue) *10</span>
+<span class="lineNum">     618 </span><span class="lineNoCov">          0 :                 + ([value substringWithRange:NSMakeRange(3,1)].intValue + [value substringWithRange:NSMakeRange(13,1)].intValue) *5</span>
+<span class="lineNum">     619 </span><span class="lineNoCov">          0 :                  + ([value substringWithRange:NSMakeRange(4,1)].intValue + [value substringWithRange:NSMakeRange(14,1)].intValue) *8</span>
+<span class="lineNum">     620 </span><span class="lineNoCov">          0 :                  + ([value substringWithRange:NSMakeRange(5,1)].intValue + [value substringWithRange:NSMakeRange(15,1)].intValue) *4</span>
+<span class="lineNum">     621 </span><span class="lineNoCov">          0 :                  + ([value substringWithRange:NSMakeRange(6,1)].intValue + [value substringWithRange:NSMakeRange(16,1)].intValue) *2</span>
+<span class="lineNum">     622 </span><span class="lineNoCov">          0 :                  + [value substringWithRange:NSMakeRange(7,1)].intValue *1 + [value substringWithRange:NSMakeRange(8,1)].intValue *6</span>
+<span class="lineNum">     623 </span><span class="lineNoCov">          0 :                  + [value substringWithRange:NSMakeRange(9,1)].intValue *3;</span>
+<span class="lineNum">     624 </span><span class="lineNoCov">          0 :     NSInteger remainder = summary % 11;</span>
+<span class="lineNum">     625 </span><span class="lineNoCov">          0 :     NSString *checkBit = @&quot;&quot;;</span>
+<span class="lineNum">     626 </span><span class="lineNoCov">          0 :     NSString *checkString = @&quot;10X98765432&quot;;</span>
+<span class="lineNum">     627 </span><span class="lineNoCov">          0 :     checkBit = [checkString substringWithRange:NSMakeRange(remainder,1)];// 判断校验位</span>
+<span class="lineNum">     628 </span><span class="lineNoCov">          0 :     return [checkBit isEqualToString:[[value substringWithRange:NSMakeRange(17,1)] uppercaseString]];</span>
+<a name="629"><span class="lineNum">     629 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     630 </span>            : 
+<span class="lineNum">     631 </span><span class="lineNoCov">          0 : + (CGFloat)getAttributedStringHeightWithString:(NSAttributedString *)string WidthValue:(CGFloat)width {</span>
+<span class="lineNum">     632 </span><span class="lineNoCov">          0 :     CGFloat total_height = 0;</span>
+<span class="lineNum">     633 </span>            :     
+<span class="lineNum">     634 </span><span class="lineNoCov">          0 :     CTFramesetterRef framesetter =  CTFramesetterCreateWithAttributedString((CFAttributedStringRef)string);    //string 为要计算高度的NSAttributedString</span>
+<span class="lineNum">     635 </span><span class="lineNoCov">          0 :     CGRect drawingRect = CGRectMake(0, 0, width, 1000);  //这里的高要设置足够大</span>
+<span class="lineNum">     636 </span><span class="lineNoCov">          0 :     CGMutablePathRef path = CGPathCreateMutable();</span>
+<span class="lineNum">     637 </span><span class="lineNoCov">          0 :     CGPathAddRect(path, NULL, drawingRect);</span>
+<span class="lineNum">     638 </span><span class="lineNoCov">          0 :     CTFrameRef textFrame = CTFramesetterCreateFrame(framesetter,CFRangeMake(0,0), path, NULL);</span>
+<span class="lineNum">     639 </span><span class="lineNoCov">          0 :     CGPathRelease(path);</span>
+<span class="lineNum">     640 </span><span class="lineNoCov">          0 :     CFRelease(framesetter);</span>
+<span class="lineNum">     641 </span>            :     
+<span class="lineNum">     642 </span><span class="lineNoCov">          0 :     NSArray *linesArray = (NSArray *) CTFrameGetLines(textFrame);</span>
+<span class="lineNum">     643 </span><span class="lineNoCov">          0 :     CGPoint origins[[linesArray count]];</span>
+<span class="lineNum">     644 </span><span class="lineNoCov">          0 :     CTFrameGetLineOrigins(textFrame, CFRangeMake(0, 0), origins);</span>
+<span class="lineNum">     645 </span>            :     
+<span class="lineNum">     646 </span><span class="lineNoCov">          0 :     int line_y = (int) origins[[linesArray count] -1].y;  //最后一行line的原点y坐标</span>
+<span class="lineNum">     647 </span>            :     
+<span class="lineNum">     648 </span>            :     CGFloat ascent;
+<span class="lineNum">     649 </span>            :     CGFloat descent;
+<span class="lineNum">     650 </span>            :     CGFloat leading;
+<span class="lineNum">     651 </span>            :     
+<span class="lineNum">     652 </span><span class="lineNoCov">          0 :     CTLineRef line = (CTLineRef) CFBridgingRetain([linesArray objectAtIndex:[linesArray count]-1]);</span>
+<span class="lineNum">     653 </span><span class="lineNoCov">          0 :     CTLineGetTypographicBounds(line, &amp;ascent, &amp;descent, &amp;leading);</span>
+<span class="lineNum">     654 </span>            :     
+<span class="lineNum">     655 </span><span class="lineNoCov">          0 :     total_height = 1000 - line_y + (int) descent +1;    //+1为了纠正descent转换成int小数点后舍去的值</span>
+<span class="lineNum">     656 </span><span class="lineNoCov">          0 :     CFRelease(textFrame);</span>
+<span class="lineNum">     657 </span>            :     
+<span class="lineNum">     658 </span><span class="lineNoCov">          0 :     return total_height;</span>
+<a name="659"><span class="lineNum">     659 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     660 </span>            : 
+<span class="lineNum">     661 </span><span class="lineNoCov">          0 : + (NSString *)mothTrunTimestampToDate:(long long)timestamp{ // 返回月日</span>
+<span class="lineNum">     662 </span>            :     
+<span class="lineNum">     663 </span><span class="lineNoCov">          0 :     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp/1000.0];</span>
+<span class="lineNum">     664 </span>            :     
+<span class="lineNum">     665 </span><span class="lineNoCov">          0 :     NSDateFormatter *dateFmt = [[NSDateFormatter alloc] init];</span>
+<span class="lineNum">     666 </span>            :     
+<span class="lineNum">     667 </span><span class="lineNoCov">          0 :     dateFmt.dateFormat= @&quot;MM月dd日&quot;;</span>
+<span class="lineNum">     668 </span>            :     
+<span class="lineNum">     669 </span><span class="lineNoCov">          0 :     return [dateFmt stringFromDate:date];</span>
+<a name="670"><span class="lineNum">     670 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     671 </span>            : 
+<span class="lineNum">     672 </span><span class="lineNoCov">          0 : + (NSString *)hourTrunTimestampToDate:(long long)timestamp{ // 返回小时分钟</span>
+<span class="lineNum">     673 </span>            :     
+<span class="lineNum">     674 </span><span class="lineNoCov">          0 :     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp/1000.0];</span>
+<span class="lineNum">     675 </span>            :     
+<span class="lineNum">     676 </span><span class="lineNoCov">          0 :     NSDateFormatter *dateFmt = [[NSDateFormatter alloc] init];</span>
+<span class="lineNum">     677 </span>            :     
+<span class="lineNum">     678 </span><span class="lineNoCov">          0 :     dateFmt.dateFormat= @&quot;HH:mm&quot;;</span>
+<span class="lineNum">     679 </span>            :     
+<span class="lineNum">     680 </span><span class="lineNoCov">          0 :     return [dateFmt stringFromDate:date];</span>
+<a name="681"><span class="lineNum">     681 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     682 </span>            : 
+<span class="lineNum">     683 </span><span class="lineNoCov">          0 : - (id)JsonObject {</span>
+<span class="lineNum">     684 </span><span class="lineNoCov">          0 :     if ([self length] == 0) {</span>
+<span class="lineNum">     685 </span><span class="lineNoCov">          0 :         return nil;</span>
+<span class="lineNum">     686 </span>            :     }
+<span class="lineNum">     687 </span><span class="lineNoCov">          0 :     NSString *jsonStrong = [self copy];</span>
+<span class="lineNum">     688 </span><span class="lineNoCov">          0 :     NSData *jsonData = [jsonStrong dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     689 </span><span class="lineNoCov">          0 :     NSError *error = nil;</span>
+<span class="lineNum">     690 </span><span class="lineNoCov">          0 :     id object = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&amp;error];</span>
+<span class="lineNum">     691 </span><span class="lineNoCov">          0 :     if (error) {</span>
+<span class="lineNum">     692 </span><span class="lineNoCov">          0 :         return jsonStrong;</span>
+<span class="lineNum">     693 </span>            :     }else {
+<span class="lineNum">     694 </span><span class="lineNoCov">          0 :         return object;</span>
+<span class="lineNum">     695 </span>            :     }
+<a name="696"><span class="lineNum">     696 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     697 </span>            : 
+<span class="lineNum">     698 </span><span class="lineNoCov">          0 : + (NSString *)stringWithNumber:(NSUInteger)number {</span>
+<span class="lineNum">     699 </span><span class="lineNoCov">          0 :     NSString *numberString = nil;</span>
+<span class="lineNum">     700 </span><span class="lineNoCov">          0 :     if (number &lt; 1000) {</span>
+<span class="lineNum">     701 </span><span class="lineNoCov">          0 :         numberString = [NSString stringWithFormat:@&quot;%lu&quot;,(long)number];</span>
+<span class="lineNum">     702 </span><span class="lineNoCov">          0 :     }else if (number &gt;= 1000 &amp;&amp; number &lt; 10000){</span>
+<span class="lineNum">     703 </span><span class="lineNoCov">          0 :         NSUInteger pre = number / 1000;</span>
+<span class="lineNum">     704 </span><span class="lineNoCov">          0 :         NSUInteger last = number % 1000;</span>
+<span class="lineNum">     705 </span><span class="lineNoCov">          0 :         if (last == 0) {</span>
+<span class="lineNum">     706 </span><span class="lineNoCov">          0 :             numberString = [NSString stringWithFormat:@&quot;%luK&quot;,(unsigned long)pre];</span>
+<span class="lineNum">     707 </span><span class="lineNoCov">          0 :         }else {</span>
+<span class="lineNum">     708 </span><span class="lineNoCov">          0 :             numberString = [NSString stringWithFormat:@&quot;%.1fK&quot;,number/1000.0];</span>
+<span class="lineNum">     709 </span>            :         }
+<span class="lineNum">     710 </span><span class="lineNoCov">          0 :     }else {</span>
+<span class="lineNum">     711 </span><span class="lineNoCov">          0 :         NSUInteger pre = number / 10000;</span>
+<span class="lineNum">     712 </span><span class="lineNoCov">          0 :         NSUInteger last = number % 10000;</span>
+<span class="lineNum">     713 </span><span class="lineNoCov">          0 :         if (last == 0) {</span>
+<span class="lineNum">     714 </span><span class="lineNoCov">          0 :             numberString = [NSString stringWithFormat:@&quot;%luW&quot;,(unsigned long)pre];</span>
+<span class="lineNum">     715 </span><span class="lineNoCov">          0 :         }else {</span>
+<span class="lineNum">     716 </span><span class="lineNoCov">          0 :             numberString = [NSString stringWithFormat:@&quot;%.1fW&quot;,number/10000.0];</span>
+<span class="lineNum">     717 </span>            :         }
+<span class="lineNum">     718 </span>            :     }
+<span class="lineNum">     719 </span><span class="lineNoCov">          0 :     return numberString;</span>
+<a name="720"><span class="lineNum">     720 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     721 </span>            : 
+<span class="lineNum">     722 </span><span class="lineCov">>1576*10^13 : +(NSString *) timeChange:(NSString *)timeString{</span>
+<span class="lineNum">     723 </span><span class="lineCov">>1576*10^13 :     NSString*time=[timeString substringToIndex:18];</span>
+<span class="lineNum">     724 </span><span class="lineCov">>1576*10^13 :     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];</span>
+<span class="lineNum">     725 </span>            :     
+<span class="lineNum">     726 </span><span class="lineCov">>1576*10^13 :     [dateFormatter setDateFormat:@&quot;yyyy-MM-dd'T'HH:mm:ss&quot;];</span>
+<span class="lineNum">     727 </span><span class="lineCov">>1576*10^13 :     NSDate *currentDate = [dateFormatter dateFromString:time];</span>
+<span class="lineNum">     728 </span><span class="lineCov">>1576*10^13 :     NSTimeZone *zone = [NSTimeZone systemTimeZone];</span>
+<span class="lineNum">     729 </span><span class="lineCov">>1576*10^13 :     NSInteger interval = [zone secondsFromGMTForDate: currentDate];</span>
+<span class="lineNum">     730 </span><span class="lineCov">>1576*10^13 :     NSDate *localeDate = [currentDate dateByAddingTimeInterval: interval];</span>
+<span class="lineNum">     731 </span>            :     
+<span class="lineNum">     732 </span>            :     
+<span class="lineNum">     733 </span><span class="lineCov">>1576*10^13 :     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc]init];</span>
+<span class="lineNum">     734 </span><span class="lineCov">>1576*10^13 :     [outputFormatter setDateFormat:@&quot;yyyy-MM-dd HH:mm:ss&quot;];</span>
+<span class="lineNum">     735 </span>            :     
+<span class="lineNum">     736 </span><span class="lineCov">>1576*10^13 :     NSString *timeChanged = [outputFormatter stringFromDate:localeDate];</span>
+<span class="lineNum">     737 </span>            :     
+<span class="lineNum">     738 </span><span class="lineCov">>1576*10^13 :     NSLog(@&quot;datestr = %@&quot;, timeChanged);</span>
+<span class="lineNum">     739 </span>            :     
+<span class="lineNum">     740 </span><span class="lineCov">>1576*10^13 :     return timeChanged;</span>
+<span class="lineNum">     741 </span>            :     
+<a name="742"><span class="lineNum">     742 </span><span class="lineCov">>1576*10^13 : }</span></a>
+<span class="lineNum">     743 </span>            : 
+<span class="lineNum">     744 </span><span class="lineCov">>7881*10^12 : +(NSInteger)timeSwitchTimestamp:(NSString *)formatTime andFormatter:(NSString *)format{</span>
+<span class="lineNum">     745 </span>            :     
+<span class="lineNum">     746 </span><span class="lineCov">>7881*10^12 :     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];</span>
+<span class="lineNum">     747 </span>            :     
+<span class="lineNum">     748 </span><span class="lineCov">>7881*10^12 :     [formatter setDateStyle:NSDateFormatterMediumStyle];</span>
+<span class="lineNum">     749 </span>            :     
+<span class="lineNum">     750 </span><span class="lineCov">>7881*10^12 :     [formatter setTimeStyle:NSDateFormatterShortStyle];</span>
+<span class="lineNum">     751 </span>            :     
+<span class="lineNum">     752 </span><span class="lineCov">>7881*10^12 :     [formatter setDateFormat:format]; //(@&quot;YYYY-MM-dd hh:mm:ss&quot;) ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制</span>
+<span class="lineNum">     753 </span><span class="lineCov">>7881*10^12 :     NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@&quot;Asia/Beijing&quot;];</span>
+<span class="lineNum">     754 </span>            :     
+<span class="lineNum">     755 </span><span class="lineCov">>7881*10^12 :     [formatter setTimeZone:timeZone];</span>
+<span class="lineNum">     756 </span>            :     
+<span class="lineNum">     757 </span><span class="lineCov">>7881*10^12 :     NSDate* date = [formatter dateFromString:formatTime]; //------------将字符串按formatter转成nsdate</span>
+<span class="lineNum">     758 </span>            :     
+<span class="lineNum">     759 </span>            :     //时间转时间戳的方法:
+<span class="lineNum">     760 </span><span class="lineCov">>7881*10^12 :     NSInteger timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];</span>
+<span class="lineNum">     761 </span>            :     
+<span class="lineNum">     762 </span>            :     
+<span class="lineNum">     763 </span><span class="lineCov">>7881*10^12 :     NSLog(@&quot;将某个时间转化成 时间戳&amp;&amp;&amp;&amp;&amp;&amp;&amp;timeSp:%ld&quot;,(long)timeSp); //时间戳的值</span>
+<span class="lineNum">     764 </span>            :     
+<span class="lineNum">     765 </span>            :     
+<span class="lineNum">     766 </span><span class="lineCov">>7881*10^12 :     return timeSp;</span>
+<span class="lineNum">     767 </span>            :     
+<a name="768"><span class="lineNum">     768 </span><span class="lineCov">>7881*10^12 : }</span></a>
+<span class="lineNum">     769 </span>            : 
+<span class="lineNum">     770 </span><span class="lineNoCov">          0 : +(NSString *)changeFormatWithDateString:(NSString *)date{</span>
+<span class="lineNum">     771 </span><span class="lineNoCov">          0 :     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];</span>
+<span class="lineNum">     772 </span><span class="lineNoCov">          0 :     [dateFormatter setDateFormat:@&quot;yyyy-MM-dd'T'HH:mm:ss&quot;];</span>
+<span class="lineNum">     773 </span><span class="lineNoCov">          0 :     NSDate *currentDate = [dateFormatter dateFromString:date];</span>
+<span class="lineNum">     774 </span><span class="lineNoCov">          0 :     [dateFormatter setDateFormat:@&quot;yyyy-MM-dd hh:mm:ss&quot;];</span>
+<span class="lineNum">     775 </span><span class="lineNoCov">          0 :     NSString *dateStr=[dateFormatter stringFromDate:currentDate];</span>
+<span class="lineNum">     776 </span><span class="lineNoCov">          0 :     return dateStr;</span>
+<a name="777"><span class="lineNum">     777 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     778 </span>            : 
+<span class="lineNum">     779 </span><span class="lineNoCov">          0 : +(NSString*)getCurrentTimes{</span>
+<span class="lineNum">     780 </span>            :     
+<span class="lineNum">     781 </span><span class="lineNoCov">          0 :     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];</span>
+<span class="lineNum">     782 </span>            :     
+<span class="lineNum">     783 </span>            :     // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+<span class="lineNum">     784 </span>            :     
+<span class="lineNum">     785 </span><span class="lineNoCov">          0 :     [formatter setDateFormat:@&quot;YYYY-MM-dd HH:mm:ss&quot;];</span>
+<span class="lineNum">     786 </span>            :     
+<span class="lineNum">     787 </span>            :     //现在时间,你可以输出来看下是什么格式
+<span class="lineNum">     788 </span>            :     
+<span class="lineNum">     789 </span><span class="lineNoCov">          0 :     NSDate *datenow = [NSDate date];</span>
+<span class="lineNum">     790 </span>            :     
+<span class="lineNum">     791 </span>            :     //----------将nsdate按formatter格式转成nsstring
+<span class="lineNum">     792 </span>            :     
+<span class="lineNum">     793 </span><span class="lineNoCov">          0 :     NSString *currentTimeString = [formatter stringFromDate:datenow];</span>
+<span class="lineNum">     794 </span>            :     
+<span class="lineNum">     795 </span><span class="lineNoCov">          0 :     NSLog(@&quot;currentTimeString =  %@&quot;,currentTimeString);</span>
+<span class="lineNum">     796 </span>            :     
+<span class="lineNum">     797 </span><span class="lineNoCov">          0 :     return currentTimeString;</span>
+<span class="lineNum">     798 </span>            :     
+<a name="799"><span class="lineNum">     799 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     800 </span>            : 
+<span class="lineNum">     801 </span><span class="lineNoCov">          0 : +(NSString *)getNowTimeTimestamp{</span>
+<span class="lineNum">     802 </span>            :     
+<span class="lineNum">     803 </span><span class="lineNoCov">          0 :     NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;</span>
+<span class="lineNum">     804 </span>            :     
+<span class="lineNum">     805 </span><span class="lineNoCov">          0 :     [formatter setDateStyle:NSDateFormatterMediumStyle];</span>
+<span class="lineNum">     806 </span>            :     
+<span class="lineNum">     807 </span><span class="lineNoCov">          0 :     [formatter setTimeStyle:NSDateFormatterShortStyle];</span>
+<span class="lineNum">     808 </span>            :     
+<span class="lineNum">     809 </span><span class="lineNoCov">          0 :     [formatter setDateFormat:@&quot;YYYY-MM-dd HH:mm:ss&quot;]; // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制</span>
+<span class="lineNum">     810 </span>            :     
+<span class="lineNum">     811 </span>            :     //设置时区,这个对于时间的处理有时很重要
+<span class="lineNum">     812 </span>            :     
+<span class="lineNum">     813 </span><span class="lineNoCov">          0 :     NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@&quot;Asia/Shanghai&quot;];</span>
+<span class="lineNum">     814 </span>            :     
+<span class="lineNum">     815 </span><span class="lineNoCov">          0 :     [formatter setTimeZone:timeZone];</span>
+<span class="lineNum">     816 </span>            :     
+<span class="lineNum">     817 </span><span class="lineNoCov">          0 :     NSDate *datenow = [NSDate date];//现在时间,你可以输出来看下是什么格式</span>
+<span class="lineNum">     818 </span>            :     
+<span class="lineNum">     819 </span><span class="lineNoCov">          0 :     NSString *timeSp = [NSString stringWithFormat:@&quot;%ld&quot;, (long)[datenow timeIntervalSince1970]];</span>
+<span class="lineNum">     820 </span>            :     
+<span class="lineNum">     821 </span><span class="lineNoCov">          0 :     return timeSp;</span>
+<span class="lineNum">     822 </span>            :     
+<span class="lineNum">     823 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     824 </span>            : 
+<a name="825"><span class="lineNum">     825 </span>            : #pragma mark ---- 将时间戳转换成时间</a>
+<span class="lineNum">     826 </span>            : 
+<span class="lineNum">     827 </span><span class="lineNoCov">          0 : + (NSString *)getTimeFromTimestamp:(double)Timestamp{</span>
+<span class="lineNum">     828 </span>            :     
+<span class="lineNum">     829 </span>            :     //将对象类型的时间转换为NSDate类型
+<span class="lineNum">     830 </span>            :     
+<span class="lineNum">     831 </span><span class="lineNoCov">          0 :     double time =Timestamp;</span>
+<span class="lineNum">     832 </span>            :     
+<span class="lineNum">     833 </span><span class="lineNoCov">          0 :     NSDate * myDate=[NSDate dateWithTimeIntervalSince1970:time];</span>
+<span class="lineNum">     834 </span>            :     
+<span class="lineNum">     835 </span>            :     //设置时间格式
+<span class="lineNum">     836 </span>            :     
+<span class="lineNum">     837 </span><span class="lineNoCov">          0 :     NSDateFormatter * formatter=[[NSDateFormatter alloc]init];</span>
+<span class="lineNum">     838 </span>            :     
+<span class="lineNum">     839 </span><span class="lineNoCov">          0 :     [formatter setDateFormat:@&quot;YYYY-MM-dd HH:mm:ss&quot;];</span>
+<span class="lineNum">     840 </span>            :     
+<span class="lineNum">     841 </span>            :     //将时间转换为字符串
+<span class="lineNum">     842 </span>            :     
+<span class="lineNum">     843 </span><span class="lineNoCov">          0 :     NSString *timeStr=[formatter stringFromDate:myDate];</span>
+<span class="lineNum">     844 </span>            :     
+<span class="lineNum">     845 </span><span class="lineNoCov">          0 :     return timeStr;</span>
+<span class="lineNum">     846 </span>            :     
+<span class="lineNum">     847 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     848 </span>            : 
+<span class="lineNum">     849 </span>            : 
+<span class="lineNum">     850 </span>            : 
+<span class="lineNum">     851 </span>            : 
+<span class="lineNum">     852 </span>            : 
+<span class="lineNum">     853 </span>            : 
+<span class="lineNum">     854 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

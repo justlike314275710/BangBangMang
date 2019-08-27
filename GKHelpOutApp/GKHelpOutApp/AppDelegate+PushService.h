@@ -2,8 +2,8 @@
 //  AppDelegate+PushService.h
 //  MiAiApp
 //
-//  Created by 徐阳 on 2017/5/25.
-//  Copyright © 2017年 徐阳. All rights reserved.
+//  Created by kky on 2018/5/25.
+//  Copyright © 2018年 kky. All rights reserved.
 //
 
 #import "AppDelegate.h"
