@@ -112,7 +112,9 @@ SINGLETON_FOR_CLASS(IMManager);
 #pragma mark ————— 代理 收到新消息 —————
 - (void)onRecvMessages:(NSArray<NIMMessage *> *)messages{
     DLog(@"收到新消息");
-    [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"0" activityId:1900001 alertBody:@"您有一条新消息!" alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
+    NIMMessage *meeesage = [messages objectAtIndex:1];
+    NSString *msg = meeesage.text;
+    [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"0" activityId:1900001 alertBody:msg alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
     
     //未读消息
     NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
