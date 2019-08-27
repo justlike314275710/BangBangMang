@@ -246,7 +246,7 @@
             case PPNetworkStatusReachableViaWiFi:
                 DLog(@"网络环境：WiFi");
                 [KGStatusBar dismiss];
-                KPostNotification(KNotificationNetWorkStateChange, @YES);
+                //KPostNotification(KNotificationNetWorkStateChange, @YES);
                 self.IS_NetWork = YES;
                 break;
         }
