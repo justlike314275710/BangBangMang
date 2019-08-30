@@ -175,17 +175,21 @@ SINGLETON_FOR_CLASS(IMManager);
     }
 }
 
+
+
+
+
+
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
 {
     if (jsonString == nil) {
         return nil;
     }
-    
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *err;
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                        options:NSJSONReadingMutableContainers
-                                                          error:&err];
+    options:NSJSONReadingMutableContainers
+    error:&err];
     if(err)
     {
         NSLog(@"json解析失败：%@",err);
@@ -193,4 +197,8 @@ SINGLETON_FOR_CLASS(IMManager);
     }
     return dic;
 }
+
+
+
+
 @end

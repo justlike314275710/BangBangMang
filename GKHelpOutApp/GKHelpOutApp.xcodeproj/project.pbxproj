@@ -4623,14 +4623,14 @@
 			isa = PBXGroup;
 			children = (
 				EAB039A6221E8FF100331569 /* PSchatViewController.h */,
-				EAB039A7221E8FF100331569 /* NTESNetChatViewController.m */,
+				EAB039AB221E8FF100331569 /* PSchatViewController.m */,
 				EAB039A8221E8FF100331569 /* PSSendShopGoodsAttachment.m */,
+				EAB039AC221E8FF100331569 /* PSSendShopGoodsAttachment.h */,
 				EAB039A9221E8FF100331569 /* NTESVideoChatViewController.h */,
 				EAB039AA221E8FF100331569 /* NTESVideoChatViewController.xib */,
-				EAB039AB221E8FF100331569 /* PSchatViewController.m */,
-				EAB039AC221E8FF100331569 /* PSSendShopGoodsAttachment.h */,
-				EAB039AD221E8FF100331569 /* NTESNetChatViewController.h */,
 				EAB039AE221E8FF100331569 /* NTESVideoChatViewController.m */,
+				EAB039AD221E8FF100331569 /* NTESNetChatViewController.h */,
+				EAB039A7221E8FF100331569 /* NTESNetChatViewController.m */,
 				EA6CCBAE226417E200BB2A74 /* PSMessageViewController.h */,
 				EA6CCBAF226417E200BB2A74 /* PSMessageViewController.m */,
 			);
