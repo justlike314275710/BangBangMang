@@ -252,6 +252,8 @@
 		55D1CCBE226EF4D8003DD0CD /* NIMSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CCBD226EF4D8003DD0CD /* NIMSessionViewController.m */; };
 		55D1CCC2226EFB89003DD0CD /* TLDetailCircleHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CCC1226EFB89003DD0CD /* TLDetailCircleHeaderCell.m */; };
 		55D1CCC5226F0528003DD0CD /* DetailLifeCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CCC4226F0528003DD0CD /* DetailLifeCircleCell.m */; };
+		55E735272318C4F6006F1484 /* PSPayCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E735262318C4F6006F1484 /* PSPayCenterTests.m */; };
+		55E735292318CC8D006F1484 /* PSPayInfotests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E735282318CC8D006F1484 /* PSPayInfotests.m */; };
 		55F46D4E22657265000D84B1 /* TLMomentHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D4D22657265000D84B1 /* TLMomentHeaderCell.m */; };
 		55F46D5322657540000D84B1 /* TLMomentBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D5122657540000D84B1 /* TLMomentBaseCell.m */; };
 		55F46D5422657540000D84B1 /* TLMomentImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D5222657540000D84B1 /* TLMomentImagesCell.m */; };
@@ -1069,6 +1071,8 @@
 		55D1CCC1226EFB89003DD0CD /* TLDetailCircleHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLDetailCircleHeaderCell.m; sourceTree = "<group>"; };
 		55D1CCC3226F0528003DD0CD /* DetailLifeCircleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailLifeCircleCell.h; sourceTree = "<group>"; };
 		55D1CCC4226F0528003DD0CD /* DetailLifeCircleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailLifeCircleCell.m; sourceTree = "<group>"; };
+		55E735262318C4F6006F1484 /* PSPayCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSPayCenterTests.m; sourceTree = "<group>"; };
+		55E735282318CC8D006F1484 /* PSPayInfotests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSPayInfotests.m; sourceTree = "<group>"; };
 		55F46D4C22657265000D84B1 /* TLMomentHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentHeaderCell.h; sourceTree = "<group>"; };
 		55F46D4D22657265000D84B1 /* TLMomentHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentHeaderCell.m; sourceTree = "<group>"; };
 		55F46D4F22657540000D84B1 /* TLMomentImagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentImagesCell.h; sourceTree = "<group>"; };
@@ -2862,6 +2866,8 @@
 				55820D73230FCF0B00C73920 /* LifeCircleManagerTests.m */,
 				55B4DBB8231661AB003BDA00 /* AppManagerTests.m */,
 				55B4DBBA23166355003BDA00 /* IMManagerTests.m */,
+				55E735262318C4F6006F1484 /* PSPayCenterTests.m */,
+				55E735282318CC8D006F1484 /* PSPayInfotests.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -5586,6 +5592,7 @@
 				55249104230D3A0F008102C2 /* LoginLogicTests.m in Sources */,
 				55B4DB8B2314CBF5003BDA00 /* LifeDetailCircleLogicTests.m in Sources */,
 				55B4DB7E2314BE2E003BDA00 /* RootNavigationControllerTests.m in Sources */,
+				55E735272318C4F6006F1484 /* PSPayCenterTests.m in Sources */,
 				55B4DB872314C6D3003BDA00 /* SendLifeCircleLogicTests.m in Sources */,
 				55B4DB822314C185003BDA00 /* BaseRootViewControllerTests.m in Sources */,
 				55B4DB892314C8BF003BDA00 /* LifeCircleLogicTests.m in Sources */,
@@ -5604,6 +5611,7 @@
 				55B4DB912314DEE1003BDA00 /* UIViewControllerTests.m in Sources */,
 				55B4DBB723165C59003BDA00 /* PSTipsViewTests.m in Sources */,
 				5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */,
+				55E735292318CC8D006F1484 /* PSPayInfotests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -42,7 +42,6 @@
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden=YES;
     [self refreshData];
-
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,10 +49,13 @@
     self.logic=[[lawyerGrab_Logic alloc]init];
     self.isShowLiftBack = YES;
     [self SDWebImageAuth];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshData)
                                                  name:KNotificationOrderStateChange
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData)
+                                                 name:KNotificationOrderStateEnd
                                                object:nil];
     
 }

@@ -25,7 +25,10 @@
 @implementation LawyerGrabViewController
 
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self refreshData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

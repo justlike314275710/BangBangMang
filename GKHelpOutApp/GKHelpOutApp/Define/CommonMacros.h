@@ -49,7 +49,7 @@
 #define KNotificationNewOrderState @"KNotificationNewOrderState"
 //订单状态改变
 #define KNotificationOrderStateChange @"KNotificationOrderStateChange"
-
+#define KNotificationOrderStateEnd @"KNotificationOrderStateEnd"
 #pragma mark - ——————— 网络状态相关 ————————
 
 //网络状态变化

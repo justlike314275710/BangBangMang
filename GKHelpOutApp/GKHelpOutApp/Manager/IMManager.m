@@ -86,27 +86,35 @@ SINGLETON_FOR_CLASS(IMManager);
     NSString *reason = @"你被踢下线";
     switch (code) {
             case NIMKickReasonByClient:
-            case NIMKickReasonByClientManually:{
-                reason = @"你的帐号被踢出下线，请注意帐号信息安全";
-                NSString*determine=NSLocalizedString(@"determine", @"确定");
-                NSString*Tips=NSLocalizedString(@"Tips", @"提示");
-                NSString*pushed_off_line=NSLocalizedString(@"pushed_off_line", @"您的账号已在其他设备登陆,已被挤下线");
-                XXAlertView*alert=[[XXAlertView alloc]initWithTitle:Tips message:pushed_off_line sureBtn:determine cancleBtn:nil];
-                alert.clickIndex = ^(NSInteger index) {
-                    if (index==2) {
-                        [help_userManager logout:nil];
-                    }
-                };
-                [alert show];
+            case NIMKickReasonByClientManually:
+            {
+                [self onKickShowAler];
                 break;
             }
             case NIMKickReasonByServer:
+        {
             reason = @"你被服务器踢下线";
+            [self onKickShowAler];
+        }
             break;
         default:
             break;
     }
     KPostNotification(KNotificationOnKick, nil);
+}
+
+- (void)onKickShowAler {
+    NSString *reason = @"你的帐号被踢出下线，请注意帐号信息安全";
+    NSString*determine=NSLocalizedString(@"determine", @"确定");
+    NSString*Tips=NSLocalizedString(@"Tips", @"提示");
+    NSString*pushed_off_line=NSLocalizedString(@"pushed_off_line", @"您的账号已在其他设备登陆,已被挤下线");
+    XXAlertView*alert=[[XXAlertView alloc]initWithTitle:Tips message:pushed_off_line sureBtn:determine cancleBtn:nil];
+    alert.clickIndex = ^(NSInteger index) {
+        if (index==2) {
+            [help_userManager logout:nil];
+        }
+    };
+    [alert show];
 }
 
 #pragma mark ————— 代理 收到新消息 —————
@@ -142,7 +150,7 @@ SINGLETON_FOR_CLASS(IMManager);
 
     }
     else if ([dic[@"type"] isEqualToString:@"NOTIFICATION_LEGAL_ADVICE"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:KNotificationOrderStateChange object:nil];
+        
         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
             make.style = 11;
             make.content = dic[@"content"];
@@ -151,6 +159,8 @@ SINGLETON_FOR_CLASS(IMManager);
         [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"2" activityId:1900000 alertBody: dic[@"content"] alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
         KPostNotification(KNotificationGetCashSuccess,nil);
         KPostNotification(KNotificationMineDataChange,nil);
+        KPostNotification(KNotificationOrderStateEnd, nil);
+        
     }
     else if ([dic[@"type"] isEqualToString:@"NOTIFICATION_PRAISE_ADVICE"]||[dic[@"type"] isEqualToString:@"NOTIFICATION_COMMENT_ADVICE"]){  //评论点赞
         KPostNotification(KNotificationMineRefreshDot, @"1");
@@ -171,7 +181,7 @@ SINGLETON_FOR_CLASS(IMManager);
             make.content = dic[@"content"];
         }];
         [banner show];
-        [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"4" activityId:1900000 alertBody:dic[@"content"] alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
+//        [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"4" activityId:1900000 alertBody:dic[@"content"] alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
         if (ValidStr(dic[@"content"])) {
             NSString *content = dic[@"content"];
             if ([content containsString:@"您的律师认证审核已通过"]) {

@@ -12,7 +12,8 @@ ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Category/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Global/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Common/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/*
-${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/cell/*
+${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/cell/NIMContactDataCell.m
+${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/cell/NIMContactDataCell.h
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/ContactGroup/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Input/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Input/GrowingTextView/*
@@ -119,6 +120,18 @@ ${SRCROOT}/GKHelpOutApp/Modules/FriendsCircle/view/*
 ${SRCROOT}/GKHelpOutApp/Modules/FriendsCircle/view/Cell/*	
 ${SRCROOT}/GKHelpOutApp/Modules/FriendsCircle/view/MomentDetailView/*
 ${SRCROOT}/GKHelpOutApp/Modules/FriendsCircle/view/MomentExtensionView/*
+
+${SRCROOT}/GKHelpOutApp/Manager/IAPManager.m
+${SRCROOT}/GKHelpOutApp/Manager/IAPManager.h
+${SRCROOT}/GKHelpOutApp/Manager/ShareManager.m
+
+${SRCROOT}/GKHelpOutApp/Manager/PayManager/PayModel/*
+${SRCROOT}/GKHelpOutApp/Manager/PayManager/PayModel/PayViewModel/*
+${SRCROOT}/GKHelpOutApp/Manager/PayManager/PayView/*
+${SRCROOT}/GKHelpOutApp/Manager/PayManager/PayViewController/*
+
+
+
 
 
 

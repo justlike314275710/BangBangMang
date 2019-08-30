@@ -46,7 +46,7 @@
     [self goOrderPay];
 }
 
--(void)goOrderPay{
+-(void)goOrderPay{ 
     NSLog(@"支付宝支付");
     manager=[AFHTTPSessionManager manager];
     NSString*token=NSStringFormat(@"Bearer %@",help_userManager.oathInfo.access_token);
