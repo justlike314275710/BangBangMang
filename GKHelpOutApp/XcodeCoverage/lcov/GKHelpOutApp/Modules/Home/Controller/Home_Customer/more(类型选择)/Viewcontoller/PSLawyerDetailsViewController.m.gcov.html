@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/Home/Controller/Home_Customer/more(类型选择)/Viewcontoller/PSLawyerDetailsViewController.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/Home/Controller/Home_Customer/more(类型选择)/Viewcontoller</a> - PSLawyerDetailsViewController.m<span style="font-size: 80%;"> (source / <a href="PSLawyerDetailsViewController.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">85</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  PSLawyerDetailsViewController.m
+<span class="lineNum">       3 </span>            : //  PrisonService
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by 狂生烈徒 on 2018/11/2.
+<span class="lineNum">       6 </span>            : //  Copyright © 2018年 calvin. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;PSLawyerDetailsViewController.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;PSLawyerView.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;MoreRoloCell.h&quot;
+<a name="12"><span class="lineNum">      12 </span>            : #import &quot;PSEvaluateTableViewCell.h&quot;</a>
+<a name="13"><span class="lineNum">      13 </span>            : @interface PSLawyerDetailsViewController ()&lt;UITableViewDelegate,UITableViewDataSource&gt;</a>
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 : @property (nonatomic , strong) UITableView *LawyersTableview;</span>
+<span class="lineNum">      15 </span><span class="lineNoCov">          0 : @property (nonatomic , strong) PSLawyerView *headerView;</span>
+<a name="16"><span class="lineNum">      16 </span>            : @end</a>
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 : @implementation PSLawyerDetailsViewController</span>
+<span class="lineNum">      19 </span>            : 
+<a name="20"><span class="lineNum">      20 </span>            : #pragma mark  - life cycle</a>
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : - (instancetype)initWithViewModel:(PSViewModel *)viewModel {</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 :     self = [super initWithViewModel:viewModel];</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">      25 </span>            :        
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :         self.title = @&quot;律师详情&quot;;</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :     }</span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 :     return self;</span></a>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 : - (void)viewWillAppear:(BOOL)animated {</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     [super viewWillAppear:animated];</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     self.tabBarController.tabBar.hidden=YES;</span>
+<span class="lineNum">      33 </span>            :     
+<a name="34"><span class="lineNum">      34 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : - (void)viewDidLoad {</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     [super viewDidLoad];</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     [self renderContents];</span>
+<span class="lineNum">      39 </span>            :     // Do any additional setup after loading the view.
+<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : - (void)didReceiveMemoryWarning {</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     [super didReceiveMemoryWarning];</span>
+<span class="lineNum">      44 </span>            :     // Dispose of any resources that can be recreated.
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      46 </span>            : #pragma mark  - notification
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : #pragma mark  - action
+<a name="49"><span class="lineNum">      49 </span>            : </a>
+<span class="lineNum">      50 </span>            : #pragma mark  - UITableViewDelegate
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH-30, 30)];</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     headerView.backgroundColor=UIColorFromRGBA(248, 247, 254, 1);</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     headerView.backgroundColor=[UIColor clearColor];</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     UILabel*evaluateLable=[[UILabel alloc]initWithFrame:CGRectMake(15, 5, 180, 20)];</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     evaluateLable.text=@&quot;用户评价(100)&quot;;</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     evaluateLable.font=FontOfSize(14);</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     evaluateLable.textColor=[UIColor blackColor];</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     [headerView addSubview:evaluateLable];</span>
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     UILabel*moreEvaluateLable=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-85, 5, 70, 20)];</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :     moreEvaluateLable.text=@&quot;所有评价&quot;;</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     moreEvaluateLable.font=FontOfSize(12);</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     moreEvaluateLable.textColor=AppBaseTextColor3;</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     [headerView addSubview:moreEvaluateLable];</span>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : 
+<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :     return headerView;</span></a>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 : - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {</span>
+<span class="lineNum">      71 </span>            :    
+<span class="lineNum">      72 </span>            :     return 1;
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      74 </span>            : 
+<a name="75"><span class="lineNum">      75 </span>            : </a>
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {</span>
+<span class="lineNum">      78 </span>            :     return 110;
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : }</span>
+<a name="80"><span class="lineNum">      80 </span>            : </a>
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 : - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     PSEvaluateTableViewCell *cell = [[PSEvaluateTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@&quot;PSEvaluateTableViewCell&quot;];</span>
+<span class="lineNum">      84 </span>            :     
+<a name="85"><span class="lineNum">      85 </span><span class="lineNoCov">          0 :     return cell;</span></a>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 : - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{</span>
+<span class="lineNum">      88 </span>            : //    [self.pinmoneyTableview scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            : /*
+<span class="lineNum">      93 </span>            : #pragma mark - DZNEmptyDataSetSource and DZNEmptyDataSetDelegate
+<span class="lineNum">      94 </span>            : - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+<span class="lineNum">      95 </span>            :     PSPinmoneyViewModel *PinmoneyViewModel  =(PSPinmoneyViewModel *)self.viewModel;
+<span class="lineNum">      96 </span>            :     UIImage *emptyImage = PinmoneyViewModel.dataStatus == PSDataEmpty ? [UIImage imageNamed:@&quot;universalNoneIcon&quot;] : [UIImage imageNamed:@&quot;universalNetErrorIcon&quot;];
+<span class="lineNum">      97 </span>            :     return PinmoneyViewModel.dataStatus == PSDataInitial ? nil : emptyImage;
+<span class="lineNum">      98 </span>            : }
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            : - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+<span class="lineNum">     101 </span>            :     PSPinmoneyViewModel *PinmoneyViewModel  =(PSPinmoneyViewModel *)self.viewModel;
+<span class="lineNum">     102 </span>            :     NSString *tips = PinmoneyViewModel.dataStatus == PSDataEmpty ? EMPTY_CONTENT : NET_ERROR;
+<span class="lineNum">     103 </span>            :     return PinmoneyViewModel.dataStatus == PSDataInitial ? nil : [[NSAttributedString alloc] initWithString:tips attributes:@{NSFontAttributeName:AppBaseTextFont1,NSForegroundColorAttributeName:AppBaseTextColor1}];
+<span class="lineNum">     104 </span>            :     
+<span class="lineNum">     105 </span>            : }
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span>            : - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+<span class="lineNum">     108 </span>            :     PSPinmoneyViewModel *PinmoneyViewModel  =(PSPinmoneyViewModel *)self.viewModel;
+<span class="lineNum">     109 </span>            :     return PinmoneyViewModel.dataStatus == PSDataError ? [[NSAttributedString alloc] initWithString:@&quot;点击加载&quot; attributes:@{NSFontAttributeName:AppBaseTextFont1,NSForegroundColorAttributeName:AppBaseTextColor1}] : nil;
+<span class="lineNum">     110 </span>            : }
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span>            : - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view {
+<span class="lineNum">     113 </span>            :     [self refreshData];
+<span class="lineNum">     114 </span>            : }
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            : - (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button {
+<span class="lineNum">     117 </span>            :     [self refreshData];
+<span class="lineNum">     118 </span>            : }
+<span class="lineNum">     119 </span>            : 
+<a name="120"><span class="lineNum">     120 </span>            : */</a>
+<span class="lineNum">     121 </span>            : #pragma mark  - UI
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 : - (void)renderContents {</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :     self.view.backgroundColor=UIColorFromRGBA(248, 247, 254, 1);</span>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :     self.headerView=[PSLawyerView new];</span></a>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :     [self.view addSubview:self.headerView];</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :         make.left.mas_equalTo(15);</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :         make.right.mas_equalTo(-15);</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :         make.top.mas_equalTo(15);</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :         make.height.mas_equalTo(140);</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     132 </span>            :     
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     self.LawyersTableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :     self.LawyersTableview.showsVerticalScrollIndicator=NO;</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :     self.LawyersTableview.dataSource = self;</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :     self.LawyersTableview.delegate = self;</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     self.LawyersTableview.tableFooterView = [UIView new];</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :     [self.LawyersTableview  setSeparatorStyle:UITableViewCellSeparatorStyleNone];</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 :     [self.LawyersTableview registerClass:[PSEvaluateTableViewCell class] forCellReuseIdentifier:@&quot;PSEvaluateTableViewCell&quot;];</span>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :     self.LawyersTableview.tableFooterView = [UIView new];</span></a>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :     [self.view addSubview:self.LawyersTableview];</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :     [self.LawyersTableview mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :         make.left.mas_equalTo(15);</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :         make.right.mas_equalTo(-15);</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :         make.top.mas_equalTo(230);</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :         make.height.mas_equalTo(125);</span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     149 </span>            :     
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :     UIButton*ConsultationButton=[UIButton new];</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :     ConsultationButton.backgroundColor=AppBaseTextColor3;</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :     [ConsultationButton setTitleColor:[UIColor whiteColor] forState:0];</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :     [ConsultationButton setTitle:@&quot;立即咨询&quot; forState:0];</span>
+<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :     ConsultationButton.titleLabel.font=FontOfSize(14);</span></a>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :     [self.view addSubview:ConsultationButton];</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :     [ConsultationButton mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :         make.left.mas_equalTo(15);</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :         make.right.mas_equalTo(-15);</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 :         make.bottom.mas_equalTo(-30);</span>
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :         make.height.mas_equalTo(44);</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     162 </span>            :     
+<span class="lineNum">     163 </span>            :     
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span>            : #pragma mark  - setter &amp; getter
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span>            : 
+<span class="lineNum">     170 </span>            : 
+<span class="lineNum">     171 </span>            : /*
+<span class="lineNum">     172 </span>            : #pragma mark - Navigation
+<span class="lineNum">     173 </span>            : 
+<span class="lineNum">     174 </span>            : // In a storyboard-based application, you will often want to do a little preparation before navigation
+<span class="lineNum">     175 </span>            : - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+<span class="lineNum">     176 </span>            :     // Get the new view controller using [segue destinationViewController].
+<span class="lineNum">     177 </span>            :     // Pass the selected object to the new view controller.
+<span class="lineNum">     178 </span>            : }
+<span class="lineNum">     179 </span>            : */
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

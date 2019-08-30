@@ -1,0 +1,633 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Components/View/Toast/Toast/Toast/UIView+Toast.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Components/View/Toast/Toast/Toast</a> - UIView+Toast.m<span style="font-size: 80%;"> (source / <a href="UIView+Toast.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">333</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">57</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  UIView+Toast.m
+<span class="lineNum">       3 </span>            : //  Toast
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Copyright (c) 2011-2016 Charles Scalesse.
+<span class="lineNum">       6 </span>            : //
+<span class="lineNum">       7 </span>            : //  Permission is hereby granted, free of charge, to any person obtaining a
+<span class="lineNum">       8 </span>            : //  copy of this software and associated documentation files (the
+<span class="lineNum">       9 </span>            : //  &quot;Software&quot;), to deal in the Software without restriction, including
+<span class="lineNum">      10 </span>            : //  without limitation the rights to use, copy, modify, merge, publish,
+<span class="lineNum">      11 </span>            : //  distribute, sublicense, and/or sell copies of the Software, and to
+<span class="lineNum">      12 </span>            : //  permit persons to whom the Software is furnished to do so, subject to
+<span class="lineNum">      13 </span>            : //  the following conditions:
+<span class="lineNum">      14 </span>            : //
+<span class="lineNum">      15 </span>            : //  The above copyright notice and this permission notice shall be included
+<span class="lineNum">      16 </span>            : //  in all copies or substantial portions of the Software.
+<span class="lineNum">      17 </span>            : //
+<span class="lineNum">      18 </span>            : //  THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS
+<span class="lineNum">      19 </span>            : //  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+<span class="lineNum">      20 </span>            : //  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+<span class="lineNum">      21 </span>            : //  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+<span class="lineNum">      22 </span>            : //  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+<span class="lineNum">      23 </span>            : //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+<span class="lineNum">      24 </span>            : //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span>            : #import &quot;UIView+Toast.h&quot;
+<span class="lineNum">      27 </span>            : #import &lt;QuartzCore/QuartzCore.h&gt;
+<span class="lineNum">      28 </span>            : #import &lt;objc/runtime.h&gt;
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : NSString * CSToastPositionTop       = @&quot;CSToastPositionTop&quot;;
+<span class="lineNum">      31 </span>            : NSString * CSToastPositionCenter    = @&quot;CSToastPositionCenter&quot;;
+<span class="lineNum">      32 </span>            : NSString * CSToastPositionBottom    = @&quot;CSToastPositionBottom&quot;;
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : // Keys for values associated with toast views
+<span class="lineNum">      35 </span>            : static const NSString * CSToastTimerKey             = @&quot;CSToastTimerKey&quot;;
+<span class="lineNum">      36 </span>            : static const NSString * CSToastDurationKey          = @&quot;CSToastDurationKey&quot;;
+<span class="lineNum">      37 </span>            : static const NSString * CSToastPositionKey          = @&quot;CSToastPositionKey&quot;;
+<span class="lineNum">      38 </span>            : static const NSString * CSToastCompletionKey        = @&quot;CSToastCompletionKey&quot;;
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : // Keys for values associated with self
+<span class="lineNum">      41 </span>            : static const NSString * CSToastActiveKey            = @&quot;CSToastActiveKey&quot;;
+<span class="lineNum">      42 </span>            : static const NSString * CSToastActivityViewKey      = @&quot;CSToastActivityViewKey&quot;;
+<span class="lineNum">      43 </span>            : static const NSString * CSToastQueueKey             = @&quot;CSToastQueueKey&quot;;
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : @interface UIView (ToastPrivate)
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            : /**
+<span class="lineNum">      48 </span>            :  These private methods are being prefixed with &quot;cs_&quot; to reduce the likelihood of non-obvious 
+<span class="lineNum">      49 </span>            :  naming conflicts with other UIView methods.
+<span class="lineNum">      50 </span>            :  
+<span class="lineNum">      51 </span>            :  @discussion Should the public API also use the cs_ prefix? Technically it should, but it
+<span class="lineNum">      52 </span>            :  results in code that is less legible. The current public method names seem unlikely to cause
+<span class="lineNum">      53 </span>            :  conflicts so I think we should favor the cleaner API for now.
+<span class="lineNum">      54 </span>            :  */
+<span class="lineNum">      55 </span>            : - (void)cs_showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position;
+<span class="lineNum">      56 </span>            : - (void)cs_hideToast:(UIView *)toast;
+<span class="lineNum">      57 </span>            : - (void)cs_hideToast:(UIView *)toast fromTap:(BOOL)fromTap;
+<span class="lineNum">      58 </span>            : - (void)cs_toastTimerDidFinish:(NSTimer *)timer;
+<span class="lineNum">      59 </span>            : - (void)cs_handleToastTapped:(UITapGestureRecognizer *)recognizer;
+<span class="lineNum">      60 </span>            : - (CGPoint)cs_centerPointForPosition:(id)position withToast:(UIView *)toast;
+<span class="lineNum">      61 </span>            : - (NSMutableArray *)cs_toastQueue;
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : @end
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            : @implementation UIView (Toast)
+<span class="lineNum">      66 </span>            : 
+<a name="67"><span class="lineNum">      67 </span>            : #pragma mark - Make Toast Methods</a>
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : - (void)makeToast:(NSString *)message {</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :     [self makeToast:message duration:[CSToastManager defaultDuration] position:[CSToastManager defaultPosition] style:nil];</span>
+<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : - (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position {</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     [self makeToast:message duration:duration position:position style:nil];</span>
+<a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : - (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position style:(CSToastStyle *)style {</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     UIView *toast = [self toastViewForMessage:message title:nil image:nil style:style];</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     [self showToast:toast duration:duration position:position completion:nil];</span>
+<a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 : - (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position title:(NSString *)title image:(UIImage *)image style:(CSToastStyle *)style completion:(void(^)(BOOL didTap))completion {</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     UIView *toast = [self toastViewForMessage:message title:title image:image style:style];</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     [self showToast:toast duration:duration position:position completion:completion];</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      86 </span>            : 
+<a name="87"><span class="lineNum">      87 </span>            : #pragma mark - Show Toast Methods</a>
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : - (void)showToast:(UIView *)toast {</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :     [self showToast:toast duration:[CSToastManager defaultDuration] position:[CSToastManager defaultPosition] completion:nil];</span>
+<a name="91"><span class="lineNum">      91 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 : - (void)showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position completion:(void(^)(BOOL didTap))completion {</span>
+<span class="lineNum">      94 </span>            :     // sanity
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :     if (toast == nil) return;</span>
+<span class="lineNum">      96 </span>            :     
+<span class="lineNum">      97 </span>            :     // store the completion block on the toast view
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     objc_setAssociatedObject(toast, &amp;CSToastCompletionKey, completion, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
+<span class="lineNum">      99 </span>            :     
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :     if ([CSToastManager isQueueEnabled] &amp;&amp; [self.cs_activeToasts count] &gt; 0) {</span>
+<span class="lineNum">     101 </span>            :         // we're about to queue this toast view so we need to store the duration and position as well
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :         objc_setAssociatedObject(toast, &amp;CSToastDurationKey, @(duration), OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :         objc_setAssociatedObject(toast, &amp;CSToastPositionKey, position, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
+<span class="lineNum">     104 </span>            :         
+<span class="lineNum">     105 </span>            :         // enqueue
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :         [self.cs_toastQueue addObject:toast];</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :     } else {</span>
+<span class="lineNum">     108 </span>            :         // present
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :         [self cs_showToast:toast duration:duration position:position];</span>
+<span class="lineNum">     110 </span>            :     }
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     112 </span>            : 
+<a name="113"><span class="lineNum">     113 </span>            : #pragma mark - Hide Toast Method</a>
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 : - (void)hideToasts {</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :     for (UIView *toast in [self cs_activeToasts]) {</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :         [self hideToast:toast];</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     }</span>
+<a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 : - (void)hideToast:(UIView *)toast {</span>
+<span class="lineNum">     122 </span>            :     // sanity
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :     if (!toast || ![[self cs_activeToasts] containsObject:toast]) return;</span>
+<span class="lineNum">     124 </span>            :     
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :     NSTimer *timer = (NSTimer *)objc_getAssociatedObject(toast, &amp;CSToastTimerKey);</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     [timer invalidate];</span>
+<span class="lineNum">     127 </span>            :     
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :     [self cs_hideToast:toast];</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     130 </span>            : 
+<a name="131"><span class="lineNum">     131 </span>            : #pragma mark - Private Show/Hide Methods</a>
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 : - (void)cs_showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position {</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     toast.center = [self cs_centerPointForPosition:position withToast:toast];</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :     toast.alpha = 0.0;</span>
+<span class="lineNum">     136 </span>            :     
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :     if ([CSToastManager isTapToDismissEnabled]) {</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :         UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cs_handleToastTapped:)];</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :         [toast addGestureRecognizer:recognizer];</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 :         toast.userInteractionEnabled = YES;</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :         toast.exclusiveTouch = YES;</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     143 </span>            :     
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :     [[self cs_activeToasts] addObject:toast];</span>
+<span class="lineNum">     145 </span>            :     
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :     [self addSubview:toast];</span>
+<span class="lineNum">     147 </span>            :     
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :     [UIView animateWithDuration:[[CSToastManager sharedStyle] fadeDuration]</span>
+<a name="149"><span class="lineNum">     149 </span>            :                           delay:0.0</a>
+<span class="lineNum">     150 </span>            :                         options:(UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction)
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :                      animations:^{</span></a>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :                          toast.alpha = 1.0;</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :                      } completion:^(BOOL finished) {</span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :                          NSTimer *timer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(cs_toastTimerDidFinish:) userInfo:toast repeats:NO];</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :                          [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :                          objc_setAssociatedObject(toast, &amp;CSToastTimerKey, timer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :                      }];</span>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 : - (void)cs_hideToast:(UIView *)toast {</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :     [self cs_hideToast:toast fromTap:NO];</span>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     163 </span>            :     
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 : - (void)cs_hideToast:(UIView *)toast fromTap:(BOOL)fromTap {</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :     [UIView animateWithDuration:[[CSToastManager sharedStyle] fadeDuration]</span>
+<a name="166"><span class="lineNum">     166 </span>            :                           delay:0.0</a>
+<span class="lineNum">     167 </span>            :                         options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState)
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :                      animations:^{</span></a>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 :                          toast.alpha = 0.0;</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :                      } completion:^(BOOL finished) {</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :                          [toast removeFromSuperview];</span>
+<span class="lineNum">     172 </span>            :                          
+<span class="lineNum">     173 </span>            :                          // remove
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :                          [[self cs_activeToasts] removeObject:toast];</span>
+<span class="lineNum">     175 </span>            :                          
+<span class="lineNum">     176 </span>            :                          // execute the completion block, if necessary
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :                          void (^completion)(BOOL didTap) = objc_getAssociatedObject(toast, &amp;CSToastCompletionKey);</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :                          if (completion) {</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :                              completion(fromTap);</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :                          }</span>
+<span class="lineNum">     181 </span>            :                          
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :                          if ([self.cs_toastQueue count] &gt; 0) {</span>
+<span class="lineNum">     183 </span>            :                              // dequeue
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :                              UIView *nextToast = [[self cs_toastQueue] firstObject];</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :                              [[self cs_toastQueue] removeObjectAtIndex:0];</span>
+<span class="lineNum">     186 </span>            :                              
+<span class="lineNum">     187 </span>            :                              // present the next toast
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :                              NSTimeInterval duration = [objc_getAssociatedObject(nextToast, &amp;CSToastDurationKey) doubleValue];</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :                              id position = objc_getAssociatedObject(nextToast, &amp;CSToastPositionKey);</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :                              [self cs_showToast:nextToast duration:duration position:position];</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :                          }</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :                      }];</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     194 </span>            : 
+<a name="195"><span class="lineNum">     195 </span>            : #pragma mark - View Construction</a>
+<span class="lineNum">     196 </span>            : 
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 : - (UIView *)toastViewForMessage:(NSString *)message title:(NSString *)title image:(UIImage *)image style:(CSToastStyle *)style {</span>
+<span class="lineNum">     198 </span>            :     // sanity
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     if(message == nil &amp;&amp; title == nil &amp;&amp; image == nil) return nil;</span>
+<span class="lineNum">     200 </span>            :     
+<span class="lineNum">     201 </span>            :     // default to the shared style
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :     if (style == nil) {</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :         style = [CSToastManager sharedStyle];</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     205 </span>            :     
+<span class="lineNum">     206 </span>            :     // dynamically build a toast view with any combination of message, title, &amp; image
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 :     UILabel *messageLabel = nil;</span>
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 :     UILabel *titleLabel = nil;</span>
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 :     UIImageView *imageView = nil;</span>
+<span class="lineNum">     210 </span>            :     
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :     UIView *wrapperView = [[UIView alloc] init];</span>
+<span class="lineNum">     212 </span><span class="lineNoCov">          0 :     wrapperView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin);</span>
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :     wrapperView.layer.cornerRadius = style.cornerRadius;</span>
+<span class="lineNum">     214 </span>            :     
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :     if (style.displayShadow) {</span>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :         wrapperView.layer.shadowColor = style.shadowColor.CGColor;</span>
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 :         wrapperView.layer.shadowOpacity = style.shadowOpacity;</span>
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :         wrapperView.layer.shadowRadius = style.shadowRadius;</span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 :         wrapperView.layer.shadowOffset = style.shadowOffset;</span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     221 </span>            :     
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 :     wrapperView.backgroundColor = style.backgroundColor;</span>
+<span class="lineNum">     223 </span>            :     
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 :     if(image != nil) {</span>
+<span class="lineNum">     225 </span><span class="lineNoCov">          0 :         imageView = [[UIImageView alloc] initWithImage:image];</span>
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 :         imageView.contentMode = UIViewContentModeScaleAspectFit;</span>
+<span class="lineNum">     227 </span><span class="lineNoCov">          0 :         imageView.frame = CGRectMake(style.horizontalPadding, style.verticalPadding, style.imageSize.width, style.imageSize.height);</span>
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     229 </span>            :     
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :     CGRect imageRect = CGRectZero;</span>
+<span class="lineNum">     231 </span>            :     
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :     if(imageView != nil) {</span>
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :         imageRect.origin.x = style.horizontalPadding;</span>
+<span class="lineNum">     234 </span><span class="lineNoCov">          0 :         imageRect.origin.y = style.verticalPadding;</span>
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 :         imageRect.size.width = imageView.bounds.size.width;</span>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 :         imageRect.size.height = imageView.bounds.size.height;</span>
+<span class="lineNum">     237 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     238 </span>            :     
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 :     if (title != nil) {</span>
+<span class="lineNum">     240 </span><span class="lineNoCov">          0 :         titleLabel = [[UILabel alloc] init];</span>
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 :         titleLabel.numberOfLines = style.titleNumberOfLines;</span>
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 :         titleLabel.font = style.titleFont;</span>
+<span class="lineNum">     243 </span><span class="lineNoCov">          0 :         titleLabel.textAlignment = style.titleAlignment;</span>
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 :         titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;</span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :         titleLabel.textColor = style.titleColor;</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :         titleLabel.backgroundColor = [UIColor clearColor];</span>
+<span class="lineNum">     247 </span><span class="lineNoCov">          0 :         titleLabel.alpha = 1.0;</span>
+<span class="lineNum">     248 </span><span class="lineNoCov">          0 :         titleLabel.text = title;</span>
+<span class="lineNum">     249 </span>            :         
+<span class="lineNum">     250 </span>            :         // size the title label according to the length of the text
+<span class="lineNum">     251 </span><span class="lineNoCov">          0 :         CGSize maxSizeTitle = CGSizeMake((self.bounds.size.width * style.maxWidthPercentage) - imageRect.size.width, self.bounds.size.height * style.maxHeightPercentage);</span>
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 :         CGSize expectedSizeTitle = [titleLabel sizeThatFits:maxSizeTitle];</span>
+<span class="lineNum">     253 </span>            :         // UILabel can return a size larger than the max size when the number of lines is 1
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 :         expectedSizeTitle = CGSizeMake(MIN(maxSizeTitle.width, expectedSizeTitle.width), MIN(maxSizeTitle.height, expectedSizeTitle.height));</span>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 :         titleLabel.frame = CGRectMake(0.0, 0.0, expectedSizeTitle.width, expectedSizeTitle.height);</span>
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     257 </span>            :     
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 :     if (message != nil) {</span>
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 :         messageLabel = [[UILabel alloc] init];</span>
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 :         messageLabel.numberOfLines = style.messageNumberOfLines;</span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :         messageLabel.font = style.messageFont;</span>
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 :         messageLabel.textAlignment = style.messageAlignment;</span>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 :         messageLabel.lineBreakMode = NSLineBreakByTruncatingTail;</span>
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 :         messageLabel.textColor = style.messageColor;</span>
+<span class="lineNum">     265 </span><span class="lineNoCov">          0 :         messageLabel.backgroundColor = [UIColor clearColor];</span>
+<span class="lineNum">     266 </span><span class="lineNoCov">          0 :         messageLabel.alpha = 1.0;</span>
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 :         messageLabel.text = message;</span>
+<span class="lineNum">     268 </span>            :         
+<span class="lineNum">     269 </span><span class="lineNoCov">          0 :         CGSize maxSizeMessage = CGSizeMake((self.bounds.size.width * style.maxWidthPercentage) - imageRect.size.width, self.bounds.size.height * style.maxHeightPercentage);</span>
+<span class="lineNum">     270 </span><span class="lineNoCov">          0 :         CGSize expectedSizeMessage = [messageLabel sizeThatFits:maxSizeMessage];</span>
+<span class="lineNum">     271 </span>            :         // UILabel can return a size larger than the max size when the number of lines is 1
+<span class="lineNum">     272 </span><span class="lineNoCov">          0 :         expectedSizeMessage = CGSizeMake(MIN(maxSizeMessage.width, expectedSizeMessage.width), MIN(maxSizeMessage.height, expectedSizeMessage.height));</span>
+<span class="lineNum">     273 </span><span class="lineNoCov">          0 :         messageLabel.frame = CGRectMake(0.0, 0.0, expectedSizeMessage.width, expectedSizeMessage.height);</span>
+<span class="lineNum">     274 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     275 </span>            :     
+<span class="lineNum">     276 </span><span class="lineNoCov">          0 :     CGRect titleRect = CGRectZero;</span>
+<span class="lineNum">     277 </span>            :     
+<span class="lineNum">     278 </span><span class="lineNoCov">          0 :     if(titleLabel != nil) {</span>
+<span class="lineNum">     279 </span><span class="lineNoCov">          0 :         titleRect.origin.x = imageRect.origin.x + imageRect.size.width + style.horizontalPadding;</span>
+<span class="lineNum">     280 </span><span class="lineNoCov">          0 :         titleRect.origin.y = style.verticalPadding;</span>
+<span class="lineNum">     281 </span><span class="lineNoCov">          0 :         titleRect.size.width = titleLabel.bounds.size.width;</span>
+<span class="lineNum">     282 </span><span class="lineNoCov">          0 :         titleRect.size.height = titleLabel.bounds.size.height;</span>
+<span class="lineNum">     283 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     284 </span>            :     
+<span class="lineNum">     285 </span><span class="lineNoCov">          0 :     CGRect messageRect = CGRectZero;</span>
+<span class="lineNum">     286 </span>            :     
+<span class="lineNum">     287 </span><span class="lineNoCov">          0 :     if(messageLabel != nil) {</span>
+<span class="lineNum">     288 </span><span class="lineNoCov">          0 :         messageRect.origin.x = imageRect.origin.x + imageRect.size.width + style.horizontalPadding;</span>
+<span class="lineNum">     289 </span><span class="lineNoCov">          0 :         messageRect.origin.y = titleRect.origin.y + titleRect.size.height + style.verticalPadding;</span>
+<span class="lineNum">     290 </span><span class="lineNoCov">          0 :         messageRect.size.width = messageLabel.bounds.size.width;</span>
+<span class="lineNum">     291 </span><span class="lineNoCov">          0 :         messageRect.size.height = messageLabel.bounds.size.height;</span>
+<span class="lineNum">     292 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     293 </span>            :     
+<span class="lineNum">     294 </span><span class="lineNoCov">          0 :     CGFloat longerWidth = MAX(titleRect.size.width, messageRect.size.width);</span>
+<span class="lineNum">     295 </span><span class="lineNoCov">          0 :     CGFloat longerX = MAX(titleRect.origin.x, messageRect.origin.x);</span>
+<span class="lineNum">     296 </span>            :     
+<span class="lineNum">     297 </span>            :     // Wrapper width uses the longerWidth or the image width, whatever is larger. Same logic applies to the wrapper height.
+<span class="lineNum">     298 </span><span class="lineNoCov">          0 :     CGFloat wrapperWidth = MAX((imageRect.size.width + (style.horizontalPadding * 2.0)), (longerX + longerWidth + style.horizontalPadding));</span>
+<span class="lineNum">     299 </span><span class="lineNoCov">          0 :     CGFloat wrapperHeight = MAX((messageRect.origin.y + messageRect.size.height + style.verticalPadding), (imageRect.size.height + (style.verticalPadding * 2.0)));</span>
+<span class="lineNum">     300 </span>            :     
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 :     wrapperView.frame = CGRectMake(0.0, 0.0, wrapperWidth, wrapperHeight);</span>
+<span class="lineNum">     302 </span>            :     
+<span class="lineNum">     303 </span><span class="lineNoCov">          0 :     if(titleLabel != nil) {</span>
+<span class="lineNum">     304 </span><span class="lineNoCov">          0 :         titleLabel.frame = titleRect;</span>
+<span class="lineNum">     305 </span><span class="lineNoCov">          0 :         [wrapperView addSubview:titleLabel];</span>
+<span class="lineNum">     306 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     307 </span>            :     
+<span class="lineNum">     308 </span><span class="lineNoCov">          0 :     if(messageLabel != nil) {</span>
+<span class="lineNum">     309 </span><span class="lineNoCov">          0 :         messageLabel.frame = messageRect;</span>
+<span class="lineNum">     310 </span><span class="lineNoCov">          0 :         [wrapperView addSubview:messageLabel];</span>
+<span class="lineNum">     311 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     312 </span>            :     
+<span class="lineNum">     313 </span><span class="lineNoCov">          0 :     if(imageView != nil) {</span>
+<span class="lineNum">     314 </span><span class="lineNoCov">          0 :         [wrapperView addSubview:imageView];</span>
+<span class="lineNum">     315 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     316 </span>            :     
+<span class="lineNum">     317 </span><span class="lineNoCov">          0 :     return wrapperView;</span>
+<span class="lineNum">     318 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     319 </span>            : 
+<a name="320"><span class="lineNum">     320 </span>            : #pragma mark - Storage</a>
+<span class="lineNum">     321 </span>            : 
+<span class="lineNum">     322 </span><span class="lineNoCov">          0 : - (NSMutableArray *)cs_activeToasts {</span>
+<span class="lineNum">     323 </span><span class="lineNoCov">          0 :     NSMutableArray *cs_activeToasts = objc_getAssociatedObject(self, &amp;CSToastActiveKey);</span>
+<span class="lineNum">     324 </span><span class="lineNoCov">          0 :     if (cs_activeToasts == nil) {</span>
+<span class="lineNum">     325 </span><span class="lineNoCov">          0 :         cs_activeToasts = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">     326 </span><span class="lineNoCov">          0 :         objc_setAssociatedObject(self, &amp;CSToastActiveKey, cs_activeToasts, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
+<span class="lineNum">     327 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     328 </span><span class="lineNoCov">          0 :     return cs_activeToasts;</span>
+<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     330 </span>            : 
+<span class="lineNum">     331 </span><span class="lineNoCov">          0 : - (NSMutableArray *)cs_toastQueue {</span>
+<span class="lineNum">     332 </span><span class="lineNoCov">          0 :     NSMutableArray *cs_toastQueue = objc_getAssociatedObject(self, &amp;CSToastQueueKey);</span>
+<span class="lineNum">     333 </span><span class="lineNoCov">          0 :     if (cs_toastQueue == nil) {</span>
+<span class="lineNum">     334 </span><span class="lineNoCov">          0 :         cs_toastQueue = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">     335 </span><span class="lineNoCov">          0 :         objc_setAssociatedObject(self, &amp;CSToastQueueKey, cs_toastQueue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     337 </span><span class="lineNoCov">          0 :     return cs_toastQueue;</span>
+<span class="lineNum">     338 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     339 </span>            : 
+<a name="340"><span class="lineNum">     340 </span>            : #pragma mark - Events</a>
+<span class="lineNum">     341 </span>            : 
+<span class="lineNum">     342 </span><span class="lineNoCov">          0 : - (void)cs_toastTimerDidFinish:(NSTimer *)timer {</span>
+<span class="lineNum">     343 </span><span class="lineNoCov">          0 :     [self cs_hideToast:(UIView *)timer.userInfo];</span>
+<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     345 </span>            : 
+<span class="lineNum">     346 </span><span class="lineNoCov">          0 : - (void)cs_handleToastTapped:(UITapGestureRecognizer *)recognizer {</span>
+<span class="lineNum">     347 </span><span class="lineNoCov">          0 :     UIView *toast = recognizer.view;</span>
+<span class="lineNum">     348 </span><span class="lineNoCov">          0 :     NSTimer *timer = (NSTimer *)objc_getAssociatedObject(toast, &amp;CSToastTimerKey);</span>
+<span class="lineNum">     349 </span><span class="lineNoCov">          0 :     [timer invalidate];</span>
+<span class="lineNum">     350 </span>            :     
+<span class="lineNum">     351 </span><span class="lineNoCov">          0 :     [self cs_hideToast:toast fromTap:YES];</span>
+<span class="lineNum">     352 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     353 </span>            : 
+<a name="354"><span class="lineNum">     354 </span>            : #pragma mark - Activity Methods</a>
+<span class="lineNum">     355 </span>            : 
+<span class="lineNum">     356 </span><span class="lineNoCov">          0 : - (void)makeToastActivity:(id)position {</span>
+<span class="lineNum">     357 </span>            :     // sanity
+<span class="lineNum">     358 </span><span class="lineNoCov">          0 :     UIView *existingActivityView = (UIView *)objc_getAssociatedObject(self, &amp;CSToastActivityViewKey);</span>
+<span class="lineNum">     359 </span><span class="lineNoCov">          0 :     if (existingActivityView != nil) return;</span>
+<span class="lineNum">     360 </span>            :     
+<span class="lineNum">     361 </span><span class="lineNoCov">          0 :     CSToastStyle *style = [CSToastManager sharedStyle];</span>
+<span class="lineNum">     362 </span>            :     
+<span class="lineNum">     363 </span><span class="lineNoCov">          0 :     UIView *activityView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, style.activitySize.width, style.activitySize.height)];</span>
+<span class="lineNum">     364 </span><span class="lineNoCov">          0 :     activityView.center = [self cs_centerPointForPosition:position withToast:activityView];</span>
+<span class="lineNum">     365 </span><span class="lineNoCov">          0 :     activityView.backgroundColor = style.backgroundColor;</span>
+<span class="lineNum">     366 </span><span class="lineNoCov">          0 :     activityView.alpha = 0.0;</span>
+<span class="lineNum">     367 </span><span class="lineNoCov">          0 :     activityView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin);</span>
+<span class="lineNum">     368 </span><span class="lineNoCov">          0 :     activityView.layer.cornerRadius = style.cornerRadius;</span>
+<span class="lineNum">     369 </span>            :     
+<span class="lineNum">     370 </span><span class="lineNoCov">          0 :     if (style.displayShadow) {</span>
+<span class="lineNum">     371 </span><span class="lineNoCov">          0 :         activityView.layer.shadowColor = style.shadowColor.CGColor;</span>
+<span class="lineNum">     372 </span><span class="lineNoCov">          0 :         activityView.layer.shadowOpacity = style.shadowOpacity;</span>
+<span class="lineNum">     373 </span><span class="lineNoCov">          0 :         activityView.layer.shadowRadius = style.shadowRadius;</span>
+<span class="lineNum">     374 </span><span class="lineNoCov">          0 :         activityView.layer.shadowOffset = style.shadowOffset;</span>
+<span class="lineNum">     375 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     376 </span>            :     
+<span class="lineNum">     377 </span><span class="lineNoCov">          0 :     UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];</span>
+<span class="lineNum">     378 </span><span class="lineNoCov">          0 :     activityIndicatorView.center = CGPointMake(activityView.bounds.size.width / 2, activityView.bounds.size.height / 2);</span>
+<span class="lineNum">     379 </span><span class="lineNoCov">          0 :     [activityView addSubview:activityIndicatorView];</span>
+<span class="lineNum">     380 </span><span class="lineNoCov">          0 :     [activityIndicatorView startAnimating];</span>
+<span class="lineNum">     381 </span>            :     
+<span class="lineNum">     382 </span>            :     // associate the activity view with self
+<span class="lineNum">     383 </span><span class="lineNoCov">          0 :     objc_setAssociatedObject (self, &amp;CSToastActivityViewKey, activityView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
+<span class="lineNum">     384 </span>            :     
+<span class="lineNum">     385 </span><span class="lineNoCov">          0 :     [self addSubview:activityView];</span>
+<span class="lineNum">     386 </span>            :     
+<span class="lineNum">     387 </span><span class="lineNoCov">          0 :     [UIView animateWithDuration:style.fadeDuration</span>
+<a name="388"><span class="lineNum">     388 </span>            :                           delay:0.0</a>
+<span class="lineNum">     389 </span>            :                         options:UIViewAnimationOptionCurveEaseOut
+<span class="lineNum">     390 </span><span class="lineNoCov">          0 :                      animations:^{</span>
+<span class="lineNum">     391 </span><span class="lineNoCov">          0 :                          activityView.alpha = 1.0;</span>
+<span class="lineNum">     392 </span><span class="lineNoCov">          0 :                      } completion:nil];</span>
+<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     394 </span>            : 
+<span class="lineNum">     395 </span><span class="lineNoCov">          0 : - (void)hideToastActivity {</span>
+<span class="lineNum">     396 </span><span class="lineNoCov">          0 :     UIView *existingActivityView = (UIView *)objc_getAssociatedObject(self, &amp;CSToastActivityViewKey);</span>
+<span class="lineNum">     397 </span><span class="lineNoCov">          0 :     if (existingActivityView != nil) {</span>
+<span class="lineNum">     398 </span><span class="lineNoCov">          0 :         [UIView animateWithDuration:[[CSToastManager sharedStyle] fadeDuration]</span>
+<a name="399"><span class="lineNum">     399 </span>            :                               delay:0.0</a>
+<span class="lineNum">     400 </span>            :                             options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState)
+<a name="401"><span class="lineNum">     401 </span><span class="lineNoCov">          0 :                          animations:^{</span></a>
+<span class="lineNum">     402 </span><span class="lineNoCov">          0 :                              existingActivityView.alpha = 0.0;</span>
+<span class="lineNum">     403 </span><span class="lineNoCov">          0 :                          } completion:^(BOOL finished) {</span>
+<span class="lineNum">     404 </span><span class="lineNoCov">          0 :                              [existingActivityView removeFromSuperview];</span>
+<span class="lineNum">     405 </span><span class="lineNoCov">          0 :                              objc_setAssociatedObject (self, &amp;CSToastActivityViewKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
+<span class="lineNum">     406 </span><span class="lineNoCov">          0 :                          }];</span>
+<span class="lineNum">     407 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     408 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     409 </span>            : 
+<a name="410"><span class="lineNum">     410 </span>            : #pragma mark - Helpers</a>
+<span class="lineNum">     411 </span>            : 
+<span class="lineNum">     412 </span><span class="lineNoCov">          0 : - (CGPoint)cs_centerPointForPosition:(id)point withToast:(UIView *)toast {</span>
+<span class="lineNum">     413 </span><span class="lineNoCov">          0 :     CSToastStyle *style = [CSToastManager sharedStyle];</span>
+<span class="lineNum">     414 </span>            :     
+<span class="lineNum">     415 </span><span class="lineNoCov">          0 :     if([point isKindOfClass:[NSString class]]) {</span>
+<span class="lineNum">     416 </span><span class="lineNoCov">          0 :         if([point caseInsensitiveCompare:CSToastPositionTop] == NSOrderedSame) {</span>
+<span class="lineNum">     417 </span><span class="lineNoCov">          0 :             return CGPointMake(self.bounds.size.width/2, (toast.frame.size.height / 2) + style.verticalPadding);</span>
+<span class="lineNum">     418 </span><span class="lineNoCov">          0 :         } else if([point caseInsensitiveCompare:CSToastPositionCenter] == NSOrderedSame) {</span>
+<span class="lineNum">     419 </span><span class="lineNoCov">          0 :             return CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);</span>
+<span class="lineNum">     420 </span>            :         }
+<span class="lineNum">     421 </span><span class="lineNoCov">          0 :     } else if ([point isKindOfClass:[NSValue class]]) {</span>
+<span class="lineNum">     422 </span><span class="lineNoCov">          0 :         return [point CGPointValue];</span>
+<span class="lineNum">     423 </span>            :     }
+<span class="lineNum">     424 </span>            :     
+<span class="lineNum">     425 </span>            :     // default to bottom
+<span class="lineNum">     426 </span><span class="lineNoCov">          0 :     return CGPointMake(self.bounds.size.width/2, (self.bounds.size.height - (toast.frame.size.height / 2)) - style.verticalPadding);</span>
+<span class="lineNum">     427 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     428 </span>            : 
+<a name="429"><span class="lineNum">     429 </span>            : @end</a>
+<span class="lineNum">     430 </span>            : 
+<span class="lineNum">     431 </span><span class="lineNoCov">          0 : @implementation CSToastStyle</span>
+<span class="lineNum">     432 </span>            : 
+<a name="433"><span class="lineNum">     433 </span>            : #pragma mark - Constructors</a>
+<span class="lineNum">     434 </span>            : 
+<span class="lineNum">     435 </span><span class="lineNoCov">          0 : - (instancetype)initWithDefaultStyle {</span>
+<span class="lineNum">     436 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">     437 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">     438 </span><span class="lineNoCov">          0 :         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];</span>
+<span class="lineNum">     439 </span><span class="lineNoCov">          0 :         self.titleColor = [UIColor whiteColor];</span>
+<span class="lineNum">     440 </span><span class="lineNoCov">          0 :         self.messageColor = [UIColor whiteColor];</span>
+<span class="lineNum">     441 </span><span class="lineNoCov">          0 :         self.maxWidthPercentage = 0.8;</span>
+<span class="lineNum">     442 </span><span class="lineNoCov">          0 :         self.maxHeightPercentage = 0.8;</span>
+<span class="lineNum">     443 </span><span class="lineNoCov">          0 :         self.horizontalPadding = 10.0;</span>
+<span class="lineNum">     444 </span><span class="lineNoCov">          0 :         self.verticalPadding = 10.0;</span>
+<span class="lineNum">     445 </span><span class="lineNoCov">          0 :         self.cornerRadius = 10.0;</span>
+<span class="lineNum">     446 </span><span class="lineNoCov">          0 :         self.titleFont = [UIFont boldSystemFontOfSize:16.0];</span>
+<span class="lineNum">     447 </span><span class="lineNoCov">          0 :         self.messageFont = [UIFont systemFontOfSize:16.0];</span>
+<span class="lineNum">     448 </span><span class="lineNoCov">          0 :         self.titleAlignment = NSTextAlignmentLeft;</span>
+<span class="lineNum">     449 </span><span class="lineNoCov">          0 :         self.messageAlignment = NSTextAlignmentLeft;</span>
+<span class="lineNum">     450 </span><span class="lineNoCov">          0 :         self.titleNumberOfLines = 0;</span>
+<span class="lineNum">     451 </span><span class="lineNoCov">          0 :         self.messageNumberOfLines = 0;</span>
+<span class="lineNum">     452 </span><span class="lineNoCov">          0 :         self.displayShadow = NO;</span>
+<span class="lineNum">     453 </span><span class="lineNoCov">          0 :         self.shadowOpacity = 0.8;</span>
+<span class="lineNum">     454 </span><span class="lineNoCov">          0 :         self.shadowRadius = 6.0;</span>
+<span class="lineNum">     455 </span><span class="lineNoCov">          0 :         self.shadowOffset = CGSizeMake(4.0, 4.0);</span>
+<span class="lineNum">     456 </span><span class="lineNoCov">          0 :         self.imageSize = CGSizeMake(80.0, 80.0);</span>
+<span class="lineNum">     457 </span><span class="lineNoCov">          0 :         self.activitySize = CGSizeMake(100.0, 100.0);</span>
+<span class="lineNum">     458 </span><span class="lineNoCov">          0 :         self.fadeDuration = 0.2;</span>
+<span class="lineNum">     459 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     460 </span><span class="lineNoCov">          0 :     return self;</span>
+<a name="461"><span class="lineNum">     461 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     462 </span>            : 
+<span class="lineNum">     463 </span><span class="lineNoCov">          0 : - (void)setMaxWidthPercentage:(CGFloat)maxWidthPercentage {</span>
+<span class="lineNum">     464 </span><span class="lineNoCov">          0 :     _maxWidthPercentage = MAX(MIN(maxWidthPercentage, 1.0), 0.0);</span>
+<a name="465"><span class="lineNum">     465 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     466 </span>            : 
+<span class="lineNum">     467 </span><span class="lineNoCov">          0 : - (void)setMaxHeightPercentage:(CGFloat)maxHeightPercentage {</span>
+<span class="lineNum">     468 </span><span class="lineNoCov">          0 :     _maxHeightPercentage = MAX(MIN(maxHeightPercentage, 1.0), 0.0);</span>
+<a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     470 </span>            : 
+<span class="lineNum">     471 </span><span class="lineNoCov">          0 : - (instancetype)init NS_UNAVAILABLE {</span>
+<span class="lineNum">     472 </span>            :     return nil;
+<span class="lineNum">     473 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     474 </span>            : 
+<span class="lineNum">     475 </span>            : @end
+<span class="lineNum">     476 </span>            : 
+<a name="477"><span class="lineNum">     477 </span>            : @interface CSToastManager ()</a>
+<a name="478"><span class="lineNum">     478 </span>            : </a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineNoCov">          0 : @property (strong, nonatomic) CSToastStyle *sharedStyle;</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineNoCov">          0 : @property (assign, nonatomic, getter=isTapToDismissEnabled) BOOL tapToDismissEnabled;</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineNoCov">          0 : @property (assign, nonatomic, getter=isQueueEnabled) BOOL queueEnabled;</span></a>
+<span class="lineNum">     482 </span><span class="lineNoCov">          0 : @property (assign, nonatomic) NSTimeInterval defaultDuration;</span>
+<span class="lineNum">     483 </span><span class="lineNoCov">          0 : @property (strong, nonatomic) id defaultPosition;</span>
+<span class="lineNum">     484 </span>            : 
+<a name="485"><span class="lineNum">     485 </span>            : @end</a>
+<span class="lineNum">     486 </span>            : 
+<span class="lineNum">     487 </span><span class="lineNoCov">          0 : @implementation CSToastManager</span>
+<span class="lineNum">     488 </span>            : 
+<a name="489"><span class="lineNum">     489 </span>            : #pragma mark - Constructors</a>
+<span class="lineNum">     490 </span>            : 
+<span class="lineNum">     491 </span><span class="lineNoCov">          0 : + (instancetype)sharedManager {</span>
+<a name="492"><span class="lineNum">     492 </span>            :     static CSToastManager *_sharedManager = nil;</a>
+<span class="lineNum">     493 </span>            :     static dispatch_once_t oncePredicate;
+<span class="lineNum">     494 </span><span class="lineNoCov">          0 :     dispatch_once(&amp;oncePredicate, ^{</span>
+<span class="lineNum">     495 </span><span class="lineNoCov">          0 :         _sharedManager = [[self alloc] init];</span>
+<span class="lineNum">     496 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">     497 </span>            :     
+<span class="lineNum">     498 </span><span class="lineNoCov">          0 :     return _sharedManager;</span>
+<a name="499"><span class="lineNum">     499 </span>            : }</a>
+<span class="lineNum">     500 </span>            : 
+<span class="lineNum">     501 </span><span class="lineNoCov">          0 : - (instancetype)init {</span>
+<span class="lineNum">     502 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">     503 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">     504 </span><span class="lineNoCov">          0 :         self.sharedStyle = [[CSToastStyle alloc] initWithDefaultStyle];</span>
+<span class="lineNum">     505 </span><span class="lineNoCov">          0 :         self.tapToDismissEnabled = YES;</span>
+<span class="lineNum">     506 </span><span class="lineNoCov">          0 :         self.queueEnabled = YES;</span>
+<span class="lineNum">     507 </span><span class="lineNoCov">          0 :         self.defaultDuration = 3.0;</span>
+<span class="lineNum">     508 </span><span class="lineNoCov">          0 :         self.defaultPosition = CSToastPositionBottom;</span>
+<span class="lineNum">     509 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     510 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">     511 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     512 </span>            : 
+<a name="513"><span class="lineNum">     513 </span>            : #pragma mark - Singleton Methods</a>
+<span class="lineNum">     514 </span>            : 
+<span class="lineNum">     515 </span><span class="lineNoCov">          0 : + (void)setSharedStyle:(CSToastStyle *)sharedStyle {</span>
+<span class="lineNum">     516 </span><span class="lineNoCov">          0 :     [[self sharedManager] setSharedStyle:sharedStyle];</span>
+<a name="517"><span class="lineNum">     517 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     518 </span>            : 
+<span class="lineNum">     519 </span><span class="lineNoCov">          0 : + (CSToastStyle *)sharedStyle {</span>
+<span class="lineNum">     520 </span><span class="lineNoCov">          0 :     return [[self sharedManager] sharedStyle];</span>
+<a name="521"><span class="lineNum">     521 </span>            : }</a>
+<span class="lineNum">     522 </span>            : 
+<span class="lineNum">     523 </span><span class="lineNoCov">          0 : + (void)setTapToDismissEnabled:(BOOL)tapToDismissEnabled {</span>
+<span class="lineNum">     524 </span><span class="lineNoCov">          0 :     [[self sharedManager] setTapToDismissEnabled:tapToDismissEnabled];</span>
+<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     526 </span>            : 
+<span class="lineNum">     527 </span><span class="lineNoCov">          0 : + (BOOL)isTapToDismissEnabled {</span>
+<span class="lineNum">     528 </span><span class="lineNoCov">          0 :     return [[self sharedManager] isTapToDismissEnabled];</span>
+<a name="529"><span class="lineNum">     529 </span>            : }</a>
+<span class="lineNum">     530 </span>            : 
+<span class="lineNum">     531 </span><span class="lineNoCov">          0 : + (void)setQueueEnabled:(BOOL)queueEnabled {</span>
+<span class="lineNum">     532 </span><span class="lineNoCov">          0 :     [[self sharedManager] setQueueEnabled:queueEnabled];</span>
+<a name="533"><span class="lineNum">     533 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     534 </span>            : 
+<span class="lineNum">     535 </span><span class="lineNoCov">          0 : + (BOOL)isQueueEnabled {</span>
+<span class="lineNum">     536 </span><span class="lineNoCov">          0 :     return [[self sharedManager] isQueueEnabled];</span>
+<a name="537"><span class="lineNum">     537 </span>            : }</a>
+<span class="lineNum">     538 </span>            : 
+<span class="lineNum">     539 </span><span class="lineNoCov">          0 : + (void)setDefaultDuration:(NSTimeInterval)duration {</span>
+<span class="lineNum">     540 </span><span class="lineNoCov">          0 :     [[self sharedManager] setDefaultDuration:duration];</span>
+<a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     542 </span>            : 
+<span class="lineNum">     543 </span><span class="lineNoCov">          0 : + (NSTimeInterval)defaultDuration {</span>
+<span class="lineNum">     544 </span><span class="lineNoCov">          0 :     return [[self sharedManager] defaultDuration];</span>
+<a name="545"><span class="lineNum">     545 </span>            : }</a>
+<span class="lineNum">     546 </span>            : 
+<span class="lineNum">     547 </span><span class="lineNoCov">          0 : + (void)setDefaultPosition:(id)position {</span>
+<span class="lineNum">     548 </span><span class="lineNoCov">          0 :     if ([position isKindOfClass:[NSString class]] || [position isKindOfClass:[NSValue class]]) {</span>
+<span class="lineNum">     549 </span><span class="lineNoCov">          0 :         [[self sharedManager] setDefaultPosition:position];</span>
+<span class="lineNum">     550 </span><span class="lineNoCov">          0 :     }</span>
+<a name="551"><span class="lineNum">     551 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     552 </span>            : 
+<span class="lineNum">     553 </span><span class="lineNoCov">          0 : + (id)defaultPosition {</span>
+<span class="lineNum">     554 </span><span class="lineNoCov">          0 :     return [[self sharedManager] defaultPosition];</span>
+<span class="lineNum">     555 </span>            : }
+<span class="lineNum">     556 </span>            : 
+<span class="lineNum">     557 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/Login/Controller/LoginViewController.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/Login/Controller</a> - LoginViewController.m<span style="font-size: 80%;"> (source / <a href="LoginViewController.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">105</td>
+            <td class="headerCovTableEntry">176</td>
+            <td class="headerCovTableEntryLo">59.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntry">34</td>
+            <td class="headerCovTableEntryLo">41.2 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  LoginViewController.m
+<span class="lineNum">       3 </span>            : //  MiAiApp
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : 
+<span class="lineNum">       6 </span>            : //
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span>            : #import &quot;LoginViewController.h&quot;
+<span class="lineNum">       9 </span>            : #import &lt;UMSocialCore/UMSocialCore.h&gt;
+<span class="lineNum">      10 </span>            : #import &quot;LoginLogic.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;RMTimer.h&quot;
+<span class="lineNum">      12 </span>            : #import &lt;ReactiveObjC/ReactiveObjC.h&gt;
+<span class="lineNum">      13 </span>            : 
+<a name="14"><span class="lineNum">      14 </span>            : @interface LoginViewController ()</a>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineNoCov">          0 : @property(nonatomic,strong) LoginLogic *logic;//逻辑层</span></a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineNoCov">          0 : @property(nonatomic,strong) UIScrollView *scrollview;</span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineNoCov">          0 : @property(nonatomic,strong) UITextField *phoneNumberField;</span></a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 : @property(nonatomic,strong) UITextField *codeField;</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineNoCov">          0 : @property(nonatomic,strong) UIButton *getCodeBtn;</span></a>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : @property(nonatomic,strong) UIButton *loginBtn;</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : @property(nonatomic,assign) NSInteger seconds;</span>
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : 
+<a name="26"><span class="lineNum">      26 </span>            : @end</a>
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span><span class="lineCov">>70370*10^9 : @implementation LoginViewController</span>
+<span class="lineNum">      29 </span>            : 
+<a name="30"><span class="lineNum">      30 </span>            : #pragma mark --- LifeCycle</a>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineCov">>35185*10^9 : - (void)viewDidLoad {</span>
+<span class="lineNum">      33 </span><span class="lineCov">>35185*10^9 :     [super viewDidLoad];</span>
+<span class="lineNum">      34 </span>            :     
+<span class="lineNum">      35 </span><span class="lineCov">>35185*10^9 :     self.isHidenNaviBar = YES;</span>
+<span class="lineNum">      36 </span><span class="lineCov">>35185*10^9 :     _logic = [LoginLogic new];</span>
+<span class="lineNum">      37 </span><span class="lineCov">>35185*10^9 :     [self setupUI];</span>
+<span class="lineNum">      38 </span>            : 
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">>35185*10^9 : }</span></a>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : - (void)didReceiveMemoryWarning {</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     [super didReceiveMemoryWarning];</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : }</span>
+<a name="44"><span class="lineNum">      44 </span>            : </a>
+<span class="lineNum">      45 </span>            : #pragma mark --- PrivateMethod
+<span class="lineNum">      46 </span><span class="lineCov">>35185*10^9 : -(void)setupUI {</span>
+<span class="lineNum">      47 </span>            :     
+<span class="lineNum">      48 </span><span class="lineCov">>35185*10^9 :     [self.view addSubview:self.scrollview];</span>
+<span class="lineNum">      49 </span><span class="lineCov">>35185*10^9 :     UIImageView *headImg = [UIImageView new];</span>
+<span class="lineNum">      50 </span><span class="lineCov">>1759*10^11 :     headImg.frame = CGRectMake(0,0,KScreenWidth,KScreenHeight);</span>
+<span class="lineNum">      51 </span><span class="lineCov">>35185*10^9 :     headImg.image = IMAGE_NAMED(@&quot;loginbgIcon&quot;);</span>
+<span class="lineNum">      52 </span><span class="lineCov">>35185*10^9 :     headImg.userInteractionEnabled = YES;</span>
+<span class="lineNum">      53 </span><span class="lineCov">>35185*10^9 :     [self.scrollview addSubview:headImg];</span>
+<span class="lineNum">      54 </span>            :     
+<span class="lineNum">      55 </span><span class="lineCov">>35185*10^9 :     UIImageView *mideleBgImg = [UIImageView new];</span>
+<span class="lineNum">      56 </span><span class="lineCov">>35185*10^9 :     mideleBgImg.userInteractionEnabled = YES;</span>
+<span class="lineNum">      57 </span><span class="lineCov">>1759*10^11 :     mideleBgImg.frame = CGRectMake(KNormalSpaceX,(KScreenHeight-260)/2-20,KScreenWidth-2*KNormalSpaceX,260);</span>
+<span class="lineNum">      58 </span><span class="lineCov">>35185*10^9 :     mideleBgImg.image = IMAGE_NAMED(@&quot;loginmidbgicon&quot;);</span>
+<span class="lineNum">      59 </span><span class="lineCov">>35185*10^9 :     [self.scrollview addSubview:mideleBgImg];</span>
+<span class="lineNum">      60 </span>            :     
+<span class="lineNum">      61 </span><span class="lineCov">>35185*10^9 :     UIImageView *circleImg = [UIImageView new];</span>
+<span class="lineNum">      62 </span><span class="lineCov">>1055*10^11 :     circleImg.frame = CGRectMake((KScreenWidth-100)/2, mideleBgImg.y-50,100,100);</span>
+<span class="lineNum">      63 </span><span class="lineCov">>35185*10^9 :     circleImg.image = [UIImage imageNamed:@&quot;loginciricom&quot;];</span>
+<span class="lineNum">      64 </span><span class="lineCov">>35185*10^9 :     [self.scrollview addSubview:circleImg];</span>
+<span class="lineNum">      65 </span>            :     
+<span class="lineNum">      66 </span><span class="lineCov">>35185*10^9 :     UIImageView *logoImg = [UIImageView new];</span>
+<span class="lineNum">      67 </span><span class="lineCov">>35185*10^9 :     logoImg.frame = CGRectMake(30,27,40,46);</span>
+<span class="lineNum">      68 </span><span class="lineCov">>35185*10^9 :     logoImg.image = [UIImage imageNamed:@&quot;logo&quot;];</span>
+<span class="lineNum">      69 </span><span class="lineCov">>35185*10^9 :     [circleImg addSubview:logoImg];</span>
+<span class="lineNum">      70 </span>            :     
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span><span class="lineCov">>35185*10^9 :     UILabel *k_phoneNumber = [[UILabel alloc] init];</span>
+<span class="lineNum">      73 </span><span class="lineCov">>35185*10^9 :     k_phoneNumber.frame = CGRectMake(44,81,50,21);</span>
+<span class="lineNum">      74 </span><span class="lineCov">>35185*10^9 :     k_phoneNumber.text = @&quot;手机号:&quot;;</span>
+<span class="lineNum">      75 </span><span class="lineCov">>35185*10^9 :     k_phoneNumber.font = FFont1;</span>
+<span class="lineNum">      76 </span><span class="lineCov">>35185*10^9 :     k_phoneNumber.textColor = CFontColor1;</span>
+<span class="lineNum">      77 </span><span class="lineCov">>35185*10^9 :     [mideleBgImg addSubview:k_phoneNumber];</span>
+<span class="lineNum">      78 </span>            :     
+<span class="lineNum">      79 </span><span class="lineCov">>35185*10^9 :     [mideleBgImg addSubview:self.phoneNumberField];</span>
+<span class="lineNum">      80 </span><span class="lineCov">>35185*10^9 :     self.phoneNumberField.frame = CGRectMake(k_phoneNumber.right,k_phoneNumber.y, mideleBgImg.width-k_phoneNumber.right-10-15, 21);</span>
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span><span class="lineCov">>35185*10^9 :     UILabel *k_codeLabel = [[UILabel alloc] init];</span>
+<span class="lineNum">      83 </span><span class="lineCov">>35185*10^9 :     k_codeLabel.frame = CGRectMake(44,k_phoneNumber.bottom + 30,50,21);</span>
+<span class="lineNum">      84 </span><span class="lineCov">>35185*10^9 :     k_codeLabel.text = @&quot;验证码:&quot;;</span>
+<span class="lineNum">      85 </span><span class="lineCov">>35185*10^9 :     k_codeLabel.font = FFont1;</span>
+<span class="lineNum">      86 </span><span class="lineCov">>35185*10^9 :     k_codeLabel.textColor = CFontColor1;</span>
+<span class="lineNum">      87 </span><span class="lineCov">>35185*10^9 :     [mideleBgImg addSubview:k_codeLabel];</span>
+<span class="lineNum">      88 </span>            :     
+<span class="lineNum">      89 </span><span class="lineCov">>35185*10^9 :     self.getCodeBtn.frame = CGRectMake(mideleBgImg.width-125,k_codeLabel.y,100,21);</span>
+<span class="lineNum">      90 </span><span class="lineCov">>35185*10^9 :     [mideleBgImg addSubview:self.getCodeBtn];</span>
+<span class="lineNum">      91 </span>            :     
+<span class="lineNum">      92 </span><span class="lineCov">>35185*10^9 :     UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(45,k_phoneNumber.bottom+5, mideleBgImg.width-90, 1)];</span>
+<span class="lineNum">      93 </span><span class="lineCov">>35185*10^9 :     line1.backgroundColor = CLineColor;</span>
+<span class="lineNum">      94 </span><span class="lineCov">>35185*10^9 :     [mideleBgImg addSubview:line1];</span>
+<span class="lineNum">      95 </span>            :     
+<span class="lineNum">      96 </span><span class="lineCov">>35185*10^9 :     self.codeField.frame = CGRectMake(k_codeLabel.right,k_codeLabel.y,mideleBgImg.width-k_codeLabel.right-_getCodeBtn.width, 21);</span>
+<span class="lineNum">      97 </span><span class="lineCov">>35185*10^9 :     [mideleBgImg addSubview: self.codeField];</span>
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span><span class="lineCov">>35185*10^9 :     UIView *v_line = [[UIView alloc] initWithFrame:CGRectMake(self.codeField.right-10, k_codeLabel.y+3, 1,15)];</span>
+<span class="lineNum">     100 </span><span class="lineCov">>35185*10^9 :     v_line.backgroundColor = CFontColor3;</span>
+<span class="lineNum">     101 </span><span class="lineCov">>35185*10^9 :     [mideleBgImg addSubview:v_line];</span>
+<a name="102"><span class="lineNum">     102 </span>            :     </a>
+<span class="lineNum">     103 </span><span class="lineCov">>35185*10^9 :     @weakify(self);</span>
+<span class="lineNum">     104 </span><span class="lineCov">>70370*10^9 :     [_getCodeBtn addTapBlock:^(UIButton *btn) {</span>
+<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :         @strongify(self);</span></a>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :         [self getCode];</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     108 </span>            :     
+<span class="lineNum">     109 </span><span class="lineCov">>2111*10^11 :     UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(45,k_codeLabel.bottom+5, mideleBgImg.width-90, 1)];</span>
+<span class="lineNum">     110 </span><span class="lineCov">>1055*10^11 :     line2.backgroundColor = CLineColor;</span>
+<span class="lineNum">     111 </span><span class="lineCov">>35185*10^9 :     [mideleBgImg addSubview:line2];</span>
+<span class="lineNum">     112 </span>            : 
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">>1055*10^11 :     [mideleBgImg addSubview:self.loginBtn];</span></a>
+<span class="lineNum">     114 </span><span class="lineCov">>1055*10^11 :     _loginBtn.frame = CGRectMake(45,186,mideleBgImg.width-90,KNormalBBtnHeight);</span>
+<span class="lineNum">     115 </span><span class="lineCov">>70370*10^9 :     [_loginBtn addTapBlock:^(UIButton *btn) {</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :          @strongify(self);</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :         [self EcommerceOfRegister];</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     119 </span>            :  
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">>35185*10^9 : }</span></a>
+<span class="lineNum">     121 </span>            : //开启定时器
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 : - (void)startTimer {</span>
+<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :     RMTimer *sharedTimer = [RMTimer sharedTimer];</span></a>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :     @weakify(self);</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :     [sharedTimer resumeTimerWithDuration:self.seconds interval:1 handleBlock:^(NSInteger currentTime) {</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :         @strongify(self);</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :         self.getCodeBtn.enabled = NO;</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :         [self.getCodeBtn setTitle:[NSString stringWithFormat:@&quot;重发(%ld)&quot;,(long)currentTime] forState:UIControlStateDisabled];</span>
+<a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 :         [self.getCodeBtn setTitleColor:KGrayColor forState:UIControlStateDisabled];</span></a>
+<span class="lineNum">     130 </span>            :         
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     } timeOutBlock:^{</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :         @strongify(self);</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :         self.getCodeBtn.enabled = YES;</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     136 </span>            : 
+<a name="137"><span class="lineNum">     137 </span>            : </a>
+<span class="lineNum">     138 </span>            : //用户账号登录
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 : -(void)EcommerceOfRegister{</span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :     self.logic.phoneNumber = self.phoneNumberField.text;</span></a>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :     self.logic.messageCode = self.codeField.text;</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :     [_logic checkDataWithPhoneCallback:^(BOOL successful, NSString *tips) {</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :         if (successful) {</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :                 NSDictionary*parmeters=@{</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :                                          @&quot;phoneNumber&quot;:self.phoneNumberField.text,</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :                                          @&quot;verificationCode&quot;:self.codeField.text,</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :                                          @&quot;name&quot;:self.phoneNumberField.text,//姓名是手机号码</span>
+<span class="lineNum">     148 </span>            :                                          @&quot;group&quot;:@&quot;CUSTOMER&quot;
+<span class="lineNum">     149 </span>            :                                          };
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :             [help_userManager requestEcomRegister:parmeters];</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :         } else {</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :             [PSTipsView showTips:tips];</span>
+<span class="lineNum">     153 </span>            :         }
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     156 </span>            : 
+<a name="157"><span class="lineNum">     157 </span>            : </a>
+<span class="lineNum">     158 </span>            : //MARK:获取验证码
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 : - (void)getCode {</span>
+<span class="lineNum">     160 </span>            :     
+<a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :     self.getCodeBtn.enabled = NO;</span></a>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :     _logic.phoneNumber = self.phoneNumberField.text;</span>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :     [_logic checkDataWithPhoneCallback:^(BOOL successful, NSString *tips) {</span></a>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :         if (successful) {</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :             [self.logic getVerificationCodeData:^(id data) {</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :                 [PSTipsView showTips:@&quot;已发送&quot;];</span>
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 :                 self.seconds=60;</span>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :                 [self startTimer];</span></a>
+<span class="lineNum">     169 </span>            :                 
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :             } failed:^(NSError *error) {</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :                 NSString *message = @&quot;&quot;;</span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 :                 NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];</span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :                 if (data) {</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :                     id body = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];</span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :                     message = body[@&quot;message&quot;];</span>
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :                 } else {</span>
+<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :                      message = @&quot;无法连接到服务器！&quot;;</span></a>
+<span class="lineNum">     178 </span>            :                 }
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :                 dispatch_async(dispatch_get_main_queue(), ^{</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :                     [PSTipsView showTips:message];</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :                     self.getCodeBtn.enabled=YES;</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :                 });</span>
+<span class="lineNum">     183 </span>            :                 
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :             }];</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :         } else {</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :             self.getCodeBtn.enabled = YES;</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :             [PSTipsView showTips:tips];</span>
+<span class="lineNum">     188 </span>            :         }
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 : }</span>
+<a name="191"><span class="lineNum">     191 </span>            : </a>
+<span class="lineNum">     192 </span>            : #pragma mark --- Setting&amp;&amp;Getting
+<span class="lineNum">     193 </span><span class="lineCov">>1407*10^11 : - (UIScrollView *)scrollview {</span>
+<span class="lineNum">     194 </span><span class="lineCov">>1759*10^11 :     if (!_scrollview) {</span>
+<span class="lineNum">     195 </span><span class="lineCov">>1759*10^11 :         _scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0, KScreenWidth, KScreenHeight)];</span>
+<span class="lineNum">     196 </span><span class="lineCov">>35185*10^9 :         _scrollview.backgroundColor = CViewBgColor;</span>
+<span class="lineNum">     197 </span><span class="lineCov">>35185*10^9 :     }</span>
+<span class="lineNum">     198 </span><span class="lineCov">>1407*10^11 :     return _scrollview;</span>
+<a name="199"><span class="lineNum">     199 </span>            : }</a>
+<span class="lineNum">     200 </span>            : 
+<span class="lineNum">     201 </span><span class="lineCov">>70370*10^9 : - (UITextField *)phoneNumberField {</span>
+<span class="lineNum">     202 </span><span class="lineCov">>1055*10^11 :     if (!_phoneNumberField) {</span>
+<span class="lineNum">     203 </span><span class="lineCov">>35185*10^9 :         _phoneNumberField = [[UITextField alloc] init];</span>
+<span class="lineNum">     204 </span><span class="lineCov">>35185*10^9 :         _phoneNumberField.placeholder = @&quot;请输入手机号码&quot;;</span>
+<span class="lineNum">     205 </span><span class="lineCov">>35185*10^9 :         _phoneNumberField.textAlignment = NSTextAlignmentLeft;</span>
+<span class="lineNum">     206 </span><span class="lineCov">>35185*10^9 :         _phoneNumberField.textColor = CFontColor2;</span>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">>35185*10^9 :         _phoneNumberField.font = FFont1;</span></a>
+<span class="lineNum">     208 </span><span class="lineCov">>35185*10^9 :         _phoneNumberField.keyboardType = UIKeyboardTypeNumberPad;</span>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">>70370*10^9 :         [_phoneNumberField.rac_textSignal subscribeNext:^(NSString * _Nullable x) {</span></a>
+<span class="lineNum">     210 </span><span class="lineCov">>35185*10^9 :             NSLog(@&quot;%@&quot;,x);</span>
+<span class="lineNum">     211 </span><span class="lineCov">>35185*10^9 :         } completed:^{</span>
+<span class="lineNum">     212 </span>            :             
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     214 </span><span class="lineCov">>35185*10^9 :     }</span>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">>70370*10^9 :     return _phoneNumberField;</span></a>
+<span class="lineNum">     216 </span>            : }
+<span class="lineNum">     217 </span><span class="lineCov">>1055*10^11 : - (UITextField *)codeField {</span>
+<span class="lineNum">     218 </span><span class="lineCov">>1407*10^11 :     if (!_codeField) {</span>
+<span class="lineNum">     219 </span><span class="lineCov">>35185*10^9 :         _codeField = [[UITextField alloc] init];</span>
+<span class="lineNum">     220 </span><span class="lineCov">>35185*10^9 :         _codeField.placeholder = @&quot;请输入验证码&quot;;</span>
+<span class="lineNum">     221 </span><span class="lineCov">>35185*10^9 :         _codeField.textAlignment = NSTextAlignmentLeft;</span>
+<span class="lineNum">     222 </span><span class="lineCov">>35185*10^9 :         _codeField.textColor = CFontColor2;</span>
+<span class="lineNum">     223 </span><span class="lineCov">>35185*10^9 :         _codeField.font = FFont1;</span>
+<span class="lineNum">     224 </span><span class="lineCov">>35185*10^9 :         _codeField.keyboardType = UIKeyboardTypeNumberPad;</span>
+<span class="lineNum">     225 </span>            :         
+<span class="lineNum">     226 </span><span class="lineCov">>35185*10^9 :     }</span>
+<span class="lineNum">     227 </span><span class="lineCov">>1055*10^11 :     return _codeField;</span>
+<a name="228"><span class="lineNum">     228 </span>            : }</a>
+<span class="lineNum">     229 </span>            : 
+<span class="lineNum">     230 </span><span class="lineCov">>70370*10^9 : - (UIButton *)getCodeBtn {</span>
+<span class="lineNum">     231 </span><span class="lineCov">>1055*10^11 :     if (!_getCodeBtn) {</span>
+<span class="lineNum">     232 </span><span class="lineCov">>35185*10^9 :         _getCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];</span>
+<span class="lineNum">     233 </span><span class="lineCov">>35185*10^9 :         [_getCodeBtn setTitle:@&quot;获取验证码&quot; forState:UIControlStateNormal];</span>
+<span class="lineNum">     234 </span><span class="lineCov">>35185*10^9 :         [_getCodeBtn setTitleColor:CFontColor3 forState:UIControlStateNormal];</span>
+<span class="lineNum">     235 </span><span class="lineCov">>35185*10^9 :         _getCodeBtn.titleLabel.font = FFont1;</span>
+<span class="lineNum">     236 </span><span class="lineCov">>35185*10^9 :     }</span>
+<span class="lineNum">     237 </span><span class="lineCov">>70370*10^9 :     return _getCodeBtn;</span>
+<a name="238"><span class="lineNum">     238 </span>            : }</a>
+<span class="lineNum">     239 </span>            : 
+<span class="lineNum">     240 </span><span class="lineCov">>35185*10^9 : - (UIButton *)loginBtn {</span>
+<span class="lineNum">     241 </span><span class="lineCov">>70370*10^9 :     if (!_loginBtn) {</span>
+<span class="lineNum">     242 </span><span class="lineCov">>35185*10^9 :         _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];</span>
+<span class="lineNum">     243 </span><span class="lineCov">>35185*10^9 :         [_loginBtn setTitle:@&quot;登录&quot; forState:UIControlStateNormal];</span>
+<span class="lineNum">     244 </span><span class="lineCov">>35185*10^9 :         [_loginBtn setTitleColor:CFontColor_BtnTitle forState:UIControlStateNormal];</span>
+<span class="lineNum">     245 </span><span class="lineCov">>35185*10^9 :         [_loginBtn setBackgroundImage:IMAGE_NAMED(@&quot;loginbtnbgicon&quot;) forState:UIControlStateNormal];</span>
+<span class="lineNum">     246 </span><span class="lineCov">>35185*10^9 :     }</span>
+<span class="lineNum">     247 </span><span class="lineCov">>35185*10^9 :     return _loginBtn;</span>
+<span class="lineNum">     248 </span>            : }
+<span class="lineNum">     249 </span>            : 
+<span class="lineNum">     250 </span>            : 
+<span class="lineNum">     251 </span>            : 
+<span class="lineNum">     252 </span>            : 
+<span class="lineNum">     253 </span>            : 
+<span class="lineNum">     254 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

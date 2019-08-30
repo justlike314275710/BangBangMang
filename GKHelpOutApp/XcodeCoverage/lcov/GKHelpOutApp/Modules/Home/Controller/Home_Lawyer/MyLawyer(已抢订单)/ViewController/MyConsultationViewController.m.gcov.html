@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/Home/Controller/Home_Lawyer/MyLawyer(已抢订单)/ViewController/MyConsultationViewController.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/Home/Controller/Home_Lawyer/MyLawyer(已抢订单)/ViewController</a> - MyConsultationViewController.m<span style="font-size: 80%;"> (source / <a href="MyConsultationViewController.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">93</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  MyonsultationViewController.m
+<span class="lineNum">       3 </span>            : //  GKHelpOutApp
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by kky on 2019/2/26.
+<span class="lineNum">       6 </span>            : //  Copyright © 2019年 kky. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;MyConsultationViewController.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;LegaladviceViewController.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;CounselingViewController.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;ZWTopSelectButton.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;ZWTopSelectVcView.h&quot;
+<span class="lineNum">      14 </span>            : #import &quot;PSMyAdviceViewController.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;PSConsultationViewModel.h&quot;
+<span class="lineNum">      16 </span>            : #import &quot;LawyerAdviceViewController.h&quot;
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : @interface MyConsultationViewController ()&lt;ZWTopSelectVcViewDataSource,ZWTopSelectVcViewDelegate&gt; {
+<span class="lineNum">      19 </span>            :     BOOL              isChangeChildVc;
+<span class="lineNum">      20 </span>            :     int               selectIndex;
+<a name="21"><span class="lineNum">      21 </span>            :     UIViewController *selectViewController;</a>
+<a name="22"><span class="lineNum">      22 </span>            : }</a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) ZWTopSelectVcView *topSelectVcView;</span></a>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) UIImageView *iconImg1;</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) UIImageView *iconImg2;</span>
+<span class="lineNum">      26 </span>            : 
+<a name="27"><span class="lineNum">      27 </span>            : @end</a>
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 : @implementation MyConsultationViewController</span>
+<span class="lineNum">      30 </span>            : 
+<a name="31"><span class="lineNum">      31 </span>            : </a>
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 : -(void)viewWillAppear:(BOOL)animated{</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     [super viewWillAppear:YES];</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     KPostNotification(KNotificationOrderStateChange, nil);</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : - (void)viewDidLoad {</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     [super viewDidLoad];</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     self.title = @&quot;我的咨询&quot;;</span>
+<span class="lineNum">      41 </span>            : //    [self addNavigationItemWithImageNames:@[@&quot;会话icon－红点&quot;] isLeft:NO target:self action:@selector(rightAction) tags:@[@2000]];
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     [self setupUI];</span>
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            :     
+<span class="lineNum">      45 </span>            :     
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : }</span>
+<a name="47"><span class="lineNum">      47 </span>            : </a>
+<span class="lineNum">      48 </span>            : #pragma mark - PrivateMethods
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : - (void)setupUI {</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     self.automaticallyAdjustsScrollViewInsets = NO;</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     self.edgesForExtendedLayout = UIRectEdgeNone;</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     ZWTopSelectVcView *topSelectVcView=[[ZWTopSelectVcView alloc]init];</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     self.topSelectVcView.isCloseSwipeGesture = YES;</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     topSelectVcView.frame=CGRectMake(0,14,KScreenWidth,KScreenHeight);</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     [self.view addSubview:topSelectVcView];</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     self.topSelectVcView=topSelectVcView;</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     self.topSelectVcView.dataSource=self;</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     self.topSelectVcView.delegate=self;</span>
+<span class="lineNum">      59 </span>            :     
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     [self.topSelectVcView setupZWTopSelectVcViewUI];</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     self.topSelectVcView.animationType=Push;</span>
+<span class="lineNum">      62 </span>            :     
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     [self.topSelectVcView addSubview:self.iconImg1];</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     self.iconImg1.frame = CGRectMake(40,(50-13)/2, 13, 13);</span>
+<span class="lineNum">      65 </span>            :     
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     [self.topSelectVcView addSubview:self.iconImg2];</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :     self.iconImg2.frame = CGRectMake(40+KScreenWidth/2,(50-13)/2, 13, 13);</span>
+<span class="lineNum">      68 </span>            :     //fix
+<span class="lineNum">      69 </span>            : //    UIButton *btn = [UIButton new];
+<span class="lineNum">      70 </span>            : //    btn.frame = CGRectMake(KScreenWidth/2,14,KScreenHeight/2,50);
+<span class="lineNum">      71 </span>            : //    [self.view addSubview:btn];
+<span class="lineNum">      72 </span>            : //    btn.backgroundColor= KClearColor;
+<span class="lineNum">      73 </span>            : //    [btn addTapBlock:^(UIButton *btn) {
+<span class="lineNum">      74 </span>            : //         [PSTipsView showTips:Hmsg_Comingsoon];
+<span class="lineNum">      75 </span>            : //    }];
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : }</span>
+<a name="78"><span class="lineNum">      78 </span>            : </a>
+<span class="lineNum">      79 </span>            : #pragma mark - TouchEvent
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 : -(void)rightAction {</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     [PSTipsView showTips:Hmsg_Comingsoon];</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 : }</span>
+<a name="83"><span class="lineNum">      83 </span>            : </a>
+<span class="lineNum">      84 </span>            : #pragma mark - ZWTopSelectVcViewDelegate
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 : - (void)topSelectVcView:(ZWTopSelectVcView *)topSelectVcView didSelectVc:(UIViewController *)selectVc atIndex:(int)index</span>
+<span class="lineNum">      86 </span>            : {
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     NSLog(@&quot;\n当前选中Vc %@ \n index为%d  222&quot;,selectVc,index);</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :     if (index==1) {</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 :         [PSTipsView showTips:@&quot;敬请期待!&quot;];</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :         return;</span>
+<span class="lineNum">      91 </span>            :     }
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :     selectIndex = index;</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :     selectViewController = selectVc;</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     if (index==0) {</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :         _iconImg1.image = IMAGE_NAMED(@&quot;用户icon&quot;);</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :         _iconImg2.image = [UIImage imageNamed:@&quot;wezxicon&quot;];</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     } else {</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :         _iconImg1.image = IMAGE_NAMED(@&quot;用户icon&quot;);</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 :         _iconImg2.image = [UIImage imageNamed:@&quot;wezxicon&quot;];</span>
+<span class="lineNum">     100 </span>            :     }
+<span class="lineNum">     101 </span>            :     
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     103 </span>            : 
+<a name="104"><span class="lineNum">     104 </span>            : #pragma mark - ZWTopSelectVcViewDataSource</a>
+<span class="lineNum">     105 </span>            : //初始化设置
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : -(NSMutableArray *)totalControllerInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcView</span>
+<span class="lineNum">     107 </span>            : {
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     NSMutableArray *controllerMutableArr=[NSMutableArray array];</span>
+<span class="lineNum">     109 </span>            :     
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :     switch (help_userManager.userStatus) {</span>
+<span class="lineNum">     111 </span>            :         case 3:{
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :             LawyerAdviceViewController *showtwoVc= [[ LawyerAdviceViewController alloc]init];</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :             showtwoVc.title=@&quot;法律咨询&quot;;</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :             [controllerMutableArr addObject:showtwoVc];}</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :             break;</span>
+<span class="lineNum">     116 </span>            :             
+<span class="lineNum">     117 </span>            :         default:{
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :             PSMyAdviceViewController *showtwoVc= [[ PSMyAdviceViewController alloc]initWithViewModel:[[PSConsultationViewModel alloc] init]];</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :             showtwoVc.title=@&quot;法律咨询&quot;;</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :             [controllerMutableArr addObject:showtwoVc];}</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :             break;</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     123 </span>            :     
+<span class="lineNum">     124 </span>            :     
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :     LegaladviceViewController *showoneVc= [[LegaladviceViewController alloc]initWithViewModel:[[PSConsultationViewModel alloc] init]];</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     showoneVc.title=@&quot;心理咨询&quot;;</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     [controllerMutableArr addObject:showoneVc];</span>
+<span class="lineNum">     128 </span>            :     
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :     return controllerMutableArr;</span>
+<a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     131 </span>            : //（可选）初始化展示第几个控制器（默认第一个，以UIViewController查找，优先级高）
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 : -(UIViewController *)showChildViewVcNameInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcView</span>
+<span class="lineNum">     133 </span>            : {
+<span class="lineNum">     134 </span>            :     
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :     return selectViewController;</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 : }</span>
+<a name="137"><span class="lineNum">     137 </span>            : </a>
+<span class="lineNum">     138 </span>            : //顶部按钮间隔线颜色
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 : -(UIColor *)topSliderLineSpacingColorInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcViedew</span>
+<span class="lineNum">     140 </span>            : {
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :     return CLineColor;</span>
+<a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     143 </span>            : //顶部按钮文字选中背景色设置
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 : -(UIColor *)topSliderViewSelectedTitleColorInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcViedew</span>
+<span class="lineNum">     145 </span>            : {
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :     return CFontColor1;</span>
+<a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     148 </span>            : //顶部按钮文字未选中背景色设置
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 : -(UIColor *)topSliderViewNotSelectedTitleColorInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcViedew</span>
+<span class="lineNum">     150 </span>            : {
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :     return CFontColor2;</span>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     153 </span>            : //顶部滑块背景设置
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 : -(UIColor *)topSliderViewBackGroundColorInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcView</span>
+<span class="lineNum">     155 </span>            : {
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :     return CFontColor3;</span></a>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 : -(CGFloat)topViewHeightInZWTopSelectVcView:(ZWTopSelectVcView *)topSelectVcView {</span>
+<span class="lineNum">     159 </span>            :     return 50;
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     161 </span>            : #pragma mark - Setting&amp;Getting
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 : - (UIImageView *)iconImg1 {</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :     if (!_iconImg1) {</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :         _iconImg1 = [UIImageView new];</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :         _iconImg1.image = IMAGE_NAMED(@&quot;用户icon&quot;);</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :     }</span>
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :     return _iconImg1;</span></a>
+<span class="lineNum">     168 </span>            : }
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 : - (UIImageView *)iconImg2 {</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :     if (!_iconImg2) {</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :         _iconImg2 = [UIImageView new];</span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 :         _iconImg2.image = [UIImage imageNamed:@&quot;wezxicon&quot;];</span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :     return _iconImg2;</span>
+<span class="lineNum">     175 </span>            : }
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

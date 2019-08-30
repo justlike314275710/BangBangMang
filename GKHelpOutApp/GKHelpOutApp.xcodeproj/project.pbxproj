@@ -38,7 +38,6 @@
 		552924FC2237A9A700B4899A /* WXZTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924FB2237A9A700B4899A /* WXZTipView.m */; };
 		554E0F45230F8F52000D6C92 /* HpBaseLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 554E0F44230F8F52000D6C92 /* HpBaseLogicTests.m */; };
 		5557A48E221BB46C00743012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A48D221BB46C00743012 /* AppDelegate.m */; };
-		5557A491221BB46C00743012 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A490221BB46C00743012 /* ViewController.m */; };
 		5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */; };
 		5557A4B1221BB46E00743012 /* GKHelpOutAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4B0221BB46E00743012 /* GKHelpOutAppUITests.m */; };
 		5557A4C8221BD09200743012 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4C0221BD09200743012 /* main.m */; };
@@ -182,6 +181,8 @@
 		555DB7CB230E815C00B51B9D /* UserManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 555DB7CA230E815C00B51B9D /* UserManagerTests.m */; };
 		555DB7CD230E993B00B51B9D /* AppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 555DB7CC230E993B00B51B9D /* AppDelegateTests.m */; };
 		556974CC230B8FCB00A20D3F /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 556974CB230B8FCB00A20D3F /* KGStatusBar.m */; };
+		557764192313BAD5000E88E2 /* PSViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 557764182313BAD5000E88E2 /* PSViewControllerTests.m */; };
+		5577641B2313BDB3000E88E2 /* PSBusinessViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5577641A2313BDB3000E88E2 /* PSBusinessViewControllerTests.m */; };
 		557D9E0A226856E200F5D526 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */; };
 		55820D72230FC69300C73920 /* UploadManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55820D71230FC69300C73920 /* UploadManagerTests.m */; };
 		55820D74230FCF0B00C73920 /* LifeCircleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55820D73230FCF0B00C73920 /* LifeCircleManagerTests.m */; };
@@ -212,6 +213,14 @@
 		559785AF22266219007BBCC2 /* UIViewController+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 559785AD22266219007BBCC2 /* UIViewController+Tool.m */; };
 		55AB82B7226875F8004EF0A9 /* BaseRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AB82B6226875F8004EF0A9 /* BaseRootViewController.m */; };
 		55AC64D52271A84700F82DB9 /* TLCommentDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AC64D42271A84700F82DB9 /* TLCommentDetail.m */; };
+		55B4DB7E2314BE2E003BDA00 /* RootNavigationControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4DB7D2314BE2E003BDA00 /* RootNavigationControllerTests.m */; };
+		55B4DB802314BF73003BDA00 /* RootViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4DB7F2314BF73003BDA00 /* RootViewControllerTests.m */; };
+		55B4DB822314C185003BDA00 /* BaseRootViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4DB812314C185003BDA00 /* BaseRootViewControllerTests.m */; };
+		55B4DB842314C545003BDA00 /* MainTabBarControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4DB832314C545003BDA00 /* MainTabBarControllerTests.m */; };
+		55B4DB872314C6D3003BDA00 /* SendLifeCircleLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4DB862314C6D3003BDA00 /* SendLifeCircleLogicTests.m */; };
+		55B4DB892314C8BF003BDA00 /* LifeCircleLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4DB882314C8BF003BDA00 /* LifeCircleLogicTests.m */; };
+		55B4DB8B2314CBF5003BDA00 /* LifeDetailCircleLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4DB8A2314CBF5003BDA00 /* LifeDetailCircleLogicTests.m */; };
+		55B4DB912314DEE1003BDA00 /* UIViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4DB902314DEE1003BDA00 /* UIViewControllerTests.m */; };
 		55B4F67A2223EFFC002B1536 /* PSAuthorizationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */; };
 		55C0C76A222CD23C00CD2459 /* HMAccountBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0C769222CD23C00CD2459 /* HMAccountBalanceViewController.m */; };
 		55C0C76F222CFA9300CD2459 /* LLActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C0C76D222CFA9300CD2459 /* LLActionSheetView.m */; };
@@ -689,8 +698,6 @@
 		5557A489221BB46C00743012 /* GKHelpOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKHelpOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A48C221BB46C00743012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5557A48D221BB46C00743012 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5557A48F221BB46C00743012 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5557A490221BB46C00743012 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5557A4A1221BB46E00743012 /* GKHelpOutAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GKHelpOutAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GKHelpOutAppTests.m; sourceTree = "<group>"; };
 		5557A4A7221BB46E00743012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -932,6 +939,8 @@
 		555DB7CC230E993B00B51B9D /* AppDelegateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegateTests.m; sourceTree = "<group>"; };
 		556974CA230B8FCB00A20D3F /* KGStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGStatusBar.h; sourceTree = "<group>"; };
 		556974CB230B8FCB00A20D3F /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
+		557764182313BAD5000E88E2 /* PSViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSViewControllerTests.m; sourceTree = "<group>"; };
+		5577641A2313BDB3000E88E2 /* PSBusinessViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSBusinessViewControllerTests.m; sourceTree = "<group>"; };
 		557D9E08226856E100F5D526 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		557D9E09226856E100F5D526 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		55820D71230FC69300C73920 /* UploadManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadManagerTests.m; sourceTree = "<group>"; };
@@ -989,6 +998,14 @@
 		55AB82B6226875F8004EF0A9 /* BaseRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseRootViewController.m; sourceTree = "<group>"; };
 		55AC64D32271A84700F82DB9 /* TLCommentDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLCommentDetail.h; sourceTree = "<group>"; };
 		55AC64D42271A84700F82DB9 /* TLCommentDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLCommentDetail.m; sourceTree = "<group>"; };
+		55B4DB7D2314BE2E003BDA00 /* RootNavigationControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootNavigationControllerTests.m; sourceTree = "<group>"; };
+		55B4DB7F2314BF73003BDA00 /* RootViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewControllerTests.m; sourceTree = "<group>"; };
+		55B4DB812314C185003BDA00 /* BaseRootViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseRootViewControllerTests.m; sourceTree = "<group>"; };
+		55B4DB832314C545003BDA00 /* MainTabBarControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarControllerTests.m; sourceTree = "<group>"; };
+		55B4DB862314C6D3003BDA00 /* SendLifeCircleLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendLifeCircleLogicTests.m; sourceTree = "<group>"; };
+		55B4DB882314C8BF003BDA00 /* LifeCircleLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeCircleLogicTests.m; sourceTree = "<group>"; };
+		55B4DB8A2314CBF5003BDA00 /* LifeDetailCircleLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeDetailCircleLogicTests.m; sourceTree = "<group>"; };
+		55B4DB902314DEE1003BDA00 /* UIViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewControllerTests.m; sourceTree = "<group>"; };
 		55B4F6782223EFFC002B1536 /* PSAuthorizationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAuthorizationTool.h; sourceTree = "<group>"; };
 		55B4F6792223EFFC002B1536 /* PSAuthorizationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAuthorizationTool.m; sourceTree = "<group>"; };
 		55C0C768222CD23C00CD2459 /* HMAccountBalanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMAccountBalanceViewController.h; sourceTree = "<group>"; };
@@ -1923,8 +1940,6 @@
 				5557A4CF221BD6A700743012 /* Define */,
 				5557A4BE221BCFAA00743012 /* ThridParty */,
 				5557A4BF221BD04100743012 /* Supporting Files */,
-				5557A48F221BB46C00743012 /* ViewController.h */,
-				5557A490221BB46C00743012 /* ViewController.m */,
 			);
 			path = GKHelpOutApp;
 			sourceTree = "<group>";
@@ -1933,6 +1948,8 @@
 			isa = PBXGroup;
 			children = (
 				555DB7CC230E993B00B51B9D /* AppDelegateTests.m */,
+				55B4DB852314C683003BDA00 /* Modules */,
+				5577641C2313CB3A000E88E2 /* Base */,
 				55820D70230FC63200C73920 /* Manager */,
 				555DB7C9230E748700B51B9D /* Components */,
 				555DB7C8230E713600B51B9D /* LoginAndRegister */,
@@ -2068,12 +2085,12 @@
 		5557A4F2221BD76300743012 /* TabbarController */ = {
 			isa = PBXGroup;
 			children = (
+				5557A4F7221BD76300743012 /* UITabBar+CustomBadge.h */,
 				5557A4F3221BD76300743012 /* UITabBar+CustomBadge.m */,
 				5557A4F4221BD76300743012 /* XYTabBar.h */,
-				5557A4F5221BD76300743012 /* MainTabBarController.m */,
 				5557A4F6221BD76300743012 /* XYTabBar.m */,
-				5557A4F7221BD76300743012 /* UITabBar+CustomBadge.h */,
 				5557A4F8221BD76300743012 /* MainTabBarController.h */,
+				5557A4F5221BD76300743012 /* MainTabBarController.m */,
 			);
 			path = TabbarController;
 			sourceTree = "<group>";
@@ -2781,7 +2798,6 @@
 				55249101230D37D1008102C2 /* LoginViewControllerTests.m */,
 				55249103230D3A0F008102C2 /* LoginLogicTests.m */,
 				555DB7CA230E815C00B51B9D /* UserManagerTests.m */,
-				554E0F44230F8F52000D6C92 /* HpBaseLogicTests.m */,
 			);
 			path = LoginAndRegister;
 			sourceTree = "<group>";
@@ -2789,6 +2805,8 @@
 		555DB7C9230E748700B51B9D /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				557764182313BAD5000E88E2 /* PSViewControllerTests.m */,
+				5577641A2313BDB3000E88E2 /* PSBusinessViewControllerTests.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2800,6 +2818,19 @@
 				556974CB230B8FCB00A20D3F /* KGStatusBar.m */,
 			);
 			path = KGStatusBar;
+			sourceTree = "<group>";
+		};
+		5577641C2313CB3A000E88E2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				554E0F44230F8F52000D6C92 /* HpBaseLogicTests.m */,
+				55B4DB7D2314BE2E003BDA00 /* RootNavigationControllerTests.m */,
+				55B4DB7F2314BF73003BDA00 /* RootViewControllerTests.m */,
+				55B4DB812314C185003BDA00 /* BaseRootViewControllerTests.m */,
+				55B4DB832314C545003BDA00 /* MainTabBarControllerTests.m */,
+				55B4DB902314DEE1003BDA00 /* UIViewControllerTests.m */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		557D9E07226856C400F5D526 /* UINavigationBarLib */ = {
@@ -2883,6 +2914,16 @@
 				551AF6B02230F879006AB1A0 /* HMBillModel.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		55B4DB852314C683003BDA00 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				55B4DB862314C6D3003BDA00 /* SendLifeCircleLogicTests.m */,
+				55B4DB882314C8BF003BDA00 /* LifeCircleLogicTests.m */,
+				55B4DB8A2314CBF5003BDA00 /* LifeDetailCircleLogicTests.m */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		55B4F6772223EFFC002B1536 /* AuthorizationTool */ = {
@@ -4729,6 +4770,7 @@
 				5557A487221BB46C00743012 /* Resources */,
 				EA21CA33221EA694007D3445 /* Embed Frameworks */,
 				BA1A31B7CF04254FEE98A7F2 /* [CP] Copy Pods Resources */,
+				55B4DB8C2314D952003BDA00 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -4926,6 +4968,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		55B4DB8C2314D952003BDA00 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ “${CONFIGURATION}” == “Coverage” ]\n\nthen\n\nXcodeCoverage/exportenv.sh\n\nelse\n\necho “ignore coverage”\n\nfi\n";
+		};
 		BA1A31B7CF04254FEE98A7F2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5049,7 +5108,6 @@
 				EA0434472265C2C300A12210 /* NTESSystemNotificationCell.m in Sources */,
 				EAB039AF221E8FF200331569 /* NTESCellLayoutConfig.m in Sources */,
 				EAB038E7221E817B00331569 /* NIMKitNotificationFirer.m in Sources */,
-				5557A491221BB46C00743012 /* ViewController.m in Sources */,
 				EAB03918221E817B00331569 /* NIMKitMessageAtModel.m in Sources */,
 				EA21CB1E221FA2C9007D3445 /* PSPrisonerFamliesViewModel.m in Sources */,
 				EA21CAB5221F9DCC007D3445 /* PSBasePrisonerViewModel.m in Sources */,
@@ -5488,12 +5546,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				55249104230D3A0F008102C2 /* LoginLogicTests.m in Sources */,
+				55B4DB8B2314CBF5003BDA00 /* LifeDetailCircleLogicTests.m in Sources */,
+				55B4DB7E2314BE2E003BDA00 /* RootNavigationControllerTests.m in Sources */,
+				55B4DB872314C6D3003BDA00 /* SendLifeCircleLogicTests.m in Sources */,
+				55B4DB822314C185003BDA00 /* BaseRootViewControllerTests.m in Sources */,
+				55B4DB892314C8BF003BDA00 /* LifeCircleLogicTests.m in Sources */,
+				55B4DB802314BF73003BDA00 /* RootViewControllerTests.m in Sources */,
+				5577641B2313BDB3000E88E2 /* PSBusinessViewControllerTests.m in Sources */,
 				554E0F45230F8F52000D6C92 /* HpBaseLogicTests.m in Sources */,
 				555DB7CD230E993B00B51B9D /* AppDelegateTests.m in Sources */,
 				55820D74230FCF0B00C73920 /* LifeCircleManagerTests.m in Sources */,
 				55820D72230FC69300C73920 /* UploadManagerTests.m in Sources */,
 				55249102230D37D1008102C2 /* LoginViewControllerTests.m in Sources */,
+				55B4DB842314C545003BDA00 /* MainTabBarControllerTests.m in Sources */,
 				555DB7CB230E815C00B51B9D /* UserManagerTests.m in Sources */,
+				557764192313BAD5000E88E2 /* PSViewControllerTests.m in Sources */,
+				55B4DB912314DEE1003BDA00 /* UIViewControllerTests.m in Sources */,
 				5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5653,6 +5721,8 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMSDK",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
 				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/GKHelpOutApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -5694,7 +5764,9 @@
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/NIMSDK",
 					"$(PROJECT_DIR)/GKHelpOutApp/ThridParty/Alipay",
 				);
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/GKHelpOutApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (

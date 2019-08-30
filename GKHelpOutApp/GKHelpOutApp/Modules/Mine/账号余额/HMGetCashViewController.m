@@ -124,7 +124,7 @@
     tipLab.textAlignment=NSTextAlignmentCenter;
     tipLab.font = FFont1;
     tipLab.textColor=CFontColor2;
-    tipLab.text=@"2小时内到账";
+    tipLab.text=@"3小时内到账";
     [self.scrollvew addSubview:tipLab];
     
     self.submitBtn.frame =CGRectMake(spacex,KScreenHeight-74-kTopHeight,KScreenWidth-2*spacex,44);
@@ -191,7 +191,7 @@
                 KPostNotification(KNotificationGetCashSuccess, nil);
                 HMGetCashResultViewController *GetCashResultVC = [[HMGetCashResultViewController alloc] init];
                 GetCashResultVC.getCashState = PSGetCashScuess;
-                GetCashResultVC.cash = [NSString stringWithFormat:@"¥%.3f",[self.cashTextField.text doubleValue]*0.65];
+                GetCashResultVC.cash = [NSString stringWithFormat:@"¥%.2f",[self.cashTextField.text doubleValue]*0.65];
                 
                 [self.navigationController pushViewController:GetCashResultVC animated:YES];
                 
@@ -214,7 +214,7 @@
 -(void)submitAction:(UIButton*)sender {
 //    HMGetCashResultViewController *GetCashResultVC = [[HMGetCashResultViewController alloc] init];
 //    GetCashResultVC.getCashState = PSGetCashScuess;
-//    GetCashResultVC.cash = [NSString stringWithFormat:@"¥%.3f",[self.cashTextField.text doubleValue]*0.65];
+//    GetCashResultVC.cash = [NSString stringWithFormat:@"¥%.2f",[self.cashTextField.text doubleValue]*0.65];
 //    [self.navigationController pushViewController:GetCashResultVC animated:YES];
     [self lawyerWithdrawal];
 }

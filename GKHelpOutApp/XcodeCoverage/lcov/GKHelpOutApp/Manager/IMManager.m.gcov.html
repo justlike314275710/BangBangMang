@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Manager/IMManager.m</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Manager</a> - IMManager.m<span style="font-size: 80%;"> (source / <a href="IMManager.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntry">129</td>
+            <td class="headerCovTableEntryLo">33.3 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntryLo">47.6 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  IMManager.m
+<span class="lineNum">       3 </span>            : //  MiAiApp
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by 徐阳 on 2017/6/5.
+<span class="lineNum">       6 </span>            : //  Copyright © 2017年 徐阳. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;IMManager.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;NTESCellLayoutConfig.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;NTESAttachmentDecoder.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;ZQLocalNotification.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;XXAlertView.h&quot;
+<a name="14"><span class="lineNum">      14 </span>            : @interface IMManager()&lt;NIMLoginManagerDelegate,NIMChatManagerDelegate,NIMSystemNotificationManagerDelegate,NIMNetCallManagerDelegate&gt;</a>
+<span class="lineNum">      15 </span>            : //@interface IMManager()
+<span class="lineNum">      16 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) NIMSession *session;</span>
+<a name="17"><span class="lineNum">      17 </span>            : @end</a>
+<span class="lineNum">      18 </span>            : 
+<a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 : @implementation IMManager</span></a>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span><span class="lineCov">>3458*10^15 : SINGLETON_FOR_CLASS(IMManager);</span>
+<a name="22"><span class="lineNum">      22 </span>            : </a>
+<span class="lineNum">      23 </span>            : #pragma mark ————— 初始化IM —————
+<span class="lineNum">      24 </span><span class="lineCov">>1152*10^15 : -(void)initIM{</span>
+<span class="lineNum">      25 </span>            :     //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
+<span class="lineNum">      26 </span>            : //    self.sdkConfigDelegate = [[NTESSDKConfigDelegate alloc] init];
+<span class="lineNum">      27 </span>            : //    [[NIMSDKConfig sharedConfig] setDelegate:self.sdkConfigDelegate];
+<span class="lineNum">      28 </span>            :     
+<span class="lineNum">      29 </span><span class="lineCov">>1152*10^15 :     [[NIMSDKConfig sharedConfig] setShouldSyncUnreadCount:YES];</span>
+<span class="lineNum">      30 </span><span class="lineCov">>1152*10^15 :     [[NIMSDKConfig sharedConfig] setMaxAutoLoginRetryTimes:10];</span>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineCov">>1152*10^15 :     [[[NIMSDK sharedSDK] loginManager] addDelegate:self];</span>
+<span class="lineNum">      33 </span><span class="lineCov">>1152*10^15 :     [[[NIMSDK sharedSDK] chatManager] addDelegate:self];</span>
+<span class="lineNum">      34 </span><span class="lineCov">>1152*10^15 :     [[NIMSDK sharedSDK].systemNotificationManager addDelegate:self];</span>
+<span class="lineNum">      35 </span><span class="lineCov">>1152*10^15 :     [[NIMAVChatSDK sharedSDK].netCallManager addDelegate:self];</span>
+<span class="lineNum">      36 </span>            :     
+<span class="lineNum">      37 </span>            :     //注入 NIMKit 布局管理器
+<span class="lineNum">      38 </span><span class="lineCov">>1152*10^15 :     [[NIMKit sharedKit] registerLayoutConfig:[NTESCellLayoutConfig new]];</span>
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span><span class="lineCov">>1152*10^15 :     [[NIMSDK sharedSDK] registerWithAppID:kIMAppKey</span>
+<span class="lineNum">      41 </span>            :                                   cerName:kIMPushCerName];
+<span class="lineNum">      42 </span><span class="lineCov">>1152*10^15 : }</span>
+<a name="43"><span class="lineNum">      43 </span>            : </a>
+<span class="lineNum">      44 </span>            : #pragma mark ————— IM登录 —————
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">>1153*10^15 : -(void)IMLogin:(NSString *)IMID IMPwd:(NSString *)IMPwd completion:(loginBlock)completion{</span></a>
+<span class="lineNum">      46 </span>            :     
+<span class="lineNum">      47 </span><span class="lineCov">>4612*10^15 :     [[[NIMSDK sharedSDK] loginManager] login:IMID token:IMPwd completion:^(NSError * _Nullable error) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">>2305*10^15 :         if (!error) {</span>
+<span class="lineNum">      49 </span><span class="lineCov">>2305*10^15 :             if (completion) {</span>
+<span class="lineNum">      50 </span><span class="lineCov">>1152*10^15 :                 completion(YES,nil);</span>
+<span class="lineNum">      51 </span>            :                 //未读消息
+<span class="lineNum">      52 </span><span class="lineCov">>1152*10^15 :                 NSInteger messageCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;</span>
+<span class="lineNum">      53 </span><span class="lineCov">>2305*10^15 :                 if (messageCount&gt;0) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">>1152*10^15 :                     [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];</span>
+<span class="lineNum">      55 </span><span class="lineCov">>1152*10^15 :                 } else {</span>
+<span class="lineNum">      56 </span><span class="lineCov"> 1073741824 :                     [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:NO];</span>
+<span class="lineNum">      57 </span>            :                 }
+<span class="lineNum">      58 </span>            :                 //系统未读消息数
+<span class="lineNum">      59 </span><span class="lineCov">>1152*10^15 :                 NSInteger systemCount = [[[NIMSDK sharedSDK] systemNotificationManager] allUnreadCount];</span>
+<span class="lineNum">      60 </span><span class="lineCov">>1152*10^15 :                 if (systemCount&gt;0) {</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :                     [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:YES];</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :                 } else {</span>
+<span class="lineNum">      63 </span><span class="lineCov">>1152*10^15 :                     [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:NO];</span>
+<span class="lineNum">      64 </span>            :                 }
+<span class="lineNum">      65 </span><span class="lineCov">>1152*10^15 :             }</span>
+<span class="lineNum">      66 </span><span class="lineCov">>1152*10^15 :         }else{</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :             if (completion) {</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :                 completion(NO,error.localizedDescription);</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">      70 </span>            :         }
+<span class="lineNum">      71 </span><span class="lineCov">>1152*10^15 :     }];</span>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">>1153*10^15 : }</span></a>
+<a name="73"><span class="lineNum">      73 </span>            : #pragma mark ————— IM退出 —————</a>
+<span class="lineNum">      74 </span><span class="lineCov">>35185*10^9 : -(void)IMLogout{</span>
+<span class="lineNum">      75 </span><span class="lineCov">>70370*10^9 :     [[[NIMSDK sharedSDK] loginManager] logout:^(NSError * _Nullable error) {</span>
+<span class="lineNum">      76 </span><span class="lineCov">>70370*10^9 :         if (!error) {</span>
+<span class="lineNum">      77 </span><span class="lineCov">>35185*10^9 :             DLog(&quot;IM 退出成功&quot;);</span>
+<span class="lineNum">      78 </span><span class="lineCov">>35185*10^9 :         }else{</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :             DLog(&quot;IM 退出失败 %@&quot;,error.localizedDescription);</span>
+<span class="lineNum">      80 </span>            :         }
+<span class="lineNum">      81 </span><span class="lineCov">>35185*10^9 :     }];</span>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">>35185*10^9 : }</span></a>
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : -(void)onKick:(NIMKickReason)code clientType:(NIMLoginClientType)clientType</span>
+<span class="lineNum">      85 </span>            : {
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :     NSString *reason = @&quot;你被踢下线&quot;;</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     switch (code) {</span>
+<span class="lineNum">      88 </span>            :             case NIMKickReasonByClient:
+<span class="lineNum">      89 </span>            :             case NIMKickReasonByClientManually:{
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :                 reason = @&quot;你的帐号被踢出下线，请注意帐号信息安全&quot;;</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :                 NSString*determine=NSLocalizedString(@&quot;determine&quot;, @&quot;确定&quot;);</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :                 NSString*Tips=NSLocalizedString(@&quot;Tips&quot;, @&quot;提示&quot;);</span>
+<a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :                 NSString*pushed_off_line=NSLocalizedString(@&quot;pushed_off_line&quot;, @&quot;您的账号已在其他设备登陆,已被挤下线&quot;);</span></a>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :                 XXAlertView*alert=[[XXAlertView alloc]initWithTitle:Tips message:pushed_off_line sureBtn:determine cancleBtn:nil];</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :                 alert.clickIndex = ^(NSInteger index) {</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :                     if (index==2) {</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :                         [help_userManager logout:nil];</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :                     }</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 :                 };</span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :                 [alert show];</span>
+<span class="lineNum">     101 </span>            :                 break;
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     103 </span>            :             case NIMKickReasonByServer:
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :             reason = @&quot;你被服务器踢下线&quot;;</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :             break;</span>
+<span class="lineNum">     106 </span>            :         default:
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :             break;</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :     KPostNotification(KNotificationOnKick, nil);</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 : }</span>
+<a name="111"><span class="lineNum">     111 </span>            : </a>
+<span class="lineNum">     112 </span>            : #pragma mark ————— 代理 收到新消息 —————
+<span class="lineNum">     113 </span><span class="lineCov"> 2147483648 : - (void)onRecvMessages:(NSArray&lt;NIMMessage *&gt; *)messages{</span>
+<span class="lineNum">     114 </span><span class="lineCov"> 2147483648 :     DLog(@&quot;收到新消息&quot;);</span>
+<span class="lineNum">     115 </span><span class="lineCov"> 2147483648 :     [ZQLocalNotification NotificationType:CountdownNotification Identifier:@&quot;0&quot; activityId:1900001 alertBody:@&quot;您有一条新消息!&quot; alertTitle:@&quot;帮帮忙&quot; alertString:@&quot;确定&quot; withTimeDay:0 hour:0 minute:0 second:1];</span>
+<span class="lineNum">     116 </span>            :     
+<span class="lineNum">     117 </span>            :     //未读消息
+<span class="lineNum">     118 </span><span class="lineCov"> 2147483648 :     NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;</span>
+<span class="lineNum">     119 </span><span class="lineCov"> 4294967296 :     if (systemCount&gt;0) {</span>
+<span class="lineNum">     120 </span><span class="lineCov"> 2147483648 :         [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];</span>
+<span class="lineNum">     121 </span><span class="lineCov"> 2147483648 :     } else {</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :         [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:NO];</span>
+<span class="lineNum">     123 </span>            :     }
+<span class="lineNum">     124 </span><span class="lineCov"> 2147483648 : }</span>
+<a name="125"><span class="lineNum">     125 </span>            : </a>
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 : -(void)onReceiveCustomSystemNotification:(NIMCustomSystemNotification *)notification{</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :     NSData *jsonData = [notification.content dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :     NSDictionary*dic=[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];</span>
+<a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :     if ([dic[@&quot;type&quot;] isEqualToString:@&quot;RUSH_PAGE_REFRESH&quot;]) {</span></a>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :         KPostNotification(@&quot;RUSH_PAGE_REFRESH&quot;, nil);</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :             make.style = 11;</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :             make.content = @&quot;您有一笔新的订单!&quot;;</span>
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :         [banner show];</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :         [ZQLocalNotification NotificationType:CountdownNotification Identifier:@&quot;1&quot; activityId:1900000 alertBody:@&quot;您有一笔新的订单!&quot; alertTitle:@&quot;帮帮忙&quot; alertString:@&quot;确定&quot; withTimeDay:0 hour:0 minute:0 second:1];</span>
+<span class="lineNum">     139 </span>            : 
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 :     }</span>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :     else if ([dic[@&quot;type&quot;] isEqualToString:@&quot;NOTIFICATION_LEGAL_ADVICE&quot;]){</span></a>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :         [[NSNotificationCenter defaultCenter] postNotificationName:KNotificationOrderStateChange object:nil];</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :             make.style = 11;</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :             make.content = dic[@&quot;content&quot;];</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :         [banner show];</span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :         [ZQLocalNotification NotificationType:CountdownNotification Identifier:@&quot;2&quot; activityId:1900000 alertBody: dic[@&quot;content&quot;] alertTitle:@&quot;帮帮忙&quot; alertString:@&quot;确定&quot; withTimeDay:0 hour:0 minute:0 second:1];</span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 :     }</span>
+<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :     else if ([dic[@&quot;type&quot;] isEqualToString:@&quot;NOTIFICATION_PRAISE_ADVICE&quot;]||[dic[@&quot;type&quot;] isEqualToString:@&quot;NOTIFICATION_COMMENT_ADVICE&quot;]){  //评论点赞</span></a>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :         KPostNotification(KNotificationMineRefreshDot, @&quot;1&quot;);</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :             make.style = 11;</span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :             make.content = dic[@&quot;content&quot;];</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :         [banner show]; //NOTIFICATION_PRAISE_ADVICE</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :         [ZQLocalNotification NotificationType:CountdownNotification Identifier:@&quot;3&quot; activityId:1900000 alertBody:dic[@&quot;content&quot;] alertTitle:@&quot;帮帮忙&quot; alertString:@&quot;确定&quot; withTimeDay:0 hour:0 minute:0 second:1];</span>
+<span class="lineNum">     158 </span>            :         
+<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :     }</span></a>
+<span class="lineNum">     160 </span>            :     else {
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :             make.style = 11;</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :             make.content = dic[@&quot;content&quot;];</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :         [banner show];</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :         [ZQLocalNotification NotificationType:CountdownNotification Identifier:@&quot;4&quot; activityId:1900000 alertBody:dic[@&quot;content&quot;] alertTitle:@&quot;帮帮忙&quot; alertString:@&quot;确定&quot; withTimeDay:0 hour:0 minute:0 second:1];</span>
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 :         if (ValidStr(dic[@&quot;content&quot;])) {</span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :             NSString *content = dic[@&quot;content&quot;];</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 :             if ([content containsString:@&quot;您的律师认证审核已通过&quot;]) {</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :                 help_userManager.userStatus =  CERTIFIED;</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :                 KPostNotification(KNotificationMineDataChange, nil);</span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :     }</span>
+<a name="175"><span class="lineNum">     175 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 : + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString</span>
+<span class="lineNum">     178 </span>            : {
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :     if (jsonString == nil) {</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :         return nil;</span>
+<span class="lineNum">     181 </span>            :     }
+<span class="lineNum">     182 </span>            :     
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :     NSError *err;</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData</span>
+<span class="lineNum">     186 </span>            :                                                         options:NSJSONReadingMutableContainers
+<span class="lineNum">     187 </span>            :                                                           error:&amp;err];
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :     if(err)</span>
+<span class="lineNum">     189 </span>            :     {
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :         NSLog(@&quot;json解析失败：%@&quot;,err);</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :         return nil;</span>
+<span class="lineNum">     192 </span>            :     }
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :     return dic;</span>
+<span class="lineNum">     194 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     195 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

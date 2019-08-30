@@ -49,13 +49,14 @@ SINGLETON_FOR_CLASS(IMManager);
             if (completion) {
                 completion(YES,nil);
                 //未读消息
-                NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
-                if (systemCount>0) {
+                NSInteger messageCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
+                if (messageCount>0) {
                     [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:YES];
                 } else {
                     [kAppDelegate.mainTabBar setRedDotWithIndex:1 isShow:NO];
                 }
                 //系统未读消息数
+                NSInteger systemCount = [[[NIMSDK sharedSDK] systemNotificationManager] allUnreadCount];
                 if (systemCount>0) {
                     [kAppDelegate.mainTabBar setRedDotWithIndex:3 isShow:YES];
                 } else {

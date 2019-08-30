@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Base/RootViewController/BaseRootViewController.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Base/RootViewController</a> - BaseRootViewController.h<span style="font-size: 80%;"> (source / <a href="BaseRootViewController.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  BaseRootViewController.h
+<span class="lineNum">       3 </span>            : //  GKHelpOutApp
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by kky on 2019/4/18.
+<span class="lineNum">       6 </span>            : //  Copyright © 2019年 kky. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;ZZFlexibleLayoutViewController.h&quot;
+<span class="lineNum">      10 </span>            : #import &lt;MJRefresh.h&gt;
+<span class="lineNum">      11 </span>            : #import &quot;ZZFLEX.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;UIViewController+AlertViewAndActionSheet.h&quot;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : @interface BaseRootViewController : ZZFlexibleLayoutViewController
+<span class="lineNum">      15 </span>            : /**
+<a name="16"><span class="lineNum">      16 </span>            :  *  修改状态栏颜色</a>
+<a name="17"><span class="lineNum">      17 </span>            :  */</a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) UIStatusBarStyle StatusBarStyle;</span></a>
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) UITableView * tableView;</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) UICollectionView * mycollectionView;</span>
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : /**
+<span class="lineNum">      23 </span>            :  *  显示没有数据页面
+<span class="lineNum">      24 </span>            :  */
+<span class="lineNum">      25 </span>            : -(void)showNoDataImage;
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : /**
+<span class="lineNum">      28 </span>            :  *  移除无数据页面
+<span class="lineNum">      29 </span>            :  */
+<span class="lineNum">      30 </span>            : -(void)removeNoDataImage;
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : /**
+<span class="lineNum">      33 </span>            :  *  加载视图
+<span class="lineNum">      34 </span>            :  */
+<span class="lineNum">      35 </span>            : - (void)showLoadingAnimation;
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : /**
+<span class="lineNum">      38 </span>            :  *  停止加载
+<span class="lineNum">      39 </span>            :  */
+<span class="lineNum">      40 </span>            : - (void)stopLoadingAnimation;
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : /**
+<a name="43"><span class="lineNum">      43 </span>            :  *  是否显示返回按钮,默认情况是YES</a>
+<span class="lineNum">      44 </span>            :  */
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) BOOL isShowLiftBack;</span>
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            : /**
+<a name="48"><span class="lineNum">      48 </span>            :  是否隐藏导航栏</a>
+<span class="lineNum">      49 </span>            :  */
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) BOOL isHidenNaviBar;</span>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : /**
+<span class="lineNum">      53 </span>            :  导航栏添加文本按钮
+<span class="lineNum">      54 </span>            :  
+<span class="lineNum">      55 </span>            :  @param titles 文本数组
+<span class="lineNum">      56 </span>            :  @param isLeft 是否是左边 非左即右
+<span class="lineNum">      57 </span>            :  @param target 目标
+<span class="lineNum">      58 </span>            :  @param action 点击方法
+<span class="lineNum">      59 </span>            :  @param tags tags数组 回调区分用
+<span class="lineNum">      60 </span>            :  */
+<span class="lineNum">      61 </span>            : - (void)addNavigationItemWithTitles:(NSArray *)titles isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray *)tags;
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : /**
+<span class="lineNum">      64 </span>            :  导航栏添加图标按钮
+<span class="lineNum">      65 </span>            :  
+<span class="lineNum">      66 </span>            :  @param imageNames 图标数组
+<span class="lineNum">      67 </span>            :  @param isLeft 是否是左边 非左即右
+<span class="lineNum">      68 </span>            :  @param target 目标
+<span class="lineNum">      69 </span>            :  @param action 点击方法
+<span class="lineNum">      70 </span>            :  @param tags tags数组 回调区分用
+<span class="lineNum">      71 </span>            :  */
+<span class="lineNum">      72 </span>            : - (void)addNavigationItemWithImageNames:(NSArray *)imageNames isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray *)tags;
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            : /**
+<span class="lineNum">      75 </span>            :  *  默认返回按钮的点击事件，默认是返回，子类可重写
+<span class="lineNum">      76 </span>            :  */
+<span class="lineNum">      77 </span>            : - (void)backBtnClicked;
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            : //取消网络请求
+<span class="lineNum">      80 </span>            : - (void)cancelRequest;
+<span class="lineNum">      81 </span>            : @end
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

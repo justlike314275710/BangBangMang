@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Input/GrowingTextView/NIMGrowingTextView.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Input/GrowingTextView</a> - NIMGrowingTextView.h<span style="font-size: 80%;"> (source / <a href="NIMGrowingTextView.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  NIMGrowingTextView.h
+<span class="lineNum">       3 </span>            : //  NIMKit
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by chris on 16/3/27.
+<span class="lineNum">       6 </span>            : //  Copyright © 2016年 Netease. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &lt;UIKit/UIKit.h&gt;
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : @class NIMGrowingTextView;
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : @protocol NIMGrowingTextViewDelegate &lt;NSObject&gt;
+<span class="lineNum">      14 </span>            : @optional
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : - (BOOL)shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)replacementText;
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : - (BOOL)shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)range;
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span>            : - (BOOL)shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)range;
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : - (void)textViewDidBeginEditing:(NIMGrowingTextView *)growingTextView;
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            : - (void)textViewDidChangeSelection:(NIMGrowingTextView *)growingTextView;
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span>            : - (void)textViewDidEndEditing:(NIMGrowingTextView *)growingTextView;
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : - (BOOL)textViewShouldBeginEditing:(NIMGrowingTextView *)growingTextView;
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : - (BOOL)textViewShouldEndEditing:(NIMGrowingTextView *)growingTextView;
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : - (void)textViewDidChange:(NIMGrowingTextView *)growingTextView;
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : - (void)willChangeHeight:(CGFloat)height;
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : - (void)didChangeHeight:(CGFloat)height;
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : @end
+<span class="lineNum">      39 </span>            : 
+<a name="40"><span class="lineNum">      40 </span>            : @interface NIMGrowingTextView : UIScrollView</a>
+<span class="lineNum">      41 </span>            : 
+<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : @property (nonatomic,weak) id&lt;NIMGrowingTextViewDelegate&gt; textViewDelegate;</span></a>
+<span class="lineNum">      43 </span>            : 
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) NSInteger minNumberOfLines;</span></a>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : @property (nonatomic,assign) NSInteger maxNumberOfLines;</span>
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : @property (nonatomic,strong) UIView *inputView;
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : @end
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : @interface NIMGrowingTextView(TextView)
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : @property (nonatomic,copy)   NSAttributedString *placeholderAttributedText;
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : @property (nonatomic,copy)   NSString *text;
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : @property (nonatomic,strong) UIFont *font;
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : @property (nonatomic,strong) UIColor *textColor;
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : @property (nonatomic,assign) NSTextAlignment textAlignment;
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : @property (nonatomic,assign) NSRange selectedRange;
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span>            : @property (nonatomic,assign) UIDataDetectorTypes dataDetectorTypes;
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : @property (nonatomic,assign) BOOL editable;
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            : @property (nonatomic,assign) BOOL selectable;
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : @property (nonatomic,assign) BOOL allowsEditingTextAttributes;
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            : @property (nonatomic,copy)   NSAttributedString *attributedText;
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            : @property (nonatomic,strong) UIView *textViewInputAccessoryView;
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span>            : @property (nonatomic,assign) BOOL clearsOnInsertion;
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span>            : @property (nonatomic,readonly) NSTextContainer *textContainer;
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            : @property (nonatomic,assign)   UIEdgeInsets textContainerInset;
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            : @property (nonatomic,readonly) NSLayoutManager *layoutManger;
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span>            : @property (nonatomic,readonly) NSTextStorage *textStorage;
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            : @property (nonatomic, copy)    NSDictionary&lt;NSString *, id&gt; *linkTextAttributes;
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : @property (nonatomic,assign)  UIReturnKeyType returnKeyType;
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            : - (void)scrollRangeToVisible:(NSRange)range;
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

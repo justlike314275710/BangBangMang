@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/Chatting/Chat/AppConfig/TLAppConfig.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/Chatting/Chat/AppConfig</a> - TLAppConfig.m<span style="font-size: 80%;"> (source / <a href="TLAppConfig.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  TLAppConfig.m
+<span class="lineNum">       3 </span>            : //  TLChat
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by 李伯坤 on 2017/9/20.
+<span class="lineNum">       6 </span>            : //  Copyright © 2017年 李伯坤. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;TLAppConfig.h&quot;
+<a name="10"><span class="lineNum">      10 </span>            : #import &quot;TLAddMenuItem.h&quot;</a>
+<span class="lineNum">      11 </span>            : 
+<a name="12"><span class="lineNum">      12 </span><span class="lineNoCov">          0 : @implementation TLAppConfig</span></a>
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 : + (TLAppConfig *)sharedConfig</span>
+<span class="lineNum">      15 </span>            : {
+<a name="16"><span class="lineNum">      16 </span>            :     static TLAppConfig *config;</a>
+<span class="lineNum">      17 </span>            :     static dispatch_once_t onceToken;
+<a name="18"><span class="lineNum">      18 </span><span class="lineNoCov">          0 :     dispatch_once(&amp;onceToken, ^{</span></a>
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 :         config = [[self alloc] init];</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 :     return config;</span>
+<span class="lineNum">      22 </span>            : }
+<a name="23"><span class="lineNum">      23 </span>            : </a>
+<span class="lineNum">      24 </span>            : #pragma mark - # Private Methos
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : - (TLAddMenuItem *)p_getMenuItemByType:(TLAddMneuType)type</span>
+<span class="lineNum">      26 </span>            : {
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :     switch (type) {</span>
+<span class="lineNum">      28 </span>            : //        case TLAddMneuTypeGroupChat:        // 群聊
+<span class="lineNum">      29 </span>            : //            return [TLAddMenuItem createWithType:TLAddMneuTypeGroupChat title:LOCSTR(@&quot;发起群聊&quot;) iconPath:@&quot;nav_menu_groupchat&quot; className:@&quot;&quot;];
+<span class="lineNum">      30 </span>            : //            break;
+<span class="lineNum">      31 </span>            :         case TLAddMneuTypeAddFriend:        // 添加好友
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :             return [TLAddMenuItem createWithType:TLAddMneuTypeAddFriend title:LOCSTR(@&quot;添加朋友&quot;) iconPath:@&quot;nav_menu_addfriend&quot; className:@&quot;NTESContactAddFriendViewController&quot;];</span>
+<span class="lineNum">      33 </span>            :             break;
+<span class="lineNum">      34 </span>            : //        case TLAddMneuTypeWallet:           // 收付款
+<span class="lineNum">      35 </span>            : //            return [TLAddMenuItem createWithType:TLAddMneuTypeWallet title:LOCSTR(@&quot;收付款&quot;) iconPath:@&quot;nav_menu_wallet&quot; className:@&quot;&quot;];
+<span class="lineNum">      36 </span>            : //            break;
+<span class="lineNum">      37 </span>            : //        case TLAddMneuTypeScan:             // 扫一扫
+<span class="lineNum">      38 </span>            : //            return [TLAddMenuItem createWithType:TLAddMneuTypeScan title:LOCSTR(@&quot;扫一扫&quot;) iconPath:@&quot;nav_menu_scan&quot; className:@&quot;&quot;];
+<span class="lineNum">      39 </span>            : //            break;
+<span class="lineNum">      40 </span>            :         default:
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :             break;</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     return nil;</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : }</span>
+<a name="45"><span class="lineNum">      45 </span>            : </a>
+<span class="lineNum">      46 </span>            : #pragma mark - # Getters
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : - (NSString *)version</span>
+<span class="lineNum">      48 </span>            : {
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     NSString *shortVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleShortVersionString&quot;];</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     NSString *buildID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleVersion&quot;];</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     NSString *version = [NSString stringWithFormat:@&quot;%@ (%@)&quot;, shortVersion, buildID];</span>
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     return version;</span>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : - (NSArray *)addMenuItems</span>
+<span class="lineNum">      57 </span>            : {
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     if (!_addMenuItems) {</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :         return @[//[self p_getMenuItemByType:0],</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :                  [self p_getMenuItemByType:1],</span>
+<span class="lineNum">      61 </span>            :                  //[self p_getMenuItemByType:2],
+<span class="lineNum">      62 </span>            :                  //[self p_getMenuItemByType:3],
+<span class="lineNum">      63 </span>            :                  ];
+<span class="lineNum">      64 </span>            :     }
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     return _addMenuItems;</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

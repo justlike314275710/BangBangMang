@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Team/View/NIMTeamMemberCardHeaderCell.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Team/View</a> - NIMTeamMemberCardHeaderCell.m<span style="font-size: 80%;"> (source / <a href="NIMTeamMemberCardHeaderCell.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  NIMTeamMemberCardHeaderCell.m
+<span class="lineNum">       3 </span>            : //  NIMKit
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by chris on 16/5/10.
+<span class="lineNum">       6 </span>            : //  Copyright © 2016年 NetEase. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;NIMTeamMemberCardHeaderCell.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;NIMAvatarImageView.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;NIMUsrInfoData.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;NIMCommonTableData.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;NIMKit.h&quot;
+<span class="lineNum">      14 </span>            : #import &quot;UIView+NIM.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;NIMKitUtil.h&quot;
+<span class="lineNum">      16 </span>            : 
+<a name="17"><span class="lineNum">      17 </span>            : @interface NIMTeamMemberCardHeaderCell()</a>
+<span class="lineNum">      18 </span>            : 
+<a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) NIMAvatarImageView *avatarView;</span></a>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) UILabel *nickLabel;</span>
+<span class="lineNum">      22 </span>            : 
+<a name="23"><span class="lineNum">      23 </span>            : @end</a>
+<span class="lineNum">      24 </span>            : 
+<a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 : @implementation NIMTeamMemberCardHeaderCell</span></a>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier</span>
+<span class="lineNum">      28 </span>            : {
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :         [self addSubview:self.avatarView];</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :         [self addSubview:self.nickLabel];</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     return self;</span>
+<a name="35"><span class="lineNum">      35 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : - (void)refreshData:(NIMCommonTableRow *)rowData tableView:(UITableView *)tableView;{</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     NIMUsrInfo *user = rowData.extraInfo[@&quot;user&quot;];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     NIMTeam *team = rowData.extraInfo[@&quot;team&quot;];</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     NSURL *avatarURL;</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     if (user.info.avatarUrlString.length) {</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :         avatarURL = [NSURL URLWithString:user.info.avatarUrlString];</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     [self.avatarView nim_setImageWithURL:avatarURL placeholderImage:user.info.avatarImage];</span>
+<span class="lineNum">      45 </span>            :     
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     NIMSession *session = [NIMSession session:team.teamId type:NIMSessionTypeTeam];</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     self.nickLabel.text = [NIMKitUtil showNick:user.info.infoId inSession:session];</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     [self.nickLabel sizeToFit];</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     self.userInteractionEnabled = NO;</span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : - (void)layoutSubviews</span>
+<span class="lineNum">      53 </span>            : {
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     [super layoutSubviews];</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     self.avatarView.nim_top = 52.f;</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     self.avatarView.nim_centerX = self.nim_width * .5f;</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     self.nickLabel.nim_centerX = self.avatarView.nim_centerX;</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     self.nickLabel.nim_top = self.avatarView.nim_bottom + 10;</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : }</span>
+<a name="60"><span class="lineNum">      60 </span>            : </a>
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : - (NIMAvatarImageView *)avatarView</span>
+<span class="lineNum">      63 </span>            : {
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     if (!_avatarView) {</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :         _avatarView = [[NIMAvatarImageView alloc] initWithFrame:CGRectMake(125, 52, 70, 70)];</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :         _avatarView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :     return _avatarView;</span>
+<a name="69"><span class="lineNum">      69 </span>            : }</a>
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 : - (UILabel *)nickLabel</span>
+<span class="lineNum">      72 </span>            : {
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :     if (!_nickLabel) {</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :         _nickLabel = [[UILabel alloc] initWithFrame:CGRectZero];</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :         _nickLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :         _nickLabel.font = [UIFont systemFontOfSize:17];</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :         _nickLabel.textColor = [UIColor colorWithRed:51.0 / 255 green:51.0 / 255 blue:51.0 / 255 alpha:1.0];</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     return _nickLabel;</span>
+<span class="lineNum">      80 </span>            : }
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

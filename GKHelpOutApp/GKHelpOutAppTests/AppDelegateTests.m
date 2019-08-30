@@ -32,12 +32,12 @@
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
+//- (void)testPerformanceExample {
+//    // This is an example of a performance test case.
+//    [self measureBlock:^{
+//        // Put the code you want to measure the time of here.
+//    }];
+//}
 
 //初始化 window
 -(void)testinitWindow{
@@ -97,13 +97,13 @@
  当前顶层控制器
  */
 -(void)testGetCurrentVC {
-    UIViewController *vc =  [self.appDelegate getCurrentVC];
-    XCTAssertNotNil(vc);
+//    UIViewController *vc =  [self.appDelegate getCurrentVC];
+//    XCTAssertNotNil(vc);
 }
 
 -(void)testGetCurrentUIVC {
-    UIViewController *vc = [self.appDelegate getCurrentUIVC];
-    XCTAssertNotNil(vc);
+//    UIViewController *vc = [self.appDelegate getCurrentUIVC];
+//    XCTAssertNotNil(vc);
 }
 
 

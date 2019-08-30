@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Utils/SDCycleScrollView/SDCollectionViewCell.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Utils/SDCycleScrollView</a> - SDCollectionViewCell.m<span style="font-size: 80%;"> (source / <a href="SDCollectionViewCell.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">54</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  SDCollectionViewCell.m
+<span class="lineNum">       3 </span>            : //  SDCycleScrollView
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by aier on 15-3-22.
+<span class="lineNum">       6 </span>            : //  Copyright (c) 2015年 GSD. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : 
+<span class="lineNum">      10 </span>            : /*
+<span class="lineNum">      11 </span>            :  
+<span class="lineNum">      12 </span>            :  *********************************************************************************
+<span class="lineNum">      13 </span>            :  *
+<span class="lineNum">      14 </span>            :  * 🌟🌟🌟 新建SDCycleScrollView交流QQ群：185534916 🌟🌟🌟
+<span class="lineNum">      15 </span>            :  *
+<span class="lineNum">      16 </span>            :  * 在您使用此自动轮播库的过程中如果出现bug请及时以以下任意一种方式联系我们，我们会及时修复bug并
+<span class="lineNum">      17 </span>            :  * 帮您解决问题。
+<span class="lineNum">      18 </span>            :  * 新浪微博:GSD_iOS
+<span class="lineNum">      19 </span>            :  * Email : gsdios@126.com
+<span class="lineNum">      20 </span>            :  * GitHub: https://github.com/gsdios
+<span class="lineNum">      21 </span>            :  *
+<span class="lineNum">      22 </span>            :  * 另（我的自动布局库SDAutoLayout）：
+<span class="lineNum">      23 </span>            :  *  一行代码搞定自动布局！支持Cell和Tableview高度自适应，Label和ScrollView内容自适应，致力于
+<span class="lineNum">      24 </span>            :  *  做最简单易用的AutoLayout库。
+<span class="lineNum">      25 </span>            :  * 视频教程：http://www.letv.com/ptv/vplay/24038772.html
+<span class="lineNum">      26 </span>            :  * 用法示例：https://github.com/gsdios/SDAutoLayout/blob/master/README.md
+<span class="lineNum">      27 </span>            :  * GitHub：https://github.com/gsdios/SDAutoLayout
+<span class="lineNum">      28 </span>            :  *********************************************************************************
+<span class="lineNum">      29 </span>            :  
+<span class="lineNum">      30 </span>            :  */
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : #import &quot;SDCollectionViewCell.h&quot;
+<a name="34"><span class="lineNum">      34 </span>            : #import &quot;UIView+SDExtension.h&quot;</a>
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : @implementation SDCollectionViewCell</span>
+<span class="lineNum">      37 </span>            : {
+<span class="lineNum">      38 </span>            :     __weak UILabel *_titleLabel;
+<span class="lineNum">      39 </span>            : }
+<a name="40"><span class="lineNum">      40 </span>            : </a>
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : - (instancetype)initWithFrame:(CGRect)frame</span>
+<span class="lineNum">      43 </span>            : {
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     if (self = [super initWithFrame:frame]) {</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :         [self setupImageView];</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :         [self setupTitleLabel];</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      48 </span>            :     
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     return self;</span>
+<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : - (void)setTitleLabelBackgroundColor:(UIColor *)titleLabelBackgroundColor</span>
+<span class="lineNum">      53 </span>            : {
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     _titleLabelBackgroundColor = titleLabelBackgroundColor;</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     _titleLabel.backgroundColor = titleLabelBackgroundColor;</span>
+<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : - (void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor</span>
+<span class="lineNum">      59 </span>            : {
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     _titleLabelTextColor = titleLabelTextColor;</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     _titleLabel.textColor = titleLabelTextColor;</span>
+<a name="62"><span class="lineNum">      62 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : - (void)setTitleLabelTextFont:(UIFont *)titleLabelTextFont</span>
+<span class="lineNum">      65 </span>            : {
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     _titleLabelTextFont = titleLabelTextFont;</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :     _titleLabel.font = titleLabelTextFont;</span>
+<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 : - (void)setupImageView</span>
+<span class="lineNum">      71 </span>            : {
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     UIImageView *imageView = [[UIImageView alloc] init];</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :     _imageView = imageView;</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     [self.contentView addSubview:imageView];</span>
+<a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : - (void)setupTitleLabel</span>
+<span class="lineNum">      78 </span>            : {
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     UILabel *titleLabel = [[UILabel alloc] init];</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     _titleLabel = titleLabel;</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     _titleLabel.hidden = YES;</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :     [self.contentView addSubview:titleLabel];</span>
+<a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 : - (void)setTitle:(NSString *)title</span>
+<span class="lineNum">      86 </span>            : {
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     _title = [title copy];</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :     _titleLabel.text = [NSString stringWithFormat:@&quot;   %@&quot;, title];</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 :     if (_titleLabel.hidden) {</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :         _titleLabel.hidden = NO;</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :     }</span>
+<a name="92"><span class="lineNum">      92 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 : -(void)setTitleLabelTextAlignment:(NSTextAlignment)titleLabelTextAlignment</span>
+<span class="lineNum">      95 </span>            : {
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     _titleLabelTextAlignment = titleLabelTextAlignment;</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     _titleLabel.textAlignment = titleLabelTextAlignment;</span>
+<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 : - (void)layoutSubviews</span>
+<span class="lineNum">     101 </span>            : {
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     [super layoutSubviews];</span>
+<span class="lineNum">     103 </span>            :     
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     if (self.onlyDisplayText) {</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :         _titleLabel.frame = self.bounds;</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     } else {</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :         _imageView.frame = self.bounds;</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :         CGFloat titleLabelW = self.sd_width;</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :         CGFloat titleLabelH = _titleLabelHeight;</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :         CGFloat titleLabelX = 0;</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :         CGFloat titleLabelY = self.sd_height - titleLabelH;</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :         _titleLabel.frame = CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH);</span>
+<span class="lineNum">     113 </span>            :     }
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

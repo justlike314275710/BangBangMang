@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/NIMKit.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes</a> - NIMKit.h<span style="font-size: 80%;"> (source / <a href="NIMKit.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">16.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntryLo">18.2 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  NIMKit.h
+<span class="lineNum">       3 </span>            : //  NIMKit
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by amao on 8/14/15.
+<span class="lineNum">       6 </span>            : //  Copyright (c) 2015 NetEase. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &lt;Foundation/Foundation.h&gt;
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : //! Project version number for NIMKit.
+<span class="lineNum">      13 </span>            : FOUNDATION_EXPORT double NIMKitVersionNumber;
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : //! Project version string for NIMKit.
+<span class="lineNum">      16 </span>            : FOUNDATION_EXPORT const unsigned char NIMKitVersionString[];
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : // In this header, you should import all the public headers of your framework using statements like #import &lt;NIMKit/PublicHeader.h&gt;
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span>            : //#import &lt;NIMSDK/NIMSDK.h&gt;
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : /**
+<span class="lineNum">      23 </span>            :  *  基础Model
+<span class="lineNum">      24 </span>            :  */
+<span class="lineNum">      25 </span>            : #import &quot;NIMKitInfo.h&quot;
+<span class="lineNum">      26 </span>            : #import &quot;NIMMediaItem.h&quot;            //多媒体面板对象
+<span class="lineNum">      27 </span>            : #import &quot;NIMMessageModel.h&quot;         //message Wrapper
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : /**
+<span class="lineNum">      31 </span>            :  *  协议
+<span class="lineNum">      32 </span>            :  */
+<span class="lineNum">      33 </span>            : #import &quot;NIMKitMessageProvider.h&quot;
+<span class="lineNum">      34 </span>            : #import &quot;NIMCellConfig.h&quot;           //message cell配置协议
+<span class="lineNum">      35 </span>            : #import &quot;NIMInputProtocol.h&quot;        //输入框回调
+<span class="lineNum">      36 </span>            : #import &quot;NIMKitDataProvider.h&quot;      //APP内容提供器
+<span class="lineNum">      37 </span>            : #import &quot;NIMMessageCellProtocol.h&quot;  //message cell事件回调
+<span class="lineNum">      38 </span>            : #import &quot;NIMSessionConfig.h&quot;        //会话页面配置
+<span class="lineNum">      39 </span>            : #import &quot;NIMKitEvent.h&quot;             //点击事件封装类
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : #import &quot;NIMCellLayoutConfig.h&quot;
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            : /**
+<span class="lineNum">      44 </span>            :  *  消息cell的视觉模板
+<span class="lineNum">      45 </span>            :  */
+<span class="lineNum">      46 </span>            : #import &quot;NIMSessionMessageContentView.h&quot;
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : /**
+<span class="lineNum">      49 </span>            :  *  UI 配置器
+<span class="lineNum">      50 </span>            :  */
+<span class="lineNum">      51 </span>            : #import &quot;NIMKitConfig.h&quot;
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : /**
+<span class="lineNum">      54 </span>            :  *  会话页
+<span class="lineNum">      55 </span>            :  */
+<span class="lineNum">      56 </span>            : #import &quot;NIMSessionViewController.h&quot;
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : /**
+<span class="lineNum">      59 </span>            :  *  会话列表页
+<span class="lineNum">      60 </span>            :  */
+<span class="lineNum">      61 </span>            : #import &quot;NIMSessionListViewController.h&quot;
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : /*
+<span class="lineNum">      64 </span>            :  *  机器人消息模板解析器
+<span class="lineNum">      65 </span>            :  */
+<span class="lineNum">      66 </span>            : #import &quot;NIMKitRobotDefaultTemplateParser.h&quot;
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : /*
+<span class="lineNum">      69 </span>            :  *  独立聊天室模式下需注入的信息
+<span class="lineNum">      70 </span>            :  */
+<span class="lineNum">      71 </span>            : #import &quot;NIMKitIndependentModeExtraInfo.h&quot;
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : @interface NIMKit : NSObject
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            : + (instancetype)sharedKit;
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span>            : /**
+<span class="lineNum">      78 </span>            :  *  注册自定义的排版配置，通过注册自定义排版配置来实现自定义消息的定制化排版
+<span class="lineNum">      79 </span>            :  */
+<span class="lineNum">      80 </span>            : - (void)registerLayoutConfig:(NIMCellLayoutConfig *)layoutConfig;
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            : /**
+<span class="lineNum">      83 </span>            :  *  返回当前的排版配置
+<span class="lineNum">      84 </span>            :  */
+<span class="lineNum">      85 </span>            : - (id&lt;NIMCellLayoutConfig&gt;)layoutConfig;
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span>            : /**
+<a name="88"><span class="lineNum">      88 </span>            :  *  UI 配置器</a>
+<span class="lineNum">      89 </span>            :  */
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) NIMKitConfig *config;</span>
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            : /**
+<a name="93"><span class="lineNum">      93 </span>            :  *  内容提供者，由上层开发者注入。如果没有则使用默认 provider</a>
+<span class="lineNum">      94 </span>            :  */
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 : @property (nonatomic,strong)    id&lt;NIMKitDataProvider&gt; provider;</span>
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span>            : /**
+<span class="lineNum">      98 </span>            :  *  由于在独立聊天室模式下, IM 部分服务不可用，需要上层注入一些额外信息供组件显示使用。 默认为 nil，上层在独立聊天室模式下注入，注入时需要创建此对象并注入对象相关字段信息。
+<span class="lineNum">      99 </span>            :  *
+<a name="100"><span class="lineNum">     100 </span>            :  *  此字段需要配合默认的 NIMKitDataProvider ( NIMKitDataProviderImpl ) 使用，如果上层自己定义了 provider ， 则忽略此字段。</a>
+<span class="lineNum">     101 </span>            :  */
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 : @property (nonatomic,strong)  NIMKitIndependentModeExtraInfo *independentModeExtraInfo;</span>
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span>            : /**
+<a name="106"><span class="lineNum">     106 </span>            :  *  NIMKit图片资源所在的 bundle 名称。</a>
+<span class="lineNum">     107 </span>            :  */
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 : @property (nonatomic,copy)      NSString *resourceBundleName;</span>
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            : /**
+<a name="111"><span class="lineNum">     111 </span>            :  *  NIMKit表情资源所在的 bundle 名称。</a>
+<span class="lineNum">     112 </span>            :  */
+<span class="lineNum">     113 </span><span class="lineCov">>8074*10^15 : @property (nonatomic,copy)      NSString *emoticonBundleName;</span>
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            : /**
+<a name="117"><span class="lineNum">     117 </span>            :  *  机器人消息模板解析器</a>
+<span class="lineNum">     118 </span>            :  */
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 : @property (nonatomic,strong)    NIMKitRobotDefaultTemplateParser *robotTemplateParser;</span>
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            : 
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            : /**
+<span class="lineNum">     125 </span>            :  *  用户信息变更通知接口
+<span class="lineNum">     126 </span>            :  *
+<span class="lineNum">     127 </span>            :  *  @param userIds 用户 id 集合
+<span class="lineNum">     128 </span>            :  */
+<span class="lineNum">     129 </span>            : - (void)notfiyUserInfoChanged:(NSArray *)userIds;
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            : /**
+<span class="lineNum">     132 </span>            :  *  群信息变更通知接口
+<span class="lineNum">     133 </span>            :  *
+<span class="lineNum">     134 </span>            :  *  @param teamIds 群 id 集合
+<span class="lineNum">     135 </span>            :  */
+<span class="lineNum">     136 </span>            : - (void)notifyTeamInfoChanged:(NSArray *)teamIds;
+<span class="lineNum">     137 </span>            : 
+<span class="lineNum">     138 </span>            : 
+<span class="lineNum">     139 </span>            : /**
+<span class="lineNum">     140 </span>            :  *  群成员变更通知接口
+<span class="lineNum">     141 </span>            :  *
+<span class="lineNum">     142 </span>            :  *  @param teamIds 群id
+<span class="lineNum">     143 </span>            :  */
+<span class="lineNum">     144 </span>            : - (void)notifyTeamMemebersChanged:(NSArray *)teamIds;
+<span class="lineNum">     145 </span>            : 
+<span class="lineNum">     146 </span>            : /**
+<span class="lineNum">     147 </span>            :  *  返回用户信息
+<span class="lineNum">     148 </span>            :  */
+<span class="lineNum">     149 </span>            : - (NIMKitInfo *)infoByUser:(NSString *)userId
+<span class="lineNum">     150 </span>            :                     option:(NIMKitInfoFetchOption *)option;
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            : /**
+<span class="lineNum">     153 </span>            :  *  返回群信息
+<span class="lineNum">     154 </span>            :  */
+<span class="lineNum">     155 </span>            : - (NIMKitInfo *)infoByTeam:(NSString *)teamId
+<span class="lineNum">     156 </span>            :                     option:(NIMKitInfoFetchOption *)option;
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span>            : @end
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span>            : 
+<span class="lineNum">     161 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

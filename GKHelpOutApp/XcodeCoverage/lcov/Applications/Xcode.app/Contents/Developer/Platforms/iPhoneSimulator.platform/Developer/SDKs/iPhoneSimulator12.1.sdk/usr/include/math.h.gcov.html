@@ -1,0 +1,847 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.1.sdk/usr/include/math.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../../../../index.html">top level</a> - <a href="index.html">Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator12.1.sdk/usr/include</a> - math.h<span style="font-size: 80%;"> (source / <a href="math.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*</a>
+<span class="lineNum">       2 </span>            :  * Copyright (c) 2002-2017 Apple Inc. All rights reserved.
+<span class="lineNum">       3 </span>            :  *
+<span class="lineNum">       4 </span>            :  * @APPLE_LICENSE_HEADER_START@
+<span class="lineNum">       5 </span>            :  * 
+<span class="lineNum">       6 </span>            :  * The contents of this file constitute Original Code as defined in and
+<span class="lineNum">       7 </span>            :  * are subject to the Apple Public Source License Version 1.1 (the
+<span class="lineNum">       8 </span>            :  * &quot;License&quot;).  You may not use this file except in compliance with the
+<span class="lineNum">       9 </span>            :  * License.  Please obtain a copy of the License at
+<span class="lineNum">      10 </span>            :  * http://www.apple.com/publicsource and read it before using this file.
+<span class="lineNum">      11 </span>            :  * 
+<span class="lineNum">      12 </span>            :  * This Original Code and all software distributed under the License are
+<span class="lineNum">      13 </span>            :  * distributed on an &quot;AS IS&quot; basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+<span class="lineNum">      14 </span>            :  * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
+<span class="lineNum">      15 </span>            :  * INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+<span class="lineNum">      16 </span>            :  * FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT.  Please see the
+<span class="lineNum">      17 </span>            :  * License for the specific language governing rights and limitations
+<span class="lineNum">      18 </span>            :  * under the License.
+<span class="lineNum">      19 </span>            :  * 
+<span class="lineNum">      20 </span>            :  * @APPLE_LICENSE_HEADER_END@
+<span class="lineNum">      21 </span>            :  */
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : #ifndef __MATH_H__
+<span class="lineNum">      24 </span>            : #define __MATH_H__
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span>            : #ifndef __MATH__
+<span class="lineNum">      27 </span>            : #define __MATH__
+<span class="lineNum">      28 </span>            : #endif
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : #include &lt;sys/cdefs.h&gt;
+<span class="lineNum">      31 </span>            : #include &lt;Availability.h&gt;
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : __BEGIN_DECLS
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            : /******************************************************************************
+<span class="lineNum">      36 </span>            :  * Floating point data types                                                  *
+<span class="lineNum">      37 </span>            :  ******************************************************************************/
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : /*  Define float_t and double_t per C standard, ISO/IEC 9899:2011 7.12 2,
+<span class="lineNum">      40 </span>            :     taking advantage of GCC's __FLT_EVAL_METHOD__ (which a compiler may
+<span class="lineNum">      41 </span>            :     define anytime and GCC does) that shadows FLT_EVAL_METHOD (which a
+<span class="lineNum">      42 </span>            :     compiler must define only in float.h).                                    */
+<span class="lineNum">      43 </span>            : #if __FLT_EVAL_METHOD__ == 0
+<span class="lineNum">      44 </span>            :     typedef float float_t;
+<span class="lineNum">      45 </span>            :     typedef double double_t;
+<span class="lineNum">      46 </span>            : #elif __FLT_EVAL_METHOD__ == 1
+<span class="lineNum">      47 </span>            :     typedef double float_t;
+<span class="lineNum">      48 </span>            :     typedef double double_t;
+<span class="lineNum">      49 </span>            : #elif __FLT_EVAL_METHOD__ == 2 || __FLT_EVAL_METHOD__ == -1
+<span class="lineNum">      50 </span>            :     typedef long double float_t;
+<span class="lineNum">      51 </span>            :     typedef long double double_t;
+<span class="lineNum">      52 </span>            : #else /* __FLT_EVAL_METHOD__ */
+<span class="lineNum">      53 </span>            : #   error &quot;Unsupported value of __FLT_EVAL_METHOD__.&quot;
+<span class="lineNum">      54 </span>            : #endif /* __FLT_EVAL_METHOD__ */
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : #if defined(__GNUC__)
+<span class="lineNum">      57 </span>            : #   define    HUGE_VAL     __builtin_huge_val()
+<span class="lineNum">      58 </span>            : #   define    HUGE_VALF    __builtin_huge_valf()
+<span class="lineNum">      59 </span>            : #   define    HUGE_VALL    __builtin_huge_vall()
+<span class="lineNum">      60 </span>            : #   define    NAN          __builtin_nanf(&quot;0x7fc00000&quot;)
+<span class="lineNum">      61 </span>            : #else
+<span class="lineNum">      62 </span>            : #   define    HUGE_VAL     1e500
+<span class="lineNum">      63 </span>            : #   define    HUGE_VALF    1e50f
+<span class="lineNum">      64 </span>            : #   define    HUGE_VALL    1e5000L
+<span class="lineNum">      65 </span>            : #   define    NAN          __nan()
+<span class="lineNum">      66 </span>            : #endif
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : #define INFINITY    HUGE_VALF
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            : /******************************************************************************
+<span class="lineNum">      71 </span>            :  *      Taxonomy of floating point data types                                 *
+<span class="lineNum">      72 </span>            :  ******************************************************************************/
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            : #define FP_NAN          1
+<span class="lineNum">      75 </span>            : #define FP_INFINITE     2
+<span class="lineNum">      76 </span>            : #define FP_ZERO         3
+<span class="lineNum">      77 </span>            : #define FP_NORMAL       4
+<span class="lineNum">      78 </span>            : #define FP_SUBNORMAL    5
+<span class="lineNum">      79 </span>            : #define FP_SUPERNORMAL  6 /* legacy PowerPC support; this is otherwise unused */
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            : #if defined __arm64__ || defined __ARM_VFPV4__
+<span class="lineNum">      82 </span>            : /*  On these architectures, fma(), fmaf( ), and fmal( ) are generally about as
+<span class="lineNum">      83 </span>            :     fast as (or faster than) separate multiply and add of the same operands.  */
+<span class="lineNum">      84 </span>            : #   define FP_FAST_FMA     1
+<span class="lineNum">      85 </span>            : #   define FP_FAST_FMAF    1
+<span class="lineNum">      86 </span>            : #   define FP_FAST_FMAL    1
+<span class="lineNum">      87 </span>            : #elif (defined __i386__ || defined __x86_64__) &amp;&amp; (defined __FMA__ || defined __AVX512F__)
+<span class="lineNum">      88 </span>            : /*  When targeting the FMA ISA extension, fma() and fmaf( ) are generally
+<span class="lineNum">      89 </span>            :     about as fast as (or faster than) separate multiply and add of the same
+<span class="lineNum">      90 </span>            :     operands, but fmal( ) may be more costly.                                 */
+<span class="lineNum">      91 </span>            : #   define FP_FAST_FMA     1
+<span class="lineNum">      92 </span>            : #   define FP_FAST_FMAF    1
+<span class="lineNum">      93 </span>            : #   undef  FP_FAST_FMAL
+<span class="lineNum">      94 </span>            : #else
+<span class="lineNum">      95 </span>            : /*  On these architectures, fma( ), fmaf( ), and fmal( ) function calls are
+<span class="lineNum">      96 </span>            :     significantly more costly than separate multiply and add operations.      */
+<span class="lineNum">      97 </span>            : #   undef  FP_FAST_FMA
+<span class="lineNum">      98 </span>            : #   undef  FP_FAST_FMAF
+<span class="lineNum">      99 </span>            : #   undef  FP_FAST_FMAL
+<span class="lineNum">     100 </span>            : #endif
+<span class="lineNum">     101 </span>            : 
+<span class="lineNum">     102 </span>            : /* The values returned by `ilogb' for 0 and NaN respectively. */
+<span class="lineNum">     103 </span>            : #define FP_ILOGB0      (-2147483647 - 1)
+<span class="lineNum">     104 </span>            : #define FP_ILOGBNAN    (-2147483647 - 1)
+<span class="lineNum">     105 </span>            : 
+<span class="lineNum">     106 </span>            : /* Bitmasks for the math_errhandling macro.  */
+<span class="lineNum">     107 </span>            : #define MATH_ERRNO        1    /* errno set by math functions.  */
+<span class="lineNum">     108 </span>            : #define MATH_ERREXCEPT    2    /* Exceptions raised by math functions.  */
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            : #define math_errhandling (__math_errhandling())
+<span class="lineNum">     111 </span>            : extern int __math_errhandling(void);
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span>            : /******************************************************************************
+<span class="lineNum">     114 </span>            :  *                                                                            *
+<span class="lineNum">     115 </span>            :  *                              Inquiry macros                                *
+<span class="lineNum">     116 </span>            :  *                                                                            *
+<span class="lineNum">     117 </span>            :  *  fpclassify      Returns one of the FP_* values.                           *
+<span class="lineNum">     118 </span>            :  *  isnormal        Non-zero if and only if the argument x is normalized.     *
+<span class="lineNum">     119 </span>            :  *  isfinite        Non-zero if and only if the argument x is finite.         *
+<span class="lineNum">     120 </span>            :  *  isnan           Non-zero if and only if the argument x is a NaN.          *
+<span class="lineNum">     121 </span>            :  *  signbit         Non-zero if and only if the sign of the argument x is     *
+<span class="lineNum">     122 </span>            :  *                  negative.  This includes, NaNs, infinities and zeros.     *
+<span class="lineNum">     123 </span>            :  *                                                                            *
+<span class="lineNum">     124 </span>            :  ******************************************************************************/
+<span class="lineNum">     125 </span>            : 
+<span class="lineNum">     126 </span>            : #define fpclassify(x)                                                    \
+<span class="lineNum">     127 </span>            :     ( sizeof(x) == sizeof(float)  ? __fpclassifyf((float)(x))            \
+<span class="lineNum">     128 </span>            :     : sizeof(x) == sizeof(double) ? __fpclassifyd((double)(x))           \
+<span class="lineNum">     129 </span>            :                                   : __fpclassifyl((long double)(x)))
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            : extern int __fpclassifyf(float);
+<span class="lineNum">     132 </span>            : extern int __fpclassifyd(double);
+<span class="lineNum">     133 </span>            : extern int __fpclassifyl(long double);
+<span class="lineNum">     134 </span>            : 
+<span class="lineNum">     135 </span>            : #if (defined(__GNUC__) &amp;&amp; 0 == __FINITE_MATH_ONLY__)
+<span class="lineNum">     136 </span>            : /*  These inline functions may fail to return expected results if unsafe
+<span class="lineNum">     137 </span>            :     math optimizations like those enabled by -ffast-math are turned on.
+<span class="lineNum">     138 </span>            :     Thus, (somewhat surprisingly) you only get the fast inline
+<span class="lineNum">     139 </span>            :     implementations if such compiler options are NOT enabled.  This is
+<span class="lineNum">     140 </span>            :     because the inline functions require the compiler to be adhering to
+<span class="lineNum">     141 </span>            :     the standard in order to work properly; -ffast-math, among other
+<span class="lineNum">     142 </span>            :     things, implies that NaNs don't happen, which allows the compiler to
+<span class="lineNum">     143 </span>            :     optimize away checks like x != x, which might lead to things like
+<span class="lineNum">     144 </span>            :     isnan(NaN) returning false.                                               
+<span class="lineNum">     145 </span>            :  
+<span class="lineNum">     146 </span>            :     Thus, if you compile with -ffast-math, actual function calls are
+<span class="lineNum">     147 </span>            :     generated for these utilities.                                            */
+<span class="lineNum">     148 </span>            :     
+<span class="lineNum">     149 </span>            : #define isnormal(x)                                                      \
+<span class="lineNum">     150 </span>            :     ( sizeof(x) == sizeof(float)  ? __inline_isnormalf((float)(x))       \
+<span class="lineNum">     151 </span>            :     : sizeof(x) == sizeof(double) ? __inline_isnormald((double)(x))      \
+<span class="lineNum">     152 </span>            :                                   : __inline_isnormall((long double)(x)))
+<span class="lineNum">     153 </span>            : 
+<span class="lineNum">     154 </span>            : #define isfinite(x)                                                      \
+<span class="lineNum">     155 </span>            :     ( sizeof(x) == sizeof(float)  ? __inline_isfinitef((float)(x))       \
+<span class="lineNum">     156 </span>            :     : sizeof(x) == sizeof(double) ? __inline_isfinited((double)(x))      \
+<span class="lineNum">     157 </span>            :                                   : __inline_isfinitel((long double)(x)))
+<span class="lineNum">     158 </span>            : 
+<span class="lineNum">     159 </span>            : #define isinf(x)                                                         \
+<span class="lineNum">     160 </span>            :     ( sizeof(x) == sizeof(float)  ? __inline_isinff((float)(x))          \
+<span class="lineNum">     161 </span>            :     : sizeof(x) == sizeof(double) ? __inline_isinfd((double)(x))         \
+<span class="lineNum">     162 </span>            :                                   : __inline_isinfl((long double)(x)))
+<span class="lineNum">     163 </span>            : 
+<span class="lineNum">     164 </span>            : #define isnan(x)                                                         \
+<span class="lineNum">     165 </span>            :     ( sizeof(x) == sizeof(float)  ? __inline_isnanf((float)(x))          \
+<span class="lineNum">     166 </span>            :     : sizeof(x) == sizeof(double) ? __inline_isnand((double)(x))         \
+<span class="lineNum">     167 </span>            :                                   : __inline_isnanl((long double)(x)))
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span>            : #define signbit(x)                                                       \
+<span class="lineNum">     170 </span>            :     ( sizeof(x) == sizeof(float)  ? __inline_signbitf((float)(x))        \
+<span class="lineNum">     171 </span>            :     : sizeof(x) == sizeof(double) ? __inline_signbitd((double)(x))       \
+<span class="lineNum">     172 </span>            :                                   : __inline_signbitl((long double)(x)))
+<span class="lineNum">     173 </span>            : 
+<span class="lineNum">     174 </span>            : __header_always_inline int __inline_isfinitef(float);
+<span class="lineNum">     175 </span>            : __header_always_inline int __inline_isfinited(double);
+<span class="lineNum">     176 </span>            : __header_always_inline int __inline_isfinitel(long double);
+<span class="lineNum">     177 </span>            : __header_always_inline int __inline_isinff(float);
+<span class="lineNum">     178 </span>            : __header_always_inline int __inline_isinfd(double);
+<span class="lineNum">     179 </span>            : __header_always_inline int __inline_isinfl(long double);
+<span class="lineNum">     180 </span>            : __header_always_inline int __inline_isnanf(float);
+<span class="lineNum">     181 </span>            : __header_always_inline int __inline_isnand(double);
+<span class="lineNum">     182 </span>            : __header_always_inline int __inline_isnanl(long double);
+<span class="lineNum">     183 </span>            : __header_always_inline int __inline_isnormalf(float);
+<span class="lineNum">     184 </span>            : __header_always_inline int __inline_isnormald(double);
+<span class="lineNum">     185 </span>            : __header_always_inline int __inline_isnormall(long double);
+<span class="lineNum">     186 </span>            : __header_always_inline int __inline_signbitf(float);
+<span class="lineNum">     187 </span>            : __header_always_inline int __inline_signbitd(double);
+<span class="lineNum">     188 </span>            : __header_always_inline int __inline_signbitl(long double);
+<span class="lineNum">     189 </span>            :     
+<span class="lineNum">     190 </span>            : __header_always_inline int __inline_isfinitef(float __x) {
+<span class="lineNum">     191 </span>            :     return __x == __x &amp;&amp; __builtin_fabsf(__x) != __builtin_inff();
+<span class="lineNum">     192 </span>            : }
+<span class="lineNum">     193 </span>            : __header_always_inline int __inline_isfinited(double __x) {
+<span class="lineNum">     194 </span>            :     return __x == __x &amp;&amp; __builtin_fabs(__x) != __builtin_inf();
+<span class="lineNum">     195 </span>            : }
+<span class="lineNum">     196 </span>            : __header_always_inline int __inline_isfinitel(long double __x) {
+<a name="197"><span class="lineNum">     197 </span>            :     return __x == __x &amp;&amp; __builtin_fabsl(__x) != __builtin_infl();</a>
+<span class="lineNum">     198 </span>            : }
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 : __header_always_inline int __inline_isinff(float __x) {</span>
+<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :     return __builtin_fabsf(__x) == __builtin_inff();</span></a>
+<span class="lineNum">     201 </span>            : }
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 : __header_always_inline int __inline_isinfd(double __x) {</span>
+<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :     return __builtin_fabs(__x) == __builtin_inf();</span></a>
+<span class="lineNum">     204 </span>            : }
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 : __header_always_inline int __inline_isinfl(long double __x) {</span>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :     return __builtin_fabsl(__x) == __builtin_infl();</span></a>
+<span class="lineNum">     207 </span>            : }
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 : __header_always_inline int __inline_isnanf(float __x) {</span>
+<a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :     return __x != __x;</span></a>
+<span class="lineNum">     210 </span>            : }
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 : __header_always_inline int __inline_isnand(double __x) {</span>
+<a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 :     return __x != __x;</span></a>
+<span class="lineNum">     213 </span>            : }
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 : __header_always_inline int __inline_isnanl(long double __x) {</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :     return __x != __x;</span>
+<span class="lineNum">     216 </span>            : }
+<span class="lineNum">     217 </span>            : __header_always_inline int __inline_signbitf(float __x) {
+<span class="lineNum">     218 </span>            :     union { float __f; unsigned int __u; } __u;
+<span class="lineNum">     219 </span>            :     __u.__f = __x;
+<span class="lineNum">     220 </span>            :     return (int)(__u.__u &gt;&gt; 31);
+<span class="lineNum">     221 </span>            : }
+<span class="lineNum">     222 </span>            : __header_always_inline int __inline_signbitd(double __x) {
+<span class="lineNum">     223 </span>            :     union { double __f; unsigned long long __u; } __u;
+<span class="lineNum">     224 </span>            :     __u.__f = __x;
+<span class="lineNum">     225 </span>            :     return (int)(__u.__u &gt;&gt; 63);
+<span class="lineNum">     226 </span>            : }
+<span class="lineNum">     227 </span>            : #if defined __i386__ || defined __x86_64__
+<span class="lineNum">     228 </span>            : __header_always_inline int __inline_signbitl(long double __x) {
+<span class="lineNum">     229 </span>            :     union {
+<span class="lineNum">     230 </span>            :         long double __ld;
+<span class="lineNum">     231 </span>            :         struct{ unsigned long long __m; unsigned short __sexp; } __p;
+<span class="lineNum">     232 </span>            :     } __u;
+<span class="lineNum">     233 </span>            :     __u.__ld = __x;
+<span class="lineNum">     234 </span>            :     return (int)(__u.__p.__sexp &gt;&gt; 15);
+<span class="lineNum">     235 </span>            : }
+<span class="lineNum">     236 </span>            : #else
+<span class="lineNum">     237 </span>            : __header_always_inline int __inline_signbitl(long double __x) {
+<span class="lineNum">     238 </span>            :     union { long double __f; unsigned long long __u;} __u;
+<span class="lineNum">     239 </span>            :     __u.__f = __x;
+<span class="lineNum">     240 </span>            :     return (int)(__u.__u &gt;&gt; 63);
+<span class="lineNum">     241 </span>            : }
+<span class="lineNum">     242 </span>            : #endif
+<span class="lineNum">     243 </span>            : __header_always_inline int __inline_isnormalf(float __x) {
+<span class="lineNum">     244 </span>            :     return __inline_isfinitef(__x) &amp;&amp; __builtin_fabsf(__x) &gt;= __FLT_MIN__;
+<span class="lineNum">     245 </span>            : }
+<span class="lineNum">     246 </span>            : __header_always_inline int __inline_isnormald(double __x) {
+<span class="lineNum">     247 </span>            :     return __inline_isfinited(__x) &amp;&amp; __builtin_fabs(__x) &gt;= __DBL_MIN__;
+<span class="lineNum">     248 </span>            : }
+<span class="lineNum">     249 </span>            : __header_always_inline int __inline_isnormall(long double __x) {
+<span class="lineNum">     250 </span>            :     return __inline_isfinitel(__x) &amp;&amp; __builtin_fabsl(__x) &gt;= __LDBL_MIN__;
+<span class="lineNum">     251 </span>            : }
+<span class="lineNum">     252 </span>            :     
+<span class="lineNum">     253 </span>            : #else /* defined(__GNUC__) &amp;&amp; 0 == __FINITE_MATH_ONLY__ */
+<span class="lineNum">     254 </span>            : 
+<span class="lineNum">     255 </span>            : /*  Implementations making function calls to fall back on when -ffast-math
+<span class="lineNum">     256 </span>            :     or similar is specified.  These are not available in iOS versions prior
+<span class="lineNum">     257 </span>            :     to 6.0.  If you need them, you must target that version or later.         */
+<span class="lineNum">     258 </span>            :     
+<span class="lineNum">     259 </span>            : #define isnormal(x)                                               \
+<span class="lineNum">     260 </span>            :     ( sizeof(x) == sizeof(float)  ? __isnormalf((float)(x))       \
+<span class="lineNum">     261 </span>            :     : sizeof(x) == sizeof(double) ? __isnormald((double)(x))      \
+<span class="lineNum">     262 </span>            :                                   : __isnormall((long double)(x)))
+<span class="lineNum">     263 </span>            :     
+<span class="lineNum">     264 </span>            : #define isfinite(x)                                               \
+<span class="lineNum">     265 </span>            :     ( sizeof(x) == sizeof(float)  ? __isfinitef((float)(x))       \
+<span class="lineNum">     266 </span>            :     : sizeof(x) == sizeof(double) ? __isfinited((double)(x))      \
+<span class="lineNum">     267 </span>            :                                   : __isfinitel((long double)(x)))
+<span class="lineNum">     268 </span>            :     
+<span class="lineNum">     269 </span>            : #define isinf(x)                                                  \
+<span class="lineNum">     270 </span>            :     ( sizeof(x) == sizeof(float)  ? __isinff((float)(x))          \
+<span class="lineNum">     271 </span>            :     : sizeof(x) == sizeof(double) ? __isinfd((double)(x))         \
+<span class="lineNum">     272 </span>            :                                   : __isinfl((long double)(x)))
+<span class="lineNum">     273 </span>            :     
+<span class="lineNum">     274 </span>            : #define isnan(x)                                                  \
+<span class="lineNum">     275 </span>            :     ( sizeof(x) == sizeof(float)  ? __isnanf((float)(x))          \
+<span class="lineNum">     276 </span>            :     : sizeof(x) == sizeof(double) ? __isnand((double)(x))         \
+<span class="lineNum">     277 </span>            :                                   : __isnanl((long double)(x)))
+<span class="lineNum">     278 </span>            :     
+<span class="lineNum">     279 </span>            : #define signbit(x)                                                \
+<span class="lineNum">     280 </span>            :     ( sizeof(x) == sizeof(float)  ? __signbitf((float)(x))        \
+<span class="lineNum">     281 </span>            :     : sizeof(x) == sizeof(double) ? __signbitd((double)(x))       \
+<span class="lineNum">     282 </span>            :                                   : __signbitl((long double)(x)))
+<span class="lineNum">     283 </span>            :     
+<span class="lineNum">     284 </span>            : extern int __isnormalf(float);
+<span class="lineNum">     285 </span>            : extern int __isnormald(double);
+<span class="lineNum">     286 </span>            : extern int __isnormall(long double);
+<span class="lineNum">     287 </span>            : extern int __isfinitef(float);
+<span class="lineNum">     288 </span>            : extern int __isfinited(double);
+<span class="lineNum">     289 </span>            : extern int __isfinitel(long double);
+<span class="lineNum">     290 </span>            : extern int __isinff(float);
+<span class="lineNum">     291 </span>            : extern int __isinfd(double);
+<span class="lineNum">     292 </span>            : extern int __isinfl(long double);
+<span class="lineNum">     293 </span>            : extern int __isnanf(float);
+<span class="lineNum">     294 </span>            : extern int __isnand(double);
+<span class="lineNum">     295 </span>            : extern int __isnanl(long double);
+<span class="lineNum">     296 </span>            : extern int __signbitf(float);
+<span class="lineNum">     297 </span>            : extern int __signbitd(double);
+<span class="lineNum">     298 </span>            : extern int __signbitl(long double);
+<span class="lineNum">     299 </span>            : 
+<span class="lineNum">     300 </span>            : #endif /* defined(__GNUC__) &amp;&amp; 0 == __FINITE_MATH_ONLY__ */
+<span class="lineNum">     301 </span>            : 
+<span class="lineNum">     302 </span>            : /******************************************************************************
+<span class="lineNum">     303 </span>            :  *                                                                            *
+<span class="lineNum">     304 </span>            :  *                              Math Functions                                *
+<span class="lineNum">     305 </span>            :  *                                                                            *
+<span class="lineNum">     306 </span>            :  ******************************************************************************/
+<span class="lineNum">     307 </span>            :     
+<span class="lineNum">     308 </span>            : extern float acosf(float);
+<span class="lineNum">     309 </span>            : extern double acos(double);
+<span class="lineNum">     310 </span>            : extern long double acosl(long double);
+<span class="lineNum">     311 </span>            :     
+<span class="lineNum">     312 </span>            : extern float asinf(float);
+<span class="lineNum">     313 </span>            : extern double asin(double);
+<span class="lineNum">     314 </span>            : extern long double asinl(long double);
+<span class="lineNum">     315 </span>            :     
+<span class="lineNum">     316 </span>            : extern float atanf(float);
+<span class="lineNum">     317 </span>            : extern double atan(double);
+<span class="lineNum">     318 </span>            : extern long double atanl(long double);
+<span class="lineNum">     319 </span>            :     
+<span class="lineNum">     320 </span>            : extern float atan2f(float, float);
+<span class="lineNum">     321 </span>            : extern double atan2(double, double);
+<span class="lineNum">     322 </span>            : extern long double atan2l(long double, long double);
+<span class="lineNum">     323 </span>            :     
+<span class="lineNum">     324 </span>            : extern float cosf(float);
+<span class="lineNum">     325 </span>            : extern double cos(double);
+<span class="lineNum">     326 </span>            : extern long double cosl(long double);
+<span class="lineNum">     327 </span>            :     
+<span class="lineNum">     328 </span>            : extern float sinf(float);
+<span class="lineNum">     329 </span>            : extern double sin(double);
+<span class="lineNum">     330 </span>            : extern long double sinl(long double);
+<span class="lineNum">     331 </span>            :     
+<span class="lineNum">     332 </span>            : extern float tanf(float);
+<span class="lineNum">     333 </span>            : extern double tan(double);
+<span class="lineNum">     334 </span>            : extern long double tanl(long double);
+<span class="lineNum">     335 </span>            :     
+<span class="lineNum">     336 </span>            : extern float acoshf(float);
+<span class="lineNum">     337 </span>            : extern double acosh(double);
+<span class="lineNum">     338 </span>            : extern long double acoshl(long double);
+<span class="lineNum">     339 </span>            :     
+<span class="lineNum">     340 </span>            : extern float asinhf(float);
+<span class="lineNum">     341 </span>            : extern double asinh(double);
+<span class="lineNum">     342 </span>            : extern long double asinhl(long double);
+<span class="lineNum">     343 </span>            :     
+<span class="lineNum">     344 </span>            : extern float atanhf(float);
+<span class="lineNum">     345 </span>            : extern double atanh(double);
+<span class="lineNum">     346 </span>            : extern long double atanhl(long double);
+<span class="lineNum">     347 </span>            :     
+<span class="lineNum">     348 </span>            : extern float coshf(float);
+<span class="lineNum">     349 </span>            : extern double cosh(double);
+<span class="lineNum">     350 </span>            : extern long double coshl(long double);
+<span class="lineNum">     351 </span>            :     
+<span class="lineNum">     352 </span>            : extern float sinhf(float);
+<span class="lineNum">     353 </span>            : extern double sinh(double);
+<span class="lineNum">     354 </span>            : extern long double sinhl(long double);
+<span class="lineNum">     355 </span>            :     
+<span class="lineNum">     356 </span>            : extern float tanhf(float);
+<span class="lineNum">     357 </span>            : extern double tanh(double);
+<span class="lineNum">     358 </span>            : extern long double tanhl(long double);
+<span class="lineNum">     359 </span>            :     
+<span class="lineNum">     360 </span>            : extern float expf(float);
+<span class="lineNum">     361 </span>            : extern double exp(double);
+<span class="lineNum">     362 </span>            : extern long double expl(long double);
+<span class="lineNum">     363 </span>            : 
+<span class="lineNum">     364 </span>            : extern float exp2f(float);
+<span class="lineNum">     365 </span>            : extern double exp2(double); 
+<span class="lineNum">     366 </span>            : extern long double exp2l(long double); 
+<span class="lineNum">     367 </span>            : 
+<span class="lineNum">     368 </span>            : extern float expm1f(float);
+<span class="lineNum">     369 </span>            : extern double expm1(double); 
+<span class="lineNum">     370 </span>            : extern long double expm1l(long double); 
+<span class="lineNum">     371 </span>            : 
+<span class="lineNum">     372 </span>            : extern float logf(float);
+<span class="lineNum">     373 </span>            : extern double log(double);
+<span class="lineNum">     374 </span>            : extern long double logl(long double);
+<span class="lineNum">     375 </span>            : 
+<span class="lineNum">     376 </span>            : extern float log10f(float);
+<span class="lineNum">     377 </span>            : extern double log10(double);
+<span class="lineNum">     378 </span>            : extern long double log10l(long double);
+<span class="lineNum">     379 </span>            : 
+<span class="lineNum">     380 </span>            : extern float log2f(float);
+<span class="lineNum">     381 </span>            : extern double log2(double);
+<span class="lineNum">     382 </span>            : extern long double log2l(long double);
+<span class="lineNum">     383 </span>            : 
+<span class="lineNum">     384 </span>            : extern float log1pf(float);
+<span class="lineNum">     385 </span>            : extern double log1p(double);
+<span class="lineNum">     386 </span>            : extern long double log1pl(long double);
+<span class="lineNum">     387 </span>            : 
+<span class="lineNum">     388 </span>            : extern float logbf(float);
+<span class="lineNum">     389 </span>            : extern double logb(double);
+<span class="lineNum">     390 </span>            : extern long double logbl(long double);
+<span class="lineNum">     391 </span>            : 
+<span class="lineNum">     392 </span>            : extern float modff(float, float *);
+<span class="lineNum">     393 </span>            : extern double modf(double, double *);
+<span class="lineNum">     394 </span>            : extern long double modfl(long double, long double *);
+<span class="lineNum">     395 </span>            : 
+<span class="lineNum">     396 </span>            : extern float ldexpf(float, int);
+<span class="lineNum">     397 </span>            : extern double ldexp(double, int);
+<span class="lineNum">     398 </span>            : extern long double ldexpl(long double, int);
+<span class="lineNum">     399 </span>            : 
+<span class="lineNum">     400 </span>            : extern float frexpf(float, int *);
+<span class="lineNum">     401 </span>            : extern double frexp(double, int *);
+<span class="lineNum">     402 </span>            : extern long double frexpl(long double, int *);
+<span class="lineNum">     403 </span>            : 
+<span class="lineNum">     404 </span>            : extern int ilogbf(float);
+<span class="lineNum">     405 </span>            : extern int ilogb(double);
+<span class="lineNum">     406 </span>            : extern int ilogbl(long double);
+<span class="lineNum">     407 </span>            : 
+<span class="lineNum">     408 </span>            : extern float scalbnf(float, int);
+<span class="lineNum">     409 </span>            : extern double scalbn(double, int);
+<span class="lineNum">     410 </span>            : extern long double scalbnl(long double, int);
+<span class="lineNum">     411 </span>            : 
+<span class="lineNum">     412 </span>            : extern float scalblnf(float, long int);
+<span class="lineNum">     413 </span>            : extern double scalbln(double, long int);
+<span class="lineNum">     414 </span>            : extern long double scalblnl(long double, long int);
+<span class="lineNum">     415 </span>            : 
+<span class="lineNum">     416 </span>            : extern float fabsf(float);
+<span class="lineNum">     417 </span>            : extern double fabs(double);
+<span class="lineNum">     418 </span>            : extern long double fabsl(long double);
+<span class="lineNum">     419 </span>            : 
+<span class="lineNum">     420 </span>            : extern float cbrtf(float);
+<span class="lineNum">     421 </span>            : extern double cbrt(double);
+<span class="lineNum">     422 </span>            : extern long double cbrtl(long double);
+<span class="lineNum">     423 </span>            : 
+<span class="lineNum">     424 </span>            : extern float hypotf(float, float);
+<span class="lineNum">     425 </span>            : extern double hypot(double, double);
+<span class="lineNum">     426 </span>            : extern long double hypotl(long double, long double);
+<span class="lineNum">     427 </span>            : 
+<span class="lineNum">     428 </span>            : extern float powf(float, float);
+<span class="lineNum">     429 </span>            : extern double pow(double, double);
+<span class="lineNum">     430 </span>            : extern long double powl(long double, long double);
+<span class="lineNum">     431 </span>            : 
+<span class="lineNum">     432 </span>            : extern float sqrtf(float);
+<span class="lineNum">     433 </span>            : extern double sqrt(double);
+<span class="lineNum">     434 </span>            : extern long double sqrtl(long double);
+<span class="lineNum">     435 </span>            : 
+<span class="lineNum">     436 </span>            : extern float erff(float);
+<span class="lineNum">     437 </span>            : extern double erf(double);
+<span class="lineNum">     438 </span>            : extern long double erfl(long double);
+<span class="lineNum">     439 </span>            : 
+<span class="lineNum">     440 </span>            : extern float erfcf(float);
+<span class="lineNum">     441 </span>            : extern double erfc(double);
+<span class="lineNum">     442 </span>            : extern long double erfcl(long double);
+<span class="lineNum">     443 </span>            : 
+<span class="lineNum">     444 </span>            : /*      lgammaf, lgamma, and lgammal are not thread-safe. The thread-safe
+<span class="lineNum">     445 </span>            :     variants lgammaf_r, lgamma_r, and lgammal_r are made available if
+<span class="lineNum">     446 </span>            :     you define the _REENTRANT symbol before including &lt;math.h&gt;                */
+<span class="lineNum">     447 </span>            : extern float lgammaf(float);
+<span class="lineNum">     448 </span>            : extern double lgamma(double);
+<span class="lineNum">     449 </span>            : extern long double lgammal(long double);
+<span class="lineNum">     450 </span>            : 
+<span class="lineNum">     451 </span>            : extern float tgammaf(float);
+<span class="lineNum">     452 </span>            : extern double tgamma(double);
+<span class="lineNum">     453 </span>            : extern long double tgammal(long double);
+<span class="lineNum">     454 </span>            : 
+<span class="lineNum">     455 </span>            : extern float ceilf(float);
+<span class="lineNum">     456 </span>            : extern double ceil(double);
+<span class="lineNum">     457 </span>            : extern long double ceill(long double);
+<span class="lineNum">     458 </span>            : 
+<span class="lineNum">     459 </span>            : extern float floorf(float);
+<span class="lineNum">     460 </span>            : extern double floor(double);
+<span class="lineNum">     461 </span>            : extern long double floorl(long double);
+<span class="lineNum">     462 </span>            : 
+<span class="lineNum">     463 </span>            : extern float nearbyintf(float);
+<span class="lineNum">     464 </span>            : extern double nearbyint(double);
+<span class="lineNum">     465 </span>            : extern long double nearbyintl(long double);
+<span class="lineNum">     466 </span>            : 
+<span class="lineNum">     467 </span>            : extern float rintf(float);
+<span class="lineNum">     468 </span>            : extern double rint(double);
+<span class="lineNum">     469 </span>            : extern long double rintl(long double);
+<span class="lineNum">     470 </span>            : 
+<span class="lineNum">     471 </span>            : extern long int lrintf(float);
+<span class="lineNum">     472 </span>            : extern long int lrint(double);
+<span class="lineNum">     473 </span>            : extern long int lrintl(long double);
+<span class="lineNum">     474 </span>            : 
+<span class="lineNum">     475 </span>            : extern float roundf(float);
+<span class="lineNum">     476 </span>            : extern double round(double);
+<span class="lineNum">     477 </span>            : extern long double roundl(long double);
+<span class="lineNum">     478 </span>            : 
+<span class="lineNum">     479 </span>            : extern long int lroundf(float);
+<span class="lineNum">     480 </span>            : extern long int lround(double);
+<span class="lineNum">     481 </span>            : extern long int lroundl(long double);
+<span class="lineNum">     482 </span>            :     
+<span class="lineNum">     483 </span>            : /*  long long is not part of C90. Make sure you are passing -std=c99 or
+<span class="lineNum">     484 </span>            :     -std=gnu99 or higher if you need these functions returning long longs     */
+<span class="lineNum">     485 </span>            : #if !(__DARWIN_NO_LONG_LONG)
+<span class="lineNum">     486 </span>            : extern long long int llrintf(float);
+<span class="lineNum">     487 </span>            : extern long long int llrint(double);
+<span class="lineNum">     488 </span>            : extern long long int llrintl(long double);
+<span class="lineNum">     489 </span>            : 
+<span class="lineNum">     490 </span>            : extern long long int llroundf(float);
+<span class="lineNum">     491 </span>            : extern long long int llround(double);
+<span class="lineNum">     492 </span>            : extern long long int llroundl(long double);
+<span class="lineNum">     493 </span>            : #endif /* !(__DARWIN_NO_LONG_LONG) */
+<span class="lineNum">     494 </span>            : 
+<span class="lineNum">     495 </span>            : extern float truncf(float);
+<span class="lineNum">     496 </span>            : extern double trunc(double);
+<span class="lineNum">     497 </span>            : extern long double truncl(long double);
+<span class="lineNum">     498 </span>            : 
+<span class="lineNum">     499 </span>            : extern float fmodf(float, float);
+<span class="lineNum">     500 </span>            : extern double fmod(double, double);
+<span class="lineNum">     501 </span>            : extern long double fmodl(long double, long double);
+<span class="lineNum">     502 </span>            : 
+<span class="lineNum">     503 </span>            : extern float remainderf(float, float);
+<span class="lineNum">     504 </span>            : extern double remainder(double, double);
+<span class="lineNum">     505 </span>            : extern long double remainderl(long double, long double);
+<span class="lineNum">     506 </span>            : 
+<span class="lineNum">     507 </span>            : extern float remquof(float, float, int *);
+<span class="lineNum">     508 </span>            : extern double remquo(double, double, int *);
+<span class="lineNum">     509 </span>            : extern long double remquol(long double, long double, int *);
+<span class="lineNum">     510 </span>            : 
+<span class="lineNum">     511 </span>            : extern float copysignf(float, float);
+<span class="lineNum">     512 </span>            : extern double copysign(double, double);
+<span class="lineNum">     513 </span>            : extern long double copysignl(long double, long double);
+<span class="lineNum">     514 </span>            : 
+<span class="lineNum">     515 </span>            : extern float nanf(const char *);
+<span class="lineNum">     516 </span>            : extern double nan(const char *);
+<span class="lineNum">     517 </span>            : extern long double nanl(const char *);
+<span class="lineNum">     518 </span>            : 
+<span class="lineNum">     519 </span>            : extern float nextafterf(float, float);
+<span class="lineNum">     520 </span>            : extern double nextafter(double, double);
+<span class="lineNum">     521 </span>            : extern long double nextafterl(long double, long double);
+<span class="lineNum">     522 </span>            : 
+<span class="lineNum">     523 </span>            : extern double nexttoward(double, long double);
+<span class="lineNum">     524 </span>            : extern float nexttowardf(float, long double);
+<span class="lineNum">     525 </span>            : extern long double nexttowardl(long double, long double);
+<span class="lineNum">     526 </span>            : 
+<span class="lineNum">     527 </span>            : extern float fdimf(float, float);
+<span class="lineNum">     528 </span>            : extern double fdim(double, double);
+<span class="lineNum">     529 </span>            : extern long double fdiml(long double, long double);
+<span class="lineNum">     530 </span>            : 
+<span class="lineNum">     531 </span>            : extern float fmaxf(float, float);
+<span class="lineNum">     532 </span>            : extern double fmax(double, double);
+<span class="lineNum">     533 </span>            : extern long double fmaxl(long double, long double);
+<span class="lineNum">     534 </span>            : 
+<span class="lineNum">     535 </span>            : extern float fminf(float, float);
+<span class="lineNum">     536 </span>            : extern double fmin(double, double);
+<span class="lineNum">     537 </span>            : extern long double fminl(long double, long double);
+<span class="lineNum">     538 </span>            : 
+<span class="lineNum">     539 </span>            : extern float fmaf(float, float, float);
+<span class="lineNum">     540 </span>            : extern double fma(double, double, double);
+<span class="lineNum">     541 </span>            : extern long double fmal(long double, long double, long double);
+<span class="lineNum">     542 </span>            : 
+<span class="lineNum">     543 </span>            : #define isgreater(x, y) __builtin_isgreater((x),(y))
+<span class="lineNum">     544 </span>            : #define isgreaterequal(x, y) __builtin_isgreaterequal((x),(y))
+<span class="lineNum">     545 </span>            : #define isless(x, y) __builtin_isless((x),(y))
+<span class="lineNum">     546 </span>            : #define islessequal(x, y) __builtin_islessequal((x),(y))
+<span class="lineNum">     547 </span>            : #define islessgreater(x, y) __builtin_islessgreater((x),(y))
+<span class="lineNum">     548 </span>            : #define isunordered(x, y) __builtin_isunordered((x),(y))
+<span class="lineNum">     549 </span>            : 
+<span class="lineNum">     550 </span>            : /* Deprecated functions; use the INFINITY and NAN macros instead.             */
+<span class="lineNum">     551 </span>            : extern float __inff(void)
+<span class="lineNum">     552 </span>            : __API_DEPRECATED(&quot;use `(float)INFINITY` instead&quot;, macos(10.0, 10.9)) __API_UNAVAILABLE(ios, watchos, tvos);
+<span class="lineNum">     553 </span>            : extern double __inf(void)
+<span class="lineNum">     554 </span>            : __API_DEPRECATED(&quot;use `INFINITY` instead&quot;, macos(10.0, 10.9)) __API_UNAVAILABLE(ios, watchos, tvos);
+<span class="lineNum">     555 </span>            : extern long double __infl(void)
+<span class="lineNum">     556 </span>            : __API_DEPRECATED(&quot;use `(long double)INFINITY` instead&quot;, macos(10.0, 10.9)) __API_UNAVAILABLE(ios, watchos, tvos);
+<span class="lineNum">     557 </span>            : extern float __nan(void)
+<span class="lineNum">     558 </span>            : __API_DEPRECATED(&quot;use `NAN` instead&quot;, macos(10.0, 10.14)) __API_UNAVAILABLE(ios, watchos, tvos);
+<span class="lineNum">     559 </span>            : 
+<span class="lineNum">     560 </span>            : /******************************************************************************
+<span class="lineNum">     561 </span>            :  *  Reentrant variants of lgamma[fl]                                          *
+<span class="lineNum">     562 </span>            :  ******************************************************************************/
+<span class="lineNum">     563 </span>            : 
+<span class="lineNum">     564 </span>            : #ifdef _REENTRANT
+<span class="lineNum">     565 </span>            : /*  Reentrant variants of the lgamma[fl] functions.                           */
+<span class="lineNum">     566 </span>            : extern float lgammaf_r(float, int *) __API_AVAILABLE(macos(10.6), ios(3.1));
+<span class="lineNum">     567 </span>            : extern double lgamma_r(double, int *) __API_AVAILABLE(macos(10.6), ios(3.1));
+<span class="lineNum">     568 </span>            : extern long double lgammal_r(long double, int *) __API_AVAILABLE(macos(10.6), ios(3.1));
+<span class="lineNum">     569 </span>            : #endif /* _REENTRANT */
+<span class="lineNum">     570 </span>            : 
+<span class="lineNum">     571 </span>            : /******************************************************************************
+<span class="lineNum">     572 </span>            :  *  Apple extensions to the C standard                                        *
+<span class="lineNum">     573 </span>            :  ******************************************************************************/
+<span class="lineNum">     574 </span>            : 
+<span class="lineNum">     575 </span>            : /*  Because these functions are not specified by any relevant standard, they
+<span class="lineNum">     576 </span>            :     are prefixed with __, which places them in the implementor's namespace, so
+<span class="lineNum">     577 </span>            :     they should not conflict with any developer or third-party code.  If they
+<span class="lineNum">     578 </span>            :     are added to a relevant standard in the future, un-prefixed names may be
+<span class="lineNum">     579 </span>            :     added to the library and they may be moved out of this section of the
+<span class="lineNum">     580 </span>            :     header.                                                                   
+<span class="lineNum">     581 </span>            :  
+<span class="lineNum">     582 </span>            :     Because these functions are non-standard, they may not be available on non-
+<span class="lineNum">     583 </span>            :     Apple platforms.                                                          */
+<span class="lineNum">     584 </span>            : 
+<span class="lineNum">     585 </span>            : /*  __exp10(x) returns 10**x.  Edge cases match those of exp( ) and exp2( ).  */
+<span class="lineNum">     586 </span>            : extern float __exp10f(float) __API_AVAILABLE(macos(10.9), ios(7.0));
+<span class="lineNum">     587 </span>            : extern double __exp10(double) __API_AVAILABLE(macos(10.9), ios(7.0));
+<span class="lineNum">     588 </span>            : 
+<span class="lineNum">     589 </span>            : /*  __sincos(x,sinp,cosp) computes the sine and cosine of x with a single
+<span class="lineNum">     590 </span>            :     function call, storing the sine in the memory pointed to by sinp, and
+<span class="lineNum">     591 </span>            :     the cosine in the memory pointed to by cosp. Edge cases match those of
+<span class="lineNum">     592 </span>            :     separate calls to sin( ) and cos( ).                                      */
+<span class="lineNum">     593 </span>            : __header_always_inline void __sincosf(float __x, float *__sinp, float *__cosp);
+<span class="lineNum">     594 </span>            : __header_always_inline void __sincos(double __x, double *__sinp, double *__cosp);
+<span class="lineNum">     595 </span>            : 
+<span class="lineNum">     596 </span>            : /*  __sinpi(x) returns the sine of pi times x; __cospi(x) and __tanpi(x) return
+<span class="lineNum">     597 </span>            :     the cosine and tangent, respectively.  These functions can produce a more
+<span class="lineNum">     598 </span>            :     accurate answer than expressions of the form sin(M_PI * x) because they
+<span class="lineNum">     599 </span>            :     avoid any loss of precision that results from rounding the result of the
+<span class="lineNum">     600 </span>            :     multiplication M_PI * x.  They may also be significantly more efficient in
+<span class="lineNum">     601 </span>            :     some cases because the argument reduction for these functions is easier
+<span class="lineNum">     602 </span>            :     to compute.  Consult the man pages for edge case details.                 */
+<span class="lineNum">     603 </span>            : extern float __cospif(float) __API_AVAILABLE(macos(10.9), ios(7.0));
+<span class="lineNum">     604 </span>            : extern double __cospi(double) __API_AVAILABLE(macos(10.9), ios(7.0));
+<span class="lineNum">     605 </span>            : extern float __sinpif(float) __API_AVAILABLE(macos(10.9), ios(7.0));
+<span class="lineNum">     606 </span>            : extern double __sinpi(double) __API_AVAILABLE(macos(10.9), ios(7.0));
+<span class="lineNum">     607 </span>            : extern float __tanpif(float) __API_AVAILABLE(macos(10.9), ios(7.0));
+<span class="lineNum">     608 </span>            : extern double __tanpi(double) __API_AVAILABLE(macos(10.9), ios(7.0));
+<span class="lineNum">     609 </span>            : 
+<span class="lineNum">     610 </span>            : #if (defined __MAC_OS_X_VERSION_MIN_REQUIRED &amp;&amp; __MAC_OS_X_VERSION_MIN_REQUIRED &lt; 1090) || \
+<span class="lineNum">     611 </span>            :     (defined __IPHONE_OS_VERSION_MIN_REQUIRED &amp;&amp; __IPHONE_OS_VERSION_MIN_REQUIRED &lt; 70000)
+<span class="lineNum">     612 </span>            : /*  __sincos and __sincosf were introduced in OSX 10.9 and iOS 7.0.  When
+<span class="lineNum">     613 </span>            :     targeting an older system, we simply split them up into discrete calls
+<span class="lineNum">     614 </span>            :     to sin( ) and cos( ).                                                     */
+<span class="lineNum">     615 </span>            : __header_always_inline void __sincosf(float __x, float *__sinp, float *__cosp) {
+<span class="lineNum">     616 </span>            :   *__sinp = sinf(__x);
+<span class="lineNum">     617 </span>            :   *__cosp = cosf(__x);
+<span class="lineNum">     618 </span>            : }
+<span class="lineNum">     619 </span>            : 
+<span class="lineNum">     620 </span>            : __header_always_inline void __sincos(double __x, double *__sinp, double *__cosp) {
+<span class="lineNum">     621 </span>            :   *__sinp = sin(__x);
+<span class="lineNum">     622 </span>            :   *__cosp = cos(__x);
+<span class="lineNum">     623 </span>            : }
+<span class="lineNum">     624 </span>            : #else
+<span class="lineNum">     625 </span>            : /*  __sincospi(x,sinp,cosp) computes the sine and cosine of pi times x with a
+<span class="lineNum">     626 </span>            :     single function call, storing the sine in the memory pointed to by sinp,
+<span class="lineNum">     627 </span>            :     and the cosine in the memory pointed to by cosp.  Edge cases match those
+<span class="lineNum">     628 </span>            :     of separate calls to __sinpi( ) and __cospi( ), and are documented in the
+<span class="lineNum">     629 </span>            :     man pages.
+<span class="lineNum">     630 </span>            :  
+<span class="lineNum">     631 </span>            :     These functions were introduced in OSX 10.9 and iOS 7.0.  Because they are
+<span class="lineNum">     632 </span>            :     implemented as header inlines, weak-linking does not function as normal,
+<span class="lineNum">     633 </span>            :     and they are simply hidden when targeting earlier OS versions.            */
+<span class="lineNum">     634 </span>            : __header_always_inline void __sincospif(float __x, float *__sinp, float *__cosp);
+<span class="lineNum">     635 </span>            : __header_always_inline void __sincospi(double __x, double *__sinp, double *__cosp);
+<span class="lineNum">     636 </span>            : 
+<span class="lineNum">     637 </span>            : /*  Implementation details of __sincos and __sincospi allowing them to return
+<span class="lineNum">     638 </span>            :     two results while allowing the compiler to optimize away unnecessary load-
+<span class="lineNum">     639 </span>            :     store traffic.  Although these interfaces are exposed in the math.h header
+<span class="lineNum">     640 </span>            :     to allow compilers to generate better code, users should call __sincos[f]
+<span class="lineNum">     641 </span>            :     and __sincospi[f] instead and allow the compiler to emit these calls.     */
+<span class="lineNum">     642 </span>            : struct __float2 { float __sinval; float __cosval; };
+<span class="lineNum">     643 </span>            : struct __double2 { double __sinval; double __cosval; };
+<span class="lineNum">     644 </span>            : 
+<span class="lineNum">     645 </span>            : extern struct __float2 __sincosf_stret(float);
+<span class="lineNum">     646 </span>            : extern struct __double2 __sincos_stret(double);
+<span class="lineNum">     647 </span>            : extern struct __float2 __sincospif_stret(float);
+<span class="lineNum">     648 </span>            : extern struct __double2 __sincospi_stret(double);
+<span class="lineNum">     649 </span>            : 
+<span class="lineNum">     650 </span>            : __header_always_inline void __sincosf(float __x, float *__sinp, float *__cosp) {
+<span class="lineNum">     651 </span>            :     const struct __float2 __stret = __sincosf_stret(__x);
+<span class="lineNum">     652 </span>            :     *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+<span class="lineNum">     653 </span>            : }
+<span class="lineNum">     654 </span>            : 
+<span class="lineNum">     655 </span>            : __header_always_inline void __sincos(double __x, double *__sinp, double *__cosp) {
+<span class="lineNum">     656 </span>            :     const struct __double2 __stret = __sincos_stret(__x);
+<span class="lineNum">     657 </span>            :     *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+<span class="lineNum">     658 </span>            : }
+<span class="lineNum">     659 </span>            : 
+<span class="lineNum">     660 </span>            : __header_always_inline void __sincospif(float __x, float *__sinp, float *__cosp) {
+<span class="lineNum">     661 </span>            :     const struct __float2 __stret = __sincospif_stret(__x);
+<span class="lineNum">     662 </span>            :     *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+<span class="lineNum">     663 </span>            : }
+<span class="lineNum">     664 </span>            : 
+<span class="lineNum">     665 </span>            : __header_always_inline void __sincospi(double __x, double *__sinp, double *__cosp) {
+<span class="lineNum">     666 </span>            :     const struct __double2 __stret = __sincospi_stret(__x);
+<span class="lineNum">     667 </span>            :     *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+<span class="lineNum">     668 </span>            : }
+<span class="lineNum">     669 </span>            : #endif
+<span class="lineNum">     670 </span>            : 
+<span class="lineNum">     671 </span>            : /******************************************************************************
+<span class="lineNum">     672 </span>            :  *  POSIX/UNIX extensions to the C standard                                   *
+<span class="lineNum">     673 </span>            :  ******************************************************************************/
+<span class="lineNum">     674 </span>            : 
+<span class="lineNum">     675 </span>            : #if __DARWIN_C_LEVEL &gt;= 199506L
+<span class="lineNum">     676 </span>            : extern double j0(double) __API_AVAILABLE(macos(10.0), ios(3.2));
+<span class="lineNum">     677 </span>            : extern double j1(double) __API_AVAILABLE(macos(10.0), ios(3.2));
+<span class="lineNum">     678 </span>            : extern double jn(int, double) __API_AVAILABLE(macos(10.0), ios(3.2));
+<span class="lineNum">     679 </span>            : extern double y0(double) __API_AVAILABLE(macos(10.0), ios(3.2));
+<span class="lineNum">     680 </span>            : extern double y1(double) __API_AVAILABLE(macos(10.0), ios(3.2));
+<span class="lineNum">     681 </span>            : extern double yn(int, double) __API_AVAILABLE(macos(10.0), ios(3.2));
+<span class="lineNum">     682 </span>            : extern double scalb(double, double); 
+<span class="lineNum">     683 </span>            : extern int signgam;
+<span class="lineNum">     684 </span>            : 
+<span class="lineNum">     685 </span>            : /*  Even though these might be more useful as long doubles, POSIX requires
+<span class="lineNum">     686 </span>            :     that they be double-precision literals.                                   */
+<span class="lineNum">     687 </span>            : #define M_E         2.71828182845904523536028747135266250   /* e              */
+<span class="lineNum">     688 </span>            : #define M_LOG2E     1.44269504088896340735992468100189214   /* log2(e)        */
+<span class="lineNum">     689 </span>            : #define M_LOG10E    0.434294481903251827651128918916605082  /* log10(e)       */
+<span class="lineNum">     690 </span>            : #define M_LN2       0.693147180559945309417232121458176568  /* loge(2)        */
+<span class="lineNum">     691 </span>            : #define M_LN10      2.30258509299404568401799145468436421   /* loge(10)       */
+<span class="lineNum">     692 </span>            : #define M_PI        3.14159265358979323846264338327950288   /* pi             */
+<span class="lineNum">     693 </span>            : #define M_PI_2      1.57079632679489661923132169163975144   /* pi/2           */
+<span class="lineNum">     694 </span>            : #define M_PI_4      0.785398163397448309615660845819875721  /* pi/4           */
+<span class="lineNum">     695 </span>            : #define M_1_PI      0.318309886183790671537767526745028724  /* 1/pi           */
+<span class="lineNum">     696 </span>            : #define M_2_PI      0.636619772367581343075535053490057448  /* 2/pi           */
+<span class="lineNum">     697 </span>            : #define M_2_SQRTPI  1.12837916709551257389615890312154517   /* 2/sqrt(pi)     */
+<span class="lineNum">     698 </span>            : #define M_SQRT2     1.41421356237309504880168872420969808   /* sqrt(2)        */
+<span class="lineNum">     699 </span>            : #define M_SQRT1_2   0.707106781186547524400844362104849039  /* 1/sqrt(2)      */
+<span class="lineNum">     700 </span>            : 
+<span class="lineNum">     701 </span>            : #define MAXFLOAT    0x1.fffffep+127f
+<span class="lineNum">     702 </span>            : #endif /* __DARWIN_C_LEVEL &gt;= 199506L */
+<span class="lineNum">     703 </span>            : 
+<span class="lineNum">     704 </span>            : /*  Long-double versions of M_E, etc for convenience on Intel where long-
+<span class="lineNum">     705 </span>            :     double is not the same as double.  Define __MATH_LONG_DOUBLE_CONSTANTS
+<span class="lineNum">     706 </span>            :     to make these constants available.                                        */
+<span class="lineNum">     707 </span>            : #if defined __MATH_LONG_DOUBLE_CONSTANTS
+<span class="lineNum">     708 </span>            : #define M_El        0xa.df85458a2bb4a9bp-2L
+<span class="lineNum">     709 </span>            : #define M_LOG2El    0xb.8aa3b295c17f0bcp-3L
+<span class="lineNum">     710 </span>            : #define M_LOG10El   0xd.e5bd8a937287195p-5L
+<span class="lineNum">     711 </span>            : #define M_LN2l      0xb.17217f7d1cf79acp-4L
+<span class="lineNum">     712 </span>            : #define M_LN10l     0x9.35d8dddaaa8ac17p-2L
+<span class="lineNum">     713 </span>            : #define M_PIl       0xc.90fdaa22168c235p-2L
+<span class="lineNum">     714 </span>            : #define M_PI_2l     0xc.90fdaa22168c235p-3L
+<span class="lineNum">     715 </span>            : #define M_PI_4l     0xc.90fdaa22168c235p-4L
+<span class="lineNum">     716 </span>            : #define M_1_PIl     0xa.2f9836e4e44152ap-5L
+<span class="lineNum">     717 </span>            : #define M_2_PIl     0xa.2f9836e4e44152ap-4L
+<span class="lineNum">     718 </span>            : #define M_2_SQRTPIl 0x9.06eba8214db688dp-3L
+<span class="lineNum">     719 </span>            : #define M_SQRT2l    0xb.504f333f9de6484p-3L
+<span class="lineNum">     720 </span>            : #define M_SQRT1_2l  0xb.504f333f9de6484p-4L
+<span class="lineNum">     721 </span>            : #endif /* defined __MATH_LONG_DOUBLE_CONSTANTS */
+<span class="lineNum">     722 </span>            : 
+<span class="lineNum">     723 </span>            : /******************************************************************************
+<span class="lineNum">     724 </span>            :  *  Legacy BSD extensions to the C standard                                   *
+<span class="lineNum">     725 </span>            :  ******************************************************************************/
+<span class="lineNum">     726 </span>            : 
+<span class="lineNum">     727 </span>            : #if __DARWIN_C_LEVEL &gt;= __DARWIN_C_FULL
+<span class="lineNum">     728 </span>            : #define FP_SNAN         FP_NAN
+<span class="lineNum">     729 </span>            : #define FP_QNAN         FP_NAN
+<span class="lineNum">     730 </span>            : #define HUGE            MAXFLOAT
+<span class="lineNum">     731 </span>            : #define X_TLOSS         1.41484755040568800000e+16 
+<span class="lineNum">     732 </span>            : #define DOMAIN          1
+<span class="lineNum">     733 </span>            : #define SING            2
+<span class="lineNum">     734 </span>            : #define OVERFLOW        3
+<span class="lineNum">     735 </span>            : #define UNDERFLOW       4
+<span class="lineNum">     736 </span>            : #define TLOSS           5
+<span class="lineNum">     737 </span>            : #define PLOSS           6
+<span class="lineNum">     738 </span>            : 
+<span class="lineNum">     739 </span>            : /* Legacy BSD API; use the C99 `lrint( )` function instead.                   */
+<span class="lineNum">     740 </span>            : extern long int rinttol(double)
+<span class="lineNum">     741 </span>            : __API_DEPRECATED_WITH_REPLACEMENT(&quot;lrint&quot;, macos(10.0, 10.9)) __API_UNAVAILABLE(ios, watchos, tvos);
+<span class="lineNum">     742 </span>            : /* Legacy BSD API; use the C99 `lround( )` function instead.                  */
+<span class="lineNum">     743 </span>            : extern long int roundtol(double)
+<span class="lineNum">     744 </span>            : __API_DEPRECATED_WITH_REPLACEMENT(&quot;lround&quot;, macos(10.0, 10.9)) __API_UNAVAILABLE(ios, watchos, tvos);
+<span class="lineNum">     745 </span>            : /* Legacy BSD API; use the C99 `remainder( )` function instead.               */
+<span class="lineNum">     746 </span>            : extern double drem(double, double)
+<span class="lineNum">     747 </span>            : __API_DEPRECATED_WITH_REPLACEMENT(&quot;remainder&quot;, macos(10.0, 10.9)) __API_UNAVAILABLE(ios, watchos, tvos);
+<span class="lineNum">     748 </span>            : /* Legacy BSD API; use the C99 `isfinite( )` macro instead.                   */
+<span class="lineNum">     749 </span>            : extern int finite(double)
+<span class="lineNum">     750 </span>            : __API_DEPRECATED(&quot;Use `isfinite((double)x)` instead.&quot;, macos(10.0, 10.9)) __API_UNAVAILABLE(ios, watchos, tvos);
+<span class="lineNum">     751 </span>            : /* Legacy BSD API; use the C99 `tgamma( )` function instead.                  */
+<span class="lineNum">     752 </span>            : extern double gamma(double)
+<span class="lineNum">     753 </span>            : __API_DEPRECATED_WITH_REPLACEMENT(&quot;tgamma&quot;, macos(10.0, 10.9)) __API_UNAVAILABLE(ios, watchos, tvos);
+<span class="lineNum">     754 </span>            : /* Legacy BSD API; use `2*frexp( )` or `scalbn(x, -ilogb(x))` instead.        */
+<span class="lineNum">     755 </span>            : extern double significand(double)
+<span class="lineNum">     756 </span>            : __API_DEPRECATED(&quot;Use `2*frexp( )` or `scalbn(x, -ilogb(x))` instead.&quot;, macos(10.0, 10.9)) __API_UNAVAILABLE(ios, watchos, tvos);
+<span class="lineNum">     757 </span>            : 
+<span class="lineNum">     758 </span>            : #if !defined __cplusplus
+<span class="lineNum">     759 </span>            : struct exception {
+<span class="lineNum">     760 </span>            :     int type;
+<span class="lineNum">     761 </span>            :     char *name;
+<span class="lineNum">     762 </span>            :     double arg1;
+<span class="lineNum">     763 </span>            :     double arg2;
+<span class="lineNum">     764 </span>            :     double retval;
+<span class="lineNum">     765 </span>            : };
+<span class="lineNum">     766 </span>            : 
+<span class="lineNum">     767 </span>            : #endif /* !defined __cplusplus */
+<span class="lineNum">     768 </span>            : #endif /* __DARWIN_C_LEVEL &gt;= __DARWIN_C_FULL */
+<span class="lineNum">     769 </span>            : 
+<span class="lineNum">     770 </span>            : __END_DECLS
+<span class="lineNum">     771 </span>            : #endif /* __MATH_H__ */
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

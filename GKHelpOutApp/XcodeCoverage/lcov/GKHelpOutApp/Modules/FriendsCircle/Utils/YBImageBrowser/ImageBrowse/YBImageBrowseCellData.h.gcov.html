@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/FriendsCircle/Utils/YBImageBrowser/ImageBrowse/YBImageBrowseCellData.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/FriendsCircle/Utils/YBImageBrowser/ImageBrowse</a> - YBImageBrowseCellData.h<span style="font-size: 80%;"> (source / <a href="YBImageBrowseCellData.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  YBImageBrowseCellData.h
+<span class="lineNum">       3 </span>            : //  YBImageBrowserDemo
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by 杨波 on 2018/8/25.
+<span class="lineNum">       6 </span>            : //  Copyright © 2018年 杨波. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &lt;Foundation/Foundation.h&gt;
+<span class="lineNum">      10 </span>            : #import &lt;Photos/Photos.h&gt;
+<span class="lineNum">      11 </span>            : #import &quot;YBImageBrowserCellDataProtocol.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;YBImage.h&quot;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : NS_ASSUME_NONNULL_BEGIN
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : typedef NS_ENUM(NSUInteger, YBImageBrowseFillType) {
+<span class="lineNum">      17 </span>            :     YBImageBrowseFillTypeUnknown,
+<span class="lineNum">      18 </span>            :     // The width of the image is up to the width of the screen, the height automatic adaptation.
+<span class="lineNum">      19 </span>            :     YBImageBrowseFillTypeFullWidth,
+<span class="lineNum">      20 </span>            :     // The image maximization display but ensure integrity.
+<span class="lineNum">      21 </span>            :     YBImageBrowseFillTypeCompletely
+<span class="lineNum">      22 </span>            : };
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            : /** It's recommended to use 'YBImage'. */
+<span class="lineNum">      25 </span>            : typedef __kindof UIImage * _Nullable (^YBIBLocalImageBlock)(void);
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : @interface YBImageBrowseCellData : NSObject &lt;YBImageBrowserCellDataProtocol&gt;
+<span class="lineNum">      29 </span>            : 
+<a name="30"><span class="lineNum">      30 </span>            : /** For local image.</a>
+<span class="lineNum">      31 </span>            :  It's recommended to use 'YBImage', the usage of 'YBImage' is the same as 'UIImage', support GIF, WebP and APNG. */
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 : @property (nonatomic, copy, nullable) YBIBLocalImageBlock imageBlock;</span>
+<span class="lineNum">      33 </span>            : 
+<a name="34"><span class="lineNum">      34 </span>            : /** For network image.</a>
+<span class="lineNum">      35 </span>            :  The network address of image. */
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : @property (nonatomic, strong, nullable) NSURL *url;</span>
+<a name="37"><span class="lineNum">      37 </span>            : </a>
+<span class="lineNum">      38 </span>            : /** Image from the system album */
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : @property (nonatomic, strong, nullable) PHAsset *phAsset;</span>
+<span class="lineNum">      40 </span>            : 
+<a name="41"><span class="lineNum">      41 </span>            : /** The source rendering object corresponding to the current data model, it's used for animation.</a>
+<span class="lineNum">      42 </span>            :  In general, it's 'UIImageView', but it can also be 'UIView' or 'CALayer'. */
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : @property (nonatomic, weak, nullable) id sourceObject;</span>
+<span class="lineNum">      44 </span>            : 
+<a name="45"><span class="lineNum">      45 </span>            : /** As a preview image. It's usually a low quality image.</a>
+<span class="lineNum">      46 </span>            :  If 'sourceObject' is valid and is kind of 'UIImageView', it will automatic setting 'thumbImage'. */
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : @property (nonatomic, strong, nullable) UIImage *thumbImage;</span>
+<a name="48"><span class="lineNum">      48 </span>            : </a>
+<span class="lineNum">      49 </span>            : /** As a preview image. It's invalid if it is not found in the cache. */
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : @property (nonatomic, strong, nullable) NSURL *thumbUrl;</span>
+<a name="51"><span class="lineNum">      51 </span>            : </a>
+<span class="lineNum">      52 </span>            : /** The final image. */
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : @property (nonatomic, strong, readonly, nullable) YBImage *image;</span>
+<span class="lineNum">      54 </span>            : 
+<a name="55"><span class="lineNum">      55 </span>            : /** The maximum zoom scale of image, must be greater than or equal to 1.</a>
+<span class="lineNum">      56 </span>            :  If there is no explicit settings, it will automatically calculate through the image's pixel. */
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) CGFloat maxZoomScale;</span>
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : /** When the zoom scale is automatically calculated, the result multiplied by this surplus as the final scaling. The defalut is 1.5. */
+<span class="lineNum">      60 </span>            : @property (nonatomic, class) CGFloat globalZoomScaleSurplus;
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : /** The maximum texture size, defalut is '(CGSize){4096, 4096}'.
+<span class="lineNum">      63 </span>            : When the image exceeds this texture size, it will be compressed asynchronously and cut asynchronously.
+<span class="lineNum">      64 </span>            :  It is best to set this value before instantiating all variables.
+<span class="lineNum">      65 </span>            :  */
+<span class="lineNum">      66 </span>            : @property (nonatomic, class) CGSize globalMaxTextureSize;
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : /** The default is 'YBImageBrowseFillTypeFullWidth'. */
+<span class="lineNum">      69 </span>            : @property (nonatomic, class) YBImageBrowseFillType globalVerticalfillType;
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            : /** The default is 'YBImageBrowseFillTypeFullWidth'. */
+<span class="lineNum">      72 </span>            : @property (nonatomic, class) YBImageBrowseFillType globalHorizontalfillType;
+<a name="73"><span class="lineNum">      73 </span>            : </a>
+<span class="lineNum">      74 </span>            : /** The current instance variable will ignore the global configuration when this value is valid. */
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) YBImageBrowseFillType verticalfillType;</span>
+<a name="76"><span class="lineNum">      76 </span>            : </a>
+<span class="lineNum">      77 </span>            : /** The current instance variable will ignore the global configuration when this value is valid. */
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) YBImageBrowseFillType horizontalfillType;</span>
+<a name="79"><span class="lineNum">      79 </span>            : </a>
+<span class="lineNum">      80 </span>            : /** The default is YES. */
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) BOOL allowSaveToPhotoAlbum;</span>
+<a name="82"><span class="lineNum">      82 </span>            : </a>
+<span class="lineNum">      83 </span>            : /** The default is YES. */
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) BOOL allowShowSheetView;</span>
+<a name="85"><span class="lineNum">      85 </span>            : </a>
+<span class="lineNum">      86 </span>            : /** You can set any data. */
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 : @property (nonatomic, strong, nullable) id extraData;</span>
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span>            : /** The default is YES.
+<span class="lineNum">      90 </span>            :  If the image decoding lead to interactive caton, you can set it to YES. When decoding asynchronously, there will be more time consumption. */
+<span class="lineNum">      91 </span>            : @property (nonatomic, class) BOOL shouldDecodeAsynchronously;
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span>            : @end
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span>            : NS_ASSUME_NONNULL_END
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

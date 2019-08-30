@@ -1,0 +1,653 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/Chatting/Util/NTESSessionUtil.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/Chatting/Util</a> - NTESSessionUtil.m<span style="font-size: 80%;"> (source / <a href="NTESSessionUtil.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">288</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  NTESSessionUtil.m
+<span class="lineNum">       3 </span>            : //  NIMDemo
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by ght on 15-1-27.
+<span class="lineNum">       6 </span>            : //  Copyright (c) 2015年 Netease. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;NTESSessionUtil.h&quot;
+<span class="lineNum">      10 </span>            : //#import &quot;NTESLoginManager.h&quot;
+<span class="lineNum">      11 </span>            : //#import &quot;NTESSnapchatAttachment.h&quot;
+<span class="lineNum">      12 </span>            : //#import &quot;NTESJanKenPonAttachment.h&quot;
+<span class="lineNum">      13 </span>            : //#import &quot;NTESChartletAttachment.h&quot;
+<span class="lineNum">      14 </span>            : //#import &quot;UIImage+NTES.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;NIMKit.h&quot;
+<span class="lineNum">      16 </span>            : //#import &quot;NTESSnapchatAttachment.h&quot;
+<span class="lineNum">      17 </span>            : //#import &quot;NTESWhiteboardAttachment.h&quot;
+<span class="lineNum">      18 </span>            : //#import &quot;NIMKitInfoFetchOption.h&quot;
+<span class="lineNum">      19 </span>            : #import &quot;NTESSubscribeManager.h&quot;
+<span class="lineNum">      20 </span>            : //#import &quot;NIMExtensionHelper.h&quot;
+<span class="lineNum">      21 </span>            : #import &quot;NTESSubscribeDefine.h&quot;
+<span class="lineNum">      22 </span>            : //#import &quot;NSDictionary+NTESJson.h&quot;
+<span class="lineNum">      23 </span>            : //#import &quot;NTESDevice.h&quot;
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : double OnedayTimeIntervalValue = 24*60*60;  //一天的秒数
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : static NSString *const NTESRecentSessionAtMark  = @&quot;NTESRecentSessionAtMark&quot;;
+<span class="lineNum">      28 </span>            : static NSString *const NTESRecentSessionTopMark = @&quot;NTESRecentSessionTopMark&quot;;
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : 
+<a name="31"><span class="lineNum">      31 </span>            : @implementation NTESSessionUtil</a>
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 : + (CGSize)getImageSizeWithImageOriginSize:(CGSize)originSize</span>
+<span class="lineNum">      34 </span>            :                                   minSize:(CGSize)imageMinSize
+<span class="lineNum">      35 </span>            :                                   maxSize:(CGSize)imageMaxSiz
+<span class="lineNum">      36 </span>            : {
+<span class="lineNum">      37 </span>            :     CGSize size;
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     NSInteger imageWidth = originSize.width ,imageHeight = originSize.height;</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     NSInteger imageMinWidth = imageMinSize.width, imageMinHeight = imageMinSize.height;</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     NSInteger imageMaxWidth = imageMaxSiz.width, imageMaxHeight = imageMaxSiz.height;</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     if (imageWidth &gt; imageHeight) //宽图</span>
+<span class="lineNum">      42 </span>            :     {
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :         size.height = imageMinHeight;  //高度取最小高度</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :         size.width = imageWidth * imageMinHeight / imageHeight;</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :         if (size.width &gt; imageMaxWidth)</span>
+<span class="lineNum">      46 </span>            :         {
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :             size.width = imageMaxWidth;</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     else if(imageWidth &lt; imageHeight)//高图</span>
+<span class="lineNum">      51 </span>            :     {
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :         size.width = imageMinWidth;</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :         size.height = imageHeight *imageMinWidth / imageWidth;</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :         if (size.height &gt; imageMaxHeight)</span>
+<span class="lineNum">      55 </span>            :         {
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :             size.height = imageMaxHeight;</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      59 </span>            :     else//方图
+<span class="lineNum">      60 </span>            :     {
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :         if (imageWidth &gt; imageMaxWidth)</span>
+<span class="lineNum">      62 </span>            :         {
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :             size.width = imageMaxWidth;</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :             size.height = imageMaxHeight;</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :         else if(imageWidth &gt; imageMinWidth)</span>
+<span class="lineNum">      67 </span>            :         {
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :             size.width = imageWidth;</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :             size.height = imageHeight;</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      71 </span>            :         else
+<span class="lineNum">      72 </span>            :         {
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :             size.width = imageMinWidth;</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :             size.height = imageMinHeight;</span>
+<span class="lineNum">      75 </span>            :         }
+<span class="lineNum">      76 </span>            :     }
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :     return size;</span>
+<span class="lineNum">      78 </span>            : }
+<a name="79"><span class="lineNum">      79 </span>            : </a>
+<span class="lineNum">      80 </span>            :                                                  
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 : +(BOOL)isTheSameDay:(NSTimeInterval)currentTime compareTime:(NSDateComponents*)older</span>
+<span class="lineNum">      82 </span>            : {
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     NSCalendarUnit currentComponents = (NSCalendarUnit)(NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour | NSCalendarUnitMinute);</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     NSDateComponents *current = [[NSCalendar currentCalendar] components:currentComponents fromDate:[NSDate dateWithTimeIntervalSinceNow:currentTime]];</span>
+<span class="lineNum">      85 </span>            :     
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :     return current.year == older.year &amp;&amp; current.month == older.month &amp;&amp; current.day == older.day;</span>
+<a name="87"><span class="lineNum">      87 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : +(NSString*)weekdayStr:(NSInteger)dayOfWeek</span>
+<span class="lineNum">      90 </span>            : {
+<span class="lineNum">      91 </span>            :     static NSDictionary *daysOfWeekDict = nil;
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :     daysOfWeekDict = @{@(1):@&quot;星期日&quot;,</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :                        @(2):@&quot;星期一&quot;,</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :                        @(3):@&quot;星期二&quot;,</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :                        @(4):@&quot;星期三&quot;,</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :                        @(5):@&quot;星期四&quot;,</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :                        @(6):@&quot;星期五&quot;,</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :                        @(7):@&quot;星期六&quot;,};</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 :     return [daysOfWeekDict objectForKey:@(dayOfWeek)];</span>
+<span class="lineNum">     100 </span>            : }
+<a name="101"><span class="lineNum">     101 </span>            : </a>
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 : +(NSDateComponents*)stringFromTimeInterval:(NSTimeInterval)messageTime components:(NSCalendarUnit)components</span>
+<span class="lineNum">     104 </span>            : {
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:components fromDate:[NSDate dateWithTimeIntervalSince1970:messageTime]];</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     return dateComponents;</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : }</span>
+<a name="108"><span class="lineNum">     108 </span>            : </a>
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 : + (NSString *)showNick:(NSString*)uid inSession:(NIMSession*)session{</span>
+<span class="lineNum">     111 </span>            :     
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :     NSString *nickname = nil;</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :     if (session.sessionType == NIMSessionTypeTeam)</span>
+<span class="lineNum">     114 </span>            :     {
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :         NIMTeamMember *member = [[NIMSDK sharedSDK].teamManager teamMember:uid inTeam:session.sessionId];</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :         nickname = member.nickname;</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     if (!nickname.length) {</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :         NIMKitInfo *info = [[NIMKit sharedKit] infoByUser:uid option:nil];</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :         nickname = info.showName;</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :     return nickname;</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 : }</span>
+<a name="124"><span class="lineNum">     124 </span>            : </a>
+<span class="lineNum">     125 </span>            : 
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 : +(NSString*)showTime:(NSTimeInterval) msglastTime showDetail:(BOOL)showDetail</span>
+<span class="lineNum">     127 </span>            : {
+<span class="lineNum">     128 </span>            :     //今天的时间
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :     NSDate * nowDate = [NSDate date];</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :     NSDate * msgDate = [NSDate dateWithTimeIntervalSince1970:msglastTime];</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     NSString *result = nil;</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :     NSCalendarUnit components = (NSCalendarUnit)(NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitWeekday|NSCalendarUnitHour | NSCalendarUnitMinute);</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :     NSDateComponents *nowDateComponents = [[NSCalendar currentCalendar] components:components fromDate:nowDate];</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     NSDateComponents *msgDateComponents = [[NSCalendar currentCalendar] components:components fromDate:msgDate];</span>
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :     NSInteger hour = msgDateComponents.hour;</span>
+<span class="lineNum">     137 </span>            :     
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     result = [NTESSessionUtil getPeriodOfTime:hour withMinute:msgDateComponents.minute];</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :     if (hour &gt; 12)</span>
+<span class="lineNum">     140 </span>            :     {
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :         hour = hour - 12;</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :     if(nowDateComponents.day == msgDateComponents.day) //同一天,显示时间</span>
+<span class="lineNum">     144 </span>            :     {
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :         result = [[NSString alloc] initWithFormat:@&quot;%@ %zd:%02d&quot;,result,hour,(int)msgDateComponents.minute];</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :     else if(nowDateComponents.day == (msgDateComponents.day+1))//昨天</span>
+<span class="lineNum">     148 </span>            :     {
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 :         result = showDetail?  [[NSString alloc] initWithFormat:@&quot;昨天%@ %zd:%02d&quot;,result,hour,(int)msgDateComponents.minute] : @&quot;昨天&quot;;</span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :     else if(nowDateComponents.day == (msgDateComponents.day+2)) //前天</span>
+<span class="lineNum">     152 </span>            :     {
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :         result = showDetail? [[NSString alloc] initWithFormat:@&quot;前天%@ %zd:%02d&quot;,result,hour,(int)msgDateComponents.minute] : @&quot;前天&quot;;</span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :     else if([nowDate timeIntervalSinceDate:msgDate] &lt; 7 * OnedayTimeIntervalValue)//一周内</span>
+<span class="lineNum">     156 </span>            :     {
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :         NSString *weekDay = [NTESSessionUtil weekdayStr:msgDateComponents.weekday];</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :         result = showDetail? [weekDay stringByAppendingFormat:@&quot;%@ %zd:%02d&quot;,result,hour,(int)msgDateComponents.minute] : weekDay;</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     160 </span>            :     else//显示日期
+<span class="lineNum">     161 </span>            :     {
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :         NSString *day = [NSString stringWithFormat:@&quot;%zd-%zd-%zd&quot;, msgDateComponents.year, msgDateComponents.month, msgDateComponents.day];</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :         result = showDetail? [day stringByAppendingFormat:@&quot;%@ %zd:%02d&quot;,result,hour,(int)msgDateComponents.minute]:day;</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :     return result;</span>
+<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     167 </span>            : 
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 : + (NSString *)getPeriodOfTime:(NSInteger)time withMinute:(NSInteger)minute</span>
+<span class="lineNum">     169 </span>            : {
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :     NSInteger totalMin = time *60 + minute;</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :     NSString *showPeriodOfTime = @&quot;&quot;;</span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 :     if (totalMin &gt; 0 &amp;&amp; totalMin &lt;= 5 * 60)</span>
+<span class="lineNum">     173 </span>            :     {
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :         showPeriodOfTime = @&quot;凌晨&quot;;</span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :     else if (totalMin &gt; 5 * 60 &amp;&amp; totalMin &lt; 12 * 60)</span>
+<span class="lineNum">     177 </span>            :     {
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :         showPeriodOfTime = @&quot;上午&quot;;</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :     else if (totalMin &gt;= 12 * 60 &amp;&amp; totalMin &lt;= 18 * 60)</span>
+<span class="lineNum">     181 </span>            :     {
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :         showPeriodOfTime = @&quot;下午&quot;;</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :     else if ((totalMin &gt; 18 * 60 &amp;&amp; totalMin &lt;= (23 * 60 + 59)) || totalMin == 0)</span>
+<span class="lineNum">     185 </span>            :     {
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :         showPeriodOfTime = @&quot;晚上&quot;;</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :     return showPeriodOfTime;</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 : }</span>
+<a name="190"><span class="lineNum">     190 </span>            : </a>
+<span class="lineNum">     191 </span>            : 
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 : + (void)sessionWithInputURL:(NSURL*)inputURL</span>
+<span class="lineNum">     193 </span>            :                   outputURL:(NSURL*)outputURL
+<span class="lineNum">     194 </span>            :                blockHandler:(void (^)(AVAssetExportSession*))handler
+<span class="lineNum">     195 </span>            : {
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 :     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL options:nil];</span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :     AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:asset</span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :                                                                      presetName:AVAssetExportPresetMediumQuality];</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     session.outputURL = outputURL;</span>
+<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :     session.outputFileType = AVFileTypeMPEG4;   // 支持安卓某些机器的视频播放</span></a>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :     session.shouldOptimizeForNetworkUse = YES;</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :     [session exportAsynchronouslyWithCompletionHandler:^(void)</span>
+<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :      {</span></a>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :          handler(session);</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 :      }];</span>
+<span class="lineNum">     206 </span><span class="lineNoCov">          0 : }</span>
+<a name="207"><span class="lineNum">     207 </span>            : </a>
+<span class="lineNum">     208 </span>            : 
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 : + (NSDictionary *)dictByJsonData:(NSData *)data</span>
+<span class="lineNum">     210 </span>            : {
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :     NSDictionary *dict = nil;</span>
+<span class="lineNum">     212 </span><span class="lineNoCov">          0 :     if ([data isKindOfClass:[NSData class]])</span>
+<span class="lineNum">     213 </span>            :     {
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :         NSError *error = nil;</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :         dict = [NSJSONSerialization JSONObjectWithData:data</span>
+<span class="lineNum">     216 </span>            :                                                options:0
+<span class="lineNum">     217 </span>            :                                                  error:&amp;error];
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :         if (error) {</span>
+<span class="lineNum">     219 </span>            :            
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 :     return [dict isKindOfClass:[NSDictionary class]] ? dict : nil;</span>
+<span class="lineNum">     223 </span><span class="lineNoCov">          0 : }</span>
+<a name="224"><span class="lineNum">     224 </span>            : </a>
+<span class="lineNum">     225 </span>            : 
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 : + (NSDictionary *)dictByJsonString:(NSString *)jsonString</span>
+<span class="lineNum">     227 </span>            : {
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :     if (!jsonString.length) {</span>
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 :         return nil;</span>
+<span class="lineNum">     230 </span>            :     }
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :     NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :     return [NTESSessionUtil dictByJsonData:data];</span>
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 : }</span>
+<a name="234"><span class="lineNum">     234 </span>            : </a>
+<span class="lineNum">     235 </span>            : 
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 : + (NSString *)tipOnMessageRevoked:(NIMRevokeMessageNotification *)notification</span>
+<span class="lineNum">     237 </span>            : {
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :     NSString *tip = @&quot;&quot;;</span>
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 :     do {</span>
+<span class="lineNum">     240 </span><span class="lineNoCov">          0 :         if (!notification || ![notification isKindOfClass:[NIMRevokeMessageNotification class]]) {</span>
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 :             tip = @&quot;你&quot;;</span>
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 :             break;</span>
+<span class="lineNum">     243 </span>            :         }
+<span class="lineNum">     244 </span>            :         //
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :         NIMSession *session = notification.session;</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :         if (session.sessionType == NIMSessionTypeTeam) {</span>
+<span class="lineNum">     247 </span><span class="lineNoCov">          0 :             tip = [self tipTitleFromMessageRevokeNotificationTeam:notification];</span>
+<span class="lineNum">     248 </span><span class="lineNoCov">          0 :             break;</span>
+<span class="lineNum">     249 </span>            :         }
+<span class="lineNum">     250 </span>            :         //
+<span class="lineNum">     251 </span><span class="lineNoCov">          0 :         tip = [self tipTitleFromMessageRevokeNotificationP2P:notification];</span>
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 :     } while (false);</span>
+<span class="lineNum">     253 </span>            :     
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 :     return [NSString stringWithFormat:@&quot;%@撤回了一条消息&quot;, tip];</span>
+<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     256 </span>            : 
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 : + (NSString *)tipTitleFromMessageRevokeNotificationP2P:(NIMRevokeMessageNotification *)notification {</span>
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 :     NSString *fromUid = notification.messageFromUserId;</span>
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 :     BOOL fromMe = [fromUid isEqualToString:[[NIMSDK sharedSDK].loginManager currentAccount]];</span>
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 :     return fromMe ? @&quot;你&quot; : @&quot;对方&quot;;</span>
+<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     262 </span>            : 
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 : + (NSString *)tipTitleFromMessageRevokeNotificationTeam:(NIMRevokeMessageNotification *)notification {</span>
+<span class="lineNum">     264 </span>            :     /*
+<span class="lineNum">     265 </span>            :     NSString *tipTitle = @&quot;&quot;;
+<span class="lineNum">     266 </span>            :     
+<span class="lineNum">     267 </span>            :     do {
+<span class="lineNum">     268 </span>            :         NSString *fromUid = notification.messageFromUserId;
+<span class="lineNum">     269 </span>            :         NSString *operatorUid = notification.fromUserId;
+<span class="lineNum">     270 </span>            :         BOOL revokeBySender = !operatorUid || [operatorUid isEqualToString:fromUid];
+<span class="lineNum">     271 </span>            :         BOOL fromMe = [fromUid isEqualToString:[[NIMSDK sharedSDK].loginManager currentAccount]];
+<span class="lineNum">     272 </span>            :         
+<span class="lineNum">     273 </span>            :         // 自己撤回自己的
+<span class="lineNum">     274 </span>            :         if (revokeBySender &amp;&amp; fromMe) {
+<span class="lineNum">     275 </span>            :             tipTitle = @&quot;你&quot;;
+<span class="lineNum">     276 </span>            :             break;
+<span class="lineNum">     277 </span>            :         }
+<span class="lineNum">     278 </span>            :         
+<span class="lineNum">     279 </span>            :         NIMSession *session = notification.session;
+<span class="lineNum">     280 </span>            :         NIMKitInfoFetchOption *option = [[NIMKitInfoFetchOption alloc] init];
+<span class="lineNum">     281 </span>            :         option.session = session;
+<span class="lineNum">     282 </span>            :         NIMKitInfo *info = [[NIMKit sharedKit] infoByUser:(revokeBySender ? fromUid : operatorUid) option:option];
+<span class="lineNum">     283 </span>            :         
+<span class="lineNum">     284 </span>            :         // 别人撤回自己的
+<span class="lineNum">     285 </span>            :         if (revokeBySender) {
+<span class="lineNum">     286 </span>            :             tipTitle = info.showName;
+<span class="lineNum">     287 </span>            :             break;
+<span class="lineNum">     288 </span>            :         }
+<span class="lineNum">     289 </span>            :         
+<span class="lineNum">     290 </span>            :         NIMTeamMember *member = [[NIMSDK sharedSDK].teamManager teamMember:operatorUid inTeam:session.sessionId];
+<span class="lineNum">     291 </span>            :         // 被群主/管理员撤回的
+<span class="lineNum">     292 </span>            :         if (member.type == NIMTeamMemberTypeOwner) {
+<span class="lineNum">     293 </span>            :             tipTitle = [@&quot;群主&quot; stringByAppendingString:info.showName];
+<span class="lineNum">     294 </span>            :         }
+<span class="lineNum">     295 </span>            :         else if (member.type == NIMTeamMemberTypeManager) {
+<span class="lineNum">     296 </span>            :             tipTitle = [@&quot;管理员&quot; stringByAppendingString:info.showName];
+<span class="lineNum">     297 </span>            :         }
+<span class="lineNum">     298 </span>            :     } while (false);
+<span class="lineNum">     299 </span>            :     
+<span class="lineNum">     300 </span>            :     return tipTitle;
+<span class="lineNum">     301 </span>            :      */
+<span class="lineNum">     302 </span><span class="lineNoCov">          0 :     return @&quot;测试&quot;;</span>
+<span class="lineNum">     303 </span><span class="lineNoCov">          0 : }</span>
+<a name="304"><span class="lineNum">     304 </span>            : </a>
+<span class="lineNum">     305 </span>            : 
+<span class="lineNum">     306 </span><span class="lineNoCov">          0 : + (BOOL)canMessageBeForwarded:(NIMMessage *)message</span>
+<span class="lineNum">     307 </span>            : {
+<span class="lineNum">     308 </span>            :     /*
+<span class="lineNum">     309 </span>            :     if (!message.isReceivedMsg &amp;&amp; message.deliveryState == NIMMessageDeliveryStateFailed) {
+<span class="lineNum">     310 </span>            :         return NO;
+<span class="lineNum">     311 </span>            :     }
+<span class="lineNum">     312 </span>            :     id&lt;NIMMessageObject&gt; messageObject = message.messageObject;
+<span class="lineNum">     313 </span>            :     if ([messageObject isKindOfClass:[NIMCustomObject class]])
+<span class="lineNum">     314 </span>            :     {
+<span class="lineNum">     315 </span>            :         id&lt;NTESCustomAttachmentInfo&gt; attach = (id&lt;NTESCustomAttachmentInfo&gt;)[(NIMCustomObject *)message.messageObject attachment];
+<span class="lineNum">     316 </span>            :         return [attach canBeForwarded];
+<span class="lineNum">     317 </span>            :     }
+<span class="lineNum">     318 </span>            :     if ([messageObject isKindOfClass:[NIMNotificationObject class]]) {
+<span class="lineNum">     319 </span>            :         return NO;
+<span class="lineNum">     320 </span>            :     }
+<span class="lineNum">     321 </span>            :     if ([messageObject isKindOfClass:[NIMTipObject class]]) {
+<span class="lineNum">     322 </span>            :         return NO;
+<span class="lineNum">     323 </span>            :     }
+<span class="lineNum">     324 </span>            :     if ([messageObject isKindOfClass:[NIMRobotObject class]]) {
+<span class="lineNum">     325 </span>            :         NIMRobotObject *robotObject = (NIMRobotObject *)messageObject;
+<span class="lineNum">     326 </span>            :         return !robotObject.isFromRobot;
+<span class="lineNum">     327 </span>            :     }
+<span class="lineNum">     328 </span>            :     return YES;
+<span class="lineNum">     329 </span>            :      */
+<span class="lineNum">     330 </span>            :     return YES;
+<a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     332 </span>            : 
+<span class="lineNum">     333 </span><span class="lineNoCov">          0 : + (BOOL)canMessageBeRevoked:(NIMMessage *)message</span>
+<span class="lineNum">     334 </span>            : {
+<span class="lineNum">     335 </span><span class="lineNoCov">          0 :     BOOL canRevokeMessageByRole  = [self canRevokeMessageByRole:message];</span>
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 :     BOOL isDeliverFailed = !message.isReceivedMsg &amp;&amp; message.deliveryState == NIMMessageDeliveryStateFailed;</span>
+<span class="lineNum">     337 </span><span class="lineNoCov">          0 :     if (!canRevokeMessageByRole || isDeliverFailed) {</span>
+<span class="lineNum">     338 </span><span class="lineNoCov">          0 :         return NO;</span>
+<span class="lineNum">     339 </span>            :     }
+<span class="lineNum">     340 </span><span class="lineNoCov">          0 :     id&lt;NIMMessageObject&gt; messageObject = message.messageObject;</span>
+<span class="lineNum">     341 </span><span class="lineNoCov">          0 :     if ([messageObject isKindOfClass:[NIMTipObject class]]</span>
+<span class="lineNum">     342 </span><span class="lineNoCov">          0 :         || [messageObject isKindOfClass:[NIMNotificationObject class]]) {</span>
+<span class="lineNum">     343 </span><span class="lineNoCov">          0 :         return NO;</span>
+<span class="lineNum">     344 </span>            :     }
+<span class="lineNum">     345 </span><span class="lineNoCov">          0 :     if ([messageObject isKindOfClass:[NIMCustomObject class]])</span>
+<span class="lineNum">     346 </span>            :     {
+<span class="lineNum">     347 </span>            : //        id&lt;NTESCustomAttachmentInfo&gt; attach = (id&lt;NTESCustomAttachmentInfo&gt;)[(NIMCustomObject *)message.messageObject attachment];
+<span class="lineNum">     348 </span>            : //        return [attach canBeRevoked];
+<span class="lineNum">     349 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     350 </span><span class="lineNoCov">          0 :     return YES;</span>
+<a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     352 </span>            : 
+<span class="lineNum">     353 </span><span class="lineNoCov">          0 : + (BOOL)canMessageBeCanceled:(NIMMessage *)message</span>
+<span class="lineNum">     354 </span>            : {
+<span class="lineNum">     355 </span><span class="lineNoCov">          0 :     return [self canMessageBeRevoked:message] &amp;&amp;</span>
+<span class="lineNum">     356 </span><span class="lineNoCov">          0 :     message.deliveryState == NIMMessageDeliveryStateDelivering;</span>
+<span class="lineNum">     357 </span><span class="lineNoCov">          0 : }</span>
+<a name="358"><span class="lineNum">     358 </span>            : </a>
+<span class="lineNum">     359 </span>            : 
+<span class="lineNum">     360 </span><span class="lineNoCov">          0 : + (BOOL)canRevokeMessageByRole:(NIMMessage *)message</span>
+<span class="lineNum">     361 </span>            : {
+<span class="lineNum">     362 </span><span class="lineNoCov">          0 :     BOOL isFromMe  = [message.from isEqualToString:[[NIMSDK sharedSDK].loginManager currentAccount]];</span>
+<span class="lineNum">     363 </span><span class="lineNoCov">          0 :     BOOL isToMe        = [message.session.sessionId isEqualToString:[[NIMSDK sharedSDK].loginManager currentAccount]];</span>
+<span class="lineNum">     364 </span><span class="lineNoCov">          0 :     BOOL isTeamManager = NO;</span>
+<span class="lineNum">     365 </span><span class="lineNoCov">          0 :     if (message.session.sessionType == NIMSessionTypeTeam)</span>
+<span class="lineNum">     366 </span>            :     {
+<span class="lineNum">     367 </span><span class="lineNoCov">          0 :         NIMTeamMember *member = [[NIMSDK sharedSDK].teamManager teamMember:[NIMSDK sharedSDK].loginManager.currentAccount inTeam:message.session.sessionId];</span>
+<span class="lineNum">     368 </span><span class="lineNoCov">          0 :         isTeamManager = member.type == NIMTeamMemberTypeOwner || member.type == NIMTeamMemberTypeManager;</span>
+<span class="lineNum">     369 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     370 </span>            :     
+<span class="lineNum">     371 </span><span class="lineNoCov">          0 :     BOOL isRobotMessage = NO;</span>
+<span class="lineNum">     372 </span><span class="lineNoCov">          0 :     id&lt;NIMMessageObject&gt; messageObject = message.messageObject;</span>
+<span class="lineNum">     373 </span><span class="lineNoCov">          0 :     if ([messageObject isKindOfClass:[NIMRobotObject class]]) {</span>
+<span class="lineNum">     374 </span><span class="lineNoCov">          0 :         NIMRobotObject *robotObject = (NIMRobotObject *)messageObject;</span>
+<span class="lineNum">     375 </span><span class="lineNoCov">          0 :         isRobotMessage = robotObject.isFromRobot;</span>
+<span class="lineNum">     376 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     377 </span>            :     //我发出去的消息并且不是发给我的电脑的消息并且不是机器人的消息，可以撤回
+<span class="lineNum">     378 </span>            :     //群消息里如果我是管理员可以撤回以上所有消息
+<span class="lineNum">     379 </span><span class="lineNoCov">          0 :     return (isFromMe &amp;&amp; !isToMe &amp;&amp; !isRobotMessage) || isTeamManager;</span>
+<span class="lineNum">     380 </span><span class="lineNoCov">          0 : }</span>
+<a name="381"><span class="lineNum">     381 </span>            : </a>
+<span class="lineNum">     382 </span>            : 
+<span class="lineNum">     383 </span><span class="lineNoCov">          0 : + (void)addRecentSessionMark:(NIMSession *)session type:(NTESRecentSessionMarkType)type</span>
+<span class="lineNum">     384 </span>            : {
+<span class="lineNum">     385 </span><span class="lineNoCov">          0 :     NIMRecentSession *recent = [[NIMSDK sharedSDK].conversationManager recentSessionBySession:session];</span>
+<span class="lineNum">     386 </span><span class="lineNoCov">          0 :     if (recent)</span>
+<span class="lineNum">     387 </span>            :     {
+<span class="lineNum">     388 </span><span class="lineNoCov">          0 :         NSDictionary *localExt = recent.localExt?:@{};</span>
+<span class="lineNum">     389 </span><span class="lineNoCov">          0 :         NSMutableDictionary *dict = [localExt mutableCopy];</span>
+<span class="lineNum">     390 </span><span class="lineNoCov">          0 :         NSString *key = [NTESSessionUtil keyForMarkType:type];</span>
+<span class="lineNum">     391 </span><span class="lineNoCov">          0 :         [dict setObject:@(YES) forKey:key];</span>
+<span class="lineNum">     392 </span><span class="lineNoCov">          0 :         [[NIMSDK sharedSDK].conversationManager updateRecentLocalExt:dict recentSession:recent];</span>
+<span class="lineNum">     393 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     394 </span>            : 
+<span class="lineNum">     395 </span>            : 
+<a name="396"><span class="lineNum">     396 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     397 </span>            : 
+<span class="lineNum">     398 </span><span class="lineNoCov">          0 : + (void)removeRecentSessionMark:(NIMSession *)session type:(NTESRecentSessionMarkType)type</span>
+<span class="lineNum">     399 </span>            : {
+<span class="lineNum">     400 </span><span class="lineNoCov">          0 :     NIMRecentSession *recent = [[NIMSDK sharedSDK].conversationManager recentSessionBySession:session];</span>
+<span class="lineNum">     401 </span><span class="lineNoCov">          0 :     if (recent) {</span>
+<span class="lineNum">     402 </span><span class="lineNoCov">          0 :         NSMutableDictionary *localExt = [recent.localExt mutableCopy];</span>
+<span class="lineNum">     403 </span><span class="lineNoCov">          0 :         NSString *key = [NTESSessionUtil keyForMarkType:type];</span>
+<span class="lineNum">     404 </span><span class="lineNoCov">          0 :         [localExt removeObjectForKey:key];</span>
+<span class="lineNum">     405 </span><span class="lineNoCov">          0 :         [[NIMSDK sharedSDK].conversationManager updateRecentLocalExt:localExt recentSession:recent];</span>
+<span class="lineNum">     406 </span><span class="lineNoCov">          0 :     }</span>
+<a name="407"><span class="lineNum">     407 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     408 </span>            : 
+<span class="lineNum">     409 </span><span class="lineNoCov">          0 : + (BOOL)recentSessionIsMark:(NIMRecentSession *)recent type:(NTESRecentSessionMarkType)type</span>
+<span class="lineNum">     410 </span>            : {
+<span class="lineNum">     411 </span><span class="lineNoCov">          0 :     NSDictionary *localExt = recent.localExt;</span>
+<span class="lineNum">     412 </span><span class="lineNoCov">          0 :     NSString *key = [NTESSessionUtil keyForMarkType:type];</span>
+<span class="lineNum">     413 </span><span class="lineNoCov">          0 :     return [localExt[key] boolValue] == YES;</span>
+<a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     415 </span>            : 
+<span class="lineNum">     416 </span><span class="lineNoCov">          0 : + (NSString *)keyForMarkType:(NTESRecentSessionMarkType)type</span>
+<span class="lineNum">     417 </span>            : {
+<a name="418"><span class="lineNum">     418 </span>            :     static NSDictionary *keys;</a>
+<span class="lineNum">     419 </span>            :     static dispatch_once_t onceToken;
+<span class="lineNum">     420 </span><span class="lineNoCov">          0 :     dispatch_once(&amp;onceToken, ^{</span>
+<span class="lineNum">     421 </span><span class="lineNoCov">          0 :         keys = @{</span>
+<span class="lineNum">     422 </span><span class="lineNoCov">          0 :                  @(NTESRecentSessionMarkTypeAt)  : NTESRecentSessionAtMark,</span>
+<span class="lineNum">     423 </span><span class="lineNoCov">          0 :                  @(NTESRecentSessionMarkTypeTop) : NTESRecentSessionTopMark</span>
+<span class="lineNum">     424 </span>            :                  };
+<span class="lineNum">     425 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">     426 </span><span class="lineNoCov">          0 :     return [keys objectForKey:@(type)];</span>
+<a name="427"><span class="lineNum">     427 </span>            : }</a>
+<span class="lineNum">     428 </span>            : 
+<span class="lineNum">     429 </span><span class="lineNoCov">          0 : + (NSString *)onlineState:(NSString *)userId detail:(BOOL)detail</span>
+<span class="lineNum">     430 </span>            : {
+<span class="lineNum">     431 </span>            :  
+<span class="lineNum">     432 </span><span class="lineNoCov">          0 :     NSString *state = @&quot;&quot;;</span>
+<span class="lineNum">     433 </span><span class="lineNoCov">          0 :     if (![NTESSubscribeManager sharedManager] || [[NIMSDK sharedSDK].loginManager.currentAccount isEqualToString:userId])</span>
+<span class="lineNum">     434 </span>            :     {
+<span class="lineNum">     435 </span>            :         //没有开启订阅服务或是自己  不显示在线状态
+<span class="lineNum">     436 </span><span class="lineNoCov">          0 :         return state;</span>
+<span class="lineNum">     437 </span>            :     }
+<span class="lineNum">     438 </span><span class="lineNoCov">          0 :     if ([[NIMSDK sharedSDK].robotManager isValidRobot:userId]) {</span>
+<span class="lineNum">     439 </span><span class="lineNoCov">          0 :         return @&quot;在线&quot;;</span>
+<span class="lineNum">     440 </span>            :     }
+<span class="lineNum">     441 </span>            :     
+<span class="lineNum">     442 </span><span class="lineNoCov">          0 :     NSDictionary *dict = [[NTESSubscribeManager sharedManager] eventsForType:NIMSubscribeSystemEventTypeOnline];</span>
+<span class="lineNum">     443 </span><span class="lineNoCov">          0 :     NIMSubscribeEvent *event = [dict objectForKey:userId];</span>
+<span class="lineNum">     444 </span><span class="lineNoCov">          0 :     NIMSubscribeOnlineInfo *info = event.subscribeInfo;</span>
+<span class="lineNum">     445 </span><span class="lineNoCov">          0 :     if ([info isKindOfClass:[NIMSubscribeOnlineInfo class]] &amp;&amp; info.senderClientTypes.count)</span>
+<span class="lineNum">     446 </span>            :     {
+<span class="lineNum">     447 </span><span class="lineNoCov">          0 :         NIMLoginClientType client = [self resolveShowClientType:info.senderClientTypes];</span>
+<span class="lineNum">     448 </span>            :         
+<span class="lineNum">     449 </span><span class="lineNoCov">          0 :         switch (event.value) {</span>
+<span class="lineNum">     450 </span>            :             case NTESCustomStateValueOnlineExt:
+<span class="lineNum">     451 </span>            :             case NIMSubscribeEventOnlineValueLogin:
+<span class="lineNum">     452 </span>            :             case NIMSubscribeEventOnlineValueLogout:
+<span class="lineNum">     453 </span>            :             case NIMSubscribeEventOnlineValueDisconnected:
+<span class="lineNum">     454 </span>            :             {
+<span class="lineNum">     455 </span><span class="lineNoCov">          0 :                 NSString *ext = [event ext:client];</span>
+<span class="lineNum">     456 </span><span class="lineNoCov">          0 :                 state = [self resolveOnlineState:ext client:client detail:detail];</span>
+<span class="lineNum">     457 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     458 </span><span class="lineNoCov">          0 :                 break;</span>
+<span class="lineNum">     459 </span>            :                 
+<span class="lineNum">     460 </span>            :             default:
+<span class="lineNum">     461 </span>            :             {
+<span class="lineNum">     462 </span><span class="lineNoCov">          0 :                 NSString *clientName = [self resolveOnlineClientName:client];</span>
+<span class="lineNum">     463 </span><span class="lineNoCov">          0 :                 state = [NSString stringWithFormat:@&quot;%@在线&quot;,clientName];</span>
+<span class="lineNum">     464 </span>            :                 break;
+<span class="lineNum">     465 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     466 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     467 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     468 </span>            :     else
+<span class="lineNum">     469 </span>            :     {
+<span class="lineNum">     470 </span><span class="lineNoCov">          0 :         state = @&quot;离线&quot;;</span>
+<span class="lineNum">     471 </span>            :     }
+<span class="lineNum">     472 </span><span class="lineNoCov">          0 :     return state;</span>
+<span class="lineNum">     473 </span>            :    
+<span class="lineNum">     474 </span>            :     // return @&quot;离线&quot;;
+<span class="lineNum">     475 </span><span class="lineNoCov">          0 : }</span>
+<a name="476"><span class="lineNum">     476 </span>            : </a>
+<span class="lineNum">     477 </span>            : 
+<span class="lineNum">     478 </span><span class="lineNoCov">          0 : + (NIMLoginClientType)resolveShowClientType:(NSArray *)senderClientTypes</span>
+<span class="lineNum">     479 </span>            : {
+<span class="lineNum">     480 </span><span class="lineNoCov">          0 :     NSArray *clients = @[@(NIMLoginClientTypePC),@(NIMLoginClientTypemacOS),@(NIMLoginClientTypeiOS),@(NIMLoginClientTypeAOS),@(NIMLoginClientTypeWeb),@(NIMLoginClientTypeWP)]; //显示优先级</span>
+<span class="lineNum">     481 </span><span class="lineNoCov">          0 :     for (NSNumber *type in clients) {</span>
+<span class="lineNum">     482 </span><span class="lineNoCov">          0 :         NIMLoginClientType client = type.integerValue;</span>
+<span class="lineNum">     483 </span><span class="lineNoCov">          0 :         if ([senderClientTypes containsObject:@(client)]) {</span>
+<span class="lineNum">     484 </span><span class="lineNoCov">          0 :             return client;</span>
+<span class="lineNum">     485 </span>            :         }
+<span class="lineNum">     486 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     487 </span><span class="lineNoCov">          0 :     return NIMLoginClientTypeUnknown;</span>
+<a name="488"><span class="lineNum">     488 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     489 </span>            : 
+<span class="lineNum">     490 </span><span class="lineNoCov">          0 : + (NSString *)resolveOnlineClientName:(NIMLoginClientType )client</span>
+<span class="lineNum">     491 </span>            : {
+<span class="lineNum">     492 </span><span class="lineNoCov">          0 :     NSDictionary *formats  = @{</span>
+<span class="lineNum">     493 </span><span class="lineNoCov">          0 :                               @(NIMLoginClientTypePC) : @&quot;PC&quot;,</span>
+<span class="lineNum">     494 </span><span class="lineNoCov">          0 :                               @(NIMLoginClientTypemacOS) : @&quot;Mac&quot;,</span>
+<span class="lineNum">     495 </span><span class="lineNoCov">          0 :                               @(NIMLoginClientTypeiOS): @&quot;iOS&quot;,</span>
+<span class="lineNum">     496 </span><span class="lineNoCov">          0 :                               @(NIMLoginClientTypeAOS): @&quot;Android&quot;,</span>
+<span class="lineNum">     497 </span><span class="lineNoCov">          0 :                               @(NIMLoginClientTypeWeb): @&quot;Web&quot;,</span>
+<span class="lineNum">     498 </span><span class="lineNoCov">          0 :                               @(NIMLoginClientTypeWP) : @&quot;WP&quot;</span>
+<span class="lineNum">     499 </span>            :                              };
+<span class="lineNum">     500 </span>            : 
+<span class="lineNum">     501 </span><span class="lineNoCov">          0 :     NSString *format = [formats objectForKey:@(client)];</span>
+<span class="lineNum">     502 </span><span class="lineNoCov">          0 :     return format? format : @&quot;&quot;;</span>
+<a name="503"><span class="lineNum">     503 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     504 </span>            : 
+<span class="lineNum">     505 </span><span class="lineNoCov">          0 : + (NSString *)resolveOnlineState:(NSString *)ext client:(NIMLoginClientType)client detail:(BOOL)detail</span>
+<span class="lineNum">     506 </span>            : {
+<span class="lineNum">     507 </span>            :     /*
+<span class="lineNum">     508 </span>            :     NSString *clientName = [self resolveOnlineClientName:client];
+<span class="lineNum">     509 </span>            :     NSString *state = [NSString stringWithFormat:@&quot;%@在线&quot;,clientName];
+<span class="lineNum">     510 </span>            :     NSDictionary *dict = [ext nimkit_jsonDict];
+<span class="lineNum">     511 </span>            :     if (dict) {
+<span class="lineNum">     512 </span>            :         
+<span class="lineNum">     513 </span>            :         NSString *netState =  [[NTESDevice currentDevice] networkStatus:[dict jsonInteger:NTESSubscribeNetState]];
+<span class="lineNum">     514 </span>            :         NTESOnlineState onlineState =  [dict jsonInteger:NTESSubscribeOnlineState];
+<span class="lineNum">     515 </span>            :         switch (onlineState) {
+<span class="lineNum">     516 </span>            :             case NTESOnlineStateNormal:
+<span class="lineNum">     517 </span>            :             {
+<span class="lineNum">     518 </span>            :                 if (client == NIMLoginClientTypePC ||
+<span class="lineNum">     519 </span>            :                     client == NIMLoginClientTypeWeb ||
+<span class="lineNum">     520 </span>            :                     client == NIMLoginClientTypemacOS)
+<span class="lineNum">     521 </span>            :                 {
+<span class="lineNum">     522 </span>            :                     //桌面端不显示网络状态，只显示端
+<span class="lineNum">     523 </span>            :                     return [NSString stringWithFormat:@&quot;%@在线&quot;,clientName];
+<span class="lineNum">     524 </span>            :                 }
+<span class="lineNum">     525 </span>            :                 else
+<span class="lineNum">     526 </span>            :                 {
+<span class="lineNum">     527 </span>            :                     //移动端在会话列表显示网络状态，在会话内（detail）优先显示端+网络状态
+<span class="lineNum">     528 </span>            :                     if (detail)
+<span class="lineNum">     529 </span>            :                     {
+<span class="lineNum">     530 </span>            :                         return [NSString stringWithFormat:@&quot;%@ - %@ 在线&quot;,clientName,netState];
+<span class="lineNum">     531 </span>            :                     }
+<span class="lineNum">     532 </span>            :                     else
+<span class="lineNum">     533 </span>            :                     {
+<span class="lineNum">     534 </span>            :                         return [NSString stringWithFormat:@&quot;%@ 在线&quot;,netState];
+<span class="lineNum">     535 </span>            :                     }
+<span class="lineNum">     536 </span>            :                 }
+<span class="lineNum">     537 </span>            :             }
+<span class="lineNum">     538 </span>            :             case NTESOnlineStateBusy:
+<span class="lineNum">     539 </span>            :                 return @&quot;忙碌&quot;;
+<span class="lineNum">     540 </span>            :             case NTESOnlineStateLeave:
+<span class="lineNum">     541 </span>            :                 return @&quot;离开&quot;;
+<span class="lineNum">     542 </span>            :             default:
+<span class="lineNum">     543 </span>            :                 break;
+<span class="lineNum">     544 </span>            :         }
+<span class="lineNum">     545 </span>            :     }
+<span class="lineNum">     546 </span>            :     return state;
+<span class="lineNum">     547 </span>            :      */
+<span class="lineNum">     548 </span><span class="lineNoCov">          0 :      return @&quot;离开&quot;;;</span>
+<a name="549"><span class="lineNum">     549 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     550 </span>            : 
+<span class="lineNum">     551 </span><span class="lineNoCov">          0 : + (NSString *)formatAutoLoginMessage:(NSError *)error</span>
+<span class="lineNum">     552 </span>            : {
+<span class="lineNum">     553 </span><span class="lineNoCov">          0 :     NSString *message = [NSString stringWithFormat:@&quot;自动登录失败 %@&quot;,error];</span>
+<span class="lineNum">     554 </span><span class="lineNoCov">          0 :     NSString *domain = error.domain;</span>
+<span class="lineNum">     555 </span><span class="lineNoCov">          0 :     NSInteger code = error.code;</span>
+<span class="lineNum">     556 </span><span class="lineNoCov">          0 :     if ([domain isEqualToString:NIMLocalErrorDomain])</span>
+<span class="lineNum">     557 </span>            :     {
+<span class="lineNum">     558 </span><span class="lineNoCov">          0 :         if (code == NIMLocalErrorCodeAutoLoginRetryLimit)</span>
+<span class="lineNum">     559 </span>            :         {
+<span class="lineNum">     560 </span><span class="lineNoCov">          0 :             message = @&quot;自动登录错误次数超限，请检查网络后重试&quot;;</span>
+<span class="lineNum">     561 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     562 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     563 </span><span class="lineNoCov">          0 :     else if([domain isEqualToString:NIMRemoteErrorDomain])</span>
+<span class="lineNum">     564 </span>            :     {
+<span class="lineNum">     565 </span><span class="lineNoCov">          0 :         if (code == NIMRemoteErrorCodeInvalidPass)</span>
+<span class="lineNum">     566 </span>            :         {
+<span class="lineNum">     567 </span><span class="lineNoCov">          0 :             message = @&quot;密码错误&quot;;</span>
+<span class="lineNum">     568 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     569 </span><span class="lineNoCov">          0 :         else if(code == NIMRemoteErrorCodeExist)</span>
+<span class="lineNum">     570 </span>            :         {
+<span class="lineNum">     571 </span><span class="lineNoCov">          0 :             message = @&quot;当前已经其他设备登录，请使用手动模式登录&quot;;</span>
+<span class="lineNum">     572 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     573 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     574 </span><span class="lineNoCov">          0 :     return message;</span>
+<span class="lineNum">     575 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     576 </span>            : 
+<span class="lineNum">     577 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

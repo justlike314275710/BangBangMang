@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/Chatting/Chat/View/ijksdl/gles2/fsh/yuv420p.fsh.c</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/Chatting/Chat/View/ijksdl/gles2/fsh</a> - yuv420p.fsh.c<span style="font-size: 80%;"> (source / <a href="yuv420p.fsh.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*</a>
+<span class="lineNum">       2 </span>            :  * copyright (c) 2016 Zhang Rui &lt;bbcallen@gmail.com&gt;
+<span class="lineNum">       3 </span>            :  *
+<span class="lineNum">       4 </span>            :  * This file is part of ijkPlayer.
+<span class="lineNum">       5 </span>            :  *
+<span class="lineNum">       6 </span>            :  * ijkPlayer is free software; you can redistribute it and/or
+<span class="lineNum">       7 </span>            :  * modify it under the terms of the GNU Lesser General Public
+<span class="lineNum">       8 </span>            :  * License as published by the Free Software Foundation; either
+<span class="lineNum">       9 </span>            :  * version 2.1 of the License, or (at your option) any later version.
+<span class="lineNum">      10 </span>            :  *
+<span class="lineNum">      11 </span>            :  * ijkPlayer is distributed in the hope that it will be useful,
+<span class="lineNum">      12 </span>            :  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+<span class="lineNum">      13 </span>            :  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+<span class="lineNum">      14 </span>            :  * Lesser General Public License for more details.
+<span class="lineNum">      15 </span>            :  *
+<span class="lineNum">      16 </span>            :  * You should have received a copy of the GNU Lesser General Public
+<span class="lineNum">      17 </span>            :  * License along with ijkPlayer; if not, write to the Free Software
+<span class="lineNum">      18 </span>            :  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+<span class="lineNum">      19 </span>            :  */
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : #include &quot;internal.h&quot;
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : static const char g_shader[] = IJK_GLES_STRING(
+<span class="lineNum">      24 </span>            :     precision highp float;
+<span class="lineNum">      25 </span>            :     varying   highp vec2 vv2_Texcoord;
+<span class="lineNum">      26 </span>            :     uniform         mat3 um3_ColorConversion;
+<span class="lineNum">      27 </span>            :     uniform   lowp  sampler2D us2_SamplerX;
+<span class="lineNum">      28 </span>            :     uniform   lowp  sampler2D us2_SamplerY;
+<span class="lineNum">      29 </span>            :     uniform   lowp  sampler2D us2_SamplerZ;
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            :     void main()
+<span class="lineNum">      32 </span>            :     {
+<span class="lineNum">      33 </span>            :         mediump vec3 yuv;
+<span class="lineNum">      34 </span>            :         lowp    vec3 rgb;
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            :         yuv.x = (texture2D(us2_SamplerX, vv2_Texcoord).r - (16.0 / 255.0));
+<span class="lineNum">      37 </span>            :         yuv.y = (texture2D(us2_SamplerY, vv2_Texcoord).r - 0.5);
+<span class="lineNum">      38 </span>            :         yuv.z = (texture2D(us2_SamplerZ, vv2_Texcoord).r - 0.5);
+<span class="lineNum">      39 </span>            :         rgb = um3_ColorConversion * yuv;
+<span class="lineNum">      40 </span>            :         gl_FragColor = vec4(rgb, 1);
+<span class="lineNum">      41 </span>            :     }
+<a name="42"><span class="lineNum">      42 </span>            : );</a>
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : const char *NTES_IJK_GLES2_getFragmentShader_yuv420p()
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     return g_shader;</span>
+<span class="lineNum">      47 </span>            : }
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

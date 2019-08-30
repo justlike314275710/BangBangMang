@@ -1,0 +1,397 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/FriendsCircle/LifeCircleViewController.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/FriendsCircle</a> - LifeCircleViewController.m<span style="font-size: 80%;"> (source / <a href="LifeCircleViewController.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">240</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">53</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  LifeCircleViewController.m
+<span class="lineNum">       3 </span>            : //  GKHelpOutApp
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by kky on 2019/4/15.
+<span class="lineNum">       6 </span>            : //  Copyright © 2019年 kky. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;LifeCircleViewController.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;TLMoment.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;TLMomentViewDelegate.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;YBImageBrowser.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;TLMomentImagesCell.h&quot;
+<span class="lineNum">      14 </span>            : #import &quot;UINavigationBar+Awesome.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;SendLifeCircleViewController.h&quot;
+<span class="lineNum">      16 </span>            : #import &quot;LifeCircleLogic.h&quot;
+<span class="lineNum">      17 </span>            : #import &quot;DetailLifeCircleViewController.h&quot;
+<span class="lineNum">      18 </span>            : #import &quot;TLMomentHeaderCell.h&quot;
+<span class="lineNum">      19 </span>            : #import &quot;PSPersonCardViewController.h&quot;
+<span class="lineNum">      20 </span>            : #import &quot;LifeDetailCircleLogic.h&quot;
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : #define NAVBAR_CHANGE_POINT 50
+<a name="23"><span class="lineNum">      23 </span>            : </a>
+<a name="24"><span class="lineNum">      24 </span>            : @interface LifeCircleViewController ()&lt;TLMomentViewDelegate,UIScrollViewDelegate,UICollectionViewDelegate,UITableViewDelegate,UITableViewDataSource&gt;</a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) NSArray *datalist;</span></a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) LifeCircleLogic *logic;</span></a>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) UITableView *tableview;</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) UIView *topView;</span>
+<span class="lineNum">      29 </span>            : 
+<a name="30"><span class="lineNum">      30 </span>            : @end</a>
+<span class="lineNum">      31 </span>            : 
+<a name="32"><span class="lineNum">      32 </span><span class="lineNoCov">          0 : @implementation LifeCircleViewController</span></a>
+<span class="lineNum">      33 </span>            : #pragma mark - LifeCycle
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : - (void)viewDidLoad {</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     [super viewDidLoad];</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     _logic = [[LifeCircleLogic alloc] init];</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     _logic.lifeCircleStyle = self.lifeCircleStyle;</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     _logic.friendusername = self.friendusername;</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     [self loadUI];</span>
+<span class="lineNum">      40 </span>            : //    self.automaticallyAdjustsScrollViewInsets = NO;
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     [self setIsShowLiftBack:YES];</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     [self.navigationController.navigationBar setShadowImage:[UIImage new]];</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     [UIApplication sharedApplication].statusBarHidden=YES;</span>
+<span class="lineNum">      45 </span>            :     //刷新朋友圈
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     [[NSNotificationCenter defaultCenter] addObserver:self</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :                                              selector:@selector(refreshData)</span>
+<span class="lineNum">      48 </span>            :                                                  name:KNotificationRefreshCirCle
+<span class="lineNum">      49 </span>            :                                                object:nil];
+<span class="lineNum">      50 </span>            :     //刷新朋友圈指定单元格
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshIndexData:) name:KNotificationRefreshCirCleIndex object:nil];</span>
+<span class="lineNum">      52 </span>            :     
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     if (self.lifeCircleStyle == HMLifeCircleMy) {</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :         KPostNotification(KNotificationMineRefreshDot, @&quot;0&quot;);</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      56 </span>            : 
+<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : - (void)dealloc {</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     [[NSNotificationCenter defaultCenter] removeObserver:self];</span>
+<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 : - (void)scrollViewDidScroll:(UIScrollView *)scrollView</span>
+<span class="lineNum">      64 </span>            : {
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     UIColor * color = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     CGFloat offsetY = scrollView.contentOffset.y;</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :     if (offsetY &gt; NAVBAR_CHANGE_POINT) {</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :         CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :         [self addNavigationItemWithImageNames:@[@&quot;返回&quot;] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@2001]];</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :         if (self.lifeCircleStyle == HMLifeCircleALL) {</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :             [self addNavigationItemWithImageNames:@[@&quot;black拍照&quot;] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :         self.topView.hidden = NO;</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :     } else {</span>
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :         [self addNavigationItemWithImageNames:@[@&quot;white返回&quot;] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@2001]];</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :         if (self.lifeCircleStyle == HMLifeCircleALL) {</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :         [self addNavigationItemWithImageNames:@[@&quot;white拍照&quot;] isLeft:NO target:self action:@selector(sendFriendCircle) tags:@[@3001]];</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :         self.topView.hidden = YES;</span>
+<span class="lineNum">      83 </span>            :     }
+<a name="84"><span class="lineNum">      84 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      85 </span>            : //MARKL:发朋友圈
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 : - (void)sendFriendCircle{</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     SendLifeCircleViewController *sendLifeCircleVC = [SendLifeCircleViewController new];</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :     [self.navigationController pushViewController:sendLifeCircleVC animated:YES];</span>
+<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 : - (void)viewWillAppear:(BOOL)animated</span>
+<span class="lineNum">      92 </span>            : {
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :     [super viewWillAppear:YES];</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     self.collectionView.delegate = self;</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :     [self scrollViewDidScroll:self.collectionView];</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     [self.navigationController.navigationBar setShadowImage:[UIImage new]];</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     if (self.topView == nil) {</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :         self.topView = [[UIView alloc] init];</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 :         self.topView.backgroundColor = [UIColor clearColor];</span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollviewTopAction)];</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :         tap.numberOfTapsRequired = 2;</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :         [self.topView addGestureRecognizer:tap];</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :         [self.navigationController.navigationBar addSubview:self.topView];</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :         self.topView.frame = CGRectMake(40, 0, KScreenWidth-80, kNavBarHeight);</span>
+<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :     }</span></a>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : - (void)viewWillDisappear:(BOOL)animated</span>
+<span class="lineNum">     108 </span>            : {
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :     [super viewWillDisappear:animated];</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :     self.collectionView.delegate = nil;</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :     [self.navigationController.navigationBar lt_reset];</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :     if (self.topView) {</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :         self.topView = nil;</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :         [self.topView removeFromSuperview];</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 : }</span>
+<a name="117"><span class="lineNum">     117 </span>            : </a>
+<span class="lineNum">     118 </span>            : #pragma mark - # UI
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 : - (void)loadUI</span>
+<span class="lineNum">     120 </span>            : {
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 1, KScreenWidth, KScreenHeight - kTopHeight -kTabBarHeight) style:UITableViewStyleGrouped];</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :     [self.view addSubview:self.tableView];</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :     self.tableView.backgroundColor = [UIColor whiteColor];</span>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :     self.tableView.dataSource = self;</span></a>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :     self.tableView.delegate = self;</span>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {</span></a>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :         make.bottom.left.right.top.mas_equalTo(self.view);</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :     [self.tableView registerClass:[TLMomentImagesCell class] forCellReuseIdentifier:@&quot;TLMomentImagesCell&quot;];</span>
+<a name="130"><span class="lineNum">     130 </span>            :     </a>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     @weakify(self);</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :         @strongify(self)</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :         [self refreshData];</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :     [self.tableView.mj_header beginRefreshing];</span>
+<span class="lineNum">     137 </span>            :     
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     [self setTableleUI];</span>
+<a name="139"><span class="lineNum">     139 </span>            :     </a>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 : -(void)setTableleUI {</span>
+<a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 :     @weakify(self);</span></a>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :     if (_logic.hasNextPage) {</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :             @strongify(self)</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :             [self loadMore];</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :     }else{</span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 :         self.tableView.mj_footer = nil;</span>
+<a name="150"><span class="lineNum">     150 </span>            :     }</a>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 : }</span>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 : -(void)loadMore {</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :     [[PSLoadingView sharedInstance] show];</span></a>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :     [_logic loadMyLifeCircleListCompleted:^(id data) {</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :         dispatch_async(dispatch_get_main_queue(), ^{</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :             [[PSLoadingView sharedInstance] dismiss];</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :             [self.tableView.mj_footer endRefreshing];</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :             [self.tableView reloadData];</span>
+<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :             [self setTableleUI];</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :         });</span></a>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :     } failed:^(NSError *error) {</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :         dispatch_async(dispatch_get_main_queue(), ^{</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :             [[PSLoadingView sharedInstance] dismiss];</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :             [self.tableView.mj_footer endRefreshing];</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :             [self.tableView reloadData];</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :             [self setTableleUI];</span>
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 :         });</span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     }];</span>
+<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     170 </span>            : 
+<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 : -(void)refreshData {</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :     [[PSLoadingView sharedInstance] show];</span></a>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :     [_logic refreshLifeCirclelistCompleted:^(id data) {</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :         dispatch_async(dispatch_get_main_queue(), ^{</span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :             [self.tableView.mj_header endRefreshing];</span>
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :             [self.tableView reloadData];</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :             [self setTableleUI];</span>
+<a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 :             [[PSLoadingView sharedInstance] dismiss];</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :         });</span></a>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :     } failed:^(NSError *error) {</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :         dispatch_async(dispatch_get_main_queue(), ^{</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :             [self.tableView.mj_header endRefreshing];</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :             [self.tableView reloadData];</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :             [self setTableleUI];</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :             [[PSLoadingView sharedInstance] dismiss];</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :         });</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :     }];</span>
+<a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     189 </span>            : #pragma mark -   NSNotifica
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 : - (void)refreshIndexData:(NSNotification *)notification {</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :     TLMoment *moent = (TLMoment *)[notification object];</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :     [self reloadIndexCell:moent];</span>
+<a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     194 </span>            : #pragma mark -   Delegate
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 : -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {</span>
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 :     return self.logic.datalist.count;</span>
+<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     198 </span>            : 
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 : - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :     TLMomentImagesCell *cell = [tableView dequeueReusableCellWithIdentifier:@&quot;TLMomentImagesCell&quot;];</span>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :     cell.delegate = self;</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :     TLMoment *monet = self.logic.datalist[indexPath.row];</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :     monet.index=indexPath.row;</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :     cell.moment = monet;</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 :     return cell;</span>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     207 </span>            : 
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 : -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {</span>
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 :     TLMoment *monet = self.logic.datalist[indexPath.row];</span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 :     return monet.momentFrame.height;</span>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     212 </span>            : 
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 : - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :     TLMomentHeaderCell *headView = [[TLMomentHeaderCell alloc] init];</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :     if (self.lifeCircleStyle == HMLifeCircleOther) {</span>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :         UserInfo *userInfo = [[UserInfo alloc] init];</span>
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 :         userInfo.nickname = _showName;</span>
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :         userInfo.avatar = _friendusername;</span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 :         headView.isFirend = YES;</span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :         headView.user = userInfo;</span>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 :     } else {</span>
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 :         headView.user = help_userManager.curUserInfo;</span>
+<span class="lineNum">     223 </span>            :     }
+<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :     return headView;</span></a>
+<span class="lineNum">     225 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 : - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {</span>
+<span class="lineNum">     227 </span>            :     return 260;
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     229 </span>            : 
+<a name="230"><span class="lineNum">     230 </span>            : #pragma mark - # Delegate</a>
+<span class="lineNum">     231 </span>            : //MARK: TLMomentViewDelegate
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 : - (void)momentViewWithModel:(TLMoment *)moment didClickUser:(UserInfo *)user</span>
+<a name="233"><span class="lineNum">     233 </span>            : {</a>
+<span class="lineNum">     234 </span><span class="lineNoCov">          0 :     self.logic.friendusername = moment.username;</span>
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 :     [self.logic getFriendDetailInfoCompleted:^(id data) {</span>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 :                     NSString *userId = [data[@&quot;account&quot;] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];</span>
+<span class="lineNum">     237 </span><span class="lineNoCov">          0 :                     NSString*nickName=data[@&quot;name&quot;];</span>
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :                     NSString*avatar=data[@&quot;username&quot;];</span>
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 :                     NSString*phone=data[@&quot;phoneNumber&quot;];</span>
+<span class="lineNum">     240 </span><span class="lineNoCov">          0 :                     NSString*curUserName=data[@&quot;curUsername&quot;];</span>
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 :                     NSString*friendinfo=data[@&quot;friendinfo&quot;];</span>
+<a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 :                     NSArray*circleoffriendsPicture=data[@&quot;circleoffriendsPicture&quot;];</span></a>
+<span class="lineNum">     243 </span><span class="lineNoCov">          0 :                     if (userId.length) {</span>
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 :                         dispatch_async(dispatch_get_main_queue(), ^{</span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :                             PSPersonCardViewController *PSPersonCardVC = [[PSPersonCardViewController alloc] initWithUserId:userId withPhone:phone withNickName:nickName withAvatar:avatar withCurUserName:curUserName withFriendinfo:friendinfo withCircleoffriendsPicture:circleoffriendsPicture];</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :                             PushVC(PSPersonCardVC);</span>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :                         });</span></a>
+<span class="lineNum">     248 </span><span class="lineNoCov">          0 :                     }</span>
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 :     } failed:^(NSError *error) {</span>
+<span class="lineNum">     250 </span><span class="lineNoCov">          0 :        [PSTipsView showTips:@&quot;获取好友信息失败&quot;];</span>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :     }];</span></a>
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 : - (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index cell:(TLMomentImagesCell *)cell</span>
+<span class="lineNum">     254 </span>            : {
+<span class="lineNum">     255 </span>            :     
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 :     NSMutableArray *browserDataArr = [[NSMutableArray alloc] initWithCapacity:images.count];</span>
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 :     for (NSString *imageUrl in images) {</span>
+<span class="lineNum">     258 </span>            : //        MWPhoto *photo = [MWPhoto photoWithURL:TLURL(imageUrl)];
+<span class="lineNum">     259 </span>            : //        [data addObject:photo];
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 :         YBImageBrowseCellData *data = [YBImageBrowseCellData new];</span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :         NSString*url=NSStringFormat(@&quot;%@/files/%@&quot;,EmallHostUrl,imageUrl);</span>
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 :         data.url = TLURL(url);</span>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 :         data.sourceObject = [self sourceObjAtIdx:index cell:cell];</span>
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 :         [browserDataArr addObject:data];</span>
+<span class="lineNum">     265 </span>            :         
+<span class="lineNum">     266 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 :     YBImageBrowser *browser = [YBImageBrowser new];</span>
+<span class="lineNum">     268 </span><span class="lineNoCov">          0 :     browser.dataSourceArray = browserDataArr;</span>
+<span class="lineNum">     269 </span><span class="lineNoCov">          0 :     browser.currentIndex = index;</span>
+<span class="lineNum">     270 </span><span class="lineNoCov">          0 :     [browser show];</span>
+<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     272 </span>            : 
+<span class="lineNum">     273 </span><span class="lineNoCov">          0 : - (id)sourceObjAtIdx:(NSInteger)idx cell:(TLMomentImagesCell *)cell {</span>
+<span class="lineNum">     274 </span><span class="lineNoCov">          0 :     UIButton *button = (UIButton *)cell.imagesView.imageViews[idx];</span>
+<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :     return button.imageView? button.imageView: nil;</span></a>
+<span class="lineNum">     276 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     277 </span><span class="lineNoCov">          0 : - (void)momentViewWithModel:(TLMoment *)moment jumpToUrl:(NSString *)url</span>
+<span class="lineNum">     278 </span>            : {
+<span class="lineNum">     279 </span>            :     
+<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     281 </span>            : //分享
+<span class="lineNum">     282 </span><span class="lineNoCov">          0 : - (void)momentViewWithModel:(TLMoment *)moment didClickShare:(NSString *)url {</span>
+<span class="lineNum">     283 </span><span class="lineNoCov">          0 :     [PSTipsView showTips:@&quot;暂未开通此功能!&quot;];</span>
+<a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     285 </span>            : //评论
+<span class="lineNum">     286 </span><span class="lineNoCov">          0 : - (void)momentViewWithModel:(TLMoment *)moment didClickComment:(NSString *)url{</span>
+<span class="lineNum">     287 </span><span class="lineNoCov">          0 :     DetailLifeCircleViewController *detailLifeCircleVC = [[DetailLifeCircleViewController alloc] init];</span>
+<span class="lineNum">     288 </span><span class="lineNoCov">          0 :     detailLifeCircleVC.datalist = @[moment];</span>
+<span class="lineNum">     289 </span><span class="lineNoCov">          0 :     PushVC(detailLifeCircleVC);</span>
+<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     291 </span>            : //点赞
+<span class="lineNum">     292 </span><span class="lineNoCov">          0 : - (void)momentViewWithModel:(TLMoment *)moment didClickLike:(NSString *)url{</span>
+<span class="lineNum">     293 </span>            :     
+<span class="lineNum">     294 </span><span class="lineNoCov">          0 :     @weakify(self);</span>
+<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :     LifeDetailCircleLogic *detailLogic = [LifeDetailCircleLogic new];</span></a>
+<span class="lineNum">     296 </span><span class="lineNoCov">          0 :     detailLogic.circleoffriendsId = moment.id;</span>
+<a name="297"><span class="lineNum">     297 </span><span class="lineNoCov">          0 :     [detailLogic requestLifeCircleDetailPraiseCompleted:^(id data) {</span></a>
+<span class="lineNum">     298 </span><span class="lineNoCov">          0 :         @strongify(self);</span>
+<span class="lineNum">     299 </span><span class="lineNoCov">          0 :         dispatch_async(dispatch_get_main_queue(), ^{</span>
+<span class="lineNum">     300 </span><span class="lineNoCov">          0 :             moment.praiseNum++;</span>
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 :             moment.praisesCircleoffriends = YES;</span>
+<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 :             [self reloadIndexCell:moment];</span></a>
+<span class="lineNum">     303 </span><span class="lineNoCov">          0 :         });</span>
+<span class="lineNum">     304 </span><span class="lineNoCov">          0 :     } failed:^(NSError *error) {</span>
+<span class="lineNum">     305 </span><span class="lineNoCov">          0 :         [PSTipsView showTips:@&quot;点赞失败&quot;];</span>
+<span class="lineNum">     306 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     307 </span><span class="lineNoCov">          0 : }</span>
+<a name="308"><span class="lineNum">     308 </span>            : </a>
+<span class="lineNum">     309 </span>            : #pragma mark - 刷新指定单元格
+<span class="lineNum">     310 </span><span class="lineNoCov">          0 : -(void)reloadIndexCell:(TLMoment *)moment {</span>
+<span class="lineNum">     311 </span><span class="lineNoCov">          0 :     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:moment.index inSection:0];</span>
+<span class="lineNum">     312 </span><span class="lineNoCov">          0 :     [self.logic.datalist replaceObjectAtIndex:moment.index withObject:moment];</span>
+<span class="lineNum">     313 </span><span class="lineNoCov">          0 :     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];</span>
+<a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     315 </span>            : #pragma mark - 滑动到最顶部
+<span class="lineNum">     316 </span><span class="lineNoCov">          0 : - (void)scrollviewTopAction {</span>
+<span class="lineNum">     317 </span><span class="lineNoCov">          0 :     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];</span>
+<span class="lineNum">     318 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     319 </span>            : 
+<span class="lineNum">     320 </span>            : 
+<span class="lineNum">     321 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

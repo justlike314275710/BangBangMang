@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/NIMKit.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes</a> - NIMKit.m<span style="font-size: 80%;"> (source / <a href="NIMKit.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">49</td>
+            <td class="headerCovTableEntry">97</td>
+            <td class="headerCovTableEntryLo">50.5 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntryLo">68.4 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  NIMKit.m
+<span class="lineNum">       3 </span>            : //  NIMKit
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by amao on 8/14/15.
+<span class="lineNum">       6 </span>            : //  Copyright (c) 2015 NetEase. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;NIMKit.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;NIMKitTimerHolder.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;NIMKitNotificationFirer.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;NIMKitDataProviderImpl.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;NIMCellLayoutConfig.h&quot;
+<span class="lineNum">      14 </span>            : #import &quot;NIMKitInfoFetchOption.h&quot;
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : extern NSString *const NIMKitUserInfoHasUpdatedNotification;
+<span class="lineNum">      17 </span>            : extern NSString *const NIMKitTeamInfoHasUpdatedNotification;
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span>            : @interface NIMKit(){
+<a name="21"><span class="lineNum">      21 </span>            :     NSRegularExpression *_urlRegex;</a>
+<a name="22"><span class="lineNum">      22 </span>            : }</a>
+<span class="lineNum">      23 </span><span class="lineCov">>2305*10^15 : @property (nonatomic,strong)    NIMKitNotificationFirer *firer;</span>
+<span class="lineNum">      24 </span><span class="lineCov">>1152*10^15 : @property (nonatomic,strong)    id&lt;NIMCellLayoutConfig&gt; layoutConfig;</span>
+<span class="lineNum">      25 </span>            : @end
+<a name="26"><span class="lineNum">      26 </span>            : </a>
+<a name="27"><span class="lineNum">      27 </span>            : </a>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 : @implementation NIMKit</span>
+<span class="lineNum">      29 </span><span class="lineCov">>1152*10^15 : - (instancetype)init</span>
+<span class="lineNum">      30 </span>            : {
+<span class="lineNum">      31 </span><span class="lineCov">>2305*10^15 :     if (self = [super init]) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">>1152*10^15 :         _resourceBundleName  = @&quot;NIMKitResource.bundle&quot;;</span>
+<span class="lineNum">      33 </span><span class="lineCov">>1152*10^15 :         _emoticonBundleName  = @&quot;NIMKitEmoticon.bundle&quot;;</span>
+<span class="lineNum">      34 </span>            :         
+<span class="lineNum">      35 </span><span class="lineCov">>1152*10^15 :         _firer = [[NIMKitNotificationFirer alloc] init];</span>
+<span class="lineNum">      36 </span><span class="lineCov">>1152*10^15 :         _provider = [[NIMKitDataProviderImpl alloc] init];   //默认使用 NIMKit 的实现</span>
+<span class="lineNum">      37 </span>            :         
+<span class="lineNum">      38 </span><span class="lineCov">>1152*10^15 :         _layoutConfig = [[NIMCellLayoutConfig alloc] init];</span>
+<span class="lineNum">      39 </span><span class="lineCov">>1152*10^15 :         _robotTemplateParser = [[NIMKitRobotDefaultTemplateParser alloc] init];</span>
+<span class="lineNum">      40 </span>            :         
+<span class="lineNum">      41 </span><span class="lineCov">>1152*10^15 :         [self preloadNIMKitBundleResource];</span>
+<span class="lineNum">      42 </span><span class="lineCov">>1152*10^15 :     }</span>
+<span class="lineNum">      43 </span><span class="lineCov">>1152*10^15 :     return self;</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">>1152*10^15 : }</span></a>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span><span class="lineCov">>1153*10^16 : + (instancetype)sharedKit</span>
+<span class="lineNum">      47 </span>            : {
+<a name="48"><span class="lineNum">      48 </span>            :     static NIMKit *instance = nil;</a>
+<span class="lineNum">      49 </span>            :     static dispatch_once_t onceToken;
+<span class="lineNum">      50 </span><span class="lineCov">>1268*10^16 :     dispatch_once(&amp;onceToken, ^{</span>
+<span class="lineNum">      51 </span><span class="lineCov">>1152*10^15 :         instance = [[NIMKit alloc] init];</span>
+<span class="lineNum">      52 </span><span class="lineCov">>1152*10^15 :     });</span>
+<span class="lineNum">      53 </span><span class="lineCov">>1153*10^16 :     return instance;</span>
+<a name="54"><span class="lineNum">      54 </span>            : }</a>
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span><span class="lineCov">>1152*10^15 : - (void)registerLayoutConfig:(NIMCellLayoutConfig *)layoutConfig</span>
+<span class="lineNum">      57 </span>            : {
+<span class="lineNum">      58 </span><span class="lineCov">>2305*10^15 :     if ([layoutConfig isKindOfClass:[NIMCellLayoutConfig class]])</span>
+<span class="lineNum">      59 </span>            :     {
+<span class="lineNum">      60 </span><span class="lineCov">>1152*10^15 :         self.layoutConfig = layoutConfig;</span>
+<span class="lineNum">      61 </span><span class="lineCov">>1152*10^15 :     }</span>
+<span class="lineNum">      62 </span>            :     else
+<span class="lineNum">      63 </span>            :     {
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :         NSAssert(0, @&quot;class should be subclass of NIMLayoutConfig&quot;);</span>
+<span class="lineNum">      65 </span>            :     }
+<span class="lineNum">      66 </span><span class="lineCov">>1152*10^15 : }</span>
+<a name="67"><span class="lineNum">      67 </span>            : </a>
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : - (id&lt;NIMCellLayoutConfig&gt;)layoutConfig</span>
+<span class="lineNum">      70 </span>            : {
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     return _layoutConfig;</span>
+<a name="72"><span class="lineNum">      72 </span>            : }</a>
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : - (NIMKitConfig *)config</span>
+<span class="lineNum">      75 </span>            : {
+<span class="lineNum">      76 </span>            :     //不要放在 NIMKit 初始化里面，因为 UIConfig 初始化会使用 NIMKit, 防止死循环
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :     if (!_config)</span>
+<span class="lineNum">      78 </span>            :     {
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :         _config = [[NIMKitConfig alloc] init];</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     return _config;</span>
+<a name="82"><span class="lineNum">      82 </span>            : }</a>
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : - (void)notfiyUserInfoChanged:(NSArray *)userIds{</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     if (!userIds.count) {</span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :         return;</span>
+<span class="lineNum">      87 </span>            :     }
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :     for (NSString *userId in userIds) {</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 :         NIMSession *session = [NIMSession session:userId type:NIMSessionTypeP2P];</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :         NIMKitFirerInfo *info = [[NIMKitFirerInfo alloc] init];</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :         info.session = session;</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :         info.notificationName = NIMKitUserInfoHasUpdatedNotification;</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :         [self.firer addFireInfo:info];</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     }</span>
+<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span><span class="lineCov">>1152*10^15 : - (void)notifyTeamInfoChanged:(NSArray *)teamIds{</span>
+<span class="lineNum">      98 </span><span class="lineCov">>1152*10^15 :     if (teamIds.count)</span>
+<span class="lineNum">      99 </span>            :     {
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :         for (NSString *teamId in teamIds)</span>
+<span class="lineNum">     101 </span>            :         {
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :             [self notifyTeam:teamId];</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     105 </span>            :     else
+<span class="lineNum">     106 </span>            :     {
+<span class="lineNum">     107 </span><span class="lineCov">>1152*10^15 :         [self notifyTeam:nil];</span>
+<span class="lineNum">     108 </span>            :     }
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">>1152*10^15 : }</span></a>
+<span class="lineNum">     110 </span>            : 
+<span class="lineNum">     111 </span><span class="lineCov">>1152*10^15 : - (void)notifyTeamMemebersChanged:(NSArray *)teamIds</span>
+<span class="lineNum">     112 </span>            : {
+<span class="lineNum">     113 </span><span class="lineCov">>1152*10^15 :     if (teamIds.count)</span>
+<span class="lineNum">     114 </span>            :     {
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :         for (NSString *teamId in teamIds)</span>
+<span class="lineNum">     116 </span>            :         {
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :             [self notifyTeamMemebers:teamId];</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     120 </span>            :     else
+<span class="lineNum">     121 </span>            :     {
+<span class="lineNum">     122 </span><span class="lineCov">>1152*10^15 :         [self notifyTeamMemebers:nil];</span>
+<span class="lineNum">     123 </span>            :     }
+<span class="lineNum">     124 </span><span class="lineCov">>1152*10^15 : }</span>
+<a name="125"><span class="lineNum">     125 </span>            : </a>
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span><span class="lineCov">>1152*10^15 : - (void)notifyTeam:(NSString *)teamId</span>
+<span class="lineNum">     128 </span>            : {
+<span class="lineNum">     129 </span><span class="lineCov">>1152*10^15 :     NIMKitFirerInfo *info = [[NIMKitFirerInfo alloc] init];</span>
+<span class="lineNum">     130 </span><span class="lineCov">>1152*10^15 :     if (teamId.length) {</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :         NIMSession *session = [NIMSession session:teamId type:NIMSessionTypeTeam];</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :         info.session = session;</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     134 </span><span class="lineCov">>1152*10^15 :     info.notificationName = NIMKitTeamInfoHasUpdatedNotification;</span>
+<span class="lineNum">     135 </span><span class="lineCov">>1152*10^15 :     [self.firer addFireInfo:info];</span>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">>1152*10^15 : }</span></a>
+<span class="lineNum">     137 </span>            : 
+<span class="lineNum">     138 </span><span class="lineCov">>1152*10^15 : - (void)notifyTeamMemebers:(NSString *)teamId</span>
+<span class="lineNum">     139 </span>            : {
+<span class="lineNum">     140 </span><span class="lineCov">>1152*10^15 :     NIMKitFirerInfo *info = [[NIMKitFirerInfo alloc] init];</span>
+<span class="lineNum">     141 </span><span class="lineCov">>1152*10^15 :     if (teamId.length) {</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :         NIMSession *session = [NIMSession session:teamId type:NIMSessionTypeTeam];</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :         info.session = session;</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     145 </span>            :     extern NSString *NIMKitTeamMembersHasUpdatedNotification;
+<span class="lineNum">     146 </span><span class="lineCov">>1152*10^15 :     info.notificationName = NIMKitTeamMembersHasUpdatedNotification;</span>
+<span class="lineNum">     147 </span><span class="lineCov">>1152*10^15 :     [self.firer addFireInfo:info];</span>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">>1152*10^15 : }</span></a>
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : - (NIMKitInfo *)infoByUser:(NSString *)userId option:(NIMKitInfoFetchOption *)option</span>
+<span class="lineNum">     151 </span>            : {
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :     NIMKitInfo *info = nil;</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :     if (self.provider &amp;&amp; [self.provider respondsToSelector:@selector(infoByUser:option:)]) {</span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :         info = [self.provider infoByUser:userId option:option];</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :     return info;</span>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     158 </span>            : 
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 : - (NIMKitInfo *)infoByTeam:(NSString *)teamId option:(NIMKitInfoFetchOption *)option</span>
+<span class="lineNum">     160 </span>            : {
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :     NIMKitInfo *info = nil;</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :     if (self.provider &amp;&amp; [self.provider respondsToSelector:@selector(infoByTeam:option:)]) {</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :         info = [self.provider infoByTeam:teamId option:option];</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :     return info;</span>
+<span class="lineNum">     166 </span>            : 
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="168"><span class="lineNum">     168 </span>            : </a>
+<span class="lineNum">     169 </span><span class="lineCov">>1152*10^15 : - (void)preloadNIMKitBundleResource {</span>
+<span class="lineNum">     170 </span><span class="lineCov">>2305*10^15 :     dispatch_async(dispatch_get_main_queue(), ^{</span>
+<span class="lineNum">     171 </span><span class="lineCov">>1152*10^15 :         [[NIMInputEmoticonManager sharedManager] preloadEmoticonResource];</span>
+<span class="lineNum">     172 </span><span class="lineCov">>1152*10^15 :     });</span>
+<span class="lineNum">     173 </span><span class="lineCov">>1152*10^15 : }</span>
+<span class="lineNum">     174 </span>            : 
+<span class="lineNum">     175 </span>            : @end
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span>            : 
+<span class="lineNum">     178 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

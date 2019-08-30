@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/AppDelegate.m</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">GKHelpOutApp</a> - AppDelegate.m<span style="font-size: 80%;"> (source / <a href="AppDelegate.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">31</td>
+            <td class="headerCovTableEntryMed">77.4 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryLo">62.5 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  AppDelegate.m
+<span class="lineNum">       3 </span>            : //  GKHelpOutApp
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by kky on 2019/2/19.
+<span class="lineNum">       6 </span>            : //  Copyright © 2019年 kky. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : #import &quot;WXApi.h&quot;
+<span class="lineNum">       9 </span>            : #import &quot;AppDelegate.h&quot;
+<span class="lineNum">      10 </span>            : #import &lt;AlipaySDK/AlipaySDK.h&gt;
+<span class="lineNum">      11 </span>            : @interface AppDelegate ()
+<span class="lineNum">      12 </span>            : 
+<a name="13"><span class="lineNum">      13 </span>            : @end</a>
+<span class="lineNum">      14 </span>            : 
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">      65536 : @implementation AppDelegate</span></a>
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span><span class="lineCov">>7206*10^13 : - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {</span>
+<span class="lineNum">      18 </span>            :     //初始化window
+<span class="lineNum">      19 </span><span class="lineCov">>7206*10^13 :     [self initWindow];</span>
+<span class="lineNum">      20 </span>            :     
+<span class="lineNum">      21 </span>            :     //UMeng初始化
+<span class="lineNum">      22 </span><span class="lineCov">>7206*10^13 :     [self initUMeng];</span>
+<span class="lineNum">      23 </span>            :     
+<span class="lineNum">      24 </span>            :     //初始化app服务
+<span class="lineNum">      25 </span><span class="lineCov">>7206*10^13 :     [self initService];</span>
+<span class="lineNum">      26 </span>            :     
+<span class="lineNum">      27 </span>            :     //初始化IM
+<span class="lineNum">      28 </span><span class="lineCov">>7206*10^13 :     [[IMManager sharedIMManager] initIM];</span>
+<span class="lineNum">      29 </span>            :     
+<span class="lineNum">      30 </span>            :     //初始化用户系统
+<span class="lineNum">      31 </span><span class="lineCov">>7206*10^13 :     [self initUserManager];</span>
+<span class="lineNum">      32 </span>            :     
+<span class="lineNum">      33 </span>            :     //网络监听
+<span class="lineNum">      34 </span><span class="lineCov">>7206*10^13 :     [self monitorNetworkStatus];</span>
+<span class="lineNum">      35 </span>            :     
+<span class="lineNum">      36 </span><span class="lineCov">>7206*10^13 :     [self registerThirdParty];</span>
+<span class="lineNum">      37 </span>            :     
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            :     //显示环境
+<span class="lineNum">      40 </span>            : #ifdef DEBUG
+<span class="lineNum">      41 </span><span class="lineCov">>7206*10^13 :     [self showURL];</span>
+<span class="lineNum">      42 </span>            : #else
+<span class="lineNum">      43 </span>            :     
+<span class="lineNum">      44 </span>            : #endif
+<span class="lineNum">      45 </span>            :     
+<span class="lineNum">      46 </span>            :     //广告页
+<span class="lineNum">      47 </span>            : //    [AppManager appStart];
+<span class="lineNum">      48 </span>            :     //[WXApi registerApp:@&quot;wx21aed62551567801&quot;];
+<span class="lineNum">      49 </span>            :     
+<span class="lineNum">      50 </span>            :     return YES;
+<span class="lineNum">      51 </span>            :     
+<span class="lineNum">      52 </span><span class="lineCov">>7206*10^13 : }</span>
+<a name="53"><span class="lineNum">      53 </span>            : </a>
+<span class="lineNum">      54 </span>            : #pragma mark - 显示debug下程序运行环境
+<span class="lineNum">      55 </span><span class="lineCov">>7206*10^13 : -(void)showURL{</span>
+<span class="lineNum">      56 </span><span class="lineCov">>7206*10^13 :     UIWindow *window = [UIApplication sharedApplication].keyWindow;</span>
+<span class="lineNum">      57 </span><span class="lineCov">>2161*10^14 :     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(KScreenWidth-100,0,50,20)];</span>
+<span class="lineNum">      58 </span><span class="lineCov">>7206*10^13 :     label.font = FontOfSize(10);</span>
+<span class="lineNum">      59 </span><span class="lineCov">>7206*10^13 :     label.textColor = [UIColor redColor];</span>
+<span class="lineNum">      60 </span>            :     if (DevelopSever) {
+<span class="lineNum">      61 </span>            :         label.text = @&quot;开发环境&quot;;
+<span class="lineNum">      62 </span><span class="lineCov">>7206*10^13 :     } else if (TestSever){</span>
+<span class="lineNum">      63 </span><span class="lineCov">>7206*10^13 :         label.text = @&quot;测试环境&quot;;</span>
+<span class="lineNum">      64 </span>            :     } else if (ProductSever){
+<span class="lineNum">      65 </span>            :         label.text = @&quot;生产环境&quot;;
+<span class="lineNum">      66 </span>            :     }
+<span class="lineNum">      67 </span><span class="lineCov">>7206*10^13 :     [window addSubview:label];</span>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">>7206*10^13 : }</span></a>
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span><span class="lineCov">  268435456 : - (void)applicationWillResignActive:(UIApplication *)application {</span>
+<span class="lineNum">      71 </span>            :     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+<span class="lineNum">      72 </span>            :     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">  268435456 : }</span></a>
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 : - (void)applicationDidEnterBackground:(UIApplication *)application {</span>
+<span class="lineNum">      76 </span>            :     #if NT_COVERAGE
+<span class="lineNum">      77 </span>            :     extern void __gcov_flush(void);
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     __gcov_flush();</span>
+<span class="lineNum">      79 </span>            :     #endif
+<span class="lineNum">      80 </span>            :     
+<span class="lineNum">      81 </span>            :     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+<span class="lineNum">      82 </span>            :     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+<a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 : - (void)applicationWillEnterForeground:(UIApplication *)application {</span>
+<span class="lineNum">      86 </span>            :     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+<a name="87"><span class="lineNum">      87 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span><span class="lineCov">>7206*10^13 : - (void)applicationDidBecomeActive:(UIApplication *)application {</span>
+<span class="lineNum">      90 </span>            :     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+<span class="lineNum">      91 </span><span class="lineCov">>7206*10^13 : }</span>
+<a name="92"><span class="lineNum">      92 </span>            : </a>
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 : - (void)applicationWillTerminate:(UIApplication *)application {</span>
+<span class="lineNum">      95 </span>            :     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Utils/TagsView/FFTagsView.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Utils/TagsView</a> - FFTagsView.m<span style="font-size: 80%;"> (source / <a href="FFTagsView.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">134</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  FFTagsView.m
+<span class="lineNum">       3 </span>            : //  dfds
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by liwei on 17/3/13.
+<span class="lineNum">       6 </span>            : //  Copyright © 2017年 liwei. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : 
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : #import &quot;FFTagsView.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;TagsButton.h&quot;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : //十六进制色值
+<span class="lineNum">      15 </span>            : #define HexRGB(rgbValue)    [UIColor colorWithRed:((float)((rgbValue &amp; 0xFF0000) &gt;&gt; 16))/255.0 green:((float)((rgbValue &amp; 0xFF00) &gt;&gt; 8))/255.0 blue:((float)(rgbValue &amp; 0xFF))/255.0 alpha:1.0]
+<span class="lineNum">      16 </span>            : 
+<a name="17"><span class="lineNum">      17 </span>            : #define BTN_Tags_Tag        784843</a>
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 : @implementation FFTagsViewConfig</span>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : @end
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span>            : @interface FFTagsView ()
+<span class="lineNum">      27 </span>            : 
+<a name="28"><span class="lineNum">      28 </span>            : </a>
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 : @property (nonatomic,strong) FFTagsViewConfig *curConfig;</span>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : @end
+<a name="33"><span class="lineNum">      33 </span>            : </a>
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : @implementation FFTagsView</span>
+<span class="lineNum">      36 </span>            : 
+<a name="37"><span class="lineNum">      37 </span>            : </a>
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : -(instancetype)initWithFrame:(CGRect)frame tagsArray:(NSArray *)tagsArr config:(FFTagsViewConfig *)config{</span>
+<span class="lineNum">      40 </span>            :     
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     if (self = [super initWithFrame:frame]) {</span>
+<span class="lineNum">      42 </span>            :         
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :         for (UIView *subView in self.subviews) {</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :             [subView removeFromSuperview];</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      46 </span>            :         
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :         _curConfig = config;</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         _multiSelectedTags = [NSMutableArray array];</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :         if (config.selectedDefaultTags.count) {</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :             [_multiSelectedTags addObjectsFromArray:config.selectedDefaultTags];</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      52 </span>            :         
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :         UIImageView *bgImageView = [UIImageView new];</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :         bgImageView.userInteractionEnabled = YES;</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :         self.bgImageView = bgImageView;</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :         [self addSubview:bgImageView];</span>
+<span class="lineNum">      57 </span>            :         
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :         CGRect lastBtnRect = CGRectZero;</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :         CGFloat hMargin = config.itemHerMargin, orgin_Y = 0.0, itemContentMargin = config.itemContentEdgs &gt; 0 ? config.itemContentEdgs : 10.0, topBottomSpace = (config.topBottomSpace &gt; 0 ? config.topBottomSpace : 15.0);</span>
+<span class="lineNum">      60 </span>            :         
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :         UIFont *font = [UIFont systemFontOfSize:config.fontSize &gt; 0 ? config.fontSize : 12.0];</span>
+<span class="lineNum">      62 </span>            :         
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :         for (int i = 0; i &lt; tagsArr.count; i++) {</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :             NSString *title = tagsArr[i];</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :             CGFloat titleWidth = [title sizeWithAttributes:@{NSFontAttributeName : font}].width;</span>
+<span class="lineNum">      66 </span>            :             
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :             if ((CGRectGetMaxX(lastBtnRect) + config.itemHerMargin + titleWidth + 2 * itemContentMargin) &gt; CGRectGetWidth(self.frame)) {</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :                 lastBtnRect.origin.x = 0.0;</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :                 hMargin = config.itemHerMargin;</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :                 lastBtnRect.size.width = 0.0;</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :                 orgin_Y += (config.itemHeight + config.itemVerMargin);</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">      73 </span>            :             
+<span class="lineNum">      74 </span>            :             
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :             TagsButton *btn = [[TagsButton alloc] initWithFrame:CGRectMake(hMargin + CGRectGetMaxX(lastBtnRect), topBottomSpace + orgin_Y, titleWidth+2*itemContentMargin, config.itemHeight)];</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :             lastBtnRect = btn.frame;</span>
+<span class="lineNum">      77 </span>            : //            hMargin = config.itemHerMargin;
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :             btn.tag = BTN_Tags_Tag + i;</span>
+<span class="lineNum">      79 </span>            : //            btn.adjustsImageWhenHighlighted = NO;
+<span class="lineNum">      80 </span>            :             ///标题设置
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :             UIColor *normorTitleColor = config.normalTitleColor ? config.normalTitleColor : [UIColor grayColor];</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :             UIColor *selectedTitleColor = config.selectedTitleColor ? config.selectedTitleColor : HexRGB(0xb35a00);</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :             [btn setTitle:title forState:UIControlStateNormal];</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :             [btn setTitleColor:normorTitleColor forState:UIControlStateNormal];</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :             [btn setTitleColor:selectedTitleColor forState:UIControlStateSelected];</span>
+<span class="lineNum">      86 </span>            :             
+<span class="lineNum">      87 </span>            :             ///图片设置
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :             if (config.normalBgImage) {</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 :                 [btn setBackgroundImage:config.normalBgImage forState:UIControlStateNormal];</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :             if (config.selectedBgImage) {</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :                 [btn setBackgroundImage:config.selectedBgImage forState:UIControlStateSelected];</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">      94 </span>            :             
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :             btn.backgroundColor = config.backgroundColor ? config.backgroundColor : [UIColor clearColor];</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :             btn.titleLabel.font = font;</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :             [btn addTarget:self action:@selector(tagBtnAction:) forControlEvents:UIControlEventTouchUpInside];</span>
+<span class="lineNum">      98 </span>            :             
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 :             CGRect frame = self.frame;</span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :             frame.size.height = CGRectGetMaxY(btn.frame) + topBottomSpace;</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :             self.frame = frame;</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :             self.bgImageView.frame = self.bounds;</span>
+<span class="lineNum">     103 </span>            :             
+<span class="lineNum">     104 </span>            :             ///边框
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :             if (config.hasBorder) {</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :                 btn.clipsToBounds = YES;</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :                 btn.layer.cornerRadius = config.borderRadius &gt; 0.0 ?config.borderRadius : 4/[UIScreen mainScreen].scale;</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :                 btn.layer.borderColor = [UIColor colorWithRed:0xcc/255.0 green:0xcc/255.0 blue:0xcc/255.0 alpha:1].CGColor;</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :                 btn.layer.borderWidth = config.borderWidth &gt; 0.0 ? config.borderWidth : 1/[UIScreen mainScreen].scale;</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     111 </span>            :             
+<span class="lineNum">     112 </span>            :             ///可选中
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :             if (config.isCanSelected) {</span>
+<span class="lineNum">     114 </span>            :                 //多选
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :                 if (config.isMulti) {</span>
+<span class="lineNum">     116 </span>            :                     
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :                     for (NSString *str in config.selectedDefaultTags) {</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :                         if ([title isEqualToString:str]) {</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :                             btn.selected = YES;</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :                         }</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :                     }</span>
+<span class="lineNum">     122 </span>            :                     
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :                 }else{  //单选</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :                     if ([title isEqualToString:config.singleSelectedTitle]) {</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :                         btn.selected = YES;</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :                         self.selectedBtn = btn;</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :                     }</span>
+<span class="lineNum">     128 </span>            :                 }
+<span class="lineNum">     129 </span>            :                 
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :             }else{  //不可选中</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :                 btn.enabled = NO;</span>
+<span class="lineNum">     132 </span>            :             }
+<span class="lineNum">     133 </span>            :             
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :             [self addSubview:btn];</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     136 </span>            :  
+<span class="lineNum">     137 </span>            :         
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :     return self;</span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 : - (CGFloat)heighttagsArray:(NSArray *)tagsArr config:(FFTagsViewConfig *)config{</span>
+<span class="lineNum">     143 </span>            :   
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :     CGFloat defaultHeight = config.itemHeight + 2*config.topBottomSpace, tagViewHeight = defaultHeight,  titleWidth = 0.0;</span>
+<span class="lineNum">     145 </span>            :     
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :     if (tagsArr.count == 0) {</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :         return 0.0;</span>
+<span class="lineNum">     148 </span>            :     }
+<span class="lineNum">     149 </span>            :    
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :     NSInteger row = 1;</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :     UIFont *font = [UIFont systemFontOfSize:config.fontSize &gt; 0 ? config.fontSize : 12.0];</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :     CGFloat itemContentMargin = config.itemContentEdgs &gt; 0 ? config.itemContentEdgs : 10.0;</span>
+<span class="lineNum">     153 </span>            :     
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :     for (int i = 0; i &lt; tagsArr.count; i++) {</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :         NSString *title = tagsArr[i];</span>
+<span class="lineNum">     156 </span>            :         
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :         CGFloat singleWidth = [title sizeWithAttributes:@{NSFontAttributeName : font}].width + config.itemHerMargin + 2 * itemContentMargin;</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :         titleWidth += singleWidth;</span>
+<span class="lineNum">     159 </span>            :         
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :         if ((titleWidth - config.itemHerMargin) &gt; CGRectGetWidth(self.frame)) {</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :             titleWidth = singleWidth;</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :             row += 1;</span>
+<span class="lineNum">     163 </span>            :             
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :             tagViewHeight = defaultHeight + (row -1) * (config.itemVerMargin + config.itemHeight);</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     167 </span>            :     
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     return tagViewHeight;</span>
+<span class="lineNum">     169 </span>            :     
+<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 : - (void)tagBtnAction:(UIButton *)sender{</span>
+<span class="lineNum">     173 </span>            :    
+<span class="lineNum">     174 </span>            :     ///可选中
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :     if (_curConfig.isCanSelected) {</span>
+<span class="lineNum">     176 </span>            :         //多选
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :         if (_curConfig.isMulti) {</span>
+<span class="lineNum">     178 </span>            :             
+<span class="lineNum">     179 </span>            :             //可以取消选中
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :             if (_curConfig.isCanCancelSelected){</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :                 sender.selected = !sender.selected;</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :                 if (sender.selected == YES) {</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :                     if (![_multiSelectedTags containsObject:sender.currentTitle]) {</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :                         [_multiSelectedTags addObject:sender.currentTitle];</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :                     }</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :                 }else{</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :                     if ([_multiSelectedTags containsObject:sender.currentTitle]) {</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :                         [_multiSelectedTags removeObject:sender.currentTitle];</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :                     }</span>
+<span class="lineNum">     190 </span>            :                 }
+<span class="lineNum">     191 </span>            :                 
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :             }else{</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :                 sender.selected = YES;</span>
+<span class="lineNum">     194 </span>            :                 
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 :                 if (![_multiSelectedTags containsObject:sender.currentTitle]) {</span>
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 :                      [_multiSelectedTags addObject:sender.currentTitle];</span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">     198 </span>            :             }
+<span class="lineNum">     199 </span>            :            
+<span class="lineNum">     200 </span>            :             
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :         }else{  //单选</span>
+<span class="lineNum">     202 </span>            :             //可以取消选中
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :             if (_curConfig.isCanCancelSelected) {</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :                 if (self.selectedBtn == sender) {</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 :                     sender.selected = !sender.selected;</span>
+<span class="lineNum">     206 </span><span class="lineNoCov">          0 :                     if (sender.selected == YES) {</span>
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 :                         self.selectedBtn = sender;</span>
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 :                     }else{</span>
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 :                         self.selectedBtn = nil;</span>
+<span class="lineNum">     210 </span>            :                     }
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :                 }else{</span>
+<span class="lineNum">     212 </span><span class="lineNoCov">          0 :                     self.selectedBtn.selected = NO;</span>
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :                     sender.selected = YES;</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :                     self.selectedBtn = sender;</span>
+<span class="lineNum">     215 </span>            :                 }
+<span class="lineNum">     216 </span>            :                 
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 :             }else{</span>
+<span class="lineNum">     218 </span>            :                 //不可以取消选中
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 :                 self.selectedBtn.selected = NO;</span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :                 sender.selected = YES;</span>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 :                 self.selectedBtn = sender;</span>
+<span class="lineNum">     222 </span>            :             }
+<span class="lineNum">     223 </span>            :             
+<span class="lineNum">     224 </span>            :         }
+<span class="lineNum">     225 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     226 </span>            :     
+<span class="lineNum">     227 </span>            :     //点击回调
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :     NSInteger index = sender.tag - BTN_Tags_Tag;</span>
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 :     if (self.tagBtnClickedBlock) {</span>
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :         self.tagBtnClickedBlock(self, sender, index);</span>
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     233 </span>            : 
+<span class="lineNum">     234 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationView/PSConsultationOtherTableViewCell.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationView</a> - PSConsultationOtherTableViewCell.m<span style="font-size: 80%;"> (source / <a href="PSConsultationOtherTableViewCell.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">146</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  PSConsultationOtherTableViewCell.m
+<span class="lineNum">       3 </span>            : //  PrisonService
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by 狂生烈徒 on 2018/10/29.
+<span class="lineNum">       6 </span>            : //  Copyright © 2018年 calvin. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;PSConsultationOtherTableViewCell.h&quot;
+<a name="10"><span class="lineNum">      10 </span>            : #import &quot;PSConsultationViewModel.h&quot;</a>
+<span class="lineNum">      11 </span>            : #import &quot;ReactiveObjC.h&quot;
+<a name="12"><span class="lineNum">      12 </span><span class="lineNoCov">          0 : @implementation PSConsultationOtherTableViewCell</span></a>
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 : - (void)awakeFromNib {</span>
+<span class="lineNum">      15 </span><span class="lineNoCov">          0 :     [super awakeFromNib];</span>
+<span class="lineNum">      16 </span>            :     // Initialization code
+<a name="17"><span class="lineNum">      17 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 : - (id)initWithFrame:(CGRect)frame {</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :     self = [super initWithFrame:frame];</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 :         self.backgroundColor = [UIColor clearColor];</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 :         UIImageView *bgImageView = [UIImageView new];</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :         bgImageView.userInteractionEnabled=YES;</span>
+<a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 :         bgImageView.image = [[UIImage imageNamed:@&quot;serviceHallServiceBg&quot;] stretchImage];</span></a>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :         [self addSubview:bgImageView];</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :         [bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :             make.top.mas_equalTo(0);</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :             make.left.mas_equalTo(15);</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :             make.right.mas_equalTo(-15);</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :             make.bottom.mas_equalTo(0);</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :         CGFloat sidePidding=15.0f;</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :         UIButton*consulationButton=[[UIButton alloc]initWithFrame:CGRectMake(sidePidding, sidePidding, 100, 20)];</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :         [consulationButton setImage:[UIImage imageNamed:@&quot;咨询费用&quot;]forState:0];</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         [consulationButton setTitle:@&quot;咨询费用&quot; forState:0 ];</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :         consulationButton.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft;</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :         [consulationButton setTitleColor:[UIColor blackColor] forState:0];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :         consulationButton.titleLabel.font=FontOfSize(14);</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :         [bgImageView addSubview:consulationButton];</span>
+<span class="lineNum">      41 </span>            :         
+<span class="lineNum">      42 </span>            :         
+<span class="lineNum">      43 </span>            :         
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :         _moneyTextField=[[UITextField alloc]initWithFrame:CGRectMake(15, consulationButton.bottom+15, SCREEN_WIDTH-60, 34)];</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :         _moneyTextField.borderStyle= UITextBorderStyleRoundedRect;</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :         _moneyTextField.layer.borderWidth=1.0f;</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :         _moneyTextField.layer.borderColor=AppBaseLineColor.CGColor;</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         _moneyTextField.layer.cornerRadius=4.0f;</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :         _moneyTextField.keyboardType=UIKeyboardTypeDecimalPad;</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :         _moneyTextField.clearButtonMode=UITextFieldViewModeAlways;</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :         _moneyTextField.placeholder = @&quot;请输入咨询金额,不少于100元&quot;;</span>
+<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :         _moneyTextField.font = FontOfSize(12);</span></a>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :         [bgImageView addSubview:_moneyTextField];</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :         [_moneyTextField.rac_textSignal subscribeNext:^(NSString * _Nullable x) {</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :             if (x.length==0) {</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :                 for (int i=0; i&lt;3; i++) {</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :                     UIButton *btn = (UIButton *)[self viewWithTag:i+100];</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :                     btn.selected=NO;</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :             else if ([x isEqualToString:@&quot;100&quot;]){</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :                 UIButton *btn = (UIButton *)[self viewWithTag:100];</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :                 btn.selected=YES;</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :             else if ([x isEqualToString:@&quot;200&quot;]){</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :                 UIButton *btn = (UIButton *)[self viewWithTag:101];</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :                 btn.selected=YES;</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :             else if ([x isEqualToString:@&quot;300&quot;]){</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :                 UIButton *btn = (UIButton *)[self viewWithTag:102];</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :                 btn.selected=YES;</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">      73 </span>            :             else{
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :                 for (int i=0; i&lt;3; i++) {</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :                     UIButton *btn = (UIButton *)[self viewWithTag:i+100];</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :                     btn.selected=NO;</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :                 }</span>
+<a name="78"><span class="lineNum">      78 </span>            :             }</a>
+<span class="lineNum">      79 </span>            :             
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">      81 </span>            :         
+<span class="lineNum">      82 </span>            :         
+<span class="lineNum">      83 </span>            :         
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :         CGFloat pading=15.0f;</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :         CGFloat tempW=(SCREEN_WIDTH-90)/3;</span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :         int i = 0;</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :         NSArray *titleArray = @[@&quot;100元&quot;,@&quot;200元&quot;,@&quot;300元&quot;];</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :         for (NSString *title in titleArray) {</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 :             UIButton *btn = [[UIButton alloc] init];</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :             btn.frame = CGRectMake(i*tempW+pading*(i+1), self.moneyTextField.bottom+15, tempW, 34);</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :             [btn setTitle:title forState:UIControlStateNormal];</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :             btn .titleLabel.font=FontOfSize(12);</span>
+<span class="lineNum">      93 </span>            :             
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :             btn.tag = i+100;</span>
+<span class="lineNum">      95 </span>            :             //btn.contentMode = UIViewContentModeCenter;
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :             [btn setTitleColor:AppBaseTextColor3 forState:UIControlStateNormal];</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];</span>
+<span class="lineNum">      98 </span>            :             
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 :             btn.layer.masksToBounds=YES;</span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :             btn.layer.cornerRadius=4.0f;</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :             [btn.layer setBorderWidth:1.0];</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :             [btn.layer setBorderColor:AppBaseTextColor3.CGColor];</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :             [btn setBackgroundImage:[self imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :             [btn setBackgroundImage:[self imageWithColor:AppBaseTextColor3] forState:UIControlStateSelected];</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :             [btn addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :             [bgImageView addSubview:btn];</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :             i++;</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     109 </span>            :         
+<span class="lineNum">     110 </span>            :         
+<span class="lineNum">     111 </span>            :         
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :         UIButton*timeButton=[[UIButton alloc]initWithFrame:CGRectMake(sidePidding, self.moneyTextField.bottom+60, 100, 20)];</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :         [timeButton setImage:[UIImage imageNamed:@&quot;咨询时长icon&quot;]forState:0];</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :         [timeButton setTitle:@&quot;咨询时长&quot; forState:0 ];</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :         timeButton.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft;</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :         [timeButton setTitleColor:[UIColor blackColor] forState:0];</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :         timeButton.titleLabel.font=FontOfSize(14);</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :         [bgImageView addSubview:timeButton];</span>
+<span class="lineNum">     119 </span>            :         
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :         UILabel*timeLable=[[UILabel alloc]initWithFrame: CGRectMake(SCREEN_WIDTH-3*sidePidding-50, timeButton.top, 50, 20)];</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :         timeLable.text=@&quot;20分钟&quot;;</span>
+<span class="lineNum">     122 </span>            :         //timeLable.textAlignment=NSTextAlignmentRight;
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :         timeLable.font=FontOfSize(14);</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :         timeLable.textColor=AppBaseTextColor3;</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :         [bgImageView addSubview:timeLable];</span>
+<span class="lineNum">     126 </span>            :         
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :         CGFloat protocolSidePadding = RELATIVE_WIDTH_VALUE(30);</span>
+<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :         self.protocolLabel = [YYLabel new];</span></a>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :         [bgImageView addSubview:self.protocolLabel];</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :         [self.protocolLabel mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :             make.left.mas_equalTo(protocolSidePadding);</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :             make.right.mas_equalTo(bgImageView.mas_right).offset(-15);</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :             make.top.mas_equalTo(timeLable.mas_bottom).offset(15);</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :             make.height.mas_equalTo(30);</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     136 </span>            :         
+<span class="lineNum">     137 </span>            :         
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :     return self;</span>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 : -(void)titleBtnClick:(UIButton *)btn</span>
+<span class="lineNum">     143 </span>            : {
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :     if (btn!= self.selectedBtn) {</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :         self.selectedBtn.selected = NO;</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :         btn.selected = YES;</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :         self.selectedBtn = btn;</span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :         self.moneyTextField.text=[btn.titleLabel.text substringToIndex:3];</span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 :     }else{</span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :         self.selectedBtn.selected = YES;</span>
+<span class="lineNum">     151 </span>            :         
+<span class="lineNum">     152 </span>            :     }
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :     if (self.buttonAction) {</span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :         self.buttonAction(self.moneyTextField.text);</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :     }</span>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 : - (void)handlerButtonAction:(ButtonClick)block</span>
+<span class="lineNum">     159 </span>            : {
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :     self.buttonAction = block;</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     162 </span>            : 
+<a name="163"><span class="lineNum">     163 </span>            : </a>
+<span class="lineNum">     164 </span>            : 
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 : - (UIImage *)imageWithColor:(UIColor *)color {</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);</span>
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 :     UIGraphicsBeginImageContext(rect.size);</span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     CGContextRef context = UIGraphicsGetCurrentContext();</span>
+<span class="lineNum">     169 </span>            :     
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :     CGContextSetFillColorWithColor(context, [color CGColor]);</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :     CGContextFillRect(context, rect);</span>
+<span class="lineNum">     172 </span>            :     
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :     UIGraphicsEndImageContext();</span>
+<span class="lineNum">     175 </span>            :     
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :     return image;</span>
+<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     178 </span>            : 
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 : - (void)updateProtocolText {</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :     NSString*read_agree=NSLocalizedString(@&quot;read_agree&quot;, nil);</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :     NSString*usageProtocol=NSLocalizedString(@&quot;usageProtocol&quot;, nil);</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :     NSMutableAttributedString *protocolText = [NSMutableAttributedString new];</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :     UIFont *textFont = FontOfSize(12);</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :     [protocolText appendAttributedString:[[NSAttributedString alloc] initWithString:read_agree attributes:@{NSFontAttributeName:textFont,NSForegroundColorAttributeName:AppBaseTextColor2}]];</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :     [protocolText appendAttributedString:[[NSAttributedString  alloc] initWithString: usageProtocol attributes:@{NSFontAttributeName:textFont,NSForegroundColorAttributeName:AppBaseTextColor3}]];</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :     [protocolText appendAttributedString:[[NSAttributedString  alloc] initWithString:@&quot; &quot; attributes:@{NSFontAttributeName:textFont,NSForegroundColorAttributeName:AppBaseTextColor3}]];</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :     PSConsultationViewModel*ViewModel =[[PSConsultationViewModel alloc]init];</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :     UIImage *statusImage =ViewModel.agreeProtocol ? [UIImage imageNamed:@&quot;已勾选&quot;] : [UIImage imageNamed:@&quot;未勾选&quot;];</span>
+<span class="lineNum">     189 </span>            :     
+<span class="lineNum">     190 </span>            :     
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :     [protocolText appendAttributedString:[NSAttributedString attachmentStringWithContent:statusImage contentMode:UIViewContentModeCenter attachmentSize:statusImage.size alignToFont:textFont alignment:YYTextVerticalAlignmentCenter]];</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :     protocolText.alignment = NSTextAlignmentLeft ;</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :     self.protocolLabel.attributedText = protocolText;</span>
+<span class="lineNum">     194 </span><span class="lineNoCov">          0 :     self.protocolLabel.numberOfLines=0;</span>
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     196 </span>            : 
+<span class="lineNum">     197 </span>            : 
+<span class="lineNum">     198 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

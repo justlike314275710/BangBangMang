@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/FriendsCircle/model/TLMomentExtension.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/FriendsCircle/model</a> - TLMomentExtension.m<span style="font-size: 80%;"> (source / <a href="TLMomentExtension.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  TLMomentExtension.m
+<span class="lineNum">       3 </span>            : //  TLChat
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by 李伯坤 on 16/4/8.
+<span class="lineNum">       6 </span>            : //  Copyright © 2016年 李伯坤. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;TLMomentExtension.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;NSAttributedString+YYText.h&quot;
+<span class="lineNum">      11 </span>            : 
+<a name="12"><span class="lineNum">      12 </span>            : #define     EDGE_MOMENT_EXTENSION       5.0f</a>
+<span class="lineNum">      13 </span>            : 
+<a name="14"><span class="lineNum">      14 </span><span class="lineNoCov">          0 : @implementation TLMomentExtension</span></a>
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span><span class="lineNoCov">          0 : - (id)init</span>
+<a name="17"><span class="lineNum">      17 </span>            : {</a>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 :     if (self = [super init]) {</span>
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 :         [TLMomentExtension mj_setupObjectClassInArray:^NSDictionary *{</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :             return @{ @&quot;likedFriends&quot; : @&quot;TLUser&quot;,</span>
+<span class="lineNum">      21 </span>            :                       @&quot;comments&quot; : @&quot;TLMomentComment&quot;};
+<span class="lineNum">      22 </span>            :         }];
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      26 </span>            : /*
+<span class="lineNum">      27 </span>            : - (void)setLikedFriends:(NSArray *)likedFriends
+<span class="lineNum">      28 </span>            : {
+<span class="lineNum">      29 </span>            :     _likedFriends = likedFriends;
+<span class="lineNum">      30 </span>            :     _attrLikedFriendsName = nil;
+<span class="lineNum">      31 </span>            :     
+<span class="lineNum">      32 </span>            :     if (likedFriends.count &gt; 0 ) {
+<span class="lineNum">      33 </span>            :         UIFont *font = [UIFont systemFontOfSize:14];
+<span class="lineNum">      34 </span>            :         NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] init];
+<span class="lineNum">      35 </span>            :         
+<span class="lineNum">      36 </span>            :         // like icon
+<span class="lineNum">      37 </span>            :         UIImage *likeImage = [UIImage imageNamed:@&quot;moments_like&quot;];
+<span class="lineNum">      38 </span>            :         NSAttributedString *attrLikeImage = [NSAttributedString yy_attachmentStringWithContent:likeImage contentMode:UIViewContentModeCenter attachmentSize:likeImage.size alignToFont:font alignment:YYTextVerticalAlignmentCenter];
+<span class="lineNum">      39 </span>            :         [attrStr appendAttributedString:attrLikeImage];
+<span class="lineNum">      40 </span>            :         
+<span class="lineNum">      41 </span>            :         // like space
+<span class="lineNum">      42 </span>            :         UIView *sapce = UIView.zz_create(1).frame(CGRectMake(0, 0, 5, 14)).view;
+<span class="lineNum">      43 </span>            :         NSAttributedString *attrSpace = [NSAttributedString yy_attachmentStringWithContent:sapce contentMode:UIViewContentModeCenter attachmentSize:sapce.size alignToFont:font alignment:YYTextVerticalAlignmentCenter];
+<span class="lineNum">      44 </span>            :         [attrStr appendAttributedString:attrSpace];
+<span class="lineNum">      45 </span>            :         
+<span class="lineNum">      46 </span>            :         // 用户名
+<span class="lineNum">      47 </span>            :         @weakify(self);
+<span class="lineNum">      48 </span>            :         for (TLUser *user in likedFriends) {
+<span class="lineNum">      49 </span>            :             NSAttributedString *(^createAttrButtonWithUser)(TLUser *user, void (^eventAction)(TLUser *user)) = ^NSAttributedString *(TLUser *user, void (^eventAction)(TLUser *user)) {
+<span class="lineNum">      50 </span>            :                 UIButton *button = UIButton.zz_create(0)
+<span class="lineNum">      51 </span>            :                 .title(user.showName).titleFont([UIFont boldSystemFontOfSize:14]).titleColor([UIColor colorBlueMoment])
+<span class="lineNum">      52 </span>            :                 .backgroundColor([UIColor clearColor]).backgroundColorHL([UIColor lightGrayColor])
+<span class="lineNum">      53 </span>            :                 .eventBlock(UIControlEventTouchUpInside, ^(UIButton *sender) {
+<span class="lineNum">      54 </span>            :                     if (eventAction) {
+<span class="lineNum">      55 </span>            :                         eventAction(user);
+<span class="lineNum">      56 </span>            :                     }
+<span class="lineNum">      57 </span>            :                 })
+<span class="lineNum">      58 </span>            :                 .view;
+<span class="lineNum">      59 </span>            :                 [button sizeToFit];
+<span class="lineNum">      60 </span>            :                 [button setHeight:20];
+<span class="lineNum">      61 </span>            :                 NSAttributedString *attrButton = [NSAttributedString yy_attachmentStringWithContent:button
+<span class="lineNum">      62 </span>            :                                                                                         contentMode:UIViewContentModeCenter
+<span class="lineNum">      63 </span>            :                                                                                      attachmentSize:button.size
+<span class="lineNum">      64 </span>            :                                                                                         alignToFont:[UIFont systemFontOfSize:14]
+<span class="lineNum">      65 </span>            :                                                                                           alignment:YYTextVerticalAlignmentCenter];
+<span class="lineNum">      66 </span>            :                 return attrButton;
+<span class="lineNum">      67 </span>            :             };
+<span class="lineNum">      68 </span>            :             
+<span class="lineNum">      69 </span>            :             NSAttributedString *attrUser = createAttrButtonWithUser(user, ^(TLUser *user) {
+<span class="lineNum">      70 </span>            :                 @strongify(self);
+<span class="lineNum">      71 </span>            :                 if (self.likeUserClickAction) {
+<span class="lineNum">      72 </span>            :                     self.likeUserClickAction(user);
+<span class="lineNum">      73 </span>            :                 }
+<span class="lineNum">      74 </span>            :             });
+<span class="lineNum">      75 </span>            :             [attrStr appendAttributedString:attrUser];
+<span class="lineNum">      76 </span>            :             
+<span class="lineNum">      77 </span>            :             if (user != likedFriends.lastObject) {
+<span class="lineNum">      78 </span>            :                 UILabel *label = UILabel.zz_create(1).frame(CGRectMake(0, 0, 11, 14)).text(@&quot;,&quot;).font([UIFont systemFontOfSize:14]).textColor([UIColor blackColor]).view;
+<span class="lineNum">      79 </span>            :                 NSAttributedString *attrLabel = [NSAttributedString yy_attachmentStringWithContent:label contentMode:UIViewContentModeCenter attachmentSize:label.size alignToFont:font alignment:YYTextVerticalAlignmentCenter];
+<span class="lineNum">      80 </span>            :                 [attrStr appendAttributedString:attrLabel];
+<span class="lineNum">      81 </span>            :             }
+<span class="lineNum">      82 </span>            :         }
+<span class="lineNum">      83 </span>            :         
+<span class="lineNum">      84 </span>            :         _attrLikedFriendsName = attrStr;
+<span class="lineNum">      85 </span>            :     }
+<span class="lineNum">      86 </span>            : }
+<a name="87"><span class="lineNum">      87 </span>            : */</a>
+<span class="lineNum">      88 </span>            : #pragma mark - # Private Methods
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 : - (CGFloat)heightLiked</span>
+<span class="lineNum">      90 </span>            : {
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :     CGFloat height = 0.0f;</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :     if (self.likedFriends.count &gt; 0) {</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :         YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(SCREEN_WIDTH - 96, MAXFLOAT) text:self.attrLikedFriendsName];</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :         height = layout.textBoundingSize.height + 10;</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     return height;</span>
+<a name="97"><span class="lineNum">      97 </span>            : }</a>
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 : - (CGFloat)heightComments</span>
+<span class="lineNum">     100 </span>            : {
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     CGFloat height = 0.0f;</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     for (TLMomentComment *comment in self.comments) {</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :         height += comment.commentFrame.height;</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     return height;</span>
+<span class="lineNum">     106 </span>            : }
+<a name="107"><span class="lineNum">     107 </span>            : </a>
+<span class="lineNum">     108 </span>            : #pragma mark - # Getter
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 : - (TLMomentExtensionFrame *)extensionFrame</span>
+<span class="lineNum">     110 </span>            : {
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :     if (_extensionFrame == nil) {</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :         _extensionFrame = [[TLMomentExtensionFrame alloc] init];</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :         _extensionFrame.height = 0.0f;</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :         if (self.likedFriends.count &gt; 0 || self.comments.count &gt; 0) {</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :             _extensionFrame.height += EDGE_MOMENT_EXTENSION;</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :         _extensionFrame.height += _extensionFrame.heightLiked = [self heightLiked];</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :         _extensionFrame.height += _extensionFrame.heightComments = [self heightComments];</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     return _extensionFrame;</span>
+<span class="lineNum">     121 </span>            : }
+<span class="lineNum">     122 </span>            : 
+<span class="lineNum">     123 </span>            : @end
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span>            : 
+<span class="lineNum">     126 </span>            : @implementation TLMomentExtensionFrame
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

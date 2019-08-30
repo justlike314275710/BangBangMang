@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Utils/SDCycleScrollView/SDCollectionViewCell.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Utils/SDCycleScrollView</a> - SDCollectionViewCell.h<span style="font-size: 80%;"> (source / <a href="SDCollectionViewCell.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  SDCollectionViewCell.h
+<span class="lineNum">       3 </span>            : //  SDCycleScrollView
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by aier on 15-3-22.
+<span class="lineNum">       6 </span>            : //  Copyright (c) 2015年 GSD. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : /*
+<span class="lineNum">      10 </span>            :  
+<span class="lineNum">      11 </span>            :  *********************************************************************************
+<span class="lineNum">      12 </span>            :  *
+<span class="lineNum">      13 </span>            :  * 🌟🌟🌟 新建SDCycleScrollView交流QQ群：185534916 🌟🌟🌟
+<span class="lineNum">      14 </span>            :  *
+<span class="lineNum">      15 </span>            :  * 在您使用此自动轮播库的过程中如果出现bug请及时以以下任意一种方式联系我们，我们会及时修复bug并
+<span class="lineNum">      16 </span>            :  * 帮您解决问题。
+<span class="lineNum">      17 </span>            :  * 新浪微博:GSD_iOS
+<span class="lineNum">      18 </span>            :  * Email : gsdios@126.com
+<span class="lineNum">      19 </span>            :  * GitHub: https://github.com/gsdios
+<span class="lineNum">      20 </span>            :  *
+<span class="lineNum">      21 </span>            :  * 另（我的自动布局库SDAutoLayout）：
+<span class="lineNum">      22 </span>            :  *  一行代码搞定自动布局！支持Cell和Tableview高度自适应，Label和ScrollView内容自适应，致力于
+<span class="lineNum">      23 </span>            :  *  做最简单易用的AutoLayout库。
+<span class="lineNum">      24 </span>            :  * 视频教程：http://www.letv.com/ptv/vplay/24038772.html
+<span class="lineNum">      25 </span>            :  * 用法示例：https://github.com/gsdios/SDAutoLayout/blob/master/README.md
+<span class="lineNum">      26 </span>            :  * GitHub：https://github.com/gsdios/SDAutoLayout
+<span class="lineNum">      27 </span>            :  *********************************************************************************
+<span class="lineNum">      28 </span>            :  
+<span class="lineNum">      29 </span>            :  */
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : #import &lt;UIKit/UIKit.h&gt;
+<span class="lineNum">      34 </span>            : 
+<a name="35"><span class="lineNum">      35 </span>            : @interface SDCollectionViewCell : UICollectionViewCell</a>
+<a name="36"><span class="lineNum">      36 </span>            : </a>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : @property (weak, nonatomic) UIImageView *imageView;</span>
+<a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 : @property (copy, nonatomic) NSString *title;</span></a>
+<a name="39"><span class="lineNum">      39 </span>            : </a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) UIColor *titleLabelTextColor;</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) UIFont *titleLabelTextFont;</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) UIColor *titleLabelBackgroundColor;</span></a>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) CGFloat titleLabelHeight;</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) NSTextAlignment titleLabelTextAlignment;</span></a>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) BOOL hasConfigured;</span>
+<a name="47"><span class="lineNum">      47 </span>            : </a>
+<span class="lineNum">      48 </span>            : /** 只展示文字轮播 */
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) BOOL onlyDisplayText;</span>
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

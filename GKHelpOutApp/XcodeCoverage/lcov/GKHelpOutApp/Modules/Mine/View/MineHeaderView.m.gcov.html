@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/Mine/View/MineHeaderView.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/Mine/View</a> - MineHeaderView.m<span style="font-size: 80%;"> (source / <a href="MineHeaderView.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">156</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  MineHeaderView.m
+<span class="lineNum">       3 </span>            : //  MiAiApp
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by 徐阳 on 2017/6/13.
+<span class="lineNum">       6 </span>            : //  Copyright © 2017年 徐阳. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;MineHeaderView.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;NickNameLbel.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;NSString+JsonString.h&quot;
+<span class="lineNum">      12 </span>            : 
+<a name="13"><span class="lineNum">      13 </span>            : @interface MineHeaderView()</a>
+<a name="14"><span class="lineNum">      14 </span>            : </a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineNoCov">          0 : @property(nonatomic, strong) UIImageView *bgImgView; //背景图</span></a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineNoCov">          0 : @property(nonatomic, strong) UIImageView *cerImg; //认证视图</span></a>
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 : @property(nonatomic, strong) UIImageView *cerIconImg;</span>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 : @property(nonatomic, strong) UILabel *cerLab;</span>
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span>            : 
+<a name="21"><span class="lineNum">      21 </span>            : @end</a>
+<span class="lineNum">      22 </span>            : 
+<a name="23"><span class="lineNum">      23 </span><span class="lineNoCov">          0 : @implementation MineHeaderView</span></a>
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : -(void)setUserInfo:(UserInfo *)userInfo{</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :     _userInfo = userInfo;</span>
+<span class="lineNum">      27 </span>            :     
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     UIImage *bgImg = IMAGE_NAMED(@&quot;个人信息底&quot;);</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     [self.bgImgView setImage:bgImg];</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     [self nickNameLab];</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     [self phoneNuberLab];</span>
+<span class="lineNum">      32 </span>            :     //已认证
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     if (help_userManager.userStatus == CERTIFIED) {</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :         [self cerImg];</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :         [self cerIconImg];</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         [self cerLab];</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : //未登录状态展示
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     if (userInfo) {</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :         if (help_userManager.avatarImage) {</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :             self.headImgView.image = help_userManager.avatarImage;</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :         } else {</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :             [self.headImgView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar] placeholderImage:IMAGE_NAMED(@&quot;登录－头像&quot;)];</span>
+<span class="lineNum">      46 </span>            :         }
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     }else{</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         [self.headImgView setImageWithURL:[NSURL URLWithString:@&quot;https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1503377311744&amp;di=a784e64d1cce362c663f3480b8465961&amp;imgtype=0&amp;src=http%3A%2F%2Fww2.sinaimg.cn%2Flarge%2F85cccab3gw1etdit7s3nzg2074074twy.jpg&quot;] placeholder:IMAGE_NAMED(@&quot;登录－头像&quot;)];</span>
+<span class="lineNum">      49 </span>            :     }
+<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      51 </span>            : #pragma mark ————— 头像点击 —————
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : -(void)headViewClick{</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     if (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(headerViewClick)]) {</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :         [self.delegate headerViewClick];</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     }</span>
+<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      57 </span>            : #pragma mark ————— 昵称点击 —————
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : -(void)nickNameViewClick{</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     if (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(nickNameViewClick)]) {</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :         [self.delegate nickNameViewClick];</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : }</span>
+<a name="63"><span class="lineNum">      63 </span>            : </a>
+<span class="lineNum">      64 </span>            : #pragma mark ————— 认证律师 ——————
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 : -(void)clicLawView {</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     if (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(cerLawViewClick)]) {</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :         [self.delegate cerLawViewClick];</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :     }</span>
+<a name="69"><span class="lineNum">      69 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 : -(UIImageView *)bgImgView{</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     if (!_bgImgView) {</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :         _bgImgView = [UIImageView new];</span>
+<a name="74"><span class="lineNum">      74 </span><span class="lineNoCov">          0 :         _bgImgView.userInteractionEnabled = YES;</span></a>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :         [self addSubview:_bgImgView];</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :         [_bgImgView mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :             make.left.mas_equalTo(13);</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :             make.right.mas_equalTo(-13);</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :             make.top.mas_equalTo(16);</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :             make.height.mas_equalTo(112);</span>
+<span class="lineNum">      81 </span>            :             
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     return _bgImgView;</span>
+<a name="85"><span class="lineNum">      85 </span>            : }</a>
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 : -(YYAnimatedImageView *)headImgView{</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :     if (!_headImgView) {</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 :         _headImgView = [YYAnimatedImageView new];</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :         _headImgView.contentMode = UIViewContentModeScaleAspectFill;</span>
+<span class="lineNum">      91 </span>            :         
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :         _headImgView.userInteractionEnabled = YES;</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :         [_headImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headViewClick)]];</span>
+<span class="lineNum">      94 </span>            :         
+<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :         ViewRadius(_headImgView, 25);</span></a>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :         [self.bgImgView addSubview:_headImgView];</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :         [_headImgView mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :             make.width.height.mas_equalTo(50);</span>
+<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 :             make.centerY.mas_equalTo(self.bgImgView);</span></a>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :             make.left.mas_equalTo(17);</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :     return _headImgView;</span>
+<a name="104"><span class="lineNum">     104 </span>            : }</a>
+<span class="lineNum">     105 </span>            : 
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 : -(UILabel *)phoneNuberLab {</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :     if (!_phoneNuberLab) {</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :         _phoneNuberLab = [UILabel new];</span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :         _phoneNuberLab.text = help_userManager.curUserInfo.username;</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :         if (curUser.username.length&gt;10) {</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :             NSString *phoneNumber = [NSString changeTelephone:help_userManager.curUserInfo.username];</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :             _phoneNuberLab.text = phoneNumber;</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :         _phoneNuberLab.font = FFont2;</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :         _phoneNuberLab.textAlignment = NSTextAlignmentLeft;</span>
+<a name="116"><span class="lineNum">     116 </span><span class="lineNoCov">          0 :         _phoneNuberLab.textColor = CFontColor4;</span></a>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :         [self.bgImgView addSubview:_phoneNuberLab];</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :         [_phoneNuberLab mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :             make.width.mas_equalTo(200);</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :             make.height.mas_equalTo(22);</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :             make.left.mas_equalTo(self.headImgView.mas_right).offset(10);</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :             make.top.mas_equalTo(self.nickNameLab.mas_bottom).offset(5);</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :         _phoneNuberLab.userInteractionEnabled = YES;</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :         [_phoneNuberLab addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nickNameViewClick)]];</span>
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     return _phoneNuberLab;</span>
+<a name="128"><span class="lineNum">     128 </span>            : }</a>
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 : -(UILabel *)nickNameLab {</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     if (!_nickNameLab) {</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :         _nickNameLab = [UILabel new];</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :         _nickNameLab.text = help_userManager.curUserInfo.nickname;</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :         _nickNameLab.font = FontOfSize(18);</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :         _nickNameLab.textAlignment = NSTextAlignmentLeft;</span>
+<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :         _nickNameLab.textColor = CFontColor1;</span></a>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :         [self.bgImgView addSubview:_nickNameLab];</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :         [_nickNameLab mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :             make.width.mas_equalTo(200);</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 :             make.height.mas_equalTo(22);</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :             make.left.mas_equalTo(self.headImgView.mas_right).offset(10);</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :             make.top.mas_equalTo(self.headImgView);</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :         _nickNameLab.userInteractionEnabled = YES;</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :         [_nickNameLab addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nickNameViewClick)]];</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :     return _nickNameLab;</span>
+<a name="148"><span class="lineNum">     148 </span>            : }</a>
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : - (UIImageView *)cerImg {</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :     if (!_cerImg) {</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :         _cerImg = [UIImageView new];</span>
+<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :         _cerImg.userInteractionEnabled = YES;</span></a>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :         @weakify(self);</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :         [_cerImg bk_whenTapped:^{</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :             @strongify(self);</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :             [self clicLawView];</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :         }];</span>
+<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :         _cerImg.image = IMAGE_NAMED(@&quot;认证律师底&quot;);</span></a>
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :          [self.bgImgView addSubview:_cerImg];</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :         [_cerImg mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :             make.width.mas_equalTo(77);</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :             make.height.mas_equalTo(25);</span>
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :             make.top.mas_equalTo(29);</span>
+<span class="lineNum">     165 </span><span class="lineNoCov">          0 :             make.right.mas_equalTo(0);</span>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :         }];</span>
+<a name="167"><span class="lineNum">     167 </span>            :         </a>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :         [_cerImg addSubview:self.cerIconImg];</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 :         [_cerIconImg mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :             make.width.mas_equalTo(12);</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :             make.height.mas_equalTo(14);</span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 :             make.left.mas_equalTo(10);</span>
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :             make.centerY.mas_equalTo(self-&gt;_cerImg);</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :         }];</span>
+<a name="175"><span class="lineNum">     175 </span>            :         </a>
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :         [_cerImg addSubview:self.cerLab];</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :         [_cerLab mas_makeConstraints:^(MASConstraintMaker *make) {</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :             make.width.mas_equalTo(50);</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :             make.height.mas_equalTo(20);</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :             make.left.mas_equalTo(28);</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :             make.centerY.mas_equalTo(self-&gt;_cerImg);</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     183 </span>            :         
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :     return _cerImg;</span>
+<a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     187 </span>            : 
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 : -(UIImageView *)cerIconImg {</span>
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :     if (!_cerIconImg) {</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :         _cerIconImg = [UIImageView new];</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :         _cerIconImg.image = IMAGE_NAMED(@&quot;已认证icon&quot;);</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :     return _cerIconImg;</span>
+<a name="194"><span class="lineNum">     194 </span>            : }</a>
+<span class="lineNum">     195 </span>            : 
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 : -(UILabel *)cerLab {</span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :     if (!_cerLab) {</span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :         _cerLab = [UILabel new];</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :         _cerLab.font = SFFont;</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :         _cerLab.textColor = KWhiteColor;</span>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :         _cerLab.textAlignment = NSTextAlignmentLeft;</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :         _cerLab.text = @&quot;认证律师&quot;;</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :     return _cerLab;</span>
+<span class="lineNum">     205 </span>            : }
+<span class="lineNum">     206 </span>            : 
+<span class="lineNum">     207 </span>            : 
+<span class="lineNum">     208 </span>            : 
+<span class="lineNum">     209 </span>            : 
+<span class="lineNum">     210 </span>            : 
+<span class="lineNum">     211 </span>            : 
+<span class="lineNum">     212 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

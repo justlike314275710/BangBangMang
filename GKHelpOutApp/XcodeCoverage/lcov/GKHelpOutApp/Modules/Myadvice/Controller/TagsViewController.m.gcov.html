@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Coverage.info - GKHelpOutApp/Modules/Myadvice/Controller/TagsViewController.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">GKHelpOutApp/Modules/Myadvice/Controller</a> - TagsViewController.m<span style="font-size: 80%;"> (source / <a href="TagsViewController.m.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">36</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-08-27 15:54:30</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<span class="lineNum">       2 </span>            : //  TagsViewController.m
+<span class="lineNum">       3 </span>            : //  MiAiApp
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : //  Created by 徐阳 on 2017/8/17.
+<span class="lineNum">       6 </span>            : //  Copyright © 2017年 徐阳. All rights reserved.
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #import &quot;TagsViewController.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;FFTagsView.h&quot;
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : @interface TagsViewController ()
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : @end
+<span class="lineNum">      16 </span>            : 
+<a name="17"><span class="lineNum">      17 </span>            : @implementation TagsViewController</a>
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 : - (void)viewDidLoad {</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :     [super viewDidLoad];</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 :     [self createTagsView];</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : }</span>
+<a name="23"><span class="lineNum">      23 </span>            : </a>
+<span class="lineNum">      24 </span>            : #pragma mark -  标签View
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : -(void)createTagsView{</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :     self.view.backgroundColor = KGrayColor;</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :     FFTagsViewConfig *config = [[FFTagsViewConfig alloc] init];</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     config.itemHeight = 35;</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     config.itemHerMargin = 14;</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     config.itemVerMargin = 10;</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     config.hasBorder = YES;</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     config.topBottomSpace = 15.0;</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     config.itemContentEdgs = 13;</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     config.isCanSelected = YES;</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     config.isCanCancelSelected = YES;</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     config.singleSelectedTitle = @&quot;啥风格风格&quot;;</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     config.isMulti = YES;</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     config.normalBgImage = [UIImage imageWithColor:KWhiteColor];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     config.selectedBgImage = [UIImage imageWithColor:[UIColor redColor]];</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     config.fontSize = 14;</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     config.selectedTitleColor = KWhiteColor;</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     config.selectedDefaultTags =  @[@&quot;功夫&quot;,@&quot;是否&quot;,@&quot;很感动的&quot;] ;</span>
+<span class="lineNum">      43 </span>            :     
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     CGFloat w = [UIScreen mainScreen].bounds.size.width-50;</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     NSArray *tags = @[@&quot;反倒是&quot;,@&quot;更多&quot;,@&quot;鼓捣鼓捣发&quot;,@&quot;国防生的&quot;,@&quot;韩国&quot;,@&quot;还让&quot;,@&quot;金凤&quot;,@&quot;人的风格&quot;,@&quot;个梵蒂冈和&quot;,@&quot;第三方&quot;,@&quot;是否&quot;,@&quot;热&quot;,@&quot;啥风格风格&quot;,@&quot;功夫&quot;,@&quot;发送给是否&quot;,@&quot;方法&quot;,@&quot;好的&quot;,@&quot;爱国的风格&quot;,@&quot;符合的&quot;,@&quot;很感动的&quot;,@&quot;就好几个大地飞歌&quot;];</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     FFTagsView *tagView = [[FFTagsView alloc] initWithFrame:CGRectMake(25, 100, w, 0) tagsArray:tags config:config];</span>
+<a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 :     tagView.backgroundColor = [UIColor whiteColor];</span></a>
+<span class="lineNum">      48 </span>            :     
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     tagView.tagBtnClickedBlock = ^(FFTagsView *aTagsView, UIButton *sender, NSInteger index){</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :         NSLog(@&quot;--- index = %ld&quot;,index);</span>
+<span class="lineNum">      51 </span>            :         //NSLog(@&quot;---- titles = %@&quot;,aTagsView.multiSelectedTags);
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     };</span>
+<span class="lineNum">      53 </span>            :     
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     [self.view addSubview:tagView];</span>
+<span class="lineNum">      55 </span>            :     
+<span class="lineNum">      56 </span>            :     
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     CGFloat viewHeight = [tagView heighttagsArray:tags config:config];</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     NSLog(@&quot;------h = %.2f---&quot;,viewHeight);</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : }</span>
+<a name="60"><span class="lineNum">      60 </span>            : </a>
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : - (void)didReceiveMemoryWarning {</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     [super didReceiveMemoryWarning];</span>
+<span class="lineNum">      64 </span>            :     // Dispose of any resources that can be recreated.
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : /*
+<span class="lineNum">      68 </span>            : #pragma mark - Navigation
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            : // In a storyboard-based application, you will often want to do a little preparation before navigation
+<span class="lineNum">      71 </span>            : - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+<span class="lineNum">      72 </span>            :     // Get the new view controller using [segue destinationViewController].
+<span class="lineNum">      73 </span>            :     // Pass the selected object to the new view controller.
+<span class="lineNum">      74 </span>            : }
+<span class="lineNum">      75 </span>            : */
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
