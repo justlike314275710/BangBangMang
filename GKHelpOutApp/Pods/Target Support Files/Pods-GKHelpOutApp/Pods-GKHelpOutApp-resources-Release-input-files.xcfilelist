@@ -1,0 +1,10 @@
+${PODS_ROOT}/Target Support Files/Pods-GKHelpOutApp/Pods-GKHelpOutApp-resources.sh
+${PODS_ROOT}/AlipaySDK-iOS/AlipaySDK.bundle
+${PODS_ROOT}/BRPickerView/BRPickerView/AddressPickerView/BRPickerView.bundle
+${PODS_ROOT}/EBBannerView/EBBannerView/Classes/EBBannerView.xib
+${PODS_ROOT}/EBBannerView/EBBannerView/Classes/EBBannerViewController.xib
+${PODS_ROOT}/EBBannerView/EBBannerView/Classes/EBMuteDetector.mp3
+${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle
+${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle
+${PODS_ROOT}/PYPhotoBrowser/PYPhotoBrowser/PYPhotosView.bundle
+${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle

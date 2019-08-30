@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class M80AttributedLabelURL;
+
 @interface M80AttributedLabelURL : NSObject
 @property (nonatomic,strong)                id      linkData;
 @property (nonatomic,assign)                NSRange range;
@@ -21,9 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
                                      color:(nullable UIColor *)color;
 
 
-+ (nullable NSArray *)detectLinks:(nullable NSString *)plainText;
 
-+ (void)setCustomDetectMethod:(nullable M80CustomDetectLinkBlock)block;
 @end
 
 

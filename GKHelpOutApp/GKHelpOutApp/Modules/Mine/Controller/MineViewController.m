@@ -24,6 +24,7 @@
 #import "FriendsViewController.h"
 #import "MyConsultationViewController.h"
 #import "UITabBar+CustomBadge.h"
+#import "Mine_AuthLogic.h"
 
 //#define KHeaderHeight ((260 * Iphone6ScaleWidth) + kStatusBarHeight)
 #define KHeaderHeight 140
@@ -62,7 +63,48 @@
                                                  name:KNotificationMineRefreshDot
                                                object:nil];
     
+    //提现成功回调通知OR钱改变
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(getCashSuccess)
+                                                 name:KNotificationGetCashSuccess
+                                               object:nil];
     
+    
+}
+
+#pragma mark - 提现成功回调
+//获取余额
+-(void)getCashSuccess{
+    
+    Mine_AuthLogic *authLogin = [Mine_AuthLogic new];
+    [authLogin getLawyerProfilesData:^(id data) {
+        if (ValidDict(data)) {
+            NSString *userStaus = [data valueForKey:@"certificationStatus"];
+            if ([userStaus isEqualToString:@"PENDING_CERTIFIED"]) {
+                help_userManager.userStatus = PENDING_CERTIFIED;
+            } else if ([userStaus isEqualToString:@"PENDING_APPROVAL"]){
+                help_userManager.userStatus = PENDING_APPROVAL;
+            } else if ([userStaus isEqualToString:@"APPROVAL_FAILURE"]){
+                help_userManager.userStatus = APPROVAL_FAILURE;
+            } else if ([userStaus isEqualToString:@"CERTIFIED"]){
+                help_userManager.userStatus = CERTIFIED;
+            }
+            [help_userManager saveUserState];
+            LawUserInfo *lawUserInfo = [LawUserInfo modelWithJSON:data];
+
+            [help_userManager saveLawUserInfo];
+            
+            help_userManager.lawUserInfo = lawUserInfo;
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self initData];
+            });
+        }
+    } failed:^(NSError *error) {
+        if (![help_userManager loadUserState]) {
+            help_userManager.userStatus = PENDING_CERTIFIED;
+        }
+    }];
 }
 
 

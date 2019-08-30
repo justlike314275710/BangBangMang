@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSString (JsonString)
 
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
++(NSString *)convertToJsonData:(NSDictionary *)dict;
 +(NSString*)changeTelephone:(NSString*)teleStr;
 
 

@@ -112,10 +112,11 @@ SINGLETON_FOR_CLASS(IMManager);
 #pragma mark ————— 代理 收到新消息 —————
 - (void)onRecvMessages:(NSArray<NIMMessage *> *)messages{
     DLog(@"收到新消息");
-    NIMMessage *meeesage = [messages objectAtIndex:1];
+    if (messages.count <=0) return;
+    NIMMessage *meeesage = [messages objectAtIndex:0];
     NSString *msg = meeesage.text;
+    if (msg.length<=0) return;
     [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"0" activityId:1900001 alertBody:msg alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
-    
     //未读消息
     NSInteger systemCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
     if (systemCount>0) {
@@ -148,6 +149,8 @@ SINGLETON_FOR_CLASS(IMManager);
         }];
         [banner show];
         [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"2" activityId:1900000 alertBody: dic[@"content"] alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
+        KPostNotification(KNotificationGetCashSuccess,nil);
+        KPostNotification(KNotificationMineDataChange,nil);
     }
     else if ([dic[@"type"] isEqualToString:@"NOTIFICATION_PRAISE_ADVICE"]||[dic[@"type"] isEqualToString:@"NOTIFICATION_COMMENT_ADVICE"]){  //评论点赞
         KPostNotification(KNotificationMineRefreshDot, @"1");
@@ -159,6 +162,9 @@ SINGLETON_FOR_CLASS(IMManager);
         [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"3" activityId:1900000 alertBody:dic[@"content"] alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
         
     }
+    
+    
+    
     else {
         EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
             make.style = 11;
@@ -176,22 +182,4 @@ SINGLETON_FOR_CLASS(IMManager);
     }
 }
 
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
-{
-    if (jsonString == nil) {
-        return nil;
-    }
-    
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err;
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                        options:NSJSONReadingMutableContainers
-                                                          error:&err];
-    if(err)
-    {
-        NSLog(@"json解析失败：%@",err);
-        return nil;
-    }
-    return dic;
-}
 @end

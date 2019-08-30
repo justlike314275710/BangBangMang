@@ -46,11 +46,15 @@
 }
 
 - (void)intData{
-    _nowTime = [NSString getCurrentTimes];
     
-    _twoHourLateTime = [NSString getTimeFromTimestamp:[[NSString getNowTimeTimestamp] doubleValue] + 3600*3];
+    _nowTime = [NSString timeChange:self.getCashModel.payDate];
+    _twoHourLateTime = [NSString timeChange:self.getCashModel.applyDate];
     
-    NSLog(@"%@",_twoHourLateTime);
+//    _nowTime = [NSString getCurrentTimes];
+//
+//    _twoHourLateTime = [NSString getTimeFromTimestamp:[[NSString getNowTimeTimestamp] doubleValue] + 3600*3];
+    
+//    NSLog(@"%@",_twoHourLateTime);
     
 }
 
@@ -59,7 +63,7 @@
     [self.view addSubview:self.headImgView];
     if (self.getCashState == PSGetCashScuess) {
         self.headImgView.image = IMAGE_NAMED(@"已提交图");
-        self.stateLab.text = @"提现申请已提交";
+        self.stateLab.text = @"提现成功";
     } 
     [self.view addSubview:self.stateLab];
     self.stateLab.frame = CGRectMake((KScreenWidth-200)/2,self.headImgView.bottom+10, 200, 30);
@@ -72,16 +76,19 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
+    NSString *amont = [NSString stringWithFormat:@"¥%@(实际到账¥%@)",self.getCashModel.amount,self.getCashModel.realAmount];
+    
+   
+    NSDictionary *alipayName = @{@"titleText":@"支付宝姓名",@"detailText":self.getCashModel.nickName};
+    NSDictionary *alipayNumber = @{@"titleText":@"支付宝交易号",@"detailText":self.getCashModel.orderId};
+    NSDictionary *amontString = @{@"titleText":@"提现金额",@"detailText":amont};
     NSDictionary *Modifydata = @{@"titleText":@"提现申请时间",@"detailText":_nowTime};
-    NSDictionary *myMission = @{@"titleText":@"预计到账时间",@"detailText":_twoHourLateTime};
-    NSDictionary *myFriends = @{@"titleText":@"支付宝姓名",@"detailText":help_userManager.lawUserInfo.nickName};
-    NSDictionary *myLevel = @{@"titleText":@"支付宝账户",@"detailText":help_userManager.curUserInfo.username};
-    NSDictionary *failReason = @{@"titleText":@"提现金额",@"detailText":self.cash};
+    NSDictionary *myMission = @{@"titleText":@"到账时间",@"detailText":_twoHourLateTime};
+ 
     
     //self.lawUserInfo.nickName
     
-    
-    _dataSource = @[Modifydata,myMission,myFriends,myLevel,failReason];
+    _dataSource = @[alipayName,alipayNumber,amontString,Modifydata,myMission];
     [self.tableView reloadData];
 }
 

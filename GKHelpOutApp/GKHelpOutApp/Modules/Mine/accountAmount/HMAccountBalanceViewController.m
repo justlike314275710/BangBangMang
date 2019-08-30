@@ -167,6 +167,8 @@
             LawUserInfo *lawUserInfo = [LawUserInfo modelWithJSON:data];
             self.lawUserInfo = lawUserInfo;
             [help_userManager saveLawUserInfo];
+            
+            help_userManager.lawUserInfo = lawUserInfo;
             //刷新界面
             [self searchAlilpay];
             //刷新个人中心

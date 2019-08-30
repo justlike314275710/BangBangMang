@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#import "GETCashModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, PSGetCashState) {
@@ -17,6 +18,7 @@ typedef NS_ENUM(NSInteger, PSGetCashState) {
 @interface HMGetCashResultViewController : RootViewController
 @property(nonatomic,assign)PSGetCashState getCashState;
 @property(nonatomic,copy)NSString *cash;
+@property(nonatomic,strong)GETCashModel *getCashModel;
 
 @end
 

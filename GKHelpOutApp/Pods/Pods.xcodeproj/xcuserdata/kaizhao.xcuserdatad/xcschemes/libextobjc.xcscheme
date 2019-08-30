@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A9E521049EA327E4D4B6FDEFE1FD907F"
+               BlueprintIdentifier = "FCF9E951FF37FA2C3B94343A6EC04C7B"
+               BuildableName = "liblibextobjc.a"
                BlueprintName = "libextobjc"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "liblibextobjc.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

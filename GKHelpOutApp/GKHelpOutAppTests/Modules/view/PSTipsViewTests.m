@@ -7,8 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "PSTipsView.h"
 
 @interface PSTipsViewTests : XCTestCase
+@property (nonatomic,strong)PSTipsView *tipView;
 
 @end
 
@@ -16,10 +18,21 @@
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.tipView = [[PSTipsView alloc] init];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    self.tipView = nil;
+}
+
+- (void)testshowTips {
+    [PSTipsView showTips:@"测试"];
+}
+
+
+- (void)testshowTips1{
+    [PSTipsView showTips:@"延迟测试" dismissAfterDelay:1];
 }
 
 - (void)testExample {

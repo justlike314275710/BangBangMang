@@ -66,6 +66,17 @@
     XCTAssertFalse(result);
 }
 
+- (void)testchangeOrientation {
+    [self.psviewController changeOrientation:UIInterfaceOrientationPortrait];
+}
+
+- (void)testViewController {
+    [self.psviewController viewDidLoad];
+    [self.psviewController viewWillAppear:YES];
+}
+
+
+
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.

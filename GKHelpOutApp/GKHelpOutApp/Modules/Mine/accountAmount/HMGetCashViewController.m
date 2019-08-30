@@ -13,6 +13,7 @@
 #import "HMGetCashLogic.h"
 #import "ReactiveObjC.h"
 #import "RMTimer.h"
+#import "GETCashModel.h"
 
 @interface HMGetCashViewController (){
     
@@ -73,7 +74,7 @@
         }
         float actual = [x floatValue]*0.65;
         if ([x floatValue]>=1) {
-            NSString *actualMoney = [NSString stringWithFormat:@"实际到账¥%.1f",actual];
+            NSString *actualMoney = [NSString stringWithFormat:@"实际到账¥%.2f",actual];
             self.cashRightLab.text = actualMoney;
         } else{
             self.cashRightLab.text = @"";
@@ -191,8 +192,8 @@
                 KPostNotification(KNotificationGetCashSuccess, nil);
                 HMGetCashResultViewController *GetCashResultVC = [[HMGetCashResultViewController alloc] init];
                 GetCashResultVC.getCashState = PSGetCashScuess;
-                GetCashResultVC.cash = [NSString stringWithFormat:@"¥%.2f",[self.cashTextField.text doubleValue]*0.65];
-                
+                GetCashResultVC.cash = [NSString stringWithFormat:@"%.2f",[self.cashTextField.text doubleValue]];
+                GetCashResultVC.getCashModel = [GETCashModel modelWithJSON:data];
                 [self.navigationController pushViewController:GetCashResultVC animated:YES];
                 
             } failed:^(NSError *error) {
@@ -214,7 +215,7 @@
 -(void)submitAction:(UIButton*)sender {
 //    HMGetCashResultViewController *GetCashResultVC = [[HMGetCashResultViewController alloc] init];
 //    GetCashResultVC.getCashState = PSGetCashScuess;
-//    GetCashResultVC.cash = [NSString stringWithFormat:@"¥%.2f",[self.cashTextField.text doubleValue]*0.65];
+//    GetCashResultVC.cash = [NSString stringWithFormat:@"%.2f",[self.cashTextField.text doubleValue]];
 //    [self.navigationController pushViewController:GetCashResultVC animated:YES];
     [self lawyerWithdrawal];
 }

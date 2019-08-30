@@ -7,8 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "AppManager.h"
 
 @interface AppManagerTests : XCTestCase
+@property (nonatomic,strong)AppManager *appManager;
 
 @end
 
@@ -20,6 +22,14 @@
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+}
+
+- (void)testAppStart {
+    [AppManager appStart];
+}
+
+- (void)testShowFPS {
+    [AppManager showFPS];
 }
 
 - (void)testExample {

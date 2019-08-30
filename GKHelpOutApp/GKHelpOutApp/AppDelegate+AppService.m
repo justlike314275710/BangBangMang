@@ -276,7 +276,9 @@
             }
         }
     }
-    
+//    if (![[window subviews] objectAtIndex:0]) {
+//        return result;
+//    }
     UIView *frontView = [[window subviews] objectAtIndex:0];
     id nextResponder = [frontView nextResponder];
     

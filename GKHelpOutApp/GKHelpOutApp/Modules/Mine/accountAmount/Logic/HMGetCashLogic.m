@@ -45,6 +45,7 @@
         if (responses.statusCode==201||responses.statusCode==200||responses.statusCode==204) {
                 if (completedCallback) {
                     completedCallback(responseObject);
+                    self.getCashModel = [GETCashModel modelWithJSON:responseObject];
                 }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

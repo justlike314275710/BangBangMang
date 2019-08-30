@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "26F0CD1853393C9581E49592165EF591"
+               BlueprintIdentifier = "5D03C4200B6844F7EB1EC8A68CF95E84"
+               BuildableName = "libPods-GKHelpOutAppUITests.a"
                BlueprintName = "Pods-GKHelpOutAppUITests"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libPods-GKHelpOutAppUITests.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

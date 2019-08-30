@@ -8,6 +8,7 @@
 #import "WXApi.h"
 #import "AppDelegate.h"
 #import <AlipaySDK/AlipaySDK.h>
+
 @interface AppDelegate ()
 
 @end

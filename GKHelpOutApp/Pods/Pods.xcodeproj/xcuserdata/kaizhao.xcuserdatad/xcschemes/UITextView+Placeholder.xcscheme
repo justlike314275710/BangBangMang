@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5DB82261061F9AB5A0C10C86BDE8EB80"
+               BlueprintIdentifier = "94DBE1F02563D90F416A7DB9558489B2"
+               BuildableName = "libUITextView+Placeholder.a"
                BlueprintName = "UITextView+Placeholder"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libUITextView+Placeholder.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

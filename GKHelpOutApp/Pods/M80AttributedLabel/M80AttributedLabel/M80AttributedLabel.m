@@ -7,31 +7,18 @@
 //
 
 #import "M80AttributedLabel.h"
-#import "M80AttributedLabelAttachment.h"
-#import "M80AttributedLabelURL.h"
 
 static NSString* const M80EllipsesCharacter = @"\u2026";
 
-static dispatch_queue_t m80_attributed_label_parse_queue;
-static dispatch_queue_t get_m80_attributed_label_parse_queue() \
-{
-    if (m80_attributed_label_parse_queue == NULL) {
-        m80_attributed_label_parse_queue = dispatch_queue_create("com.m80.parse_queue", 0);
-    }
-    return m80_attributed_label_parse_queue;
-}
-
 @interface M80AttributedLabel ()
-{
-    NSMutableArray              *_attachments;
-    NSMutableArray              *_linkLocations;
-    CTFrameRef                  _textFrame;
-    CGFloat                     _fontAscent;
-    CGFloat                     _fontDescent;
-    CGFloat                     _fontHeight;
-}
-@property (nonatomic,strong)    NSMutableAttributedString *attributedString;
-@property (nonatomic,strong)    M80AttributedLabelURL *touchedLink;
+@property (nonatomic,strong)    NSMutableAttributedString   *attributedString;
+@property (nonatomic,strong)    NSMutableArray              *attachments;
+@property (nonatomic,strong)    NSMutableArray              *linkLocations;
+@property (nonatomic,strong)    M80AttributedLabelURL       *touchedLink;
+@property (nonatomic,assign)    CTFrameRef textFrame;
+@property (nonatomic,assign)    CGFloat fontAscent;
+@property (nonatomic,assign)    CGFloat fontDescent;
+@property (nonatomic,assign)    CGFloat fontHeight;
 @property (nonatomic,assign)    BOOL linkDetected;
 @property (nonatomic,assign)    BOOL ignoreRedraw;
 @end
@@ -460,8 +447,6 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
     CFArrayRef runs = CTLineGetGlyphRuns(line);
     CFIndex runCount = CFArrayGetCount(runs);
     
-    // Iterate through each of the "runs" (i.e. a chunk of text) and find the runs that
-    // intersect with the range.
     for (CFIndex k = 0; k < runCount; k++)
     {
         CTRunRef run = CFArrayGetValueAtIndex(runs, k);
@@ -472,7 +457,6 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
         
         if (intersectedRunRange.length == 0)
         {
-            // This run doesn't intersect the range, so skip it.
             continue;
         }
         
@@ -480,12 +464,11 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
         CGFloat descent = 0.0f;
         CGFloat leading = 0.0f;
         
-        // Use of 'leading' doesn't properly highlight Japanese-character link.
         CGFloat width = (CGFloat)CTRunGetTypographicBounds(run,
                                                            CFRangeMake(0, 0),
                                                            &ascent,
                                                            &descent,
-                                                           NULL); //&leading);
+                                                           NULL);
         CGFloat height = ascent + descent;
         
         CGFloat xOffset = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, nil);
@@ -686,19 +669,7 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
     {
         CFRelease(framesetter);
     }
-    
-    //hack:
-    //1.需要加上额外的一部分size,有些情况下计算出来的像素点并不是那么精准
-    //2.iOS7 的 CTFramesetterSuggestFrameSizeWithConstraint s方法比较残,需要多加一部分 height
-    //3.iOS7 多行中如果首行带有很多空格，会导致返回的 suggestionWidth 远小于真实 width ,那么多行情况下就是用传入的 width
-    if (newSize.height < _fontHeight * 2)   //单行
-    {
-        return CGSizeMake(ceilf(newSize.width) + 2.0, ceilf(newSize.height) + 4.0);
-    }
-    else
-    {
-        return CGSizeMake(size.width, ceilf(newSize.height) + 4.0);
-    }
+    return CGSizeMake(ceilf(newSize.width) + 1, MIN(ceilf(newSize.height) + 1, size.height));
 }
 
 
@@ -779,6 +750,7 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
             CGRect highlightRect = [self rectForRange:linkRange
                                                inLine:line
                                            lineOrigin:lineOrigins[i]];
+            
             highlightRect = CGRectOffset(highlightRect, 0, -rect.origin.y);
             if (!CGRectIsEmpty(highlightRect))
             {
@@ -855,7 +827,8 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
                         
                         if (lastLineRange.length > 0)
                         {
-                            //移除掉最后一个对象...（其实这个地方有点问题,也有可能需要移除最后 2 个对象，因为 attachment 宽度的关系）
+                            //移除掉最后一个对象...
+                            //其实这个地方有点问题,也有可能需要移除最后 2 个对象，因为 attachment 宽度的关系
                             [truncationString deleteCharactersInRange:NSMakeRange(lastLineRange.length - 1, 1)];
                         }
                         [truncationString appendAttributedString:tokenString];
@@ -920,7 +893,7 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
         CGFloat lineHeight = lineAscent + lineDescent;
         CGFloat lineBottomY = lineOrigin.y - lineDescent;
         
-        //遍历以找到对应的 attachment 进行绘制
+        //遍历找到对应的 attachment 进行绘制
         for (CFIndex k = 0; k < runCount; k++)
         {
             CTRunRef run = CFArrayGetValueAtIndex(runs, k);
@@ -1055,51 +1028,32 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
     {
         return;
     }
-    BOOL sync = length <= M80MinAsyncDetectLinkLength;
-    [self computeLink:text
-                 sync:sync];
+    [self computeLink:text];
 }
 
 - (void)computeLink:(NSString *)text
-               sync:(BOOL)sync
 {
     __weak typeof(self) weakSelf = self;
-    typedef void (^LinkBlock) (NSArray *);
-    LinkBlock block = ^(NSArray *links)
-    {
-        weakSelf.linkDetected = YES;
-        if ([links count])
-        {
-            for (M80AttributedLabelURL *link in links)
-            {
-                [weakSelf addAutoDetectedLink:link];
-            }
-            [weakSelf resetTextFrame];
-        }
-    };
+    self.ignoreRedraw = YES;
     
-    if (sync)
-    {
-        _ignoreRedraw = YES;
-        NSArray *links = [M80AttributedLabelURL detectLinks:text];
-        block(links);
-        _ignoreRedraw = NO;
-    }
-    else
-    {
-        dispatch_async(get_m80_attributed_label_parse_queue(), ^{
-        
-            NSArray *links = [M80AttributedLabelURL detectLinks:text];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSString *plainText = [[weakSelf attributedString] string];
-                if ([plainText isEqualToString:text])
-                {
-                    block(links);
-                }
-            });
-        });
-    }
+    [M80AttributedLabelURLDetector.shared detectLinks:text
+                                           completion:^(NSArray<M80AttributedLabelURL *> * _Nullable links) {
+                                               __strong typeof(weakSelf) strongSelf = weakSelf;
+                                               NSString *plainText = [[strongSelf attributedString] string];
+                                               if ([text isEqualToString:plainText])
+                                               {
+                                                   strongSelf.linkDetected = YES;
+                                                   if ([links count])
+                                                   {
+                                                       for (M80AttributedLabelURL *link in links)
+                                                       {
+                                                           [strongSelf addAutoDetectedLink:link];
+                                                       }
+                                                       [strongSelf resetTextFrame];
+                                                   }
+                                                   strongSelf.ignoreRedraw = NO;
+                                               }
+                                            }];
 }
 
 - (void)addAutoDetectedLink:(M80AttributedLabelURL *)link
@@ -1125,7 +1079,6 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
         CGPoint point = [touch locationInView:self];
         self.touchedLink =  [self urlForPoint:point];
     }
-    
     
     if (self.touchedLink)
     {
@@ -1201,12 +1154,5 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
         return self;
     }
 }
-
-#pragma mark - 设置自定义的连接检测block
-+ (void)setCustomDetectMethod:(M80CustomDetectLinkBlock)block
-{
-    [M80AttributedLabelURL setCustomDetectMethod:block];
-}
-
 
 @end

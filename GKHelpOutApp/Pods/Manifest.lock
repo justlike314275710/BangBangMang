@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - AlipaySDK-iOS (15.5.5)
+  - AlipaySDK-iOS (15.5.9)
   - AvoidCrash (2.5.2)
   - BlocksKit (2.2.5):
     - BlocksKit/All (= 2.2.5)
@@ -37,9 +37,9 @@ PODS:
   - DACircularProgress (2.3.1)
   - DGActivityIndicatorView (2.1.1)
   - DZNEmptyDataSet (1.8.1)
-  - EBBannerView (1.0.8)
+  - EBBannerView (1.1.0)
   - FLAnimatedImage (1.0.12)
-  - IQKeyboardManager (6.2.0)
+  - IQKeyboardManager (6.4.0)
   - JSONModel (1.7.0)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
@@ -76,17 +76,18 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
-  - M80AttributedLabel (1.7.0)
+  - M80AttributedLabel (1.9.5)
   - Masonry (1.1.0)
   - MBProgressHUD (1.0.0)
-  - MJExtension (3.0.15.1)
-  - MJRefresh (3.1.15.7)
+  - MJExtension (3.1.0)
+  - MJRefresh (3.2.0)
+  - OCMock (3.4.3)
   - PYPhotoBrowser (1.5.6):
     - DACircularProgress
     - MBProgressHUD
     - SDWebImage/GIF (~> 4.2.1)
   - Reachability (3.2)
-  - ReactiveObjC (3.1.0)
+  - ReactiveObjC (3.1.1)
   - SDWebImage (4.2.3):
     - SDWebImage/Core (= 4.2.3)
   - SDWebImage/Core (4.2.3)
@@ -104,7 +105,6 @@ PODS:
     - TLKit/TLCategories/Foundation/NSBundle (= 0.0.3)
     - TLKit/TLCategories/Foundation/NSData (= 0.0.3)
     - TLKit/TLCategories/Foundation/NSDate (= 0.0.3)
-    - TLKit/TLCategories/Foundation/NSDictionary (= 0.0.3)
     - TLKit/TLCategories/Foundation/NSDictionary (= 0.0.3)
     - TLKit/TLCategories/Foundation/NSFileManager (= 0.0.3)
     - TLKit/TLCategories/Foundation/NSMutableArray (= 0.0.3)
@@ -171,13 +171,13 @@ PODS:
   - TZImagePickerController (1.9.8)
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - "UITextView+Placeholder (1.2.1)"
-  - WechatOpenSDK (1.8.3)
+  - WechatOpenSDK (1.8.4)
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
-  - ZZFLEX (0.0.1)
+  - ZZFLEX (0.3.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -198,6 +198,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.0.0)
   - MJExtension
   - MJRefresh
+  - OCMock
   - PYPhotoBrowser
   - Reachability (~> 3.2)
   - ReactiveObjC
@@ -234,6 +235,7 @@ SPEC REPOS:
     - MBProgressHUD
     - MJExtension
     - MJRefresh
+    - OCMock
     - PYPhotoBrowser
     - Reachability
     - ReactiveObjC
@@ -250,7 +252,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  AlipaySDK-iOS: 7b700342e71cb3b626603ce96f9d2fb158acbcfb
+  AlipaySDK-iOS: 1c5283b30977a24acecc0114662697f7dc78f618
   AvoidCrash: 28c6916fe19bd2b84126b8dec7cbe61c9a12741d
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   BRPickerView: 0590a8c5de9bd98c6b4e4f117a3dff6de287d5b2
@@ -259,34 +261,31 @@ SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  EBBannerView: 148153c26663a8a1319b3deefc3016db7d801087
+  EBBannerView: 3d987535d0236c1f87c2b064267d94002c23dd1e
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  IQKeyboardManager: fcef267266379c003181fc3592f6bdb8bf4db839
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
-  M80AttributedLabel: 7dd017588f524b13149d4cf5c7b1eaf02b0f06a4
+  M80AttributedLabel: d1177fbd7451d134794b50e91ca8b0cb167ef530
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  MJExtension: 6b69b3bef2864fd550ce1a184eda219e321209d2
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   PYPhotoBrowser: 74f6526b290069a55943ed92e5a21f84c6d90ecf
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
+  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   TLKit: 85bbd71d96639db7f1ca91ca87d06f1a476bd85e
   TLTabBarController: 149a3df6517408d72e506c4c578b6758744e9251
   TZImagePickerController: 3b9413ae5d049b1fdc5b0c720ad283f35b679a50
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
-  WechatOpenSDK: 3117412f8aafde4758cac1e8d20b93c67cafcfef
+  WechatOpenSDK: 9b721089507c895d05f997408c30bb6e6f5f9b60
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
-  ZZFLEX: 3f8ac6ce1cfb54eb196cbf25d45b26dcab0743ab
+  ZZFLEX: 3a31a3224fa2dffa781f70d071e8a2d8289393ca
 
-<<<<<<< HEAD
-PODFILE CHECKSUM: d6b96952d6306d381c4a3346e94cfdc5700e4066
-=======
-PODFILE CHECKSUM: 3b0cacf175808f15e3057f9a675554ffc32e2a64
->>>>>>> e0ed1c39cd5f867c2f93328d094fda00ecba78e3
+PODFILE CHECKSUM: eda55fae6059bce1d54cba275511f4f60c2451fb
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.7.5

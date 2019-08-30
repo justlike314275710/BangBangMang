@@ -2,8 +2,7 @@
 
 Email：pikacode@qq.com
 
-QQ群: 345192153
-
+微信：pikacode
 
 
 # EBBannerView

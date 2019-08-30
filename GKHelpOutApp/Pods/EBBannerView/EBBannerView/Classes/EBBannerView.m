@@ -55,7 +55,6 @@ static EBBannerWindow *sharedWindow;
     maker.style = MAX(maker.style, 9);
     
     EBBannerView *bannerView = [EBBannerView bannerViewWithStyle:maker.style];
-
     bannerView.maker = maker;
     if (maker.style == EBBannerViewStyleiOS9) {
         bannerView.dateLabel.textColor = [[UIImage colorAtPoint:bannerView.dateLabel.center] colorWithAlphaComponent:0.7];
@@ -140,6 +139,10 @@ static EBBannerWindow *sharedWindow;
         bannerView = views[index];
         [[NSNotificationCenter defaultCenter] addObserver:bannerView selector:@selector(applicationDidChangeStatusBarOrientationNotification) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
         [bannerView addGestureRecognizer];
+        bannerView.layer.shadowColor = UIColor.blackColor.CGColor;
+        bannerView.layer.shadowRadius = 3.5;
+        bannerView.layer.shadowOpacity = 0.35;
+        bannerView.layer.shadowOffset = CGSizeZero;
         [sharedBannerViews addObject:bannerView];
     }
     return bannerView;
@@ -239,13 +242,11 @@ static EBBannerWindow *sharedWindow;
 }
 
 -(BOOL)isiPhoneX{
-    static BOOL isiPhoneX = NO;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        CGSize size = UIScreen.mainScreen.bounds.size;
-        isiPhoneX = MAX(size.width, size.height) == 812;
-    });
-    return isiPhoneX;
+    if(@available(iOS 11.0, *)) {
+        return UIApplication.sharedApplication.delegate.window.safeAreaInsets.bottom > 0;
+    } else {
+        return NO;
+    }
 }
 
 -(CGFloat)fixedX{

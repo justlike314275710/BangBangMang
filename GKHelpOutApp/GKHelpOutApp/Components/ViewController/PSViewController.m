@@ -98,6 +98,7 @@
     self.navigationItem.rightBarButtonItems = @[flexSpacer,rightItem];
 }
 
+/*
 - (void)showNetError:(NSError *)error {
     if ([error.userInfo[@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]) {
         [self showTokenError];
@@ -112,7 +113,7 @@
         }
     }
 }
-
+/*
 -(void)showTokenError {
 //    NSString*NetError=NSLocalizedString(@"Login status expired, please log in again", @"登录状态过期,请重新登录!");
 //    //    [PSTipsView showTips:NetError];
@@ -129,6 +130,7 @@
 //    };
 //    [alert show];
 }
+*/
 
 
 - (void)showInternetError {
