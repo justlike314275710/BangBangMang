@@ -130,6 +130,9 @@ ${SRCROOT}/GKHelpOutApp/Manager/PayManager/PayModel/PayViewModel/*
 ${SRCROOT}/GKHelpOutApp/Manager/PayManager/PayView/*
 ${SRCROOT}/GKHelpOutApp/Manager/PayManager/PayViewController/*
 
+${SRCROOT}/GKHelpOutApp/Modules/Chatting/Contact/View/*
+
+
 
 
 

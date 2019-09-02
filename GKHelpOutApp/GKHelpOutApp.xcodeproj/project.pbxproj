@@ -254,6 +254,8 @@
 		55D1CCC5226F0528003DD0CD /* DetailLifeCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CCC4226F0528003DD0CD /* DetailLifeCircleCell.m */; };
 		55E735272318C4F6006F1484 /* PSPayCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E735262318C4F6006F1484 /* PSPayCenterTests.m */; };
 		55E735292318CC8D006F1484 /* PSPayInfotests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E735282318CC8D006F1484 /* PSPayInfotests.m */; };
+		55E7352C2319071F006F1484 /* DetailLifeCircleViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E7352B2319071F006F1484 /* DetailLifeCircleViewControllerTests.m */; };
+		55E7353523190988006F1484 /* DetailLifeCircleViewController+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E7353423190988006F1484 /* DetailLifeCircleViewController+Tests.m */; };
 		55F46D4E22657265000D84B1 /* TLMomentHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D4D22657265000D84B1 /* TLMomentHeaderCell.m */; };
 		55F46D5322657540000D84B1 /* TLMomentBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D5122657540000D84B1 /* TLMomentBaseCell.m */; };
 		55F46D5422657540000D84B1 /* TLMomentImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F46D5222657540000D84B1 /* TLMomentImagesCell.m */; };
@@ -1073,6 +1075,9 @@
 		55D1CCC4226F0528003DD0CD /* DetailLifeCircleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailLifeCircleCell.m; sourceTree = "<group>"; };
 		55E735262318C4F6006F1484 /* PSPayCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSPayCenterTests.m; sourceTree = "<group>"; };
 		55E735282318CC8D006F1484 /* PSPayInfotests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSPayInfotests.m; sourceTree = "<group>"; };
+		55E7352B2319071F006F1484 /* DetailLifeCircleViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailLifeCircleViewControllerTests.m; sourceTree = "<group>"; };
+		55E7353323190988006F1484 /* DetailLifeCircleViewController+Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DetailLifeCircleViewController+Tests.h"; sourceTree = "<group>"; };
+		55E7353423190988006F1484 /* DetailLifeCircleViewController+Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DetailLifeCircleViewController+Tests.m"; sourceTree = "<group>"; };
 		55F46D4C22657265000D84B1 /* TLMomentHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentHeaderCell.h; sourceTree = "<group>"; };
 		55F46D4D22657265000D84B1 /* TLMomentHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMomentHeaderCell.m; sourceTree = "<group>"; };
 		55F46D4F22657540000D84B1 /* TLMomentImagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMomentImagesCell.h; sourceTree = "<group>"; };
@@ -2927,6 +2932,7 @@
 		55B4DB852314C683003BDA00 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				55E7352A231906F4006F1484 /* viewController */,
 				55B4DBB523165C49003BDA00 /* view */,
 				55B4DB862314C6D3003BDA00 /* SendLifeCircleLogicTests.m */,
 				55B4DB882314C8BF003BDA00 /* LifeCircleLogicTests.m */,
@@ -2998,6 +3004,8 @@
 			children = (
 				55B4DBC22316675C003BDA00 /* IMManager+tests.h */,
 				55B4DBC32316675C003BDA00 /* IMManager+tests.m */,
+				55E7353323190988006F1484 /* DetailLifeCircleViewController+Tests.h */,
+				55E7353423190988006F1484 /* DetailLifeCircleViewController+Tests.m */,
 			);
 			path = categoryTests;
 			sourceTree = "<group>";
@@ -3096,6 +3104,14 @@
 				55C8981822645C66005473AD /* UIImageView+TLWebImage.m */,
 			);
 			path = TLWebImag;
+			sourceTree = "<group>";
+		};
+		55E7352A231906F4006F1484 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				55E7352B2319071F006F1484 /* DetailLifeCircleViewControllerTests.m */,
+			);
+			path = viewController;
 			sourceTree = "<group>";
 		};
 		55F46D3D22657013000D84B1 /* model */ = {
@@ -5591,7 +5607,9 @@
 				55B4DBBB23166355003BDA00 /* IMManagerTests.m in Sources */,
 				55249104230D3A0F008102C2 /* LoginLogicTests.m in Sources */,
 				55B4DB8B2314CBF5003BDA00 /* LifeDetailCircleLogicTests.m in Sources */,
+				55E7353523190988006F1484 /* DetailLifeCircleViewController+Tests.m in Sources */,
 				55B4DB7E2314BE2E003BDA00 /* RootNavigationControllerTests.m in Sources */,
+				55E7352C2319071F006F1484 /* DetailLifeCircleViewControllerTests.m in Sources */,
 				55E735272318C4F6006F1484 /* PSPayCenterTests.m in Sources */,
 				55B4DB872314C6D3003BDA00 /* SendLifeCircleLogicTests.m in Sources */,
 				55B4DB822314C185003BDA00 /* BaseRootViewControllerTests.m in Sources */,

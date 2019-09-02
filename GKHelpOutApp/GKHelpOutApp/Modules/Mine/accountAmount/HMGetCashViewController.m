@@ -281,6 +281,9 @@
         _msgCodeLab=[UILabel new];
 //        _msgCodeLab.text = @"提现需要短信确认，验证码已发送至手机：138****6768，请按提示操作。";
         NSString *phoneNumber = help_userManager.curUserInfo.username;
+        NSLog(@"%@",help_userManager.curUserInfo.username);
+        NSLog(@"%@",help_userManager.curUserInfo);
+        UserInfo *info = help_userManager.curUserInfo;
         if (phoneNumber.length>10) {
             phoneNumber = [NSString changeTelephone:phoneNumber];
         }

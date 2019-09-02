@@ -24,6 +24,10 @@
 //用户信息缓存 名称
 #define KUserCacheName @"KUserCacheName"
 
+//用户信息userName 账号名缓存
+#define KUserName @"KUserName"
+
+
 //用户model缓存
 #define KUserModelCache @"KUserModelCache"
 

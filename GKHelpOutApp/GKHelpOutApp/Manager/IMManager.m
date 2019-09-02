@@ -100,21 +100,23 @@ SINGLETON_FOR_CLASS(IMManager);
         default:
             break;
     }
-    KPostNotification(KNotificationOnKick, nil);
+
 }
 
 - (void)onKickShowAler {
     NSString *reason = @"你的帐号被踢出下线，请注意帐号信息安全";
-    NSString*determine=NSLocalizedString(@"determine", @"确定");
-    NSString*Tips=NSLocalizedString(@"Tips", @"提示");
-    NSString*pushed_off_line=NSLocalizedString(@"pushed_off_line", @"您的账号已在其他设备登陆,已被挤下线");
+    NSString*determine=@"确定";
+    NSString*Tips= @"提示";
+    NSString*pushed_off_line=@"您的账号已在其他设备登陆,已被挤下线";
     XXAlertView*alert=[[XXAlertView alloc]initWithTitle:Tips message:pushed_off_line sureBtn:determine cancleBtn:nil];
     alert.clickIndex = ^(NSInteger index) {
         if (index==2) {
-            [help_userManager logout:nil];
+            KPostNotification(KNotificationOnKick, nil);
         }
     };
-    [alert show];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [alert show];
+    });
 }
 
 #pragma mark ————— 代理 收到新消息 —————
@@ -122,7 +124,7 @@ SINGLETON_FOR_CLASS(IMManager);
     DLog(@"收到新消息");
     if (messages.count <=0) return;
     NIMMessage *meeesage = [messages objectAtIndex:0];
-    NSString *msg = meeesage.text;
+    NSString *msg = meeesage.text.length>0?meeesage.text:meeesage.apnsContent;
     if (msg.length<=0) return;
     [ZQLocalNotification NotificationType:CountdownNotification Identifier:@"0" activityId:1900001 alertBody:msg alertTitle:@"帮帮忙" alertString:@"确定" withTimeDay:0 hour:0 minute:0 second:1];
     //未读消息

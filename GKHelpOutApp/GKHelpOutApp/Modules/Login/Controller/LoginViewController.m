@@ -202,6 +202,10 @@
     if (!_phoneNumberField) {
         _phoneNumberField = [[UITextField alloc] init];
         _phoneNumberField.placeholder = @"请输入手机号码";
+        NSString *userName = [kUserDefaults valueForKey:KUserName];
+        if (userName.length>0) {
+            _phoneNumberField.text = userName;
+        }
         _phoneNumberField.textAlignment = NSTextAlignmentLeft;
         _phoneNumberField.textColor = CFontColor2;
         _phoneNumberField.font = FFont1;

@@ -55,6 +55,15 @@
 
 #pragma mark -PravateMethods
 -(void)setupData{
+    
+    NSString *accont = help_userManager.lawUserInfo.rewardAmount?help_userManager.lawUserInfo.rewardAmount:@"";
+    if (accont.length>0) {
+        accont = NSStringFormat(@"%.2f",[accont floatValue]);
+    } else {
+        accont = @"0.00";
+    }
+    _balanceLab.text = accont;
+    
     NSString*alipayBind = help_userManager.lawUserInfo.alipayBind;
     NSString*aliPayAccount  =@"";
     if (!alipayBind||[alipayBind integerValue]==0) {

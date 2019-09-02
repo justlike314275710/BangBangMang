@@ -77,13 +77,19 @@
 #pragma mark - Private Methods
 - (void)stepData:(BOOL)isNotice {
     [self.logic requestLifeCircleDetailCompleted:^(id data) {
+        
         if (ValidDict(data)) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 TLMoment *monent = self.datalist[0];
-                self.logic.moment.index = monent.index;
-                self.datalist = @[self.logic.moment];
-                [self reloadUI];
-                [self.tableView reloadData];
+                if (monent) {
+                    self.logic.moment.index = monent.index;
+                    self.datalist = @[self.logic.moment];
+                    [self.tableView reloadData];
+                    [self reloadUI];
+                } else {
+                    [self reloadUI];
+                }
+                
                 //发送通知刷新列表改cell;
                 if (isNotice) {
                    KPostNotification(KNotificationRefreshCirCleIndex,self.logic.moment);
@@ -177,6 +183,8 @@
 -(void)reloadUI {
     
     TLMoment *monent = self.logic.moment;
+    NSLog(@"执行了reloadUI");
+    if (!monent) return;
     NSString *praiseCount =  [NSString stringWithFormat:@"%ld",monent.praiseNum];
     UIButton *likeButton = [self.view viewWithTag:104];
     if (monent.praisesCircleoffriends) {

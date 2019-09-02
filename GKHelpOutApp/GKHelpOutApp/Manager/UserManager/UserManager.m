@@ -195,6 +195,11 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
                     [self saveUserOuathInfo];
                     self.curUserInfo = [[UserInfo alloc] init];
                     self.curUserInfo.username = [params valueForKey:@"name"];
+                    
+                    //保存账号
+                    [kUserDefaults setObject:[params valueForKey:@"name"] forKey:KUserName];
+                    [kUserDefaults synchronize];
+                    
                     [self saveUserInfo];
                     //获取云信账号信息
                     [self autoLoginToServer:nil];
@@ -269,7 +274,7 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
         if (ValidDict(responseObject)) {
             UserInfo *userInfo = [UserInfo modelWithDictionary:responseObject];
             if ([self loadUserInfo]) {
-                userInfo.username = self.curUserInfo.username;
+                userInfo.username = self.curUserInfo.username?self.curUserInfo.username:[kUserDefaults valueForKey:KUserName];
                 self.curUserInfo = userInfo;
             }
             NSLog(@"%@",self.curUserInfo);
@@ -379,7 +384,11 @@ static const NSString *cipherText =  @"506a7b6dfc5d42fe857ea9494bb24014";
     NSDictionary * userDic = (NSDictionary *)[cache objectForKey:KUserModelCache];
     if (userDic) {
         self.curUserInfo = [UserInfo modelWithJSON:userDic];
-        return YES;
+        if (self.curUserInfo.username.length>0) {
+            return YES;
+        } else {
+            return NO;
+        }
     }
     return NO;
 }
