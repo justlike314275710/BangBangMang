@@ -34,6 +34,8 @@
 		5527EBAB22769E7D007BC1BF /* LifeCircleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5527EBAA22769E7D007BC1BF /* LifeCircleManager.m */; };
 		552924F82237417900B4899A /* HMActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924F72237417900B4899A /* HMActionSheetView.m */; };
 		552924FC2237A9A700B4899A /* WXZTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924FB2237A9A700B4899A /* WXZTipView.m */; };
+		553B24C6231E3A5F001DD9F9 /* PSConsultationViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24C5231E3A5F001DD9F9 /* PSConsultationViewModelTests.m */; };
+		553B24C8231E46F6001DD9F9 /* PSEvaluateViewmodelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24C7231E46F6001DD9F9 /* PSEvaluateViewmodelTests.m */; };
 		554E0F45230F8F52000D6C92 /* HpBaseLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 554E0F44230F8F52000D6C92 /* HpBaseLogicTests.m */; };
 		5557A48E221BB46C00743012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A48D221BB46C00743012 /* AppDelegate.m */; };
 		5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */; };
@@ -706,6 +708,8 @@
 		552924F72237417900B4899A /* HMActionSheetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMActionSheetView.m; sourceTree = "<group>"; };
 		552924FA2237A9A700B4899A /* WXZTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXZTipView.h; sourceTree = "<group>"; };
 		552924FB2237A9A700B4899A /* WXZTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXZTipView.m; sourceTree = "<group>"; };
+		553B24C5231E3A5F001DD9F9 /* PSConsultationViewModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSConsultationViewModelTests.m; sourceTree = "<group>"; };
+		553B24C7231E46F6001DD9F9 /* PSEvaluateViewmodelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSEvaluateViewmodelTests.m; sourceTree = "<group>"; };
 		554E0F44230F8F52000D6C92 /* HpBaseLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HpBaseLogicTests.m; sourceTree = "<group>"; };
 		5557A489221BB46C00743012 /* GKHelpOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKHelpOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A48C221BB46C00743012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -2951,6 +2955,8 @@
 				55B4DB862314C6D3003BDA00 /* SendLifeCircleLogicTests.m */,
 				55B4DB882314C8BF003BDA00 /* LifeCircleLogicTests.m */,
 				55B4DB8A2314CBF5003BDA00 /* LifeDetailCircleLogicTests.m */,
+				553B24C5231E3A5F001DD9F9 /* PSConsultationViewModelTests.m */,
+				553B24C7231E46F6001DD9F9 /* PSEvaluateViewmodelTests.m */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -5640,7 +5646,9 @@
 				5574C6B5231D075300F1F91E /* PSConsultationTableViewCellTests.m in Sources */,
 				55B4DB822314C185003BDA00 /* BaseRootViewControllerTests.m in Sources */,
 				55B4DB892314C8BF003BDA00 /* LifeCircleLogicTests.m in Sources */,
+				553B24C8231E46F6001DD9F9 /* PSEvaluateViewmodelTests.m in Sources */,
 				55B4DB802314BF73003BDA00 /* RootViewControllerTests.m in Sources */,
+				553B24C6231E3A5F001DD9F9 /* PSConsultationViewModelTests.m in Sources */,
 				5577641B2313BDB3000E88E2 /* PSBusinessViewControllerTests.m in Sources */,
 				554E0F45230F8F52000D6C92 /* HpBaseLogicTests.m in Sources */,
 				555DB7CD230E993B00B51B9D /* AppDelegateTests.m in Sources */,
