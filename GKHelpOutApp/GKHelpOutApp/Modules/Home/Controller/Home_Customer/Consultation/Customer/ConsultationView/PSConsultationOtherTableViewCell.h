@@ -16,5 +16,6 @@ typedef void(^ButtonClick)(NSString * text);
 @property (nonatomic,copy) ButtonClick buttonAction;
 
 - (void)handlerButtonAction:(ButtonClick)block;
+- (UIImage *)imageWithColor:(UIColor *)color;
 
 @end

@@ -12,8 +12,7 @@ ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Category/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Global/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Common/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/*
-${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/cell/NIMContactDataCell.m
-${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/cell/NIMContactDataCell.h
+${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/cell/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Contact/ContactGroup/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Input/*
 ${SRCROOT}/GKHelpOutApp/ThridParty/NIMKit/NIMKit/NIMKit/Classes/Sections/Input/GrowingTextView/*
@@ -55,6 +54,10 @@ ${SRCROOT}/GKHelpOutApp/Utils/ZWTopSelectVcView/*
 ${SRCROOT}/GKHelpOutApp/Utils/imagePicker/*	
 ${SRCROOT}/Pods/Headers/Public/Masonry/*
 ${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationViewController/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationModel/*
+
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/HMMessageViewController.m
+
 ${SRCROOT}/GKHelpOutApp/Modules/Mine/Mine_Auth/ViewController/*
 
 ${SRCROOT}/GKHelpOutApp/Base/BaseRequestApi/*
@@ -120,6 +123,7 @@ ${SRCROOT}/GKHelpOutApp/Modules/FriendsCircle/view/*
 ${SRCROOT}/GKHelpOutApp/Modules/FriendsCircle/view/Cell/*	
 ${SRCROOT}/GKHelpOutApp/Modules/FriendsCircle/view/MomentDetailView/*
 ${SRCROOT}/GKHelpOutApp/Modules/FriendsCircle/view/MomentExtensionView/*
+${SRCROOT}/GKHelpOutApp/Modules/FriendsCircle/*	
 
 ${SRCROOT}/GKHelpOutApp/Manager/IAPManager.m
 ${SRCROOT}/GKHelpOutApp/Manager/IAPManager.h
@@ -131,6 +135,53 @@ ${SRCROOT}/GKHelpOutApp/Manager/PayManager/PayView/*
 ${SRCROOT}/GKHelpOutApp/Manager/PayManager/PayViewController/*
 
 ${SRCROOT}/GKHelpOutApp/Modules/Chatting/Contact/View/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/more/Model/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/more/View/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/more/Viewcontoller/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Lawyer/LawyerGrab/Model/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Lawyer/MyLawyer/View/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Lawyer/MyLawyer/ViewController/*
+
+${SRCROOT}/GKHelpOutApp/Modules/Home/Model/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Other/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Service/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/View/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/View/Waves/*
+
+
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/more/Model/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/more/View/*
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/more/Viewcontoller/*
+
+${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/Consultation/Customer/ConsultationView/*
+
+${SRCROOT}/GKHelpOutApp/Modules/MakeFriends/Controller/*
+${SRCROOT}/GKHelpOutApp/Modules/MakeFriends/Model/*
+${SRCROOT}/GKHelpOutApp/Modules/MakeFriends/View/*
+${SRCROOT}/GKHelpOutApp/Modules/MakeFriends/View/DragCardView/*
+${SRCROOT}/GKHelpOutApp/Modules/Message/Controller/*
+${SRCROOT}/GKHelpOutApp/Modules/Mine/Controller/*
+
+${SRCROOT}/GKHelpOutApp/Modules/Mine/Mine_Auth/Model/*
+${SRCROOT}/GKHelpOutApp/Modules/Mine/Mine_Auth/View/*
+${SRCROOT}/GKHelpOutApp/Modules/Mine/Mine_Auth/View/CertificationView/*
+${SRCROOT}/GKHelpOutApp/Modules/Mine/Mine_EditProfile/*
+${SRCROOT}/GKHelpOutApp/Modules/Mine/Mine_Feedback/*
+${SRCROOT}/GKHelpOutApp/Modules/Mine/View/*
+${SRCROOT}/GKHelpOutApp/Modules/Mine/account/*
+${SRCROOT}/GKHelpOutApp/Modules/Mine/accountAmount/*
+
+${SRCROOT}/GKHelpOutApp/Modules/Mine/model/*
+${SRCROOT}/GKHelpOutApp/Modules/Myadvice/Controller/*
+${SRCROOT}/GKHelpOutApp/Modules/Myadvice/Controller/Counseling/*
+
+
+
+
+
+
+
+
 
 
 

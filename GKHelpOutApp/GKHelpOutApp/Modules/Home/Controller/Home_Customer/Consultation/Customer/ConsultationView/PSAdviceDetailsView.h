@@ -29,4 +29,6 @@
 @property (nonatomic , strong) UILabel* numberLable;
 
 @property (nonatomic , strong) NSString *cid;
+
+-(void)renderContents;
 @end

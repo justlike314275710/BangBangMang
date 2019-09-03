@@ -77,7 +77,6 @@
 #pragma mark - Private Methods
 - (void)stepData:(BOOL)isNotice {
     [self.logic requestLifeCircleDetailCompleted:^(id data) {
-        
         if (ValidDict(data)) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 TLMoment *monent = self.datalist[0];
@@ -85,11 +84,8 @@
                     self.logic.moment.index = monent.index;
                     self.datalist = @[self.logic.moment];
                     [self.tableView reloadData];
-                    [self reloadUI];
-                } else {
-                    [self reloadUI];
                 }
-                
+                [self reloadUI];
                 //发送通知刷新列表改cell;
                 if (isNotice) {
                    KPostNotification(KNotificationRefreshCirCleIndex,self.logic.moment);

@@ -7,8 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "LifeCircleViewController.h"
 
 @interface LifeCircleViewControllerTests : XCTestCase
+@property(nonatomic,strong)LifeCircleViewController *lifeCircleVC;
+
 
 @end
 
@@ -16,10 +19,18 @@
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.lifeCircleVC = [[LifeCircleViewController alloc] init];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    self.lifeCircleVC = nil;
+}
+
+- (void)testLifeCycle {
+    [self.lifeCircleVC viewWillDisappear:YES];
+    [self.lifeCircleVC viewDidLoad];
+    [self.lifeCircleVC viewWillAppear:YES];
 }
 
 - (void)testExample {

@@ -7,8 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "PSConsultationOtherTableViewCell.h"
 
 @interface PSConsultationOtherTableViewCellTests : XCTestCase
+@property(nonatomic,strong)PSConsultationOtherTableViewCell *view;
 
 @end
 
@@ -16,10 +18,25 @@
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    _view = [[PSConsultationOtherTableViewCell alloc] initWithFrame:CGRectZero];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    _view = nil;
+}
+
+- (void)testLifeCycle{
+    PSConsultationOtherTableViewCell *cellView = [[PSConsultationOtherTableViewCell alloc] initWithFrame:CGRectZero];
+}
+
+- (void)testhandlerButtonAction{
+    [_view handlerButtonAction:nil];
+}
+
+- (void)imageWithColor {
+    UIImage *image = [_view imageWithColor:[UIColor whiteColor]];
+    XCTAssertNotNil(image);
 }
 
 - (void)testExample {

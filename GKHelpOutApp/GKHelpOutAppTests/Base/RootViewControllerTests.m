@@ -26,6 +26,12 @@
     self.rootVC = nil;
 }
 
+- (void)testLifeCycle{
+    [self.rootVC viewWillDisappear:YES];
+    [self.rootVC viewDidLoad];
+    [self.rootVC viewWillAppear:YES];
+}
+
 -(void)testshowNoDataImage {
     [self.rootVC showNoDataImage];
 }

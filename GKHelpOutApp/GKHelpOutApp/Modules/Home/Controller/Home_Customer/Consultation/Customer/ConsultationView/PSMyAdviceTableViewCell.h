@@ -29,4 +29,6 @@ typedef NS_ENUM(NSInteger, PSAdviceType) {
 
 -(void)fillWithpubicAvatar:(NSString*)avatar;
 
+-(void)renderContents;
+
 @end

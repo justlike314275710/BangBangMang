@@ -19,5 +19,6 @@
 @property (nonatomic , strong) UIButton *statusButton;
 @property (nonatomic , strong) UIButton *categoryButton;
 -(void)fillWithModel:(PSConsultation*)model;
+-(void)renderContents;
 
 @end

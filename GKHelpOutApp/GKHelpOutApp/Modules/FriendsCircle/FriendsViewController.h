@@ -12,4 +12,7 @@
 @interface FriendsViewController : BaseRootViewController
 @property (nonatomic,assign)LifeCircleStyle lifeCircleStyle;
 
+-(void)refreshLifeTabbar;
+-(void)loadMenus;
+
 @end

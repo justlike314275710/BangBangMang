@@ -7,8 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "FriendsViewController.h"
 
 @interface FriendsViewControllerTests : XCTestCase
+@property(nonatomic,strong)FriendsViewController *fridendVC;
 
 @end
 
@@ -16,10 +18,20 @@
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.fridendVC = [[FriendsViewController alloc] init];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    self.fridendVC = nil;
+}
+
+- (void)testLifeCycle {
+    [self.fridendVC viewDidLoad];
+    [self.fridendVC viewWillAppear:YES];
+    [self.fridendVC viewWillDisappear:YES];
+    [self.fridendVC refreshLifeTabbar];
+    [self.fridendVC loadMenus];
 }
 
 - (void)testExample {

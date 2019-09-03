@@ -59,14 +59,10 @@
 //        void (^RequestDataFailed)(NSError *error);
         //第0个和第1个参数是self,SEL,第2才是block
         [invocation getArgument:&RequestDataCompleted atIndex:2];
-//        [invocation getArgument:&RequestDataFailed atIndex:3];
         //设置返回数据
         RequestDataCompleted(@{@"data":@"请求数据成功"});
     }];
 
-    //调用要验证的方法,没有id时，通过reject验证不调用请求方法
-//    [mockVC requestDataById:nil];
-//    OCMVerify([[mockRequest reject] requestDataByModel:[OCMArg any] completeBlock:[OCMArg any]]);
     //调用要验证的方法,有id
     [mockReqVC stepData:YES];
     //验证是否调用相应的方法
