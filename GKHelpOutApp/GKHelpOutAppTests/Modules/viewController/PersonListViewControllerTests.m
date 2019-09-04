@@ -7,8 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "PersonListViewController.h"
+#import "PersonListViewController+tests.h"
 
 @interface PersonListViewControllerTests : XCTestCase
+@property(nonatomic,strong)PersonListViewController *vc;
 
 @end
 
@@ -16,10 +19,30 @@
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.vc = [[PersonListViewController alloc] init];
+    
 }
+
+-(void)testrefreshLifeTabbar {
+    [self.vc refreshLifeTabbar];
+}
+-(void)testsetupUI {
+    [self.vc setupUI];
+}
+-(void)testheaderRereshing {
+    [self.vc headerRereshing];
+}
+-(void)testfooterRereshing {
+    [self.vc footerRereshing];
+}
+-(void)testrequestDataCompleted {
+    [self.vc requestDataCompleted];
+}
+
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    self.vc = nil;
 }
 
 - (void)testExample {

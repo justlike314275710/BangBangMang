@@ -11,7 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PersonListViewController (tests)
-
+-(void)refreshLifeTabbar;
+-(void)setupUI;
+-(void)headerRereshing;
+-(void)footerRereshing;
+-(void)requestDataCompleted;
 @end
 
 NS_ASSUME_NONNULL_END

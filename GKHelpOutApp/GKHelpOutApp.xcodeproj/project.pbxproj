@@ -36,6 +36,19 @@
 		552924FC2237A9A700B4899A /* WXZTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 552924FB2237A9A700B4899A /* WXZTipView.m */; };
 		553B24C6231E3A5F001DD9F9 /* PSConsultationViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24C5231E3A5F001DD9F9 /* PSConsultationViewModelTests.m */; };
 		553B24C8231E46F6001DD9F9 /* PSEvaluateViewmodelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24C7231E46F6001DD9F9 /* PSEvaluateViewmodelTests.m */; };
+		553B24CA231E4E6D001DD9F9 /* PSLawerViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24C9231E4E6D001DD9F9 /* PSLawerViewModelTests.m */; };
+		553B24CC231E535E001DD9F9 /* PersonListViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24CB231E535E001DD9F9 /* PersonListViewControllerTests.m */; };
+		553B24CF231E53E5001DD9F9 /* PersonListViewController+tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24CE231E53E5001DD9F9 /* PersonListViewController+tests.m */; };
+		553B24D1231E5604001DD9F9 /* PSMoreServiceViewModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24D0231E5604001DD9F9 /* PSMoreServiceViewModelTest.m */; };
+		553B24D3231E56CD001DD9F9 /* lawyerGrab_LogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24D2231E56CD001DD9F9 /* lawyerGrab_LogicTests.m */; };
+		553B24D5231E59EB001DD9F9 /* HMMessageLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24D4231E59EB001DD9F9 /* HMMessageLogicTests.m */; };
+		553B24D7231E5E07001DD9F9 /* PersonListLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24D6231E5E07001DD9F9 /* PersonListLogicTests.m */; };
+		553B24D9231E5E75001DD9F9 /* WaterFallListLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24D8231E5E75001DD9F9 /* WaterFallListLogicTests.m */; };
+		553B24DB231E60FA001DD9F9 /* MakeFriendsLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24DA231E60FA001DD9F9 /* MakeFriendsLogicTests.m */; };
+		553B24DD231E616F001DD9F9 /* PSFeedbackListViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24DC231E616F001DD9F9 /* PSFeedbackListViewModelTests.m */; };
+		553B24DF231E6268001DD9F9 /* PSFeedbackViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24DE231E6268001DD9F9 /* PSFeedbackViewModelTests.m */; };
+		553B24E1231E63D0001DD9F9 /* PSSorageViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24E0231E63D0001DD9F9 /* PSSorageViewModelTests.m */; };
+		553B24E3231E6533001DD9F9 /* Mine_AuthLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B24E2231E6533001DD9F9 /* Mine_AuthLogicTests.m */; };
 		554E0F45230F8F52000D6C92 /* HpBaseLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 554E0F44230F8F52000D6C92 /* HpBaseLogicTests.m */; };
 		5557A48E221BB46C00743012 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A48D221BB46C00743012 /* AppDelegate.m */; };
 		5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5557A4A5221BB46E00743012 /* GKHelpOutAppTests.m */; };
@@ -198,6 +211,8 @@
 		558551E12303AAA300F8162E /* PSConsultationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558551E02303AAA300F8162E /* PSConsultationViewController.m */; };
 		558551E42303AAF400F8162E /* PSConsultationOtherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 558551E22303AAF400F8162E /* PSConsultationOtherTableViewCell.m */; };
 		558551E72303AB2300F8162E /* PSRemittancePayStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558551E62303AB2200F8162E /* PSRemittancePayStateViewController.m */; };
+		558A539E231F50EB002FC6D7 /* HMBIllLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 558A539D231F50EB002FC6D7 /* HMBIllLogicTests.m */; };
+		558A53A0231F52A0002FC6D7 /* HMAccontBalaceLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 558A539F231F52A0002FC6D7 /* HMAccontBalaceLogicTests.m */; };
 		558BBBD12236389B00CF1122 /* RMTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BBBCE2236389A00CF1122 /* RMTimer.m */; };
 		558BBBD22236389B00CF1122 /* RMCommonTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 558BBBD02236389B00CF1122 /* RMCommonTimer.m */; };
 		55978548222642DE007BBCC2 /* PSStorageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55978547222642DE007BBCC2 /* PSStorageViewController.m */; };
@@ -710,6 +725,20 @@
 		552924FB2237A9A700B4899A /* WXZTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXZTipView.m; sourceTree = "<group>"; };
 		553B24C5231E3A5F001DD9F9 /* PSConsultationViewModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSConsultationViewModelTests.m; sourceTree = "<group>"; };
 		553B24C7231E46F6001DD9F9 /* PSEvaluateViewmodelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSEvaluateViewmodelTests.m; sourceTree = "<group>"; };
+		553B24C9231E4E6D001DD9F9 /* PSLawerViewModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSLawerViewModelTests.m; sourceTree = "<group>"; };
+		553B24CB231E535E001DD9F9 /* PersonListViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonListViewControllerTests.m; sourceTree = "<group>"; };
+		553B24CD231E53E5001DD9F9 /* PersonListViewController+tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonListViewController+tests.h"; sourceTree = "<group>"; };
+		553B24CE231E53E5001DD9F9 /* PersonListViewController+tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PersonListViewController+tests.m"; sourceTree = "<group>"; };
+		553B24D0231E5604001DD9F9 /* PSMoreServiceViewModelTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSMoreServiceViewModelTest.m; sourceTree = "<group>"; };
+		553B24D2231E56CD001DD9F9 /* lawyerGrab_LogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lawyerGrab_LogicTests.m; sourceTree = "<group>"; };
+		553B24D4231E59EB001DD9F9 /* HMMessageLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMMessageLogicTests.m; sourceTree = "<group>"; };
+		553B24D6231E5E07001DD9F9 /* PersonListLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonListLogicTests.m; sourceTree = "<group>"; };
+		553B24D8231E5E75001DD9F9 /* WaterFallListLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterFallListLogicTests.m; sourceTree = "<group>"; };
+		553B24DA231E60FA001DD9F9 /* MakeFriendsLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MakeFriendsLogicTests.m; sourceTree = "<group>"; };
+		553B24DC231E616F001DD9F9 /* PSFeedbackListViewModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSFeedbackListViewModelTests.m; sourceTree = "<group>"; };
+		553B24DE231E6268001DD9F9 /* PSFeedbackViewModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSFeedbackViewModelTests.m; sourceTree = "<group>"; };
+		553B24E0231E63D0001DD9F9 /* PSSorageViewModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSSorageViewModelTests.m; sourceTree = "<group>"; };
+		553B24E2231E6533001DD9F9 /* Mine_AuthLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mine_AuthLogicTests.m; sourceTree = "<group>"; };
 		554E0F44230F8F52000D6C92 /* HpBaseLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HpBaseLogicTests.m; sourceTree = "<group>"; };
 		5557A489221BB46C00743012 /* GKHelpOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKHelpOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5557A48C221BB46C00743012 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -977,6 +1006,8 @@
 		558551E32303AAF400F8162E /* PSConsultationOtherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConsultationOtherTableViewCell.h; sourceTree = "<group>"; };
 		558551E52303AB2200F8162E /* PSRemittancePayStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSRemittancePayStateViewController.h; sourceTree = "<group>"; };
 		558551E62303AB2200F8162E /* PSRemittancePayStateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSRemittancePayStateViewController.m; sourceTree = "<group>"; };
+		558A539D231F50EB002FC6D7 /* HMBIllLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMBIllLogicTests.m; sourceTree = "<group>"; };
+		558A539F231F52A0002FC6D7 /* HMAccontBalaceLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMAccontBalaceLogicTests.m; sourceTree = "<group>"; };
 		558BBBCD2236389A00CF1122 /* RMTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTimer.h; sourceTree = "<group>"; };
 		558BBBCE2236389A00CF1122 /* RMTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMTimer.m; sourceTree = "<group>"; };
 		558BBBCF2236389A00CF1122 /* RMCommonTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCommonTimer.h; sourceTree = "<group>"; };
@@ -2957,6 +2988,19 @@
 				55B4DB8A2314CBF5003BDA00 /* LifeDetailCircleLogicTests.m */,
 				553B24C5231E3A5F001DD9F9 /* PSConsultationViewModelTests.m */,
 				553B24C7231E46F6001DD9F9 /* PSEvaluateViewmodelTests.m */,
+				553B24C9231E4E6D001DD9F9 /* PSLawerViewModelTests.m */,
+				553B24D0231E5604001DD9F9 /* PSMoreServiceViewModelTest.m */,
+				553B24D2231E56CD001DD9F9 /* lawyerGrab_LogicTests.m */,
+				553B24D4231E59EB001DD9F9 /* HMMessageLogicTests.m */,
+				553B24D6231E5E07001DD9F9 /* PersonListLogicTests.m */,
+				553B24D8231E5E75001DD9F9 /* WaterFallListLogicTests.m */,
+				553B24DA231E60FA001DD9F9 /* MakeFriendsLogicTests.m */,
+				553B24DC231E616F001DD9F9 /* PSFeedbackListViewModelTests.m */,
+				553B24DE231E6268001DD9F9 /* PSFeedbackViewModelTests.m */,
+				553B24E0231E63D0001DD9F9 /* PSSorageViewModelTests.m */,
+				553B24E2231E6533001DD9F9 /* Mine_AuthLogicTests.m */,
+				558A539D231F50EB002FC6D7 /* HMBIllLogicTests.m */,
+				558A539F231F52A0002FC6D7 /* HMAccontBalaceLogicTests.m */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -3031,6 +3075,8 @@
 				55B4DBC32316675C003BDA00 /* IMManager+tests.m */,
 				55E7353323190988006F1484 /* DetailLifeCircleViewController+Tests.h */,
 				55E7353423190988006F1484 /* DetailLifeCircleViewController+Tests.m */,
+				553B24CD231E53E5001DD9F9 /* PersonListViewController+tests.h */,
+				553B24CE231E53E5001DD9F9 /* PersonListViewController+tests.m */,
 			);
 			path = categoryTests;
 			sourceTree = "<group>";
@@ -3137,6 +3183,7 @@
 				55E7352B2319071F006F1484 /* DetailLifeCircleViewControllerTests.m */,
 				5574C6AC231D002900F1F91E /* FriendsViewControllerTests.m */,
 				5574C6AE231D018F00F1F91E /* LifeCircleViewControllerTests.m */,
+				553B24CB231E535E001DD9F9 /* PersonListViewControllerTests.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -5632,31 +5679,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				55B4DBBB23166355003BDA00 /* IMManagerTests.m in Sources */,
+				553B24D9231E5E75001DD9F9 /* WaterFallListLogicTests.m in Sources */,
 				55249104230D3A0F008102C2 /* LoginLogicTests.m in Sources */,
 				5574C6B3231D05B900F1F91E /* PSConsultationOtherTableViewCellTests.m in Sources */,
 				5574C6AF231D018F00F1F91E /* LifeCircleViewControllerTests.m in Sources */,
 				55B4DB8B2314CBF5003BDA00 /* LifeDetailCircleLogicTests.m in Sources */,
+				553B24DD231E616F001DD9F9 /* PSFeedbackListViewModelTests.m in Sources */,
 				5574C6AD231D002900F1F91E /* FriendsViewControllerTests.m in Sources */,
 				55E7353523190988006F1484 /* DetailLifeCircleViewController+Tests.m in Sources */,
 				55B4DB7E2314BE2E003BDA00 /* RootNavigationControllerTests.m in Sources */,
 				55E7352C2319071F006F1484 /* DetailLifeCircleViewControllerTests.m in Sources */,
+				553B24E3231E6533001DD9F9 /* Mine_AuthLogicTests.m in Sources */,
 				55E735272318C4F6006F1484 /* PSPayCenterTests.m in Sources */,
 				5574C6B1231D04BE00F1F91E /* SAdviceDetailsViewTests.m in Sources */,
 				55B4DB872314C6D3003BDA00 /* SendLifeCircleLogicTests.m in Sources */,
+				558A53A0231F52A0002FC6D7 /* HMAccontBalaceLogicTests.m in Sources */,
+				553B24DF231E6268001DD9F9 /* PSFeedbackViewModelTests.m in Sources */,
 				5574C6B5231D075300F1F91E /* PSConsultationTableViewCellTests.m in Sources */,
+				553B24D1231E5604001DD9F9 /* PSMoreServiceViewModelTest.m in Sources */,
 				55B4DB822314C185003BDA00 /* BaseRootViewControllerTests.m in Sources */,
 				55B4DB892314C8BF003BDA00 /* LifeCircleLogicTests.m in Sources */,
+				553B24CA231E4E6D001DD9F9 /* PSLawerViewModelTests.m in Sources */,
+				553B24E1231E63D0001DD9F9 /* PSSorageViewModelTests.m in Sources */,
 				553B24C8231E46F6001DD9F9 /* PSEvaluateViewmodelTests.m in Sources */,
 				55B4DB802314BF73003BDA00 /* RootViewControllerTests.m in Sources */,
 				553B24C6231E3A5F001DD9F9 /* PSConsultationViewModelTests.m in Sources */,
 				5577641B2313BDB3000E88E2 /* PSBusinessViewControllerTests.m in Sources */,
+				553B24CF231E53E5001DD9F9 /* PersonListViewController+tests.m in Sources */,
 				554E0F45230F8F52000D6C92 /* HpBaseLogicTests.m in Sources */,
+				558A539E231F50EB002FC6D7 /* HMBIllLogicTests.m in Sources */,
 				555DB7CD230E993B00B51B9D /* AppDelegateTests.m in Sources */,
 				5574C6B9231D08D200F1F91E /* PSMyAdviceTableViewCellTests.m in Sources */,
 				55820D74230FCF0B00C73920 /* LifeCircleManagerTests.m in Sources */,
+				553B24D3231E56CD001DD9F9 /* lawyerGrab_LogicTests.m in Sources */,
 				5574C6B7231D07C100F1F91E /* PSLawerAdviceTableViewCellTests.m in Sources */,
+				553B24D5231E59EB001DD9F9 /* HMMessageLogicTests.m in Sources */,
 				55820D72230FC69300C73920 /* UploadManagerTests.m in Sources */,
 				55249102230D37D1008102C2 /* LoginViewControllerTests.m in Sources */,
+				553B24DB231E60FA001DD9F9 /* MakeFriendsLogicTests.m in Sources */,
 				55B4DB842314C545003BDA00 /* MainTabBarControllerTests.m in Sources */,
 				555DB7CB230E815C00B51B9D /* UserManagerTests.m in Sources */,
 				55B4DBB9231661AB003BDA00 /* AppManagerTests.m in Sources */,
@@ -5665,7 +5725,9 @@
 				55B4DB912314DEE1003BDA00 /* UIViewControllerTests.m in Sources */,
 				55B4DBB723165C59003BDA00 /* PSTipsViewTests.m in Sources */,
 				5557A4A6221BB46E00743012 /* GKHelpOutAppTests.m in Sources */,
+				553B24D7231E5E07001DD9F9 /* PersonListLogicTests.m in Sources */,
 				55E735292318CC8D006F1484 /* PSPayInfotests.m in Sources */,
+				553B24CC231E535E001DD9F9 /* PersonListViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

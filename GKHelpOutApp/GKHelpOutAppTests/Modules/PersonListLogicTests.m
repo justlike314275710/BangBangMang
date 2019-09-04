@@ -7,8 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "PersonListLogic.h"
 
 @interface PersonListLogicTests : XCTestCase
+@property(nonatomic,strong)PersonListLogic *logic;
 
 @end
 
@@ -16,10 +18,16 @@
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.logic = [[PersonListLogic alloc] init];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    self.logic = nil;
+}
+
+- (void)testloadData {
+    [self.logic loadData];
 }
 
 - (void)testExample {

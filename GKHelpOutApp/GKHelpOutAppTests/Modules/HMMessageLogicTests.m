@@ -7,8 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "HMMessageLogic.h"
 
 @interface HMMessageLogicTests : XCTestCase
+@property(nonatomic,strong)HMMessageLogic *logic;
 
 @end
 
@@ -16,10 +18,31 @@
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.logic = [[HMMessageLogic alloc] init];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    self.logic = nil;
+}
+
+- (void)testLife{
+    HMMessageLogic *logic = [[HMMessageLogic alloc] init];
+}
+
+- (void)testrefreshMesagaeListCompleted{
+    [self.logic refreshMesagaeListCompleted:^(id data) {
+        
+    } failed:^(NSError *error) {
+        
+    }];
+}
+- (void)loadMyMessageListCompleted{
+    [self.logic loadMyMessageListCompleted:^(id data) {
+        
+    } failed:^(NSError *error) {
+        
+    }];
 }
 
 - (void)testExample {

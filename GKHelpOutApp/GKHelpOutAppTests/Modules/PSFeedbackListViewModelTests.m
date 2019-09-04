@@ -7,8 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "PSFeedbackListViewModel.h"
 
 @interface PSFeedbackListViewModelTests : XCTestCase
+@property(nonatomic,strong)PSFeedbackListViewModel*viewModel;
 
 @end
 
@@ -16,10 +18,34 @@
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.viewModel = [[PSFeedbackListViewModel alloc] init];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    self.viewModel = nil;
+}
+
+- (void)testrefreshFeedbackListCompleted{
+    [self.viewModel refreshFeedbackListCompleted:^(id data) {
+        
+    } failed:^(NSError *error) {
+        
+    }];
+}
+- (void)testloadMoreFeedbackListCompleted{
+    [self.viewModel loadMoreFeedbackListCompleted:^(id data) {
+        
+    } failed:^(NSError *error) {
+        
+    }];
+}
+- (void)testrefreshFeedbackDetaik{
+    [self.viewModel refreshFeedbackDetaik:^(id data) {
+        
+    } failed:^(NSError *error) {
+        
+    }];
 }
 
 - (void)testExample {

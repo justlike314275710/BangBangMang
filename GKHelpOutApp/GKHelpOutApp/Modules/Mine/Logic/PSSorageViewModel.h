@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy,readonly) NSString *allStorage;
 @property(nonatomic,copy,readonly) NSString *usedStorage;
 
+
+
 @end
 
 NS_ASSUME_NONNULL_END
