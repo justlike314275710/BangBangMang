@@ -11,6 +11,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>AlipaySDK-iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>33</integer>
+		</dict>
 		<key>AvoidCrash.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -31,6 +36,11 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
+		</dict>
+		<key>Bugly.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>34</integer>
 		</dict>
 		<key>CDZStarsControl.xcscheme</key>
 		<dict>
@@ -123,6 +133,11 @@
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
+		<key>OCMock.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>35</integer>
+		</dict>
 		<key>PYPhotoBrowser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -199,6 +214,11 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>28</integer>
+		</dict>
+		<key>WechatOpenSDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>36</integer>
 		</dict>
 		<key>YTKNetwork.xcscheme</key>
 		<dict>

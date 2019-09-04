@@ -27,7 +27,7 @@
 }
 
 - (void)testcheckDataWithCallback {
-    self.viewModel.rate = @"1";
+    self.viewModel.rate = @"";
     self.viewModel.isResolved = @"";
     [self.viewModel checkDataWithCallback:^(BOOL successful, NSString *tips) {
     

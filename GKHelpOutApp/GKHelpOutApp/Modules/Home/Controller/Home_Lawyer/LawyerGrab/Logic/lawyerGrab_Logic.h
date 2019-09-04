@@ -29,9 +29,6 @@
 
 -(void)POSTLawyergrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 
-
-
-
 - (void)refreshMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 - (void)loadMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 -(void)GETMygrabCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
@@ -42,7 +39,6 @@
 -(void)requestCommentsCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;//评论
 
 -(void)GETProcessedCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;//模拟通话
-
 
 
 -(void)deleteConsultationCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;//删除订单

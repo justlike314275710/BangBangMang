@@ -149,6 +149,8 @@ ${SRCROOT}/GKHelpOutApp/Modules/Home/View/*
 ${SRCROOT}/GKHelpOutApp/Modules/Home/View/Waves/*
 
 
+
+
 ${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/more/Model/*
 ${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/more/View/*
 ${SRCROOT}/GKHelpOutApp/Modules/Home/Controller/Home_Customer/more/Viewcontoller/*
@@ -174,6 +176,12 @@ ${SRCROOT}/GKHelpOutApp/Modules/Mine/accountAmount/*
 ${SRCROOT}/GKHelpOutApp/Modules/Mine/model/*
 ${SRCROOT}/GKHelpOutApp/Modules/Myadvice/Controller/*
 ${SRCROOT}/GKHelpOutApp/Modules/Myadvice/Controller/Counseling/*
+${SRCROOT}/GKHelpOutApp/Modules/Login/Controller/UploadAvatarViewController.m
+${SRCROOT}/GKHelpOutApp/Modules/Mine/Logic/PSSorageViewModel.m
+
+
+
+
 
 
 

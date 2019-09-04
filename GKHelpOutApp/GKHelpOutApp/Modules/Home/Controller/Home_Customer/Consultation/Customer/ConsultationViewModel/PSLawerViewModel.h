@@ -20,4 +20,6 @@
 
 - (void)refreshLawyerCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
 - (void)loadMoreLawyerCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+-(void)requestMyAdviceCompleted:(RequestDataCompleted)completedCallback failed:(RequestDataFailed)failedCallback;
+
 @end
